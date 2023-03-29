@@ -309,7 +309,7 @@ $(function(){
 <!--        		</div> -->
 			<!-- 팝업 -->
 			<div class="section group section-main-movie-list">
-				<div class="title">박스오피스</div>
+				<div class="title">MOVIE</div>
 		    	<div class="main-movie-list">
 			        <ul class="selector">
 			            <li class="selected" data-panel="bo">박스오피스</li>
@@ -321,7 +321,19 @@ $(function(){
 					<!--  박스오피스 -->
 			        <div class="wrap-slider wrap-bo">
 			            <ul class="bxslider-bo">
-			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode="">
+				                <span class="over over-a">
+					                <a href="#" class="rsv"><span class="over-btn">예매하기</span></a>
+					                <a href="" class="info"><span class="over-btn">상세정보</span></a>
+				                </span>
+				                <a href="">
+				                <img src="images/movies/poster/m1.jpg" />
+				                <div class="movie-desc">
+				               		 <span class="rate-12">12세이상</span>스즈메의 문단속
+				                </div>
+				                
+				                </a>
+			                </li>
 			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
 			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
 			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
