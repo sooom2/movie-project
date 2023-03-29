@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/movie.css" rel="stylesheet">
-<link href="../css/store.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/sub.css" rel="stylesheet">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <style>

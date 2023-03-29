@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="../css/movie.css" rel="stylesheet">
-<link href="../css/store.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/sub.css" rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 
