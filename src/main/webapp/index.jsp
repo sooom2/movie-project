@@ -15,7 +15,7 @@
 
 
 
-$(document).ready(function () {
+$(function(){
 	//메인 슬라이더
     if($(".bxslider-main").length){
 	
@@ -176,7 +176,21 @@ $(document).ready(function () {
             });
         });
     }
+	
+    //팝업
+    if($(".pop-main").length){
+        if($.cookie("pop-main-hidden") != 1){
+            $(".pop-main").show();
+        }
+        $(".pop-main .btn-close").click(function(){
+            if($("#check_close_today:checked").length == 1){
+                $.cookie("pop-main-hidden", 1, { expires: 1 });
+            }
+            $(".pop-main").hide();
 
+            return false;
+        });
+    }
 
 	// 목록
     $(".wrap-slider").on("mouseenter", "ul > li > span.over > a", function(){
@@ -204,7 +218,13 @@ $(document).ready(function () {
         });
         return false;
     });
+    //팝업창
+    
+    
+    
 });
+
+
 </script>
 
 
@@ -277,8 +297,17 @@ $(document).ready(function () {
 					</ul>
 				</div>
 			</div>
-
-			<!-- 영화목록 집어넣기 -->
+			
+			<!-- 팝업 -->
+<!-- 			<div class="pop-main" style=""> -->
+<!--           		<img src="https://file.cineq.co.kr/j.aspx?guid=9f63e6042ff74645bdec9faf16b9ebe0"> -->
+<!-- 	            <div class="bottom"> -->
+<!-- 	                <input type="checkbox" id="check_close_today" class="close-today"><label for="check_close_today">오늘 그만보기</label> -->
+<!-- 	                <a href="" class="btn-detail">자세히보기</a> -->
+<!-- 	                <a href="" class="btn-close">닫기</a> -->
+<!-- 	            </div> -->
+<!--        		</div> -->
+			<!-- 팝업 -->
 			<div class="section group section-main-movie-list">
 				<div class="title">박스오피스</div>
 		    	<div class="main-movie-list">
@@ -289,27 +318,30 @@ $(document).ready(function () {
 			        </ul>
 			        
 			
-				<!--  박스오피스 -->
-		        <div class="wrap-slider wrap-bo">
-		            <ul class="bxslider-bo">
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
-		            </ul>
-		        </div>
-				<!--  최신개봉작 -->
-		        <div class="wrap-slider wrap-lr">
-		            <ul class="bxslider-lr">
-		            </ul>
-		        </div>
-				<!--  상영예정작 -->
-		        <div class="wrap-slider wrap-cs">
-		            <ul class="bxslider-cs">
-		            </ul>
-		        </div>
+					<!--  박스오피스 -->
+			        <div class="wrap-slider wrap-bo">
+			            <ul class="bxslider-bo">
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
+			            </ul>
+			        </div>
+			        
+			        
+					<!--  최신개봉작 -->
+			        <div class="wrap-slider wrap-lr">
+			            <ul class="bxslider-lr">
+			            </ul>
+			        </div>
+			        
+					<!--  상영예정작 -->
+			        <div class="wrap-slider wrap-cs">
+			            <ul class="bxslider-cs">
+			            </ul>
+			        </div>
 		   		</div>
 			</div>
 

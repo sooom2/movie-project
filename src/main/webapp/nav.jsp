@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./css/movie.css" rel="stylesheet">
+<link href="css/movie.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,18 +27,15 @@
 				<li><a href="" class="" onmouseover="hideTheater()">예매</a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="" class=""
-								onmouseover="hideTheater()">빠른예매</a></li>
-							<li><a href="" class=""
-								onmouseover="hideTheater()">상영시간표</a></li>
-							<li><a href="" class=""
-								onmouseover="hideTheater()">비회원예매내역</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">빠른예매</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">상영시간표</a></li>
+							<li><a href="" class=""	onmouseover="hideTheater()">비회원예매내역</a></li>
 						</ul>
 					</div>
 				</li>
 			
 			
-				<li><a href="" class="" onmouseover="hideTheater()">영화</a>
+				<li><a href="" class="" onmouseover="hideTheater()"> 영화 </a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class=""	onmouseover="hideTheater()">현재상영작</a></li>

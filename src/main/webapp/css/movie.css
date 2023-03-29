@@ -838,7 +838,7 @@ header{
 
 .wrap-nav-primary nav.primary>ul>li {
 	display: inline-block;
-	width: 83px;
+	width: 90px;
 	height: 100px;
 	margin-left: -4px;
 }
@@ -12939,3 +12939,104 @@ works properly when clicked or hovered */ html .ui-button.ui-state-disabled:hove
 	padding:15px 20px;
 	border-radius:100%;
 }
+
+/* 메인팝업 */
+.pop-main {
+  display: block;
+  position: absolute;
+  z-index: 999;
+  top: 300px;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  height: 542px;
+  background-color: #fff;
+  box-shadow: 6px 4px 41px 5px rgba(0, 0, 0, 0.6); }
+  .pop-main > img {
+    width: 500px;
+    height: 482px; }
+  .pop-main .top {
+    height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #494949;
+    text-align: center;
+    position: relative;
+    line-height: 78px; }
+    .pop-main .top .btn-close {
+      display: block;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      text-indent: -10000em;
+      background: url("/images/main/btn-pop-main-close.png") center center no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0; }
+  .pop-main .body {
+    height: 402px;
+    box-sizing: border-box;
+    padding: 0 18px 18px 18px;
+    overflow: auto;
+    font-size: 16px;
+    color: #333; }
+    .pop-main .body:before {
+      content: "";
+      display: block;
+      margin: 0 0 18px;
+      border-top: 2px solid #e5e5e5; }
+    .pop-main .body img {
+      display: inline-block;
+      margin-top: 6px;
+      max-width: 100%; }
+    .pop-main .body ul, .pop-main .body ol {
+      margin-left: 20px; }
+    .pop-main .body ul li {
+      list-style: square; }
+  .pop-main .bottom {
+    height: 60px;
+    background-color: #f3f3f3;
+    position: relative;
+    text-align: center; }
+    .pop-main .bottom input[type=checkbox] {
+      position: absolute;
+      left: -100000em; }
+    .pop-main .bottom label {
+      display: block;
+      position: absolute;
+      left: 20px;
+      top: 0;
+      height: 60px;
+      padding-left: 34px;
+      line-height: 58px;
+      font-size: 14px;
+      color: #333;
+      text-align: left;
+      background: url("/images/main/icon-pop-main-unchecked.png") left center no-repeat;
+      cursor: pointer; }
+    .pop-main .bottom input[type=checkbox]:checked + label {
+      background-image: url("/images/main/icon-pop-main-checked.png"); }
+    .pop-main .bottom .btn-detail {
+      width: 226px;
+      height: 28px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      color: #333;
+      line-height: 26px;
+      display: inline-block;
+      text-align: center;
+      margin: 15px 0 0 28px; }
+    .pop-main .bottom .btn-close {
+      width: 90px;
+      height: 60px;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      line-height: 58px;
+      background: url("/images/main/btn-pop-main-close2.png") center right 18px no-repeat;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      text-align: left; }
