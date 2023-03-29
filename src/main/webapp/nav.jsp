@@ -14,7 +14,7 @@
 			<ul>
 				<li><a href="" data-reload="reload" class="loginpop">로그인</a></li>
 				<li><a href="">멤버십안내</a></li>
-				<li><a href="">회원가입</a></li>
+				<li><a href="member/join.jsp">회원가입</a></li>
 				<li><a href="" class="nomemberloginpop">비회원예매내역</a>
 				</li>
 			</ul>
@@ -22,7 +22,7 @@
 	</div>
 	<div class="wrap-nav-primary">
 		<nav class="primary">
-			<a href=""><h1 id="logo">로고</h1></a>
+			<a href="../index.jsp"><h1 id="logo">로고</h1></a>
 			<ul>
 				<li><a href="" class="" onmouseover="hideTheater()">예매</a>
 					<div class="tertiary">
