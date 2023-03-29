@@ -12,9 +12,6 @@
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
-
-
-
 $(function(){
 	//메인 슬라이더
     if($(".bxslider-main").length){
