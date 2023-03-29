@@ -218,8 +218,11 @@ $(function(){
         });
         return false;
     });
-    //팝업창
-    
+      
+    //좋아요
+    $(document).on('click','.btn-util .btn-like', function(){
+		fn_addHeart(this);
+	});    
     
     
 });
@@ -332,15 +335,6 @@ $(function(){
 				               		 <span class="rate-12">12세이상</span>스즈메의 문단속
 				                </div>
 				                </a>
-				                <div class="btn-util">
-                               		<button type="button" class="button btn-like" rpst-movie-no="23000600">
-									<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-								4.9k
-								</button>
-                                    <div class="case">
-                                          <a href="javascript:moveBokdPage('23000600');" class="button gblue" title="영화 예매하기">예매</a>
-                                       </div>
-                                    </div>
 			                </li>
 			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>
 			                <li data-moviecode=""><span class="over over-a"><a href="#" class="rsv"><span class="over-btn">예매하기</span></a><a href="" class="info"><span class="over-btn">상세정보</span></a></span><a href=""><img src="images/movies/poster/m1.jpg" /><div class="movie-desc"><span class="rate-12">12세이상</span>스즈메의 문단속</div></a></li>

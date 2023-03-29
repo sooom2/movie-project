@@ -11,7 +11,6 @@
 <body>
 <jsp:include page="../nav.jsp"/>
 <div id="contents">
-
     <!-- inner-wrap -->
     <div class="inner-wrap">
         <h2 class="tit">스토어</h2>
