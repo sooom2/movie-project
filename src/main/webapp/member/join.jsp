@@ -15,6 +15,7 @@
 				<div class="title">회원가입</div>
 				<div class="wrap-member-box wrap-join-box">
 					<ul class="join-indicator">
+						<li class="selected">이메일 입력(소셜 가입) 삭제 후 다시 입력/</li>
 						<li class="selected">이메일 입력(소셜 가입)</li>
 						<li class="selected">이메일 입력(소셜 가입)  박춘우</li>
 						<li>회원정보 입력</li>
