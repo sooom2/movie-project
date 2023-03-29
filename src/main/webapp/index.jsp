@@ -226,7 +226,7 @@ $(document).ready(function () {
 				<span class="left" id="slider_left"></span>
 				<div class="slider-main">
 					<ul class="bxslider-main">
-						<li data-kind="개봉 예정작"
+						<li data-kind="Movie"
 						    data-title_ko="리바운드"
 							data-title_fo="Rebound"
 							data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다.">
