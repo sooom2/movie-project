@@ -16,7 +16,7 @@
 				<div class="wrap-member-box wrap-join-box">
 					<ul class="join-indicator">
 						<li class="selected">이메일 입력(소셜 가입)</li>
-						<li>회원정보 입력</li>
+						<li>회원정보 입11111력</li>
 						<li>가입 완료</li>
 					</ul>
 					<form name="form-join" id="form-join" method="post"
