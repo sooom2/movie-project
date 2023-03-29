@@ -72,7 +72,7 @@
 					<div class="tertiary">
 					</div>
 				</li>
-				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
+				<li id="cs"><a href="customer_center/cc_home.jsp" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class="" onmouseover="hideTheater()">Q/A</a></li>
