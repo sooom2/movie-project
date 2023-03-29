@@ -15,7 +15,7 @@
 				alert(data.movieInfoResult.movieInfo.movieCd)	
 			}
 		});
-	});
+	});///주석 
 
 </script>
 </head>
