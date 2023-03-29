@@ -20,6 +20,6 @@
 </script>
 </head>
 <body>
-	<h1> 영화 상세정보</h1>
+	<h1> 영화 상세 정보</h1>
 </body>
 </html>
