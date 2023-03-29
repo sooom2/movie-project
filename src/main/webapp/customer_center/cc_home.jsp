@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <link href="../css/movie.css" rel="stylesheet">
-<link href="../css/megabox.css" rel="stylesheet">
+<link href="../css/store.css" rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 	
