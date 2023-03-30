@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/movie.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -60,6 +62,6 @@
 
 		</div>
 	</div>
-
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

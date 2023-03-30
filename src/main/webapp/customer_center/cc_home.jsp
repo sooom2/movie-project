@@ -6,8 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="../css/movie.css" rel="stylesheet">
-<link href="../css/store.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
+<link href="../css/sub.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <body>
 	<jsp:include page="../nav.jsp" />
 
@@ -175,5 +178,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 
-<link href="../css/movie.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
 
 <body>
 <div id="popup_login" style="opacity: 1;" class="modal">
