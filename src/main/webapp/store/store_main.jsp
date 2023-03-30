@@ -5,56 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/movie.css" rel="stylesheet">
-<link href="../css/store.css" rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
+<link href="../css/sub.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <style>
-#container {
-	width: 960px;
-	margin: 0 auto;
-	text-align: center;
-}
 
-.tab {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-/* Float the list items side by side */
-.tab li {
-	float: left;
-}
-/* Style the links inside the list items */
-.tab li a {
-	display: inline-block;
-	color: #000;
-	text-align: center;
-	text-decoration: none;
-	padding: 14px 16px;
-	font-size: 17px;
-	transition: 0.3s;
-}
-/* Style the tab content */
-.tabcontent {
-	display: none;
-}
-
-ul.tab li.current {
-	color: #222;
-}
-
-.tabcontent.current {
-	display: block;
-}
 </style>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
-
+	<div id="container">
 	<div id="contents" class="">
-
+		
 		<!-- inner-wrap -->
 		<div class="inner-wrap">
 
@@ -78,15 +42,15 @@ ul.tab li.current {
 								<div class="label new">NEW</div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2022/09/02/OLQpuZPJ5wuIR9BqZK4sDRKN0t2O3sWV_280.png"
+										src="../images/store/gift2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">메가박스 기프트카드 2만원권</p>
+										<p class="name">000 기프트카드 2만원권</p>
 										<!-- 제품구성 최대 2줄 -->
-										<p class="bundle">메가박스 기프트카드 2만원권</p>
+										<p class="bundle">000 기프트카드 2만원권</p>
 									</div>
 									<div class="price">
 										<p class="original"></p>
@@ -98,21 +62,21 @@ ul.tab li.current {
 								</div>
 						</a></li>
 						<li class=""><a href=""
-							title="메가박스 기프트카드 3만원권 상세보기">
+							title="00 기프트카드 3만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">NEW</div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2022/09/02/UhUaGPc8CkaIn0wdjvdz6yhunnOzYdaP_280.png"
+										src="../images/store/gift3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">메가박스 기프트카드 3만원권</p>
+										<p class="name">00 기프트카드 3만원권</p>
 
 										<!-- 제품구성 최대 2줄 -->
-										<p class="bundle">메가박스 기프트카드 3만원권</p>
+										<p class="bundle">00 기프트카드 3만원권</p>
 									</div>
 
 									<div class="price">
@@ -126,21 +90,21 @@ ul.tab li.current {
 							</a>
 						</li>
 						<li class=""><a href=""
-							title="메가박스 기프트카드 5만원권 상세보기">
+							title="00 기프트카드 5만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">NEW</div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2022/09/02/SvDPUHovAC2t5VdkHNby25qYMYGNp3tN_280.png"
+										src="../images/store/gift5.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">메가박스 기프트카드 5만원권</p>
+										<p class="name">00 기프트카드 5만원권</p>
 
 										<!-- 제품구성 최대 2줄 -->
-										<p class="bundle">메가박스 기프트카드 5만원권</p>
+										<p class="bundle">00기프트카드 5만원권</p>
 									</div>
 
 									<div class="price">
@@ -160,36 +124,6 @@ ul.tab li.current {
 				<!-- store-list -->
 				<div class="store-list mt30">
 					<ul class="list">
-						<li class=""><a href=""
-							title="[사전예약2차] 슬램덩크FULL콤보 상세보기">
-								<div class="soldout">SOLD OUT</div>
-								<div class="label event">EVENT</div>
-								<div class="img">
-									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/02/28/NIKFFTBLyALf8QTDeMjqTH4ckiclhRrv_280.png"
-										alt="" onerror="noImg(this);">
-								</div>
-								<div class="info">
-									<div class="tit">
-										<!-- 제품명 최대 2줄 -->
-										<p class="name">[사전예약2차] 슬램덩크FULL콤보</p>
-
-										<!-- 제품구성 최대 2줄 -->
-										<p class="bundle">팝콘(L) 1 + 탄산음료(R) 2 + 슬램덩크 엽서북 1 + 슬램덩크
-											홀로그램카드 5종 1set</p>
-									</div>
-
-									<div class="price">
-										<p class="original"></p>
-
-										<p class="sale">
-											<em>72,000</em> <span>원</span>
-										</p>
-										<p class="ea"></p>
-
-									</div>
-								</div>
-						</a></li>
 
 						<li class=""><a href=""
 							title="러브콤보 상세보기">
@@ -197,7 +131,7 @@ ul.tab li.current {
 								<div class="label hot">대표상품</div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2022/03/07/qB1IVqlOLCV7hOOEAJp4J9iG3J5oVWjv_280.png"
+										src="../images/store/pk1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -225,7 +159,7 @@ ul.tab li.current {
 								<div class="label event">BEST</div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2022/03/07/ERDC5wGVMC0YZPIRUsuuaJuAGRyqeDjC_280.png"
+										src="../images/store/pk2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -259,7 +193,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/uTbj1kq40fI0uIA0WpEwWrOxa4ypBSRw_280.png"
+										src="../images/store/pk3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -291,7 +225,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/17/Qw2ho0ZHcj6bSyD4QprhqcdtpZvKeyYf_280.png"
+										src="../images/store/tiketMX.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -322,7 +256,7 @@ ul.tab li.current {
 
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/17/dVwdygO0NbNF1amX1zptfPtgrBEyP6xW_280.png"
+										src="../images/store/cu1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -353,7 +287,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/17/AT5g25uULgSg548sphAhCY3RjAmQGwZw_280.png"
+										src="../images/store/cu2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -383,7 +317,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/17/wsTU8DADqoAXyW6H0wvYDPdVvPCnQQkH_280.png"
+										src="../images/store/tiket2D.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -406,18 +340,18 @@ ul.tab li.current {
 								</div>
 						</a></li>
 						<li class=""><a href=""
-							title="일반 영화 1천원 할인쿠폰 [포인트몰3월] 상세보기">
+							title="일반 영화 2천원 할인쿠폰 [포인트몰3월] 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/17/COApJI6jW6fkgwjUAs9292245GnDfjXZ_280.png"
+										src="../images/store/cu3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">일반 영화 1천원 할인쿠폰 [포인트몰3월]</p>
+										<p class="name">일반 영화 2천원 할인쿠폰 [포인트몰3월]</p>
 										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">일반/컴포트/더 부티크/MX 사용 가능</p>
 									</div>
@@ -439,7 +373,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/dmPiRJj24TsPn3DsE3rI3EANzpaBddrl_280.png"
+										src="../images/store/e-food1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -468,7 +402,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/X6UZEnSuegeAXGTf5DOzFmo1YU9pbkPy_280.png"
+										src="../images/store/e-ti1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -497,7 +431,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/tNDtSlA5ME70gdnMWR4aGVgmoyYqGQlh_280.png"
+										src="../images/store/e-food2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -526,7 +460,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/NP6ONMsX2QYlG7dgF9ag8AuCOlzP5Wqk_280.png"
+										src="../images/store/e-food3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -559,7 +493,7 @@ ul.tab li.current {
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="https://img.megabox.co.kr/SharedImg/store/2023/03/20/PNMH1MwpuxuS34nErkRMp2XGubi7Y1Ux_280.png"
+										src="../images/store/e-ti2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -587,7 +521,9 @@ ul.tab li.current {
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
+	<!-- 탭 스크립트 -->
 	<script>
 		$(function() {
 			$('ul.tab li').click(function() {
@@ -599,5 +535,7 @@ ul.tab li.current {
 			})
 		});
 	</script>
+	
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>
