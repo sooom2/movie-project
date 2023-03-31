@@ -14,7 +14,7 @@
 <jsp:include page="../nav.jsp" />   
 
 <script type="text/javascript">
-    showTheater(0);
+    showTheater(0); 
 </script>
     <div id="container">
         <div id="content">
