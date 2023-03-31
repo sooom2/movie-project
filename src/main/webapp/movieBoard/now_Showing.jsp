@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert  btitle here</title>
-<link href="../css/main.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
 <link href="../css/sub.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
