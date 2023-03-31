@@ -696,7 +696,7 @@ header {
 }
 
 .main-board {
-	width: 70%;
+	width: 50%;
 	margin: 0 auto !important;
 	margin-top: 50px;
 	padding-top: 50px;
@@ -1217,6 +1217,7 @@ header {
 /*
 ============================================================== */
 .movie-desc {
+	font-size: 15px;
 	width: 170px;
 	overflow: hidden !important;
 	/* border: 1px solid #b4b5b5; */
@@ -12532,26 +12533,8 @@ works properly when clicked or hovered */ html .ui-button.ui-state-disabled:hove
 }
 
 .noticeClient_banner_wrap .noticeClient_banner_list .swiper-wrapper .swiper-slide a img {
-	
     width: 100%
 }
 
-.noticeClient_banner_wrap .btn_noticeClientBannerControl {
-    display: block;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: 28px;
-    height: 28px;
-    font-size: 0;
-    background: #fff url('./../images/common/ico/main/play.png') 10px center/11px 15px scroll no-repeat;
-    border: 1px solid #e3e3e3;
-    border-radius: 50%;
-    z-index: 2
-}
-
-.noticeClient_banner_wrap .btn_noticeClientBannerControl.active {
-    background: #fff url('./../images/common/ico/main/stop.png') center center/9px 13px scroll no-repeat
-}
 
 
