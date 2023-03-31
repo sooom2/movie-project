@@ -358,6 +358,9 @@ $(function(){
 							     <span class="likeNum">80.K</span>
 							</a>
 						</div>
+						<div class="grade" style="text-align: center">
+							  <span>예매율 :</span><strong>55.0%</strong>
+						</div>
 						</li>
 						<li data-moviecode="">
 						<span class="over over-a">
