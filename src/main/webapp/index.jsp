@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <html>
 <head>
 <title>Insert title here</title>
+<link href="${path }/css/main.css" rel="stylesheet">
+<link href="${path }/css/main.css" rel="stylesheet">
+<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="${path }/css/jquery.bxslider.css" rel="stylesheet">
+<link href="${path }/css/main.css" rel="stylesheet">
+<link href="${path }/css/jquery.bxslider.css" rel="stylesheet">
 
-<<<<<<< HEAD
-<link href="css/main.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/inc.css" rel="stylesheet">
-<link href="css/jquery.bxslider.css" rel="stylesheet">
-=======
-<link href="./css/main.css" rel="stylesheet">
-<link href="./css/jquery.bxslider.css" rel="stylesheet">
->>>>>>> branch 'master' of https://github.com/sooom2/movie-project.git
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="${path }/js/main.js"></script>
+<script type="text/javascript" src="${path }/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	//메인 슬라이 더
@@ -258,8 +258,9 @@ $(function(){
 
 </script>
 
-</style>
 </head>
+
+
 
 <body id="top">
 
@@ -340,38 +341,48 @@ $(function(){
 				<!--  박스오피스 -->
 				<div class="wrap-slider wrap-bo">
 					<ul class="bxslider-bo">
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="images/movies/poster/m1.jpg" />
+						<li data-moviecode="">
+						<span class="over over-a"> 
+							<a href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
+							<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
+						</span> 
+							<a href="">
+								<img src="images/movies/poster/m1.jpg" />
 								<div class="movie-desc">
 									<span class="rate-12">12세이상</span>스즈메의 문단속
 								</div>
-						</a>
+							</a>
 						<div class="like-btn">
-							  <a href="javascript:;" class="icon heart">
-							     <img src="images/ico/before-like.png" alt="찜하기"><span class="likeNum">80.K</span>
-							  </a>
+							<a href="javascript:;" class="icon heart">
+							     <img src="images/ico/before-like.png" alt="찜하기">
+							     <span class="likeNum">80.K</span>
+							</a>
 						</div>
 						</li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
+						<li data-moviecode="">
+						<span class="over over-a">
+								<a	href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="images/movies/poster/m2.jpg" />
+						</span> 
+							<a href="">
+								<img src="images/movies/poster/m2.jpg" />
 								<div class="movie-desc">
 									<span class="rate-x">12세이상</span>스즈메의 문단속
 								</div>
-						</a>
+							</a>
 						<div class="like-btn">
-							  <a href="javascript:;" class="icon heart">
-							     <img src="images/ico/before-like.png" alt="찜하기"><span class="likeNum">70.M</span>
-							  </a>
+							<a href="javascript:;" class="icon heart">
+						    	<img src="images/ico/before-like.png" alt="찜하기">
+						    	<span class="likeNum">70.M</span>
+							</a>
 						</div>
 						</li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="images/movies/poster/m3.jpg" />
+						<li data-moviecode=""><span class="over over-a">
+							<a href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
+							<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
+						</span>
+							<a href="">
+								<img src="images/movies/poster/m3.jpg" />
 								<div class="movie-desc">
 									<span class="rate-15">12세이상</span>스즈메의 문단속
 								</div>
@@ -836,10 +847,7 @@ $(function(){
                                
                             </dl>
                         </li>
-                        
                     </ul>
-                    
-                    
                     <div class="noticeClient_wrap">
                 <div class="contents">
                     <div class="noticeClient_container">
@@ -852,7 +860,6 @@ $(function(){
                                 
                                 <a href="" id="notice_more" class="btn_more">더보기</a>
                             </div>
-
                             <div class="client_wrap">
                                 <dl class="client_list">
                                     <dt><strong>고객센터</strong></dt>
@@ -870,25 +877,15 @@ $(function(){
                                 </div>
                             </div>
                         </div>
-
                         <div class="qr_wrap">
                             <strong>앱 다운로드</strong>
                             <span>CGV앱에서 더 편리하게 이용하세요</span>
-                            <div class="img_wrap" data-scale="false"><img src="images/main/img_qrcode.gif" alt="QR CODE"></div>
+                            <div class="img_wrap" data-scale="false"><img src="images/main/img_qrcode.png" alt="QR CODE"></div>
                             <p>QR코드를 스캔하고<br>앱설치 페이지로 바로 이동하세요</p>
                         </div>
                     </div>
-                   
             </div>
-			
 		</div>
-
-
-
-
-
-
-
 	</div>
 	<!--  content -->
 

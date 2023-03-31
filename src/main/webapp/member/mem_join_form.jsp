@@ -81,7 +81,30 @@
 									class="input input-numeric" placeholder="휴대폰번호 입력"> <span></span>
 								</label>
 							</div>
-
+							<div class="join-detail">
+								<label class="label-input" for="phone">
+								 <fieldset>
+							         <legend>취미</legend>
+							         <table>
+							            <tr>
+							               <td>
+							                  <input type="checkbox" name="hobby" value="전체선택" id="all"
+							                   onclick="allcheck();"><label>전체선택</label>
+							               </td>
+							               <td>
+							                  <input type="checkbox" name="hobby" value="종합" id="종합" 
+							                   onclick="check();"><label>공포</label>
+							               </td>
+							            <tr>
+							               <td>
+							               </td>
+							            </tr>
+							         </table>
+							      </fieldset>
+								</label>
+								
+							</div>
+							
 
 							<a href="javascript:;" id="btn-join2" class="btn-join">회원가입</a> <input
 								type="hidden" id="socialId" name="socialId" value=""> <input
