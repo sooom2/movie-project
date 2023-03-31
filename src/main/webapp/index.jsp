@@ -15,7 +15,7 @@
 <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	//메인 슬라이더
+	//메인 슬라이 더
     if($(".bxslider-main").length){
 	
         var slider_main_info = [];

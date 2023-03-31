@@ -42,7 +42,7 @@
 						<ul>
 							<li><a href="" class=""	onmouseover="hideTheater()">현재상영작</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
-							<li><a href="" class=""	onmouseover="hideTheater()">후기</a></li>
+							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
 						</ul>
 					</div>
 				</li>

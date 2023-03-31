@@ -39,7 +39,7 @@
 
 						<li class=""><a href="" title="메가박스 기프트카드 2만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
-								<div class="label new">NEW</div>
+								<div class="label new">N E W</div>
 								<div class="img">
 									<img
 										src="../images/store/gift2.png"

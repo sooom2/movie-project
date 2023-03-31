@@ -36,7 +36,7 @@
 										id="naver_id_login_anchor" class="social-connect nv">네이버</a>
 								</div>
 								<a id="custom-login-btn" href="javascript:joinWithKakao();"
-									class="kt">카카오톡</a>
+									class="kt">카카오 톡</a>
 							</div>
 							<div class="join-email-desc">
 								<span>이메일 주소로 가입</span>

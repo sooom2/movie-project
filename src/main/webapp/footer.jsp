@@ -9,7 +9,7 @@
 <link href="css/common.css" rel="stylesheet">
 </head>
 <body>
-	<!-- 푸터 -->
+	<!-- 푸터! -->
 	<footer id="footer">
 		<div class="section group footer-service">
 			<a href="" class="logo-footer">CINE Q</a>

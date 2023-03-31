@@ -18,7 +18,7 @@
 
 
     <div class="popup-login" id="loginSession" data-pwdredirect="1">
-        <span class="logo-login">CINE Q</span>
+        <span class="logo-login"> 0 0 0 0</span>
         <div class="section-pop-login">
             <ul class="tab-login">
                 <li class="on">
