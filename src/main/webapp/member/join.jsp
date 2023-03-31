@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/movie.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -34,7 +36,7 @@
 										id="naver_id_login_anchor" class="social-connect nv">네이버</a>
 								</div>
 								<a id="custom-login-btn" href="javascript:joinWithKakao();"
-									class="kt">카카오톡</a>
+									class="kt">카카오 톡</a>
 							</div>
 							<div class="join-email-desc">
 								<span>이메일 주소로 가입</span>
@@ -60,6 +62,6 @@
 
 		</div>
 	</div>
-
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

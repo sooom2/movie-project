@@ -6,8 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<<<<<<< HEAD
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
+<link href="../css/sub.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+=======
 <link href="../css/main.css" rel="stylesheet">
 <link href="../css/sub.css" rel="stylesheet">
+>>>>>>> branch 'master' of https://github.com/sooom2/movie-project.git
 <body>
 	<jsp:include page="../nav.jsp" />
 
@@ -33,7 +41,7 @@
 						</p>
 					</div>
 				</nav>
-				<h3>여기에 나중에 영화 광고 하나 넣자</h3>
+				<h3>여기에 나중에 영화 광고 하나 넣자!</h3>
 			</div>
 
 			<div id="contents" class="">
@@ -175,5 +183,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

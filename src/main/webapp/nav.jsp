@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/movie.css" rel="stylesheet">
+<link href="css/common.css" rel="stylesheet">
+<link href="css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="./js/main.js"></script>
 </head>
 <body>
 
@@ -19,11 +21,11 @@
 				</li>
 			</ul>
 		</nav>
-	</div>
+	
 	<div class="wrap-nav-primary">
 		<nav class="primary">
-			<a href="../index.jsp"><h1 id="logo">로고</h1></a>
-			<ul>
+			
+			<ul class="nav_left">
 				<li><a href="" class="" onmouseover="hideTheater()">예매</a>
 					<div class="tertiary">
 						<ul>
@@ -40,7 +42,7 @@
 						<ul>
 							<li><a href="" class=""	onmouseover="hideTheater()">현재상영작</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
-							<li><a href="" class=""	onmouseover="hideTheater()">후기</a></li>
+							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
 						</ul>
 					</div>
 				</li>
@@ -55,8 +57,9 @@
 						</ul>
 					</div>
 				</li>
-						
-				
+				</ul>
+				<a href="../index.jsp"><h1 id="logo">로고</h1></a>		
+				<ul class="nav_right">
 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
@@ -68,9 +71,7 @@
 							<li><a href="" class="" onmouseover="hideTheater()">당첨자 발표</a></li>
 						</ul>
 					</div></li>
-				<li id=""><a href="" class="" onmouseover="hideTheater()">스토어</a>
-					<div class="tertiary">
-					</div>
+				<li id=""><a href="store/store_main.jsp" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
 				<li id="cs"><a href="customer_center/cc_home.jsp" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
@@ -87,10 +88,7 @@
 			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a>
 		</nav>
 	</div>
-
-	<script type="text/javascript">
-		showTheater(0);
-	</script>
+</div>
 
 </body>
 </html>

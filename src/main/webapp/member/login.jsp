@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 
-<link href="../css/movie.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/inc.css" rel="stylesheet">
 
 <body>
 <div id="popup_login" style="opacity: 1;" class="modal">
@@ -16,7 +18,7 @@
 
 
     <div class="popup-login" id="loginSession" data-pwdredirect="1">
-        <span class="logo-login">CINE Q</span>
+        <span class="logo-login"> 0 0 0 0</span>
         <div class="section-pop-login">
             <ul class="tab-login">
                 <li class="on">
