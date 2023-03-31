@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert  btitle here</title>
+<title>현재 상영작</title>
 <link href="../css/common.css" rel="stylesheet">
 <link href="../css/inc.css" rel="stylesheet">
 <link href="../css/sub.css" rel="stylesheet">
