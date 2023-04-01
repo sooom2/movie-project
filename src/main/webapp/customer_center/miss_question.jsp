@@ -27,6 +27,7 @@
 						<li class="on"><a href="" title="고객센터 홈">고객센터 홈</a></li>
 						<li><a href="" title="자주 묻는 질문">자주 묻는 질문</a></li>
 						<li><a href="" title="공지사항">공지사항</a></li>
+						<li><a href="" title="분실물문의">분실물문의</a></li>
 						<li><a href="" title="1:1문의">1:1문의</a></li>
 					</ul>
 
