@@ -395,7 +395,7 @@ $(function(){
 						</div>
 						<div class="like-btn">
 							  <a href="javascript:;" class="icon heart">
-							     <img src="images/ico/before-like.png" alt="찜하기"><span class="likeNum">608</span>
+							     <img src="resources/images/ico/before-like.png" alt="찜하기"><span class="likeNum">608</span>
 							  </a>
 						</div>
 						
@@ -793,31 +793,25 @@ $(function(){
                         </li>
                         <li>
                             <dl class="giftcon_list">
-                                <dt>영화관람권<a href="${path }/store/store_main.jsp?2" alt="영화관람권" class="btn_more tiket">더보기</a></dt>
+                                <dt>이달의 이벤트<a href="" alt="이벤트" class="btn_more tiket">더보기</a></dt>
                                
                                 <dd>
                                     <a href="">
-                                        <div class="img_wrap" data-scale="false"><img src="resources/images/store/tiket2D.png" alt="2D일반관람권"></div>
                                         <div class="giftcon_info_wrap">
-                                            <span>2D일반관람권</span>
-                                            <strong>12,000원</strong>
                                         </div>
                                     </a>
                                 </dd>
                             
                                 <dd>
                                     <a href="">
-                                        <div class="img_wrap" data-scale="false"><img src="resources/images/store/tiketMX.png" alt="관람권"></div>
                                         <div class="giftcon_info_wrap">
-                                            <span>2DMAX 관람권</span>
-                                            <strong>16,000원</strong>
+                                            <span> 0 0점 </span>
                                         </div>
                                     </a>
                                 </dd>
                             
                                 <dd>
                                     <a href="">
-                                        <div class="img_wrap" data-scale="false"><img src="resources/images/store/tiketDol.png" alt="관람권"></div>
                                         <div class="giftcon_info_wrap">
                                             <span>4DX관람권</span>
                                             <strong>19,000원</strong>

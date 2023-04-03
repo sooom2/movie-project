@@ -1,4 +1,4 @@
-package com.itwillbs.test3;
+package com.itwillbs.movie;
 
 import java.text.DateFormat;
 import java.util.Date;

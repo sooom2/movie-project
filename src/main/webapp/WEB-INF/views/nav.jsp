@@ -15,7 +15,7 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-				<li><a href="${path}/member/login_form.jsp" data-reload="reload" class="loginpop">로그인</a></li>
+				<li><a href="login" data-reload="reload" class="loginpop">로그인</a></li>
 				<li><a href="">멤버십안내</a></li>
 				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
 				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
