@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reserve.css">
     <link rel="stylesheet" href="css/header.css">
+    
+    
+    
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
@@ -298,7 +302,7 @@ body {
                 spanWeekOfDay.classList = "movie-week-of-day";
                 spanDay.classList = "movie-day";
 
-                //weekOfDay[new Date(2020-03-날짜)]
+                //weekOfDay[new Date(yyyy-MM-dd)]
                 const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
 
                 //요일 넣기
