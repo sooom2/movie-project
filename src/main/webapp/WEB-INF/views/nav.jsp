@@ -46,8 +46,6 @@
 						</ul>
 					</div>
 				</li>
-			
-			
 				<li><a href="" class="" onmouseover="hideTheater()"> 영화 </a>
 					<div class="tertiary">
 						<ul>

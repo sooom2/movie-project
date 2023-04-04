@@ -2,12 +2,9 @@ package com.itwillbs.movie.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 
 @Controller
 public class MemberController {
@@ -20,9 +17,8 @@ public class MemberController {
 	@GetMapping(value = "memLogin")
 	public String memLogin() {
 		return "member/mem_login_form";
-<<<<<<< HEAD
-=======
 	}
+		
 	//회원인증폼
 	@GetMapping(value = "memAuth")
 	public String memAuth() {
@@ -44,23 +40,9 @@ public class MemberController {
 	@GetMapping(value = "guestJoin")
 	public String guestJoin() {
 		return "member/guest_join_form";
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 	}
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	@GetMapping(value = "memJoin")
-	public String memJoin() {
-		return "member/mem_join_form";
-	}
-	@GetMapping(value = "guestRsv")
-	public String guestRsv() {
-		return "member/guest_rsv_form";
-	}
-=======
 	
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 	@PostMapping(value = "loginPro")
 	public String loginPro() {
 		
@@ -77,7 +59,6 @@ public class MemberController {
 		return "admin/admin_main";
 	}
 	
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 	
 	
 	
