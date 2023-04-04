@@ -41,7 +41,6 @@ public class MemberController {
 		return "member/guest_join_form";
 	}
 	
-	
 	@PostMapping(value = "loginPro")
 	public String loginPro() {
 		
