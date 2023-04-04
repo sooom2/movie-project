@@ -6,19 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/main.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<link href="resources/css/main.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="member mem-login">
 		<div class="list-tabs">
-			<a href="javascript:void(0);" class="active">회원 로그인</a>
+			<a href="" class="active">회원 로그인</a>
 <!-- 			<a href="javascript:goSubmit('/guest/join.do', 'dataForm');">비회원 예매 및 확인</a> -->
-			<a href="${path }/member/guest_join_form.jsp">비회원 예매 및 확인</a>
+			<a href="">비회원 예매 및 확인</a>
 		</div>
 
 <!-- 		탭 -->
@@ -48,8 +48,8 @@
 					<div class="orther-login">
 						<p class="tit"><span><strong>간편로그인</strong></span></p>
 						<div class="btns">
-							<a href="#" class="btn-kakao"><img src="../images/member/ico_kakao.png"></a>
-							<a href="#" class="btn-naver"><img src="../images/member/ico_naver.png"></a>
+							<a href="#" class="btn-kakao"><img src="resources/images/member/ico_kakao.png"></a>
+							<a href="#" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
 						</div>
 					</div>
 				
