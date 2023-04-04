@@ -15,7 +15,7 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-				<li><a href="login" data-reload="reload" class="loginpop">로그인</a></li>
+				<li><a href="login_form" data-reload="reload" class="loginpop">로그인</a></li>
 				<li><a href="">멤버십안내</a></li>
 				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
 				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
@@ -62,7 +62,7 @@
 					</div>
 				</li>
 				</ul>
-				<a href="${path}/index.jsp"><h1 id="logo">로고</h1></a>		
+				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
 <!-- 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a> -->
 <!-- 					<div class="tertiary"> -->
@@ -76,7 +76,7 @@
 <!-- 						</ul> -->
 <!-- 					</div> -->
 <!-- 					</li> -->
-				<li id=""><a href="${path}/store/store_main.jsp" class="" onmouseover="hideTheater()">스토어</a>
+				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
 				<li id="cs"><a href="${path}/customer_center/cc_home.jsp" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">

@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<script type="text/javascript" src="../js/main.js"></script>
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<link href="resources/css/sub.css" rel="stylesheet">
+<script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -37,12 +37,12 @@
 				<div class="store-list mt30">
 					<ul class="list">
 
-						<li class=""><a href="" title="메가박스 기프트카드 2만원권 상세보기">
+						<li class=""><a href="store_detail" title="메가박스 기프트카드 2만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">N E W</div>
 								<div class="img">
 									<img
-										src="../images/store/gift2.png"
+										src="resources/images/store/gift2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -61,13 +61,13 @@
 									</div>
 								</div>
 						</a></li>
-						<li class=""><a href=""
+						<li class=""><a href="store_detail"
 							title="00 기프트카드 3만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">NEW</div>
 								<div class="img">
 									<img
-										src="../images/store/gift3.png"
+										src="resources/images/store/gift3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -89,13 +89,13 @@
 								</div>
 							</a>
 						</li>
-						<li class=""><a href=""
+						<li class=""><a href="store_detail"
 							title="00 기프트카드 5만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">NEW</div>
 								<div class="img">
 									<img
-										src="../images/store/gift5.png"
+										src="resources/images/store/gift5.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -131,7 +131,7 @@
 								<div class="label hot">대표상품</div>
 								<div class="img">
 									<img
-										src="../images/store/pk1.png"
+										src="resources/images/store/pk1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -159,7 +159,7 @@
 								<div class="label event">BEST</div>
 								<div class="img">
 									<img
-										src="../images/store/pk2.png"
+										src="resources/images/store/pk2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -193,7 +193,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/pk3.png"
+										src="resources/images/store/pk3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -225,7 +225,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/tiketMX.png"
+										src="resources/images/store/tiketMX.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -256,7 +256,7 @@
 
 								<div class="img">
 									<img
-										src="../images/store/cu1.png"
+										src="resources/images/store/cu1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -287,7 +287,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/cu2.png"
+										src="resources/images/store/cu2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
@@ -317,7 +317,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/tiket2D.png"
+										src="resources/images/store/tiket2D.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -345,7 +345,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/cu3.png"
+										src="resources/images/store/cu3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -373,7 +373,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/e-food1.png"
+										src="resources/images/store/e-food1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -402,7 +402,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/e-ti1.png"
+										src="resources/images/store/e-ti1.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -431,7 +431,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/e-food2.png"
+										src="resources/images/store/e-food2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -460,7 +460,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/e-food3.png"
+										src="resources/images/store/e-food3.png"
 										alt="" onerror="noImg(this);">
 								</div>
 								<div class="info">
@@ -493,7 +493,7 @@
 								<div class="label"></div>
 								<div class="img">
 									<img
-										src="../images/store/e-ti2.png"
+										src="resources/images/store/e-ti2.png"
 										alt="" onerror="noImg(this);">
 								</div>
 
