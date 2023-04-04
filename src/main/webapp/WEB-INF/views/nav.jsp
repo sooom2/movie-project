@@ -100,7 +100,7 @@
 				<li id=""><a href="" class="" onmouseover="hideTheater()">마이페이지</a>
 				</li>
 			</ul>
-			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a>
+<!-- 			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a> -->
 		</nav>
 	</div>
 </div>

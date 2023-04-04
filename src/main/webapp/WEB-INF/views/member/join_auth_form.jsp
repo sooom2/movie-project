@@ -52,7 +52,7 @@
 							</div>
 						</div>
 
-						<a href="${path }/member/mem_join_form.jsp" id="btn-join" class="btn-join">가입하기</a> <input
+						<a href="loginform" id="btn-join" class="btn-join">가입하기</a> <input
 							type="hidden" id="userFrom" name="userFrom" value="4"> <input
 							type="hidden" id="socialId" name="socialId" value=""> <input
 							type="hidden" id="name" name="name" value=""> <input

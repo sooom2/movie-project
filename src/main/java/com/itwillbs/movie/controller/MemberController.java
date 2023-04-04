@@ -47,6 +47,11 @@ public class MemberController {
 		
 		return "redirect:/main";
 	}
+	@GetMapping(value = "loginform")
+	public String loginform() {
+		
+		return "member/mem_join_form";
+	}
 	@RequestMapping(value = "admin", method = {RequestMethod.GET,RequestMethod.POST})
 	public String admin() {
 		
