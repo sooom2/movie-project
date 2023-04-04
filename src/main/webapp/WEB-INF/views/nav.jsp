@@ -15,20 +15,10 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-<<<<<<< HEAD
-				<li><a href="login_form" data-reload="reload" class="loginpop">로그인</a></li>
-				<li><a href="">멤버십안내</a></li>
-				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
-				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
-=======
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
-				<li><a href="memAuth">회원가입</a></li>
+				<li><a href="memJoin">회원가입</a></li>
 				<li><a href="guestRsv" class="">비회원예매내역</a>
-<<<<<<< HEAD
-=======
 				<li><a href="admin" class="">관리자</a>
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				</li>
 			</ul>
 		</nav>
@@ -46,6 +36,8 @@
 						</ul>
 					</div>
 				</li>
+			
+			
 				<li><a href="" class="" onmouseover="hideTheater()"> 영화 </a>
 					<div class="tertiary">
 						<ul>
@@ -55,6 +47,8 @@
 						</ul>
 					</div>
 				</li>
+
+
 				<li><a href="" class="">극장정보</a>
 					<div class="theaterInfo">
 						<ul>
@@ -67,22 +61,10 @@
 						</ul>
 					</div>
 				</li>
+				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</ul>
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-<!-- 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a> -->
-<!-- 					<div class="tertiary"> -->
-<!-- 						<ul> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">제휴할인</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">진행중인 이벤트</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">지난 이벤트</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">당첨자 발표</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 					</li> -->
-				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
@@ -92,22 +74,13 @@
 						</ul>
 					</div>
 					</li>
-<<<<<<< HEAD
-				<li id=""><a href="" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
-<<<<<<< HEAD
-				<li id="cs"><a href="cc_home" class="" onmouseover="hideTheater()">고객센터</a>
-=======
-=======
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class="" onmouseover="hideTheater()">Q/A</a></li>
 							<li><a href="" class="" onmouseover="hideTheater()">공지사항</a></li>
 							<li><a href="" class="" onmouseover="hideTheater()">1:1문의</a></li>
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">단체관람/대관문의</a></li> -->
 							<li><a href="" class="" onmouseover="hideTheater()">분실물 문의</a></li>
 						</ul>
 					</div>

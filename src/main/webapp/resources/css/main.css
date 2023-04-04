@@ -697,7 +697,7 @@ header {
 	margin-top: 50px;
 	padding-top: 50px;
 }
-
+/*
 .main-board .left {
 	width: 33%;
 	float: left;
@@ -712,7 +712,7 @@ header {
 	width: 33%;
 	float: right;
 }
-
+*/
 .section-main-notice {
 	margin: 0 auto;
 	padding: 68px 0 60px 0;
@@ -11068,9 +11068,9 @@ works properly when clicked or hovered */ html .ui-button.ui-state-disabled:hove
 }
 
 .giftcon_list_wrap>li {
-	/*float:left;*/
+	/* float:left; */
 	width: 270px;
-	padding: 20px 19px 30px;
+	padding: 20px 19px 17px;
 	border: 1px solid #e4e4e4;
 	border-radius: 10px
 }
@@ -12783,3 +12783,463 @@ works properly when clicked or hovered */ html .ui-button.ui-state-disabled:hove
 	height: 48px;
 	font-size: 16px;
 }
+
+
+/*메인리뷰*/
+.review_con_list > li {
+    position: relative;
+    padding: 5px 0 5px 65px;
+    border-top: 1px solid #eee
+}
+.main-board{
+	width:960px;
+}
+.main-board .pakage{
+	width: 30%
+}
+.main-board .bestReview{
+	width: 70%
+}
+
+/*리뷰*/
+/* 리뷰목록 */
+.review_con_list > li {
+    position: relative;
+    padding: 4px 0 5px 67px;
+    border-top: 1px solid #eee
+}
+
+.review_con_list > li:first-child {
+    border-color: #ccc
+}
+
+.review_con_list > li.my_review {
+    background: #F8F8F8
+}
+
+.review_con_list > li .img_info {
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    overflow: hidden;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.review_con_list > li .img_info img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.review_con_list .top_info {
+    margin-bottom: 12px;
+}
+
+.review_con_list .top_info .name_info {
+    position: relative;
+    padding-right: 11px;
+    margin-right: 9px;
+    font-size: 12px;
+}
+
+.review_con_list .top_info .name_info:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 1px;
+    height: 12px;
+    background: #EEEEEE
+}
+
+.review_con_list .top_info .txt_ic_score {
+    font-size: 14px;
+    margin-right: 11px;
+}
+
+.review_con_list .txt_cpn2 {
+    height: 13px;
+    line-height: 13px;
+}
+
+.review_con_list .review_info {
+    margin-bottom: 11px;
+    font-size: 13px;
+}
+
+.review_con_list .btm_info .date_info {
+    font-size: 11px;
+    color: #666;
+}
+
+.review_con_list .btn_info {
+    position: absolute;
+    top: 15px;
+    right: 0
+}
+
+.review_con_list .btn_info .btn_box {
+    display: none;
+}
+
+.review_con_list .btn_info.active .btn_box {
+    display: inline-block;
+}
+
+.review_con_list .btn_col4 {
+    height: 25px !important;
+    margin-left: 4px;
+    line-height: 25px !important;
+    font-size: 11px;
+}
+
+
+/* 관람평 별점 5개 : 영화 상세 */
+.tab_wrap.outer.new22 > li > .tab_tit {
+    font-size: 18px
+}
+
+
+.tab_wrap.outer.new22 > li .wrap_reviewstarscore {
+    padding: 30px;
+    margin-top: -30px;
+    background: #f8f8f8
+}
+
+.tab_wrap.outer.new22 .movi_review_box {
+    margin-bottom: 0;
+    background: #fff
+}
+
+.tab_wrap.outer.new22 .movi_review_box .review_write_box {
+    width: 799px;
+    background: #fff
+}
+
+.tab_wrap.outer.new22 .movi_review_box .btn_submit {
+    background: #414141;
+}
+
+.tab_wrap.outer.new22 .movi_review_box .review_write_box .byte_info {
+    margin: 0 10px 5px 0;
+    margin-top: -3px;
+    background: #fff
+}
+
+.tab_wrap.outer.new22 .wrap_reviewstarscore .star_score_box .h4_tit {
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tab_wrap.outer.new22 .wrap_reviewstarscore .star_score_box .star_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab_wrap.outer.new22 .wrap_reviewstarscore .star_score_box .score_info {
+    width: 70px;
+    padding-left: 5px;
+    font-family: "Roboto";
+    font-size: 46px;
+}
+
+.tab_wrap.outer.new22 .wrap_reviewstarscore .star_score_box .txt_info {
+    padding: 15px 0 40px;
+    font-size: 15px;
+    color: #999;
+    text-align: center;
+}
+
+.tab_wrap.outer.new22 .wrap_reviewstarscore .star_score_box .txt_info .num {
+    color: #666;
+    font-family: "Roboto";
+}
+
+.tab_wrap.outer.new22 .movi_review_list {
+    padding-top: 30px;
+}
+
+ .review_top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+ .review_top .tit {
+    font-family: "Roboto";
+    color: #999
+}
+
+ .review_top .tit .txt_ic_score {
+    font-size: 12px;
+    vertical-align: baseline;
+}
+
+ .review_top .tit .txt_ic_score .starimg {
+    position: relative;
+    padding-left: 40px;
+    font-family: "Noto Sans KR";
+    font-size: 13px
+}
+
+
+.review_top .tit .txt_ic_score .num {
+    padding-left: 8px;
+    font-family: "Roboto";
+    font-size: 18px;
+    color: #333
+}
+
+ .review_top .wrap_sort_right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+
+
+
+
+.review_top .wrap_sort_right .sort_list > li.active button:before {
+    opacity: 1;
+}
+
+ .review_con_list .review_info {
+    margin-bottom: 0;
+    line-height: 15px;
+}
+
+ .review_con_list .top_info {
+    position: relative;
+    margin-bottom: -1px;
+}
+
+.review_con_list .top_info .name {
+    display: block;
+    font-size: 14px;
+    padding-bottom: 8px;
+}
+
+.review_con_list .top_info .date_info {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-family: "Roboto";
+    font-size: 14px;
+    color: #999
+}
+
+ .txt_ic_score {
+    position: relative;
+}
+
+.gradenum {
+    font-size: 14px;
+    font-family: "Roboto";
+    vertical-align: 6px;
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg {
+    display: inline-block;
+    width: 78px;
+    height: 18px;
+    background: url('../images/main/ic_star_00.svg') no-repeat 0 0;
+    background-size: 100%;
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .stargradecolor {
+    display: inline-block;
+    width: 78px;
+    height: 16px;
+    background: url('../images/main/ic_star_10.svg') no-repeat 0 0;
+    background-size: 100%;
+}
+
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade10 {
+    width: 78px
+}
+
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade9 {
+    width: 71px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade8 {
+    width: 63px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade7 {
+    width: 55px;
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade6 {
+    width: 47px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade5 {
+    width: 39px
+}
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade4 {
+    width: 31px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade3 {
+    width: 23px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade2 {
+    width: 15px
+}
+
+ .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade1 {
+    width: 7px
+}
+
+ .review_con_list .btm_info {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+ .review_con_list .btm_info .btn_ic_good {
+    margin-left: auto;
+    padding: 0
+}
+
+ .review_con_list .btm_info .edit_review .btn_review_edit, .tab_wrap.outer.new22 .movi_review_list .review_con_list .btm_info .edit_review .btn_review_delete {
+    position: relative;
+    padding-left: 4px;
+    font-size: 11px;
+    color: #767676
+}
+
+
+.review_con_list > li:last-child {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+ .review_con_list#review_con_list1 > li:last-child {
+    border-bottom: 0
+}
+
+.star_rate.type5 .starR1 {
+    background: url("../images/main/ico_star50_off.png") no-repeat 0 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+    padding: 0;
+}
+
+.star_rate.type5 .starR2 {
+    background: url("../images/main/ico_star50_off.png") no-repeat 100% 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+    padding: 0;
+}
+
+.star_rate.type5 .starR1.on {
+    background: url("../images/main/ico_star50_on.png") no-repeat 0 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+}
+
+.star_rate.type5 .starR2.on {
+    background: url("../images/main/ico_star50_on.png") no-repeat 100% 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+}
+
+.star_rate.type5 .star {
+    margin-right: 0;
+}
+
+.star_rate.type5 .star.starR2 {
+    margin-right: 10px;
+}
+
+/* 관람평 별점 5개 : MY 영화관리 내가 본 영화, 관람평 작성 팝업 */
+.review_write .star_score_box {
+    padding: 10px 0 15px;
+    color: #000;
+    text-align: center;
+}
+
+.review_write .star_score_box .score_info em {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    font-family: "Roboto";
+    font-size: 46px;
+}
+
+.review_write.new22 .star_score_box .star_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review_write .star_rate.type6 {
+    display: inline-block;
+}
+
+.star_rate.type6 .starR1 {
+    background: url("../images/main/ico_star50_off.png") no-repeat 0 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+    padding: 0;
+}
+
+.star_rate.type6 .starR2 {
+    background: url("../images/main/ico_star50_off.png") no-repeat 100% 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+    padding: 0;
+}
+
+.star_rate.type6 .starR1.on {
+    background: url("../images/main/ico_star50_on.png") no-repeat 0 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+}
+
+.star_rate.type6 .starR2.on {
+    background: url("../images/main/ico_star50_on.png") no-repeat 100% 0;
+    background-size: auto 100%;
+    width: 25px;
+    height: 50px;
+}
+
+.star_rate.type6 .star {
+    margin-right: 0;
+}
+
+.star_rate.type6 .star.starR2 {
+    margin-right: 10px;
+}
+
+

@@ -19,7 +19,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -28,13 +28,13 @@
 		<!-- Navbar Search-->
 		<form
 			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-			<div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-					<i class="fas fa-search"></i>
-				</button>
-			</div>
+<!-- 			<div class="input-group"> -->
+<!-- 				<input class="form-control" type="text" placeholder="Search for..." -->
+<!-- 					aria-label="Search for..." aria-describedby="btnNavbarSearch" /> -->
+<!-- 				<button class="btn btn-primary" id="btnNavbarSearch" type="button"> -->
+<!-- 					<i class="fas fa-search"></i> -->
+<!-- 				</button> -->
+<!-- 			</div> -->
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -44,10 +44,9 @@
 					class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#!">Settings</a></li>
-					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
+					<li><a class="dropdown-item" href="main">홈</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -57,19 +56,69 @@
 				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="admin_main">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 관리자메인
-						</a>
-						<div class="sb-sidenav-menu-heading">Interface</div>
+						
+						<div class="sb-sidenav-menu-heading">MOVIE</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false"
 							aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> Layouts
+							</div> 영화관리
+						</a>
+
+
+
+
+						<a class="nav-link" href="charts.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-chart-area"></i>
+							</div> 상영일정관리
+						</a>
+						 <a class="nav-link" href="tables.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-table"></i>
+							</div> 상영관관리
+						</a>
+						<a class="nav-link" href="charts.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div> 영화예매 관리
+						</a>
+						
+						<div class="sb-sidenav-menu-heading">BOARD</div>
+						
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapsePages" aria-expanded="false"
+							aria-controls="collapsePages">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-book-open"></i>
+							</div> 게시판 관리
+							<!--  > 링크 -->
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapsePages" aria-labelledby="" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+									aria-controls="pagesCollapseAuth"> 공지사항	</a>
+							</nav>
+							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+									aria-controls="pagesCollapseAuth"> 1대1문의게시판	</a>
+							</nav>
+							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+									aria-controls="pagesCollapseAuth"> 자주하는질문	</a>
+							</nav>
+						</div>
+						<div class="sb-sidenav-menu-heading">STORE</div>
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseLayouts" aria-expanded="false"
+							aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 스토어관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -77,88 +126,26 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">Static
-									Navigation</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
+								<a class="nav-link" href="layout-static.html">결제관리</a>
+								<a class="nav-link" href="layout-sidenav-light.html">상품관리</a>
 							</nav>
 						</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> Pages
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> Authentication
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseAuth"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="login.html">Login</a> <a
-											class="nav-link" href="register.html">Register</a> <a
-											class="nav-link" href="password.html">Forgot Password</a>
-									</nav>
-								</div>
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseError" aria-expanded="false"
-									aria-controls="pagesCollapseError"> Error
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a> <a
-											class="nav-link" href="404.html">404 Page</a> <a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div>
-							</nav>
-						</div>
-						<div class="sb-sidenav-menu-heading">Addons</div>
-						<a class="nav-link" href="charts.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> Charts
-						</a> <a class="nav-link" href="tables.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> Tables
-						</a>
+						<!-- lnb -->
 					</div>
-				</div>
-				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:</div>
-					Start Bootstrap
 				</div>
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">관리자메인</h1>
+					<h1 class="mt-4">ADMIN MAIN</h1>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item active">아이무비 관리자 페이지</li>
 					</ol>
 					<div class="row">
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-black mb-4">
-								<div class="card-body"> TODAY 예매 00건 </div>
+								<div class="card-body font20"> TODAY 예매<br> <span class="fontB">50</span>건 </div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-black stretched-link" href="#">더보기</a>
@@ -176,7 +163,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-black mb-4">
-								<div class="card-body">스토어 00 건</div>
+								<div class="card-body font20">TODAY 상영 영화<br><span class="fontB">6</span> 건</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-black stretched-link" href="#">더보기</a>
@@ -194,7 +181,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-black mb-4">
-								<div class="card-body">TODAY 상영 영화 00 건</div>
+								<div class="card-body font20">스토어 주문<br> <span class="fontB">80</span> 건</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-black stretched-link" href="#">더보기</a>
@@ -212,7 +199,7 @@
 						</div>
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-danger text-black mb-4">
-								<div class="card-body">회원수 00 명</div>
+								<div class="card-body font20">회원수<br> <span class="fontB">593</span>명</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-black stretched-link" href="#">더보기</a>
@@ -250,11 +237,11 @@
 												<option value="10" selected="">10</option>
 												<option value="15">15</option>
 												<option value="20">20</option>
-												<option value="25">25</option></select> entries per page
+												<option value="25">25</option></select> 명
 										</label>
 									</div>
 									<div class="datatable-search">
-										<input class="datatable-input" placeholder="Search..."
+										<input class="datatable-input" placeholder="회원정보를 입력하세요"
 											type="search" title="Search within table"
 											aria-controls="datatablesSimple">
 									</div>
@@ -263,106 +250,45 @@
 									<table id="datatablesSimple" class="datatable-table">
 										<thead>
 											<tr>
-												<th data-sortable="true" style="width: 19.298245614035086%;"><a
-													href="#" class="datatable-sorter">Name</a></th>
-												<th data-sortable="true" style="width: 30.576441102756892%;"><a
-													href="#" class="datatable-sorter">Position</a></th>
-												<th data-sortable="true" style="width: 14.912280701754385%;"><a
-													href="#" class="datatable-sorter">Office</a></th>
-												<th data-sortable="true" style="width: 8.583959899749374%;"><a
-													href="#" class="datatable-sorter">Age</a></th>
-												<th data-sortable="true" style="width: 14.348370927318296%;"><a
-													href="#" class="datatable-sorter">Start date</a></th>
-												<th data-sortable="true" style="width: 12.280701754385964%;"><a
-													href="#" class="datatable-sorter">Salary</a></th>
+												<th data-sortable="true" style="width: 7%;"><a
+													href="#" class="datatable-sorter">회원번호</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">아이디</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">이름</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">생년월일</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">휴대폰번호</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">선호지점</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">선호장르</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">소셜가입</a></th>	
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">가입일자</a></th>
+													
 											</tr>
 										</thead>
+										<!-- 회원목록 -->
 										<tbody>
 											<tr data-index="0">
-												<td>Tiger Nixon</td>
-												<td>System Architect</td>
-												<td>Edinburgh</td>
-												<td>61</td>
-												<td>2011/04/25</td>
-												<td>$320,800</td>
-											</tr>
-											<tr data-index="1">
-												<td>Garrett Winters</td>
-												<td>Accountant</td>
-												<td>Tokyo</td>
-												<td>63</td>
-												<td>2011/07/25</td>
-												<td>$170,750</td>
-											</tr>
-											<tr data-index="2">
-												<td>Ashton Cox</td>
-												<td>Junior Technical Author</td>
-												<td>San Francisco</td>
-												<td>66</td>
-												<td>2009/01/12</td>
-												<td>$86,000</td>
-											</tr>
-											<tr data-index="3">
-												<td>Cedric Kelly</td>
-												<td>Senior Javascript Developer</td>
-												<td>Edinburgh</td>
-												<td>22</td>
-												<td>2012/03/29</td>
-												<td>$433,060</td>
-											</tr>
-											<tr data-index="4">
-												<td>Airi Satou</td>
-												<td>Accountant</td>
-												<td>Tokyo</td>
-												<td>33</td>
-												<td>2008/11/28</td>
-												<td>$162,700</td>
-											</tr>
-											<tr data-index="5">
-												<td>Brielle Williamson</td>
-												<td>Integration Specialist</td>
-												<td>New York</td>
-												<td>61</td>
-												<td>2012/12/02</td>
-												<td>$372,000</td>
-											</tr>
-											<tr data-index="6">
-												<td>Herrod Chandler</td>
-												<td>Sales Assistant</td>
-												<td>San Francisco</td>
-												<td>59</td>
-												<td>2012/08/06</td>
-												<td>$137,500</td>
-											</tr>
-											<tr data-index="7">
-												<td>Rhona Davidson</td>
-												<td>Integration Specialist</td>
-												<td>Tokyo</td>
-												<td>55</td>
-												<td>2010/10/14</td>
-												<td>$327,900</td>
-											</tr>
-											<tr data-index="8">
-												<td>Colleen Hurst</td>
-												<td>Javascript Developer</td>
-												<td>San Francisco</td>
-												<td>39</td>
-												<td>2009/09/15</td>
-												<td>$205,500</td>
-											</tr>
-											<tr data-index="9">
-												<td>Sonya Frost</td>
-												<td>Software Engineer</td>
-												<td>Edinburgh</td>
-												<td>23</td>
-												<td>2008/12/13</td>
-												<td>$103,600</td>
+												<td>1</td>
+												<td>admin</td>
+												<td>관리자</td>
+												<td>20230404</td>
+												<td>01012341561</td>
+												<td>서면</td>
+												<td>스릴러</td>
+												<td>카카오톡</td>
+												<td>20230404</td>
+
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<div class="datatable-bottom">
-									<div class="datatable-info">Showing 1 to 10 of 57 entries</div>
 									<nav class="datatable-pagination">
 										<ul class="datatable-pagination-list">
 											<li
@@ -396,8 +322,6 @@
 						class="d-flex align-items-center justify-content-between small">
 						<div class="text-muted">Copyright &copy; Your Website 2023</div>
 						<div>
-							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-								&amp; Conditions</a>
 						</div>
 					</div>
 				</div>

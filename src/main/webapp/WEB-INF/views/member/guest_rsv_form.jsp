@@ -29,14 +29,6 @@ function modalClose(){
 	 $('.modal-type2').hide();	
 }
 
-	
-	
-	
-	
-// 	$(".btn-modal1").on("click",function(){
-// 		window.close();
-// 	});
-// });
 
 
 </script>
