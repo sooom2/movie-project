@@ -15,16 +15,9 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-<<<<<<< HEAD
-				<li><a href="login_form" data-reload="reload" class="loginpop">로그인</a></li>
-				<li><a href="">멤버십안내</a></li>
-				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
-				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
-=======
 				<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
 				<li><a href="memJoin">회원가입</a></li>
 				<li><a href="guestRsv" class="">비회원예매내역</a>
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				</li>
 			</ul>
 		</nav>
@@ -70,7 +63,6 @@
 				</ul>
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-<<<<<<< HEAD
 <!-- 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a> -->
 <!-- 					<div class="tertiary"> -->
 <!-- 						<ul> -->
@@ -84,7 +76,6 @@
 <!-- 					</div> -->
 <!-- 					</li> -->
 				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
-=======
 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
@@ -94,8 +85,7 @@
 						</ul>
 					</div>
 					</li>
-				<li id=""><a href="" class="" onmouseover="hideTheater()">스토어</a>
->>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
+				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
 				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
