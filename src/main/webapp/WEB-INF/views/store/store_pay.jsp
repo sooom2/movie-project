@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<link href="resources/css/sub.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
 </head>
 <body>
 <jsp:include page="../nav.jsp" />
@@ -301,7 +301,7 @@
             <!-- 20220802 페이즈 약관동의 추가 end -->
 
             <div class="btn-group pt40">
-                <a href="" class="button large w170px" id="btn_store_back" title="취소">취소</a>
+                <a href="store_main" class="button large w170px" id="btn_store_back" title="취소">취소</a>
                 <a href="#" class="button purple large w170px btn-modal-open" id="btn_store_pay_adapter" title="결제">결제</a>
                 <a href="#" class="button purple large w170px btn-modal-open" id="btn_store_pay" title="결제" style="display: none;" w-data="600" h-data="400">결제</a>
 				<!--

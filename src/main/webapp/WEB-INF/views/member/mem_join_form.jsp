@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
+<link href="resources/css/main.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -77,16 +77,15 @@
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
-
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="theaterCode" id="join-theater"
-											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(../images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
+											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(resources/images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<option value="1001">서면</option>
 											<option value="2102">남포</option>
 											<option value="6001">경대</option>
 											<option value="6002">동래</option>
 											<option value="4001">광안리</option>
-											<option value="4101">등등등..</option>
+											<option value="4101">등등등</option>
 										</select>
 									</div> <span></span>
 								</label>
