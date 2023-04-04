@@ -6,28 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/main.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/main.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="member guest-login">
 		<div class="list-tabs">
-<!-- 			<a href="javascript:goSubmit('/member/login.do', 'dataForm');">회원 로그인</a> -->
-<%-- 			<a href="${path }/member/login_form.jsp">회원 로그인</a> --%>
-<!-- 			<a href="javascript:void(0);" class="active">비회원 예매 및 확인</a> -->
-			<a href="${path }/member/login_form.jsp">회원 로그인</a>
-			<a href="javascript:void(0);" class="active">비회원 예매 및 확인</a>
+			<a href="memLogin">회원 로그인</a>
+			<a href="" class="active">비회원 예매 및 확인</a>
 		</div>
 <!-- 		탭 -->
 		<div class="tabs2">
-<!-- 			<a href="javascript:void(0);" class="active">예매</a> -->
-<!-- 			<a href="javascript:goSubmit('/guest/check.do', 'dataForm');">예매확인</a> -->
-			<a href="${path }/member/guest_join_form.jsp" class="active">예매</a>
-			<a href="${path }/member/guest_rsv_form.jsp" >예매확인</a>
+			<a href="guestJoin" class="active">예매</a>
+			<a href="guestRsv" >예매확인</a>
 
 		</div>
 		<div class="tabs-cont">
@@ -37,21 +32,21 @@
 		<!-- 					이름 생년월일 휴대폰번호 인증요청 -->
 
 					<div class="guest-join-detail">
-								<label class="label-input" for="guestName"> <span>이름</span>
-									<input type="text" id="guestName" name="guestName" class="input" value="" placeholder="실명을 입력해주세요">
+								<label class="label-input" for="memberName"> <span>이름</span>
+									<input type="text" id="memberName" name="guestName" class="input" value="" placeholder="실명을 입력해주세요">
 									 <span></span>
 								</label>
 							</div>
 					<div class="guest-join-detail">
-								<label class="label-input" for="guestBday"> <span>생년월일</span>
-									<input type="text" id="guestBday" name="guestBday"
+								<label class="label-input" for="memberBirth"> <span>생년월일</span>
+									<input type="text" id="memberBirth" name="guestBday"
 									class="input input-numeric" placeholder="예) 20170101" maxlength="8">
 									<span></span>
 								</label>
 							</div>
 					<div class="guest-join-detail">
-						<label class="label-input" for="phone"> <span>휴대폰번호</span>
-							<input type="text" id="join-phone" name="phone"
+						<label class="label-input" for="memberPhone"> <span>휴대폰번호</span>
+							<input type="text" id="memberPhone" name="phone"
 							class="input input-numeric" placeholder="휴대폰번호 입력"> <span></span>
 						</label>
 					</div>

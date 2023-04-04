@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/main.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/main.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript">
 
 function doDisplay(){
@@ -45,15 +45,13 @@ function modalClose(){
 	<jsp:include page="../nav.jsp" />
 	<div class="member guest-login">
 		<div class="list-tabs">
-			<a href="${path }/member/login_form.jsp">회원 로그인</a>
-			<a href="javascript:void(0);" class="active">비회원 예매 및 확인</a>
+			<a href="memLogin" class="">회원 로그인</a>
+			<a href="" class="active">비회원 예매 및 확인</a>
 		</div>
 <!-- 		탭 -->
 		<div class="tabs2">
-<!-- 			<a href="javascript:void(0);" >예매</a> -->
-<!-- 			<a href="javascript:goSubmit('/guest/check.do', 'dataForm');" class="active">예매확인</a> -->
-			<a href="${path }/member/guest_join_form.jsp" >예매</a>
-			<a href="${path }/member/guest_rsv_form.jsp" class="active">예매확인</a>
+			<a href="guestJoin">예매</a>
+			<a href="guestRsv" class="active">예매확인</a>
 		</div>
 		<div class="tabs-cont">
 			<div class="cont">
@@ -82,13 +80,12 @@ function modalClose(){
 					</div>
 					<div class="text-right">
 						<a href="javascript:doDisplay();" class="btn-txt btnFind">비밀번호 찾기</a>
-<!-- 						<a href="#findPwd" class="btn-txt btnFind">비밀번호 찾기</a> -->
 					</div>
 					<button type="submit" class="btn-type0 mb50">비회원 예약확인</button>
 				</form>
 			</div>
 		</div>
-		
+		<!-- 비회원 비밀번호 찾기 모달창 -->
 		<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
 			<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
 				<div class="modal-content">

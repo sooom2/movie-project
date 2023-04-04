@@ -15,13 +15,20 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
+<<<<<<< HEAD
 				<li><a href="login_form" data-reload="reload" class="loginpop">로그인</a></li>
 				<li><a href="">멤버십안내</a></li>
 				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
 				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
+=======
+>>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
-				<li><a href="memJoin">회원가입</a></li>
+				<li><a href="memAuth">회원가입</a></li>
 				<li><a href="guestRsv" class="">비회원예매내역</a>
+<<<<<<< HEAD
+=======
+				<li><a href="admin" class="">관리자</a>
+>>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				</li>
 			</ul>
 		</nav>
@@ -89,8 +96,11 @@
 						</ul>
 					</div>
 					</li>
+<<<<<<< HEAD
 				<li id=""><a href="" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
+=======
+>>>>>>> branch 'member' of https://github.com/sooom2/movie-project.git
 				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
 						<ul>

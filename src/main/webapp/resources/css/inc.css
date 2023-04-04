@@ -8,12 +8,12 @@
 }
 
 #header .nav_left {
-	margin-left: 154px;
-	margin-right: -17px;
+	margin-left: 266px;
+	margin-right: -125px;
 }
 
 #header .nav_right {
-	margin-left: -27px;
+	margin-left: -136px;
 }
 
 
@@ -178,14 +178,14 @@
 }
 
 .wrap-nav-primary nav.primary {
-	width: 1150px;
+	width: 1300px;
 	margin: 0 auto;
 	height: 100px;
 }
 
 .wrap-nav-primary nav.primary h1#logo {
 	display: block;
-	width: 275px;
+	width: 456px;
 	height: 90px;
 	overflow: hidden;
 	text-indent: -10000em;
@@ -258,7 +258,7 @@
 	color: #fff;
 	text-align: center;
 	line-height: 38px;
-	margin: 27px 0 0 16px;
+	margin: 26px 0 0 23px;
 }
 
 
