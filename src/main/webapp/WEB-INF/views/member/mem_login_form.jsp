@@ -11,6 +11,25 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script type="text/javascript">
+
+function doDisplay(){
+	let dis = document.querySelector(".modal-type2");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+		
+		
+	} else{
+		dis.style.display="none";
+	}
+}
+
+function modalClose(){
+	 $('.modal-type2').hide();	
+}
+
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -26,8 +45,8 @@
 			<div class="cont">
 				<form id="loginForm"  action ="loginPro" method="post">
 					<div class="find">
-					<a href="">아이디/비밀번호 찾기</a>
-					<a href="memJoin">회원가입</a>
+					<a href="javascript:doDisplay();">아이디/비밀번호 찾기</a>
+					<a href="memAuth">회원가입</a>
 					</div>
 <!-- 					<input type="hidden" name="cgid" value=""> -->
 					<div class="member-detail">
@@ -49,30 +68,30 @@
 						</div>
 					</div>
 				</div>
-				
-			<!-- 비밀번호 찾기 -->
-			<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
-				<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4>비밀번호 찾기</h4>
-							<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
+				<!-- 회원 비밀번호 찾기 모달창 -->
+		<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
+			<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>회원 비밀번호 찾기</h4>
+						<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
+					</div>
+					<div class="modal-body">
+						<h3 class="h3-member">아이디</h3>
+						<div class="mb20"><input type="text" id="memberId" class="inp-member onlyNumber" placeholder="아이디를 입력해주세요" maxlength="8"></div>
+						<h3 class="h3-member">이메일주소</h3>
+						<div class="inp-box1 mb20">
+							<input type="tel" id="memberEmail" class="inp-member onlyNumber" placeholder="이메일주소를 입력해주세요">
 						</div>
-						<div class="modal-body">
-							<h3 class="h3-member">아이디</h3>
-							<div class="mb20"><input type="text" id="memberid" class="inp-member onlyNumber" placeholder="생년월일 8자리(19810101)" maxlength="8"></div>
-							<h3 class="h3-member">이메일주소</h3>
-							<div class="inp-box1 mb20">
-								<input type="tel" id="guestEmail" class="inp-member onlyNumber" placeholder="이메일주소를 입력해주세요">
-							</div>
-						</div>
-						<div class="modal-bottom flex">
-							<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
-							<button type="button" class="btn-modal2" id="btnFind">확인</button>
-						</div>
+					</div>
+					<div class="modal-bottom flex">
+						<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
+						<button type="button" class="btn-modal2" id="btnFind">확인</button>
 					</div>
 				</div>
 			</div>
+		</div>
+	
 	
 		</div>
 	</div>

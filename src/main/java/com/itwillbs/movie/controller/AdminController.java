@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdminController {
 
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
-	public String test2() {
-		return "admin/index";
+	public String adminMain() {
+		return "admin/admin_main";
 	}
 	
 	
