@@ -568,7 +568,6 @@ div.theaterInfo2 ul li:first-child {
 	padding: 0 5px;
 	color: #7d7d7d;
 }
-
 #footer .footer-contact ul li:last-child::after {
 	content: "";
 }

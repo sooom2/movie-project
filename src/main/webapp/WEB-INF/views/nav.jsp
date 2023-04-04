@@ -47,8 +47,6 @@
 						</ul>
 					</div>
 				</li>
-
-
 				<li><a href="" class="">극장정보</a>
 					<div class="theaterInfo">
 						<ul>
