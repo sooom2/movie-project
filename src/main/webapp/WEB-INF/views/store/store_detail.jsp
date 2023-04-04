@@ -104,7 +104,7 @@
                     <!--// type -->
 
                     <div class="btn-group">
-		                                <a href="#" id="btnPurc" class="button purple large" w-data="500" h-data="410" title="구매">구매</a>
+		                                <a href="store_pay" id="btnPurc" class="button purple large" w-data="500" h-data="410" title="구매">구매</a>
                     </div>
                 </div>
                 <!--// right -->

@@ -13,6 +13,7 @@
 <script type="text/javascript">
 
 </script>
+
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -31,17 +32,15 @@
 					<li data-tab="tab3"><a href="#">포인트몰</a></li>
 				</ul>
 			</div>
-
-
 			<div id="tab1" class="tabcontent current">
 				<div class="store-list mt30">
 					<ul class="list">
-
-						<li class=""><a href="store_detail" title="메가박스 기프트카드 2만원권 상세보기">
+						<li class="func"><a href="store_detail" title="메가박스 기프트카드 2만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
 								<div class="label new">N E W</div>
 								<div class="img">
 									<img
+										id="img"
 										src="resources/images/store/gift2.png"
 										alt="" onerror="noImg(this);">
 								</div>
@@ -73,7 +72,7 @@
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">00 기프트카드 3만원권</p>
+										<p class="name" >00 기프트카드 3만원권</p>
 
 										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">00 기프트카드 3만원권</p>
@@ -119,12 +118,10 @@
 					</ul>
 				</div>
 			</div>
-
 			<div id="tab2" class="tabcontent">
 				<!-- store-list -->
 				<div class="store-list mt30">
 					<ul class="list">
-
 						<li class=""><a href=""
 							title="러브콤보 상세보기">
 								<div class="soldout">SOLD OUT</div>
@@ -149,7 +146,6 @@
 											<em>10,000</em> <span>원</span>
 										</p>
 										<p class="ea"></p>
-
 									</div>
 								</div>
 						</a></li>
@@ -183,7 +179,6 @@
 				</div>
 				<!--// store-list -->
 			</div>
-
 			<div id="tab3" class="tabcontent">
 				<div class="store-list mt30">
 					<ul class="list">
@@ -196,7 +191,6 @@
 										src="resources/images/store/pk3.png"
 										alt="" onerror="noImg(this);">
 								</div>
-
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
@@ -205,11 +199,8 @@
 										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">매일 영화 만원 관람쿠폰 (10명)</p>
 									</div>
-
 									<div class="price">
 										<p class="original"></p>
-
-
 										<p class="sale">
 											<em>100</em> <span>Point</span>
 										</p>
