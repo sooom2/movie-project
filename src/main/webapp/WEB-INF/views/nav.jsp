@@ -87,7 +87,7 @@
 					</li>
 				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
-				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
+				<li id="cs"><a href="cc_home" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class="" onmouseover="hideTheater()">Q/A</a></li>

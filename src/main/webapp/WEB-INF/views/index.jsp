@@ -861,7 +861,7 @@ $(function(){
                                     <a href="">FAQ</a>
                                     <a href="">1:1 문의</a>
                                     <a href="">분실물 문의</a>
-                                    <a href="">대관/단체 문의</a>
+                                    <a href="">자주 묻는 질문</a>
                                 </div>
                             </div>
                         </div>
