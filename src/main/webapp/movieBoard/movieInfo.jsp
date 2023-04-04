@@ -53,7 +53,6 @@
         <div class="synopsis">
            
         </div>
-                <a href="#" class="btn-rsv">예매하기</a>
     </div><!--.wrap-->
 
 </div>
@@ -65,10 +64,6 @@
 <script type="text/javascript">
 	$(function() {
 		$.ajax({
-			// 광해 
-			// 20124079
-			// 스즈메의 문단속
-			// 20226270
 			url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20226270",
 			dataType:"json",
 			success: function(data){
@@ -113,21 +108,6 @@
 		});
 	});
 </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-125235578-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-        gtag('config', 'UA-125235578-1');
-        $( document ).ready(function() {
-                        
-        });
-    </script>
-    <script type="text/javascript" src="https://pay.kcp.co.kr/plugin/payplus_web.jsp"></script><style type="text/css">                                                                                      .kcpTransDiv{                                                                                                filter:alpha(opacity=10); -khtml-opacity: 0.1; -moz-opacity: 0.1; opacity: 0.1; top:0px; left:0;         background-color:#000000; width:100%; height:100%; position:absolute; z-index:10000;                 }                                                                                                    </style>                                                                                                 <div id="kcp_content" style="background-color: white;"></div>                                           <div id="kcp_mask" class="kcpTransDiv" style="display:none"></div>                                       <div id="kcp_progress" class="spin_container"></div>                                                     <script type="text/javascript" src="https://pay.kcp.co.kr/plugin/js/ajax.js?KPDZ7UXDG830WRVZ3B18R7LIPTIVQQX7" charset="EUC-KR"></script><script type="text/javascript" src="https://pay.kcp.co.kr/plugin/cross_service/extends/util.js?KPDZ7UXDG830WRVZ3B18R7LIPTIVQQX7" charset="EUC-KR"></script><script type="text/javascript" src="https://pay.kcp.co.kr/plugin/cross_service/extends/spin.min.js?KPDZ7UXDG830WRVZ3B18R7LIPTIVQQX7"></script><script type="text/javascript" src="https://pay.kcp.co.kr/plugin/js/payplus_webExe.js?KPDZ7UXDG830WRVZ3B18R7LIPTIVQQX7" charset="EUC-KR"></script><script type="text/javascript" src="https://npay.kcp.co.kr/plugin/web_cross_hub.js?KPDZ7UXDG830WRVZ3B18R7LIPTIVQQX7" charset="EUC-KR"></script><script type="text/javascript" src="https://npay.kcp.co.kr/js/kcp_jquery-1.8.0.js?ver=N1W33DGD4LSOT8JBUA4MOIZ4GIAMBBOU" charset="EUC-KR"></script><script type="text/javascript" src="https://npay.kcp.co.kr/js/kcp_jquery.blockUI.js" charset="EUC-KR"></script><script type="text/javascript" src="https://npay.kcp.co.kr/js/ClientDataHandler.js?ver=N1W33DGD4LSOT8JBUA4MOIZ4GIAMBBOU" charset="EUC-KR"></script><script type="text/javascript" src="https://npay.kcp.co.kr/js/json2.js" charset="EUC-KR"></script><div id="kcp_event_form"></div><script type="text/javascript" src="https://npay.kcp.co.kr/js/npayUtils.js?ver=N1W33DGD4LSOT8JBUA4MOIZ4GIAMBBOU" charset="EUC-KR"></script>
-
-
 	<jsp:include page="../footer.jsp"/>
 </body>
 </html>
