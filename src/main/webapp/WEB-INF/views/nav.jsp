@@ -6,19 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path}/css/common.css" rel="stylesheet">
-<link href="${path}/css/inc.css" rel="stylesheet">
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="resources/js/main.js"></script>
 </head>
 <body>
 
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-				<li><a href="login" data-reload="reload" class="loginpop">로그인</a></li>
-				<li><a href="">멤버십안내</a></li>
-				<li><a href="${path}/member/join_auth_form.jsp">회원가입</a></li>
-				<li><a href="${path}/member/guest_join_form.jsp" class="">비회원예매내역</a>
+				<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
+				<li><a href="memJoin">회원가입</a></li>
+				<li><a href="guestRsv" class="">비회원예매내역</a>
 				</li>
 			</ul>
 		</nav>
@@ -62,23 +61,20 @@
 					</div>
 				</li>
 				</ul>
-				<a href="${path}/index.jsp"><h1 id="logo">로고</h1></a>		
+				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-<!-- 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a> -->
-<!-- 					<div class="tertiary"> -->
-<!-- 						<ul> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">제휴할인</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">진행중인 이벤트</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">지난 이벤트</a></li> -->
-<!-- 							<li><a href="" class="" onmouseover="hideTheater()">당첨자 발표</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 					</li> -->
-				<li id=""><a href="${path}/store/store_main.jsp" class="" onmouseover="hideTheater()">스토어</a>
+				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
+					<div class="tertiary">
+						<ul>
+							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">진행중인 이벤트</a></li>
+						</ul>
+					</div>
+					</li>
+				<li id=""><a href="" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
-				<li id="cs"><a href="${path}/customer_center/cc_home.jsp" class="" onmouseover="hideTheater()">고객센터</a>
+				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class="" onmouseover="hideTheater()">Q/A</a></li>
@@ -89,7 +85,7 @@
 						</ul>
 					</div>
 				</li>
-				<li id=""><a href="${path}/store/mypage.jsp" class="" onmouseover="hideTheater()">마이페이지</a>
+				<li id=""><a href="" class="" onmouseover="hideTheater()">마이페이지</a>
 				</li>
 			</ul>
 			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a>
