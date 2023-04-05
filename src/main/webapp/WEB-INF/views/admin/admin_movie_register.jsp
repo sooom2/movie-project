@@ -113,11 +113,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-4 mb-0 col-md-6">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">수정</a></div>
-                                            </div>
-                                            <div class="mt-4 mb-0 col-md-6">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">삭제</a></div>
+                                            <div class="row">
+	                                            <div class="mt-4 mb-0 col-md-6">
+	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">수정</a></div>
+	                                            </div>
+	                                            <div class="mt-4 mb-0 col-md-6">
+	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">삭제</a></div>
+	                                            </div>
                                             </div>
                                         </form>
                                      </div>
