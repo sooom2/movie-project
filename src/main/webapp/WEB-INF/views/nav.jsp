@@ -42,7 +42,7 @@
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class=""	onmouseover="hideTheater()">현재상영작</a></li>
-							<li><a href="Latest" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
+							<li><a href="" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
 						</ul>
 					</div>
@@ -61,10 +61,10 @@
 						</ul>
 					</div>
 				</li>
+				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</ul>
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
@@ -74,7 +74,6 @@
 						</ul>
 					</div>
 					</li>
-				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
 				</li>
 				<li id="cs"><a href="" class="" onmouseover="hideTheater()">고객센터</a>
 					<div class="tertiary">
