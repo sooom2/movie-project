@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/movieInfo.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/movieInfo.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<link href="resources/main/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/js/main.js"></script>
 </head>
@@ -19,6 +22,10 @@
 <div class="selector"></div>
 <div class="section group section-movie-list screening">
     <ul>
+    		<li data-kind="Movie" data-title_ko="리바운드" data-title_fo="Rebound"
+						data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다."><a href=""
+						style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;">
+					</a></li>
 		    <li data-moviecode="20226270"><span class="over over-a"><a href="#" class="rsv">예매하기</a><a href="/Movie/Info?MovieCode=20226270" class="info">상세정보</a></span><img src="https://file.cineq.co.kr/i.aspx?movieid=20226270&amp;size=210" class="posterlist"><div class="movie-desc"><span class="label">1</span><span class="rate-12">12</span>스즈메의 문단속</div></li>
 		    <li data-moviecode="20197654"><span class="over over-a"><a href="#" class="rsv">예매하기</a><a href="/Movie/Info?MovieCode=20197654" class="info">상세정보</a></span><img src="https://file.cineq.co.kr/i.aspx?movieid=20197654&amp;size=210" class="posterlist"><div class="movie-desc"><span class="label">2</span><span class="rate-12">12</span>소울메이트</div></li>
 		    <li data-moviecode="20224780"><span class="over over-a"><a href="#" class="rsv">예매하기</a><a href="/Movie/Info?MovieCode=20224780" class="info">상세정보</a></span><img src="https://file.cineq.co.kr/i.aspx?movieid=20224780&amp;size=210" class="posterlist"><div class="movie-desc"><span class="label">3</span><span class="rate-15">15</span>모나리자와 블러드 문</div></li>
