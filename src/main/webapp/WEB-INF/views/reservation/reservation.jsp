@@ -5,20 +5,20 @@
 <head>
 	<meta charset="utf-8">
 	<title>예매페이지_찐막</title>
-	<link rel="shortcut icon" href="resources/images/rsv/res_test.png" type="image/x-icon"/>
-	<link rel="stylesheet" href="resources/css/rsv/rsv.css">
-	<link rel="stylesheet" href="resources/css/rsv/rsv2.css">
-	<link rel="stylesheet" href="resources/css/rsv/rsv3.css">
-	<link href="resources/css/common.css" rel="stylesheet">
-	<link href="resources/css/inc.css" rel="stylesheet">
-	<script type="text/javascript" src="resources/js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.number.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.cookie.min.js"></script>
-	<script type="text/javascript" src="resources/js/scrollbar.js"></script>
-	<script type="text/javascript" src="resources/js/swiper.min.js"></script>
-	<script type="text/javascript" src="resources/js/front.js?v=1680673895731"></script>
-	<script type="text/javascript" src="resources/js/app.js?v=1680673895731"></script>
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/rsv/res_test.png" type="image/x-icon"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv2.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv3.css">
+	<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.number.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/scrollbar.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/front.js?v=1680673895731"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
 	
 </head>
 <body>
