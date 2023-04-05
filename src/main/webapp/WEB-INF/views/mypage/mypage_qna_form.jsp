@@ -56,7 +56,7 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="">예매/취소내역</a></li>
+					<li><a href="" class="">예매/취소내역</a></li>
 					<li><a href="" class="">매점교환권</a></li>
 					<li><a href="" class="">포인트내역</a></li>
 					<li><a href="" class=" selected">나의 문의내역</a></li>
@@ -94,19 +94,20 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>1:1문의내역</div>
+						>나의질문게시글</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
 								<th>문의지점</th>
 								<th>문의유형</th>
-								<th><a href="">제목</a></th>
+								<th>제목</th>
 								<th>작성일자</th>
 								<th>답글유무</th>
 							</tr>
 							<tr>
 								<td>11111</td>
 								<td>2222</td>
+								<td><a href="">333</a></td>
 								<td>333</td>
 								<td>333</td>
 							</tr>
