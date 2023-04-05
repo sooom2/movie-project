@@ -56,7 +56,7 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="/MyPage">예매/취소내역</a></li>
+					<li><a href="/MyPage"class="">예매/취소내역</a></li>
 					<li><a href="/MyPage/CouponList" class="">매점교환권</a></li>
 					<li><a href="/MyPage/Exchange" class="selected">포인트내역</a></li>
 					<li><a href="/Customer/InquiryList" class=" loginpop">나의 문의내역</a></li>

@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/mypage.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/mypage.css" rel="stylesheet">
+<link href="resources//css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <body>
 
@@ -56,9 +56,9 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="/MyPage">예매/취소내역</a></li>
+					<li><a href="/MyPage" class="selected">예매/취소내역</a></li>
 					<li><a href="/MyPage/CouponList" class="">매점교환권</a></li>
-					<li><a href="/MyPage/Exchange" class="selected">포인트내역</a></li>
+					<li><a href="/MyPage/Exchange" class="">포인트내역</a></li>
 					<li><a href="/Customer/InquiryList" class=" loginpop">나의 문의내역</a></li>
 				</ul>
 			</div>
@@ -137,20 +137,24 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>포인트 적립 사용 내역</div>
+						>예매내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
-								<th>적립일자</th>
-								<th>적립내역</th>
-								<th>포인트</th><!-- 상품종류 -->
-								<th>누적포인트</th>
+								<th>예매번호</th>
+								<th>영화제목</th>
+								<th>상영일시</th>
+								<th>영화관</th>
+								<th>좌  석</th>
+								<th>예매일자</th>
 							</tr>
 							<tr>
 								<td>11111</td>
 								<td>2222</td>
 								<td>333</td>
 								<td>333</td>
+								<td>444</td>
+								<td>555</td>
 							</tr>
 							
 						</tbody>

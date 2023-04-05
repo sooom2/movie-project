@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/mypage.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/mypage.css" rel="stylesheet">
+<link href="resources//css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="username">
-						회원등급 <span class="right"> 일반 </span>
+						선호장르 <span class="right"> 스릴러 </span>
 					</div>
 
 				</div>
@@ -56,13 +56,15 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="">예매/취소내역</a></li>
+					<li><a href="" class="selected">예매/취소내역</a></li>
 					<li><a href="" class="">매점교환권</a></li>
 					<li><a href="" class="">포인트내역</a></li>
-					<li><a href="" class=" selected">나의 문의내역</a></li>
+					<li><a href="" class="">나의 문의내역</a></li>
 				</ul>
 			</div>
 			
+		
+
 			<div id="content-notice"
 				style="display: none; position: absolute; width: 400px; height: 220px; z-index: 15; top: 50%; left: 50%; background: white; border: 1px solid black; margin: -200px 0 0 0;">
 				<div class="section group">
@@ -89,26 +91,26 @@
 				</div>
 			</div>
 
-
 			<div class="section group section-mypage">
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
-					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>1:1문의내역</div>
+					<div style="margin-top: -40px; margin-bottom: 10px;"id="">최근예매내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
-								<th>문의지점</th>
-								<th>문의유형</th>
-								<th><a href="">제목</a></th>
-								<th>작성일자</th>
-								<th>답글유무</th>
+								<th>구매일자</th>
+								<th>구매한상품</th>
+								<th>수량</th>
+								<th>유효기간</th>
+								<th>구매취소</th>
 							</tr>
 							<tr>
 								<td>11111</td>
 								<td>2222</td>
 								<td>333</td>
 								<td>333</td>
+								<td>444</td>
+								<td>555</td>
 							</tr>
 							
 						</tbody>
