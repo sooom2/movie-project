@@ -23,12 +23,10 @@ public class AdminController {
 		return "admin/admin_item_register";
 	}
 	
-	//영화관리
 	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieRegister() {
 		return "admin/admin_movie_register";
 	}
-	
 	//영화관관리
 	@RequestMapping(value = "admin_cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String cinemaRegister() {
