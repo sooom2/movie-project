@@ -11,7 +11,7 @@ public class MypageController {
 	public String mypageR() {
 		
 		return "mypage/mypage_rsv_form";
-	}
+	} 
 	//포인트조회
 	@GetMapping(value = "mypageP")
 	public String mypageP() {
