@@ -13,5 +13,15 @@ public class AdminController {
 		return "admin/admin_main";
 	}
 	
+	@RequestMapping(value = "item_Pay", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemPay() {
+		return "admin/itemPay";
+	}
+	
+	@RequestMapping(value = "item_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemRegister() {
+		return "admin/itemRegister";
+	}
+	
 	
 }

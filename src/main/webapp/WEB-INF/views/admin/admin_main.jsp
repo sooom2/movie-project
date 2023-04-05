@@ -126,8 +126,8 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">결제관리</a>
-								<a class="nav-link" href="layout-sidenav-light.html">상품관리</a>
+								<a class="nav-link" href="item_Pay">결제관리</a>
+								<a class="nav-link" href="item_register">상품관리</a>
 							</nav>
 						</div>
 						<!-- lnb -->
