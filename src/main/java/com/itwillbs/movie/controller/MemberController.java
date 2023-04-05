@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MemberController {
+	
+
 
 	@GetMapping(value = "main")
 	public String main() {

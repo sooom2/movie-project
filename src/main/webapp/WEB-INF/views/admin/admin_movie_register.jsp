@@ -41,74 +41,12 @@
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
-		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-			<!-- 사이드nav -->
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-					<div class="sb-sidenav-menu-heading">MOVIE</div>
-					
-						<a class="nav-link" href="">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 영화관리
-						</a>
-
-						<a class="nav-link" href="">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> 상영일정관리
-						</a>
-						
-						 <a class="nav-link" href="">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 상영관관리
-						</a>
-						
-						<a class="nav-link" href="">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 영화예매 관리
-						</a>
-						
-						<div class="sb-sidenav-menu-heading">BOARD</div>
-						
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#boardMgm" aria-expanded="false" aria-controls="boardMgm">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 게시판 관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="boardMgm" aria-labelledby="" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<a class="nav-link" href="noticeMgm"> 공지사항</a>
-								<a class="nav-link" href="">1대1문의게시판	</a>
-								<a class="nav-link" href="">자주하는질문	</a>
-							</nav>
-						</div>
-						<div class="sb-sidenav-menu-heading">STORE</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#storeMgm" aria-expanded="false" aria-controls="storeMgm">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 스토어관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="storeMgm" aria-labelledby="" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="item_Pay">결제관리</a>
-								<a class="nav-link" href="item_register">상품관리</a>
-							</nav>
-						</div>
-						<!-- lnb -->
-					</div>
-				</div>
-			</nav>
-		</div>
+		<!-- 고정  -->
+		<jsp:include page="admin_nav.jsp"/>
+		<!-- 고정 -->
+			
+	
+		
 		<div id="layoutSidenav_content">
 			<!-- 들어갈내용 -->
 			 <main>
@@ -116,20 +54,20 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">스토어 상품 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">영화관리</h3></div>
                                     <div class="card-body">
                                         <form>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">상품 코드</label>
+                                                        <label for="inputFirstName">영화코드</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">상품 이름</label>
+                                                        <label for="inputLastName">영화제목</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,13 +75,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">상품 가격</label>
+                                                        <label for="inputFirstName">줄거리</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">상세 설명</label>
+                                                        <label for="inputLastName">제작년도</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,18 +89,35 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">상품 타입</label>
+                                                        <label for="inputPassword">상영일</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">상품 이미지</label>
+                                                        <label for="inputPasswordConfirm">종영일<label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">등록하기</a></div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                                        <label for="inputPassword">상영시간</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                        <label for="inputPasswordConfirm">영화이미지<label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 mb-0 col-md-6">
+                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">수정</a></div>
+                                            </div>
+                                            <div class="mt-4 mb-0 col-md-6">
+                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">삭제</a></div>
                                             </div>
                                         </form>
                                      </div>
@@ -170,6 +125,42 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- 테이블 -->
+                    <div class="datatable-container">
+					<table id="datatablesSimple" class="datatable-table">
+						<thead>
+							<tr>
+								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">결제 코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">회원 아이디</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 타입</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 가격</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 날짜</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 취소 날짜</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 상태</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter"></a></th>
+							</tr>
+						</thead>
+						<!-- 회원목록 -->
+						<tbody>
+							<tr data-index="0">
+								<td>!@#Dasd2asd334</td>
+								<td>admin</td>
+								<td>카드</td>
+								<td>20,000</td>
+								<td>2023-04-05</td>
+								<td></td>
+								<td>결제 완료</td>
+								<td>
+									<input class="btn btn-primary btn-block" type="button" value="수정">
+									<input class="btn btn-primary btn-block" type="button" value="삭제">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+                     <!-- 테이블 --> 
+                    
                 </main>
 			
 			

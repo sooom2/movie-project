@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
+		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -24,13 +24,6 @@
 		</button>
 		<!-- Navbar Search-->
 		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-<!-- 			<div class="input-group"> -->
-<!-- 				<input class="form-control" type="text" placeholder="Search for..." -->
-<!-- 					aria-label="Search for..." aria-describedby="btnNavbarSearch" /> -->
-<!-- 				<button class="btn btn-primary" id="btnNavbarSearch" type="button"> -->
-<!-- 					<i class="fas fa-search"></i> -->
-<!-- 				</button> -->
-<!-- 			</div> -->
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -48,67 +41,9 @@
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
-		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-					<div class="sb-sidenav-menu-heading">MOVIE</div>
-						<a class="nav-link" href="movie_register">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 영화관리
-						</a>
-						<a class="nav-link" href="schedule_register">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> 상영일정관리
-						</a>
-						 <a class="nav-link" href="cinema_register">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 상영관관리
-						</a>
-						<a class="nav-link" href="movieRes_register">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 영화예매 관리
-						</a>
-						<div class="sb-sidenav-menu-heading">BOARD</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#boardMgm" aria-expanded="false" aria-controls="boardMgm">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 게시판 관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="boardMgm" aria-labelledby="" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<a class="nav-link" href="noticeMgm"> 공지사항</a>
-								<a class="nav-link" href="">1대1문의게시판	</a>
-								<a class="nav-link" href="">자주하는질문	</a>
-							</nav>
-						</div>
-						<div class="sb-sidenav-menu-heading">STORE</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#storeMgm" aria-expanded="false" aria-controls="storeMgm">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 스토어관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="storeMgm" aria-labelledby="" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="item_Pay">결제관리</a>
-								<a class="nav-link" href="item_register">상품관리</a>
-							</nav>
-						</div>
-						<!-- lnb -->
-					</div>
-				</div>
-			</nav>
-		</div>
+		<!-- 고정  -->
+		<jsp:include page="admin_nav.jsp"/>
+		<!-- 고정 -->
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">

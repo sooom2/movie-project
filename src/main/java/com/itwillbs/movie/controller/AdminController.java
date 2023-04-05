@@ -13,40 +13,38 @@ public class AdminController {
 		return "admin/admin_main";
 	}
 	
-	@RequestMapping(value = "item_Pay", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemPay() {
-		return "admin/itemPay";
+		return "admin/admin_item_pay";
 	}
 	
-	@RequestMapping(value = "item_register", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_item_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemRegister() {
-		return "admin/itemRegister";
+		return "admin/admin_item_register";
 	}
-	
-	
 	
 	//영화관리
-	@RequestMapping(value = "movie_register", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieRegister() {
-		return "admin/movieRegister";
+		return "admin/admin_movie_register";
 	}
 	
 	//영화관관리
-	@RequestMapping(value = "cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String cinemaRegister() {
-		return "admin/cinemaRegister";
+		return "admin/admin_cinema_register";
 	}
 	
 	//상영일정관리
-	@RequestMapping(value = "schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleRegister() {
-		return "admin/scheduleRegister";
+		return "admin/admin_schedule_register";
 	}
 	
 	//영화예매관리
-	@RequestMapping(value = "movieRes_register", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "admin_movie_res_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieResRegister() {
-		return "admin/movieResRegister";
+		return "admin/admin_movie_res_register";
 	}
 	
 	
