@@ -8,133 +8,42 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Dashboard - SB Admin</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
+<title>아이무비관리자페이지</title>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
+		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
-			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-<!-- 			<div class="input-group"> -->
-<!-- 				<input class="form-control" type="text" placeholder="Search for..." -->
-<!-- 					aria-label="Search for..." aria-describedby="btnNavbarSearch" /> -->
-<!-- 				<button class="btn btn-primary" id="btnNavbarSearch" type="button"> -->
-<!-- 					<i class="fas fa-search"></i> -->
-<!-- 				</button> -->
-<!-- 			</div> -->
+		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-				role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-					class="fas fa-user fa-fw"></i></a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="fas fa-user fa-fw"></i>
+				</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" href="main">홈</a></li>
 					<li><hr class="dropdown-divider" /></li>
 					<li><a class="dropdown-item" href="logout">Logout</a></li>
-				</ul></li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
-		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark"
-				id="sidenavAccordion">
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-						
-						<div class="sb-sidenav-menu-heading">MOVIE</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 영화관리
-						</a>
-
-
-
-
-						<a class="nav-link" href="charts.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> 상영일정관리
-						</a>
-						 <a class="nav-link" href="tables.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 상영관관리
-						</a>
-						<a class="nav-link" href="charts.html">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 영화예매 관리
-						</a>
-						
-						<div class="sb-sidenav-menu-heading">BOARD</div>
-						
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 게시판 관리
-							<!--  > 링크 -->
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapsePages" aria-labelledby="" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> 공지사항	</a>
-							</nav>
-							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> 1대1문의게시판	</a>
-							</nav>
-							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> 자주하는질문	</a>
-							</nav>
-						</div>
-						<div class="sb-sidenav-menu-heading">STORE</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-columns"></i>
-							</div> 스토어관리
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">결제관리</a>
-								<a class="nav-link" href="layout-sidenav-light.html">상품관리</a>
-							</nav>
-						</div>
-						<!-- lnb -->
-					</div>
-				</div>
-			</nav>
-		</div>
+		<!-- 고정  -->
+		<jsp:include page="admin_nav.jsp"/>
+		<!-- 고정 -->
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
@@ -155,8 +64,8 @@
 											role="img" xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 256 512" data-fa-i2svg="">
 											<path fill="currentColor"
-												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
-										<!-- <i class="fas fa-angle-right"></i> Font Awesome fontawesome.com -->
+												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+										</svg>
 									</div>
 								</div>
 							</div>
@@ -164,17 +73,16 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-black mb-4">
 								<div class="card-body font20">TODAY 상영 영화<br><span class="fontB">6</span> 건</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
+								<div class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-black stretched-link" href="#">더보기</a>
-									<div class="small text-white">
+									<div class="small text-black">
 										<svg class="svg-inline--fa fa-angle-right" aria-hidden="true"
 											focusable="false" data-prefix="fas" data-icon="angle-right"
 											role="img" xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 256 512" data-fa-i2svg="">
 											<path fill="currentColor"
-												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
-										<!-- <i class="fas fa-angle-right"></i> Font Awesome fontawesome.com -->
+												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+										</svg>
 									</div>
 								</div>
 							</div>
@@ -191,8 +99,8 @@
 											role="img" xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 256 512" data-fa-i2svg="">
 											<path fill="currentColor"
-												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
-										<!-- <i class="fas fa-angle-right"></i> Font Awesome fontawesome.com -->
+												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+										</svg>
 									</div>
 								</div>
 							</div>
@@ -209,8 +117,8 @@
 											role="img" xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 256 512" data-fa-i2svg="">
 											<path fill="currentColor"
-												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
-										<!-- <i class="fas fa-angle-right"></i> Font Awesome fontawesome.com -->
+												d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+										</svg>
 									</div>
 								</div>
 							</div>
@@ -223,8 +131,8 @@
 								xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
 								data-fa-i2svg="">
 								<path fill="currentColor"
-									d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg>
-							<!-- <i class="fas fa-table me-1"></i> Font Awesome fontawesome.com -->
+									d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path>
+							</svg>
 							회원정보
 						</div>
 						<div class="card-body">
@@ -246,6 +154,7 @@
 											aria-controls="datatablesSimple">
 									</div>
 								</div>
+								<!-- 회원정보 테이블 -->
 								<div class="datatable-container">
 									<table id="datatablesSimple" class="datatable-table">
 										<thead>
@@ -316,11 +225,12 @@
 					</div>
 				</div>
 			</main>
+			
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
 					<div
 						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2023</div>
+						<div class="text-muted">Copyright &copy; IMOVIE 2023</div>
 						<div>
 						</div>
 					</div>
@@ -328,18 +238,12 @@
 			</footer>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="assets/demo/chart-area-demo.js"></script>
 	<script src="assets/demo/chart-bar-demo.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
