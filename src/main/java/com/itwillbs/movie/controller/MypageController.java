@@ -17,7 +17,7 @@ public class MypageController {
 	public String mypageP() {
 		
 		return "mypage/mypage_point_form";
-	}
+	} 
 	 
 	//스토어구매내역
 	@GetMapping(value = "mypageS")
