@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${path }/css/common.css" rel="stylesheet">
-<link href="${path }/css/mypage.css" rel="stylesheet">
-<link href="${path }/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/mypage.css" rel="stylesheet">
+<link href="resources//css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <body>
 
@@ -98,12 +98,11 @@
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
-								<th>예매번호</th>
-								<th>영화제목</th>
-								<th>상영일시</th>
-								<th>영화관</th>
-								<th>좌  석</th>
-								<th>예매일자</th>
+								<th>구매일자</th>
+								<th>구매한상품</th>
+								<th>수량</th>
+								<th>유효기간</th>
+								<th>구매취소</th>
 							</tr>
 							<tr>
 								<td>11111</td>
