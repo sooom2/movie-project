@@ -42,7 +42,7 @@
 					<div class="tertiary">
 						<ul>
 							<li><a href="" class=""	onmouseover="hideTheater()">현재상영작</a></li>
-							<li><a href="" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
+							<li><a href="Latest" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
 						</ul>
 					</div>
@@ -86,7 +86,7 @@
 						</ul>
 					</div>
 				</li>
-				<li id=""><a href="" class="" onmouseover="hideTheater()">마이페이지</a>
+				<li id=""><a href="mypageR" class="" onmouseover="hideTheater()">마이페이지</a>
 				</li>
 			</ul>
 <!-- 			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a> -->
