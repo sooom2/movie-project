@@ -5,14 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/info.css" rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+<link href="${path }/css/common.css" rel="stylesheet">
+<link href="${path }/css/movieInfo.css" rel="stylesheet">
+<link href="${path }/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/main.js"></script>
 </head>
 <body id="top">
   

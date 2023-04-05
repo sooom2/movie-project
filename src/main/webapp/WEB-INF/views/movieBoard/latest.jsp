@@ -11,12 +11,12 @@
 <!--     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> -->
 <!--     <link rel="icon" href="/favicon.ico" type="image/x-icon">    -->
 
-<title>씨네Q</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<script type="text/javascript"	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<title>Insert title here</title>
+<link href="${path }/css/common.css" rel="stylesheet">
+<link href="${path }/css/movieInfo.css" rel="stylesheet">
+<link href="${path }/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/main.js"></script>
 
 </head>
 

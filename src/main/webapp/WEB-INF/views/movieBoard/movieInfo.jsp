@@ -3,6 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 
+	관리페이지로 이동할 페이지로 여기서는 그 DB값만 받을 예정 
+
+
+
+
+
+
+
+ -->
 <meta charset="UTF-8">
 <!-- 
 	해야할 일 : 서블릿으로 이 페이지에 movieCode를 가져와야함
@@ -16,14 +26,11 @@
 	티저
  -->
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/info.css" rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+<link href="${path }/css/common.css" rel="stylesheet">
+<link href="${path }/css/movieInfo.css" rel="stylesheet">
+<link href="${path }/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/main.js"></script>
 </head>
 <body id="top">
   
