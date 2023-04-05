@@ -15,13 +15,17 @@ public class CustomerController {
 	public String faq() {
 		return "customer_center/faq";
 	}
-	@RequestMapping(value = "miss_question", method = {RequestMethod.GET, RequestMethod.POST})
-	public String missQuestion() {
-		return "customer_center/miss_question";
+	@RequestMapping(value = "lost_boar", method = {RequestMethod.GET, RequestMethod.POST})
+	public String lostBoar() {
+		return "customer_center/lost_boar";
 	}
 	@RequestMapping(value = "oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneOnOne() {
 		return "customer_center/oneOnOne";
+	}
+	@RequestMapping(value = "notice_board", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeBoard() {
+		return "customer_center/notice_board";
 	}
 	
 	

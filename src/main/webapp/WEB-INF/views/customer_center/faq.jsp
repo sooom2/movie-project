@@ -24,7 +24,7 @@
 			<jsp:include page="lnb-area.jsp" />
 
 			<div id="contents" class="">
-				<h2 class="tit">고객센터 홈</h2>
+				<h2 class="tit">자주 묻는 질문</h2>
 
 				<div class="wrap-customer-box wrap-faq-box">
 					<div class="faq-desc">자주 찾는 질문 전체가 기본으로 표시됩니다. 원하는 구분의 목록만
@@ -42,7 +42,54 @@
 						</div>
 						<!-- 					<span class="arrow"></span> -->
 					</div>
-
+					======================================================
+					<div class="table-wrap">
+						<table class="board-list">
+							<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
+							<colgroup>
+								<col style="width: 72px;">
+								<col style="width: 133px;">
+								<col style="width: 95px;">
+								<col>
+								<col style="width: 116px;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<!-- 									<th scope="col">극장</th> -->
+									<th scope="col">구분</th>
+									<th scope="col">제목</th>
+									<th scope="col">등록일</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<!-- 									<td>상암월드컵경기장</td> -->
+									<td>공지</td>
+									<th><a href="#" class="moveBtn" data-no="10821"
+										title="공지사항 상세보기"><span class="font-green"></span>[<span
+											class="font-green"></span>상<span class="font-green"></span>암<span
+											class="font-green"></span>월<span class="font-green"></span>드<span
+											class="font-green"></span>컵<span class="font-green"></span>경<span
+											class="font-green"></span>기<span class="font-green"></span>장<span
+											class="font-green"></span>]<span class="font-green"></span> <span
+											class="font-green"></span>K<span class="font-green"></span>리<span
+											class="font-green"></span>그<span class="font-green"></span> <span
+											class="font-green"></span>축<span class="font-green"></span>구<span
+											class="font-green"></span> <span class="font-green"></span>경<span
+											class="font-green"></span>기<span class="font-green"></span>로<span
+											class="font-green"></span> <span class="font-green"></span>인<span
+											class="font-green"></span>한<span class="font-green"></span> <span
+											class="font-green"></span>주<span class="font-green"></span>차<span
+											class="font-green"></span> <span class="font-green"></span>안<span
+											class="font-green"></span>내<span class="font-green"></span></a></th>
+									<td>2023.04.03</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					======================================================
 					<table class="bbs-list bbs-list-faq">
 						<thead>
 							<tr>
@@ -67,53 +114,13 @@
 							<tr>
 								<!--<td _tmplitem="178"  class="no">1</td>-->
 								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(62);">적립한 포인트를 다 써도 VIP가 될 수 있나요?</a></td>
+								<td class="title"><a href="javascript:load_faq_answer(62);">적립한
+										포인트를 다 써도 VIP가 될 수 있나요?</a></td>
 							</tr>
 							<tr id="ans62" class="tr-answer">
 								<td colspan="3" class="answer">포인트 사용여부와 관계없이 고객님께서 적립하신
 									씨네Q 구매 누적 포인트 기준으로 VIP가 산정됩니다.</td>
 							</tr>
-							<tr>
-								<!--<td _tmplitem="179"  class="no">2</td>-->
-								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(61);">포인트
-										소멸은 어떻게 이루어 지나요?</a></td>
-							</tr>
-							<tr id="ans61" class="tr-answer">
-								<td colspan="3" class="answer">멤버십 포인트는 최초 적립된 시점에서 24개월 지난
-									시점의 해당 월 말일 영업종료 후 해당 기간에 사용하지 못한 잔여 포인트가 월 단위로 자동 소멸됩니다. <br>
-					
-							<tr>
-								<!--<td _tmplitem="178"  class="no">1</td>-->
-								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(62);">적립한 포인트를 다 써도 VIP가 될 수 있나요?</a></td>
-							</tr>
-							<tr id="ans62" class="tr-answer">
-								<td colspan="3" class="answer">포인트 사용여부와 관계없이 고객님께서 적립하신
-									씨네Q 구매 누적 포인트 기준으로 VIP가 산정됩니다.</td>
-							</tr>
-							<tr>
-								<!--<td _tmplitem="178"  class="no">1</td>-->
-								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(62);">적립한 포인트를 다 써도 VIP가 될 수 있나요?</a></td>
-							</tr>
-							<tr id="ans62" class="tr-answer">
-								<td colspan="3" class="answer">포인트 사용여부와 관계없이 고객님께서 적립하신
-									씨네Q 구매 누적 포인트 기준으로 VIP가 산정됩니다.</td>
-							</tr>
-							<tr>
-								<!--<td _tmplitem="178"  class="no">1</td>-->
-								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(62);">적립한 포인트를 다 써도 VIP가 될 수 있나요?</a></td>
-							</tr>
-							<tr id="ans62" class="tr-answer">
-								<td colspan="3" class="answer">포인트 사용여부와 관계없이 고객님께서 적립하신
-									씨네Q 구매 누적 포인트 기준으로 VIP가 산정됩니다.</td>
-							</tr>
-							
-					
-					
-					
 					</table>
 					페이징 처리
 				</div>
