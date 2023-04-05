@@ -30,7 +30,7 @@
 				<li><a href="" class="" onmouseover="hideTheater()">예매</a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="" class="" onmouseover="hideTheater()">빠른예매</a></li>
+							<li><a href="reservation" class="" onmouseover="hideTheater()">빠른예매</a></li>
 							<li><a href="" class="" onmouseover="hideTheater()">상영시간표</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">비회원예매내역</a></li>
 						</ul>
