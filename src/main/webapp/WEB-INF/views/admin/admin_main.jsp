@@ -53,33 +53,27 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 					<div class="sb-sidenav-menu-heading">MOVIE</div>
-					
-						<a class="nav-link" href="">
+						<a class="nav-link" href="movie_register">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 영화관리
 						</a>
-
-						<a class="nav-link" href="">
+						<a class="nav-link" href="schedule_register">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 상영일정관리
 						</a>
-						
-						 <a class="nav-link" href="">
+						 <a class="nav-link" href="cinema_register">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 상영관관리
 						</a>
-						
-						<a class="nav-link" href="">
+						<a class="nav-link" href="movieRes_register">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 영화예매 관리
 						</a>
-						
 						<div class="sb-sidenav-menu-heading">BOARD</div>
-						
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#boardMgm" aria-expanded="false" aria-controls="boardMgm">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>

@@ -24,4 +24,30 @@ public class AdminController {
 	}
 	
 	
+	
+	//영화관리
+	@RequestMapping(value = "movie_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieRegister() {
+		return "admin/movieRegister";
+	}
+	
+	//영화관관리
+	@RequestMapping(value = "cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String cinemaRegister() {
+		return "admin/cinemaRegister";
+	}
+	
+	//상영일정관리
+	@RequestMapping(value = "schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String scheduleRegister() {
+		return "admin/scheduleRegister";
+	}
+	
+	//영화예매관리
+	@RequestMapping(value = "movieRes_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieResRegister() {
+		return "admin/movieResRegister";
+	}
+	
+	
 }
