@@ -77,6 +77,7 @@ function modalClose(){
 <!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			 <main>
+			 <!-- 모달 -->
                     <div class="container modal admin-modal" style="display: none">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
@@ -163,6 +164,7 @@ function modalClose(){
                     
                     <!-- 테이블 -->
                     <div class="datatable-container">
+                   <h3 class="text-center font-weight-light my-4">영화관리</h3>
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
