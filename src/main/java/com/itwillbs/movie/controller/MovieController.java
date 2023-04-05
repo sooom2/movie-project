@@ -11,6 +11,7 @@ public class MovieController {
 	public String screening() {
 		return "movieBoard/screening";
 	}
+	//
 	@RequestMapping(value = "latest", method = {RequestMethod.GET, RequestMethod.POST})
 	public String latest() {
 		return "movieBoard/latest";

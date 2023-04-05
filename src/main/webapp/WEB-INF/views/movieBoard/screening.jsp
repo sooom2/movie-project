@@ -11,10 +11,11 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
+
 <body id="top">
 <jsp:include page="../nav.jsp" />   
  <div id="content">
-            
+           
 <div class="selector"></div>
 <div class="section group section-movie-list screening">
     <ul>

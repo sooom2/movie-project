@@ -37,7 +37,7 @@
 						src="https://file.cineq.co.kr/i.aspx?movieid=20173226&amp;size=210"
 						class="posterlist">
 					<div class="movie-desc">
-							<span class="rate-15">15세이상</span>패왕별희 디 오리지널
+							<span class="rate-15">15세이상</span>패왕별희  디 오리지널
 						</div></li>
 					<li><span class="over over-a"><a href="#" class="rsv">예매하기</a><a
 							href="/Movie/Info?MovieCode=20143253" class="info">상세정보</a></span><img
