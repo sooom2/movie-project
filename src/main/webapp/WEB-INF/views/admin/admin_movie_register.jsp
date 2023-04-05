@@ -12,8 +12,33 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function doDisplay(){
+	alert("dddd");
+
+	let dis = document.querySelector(".admin-modal");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+		
+		
+	} else{
+		dis.style.display="none";
+	}
+}
+
+function modalClose(){
+	let dis = document.querySelector(".admin-modal");
+// 	alert("창닫기..");
+	dis.style.display="none";
+// 	 $('.admin-modal').hide();
+// 	 display: block;
+}
+
+</script>
 </head>
 <body class="sb-nav-fixed">
+	
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
@@ -48,13 +73,18 @@
 	
 		
 		<div id="layoutSidenav_content">
+		
+<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			 <main>
-                    <div class="container">
+                    <div class="container modal admin-modal" style="display: none">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">영화관리</h3></div>
+                                    <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">영화관리</h3>
+									<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
+                                    </div>
                                     <div class="card-body">
                                         <form>
                                             <div class="row mb-3">
@@ -113,12 +143,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                             <div class="row">
 	                                            <div class="mt-4 mb-0 col-md-6">
-	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">수정</a></div>
+	                                                <div class="d-grid">
+	                                                <a class="btn btn-primary btn-block" href="">수정</a>
+	                                                </div>
 	                                            </div>
 	                                            <div class="mt-4 mb-0 col-md-6">
-	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">삭제</a></div>
+	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="">삭제</a></div>
 	                                            </div>
                                             </div>
                                         </form>
@@ -154,7 +187,7 @@
 								<td></td>
 								<td>결제 완료</td>
 								<td>
-									<input class="btn btn-primary btn-block" type="button" value="수정">
+									<input class="btn btn-primary btn-block" type="button" value="수정" onclick="doDisplay()">
 									<input class="btn btn-primary btn-block" type="button" value="삭제">
 								</td>
 							</tr>
