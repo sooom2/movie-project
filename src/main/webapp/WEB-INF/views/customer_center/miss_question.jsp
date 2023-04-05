@@ -19,7 +19,7 @@
 			<div class="inner-wrap">
 				<jsp:include page="lnb-area.jsp" />	
 				<div id="contents">
-					<h2 class="tit">삭제다시어ㅣㄴ어 </h2>
+					<h2 class="tit">삭제 </h2>
 	
 					<div class="clearfix">
 						<ul class="dot-list">
