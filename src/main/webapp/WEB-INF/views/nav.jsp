@@ -62,7 +62,6 @@
 					</div>
 				</li>
 				</ul>
-				
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
 				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
