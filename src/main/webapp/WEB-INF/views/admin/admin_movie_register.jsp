@@ -14,7 +14,6 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 function doDisplay(){
-	alert("dddd");
 
 	let dis = document.querySelector(".admin-modal");
 	
@@ -29,10 +28,7 @@ function doDisplay(){
 
 function modalClose(){
 	let dis = document.querySelector(".admin-modal");
-// 	alert("창닫기..");
 	dis.style.display="none";
-// 	 $('.admin-modal').hide();
-// 	 display: block;
 }
 
 </script>
@@ -41,7 +37,7 @@ function modalClose(){
 	
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
+		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -81,13 +77,28 @@ function modalClose(){
                     <div class="container modal admin-modal" style="display: none">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card border-1 mt-5">
                                     <div class="card-header">
+									<button type="button" class="close-modal"  onclick="modalClose()" style=" border: none;">닫기</button>
                                     <h3 class="text-center font-weight-light my-4">영화관리</h3>
-									<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form> 
+                                      	  <div class="row mb-4">
+                                          	<h5 style="text-align:left">이미지수정</h5>
+                                       		<div class="col-md-3 moviePoster">
+                                             	<div>
+                                             		<img class="" src="/movie-project/resources/images/movies/poster/m1.jpg">
+                                             	</div>
+                                            </div>
+                                            <div class="col-md-8">
+                                            	<div class="filebox">
+	                                            	 <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+													    <label for="file">파일올리기</label> 
+												    <input type="file" id="file">
+                                            	</div>
+                                           	</div>
+                                            </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -104,17 +115,18 @@ function modalClose(){
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">줄거리</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
                                                         <label for="inputLastName">제작년도</label>
                                                     </div>
                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                                        <label for="inputPassword">상영시간</label>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
@@ -131,20 +143,13 @@ function modalClose(){
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">상영시간</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">영화이미지<label>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md">
+                                                 <div class="form-floating mb-3 mb-md-0">
+                                                     <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                     <label for="inputFirstName">줄거리</label>
+                                                 </div>
+                                             </div>
                                             </div>
-                                            
                                             <div class="row">
 	                                            <div class="mt-4 mb-0 col-md-6">
 	                                                <div class="d-grid">
@@ -168,29 +173,28 @@ function modalClose(){
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">결제 코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">회원 아이디</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 타입</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 가격</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 날짜</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 취소 날짜</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 상태</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter"></a></th>
+								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">영화코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">제작년도</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">상영시간</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">상영일</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">종영일</a></th>
+								<th data-sortable="true" style="width: 20%;"><a href="#" class="datatable-sorter">줄거리</a></th>
+								<th data-sortable="true" style="width: 20%;"><a href="#" class="datatable-sorter">수정</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
 							<tr data-index="0">
-								<td>!@#Dasd2asd334</td>
-								<td>admin</td>
-								<td>카드</td>
-								<td>20,000</td>
+								<td>15611889</td>
+								<td>리바운드</td>
+								<td>2023년</td>
+								<td>120분</td>
 								<td>2023-04-05</td>
-								<td></td>
-								<td>결제 완료</td>
-								<td>
-									<input class="btn btn-primary btn-block" type="button" value="수정" onclick="doDisplay()">
-									<input class="btn btn-primary btn-block" type="button" value="삭제">
+								<td>2099-04-05</td>
+								<td>~~~~~~~~~줄거리~~~~~~~~~~~~</td>
+								<td class="modi">
+									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()">
 								</td>
 							</tr>
 						</tbody>
