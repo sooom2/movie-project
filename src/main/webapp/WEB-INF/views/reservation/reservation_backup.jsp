@@ -21,9 +21,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
 	
 <!-- 	04.06 : playSdtList 관련 다 주석 처리함(기존 날짜 제이쿼리) -> 삭제 -> 화면 출력 안되는거 사라짐 -->
-<!-- 			movieIndieArtList 인디독립영화지움 -->
-<!-- 			movieNormalList 일반영화 지움 -->
-<!-- senderBrandList 브랜드리스트 지움 -->
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
@@ -329,7 +326,7 @@
 															<button type="button" class="btnCnItem" data-cd="000098"
 																	title="씨네인디U">씨네인디U</button></li>
 														</ul>
-												<ul class="subTheater" data-cd="KR-11" style=""><li><a href="#" class="btn-star" data-cd="000113" data-nm="낭만극장" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000113" title="낭만극장">낭만극장</button></li><li><a href="#" class="btn-star" data-cd="000065" data-nm="더숲아트시네마" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000065" title="더숲아트시네마">더숲아트시네마</button></li><li><a href="#" class="btn-star" data-cd="000072" data-nm="라이카시네마" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000072" title="라이카시네마">라이카시네마</button></li><li><a href="#" class="btn-star" data-cd="000003" data-nm="씨네큐브광화문" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000003" title="씨네큐브광화문">씨네큐브광화문</button></li><li><a href="#" class="btn-star" data-cd="000088" data-nm="아리랑시네센터" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000088" title="아리랑시네센터">아리랑시네센터</button></li><li><a href="#" class="btn-star" data-cd="000067" data-nm="아트하우스모모" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000067" title="아트하우스모모">아트하우스모모</button></li><li><a href="#" class="btn-star" data-cd="000069" data-nm="에무시네마" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000069" title="에무시네마">에무시네마</button></li><li><a href="#" class="btn-star" data-cd="000104" data-nm="오르페오 룸 앳 트레바리 강남" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000104" title="오르페오 룸 앳 트레바리 강남">오르페오 룸 앳 트레바리 강남</button></li><li><a href="#" class="btn-star" data-cd="000096" data-nm="오르페오 한남" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000096" title="오르페오 한남">오르페오 한남</button></li><li><a href="#" class="btn-star" data-cd="000114" data-nm="청춘극장" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000114" title="청춘극장">청춘극장</button></li><li><a href="#" class="btn-star" data-cd="000070" data-nm="필름포럼" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000070" title="필름포럼">필름포럼</button></li><li><a href="#" class="btn-star" data-cd="000115" data-nm="허리우드클래식" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000115" title="허리우드클래식">허리우드클래식</button></li><li><a href="#" class="btn-star" data-cd="000089" data-nm="KT&amp;G 상상마당 시네마" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000089" title="KT&amp;G 상상마당 시네마">KT&amp;G 상상마당 시네마</button></li><li><a href="#" class="btn-star" data-cd="000102" data-nm="KU시네마테크" data-rg="undefined"></a><button type="button" class="btnCnItem" data-cd="000102" title="KU시네마테크">KU시네마테크</button></li><li><a href="#" class="btn-star" data-cd="000095" data-nm="이봄씨어터" data-rg="undefined"></a><button type="button" class="btnCnItem disabled" disabled="" data-cd="000095" title="이봄씨어터">이봄씨어터</button></li></ul>
+												
 													</div>
 													<div class="scroll-element scroll-x">
 														<div class="scroll-element_outer">
@@ -424,86 +421,10 @@
 											</div>
 										</div>
 										<div class="list-body">
-											<div class="scroll-wrapper scrollbar-inner"
-												style="position: relative;">
-												<div class="scrollbar-inner scroll-content"
-													style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
-													<div id="timeList">
-														<div class="list-type" style="display: none">
-															<ul>
-																<ul class="mvTimeLine">
-																	<li>
-																		<button type="button" class="btnTime" data-cd="02"
-																			data-seq="3">
-																			<div class="loc">2관/2D(자막)</div>
-																			<div class="info">
-																				<p class="time">
-																					14:30<span>~16:32</span>
-																				</p>
-																				<p class="num">
-																					45/<span>47석</span>
-																				</p>
-																			</div>
-																		</button>
-																	</li>
-																	<li>
-																		<button type="button" class="btnTime" data-cd="02"
-																			data-seq="5">
-																			<div class="loc">2관/2D(자막)</div>
-																			<div class="info">
-																				<p class="time">
-																					19:25<span>~21:27</span>
-																				</p>
-																				<p class="num">
-																					47/<span>47석</span>
-																				</p>
-																			</div>
-																		</button>
-																	</li>
-																</ul>
-															</ul>
-														</div>
-														<div class="thum-type">
-															<h5 class="thum-tit">2관/2D(자막)</h5>
-															<ul>
-																<li>
-																	<button type="button" class="btnTime" data-cd="02"
-																		data-seq="3">
-																		<strong>14:30<span>~16:32</span></strong>
-																		<p>
-																			45/<span>47석</span>
-																		</p>
-																	</button>
-																</li>
-																<li>
-																	<button type="button" class="btnTime" data-cd="02"
-																		data-seq="5">
-																		<strong>19:25<span>~21:27</span></strong>
-																		<p>
-																			47/<span>47석</span>
-																		</p>
-																	</button>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="scroll-element scroll-x">
-													<div class="scroll-element_outer">
-														<div class="scroll-element_size"></div>
-														<div class="scroll-element_track"></div>
-														<div class="scroll-bar" style="width: 100px;"></div>
-													</div>
-												</div>
-												<div class="scroll-element scroll-y">
-													<div class="scroll-element_outer">
-														<div class="scroll-element_size"></div>
-														<div class="scroll-element_track"></div>
-														<div class="scroll-bar" style="height: 100px;"></div>
-													</div>
-												</div>
-											</div>
-
+											<div class="scroll-wrapper scrollbar-inner" style="position: relative;"><div class="scrollbar-inner scroll-content" style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
+												<div id="timeList"><div class="list-type" style="display: none"><ul>	<ul class="mvTimeLine">	<li>		<button type="button" class="btnTime" data-cd="02" data-seq="3">			<div class="loc">2관/2D(자막)</div>			<div class="info">				<p class="time">14:30<span>~16:32</span></p>				<p class="num">45/<span>47석</span></p>			</div>		</button>	</li>	<li>		<button type="button" class="btnTime" data-cd="02" data-seq="5">			<div class="loc">2관/2D(자막)</div>			<div class="info">				<p class="time">19:25<span>~21:27</span></p>				<p class="num">47/<span>47석</span></p>			</div>		</button>	</li></ul></ul></div><div class="thum-type"><h5 class="thum-tit">2관/2D(자막)</h5><ul>	<li>		<button type="button" class="btnTime" data-cd="02" data-seq="3">			<strong>14:30<span>~16:32</span></strong>			<p>45/<span>47석</span></p>		</button>	</li>	<li>		<button type="button" class="btnTime" data-cd="02" data-seq="5">			<strong>19:25<span>~21:27</span></strong>			<p>47/<span>47석</span></p>		</button>	</li></ul></div></div>
+											</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 100px;"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 100px;"></div></div></div></div>
+											
 											<div class="info-box">
 													<div class="info">
 														<!-- 선택후 -->
@@ -628,6 +549,9 @@
 	
 	<script type="text/javascript">
 	var movieList = [];
+	var movieNormalList = [];
+	var movieIndieArtList = [];
+	var senderBrandList = [];
 	var cinemaList = [];
 	var areaList = [];
 	var timeList = [];
@@ -643,7 +567,7 @@
 			$(this).addClass("active");
 			$("#Sort").val($(this).data("tab"));
 			
-// 			getMainList();
+			getMainList();
 			makeMovieList();
 		});
 	});
@@ -653,11 +577,11 @@
 	$(function() {
 		
 		
-// 		getMainList();
-// 		makeBrandList();
-// 		makeCinemaList();
-// 		makeMovieList();
-// 		makePlaydtList();
+		getMainList();
+		makeBrandList();
+		makeCinemaList();
+		makeMovieList();
+		makePlaydtList();
 		
 		if ($("#MovieCd").val() != "all")
 			setMovie();
@@ -672,7 +596,6 @@
 			getTimeList();
 			makeTimeList();
 		}
-		
 		
 		if ($("#ScreenCd").val() != "" && $("#ShowSeq").val() != "") {
 			//setTime();
@@ -781,7 +704,7 @@
 		}
 		setMovie();
 		
-// 		getMainList();
+		getMainList();
 		makeBrandList();
 		makeCinemaList();
 		makePlaydtList();
@@ -893,15 +816,42 @@
 		$(".thum-type").show();
 	});
 
-	
-	
-	// 상영시간 버튼 클릭
-	$(document).on("click", ".btnTime", function(){
-		alert("TEST : 상영시간 버튼클릭");
+	$(document).on("click", ".btnTime", function(e) {
+		$(".btnTime").parent().removeClass("check");
+
+		var cd = $(this).data("cd");
+		var seq = $(this).data("seq");
+		if ($("#ScreenCd").val() == cd && $("#ShowSeq").val() == seq) {
+			$("#ScreenCd").val("");
+			$("#ShowSeq").val("");
+		} else {
+			var time = null;
+			for (var i = 0; i < timeList.length && !time; i++) {
+				for (var j = 0; j < timeList[i].MovieDetail.length; j++) {
+					if (timeList[i].MovieDetail[j].ScreenCd == cd && timeList[i].MovieDetail[j].ShowSeq == seq){
+						time = timeList[i].MovieDetail[j];
+						break;
+					}
+				}
+			}
+			
+			if (time != null) {
+				if (time.NextSkipYn.toUpperCase() == "Y") {
+					if (time.NextSkipYnMsg != "") {
+						mAlert(time.NextSkipYnMsg);
+					}
+					$(this).parent().addClass("check");
+					$("#ScreenCd").val(cd);
+					$("#ShowSeq").val(seq);
+				} else {
+					$("#ScreenCd").val("");
+					$("#ShowSeq").val("");
+					mAlert(time.NextSkipYnMsg);
+				}
+			}
+		}
+		setTime();
 	});
-	
-	
-	
 	
 	// 리아(RIA) 영화 및 상영일자 리스트
 // 	function getMainList() {
@@ -914,6 +864,9 @@
 // 			dataType: 'json',
 // 			success: function(res) {
 // 				movieList = res.MovieList;
+// 				movieNormalList = res.MovieNormalList;
+// 				movieIndieArtList = res.MovieIndieArtList;
+// 				senderBrandList = res.SenderBrandList;
 // 				cinemaList = res.CinemaList;
 // 				areaList = res.AreaList;
 // 				playSdtList = res.PlaySdtList;
@@ -926,8 +879,13 @@
 		var rst = '';
 		var cnt = 0;
 		var list = [];
-	
-		list = movieList;
+		if ($("#TabMovieType").val() == "normal") {
+			list = movieNormalList;
+		} else if ($("#TabMovieType").val() == "indieArt") {
+			list = movieIndieArtList;
+		} else {
+			list = movieList;
+		}
 		
 		for (var i = 0; i < list.length; i++) {
 			var obj = list[i];
@@ -951,6 +909,16 @@
 		$("#movieList li.check .btnMvItem").focus();
 	}
 	
+	// 브랜드 리스트 작성
+	function makeBrandList() {
+		var rst = "";
+		for (var i = 0; i < senderBrandList.length; i++) {
+			var obj = senderBrandList[i];
+			rst += '<a href="#" class="btnBrandTab' + (obj.SenderBrandCd == $("#TabBrandCd").val() ? ' active' : '') + (obj.HiddenYn == "N" ? '' : ' disabled') + '" data-cd="' + obj.SenderBrandCd + '">' + obj.SenderBrandNm + '</a>';
+		}
+		
+		$("#brandList").html(rst);
+	}
 	
 	// 극장 리스트 작성
 	function makeCinemaList() {

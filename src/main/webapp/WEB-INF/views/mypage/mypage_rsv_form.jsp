@@ -24,7 +24,7 @@
 			<div class="section group section-mypage-summary">
 				<div class="summary summary-1">
 					<h3>회원정보</h3>
-					<a href="/Member/Info" class="btn btn-top">회원정보 관리</a>
+					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
 						김예리 <span class="point">0P</span>
@@ -56,10 +56,10 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="/MyPage" class="selected">예매/취소내역</a></li>
-					<li><a href="/MyPage/CouponList" class="">매점교환권</a></li>
-					<li><a href="/MyPage/Exchange" class="">포인트내역</a></li>
-					<li><a href="/Customer/InquiryList" class=" loginpop">나의 문의내역</a></li>
+					<li><a href="mypageR" class="selected">예매/취소내역</a></li>
+					<li><a href="mypageS" class="">매점교환권</a></li>
+					<li><a href="mypageP" class="">포인트내역</a></li>
+					<li><a href="mypageQ" class=" ">나의 문의내역</a></li>
 				</ul>
 			</div>
 			<script id="template-headerlatestcoupon-list"
@@ -134,7 +134,6 @@
 
 
 			<div class="section group section-mypage">
-				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
 						>예매내역</div>
@@ -145,16 +144,18 @@
 								<th>영화제목</th>
 								<th>상영일시</th>
 								<th>영화관</th>
-								<th>좌  석</th>
+								<th>상영관</th>
+								<th>좌석번호</th>
 								<th>예매일자</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
-								<td>444</td>
-								<td>555</td>
+								<td>202301011234</td>
+								<td>스파이더맨</td>
+								<td>20230406</td>
+								<td>아이무비xx지점</td>
+								<td>2관</td>
+								<td>13,14</td>
+								<td>20230401</td>
 							</tr>
 							
 						</tbody>

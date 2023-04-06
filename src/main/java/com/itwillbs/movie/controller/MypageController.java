@@ -32,6 +32,12 @@ public class MypageController {
 		
 		return "mypage/mypage_qna_form";
 	}
+	//회원정보수정
+	@GetMapping(value = "mypageI")
+	public String mypageI() {
+		
+		return "mypage/mypage_info_form";
+	}
 	
 	
 	
