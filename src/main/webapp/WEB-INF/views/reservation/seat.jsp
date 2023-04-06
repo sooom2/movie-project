@@ -210,9 +210,9 @@
 	var seatLegendList = [];
  	
 	$(function() {
-		getSeatAllList();
-		makeTicketList();
-		makeSeatAllList();
+// 		getSeatAllList(); //  테스트용 인원선택 화면 안나올때 있는데 주석 처리하면 나옴
+// 		makeTicketList();
+// 		makeSeatAllList();
 		
 		if ($("#TicketInfo").val() != "")
 			setTicket();
