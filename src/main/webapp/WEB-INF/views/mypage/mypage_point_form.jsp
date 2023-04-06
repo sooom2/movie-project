@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="username">
-						회원등급 <span class="right"> 일반 </span>
+						선호장르 <span class="right"> 스릴러 </span>
 					</div>
 
 				</div>
@@ -137,7 +137,7 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>포인트 적립 사용 내역</div>
+						>나의포인트</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
@@ -147,10 +147,10 @@
 								<th>누적포인트</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
+								<td>20230404</td>
+								<td>회원가입축하이벤트</td>
+								<td>1000</td>
+								<td>1000</td>
 							</tr>
 							
 						</tbody>

@@ -134,7 +134,6 @@
 
 
 			<div class="section group section-mypage">
-				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
 						>예매내역</div>
@@ -145,16 +144,18 @@
 								<th>영화제목</th>
 								<th>상영일시</th>
 								<th>영화관</th>
-								<th>좌  석</th>
+								<th>상영관</th>
+								<th>좌석번호</th>
 								<th>예매일자</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
-								<td>444</td>
-								<td>555</td>
+								<td>202301011234</td>
+								<td>스파이더맨</td>
+								<td>20230406</td>
+								<td>아이무비xx지점</td>
+								<td>2관</td>
+								<td>13,14</td>
+								<td>20230401</td>
 							</tr>
 							
 						</tbody>

@@ -29,7 +29,7 @@
 }
 
 .section-mypage-summary .summary h3 .num {
-	color: #ed1c24;
+	color: #673bd4;
 	font-weight: bold;
 }
 
@@ -78,8 +78,8 @@
 
 .section-mypage-summary .summary-1 .username .point {
 	font-weight: bold;
-	color: #ed1c24;
-	padding-left: 25px;
+	color: #673bd4;
+	padding-left: 200px;
 }
 
 .section-mypage-summary .summary-1 .btn-exchange {
@@ -2527,7 +2527,7 @@ table.bbs-write.bbs-write-mypage-point td {
 	position: absolute;
 	right: 0;
 	top: 2px;
-	background-color: #666;
+	background-color: #673bd4;
 	color: #fff;
 	font-size: 15px;
 	line-height: 35px;

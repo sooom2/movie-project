@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="username">
-						회원등급 <span class="right"> 일반 </span>
+						선호장르 <span class="right"> 스릴러 </span>
 					</div>
 
 				</div>
@@ -94,21 +94,22 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>1:1문의내역</div>
+						>나의게시판</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
 								<th>문의지점</th>
 								<th>문의유형</th>
-								<th><a href="">제목</a></th>
+								<th>제목</th>
 								<th>작성일자</th>
 								<th>답글유무</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
+								<td>아이무비xx지점</td>
+								<td>예매</td>
+								<td><a href="">질문있어요!!</a></td>
+								<td>20230303</td>
+								<td>미답변</td>
 							</tr>
 							
 						</tbody>
