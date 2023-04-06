@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function logout() {
+		let isLogout = confirm("로그아웃 하시겠습니까?");
+		
+		if(isLogout) {
+			location.href = "logout";
+		}
+	}
+</script>
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="resources/js/main.js"></script>
@@ -15,11 +24,21 @@
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
-				<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
-				<li><a href="memJoin">회원가입</a></li>
-				<li><a href="guestRsv" class="">비회원예매내역</a>
-				<li><a href="admin" class="">관리자</a>
-				</li>
+			<c:choose>
+				<c:when test="${empty sessionScope.sId }">
+					<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
+					<li><a href="memJoin">회원가입</a></li>
+					<li><a href="guestRsv" class="">비회원예매내역</a></li>
+					<li><a href="admin" class="">관리자</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="javascript:logout()" data-reload="reload" class="">로그아웃</a></li>
+					<li><a href="guestRsv" class="">비회원예매내역</a></li>
+					<c:if test="${sessionScope.sId eq 'admin' }">
+						<li><a href="admin" class="">관리자</a></li>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
 			</ul>
 		</nav>
 	
