@@ -6,18 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
-   <meta charset="utf-8">
     <!--meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"-->
     
 <!--     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> -->
 <!--     <link rel="icon" href="/favicon.ico" type="image/x-icon">    -->
 
-    <title>씨네Q</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<script type="text/javascript"	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<title>Insert title here</title>
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/movieInfo.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/main.js"></script>
 
 </head>
 
@@ -38,7 +37,7 @@
 						src="https://file.cineq.co.kr/i.aspx?movieid=20173226&amp;size=210"
 						class="posterlist">
 					<div class="movie-desc">
-							<span class="rate-15">15세이상</span>패왕별희 디 오리지널
+							<span class="rate-15">15세이상</span>패왕별희  디 오리지널
 						</div></li>
 					<li><span class="over over-a"><a href="#" class="rsv">예매하기</a><a
 							href="/Movie/Info?MovieCode=20143253" class="info">상세정보</a></span><img

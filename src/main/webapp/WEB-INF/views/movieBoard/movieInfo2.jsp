@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/inc.css" rel="stylesheet">
-<link href="../css/sub.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
-<link href="../css/info.css" rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/movieInfo.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/main.js"></script>
 </head>
 <body id="top">
   

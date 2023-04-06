@@ -12,6 +12,7 @@ public class AdminController {
 	public String adminMain() {
 		return "admin/admin_main";
 	}
+	// 스토어======================================================================================
 	
 	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemPay() {
@@ -27,6 +28,9 @@ public class AdminController {
 	public String movieRegister() {
 		return "admin/admin_movie_register";
 	}
+	
+	//영화===========================================================================================
+	
 	//영화관관리
 	@RequestMapping(value = "admin_cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String cinemaRegister() {
@@ -45,5 +49,6 @@ public class AdminController {
 		return "admin/admin_movie_res_register";
 	}
 	
+	//게시판============================================================================================
 	
 }

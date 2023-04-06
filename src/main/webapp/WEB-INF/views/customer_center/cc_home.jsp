@@ -41,7 +41,7 @@
 				<div class="custo-main">
 					<div class="main-block">
 						<div class="block-content">
-							<a href="miss_question" title="분실물 문의 페이지로 이동">
+							<a href="lost_board" title="분실물 문의 페이지로 이동">
 								<p>
 									<strong>분실물 문의</strong> 잃어버린 물건을 접수해 주시면<br>신속히 찾아드리겠습니다.
 								</p>

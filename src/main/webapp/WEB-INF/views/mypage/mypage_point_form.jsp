@@ -24,7 +24,7 @@
 			<div class="section group section-mypage-summary">
 				<div class="summary summary-1">
 					<h3>회원정보</h3>
-					<a href="/Member/Info" class="btn btn-top">회원정보 관리</a>
+					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
 						김예리 <span class="point">0P</span>
@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="username">
-						회원등급 <span class="right"> 일반 </span>
+						선호장르 <span class="right"> 스릴러 </span>
 					</div>
 
 				</div>
@@ -56,10 +56,10 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="/MyPage"class="">예매/취소내역</a></li>
-					<li><a href="/MyPage/CouponList" class="">매점교환권</a></li>
-					<li><a href="/MyPage/Exchange" class="selected">포인트내역</a></li>
-					<li><a href="/Customer/InquiryList" class=" loginpop">나의 문의내역</a></li>
+					<li><a href="mypageR">예매/취소내역</a></li>
+					<li><a href="mypageS" class="">매점교환권</a></li>
+					<li><a href="mypageP" class="selected">포인트내역</a></li>
+					<li><a href="mypageQ" class=" ">나의 문의내역</a></li>
 				</ul>
 			</div>
 			<script id="template-headerlatestcoupon-list"
@@ -137,7 +137,7 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>포인트 적립 사용 내역</div>
+						>나의포인트</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
@@ -147,10 +147,10 @@
 								<th>누적포인트</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
+								<td>20230404</td>
+								<td>회원가입축하이벤트</td>
+								<td>1000</td>
+								<td>1000</td>
 							</tr>
 							
 						</tbody>

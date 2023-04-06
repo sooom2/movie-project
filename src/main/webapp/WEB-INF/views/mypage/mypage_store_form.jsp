@@ -24,7 +24,7 @@
 			<div class="section group section-mypage-summary">
 				<div class="summary summary-1">
 					<h3>회원정보</h3>
-					<a href="/Member/Info" class="btn btn-top">회원정보 관리</a>
+					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
 						김예리 <span class="point">0P</span>
@@ -56,10 +56,10 @@
 			</div>
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
-					<li><a href="" class="selected">예매/취소내역</a></li>
-					<li><a href="" class="">매점교환권</a></li>
-					<li><a href="" class="">포인트내역</a></li>
-					<li><a href="" class="">나의 문의내역</a></li>
+					<li><a href="mypageR" class="">예매/취소내역</a></li>
+					<li><a href="mypageS" class="selected">매점교환권</a></li>
+					<li><a href="mypageP" class="">포인트내역</a></li>
+					<li><a href="mypageQ" class=" ">나의 문의내역</a></li>
 				</ul>
 			</div>
 			
@@ -92,9 +92,8 @@
 			</div>
 
 			<div class="section group section-mypage">
-				<!-- 매점교환권 -->
 				<div class="wrap-list">
-					<div style="margin-top: -40px; margin-bottom: 10px;"id="">최근예매내역</div>
+					<div style="margin-top: -40px; margin-bottom: 10px;"id="">나의스토어</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<tbody>
 							<tr>
@@ -105,12 +104,11 @@
 								<th>구매취소</th>
 							</tr>
 							<tr>
-								<td>11111</td>
-								<td>2222</td>
-								<td>333</td>
-								<td>333</td>
-								<td>444</td>
-								<td>555</td>
+								<td>20230101</td>
+								<td>아이무비콤보세트</td>
+								<td>1</td>
+								<td>20231231</td>
+								<td>취소버튼</td>
 							</tr>
 							
 						</tbody>

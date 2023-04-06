@@ -13,10 +13,8 @@
 
 
 <link href="resources/css/jquery.bxslider.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
