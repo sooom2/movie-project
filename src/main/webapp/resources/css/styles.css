@@ -2434,8 +2434,7 @@ textarea.form-control-lg {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 1rem 0.75rem;
-  overflow: hidden;
+  padding: 9px 1px 1px 1px;
   text-align: start;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2467,8 +2466,8 @@ textarea.form-control-lg {
 .form-floating > .form-control:focus, .form-floating > .datatable-input:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .datatable-input:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
 .form-floating > .form-control-plaintext:not(:placeholder-shown) {
-  padding-top: 1.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: 20px;
+  padding-bottom: -1.375rem;
 }
 .form-floating > .form-control:-webkit-autofill, .form-floating > .datatable-input:-webkit-autofill,
 .form-floating > .form-control-plaintext:-webkit-autofill {
@@ -11205,7 +11204,6 @@ body {
   position: relative;
   width: 100%;
   padding-right: 1rem;
-  
 }
 
 .datatable-sorter::before,
@@ -11218,7 +11216,6 @@ body {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   opacity: 0.2;
-  
 }
 
 .datatable-sorter::before {
@@ -11490,4 +11487,17 @@ main{
 .modal-bottom.flex button {
 	width: 49%;
 	height: 50px;
+}
+.selectbox{
+	text-align: left;
+    border: 1px solid #c6c6c6;
+    height: 56px;
+    border-radius: 5px;
+    margin-top: 1px;
+    padding-top: 13px;
+    padding-left: 8px;
+	
+}
+.selectbox select{
+	width: 100x !important;
 }

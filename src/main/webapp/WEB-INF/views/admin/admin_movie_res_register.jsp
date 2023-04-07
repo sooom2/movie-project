@@ -12,11 +12,31 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function doDisplay(){
+
+	let dis = document.querySelector(".admin-modal");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+		
+		
+	} else{
+		dis.style.display="none";
+	}
+}
+
+function modalClose(){
+	let dis = document.querySelector(".admin-modal");
+	dis.style.display="none";
+}
+
+</script>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="main">IMOVIE</a>
+		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -50,58 +70,197 @@
 		<div id="layoutSidenav_content">
 			<!-- 들어갈내용 -->
 			 <main>
-                    <div class="container">
+			 <!-- 모달 -->
+                    <div class="container modal admin-modal" style="display: none">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">스토어 상품 등록</h3></div>
+                                <div class="card border-1 mt-5">
+                                    <div class="card-header">
+									<button type="button" class="close-modal"  onclick="modalClose()" style=" border: none;">닫기</button>
+                                    <h3 class="text-center font-weight-light my-4">영화예매관리</h3>
+                                    </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form> 
+                                        
+                                       
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">상품 코드</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
+                                           		  <div class="col-md-4">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">상품 이름</label>
+                                                        <input class="form-control" id="member_id" type="text" value="admin1234"  readonly="readonly"/>
+                                                        <label for="inputLastName">회원ID</label>
                                                     </div>
                                                 </div>
+<!--                                                 <div class="col-md-4"> -->
+<!--                                                     <div class="form-floating mb-3 mb-md-0"> -->
+<!--                                                         <input class="form-control" id="member_tel" type="text" value="010-4545-1515" placeholder="Confirm password" /> -->
+<!--                                                         <label for="member_tel">연락처<label> -->
+<!--                                                     </div> -->
+<!--                                                 </div> -->
+                                             
                                             </div>
+                                            <hr>
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
+                                                
+                                                 <div class="col-md-4">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">상품 가격</label>
+                                                        <input class="form-control" id="info_movie_title" type="text" value="스즈메의문단속"  readonly="readonly"/>
+                                                        <label for="info_movie_title">영화제목</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">상세 설명</label>
+                                                 <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="res_date" type="text" value="2023-04-07" placeholder="2023-04-07" />
+                                                        <label for="res_date">관람일</label>
                                                     </div>
                                                 </div>
+                                                 <div class="col-md-4 ">
+                                                    <div class="form-floating mb-3 mb-md-0 selectbox">
+                                                        <div class="cinema_name">
+                                                        	<label for="cinema_name">영화관명 : </label>
+															<select name="cinema_name">
+															    <option value="semyeon">서면점</option>
+															    <option value="busan">부산점</option>
+															    <option value="dongrae">동래점</option>
+															</select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                
                                             </div>
+                                            
+                                            
+                                            
+                                            
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">상품 타입</label>
+                                                
+                                                <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0 selectbox">
+                                                        <div class="screen_name">
+                                                        	<label for="screen_name">상영관 : </label>
+															<select name="screen_name">
+															    <option value="1">1관</option>
+															    <option value="2">2관</option>
+															    <option value="3">3관</option>
+															</select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                
+                                                <div class="col-md-4">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">상품 이미지</label>
+                                                        <input class="form-control" id="res_seat" type="text" value="A1,A2"/>
+                                                        <label for="res_seat">예매좌석</label>
+                                                   
+                                                   	<!-- 누르면 선택창 나오게끔 -->
+                                                   
                                                     </div>
                                                 </div>
+                                                 <div class="col-md-4 ">
+                                                    <div class=" form-floating mb-3 mb-md-0 selectbox">
+<!--                                                         <input class="form-control" id="inputPassword" type="text" placeholder="결제유무" /> -->
+                                                        <div class="res_count">
+                                                        	<label for="res_count">예매인원수 : </label>
+															<select name="res_count">
+															    <option value="1">1명</option>
+															    <option value="2">2명</option>
+															    <option value="3">3명</option>
+															    <option value="4">4명</option>
+															    <option value="5">5명</option>
+															    <option value="6">6명</option>
+															    <option value="7">7명</option>
+															    <option value="8">8명</option>
+															</select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<!--                                                 <div class="col-md-4"> -->
+<!--                                                     <div class="form-floating mb-3 mb-md-0"> -->
+<!--                                                         <input class="form-control" id="res_count" type="text" value="2명" /> -->
+<!--                                                         <label for="res_count">예매인원수<label> -->
+                                                        
+<!--                                                          <div class="res_count"> -->
+<!--                                                         	<label for="res_count">예매인원수 : </label> -->
+<!-- 															<select name="res_count"> -->
+<!-- 															    <option value="1">1</option> -->
+<!-- 															    <option value="2">2</option> -->
+<!-- 															    <option value="3">3</option> -->
+<!-- 															    <option value="3">4</option> -->
+<!-- 															    <option value="3">5</option> -->
+<!-- 															    <option value="3">6</option> -->
+<!-- 															    <option value="3">3</option> -->
+<!-- 															</select> -->
+<!--                                                         </div> -->
+<!--                                                     </div> -->
+<!--                                                 </div> -->
+                                                
                                             </div>
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">등록하기</a></div>
+                                            
+                                            <hr>
+                                             <div class="row mb-3">
+                                                 <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0 selectbox">
+<!--                                                         <input class="form-control" id="inputPassword" type="text" placeholder="결제유무" /> -->
+                                                        <div class="res_card">
+                                                        	<label for="res_card">결제카드사 : </label>
+															<select name=res_card>
+															    <option value="samsung">삼성카드</option>
+															    <option value="hyundae">현대카드</option>
+															    <option value="etc">등등</option>
+															</select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="res_cardnum" type="text" value="105-12-4819-1222"/>
+                                                        <label for="res_cardnum">카드번호</label>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
+                                             <div class="row mb-3">
+                                               <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="res_pay" type="text" value="20,000원" />
+                                                        <label for="res_pay">결제금액</label>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-4">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="res_paydate" type="text" value="2023-03-23" />
+                                                        <label for="res_paydate">결제일<label>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-4 ">
+                                                    <div class="form-floating mb-3 mb-md-0 selectbox">
+<!--                                                         <input class="form-control" id="inputPassword" type="text" placeholder="결제유무" /> -->
+                                                        <div class="isPaid">
+                                                        	<label for="res_pay_done">결제유무 : </label>
+															<select name="res_pay_done">
+															    <option value="done">결제완료</option>
+															    <option value="ing">결제진행중</option>
+															    <option value="none">결제미완료</option>
+															</select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            
+                                            
+                                            <div class="modal-bottom flex">
+												<button type="button" class="btn-modal2" id="btnFind">확인</button>
+												<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
+											</div>
+                                            
                                         </form>
                                      </div>
                                 </div>
@@ -109,34 +268,39 @@
                         </div>
                     </div>
                     
-                      <!-- 테이블 -->
+                    <!-- 테이블 -->
                     <div class="datatable-container">
+                   <h3 class="text-center font-weight-light my-4">영화예매관리</h3>
+                   
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">결제 코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">회원 아이디</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 타입</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 가격</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 날짜</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 취소 날짜</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">결제 상태</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter"></a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제번호</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">회원ID</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">영화관명</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영관명</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">관람날짜</a></th>
+								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">좌석</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제금액</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제일</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">수정</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
 							<tr data-index="0">
-								<td>!@#Dasd2asd334</td>
-								<td>admin</td>
-								<td>카드</td>
-								<td>20,000</td>
+								<td>15611889</td>
+								<td>admin1</td>
+								<td>리바운드</td>
+								<td>서면점</td>
+								<td>1관</td>
 								<td>2023-04-05</td>
-								<td></td>
-								<td>결제 완료</td>
-								<td>
-									<input class="btn btn-primary btn-block" type="button" value="수정">
-									<input class="btn btn-primary btn-block" type="button" value="삭제">
+								<td>A1,A2</td>
+								<td>\20,000원</td>
+								<td>2023-04-05</td>
+								<td class="modi">
+									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()">
 								</td>
 							</tr>
 						</tbody>
@@ -144,10 +308,8 @@
 					</div>
                      <!-- 테이블 --> 
                     
-                    
-                    
-                    
                 </main>
+			
 			
 			
 			

@@ -28,8 +28,27 @@ function doDisplay(){
 
 function modalClose(){
 	let dis = document.querySelector(".admin-modal");
+	let dis2 = document.querySelector(".admin-modal-all");
 	dis.style.display="none";
+	dis2.style.display="none";
+	
 }
+
+function doDisplay-all(){
+
+	let dis = document.querySelector(".admin-modal-all");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+		
+		
+	} else{
+		dis.style.display="none";
+	}
+}
+
+
+
 
 </script>
 </head>
@@ -85,10 +104,10 @@ function modalClose(){
                                     <div class="card-body">
                                         <form> 
                                       	  <div class="row mb-4">
-                                          	<h5 style="text-align:left">이미지수정</h5>
+                                          	<h5 style="text-align:left">이미지등록</h5>
                                        		<div class="col-md-3 moviePoster">
                                              	<div>
-                                             		<img class="" src="/movie-project/resources/images/movies/poster/m1.jpg">
+<!--                                              		<img class="" src="/movie-project/resources/images/movies/poster/m1.jpg"> -->
                                              	</div>
                                             </div>
                                             <div class="col-md-8">
@@ -116,14 +135,14 @@ function modalClose(){
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">제작년도</label>
+                                                        <input class="form-control" id="info_movie_year" type="text" placeholder="제작년도" />
+                                                        <label for="info_movie_year">제작년도</label>
                                                     </div>
                                                 </div>
                                                  <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">상영시간</label>
+                                                        <input class="form-control" id="info_show_time" type="text" />
+                                                        <label for="info_show_time">상영시간</label>
                                                     </div>
                                                 </div>
                                                 
@@ -170,6 +189,8 @@ function modalClose(){
                     <!-- 테이블 -->
                     <div class="datatable-container">
                    <h3 class="text-center font-weight-light my-4">영화관리</h3>
+                    <input class="btn btn-block btn-more" type="button" value="영화등록" onclick="doDisplay()">
+                    <input class="btn btn-block btn-more" type="button" value="영화불러오기" onclick="doDisplay2()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
