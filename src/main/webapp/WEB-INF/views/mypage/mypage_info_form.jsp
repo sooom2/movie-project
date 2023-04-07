@@ -26,40 +26,57 @@
 						<div class="wrap-inside">
 							<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
-									<div class=""
-										style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="theaterCode" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="1001" selected="">신도림</option>
-											<option value="2102">청라</option>
-											<option value="6001">경주보문</option>
-											<option value="6002">구미봉곡</option>
-											<option value="4001">충주연수</option>
-											<option value="4101">천안불당</option>
-											<option value="6006">대구이시아</option>
-											<option value="6101">하동</option>
-											<option value="4002">보은</option>
-											<option value="6003">칠곡호이</option>
-											<option value="6005">영덕예주</option>
+											<option value="1001" selected="">선호지점변경시 선택</option>
+											<option value="051">부산점</option>
+											<option value="051">부산대연점</option>
+											<option value="02">강남점</option>
+											<option value="052">울산삼산점</option>
+											<option value="055">경남김해점</option>
+										</select>
+									</div> <span></span>
+								</label>
+							</div>
+							<div class="join-detail">
+								<label class="label-input" for=""> <span>선호장르</span>
+									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+										<select name="theaterCode" id="join-theater"
+											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
+											<option value="1001" selected="">선호장르변경시 선택</option>
+											<option value="액션">액션</option>
+											<option value="드라마">드라마</option>
+											<option value="코미디">코미디</option>
+											<option value="애니메이션">애니메이션</option>
+											<option value="스릴러">스릴러</option>
+											<option value="로맨스">로맨스</option>
+											<option value="범죄">범죄</option>
 										</select>
 									</div> <span></span>
 								</label>
 							</div>
 
 							<div class="join-detail">
-								<div class="label-input">
-									<span class="title">휴대폰번호 인증</span> <span class="desc">인증회원</span>
-								</div>
+								<label class="label-input" for="id"> <span>아이디</span>
+									<input type="text" id="memberId" name="memberId" class="input"
+									value="yeri12"> <span></span>
+								</label>
 							</div>
 							<div class="join-detail">
-								<label class="label-input" for="email"> <span>아이디(이메일)</span>
+								<label class="label-input" for="email"> <span>이메일</span>
 									<input type="text" id="memberId" name="memberId" class="input"
-									value="yeri7880@naver.com"> <span></span>
+									value="yeri12@naver.com"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<div class="label-input">
-									<span class="title">비밀번호</span> <span class="desc"></span> <a
+									<span class="title">비밀번호</span><input type="text" id="pass" value="********"> 
+								</div>
+							</div>
+							<div class="join-detail">
+								<div class="label-input">
+									<span class="title">비밀번호확인</span><input type="text" id="pass" value="********"> <a
 										href="#" class="btn-change changepwd">변경</a>
 								</div>
 							</div>
@@ -85,28 +102,13 @@
 										type="hidden" id="join-phone" name="phone" value="01050147709">
 								</div>
 							</div>
-							<div class="join-detail long">
-								<span class="agreement"> <input type="checkbox"
-									id="mypage-check12" name="check1" value="true"> <label
-									class="label-check" for="mypage-check12">(전체)다양한 혜택의
-										마케팅 동의</label>
-								</span>
-								<div class="sub">
-									<span><input type="checkbox" id="mypage-check21"
-										name="receiveEmail" value="true"><label
-										class="label-check" for="mypage-check21">이메일</label></span> <span><input
-										type="checkbox" id="mypage-check22" name="receiveSMS"
-										value="true"><label class="label-check"
-										for="mypage-check22">SMS</label></span> <span><input
-										type="checkbox" id="mypage-check23" name="receivePush"
-										value="true"><label class="label-check"
-										for="mypage-check23">앱알림</label></span>
-								</div>
-							</div>
+							
+					
 						</div>
 
 						<a href="javascript:;" name="btn-join-confirm" id="btn-mypage-ok"
-							class="btn-confirm">확인</a>
+							class="btn-confirm">수정</a>
+				 
 					</form>
 
 					<!--- 소셜계정 막기 
