@@ -44,13 +44,13 @@
                             <td class="a-c">
                                 <div class="goods-info">
                                     
-                                    <p class="img"><a href="javascript:fn_storeDetail();" title="메가박스 기프트카드 2만원권"><img src="https://img.megabox.co.kr/SharedImg/store/2022/09/02/OLQpuZPJ5wuIR9BqZK4sDRKN0t2O3sWV_280.png" alt="" onerror="noImg(this);"></a></p>
+                                    <p class="img"><a href="javascript:fn_storeDetail();" title="메가박스 기프트카드 2만원권"><img src="${item.get('item_image') }" alt="" onerror="noImg(this);"></a></p>
                                 </div>
                             </td>
                             <th scope="row">
                                 <div class="goods-info">
-                                    <p class="name"><a href="javascript:fn_storeDetail();" title="메가박스 기프트카드 2만원권">메가박스 기프트카드 2만원권</a></p>
-                                    <p class="bundle">메가박스 기프트카드 2만원권</p>
+                                    <p class="name"><a href="javascript:fn_storeDetail();" title="메가박스 기프트카드 2만원권">${item.get('item_name') }</a></p>
+                                    <p class="bundle">${item.get('item_detail') }</p>
                                 </div>
 
                                 <div class="mt10">
@@ -63,7 +63,7 @@
                             <td><em id="purcQtyView">1</em></td>
                             <td>
                                 <div class="goods-info">
-	                                    	<em id="prdtSumAmtView" class="price">20,000</em>원
+	                                    	<em id="prdtSumAmtView" class="price">${item_price }</em>원
                                 </div>
                             </td>
                         </tr>
@@ -129,7 +129,7 @@
 		                    <div class="cell all">
 		                        <p class="txt">총 상품금액</p>
 		                        <p class="price">
-		                            <em id="totPrdtAmtView">20,000</em>
+		                            <em id="totPrdtAmtView">${item_price }</em>
 		                            <span>원</span>
 		                        </p>
 		                    </div>
@@ -147,7 +147,7 @@
 		                    <div class="cell real">
 		                        <p class="txt">최종 결제금액</p>
 		                        <p class="price">
-		                            <em id="lstPayAmtView">20,000</em>
+		                            <em id="lstPayAmtView">${item_price }</em>
 		                            <span>원</span>
 		                        </p>
 		                    </div>

@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.AdminService;
+import com.itwillbs.movie.service.StoreService;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private AdminService itemService;
+	@Autowired
+	private StoreService storeService;
 	
 
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
@@ -49,7 +52,7 @@ public class AdminController {
 		return "redirect:/admin_item_register";
 	}
 	
-	// 상품 삭제
+	// 상품 삭제 
 	@RequestMapping(value = "admin_item_delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemDelete(String item_code) {
 		
@@ -57,6 +60,26 @@ public class AdminController {
 		
 		return "redirect:/admin_item_register";
 	}
+	
+	// 상품 수정 화면
+	@RequestMapping(value = "admin_item_update", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemUpdate(@RequestParam String item_code, Model model) {
+		
+		HashMap<String, String> item = storeService.selectCode(item_code);
+		model.addAttribute("item", item);
+		
+		return "admin/admin_item_update";
+	}
+	
+	// 상품 수정
+		@RequestMapping(value = "admin_item_updatePro", method = {RequestMethod.GET, RequestMethod.POST})
+		public String itemUpdatePro(@RequestParam HashMap<String, String> item) {
+			
+			int updateCount = itemService.updateItem(item);
+			
+			return "redirect:/admin_item_register";
+		}
+	
 	
 	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieRegister() {

@@ -16,6 +16,18 @@ public class StoreService {
 	public List<HashMap<String, String>> selectItem() {
 		return mapper.selectGift();
 	}
+
+	public List<HashMap<String, String>> selectFood() {
+		return mapper.selectFood();
+	}
+	
+	public List<HashMap<String, String>> selectTicket() {
+		return mapper.selectTicket();
+	}
+
+	public HashMap<String, String> selectCode(String item_code) {
+		return mapper.selectCode(item_code);
+	}
 	
 	
 

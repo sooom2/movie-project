@@ -25,5 +25,9 @@ public class AdminService {
 		return mapper.deleteItem(item_code);
 	}
 
+	public int updateItem(HashMap<String, String> item) {
+		return mapper.updateItem(item);
+	}
+
 
 }

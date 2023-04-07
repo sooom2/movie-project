@@ -21,8 +21,18 @@ public interface MyBatisMapper {
 	
 	// ----------------------------------------------------------------------------------------
 	
-	// 스토어 기프카드 조회
+	// 스토어 기프트카드 조회
 	List<HashMap<String, String>> selectGift();
+	
+	List<HashMap<String, String>> selectFood();
+	
+	List<HashMap<String, String>> selectTicket();
+	
+	// 스토어 상세페이지 조회(상품 코드로)
+	HashMap<String, String> selectCode(String item_code);
+
+	int updateItem(HashMap<String, String> item);
+
 	
 
 	
