@@ -13,9 +13,9 @@ public class MovieService {
 	@Autowired
 	private MyBatisMapper mapper;
 	
-	public List<MovieVO> getMovieList() {
-		
-		return mapper.selectMovieList();
-	}
+//	public List<MovieVO> getMovieList() {
+//		
+//		return mapper.selectMovieList();
+//	}
 
 }
