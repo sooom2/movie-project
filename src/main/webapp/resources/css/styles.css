@@ -11205,6 +11205,7 @@ body {
   position: relative;
   width: 100%;
   padding-right: 1rem;
+  
 }
 
 .datatable-sorter::before,
@@ -11217,6 +11218,7 @@ body {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   opacity: 0.2;
+  
 }
 
 .datatable-sorter::before {

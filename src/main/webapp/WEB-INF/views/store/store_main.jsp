@@ -47,9 +47,9 @@
 								<div class="info">
 									<div class="tit">
 										<!-- 제품명 최대 2줄 -->
-										<p class="name">000 기프트카드 2만원권</p>
+										<p class="name">아이무비 기프트카드 2만원권</p>
 										<!-- 제품구성 최대 2줄 -->
-										<p class="bundle">000 기프트카드 2만원권</p>
+										<p class="bundle">아이무비 기프트카드 2만원권</p>
 									</div>
 									<div class="price">
 										<p class="original"></p>

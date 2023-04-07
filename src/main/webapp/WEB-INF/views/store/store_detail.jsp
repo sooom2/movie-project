@@ -39,23 +39,22 @@
                             <div class="line">
                                 <p class="tit"><span class="line32">사용극장</span></p>
                                 <div class="cont">
-                                                    <a href="#" class="a-link" name="brchList">사용가능극장</a>
+                                	<a href="#" class="a-link" name="brchList">사용가능극장</a>
                                 </div>
                             </div>
                         <div class="line">
                             <p class="tit">유효기간</p>
                                 <div class="cont">
                                     <p class="txt">
-                                                구매일로부터 366일 이내
-                                                
-                                                사용 가능
-                                                    </p><p class="txt min">본 상품의 최초 유효기간은 구매일로 부터 366일까지입니다.</p>
+                                     구매일로부터 366일 이내
+                                     
+                                     사용 가능</p>
+                                     <p class="txt min">본 상품의 최초 유효기간은 구매일로 부터 366일까지입니다.</p>
                                     <p></p>
                                 </div>
                         </div>
                             <div class="line">
                                 <p class="tit">판매수량</p>
-
                                 <div class="cont">
                                     <div class="sale-count">
                                         <span> 1회 8개 구매가능	</span>

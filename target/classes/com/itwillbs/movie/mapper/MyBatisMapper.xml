@@ -3,7 +3,7 @@
 <!-- 주의! mapper 태그 내의 namespace 속성에 현재 XML 파일과 연결될 자바 클래스를 명시해야한다! -->
 <mapper namespace="com.itwillbs.movie.mapper.MyBatisMapper">
 	<insert id="insertMember">
-		INSERT INTO customer
+		INSERT INTO member
 			VALUES(
 				   #{member_id}
 				   , #{member_pw}
@@ -18,8 +18,24 @@
 	
 	<select id="chekUser" resultType="hashmap">
 		SELECT * 
-			FROM customer
+			FROM member
 				WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+	</select>
+	<insert id="registItem">
+		INSERT INTO item
+			VALUES(
+				   #{item_code}
+				   , #{item_type}
+				   , #{item_name}
+				   , #{item_price}
+				   , #{item_detail}
+				   , #{item_image}
+				   , '신상품'
+			)
+	</insert>
+	<select id="selectItem" resultType="hashmap">
+		SELECT * 
+			FROM item
 	</select>
 </mapper>
 
