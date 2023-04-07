@@ -84,5 +84,29 @@ public class AdminController {
 	}
 	
 	//게시판============================================================================================
-	
+	//공지사항
+	@RequestMapping(value = "admin_notice_board", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminNoticeBoard() {
+		return "admin/admin_notice_board";
+	}
+	//자주묻는 질문
+	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminFaq() {
+		return "admin/admin_faq";
+	}
+	//분실물 문의
+	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminLostBoard() {
+		return "admin/admin_lost_board";
+	}
+	//1대1 문의
+	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminOneOnOne() {
+		return "admin/admin_oneOnOne";
+	}
+	//비회원 문의내역
+	@RequestMapping(value = "admin_guest_board", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminGuestBoard() {
+		return "admin/admin_guest_board";
+	}
 }
