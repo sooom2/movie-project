@@ -1,5 +1,6 @@
 package com.itwillbs.movie.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ public class MovieService {
 	@Autowired
 	private MyBatisMapper mapper;
 	
-//	public List<MovieVO> getMovieList() {
-//		
-//		return mapper.selectMovieList();
-//	}
+	public List<HashMap<String, String>> screeningMovie() {
+		
+		return mapper.screeningMovie();
+	}
 
 }
