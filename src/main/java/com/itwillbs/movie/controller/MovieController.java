@@ -16,5 +16,8 @@ public class MovieController {
 	public String latest() {
 		return "movieBoard/latest";
 	}
-
+	@RequestMapping(value = "MovieInfoTest", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieInfoTest() {
+		return "movieBoard/movieInfoTest";
+	}
 }
