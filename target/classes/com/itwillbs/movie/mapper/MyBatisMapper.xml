@@ -88,6 +88,12 @@
 
 
 <!-- 예매 end -->
+
+<!-- 상영중인 영화  -->
+	<select id="screeningMovie" resultType="hashmap">
+		SELECT * 
+			FROM movieInfo
+	</select>
 	
 </mapper>
 

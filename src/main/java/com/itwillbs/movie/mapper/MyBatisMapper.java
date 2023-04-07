@@ -35,8 +35,10 @@ public interface MyBatisMapper {
 
 	List<HashMap<String, String>> selectCinema();
 
+	// ------------------------------------------------------------------------------------------
 	
-
+	// 상영중인 영화 페이지 보기
+	List<HashMap<String, String>> screeningMovie();
 	
 }
 
