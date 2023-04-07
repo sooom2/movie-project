@@ -73,305 +73,45 @@
 <!-- 											</div> -->
 <!-- 										</div> -->
 										<div class="list">
+											<!--1. 지역 선택 -->
 											<div class="step1">
 												<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
 													<div class="scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 533px;">
-														<!--지역 선택 -->
 														<ul id="regionList">
 															<li>
-															<button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite"> 즐겨찾는 영화관 <span>(0)</span></button></li>
+															<button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite"> 즐겨찾는 영화관</button></li>
 															<li class="active"><button type="button" class="btnTheater" title="전체" data-cd="all">전체</button></li>
-															<li><button type="button" class="btnTheater" title="부산" data-cd="KR-11">부산</button></li>
-															<li><button type="button" class="btnTheater" title="서울" data-cd="KR-41">서울</button></li>
-															<li><button type="button" class="btnTheater" title="울산" data-cd="KR-28">울산</button></li>
-															<li><button type="button" class="btnTheater" title="경남" data-cd="KR-42">경남</button></li>
+															<li><button type="button" class="btnTheater" title="부산" data-cd="KR-051">부산</button></li>
+															<li><button type="button" class="btnTheater" title="서울" data-cd="KR-02">서울</button></li>
+															<li><button type="button" class="btnTheater" title="울산" data-cd="KR-052">울산</button></li>
+															<li><button type="button" class="btnTheater" title="경남" data-cd="KR-055">경남</button></li>
 														</ul>
 													</div>
 												</div>
 											</div>
+											<!--2. 영화관 선택 -->
 											<div class="step2">
-												<div class="scroll-wrapper scrollbar-inner"
-													style="position: relative;">
-													<div id="cinemaList" class="scrollbar-inner scroll-content"
-														style="height: 533px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
-														<ul class="subTheater" data-cd="favorite"
-															style="display: none"></ul>
-														<ul class="subTheater" data-cd="all"
-															style="display: block;">
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000005" data-nm="강화작은영화관"
-																data-rg="KR-28"></a>
-																<button type="button" class="btnCnItem" data-cd="000005"
-																	title="강화작은영화관">강화작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000011" data-nm="고한시네마"
-																data-rg="KR-42"></a>
-																<button type="button" class="btnCnItem" data-cd="000011"
-																	title="고한시네마">고한시네마</button></li>
-															<li style="display: list-item;"><a href="#"
-																class="btn-star" data-cd="000066" data-nm="광주극장"
-																data-rg="KR-29"></a>
-																<button type="button" class="btnCnItem" data-cd="000066"
-																	title="광주극장">광주극장</button></li>
-															<li style="display: list-item;"><a href="#"
-																class="btn-star" data-cd="000054" data-nm="광주독립영화관"
-																data-rg="KR-29"></a>
-																<button type="button" class="btnCnItem" data-cd="000054"
-																	title="광주독립영화관">광주독립영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000025" data-nm="남해 보물섬시네마"
-																data-rg="KR-48"></a>
-																<button type="button" class="btnCnItem" data-cd="000025"
-																	title="남해 보물섬시네마">남해 보물섬시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000113" data-nm="낭만극장"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000113"
-																	title="낭만극장">낭만극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000065" data-nm="더숲아트시네마"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000065"
-																	title="더숲아트시네마">더숲아트시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000082"
-																data-nm="더플래츠 바이 모노플렉스" data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000082"
-																	title="더플래츠 바이 모노플렉스">더플래츠 바이 모노플렉스</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000072" data-nm="라이카시네마"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000072"
-																	title="라이카시네마">라이카시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000116" data-nm="명화극장"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000116"
-																	title="명화극장">명화극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000092" data-nm="밀양시네마"
-																data-rg="KR-48"></a>
-																<button type="button" class="btnCnItem" data-cd="000092"
-																	title="밀양시네마">밀양시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000062" data-nm="밀크북 바이 모노플렉스"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000062"
-																	title="밀크북 바이 모노플렉스">밀크북 바이 모노플렉스</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000085" data-nm="산청군 작은영화관"
-																data-rg="KR-48"></a>
-																<button type="button" class="btnCnItem" data-cd="000085"
-																	title="산청군 작은영화관">산청군 작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000026" data-nm="삼척영화관"
-																data-rg="KR-42"></a>
-																<button type="button" class="btnCnItem" data-cd="000026"
-																	title="삼척영화관">삼척영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000118" data-nm="성주 별고을시네마"
-																data-rg="KR-47"></a>
-																<button type="button" class="btnCnItem" data-cd="000118"
-																	title="성주 별고을시네마">성주 별고을시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000053" data-nm="씨네아트 리좀"
-																data-rg="KR-48"></a>
-																<button type="button" class="btnCnItem" data-cd="000053"
-																	title="씨네아트 리좀">씨네아트 리좀</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000098" data-nm="씨네인디U"
-																data-rg="KR-30"></a>
-																<button type="button" class="btnCnItem" data-cd="000098"
-																	title="씨네인디U">씨네인디U</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000099" data-nm="안영채 X 모노플렉스"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000099"
-																	title="안영채 X 모노플렉스">안영채 X 모노플렉스</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000100" data-nm="애관극장"
-																data-rg="KR-28"></a>
-																<button type="button" class="btnCnItem" data-cd="000100"
-																	title="애관극장">애관극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000013" data-nm="양양 작은영화관"
-																data-rg="KR-42"></a>
-																<button type="button" class="btnCnItem" data-cd="000013"
-																	title="양양 작은영화관">양양 작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000069" data-nm="에무시네마"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000069"
-																	title="에무시네마">에무시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000059" data-nm="오오극장"
-																data-rg="KR-27"></a>
-																<button type="button" class="btnCnItem" data-cd="000059"
-																	title="오오극장">오오극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000038" data-nm="옥천 향수시네마"
-																data-rg="KR-43"></a>
-																<button type="button" class="btnCnItem" data-cd="000038"
-																	title="옥천 향수시네마">옥천 향수시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000037" data-nm="울진 작은영화관"
-																data-rg="KR-47"></a>
-																<button type="button" class="btnCnItem" data-cd="000037"
-																	title="울진 작은영화관">울진 작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000075" data-nm="의성 작은영화관"
-																data-rg="KR-47"></a>
-																<button type="button" class="btnCnItem" data-cd="000075"
-																	title="의성 작은영화관">의성 작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000083" data-nm="천안인생극장"
-																data-rg="KR-44"></a>
-																<button type="button" class="btnCnItem" data-cd="000083"
-																	title="천안인생극장">천안인생극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000027" data-nm="철원 작은영화관"
-																data-rg="KR-42"></a>
-																<button type="button" class="btnCnItem" data-cd="000027"
-																	title="철원 작은영화관">철원 작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000114" data-nm="청춘극장"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000114"
-																	title="청춘극장">청춘극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000112"
-																data-nm="케이트리호텔 X 모노플렉스" data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000112"
-																	title="케이트리호텔 X 모노플렉스">케이트리호텔 X 모노플렉스</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000047" data-nm="포천클라우드시네마"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000047"
-																	title="포천클라우드시네마">포천클라우드시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000070" data-nm="필름포럼"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000070"
-																	title="필름포럼">필름포럼</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000111" data-nm="한국민속촌 자동차극장"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem" data-cd="000111"
-																	title="한국민속촌 자동차극장">한국민속촌 자동차극장</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000045" data-nm="한림작은영화관"
-																data-rg="KR-49"></a>
-																<button type="button" class="btnCnItem" data-cd="000045"
-																	title="한림작은영화관">한림작은영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000080" data-nm="해남시네마"
-																data-rg="KR-46"></a>
-																<button type="button" class="btnCnItem" data-cd="000080"
-																	title="해남시네마">해남시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000115" data-nm="허리우드클래식"
-																data-rg="KR-11"></a>
-																<button type="button" class="btnCnItem" data-cd="000115"
-																	title="허리우드클래식">허리우드클래식</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000093" data-nm="1939시네마"
-																data-rg="KR-41"></a>
-																<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000093" title="1939시네마">1939시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000024" data-nm="고령 대가야시네마"
-																data-rg="KR-47"></a>
-																<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000024" title="고령 대가야시네마">고령
-																	대가야시네마</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000091" data-nm="고성 달홀영화관"
-																data-rg="KR-42"></a>
-																<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000091" title="고성 달홀영화관">고성
-																	달홀영화관</button></li>
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000108" data-nm="광안리 SEA네마"
-																data-rg="KR-26"></a>
-																<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000108" title="광안리 SEA네마">광안리
-																	SEA네마</button></li>
-															<li style="display: list-item;"><a href="#"
-																class="btn-star" data-cd="000084" data-nm="광주자동차극장"
-																data-rg="KR-29"></a>
-																<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000084" title="광주자동차극장">광주자동차극장</button></li>
+												<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+													<div id="cinemaList" class="scrollbar-inner scroll-content" style="height: 533px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
+														<!-- 즐겨찾는 영화관 클릭시 나타나는 탭 -->
+														<ul class="subTheater" data-cd="favorite" style="display: none"></ul>
+														
+														<!-- 전체 클릭시 나타나는 탭 -->
+														<ul class="subTheater" data-cd="all" style="display: block;">
+															<li style="display: none;"><a href="#" class="btn-star" data-cd="000005" data-nm="강화작은영화관" data-rg="KR-28"></a>
+																<button type="button" class="btnCnItem" data-cd="000005" title="강화작은영화관">강화작은영화관</button></li>
+															<li style="display: none;"><a href="#" class="btn-star" data-cd="000011" data-nm="고한시네마" data-rg="KR-42"></a>
+																<button type="button" class="btnCnItem" data-cd="000011" title="고한시네마">고한시네마</button></li>
 														</ul>
-														<ul class="subTheater" data-cd="KR-30"
-															style="display: none">
-															<li style="display: none;"><a href="#"
-																class="btn-star" data-cd="000098" data-nm="씨네인디U"
-																data-rg="undefined"></a>
-																<button type="button" class="btnCnItem" data-cd="000098"
-																	title="씨네인디U">씨네인디U</button></li>
+														
+														<!-- 부산 클릭시 나타나는 탭 -->
+														<ul class="subTheater" data-cd="KR-051" style="display: none;">
+															<li style="display: none;"><a href="#" class="btn-star" data-cd="000098" data-nm="씨네인디U" data-rg="undefined"></a>
+																<button type="button" class="btnCnItem" data-cd="000098" title="씨네인디U">씨네인디U</button></li>
 														</ul>
-														<ul class="subTheater" data-cd="KR-11" style="">
-															<li><a href="#" class="btn-star" data-cd="000113"
-																data-nm="낭만극장" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000113"
-																	title="낭만극장">낭만극장</button></li>
-															<li><a href="#" class="btn-star" data-cd="000065"
-																data-nm="더숲아트시네마" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000065"
-																	title="더숲아트시네마">더숲아트시네마</button></li>
-															<li><a href="#" class="btn-star" data-cd="000072"
-																data-nm="라이카시네마" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000072"
-																	title="라이카시네마">라이카시네마</button></li>
-															<li><a href="#" class="btn-star" data-cd="000003"
-																data-nm="씨네큐브광화문" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000003"
-																	title="씨네큐브광화문">씨네큐브광화문</button></li>
-															<li><a href="#" class="btn-star" data-cd="000088"
-																data-nm="아리랑시네센터" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000088"
-																	title="아리랑시네센터">아리랑시네센터</button></li>
-															<li><a href="#" class="btn-star" data-cd="000067"
-																data-nm="아트하우스모모" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000067"
-																	title="아트하우스모모">아트하우스모모</button></li>
-															<li><a href="#" class="btn-star" data-cd="000069"
-																data-nm="에무시네마" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000069"
-																	title="에무시네마">에무시네마</button></li>
-															<li><a href="#" class="btn-star" data-cd="000104"
-																data-nm="오르페오 룸 앳 트레바리 강남" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000104"
-																	title="오르페오 룸 앳 트레바리 강남">오르페오 룸 앳 트레바리 강남</button></li>
-															<li><a href="#" class="btn-star" data-cd="000096"
-																data-nm="오르페오 한남" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000096"
-																	title="오르페오 한남">오르페오 한남</button></li>
-															<li><a href="#" class="btn-star" data-cd="000114"
-																data-nm="청춘극장" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000114"
-																	title="청춘극장">청춘극장</button></li>
-															<li><a href="#" class="btn-star" data-cd="000070"
-																data-nm="필름포럼" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000070"
-																	title="필름포럼">필름포럼</button></li>
-															<li><a href="#" class="btn-star" data-cd="000115"
-																data-nm="허리우드클래식" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000115"
-																	title="허리우드클래식">허리우드클래식</button></li>
-															<li><a href="#" class="btn-star" data-cd="000089"
-																data-nm="KT&amp;G 상상마당 시네마" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000089"
-																	title="KT&amp;G 상상마당 시네마">KT&amp;G 상상마당 시네마</button></li>
-															<li><a href="#" class="btn-star" data-cd="000102"
-																data-nm="KU시네마테크" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem" data-cd="000102"
-																	title="KU시네마테크">KU시네마테크</button></li>
-															<li><a href="#" class="btn-star" data-cd="000095"
-																data-nm="이봄씨어터" data-rg="undefined"></a>
-															<button type="button" class="btnCnItem disabled"
-																	disabled="" data-cd="000095" title="이봄씨어터">이봄씨어터</button></li>
-														</ul>
+														
+														
+														
 													</div>
 													<div class="scroll-element scroll-x">
 														<div class="scroll-element_outer">
@@ -675,7 +415,7 @@
 	var favoriteCinema = [];
 	var timer = null;
 	
-	// 필요한 함수 추가
+	// 
 	$(function() {
 		// 예매율순 | 가나다순 클릭
 		$(".btnMovieTab").on("click", function(e) { 
@@ -687,129 +427,67 @@
 // 			getMainList();
 			makeMovieList();
 		});
-	});
-	
-	
-	// 기존 함수
-	$(function() {
 		
 		
-// 		getMainList();
-// 		makeBrandList();
-// 		makeCinemaList();
-// 		makeMovieList();
-// 		makePlaydtList();
-		
-		if ($("#MovieCd").val() != "all")
-			setMovie();
-		
-		if ($("#CinemaCd").val() != "all")
-			setCinema();
-		
-		if ($("#PlaySDT").val() != "all")
-			setPlayDT();
-		
-		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all") {
-			getTimeList();
-			makeTimeList();
-		}
-		
-		
-		if ($("#ScreenCd").val() != "" && $("#ShowSeq").val() != "") {
-			//setTime();
-			$('.btnTime[data-cd="' + $("#ScreenCd").val() + '"][data-seq="' + $("#ShowSeq").val() + '"]').click();
-		}
-		
-		$(".btnMovieType").on("click", function(e) {
-			e.preventDefault();
-			$(".btnMovieType").removeClass("active");
-			$(this).addClass("active");
-			$("#TabMovieType").val($(this).data("type"));
+		// 지역 클릭
+		$(".btnTheater").on("click", function(e){
+			var cd = $(this).data("cd");
 			
-			makeMovieList();
+			// 비회원인 경우 로그인 후 이용해주세요 
+			if (cd == "favorite") {
+				$("#login").modal();
+				return;
+			} 
+			
+			// 클릭한 지역 배경색 전환
+			$(".btnTheater").parent().removeClass("active");
+			$(this).parent().addClass("active");
+			
+			// 
+			
+			
+			
+			
 		});
 		
-		$(".btn-search").on("click", function(e) {
-			e.preventDefault();
-			$(this).next().fadeIn(300);
-		});
-		
-		$(".btn-remove").on("click", function(e) {
-			e.preventDefault();
-			$(this).closest(".search").fadeOut(300);
-			$(this).siblings(".inp-mv").val("").keyup();
-		});
-		
-		$("#srchMovie").on("keyup", function(e) {
-			var txt = $(this).val().trim();
-			$("#movieList li").each(function() {
-				if ($(this).find(".btnMvItem").attr("title").indexOf(txt) != -1) {
-					$(this).show();
-				} else {
-					$(this).hide();
-				}
-			});
-		});
-		
-		$("#srchCinema").on("keyup", function(e) {
-			var txt = $(this).val().trim();
-			$('.btnTheater[data-cd="all"]').click();
-			$("#cinemaList .subTheater li").each(function() {
-				if ($(this).find(".btnCnItem").text().indexOf(txt) != -1) {
-					$(this).show();
-				} else {
-					$(this).hide();
-				}
-			});
-		});
-
-		$(".btn-srch").on("click", function(e) {
-			e.preventDefault();
-		});
-		
-// 		인원/좌석 선택 버튼 클릭
-		$("#btnNext").on("click", function(e) {
-			console.log("인원/좌석선택 버튼 클릭");
-			location.href='seat';
-// 			var req = [];
-// 			if ($("#MovieCd").val() == "all") {
-// 				req.push("영화");
-// 			}
-// 			if ($("#CinemaCd").val() == "all") {
-// 				req.push("극장");
-// 			}
-// 			if ($("#PlaySDT").val() == "all") {
-// 				req.push("관람일");
-// 			}
-// 			if ($("#ScreenCd").val() == "") {
-// 				req.push("관람시간");
-// 			}
-
-// 			if (req.length > 0) {
-// 				var msg = req.join(", ") + "(를)을 선택해 주세요.";
-// 				mAlert(msg);
+		// 지역 클릭 본 소스 참고중
+// 		$(document).on("click", ".btnTheater", function(e) {
+// 			var cd = $(this).data("cd");
+			
+// 			if (cd == "favorite") {
+// 				$("#login").modal();
 // 				return;
 // 			}
-
-// 			$.ajax({
-// 				type: "GET",
-// 				url: "/reserve/movie_rating_popup.do",
-// 				async: false,
-// 				data: $("#dataForm").serialize(),
-// 				cache: false,
-// 				dataType: "json",
-// 				success: function(res) {
-// 					$("#viewGrade .tit").html('<i class="age' + getRating(res.MovieRate) + '"></i> ' + getRatingTxt(res.MovieRate));
-// 					$("#viewGrade .txt").html(res.MainMsgNm + res.SubMsgNm1 + res.SubMsgNm2 + res.SubMsgNm3);
-// 					$("#viewGrade").modal();
-// 				}
-// 			});
+			
+			
+// 			$(".btnTheater").parent().removeClass("active");
+// 			$(this).parent().addClass("active");
+			
+// 			$("#TabRegionCd").val($(this).data("cd"));
+			
+// 			$(".subTheater").hide();
+// 			$('.subTheater[data-cd="' + cd + '"]').show();
+// 		});
+		
+		
+		
+		
+		
+		
+		// 인원/좌석 선택 버튼 클릭 (임시로 페이지만 넘어가게함 수정필요)
+		$("#btnNext").on("click", function(e) {
+			alert("인원/좌석선택 버튼 클릭");
+			location.href='seat';
 		});
 		
-// 		$(".btnNext").on("click", function(e) {
-// 			$("#dataForm").submit();
-// 		});
-	}); // 첫줄 function end
+	});
+		
+	
+	
+// 	function end
+	
+	
+
 
 	$(document).on("click", ".btnMvItem", function(e) {
 		e.preventDefault();
@@ -853,23 +531,23 @@
 		$(".btnMovieType[data-type='all']").click();
 	});
 
-	$(document).on("click", ".btnTheater", function(e) {
-		var cd = $(this).data("cd");
+// 	$(document).on("click", ".btnTheater", function(e) {
+// 		var cd = $(this).data("cd");
 		
-		if (cd == "favorite") {
-			$("#login").modal();
-			return;
-		}
+// 		if (cd == "favorite") {
+// 			$("#login").modal();
+// 			return;
+// 		}
 		
 		
-		$(".btnTheater").parent().removeClass("active");
-		$(this).parent().addClass("active");
+// 		$(".btnTheater").parent().removeClass("active");
+// 		$(this).parent().addClass("active");
 		
-		$("#TabRegionCd").val($(this).data("cd"));
+// 		$("#TabRegionCd").val($(this).data("cd"));
 		
-		$(".subTheater").hide();
-		$('.subTheater[data-cd="' + cd + '"]').show();
-	});
+// 		$(".subTheater").hide();
+// 		$('.subTheater[data-cd="' + cd + '"]').show();
+// 	});
 
 	$(document).on("click", ".btnCnItem", function(e) {
 		$(".btnCnItem").parent().removeClass("check");
@@ -994,77 +672,77 @@
 	
 	
 	// 극장 리스트 작성
-	function makeCinemaList() {
-		var tab = "";
-		var det = "";
+// 	function makeCinemaList() {
+// 		var tab = "";
+// 		var det = "";
 
-		//즐겨찾는 극장
-		var cnt = 0;
-		det += '<ul class="subTheater" data-cd="favorite"' + ("favorite" != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
-		for (var i = 0; i < favoriteCinema.length; i++) {
-			var obj = favoriteCinema[i];
-			var c = cinemaList.map(function(e){ return e.CinemaCd == obj.CinemaCd; }).indexOf(true);
-			if (c > -1) {
-				det += '<li' + (obj.CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
-				det += '<a href="#" class="btn-star active" data-cd="' + obj.CinemaCd + '" data-nm="' + obj.CinemaNm + '" data-rg="' + obj.RegionCd + '"></a>';
-				det += '<button type="button" class="btnCnItem' + (cinemaList[c].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
-				det += '</li>';
-				cnt++;
-			}
-		}
-		det += '</ul>';
-		tab += '<li' + ("favorite" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite">즐겨찾는 영화관 <span>(' + cnt + ')</span></button></li>';
+// 		//즐겨찾는 극장
+// 		var cnt = 0;
+// 		devar i = 0; i < favoriteCinema.length; i++) {
+// 			vt += '<ul class="subTheater" data-cd="favorite"' + ("favorite" != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
+// 		for (ar obj = favoriteCinema[i];
+// 			var c = cinemaList.map(function(e){ return e.CinemaCd == obj.CinemaCd; }).indexOf(true);
+// 			if (c > -1) {
+// 				det += '<li' + (obj.CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
+// 				det += '<a href="#" class="btn-star active" data-cd="' + obj.CinemaCd + '" data-nm="' + obj.CinemaNm + '" data-rg="' + obj.RegionCd + '"></a>';
+// 				det += '<button type="button" class="btnCnItem' + (cinemaList[c].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
+// 				det += '</li>';
+// 				cnt++;
+// 			}
+// 		}
+// 		det += '</ul>';
+// 		tab += '<li' + ("favorite" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite">즐겨찾는 영화관 <span>(' + cnt + ')</span></button></li>';
 		
-		//전체
-		cnt = 0;
-		det += '<ul class="subTheater" data-cd="all"' + ("all" != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
-		for (var i = 0; i < cinemaList.length; i++) {
-			var obj = cinemaList[i];
-			det += '<li' + (obj.CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
-			det += '<a href="#" class="btn-star' + (favoriteCinema.map(function(e){ return e.CinemaCd == obj.CinemaCd; }).indexOf(true) > -1 ? ' active' : '') + '" data-cd="' + obj.CinemaCd + '" data-nm="' + obj.CinemaNm + '" data-rg="' + obj.RegionCd + '"></a>';
-			det += '<button type="button" class="btnCnItem' + (obj.HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
-			det += '</li>';
-			cnt++;
-		}
-		det += '</ul>';
-		tab += '<li' + ("all" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="전체" data-cd="all">전체 (' + cnt + ')</button></li>';
+// 		//전체
+// 		cnt = 0;
+// 		det += '<ul class="subTheater" data-cd="all"' + ("all" != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
+// 		for (var i = 0; i < cinemaList.length; i++) {
+// 			var obj = cinemaList[i];
+// 			det += '<li' + (obj.CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
+// 			det += '<a href="#" class="btn-star' + (favoriteCinema.map(function(e){ return e.CinemaCd == obj.CinemaCd; }).indexOf(true) > -1 ? ' active' : '') + '" data-cd="' + obj.CinemaCd + '" data-nm="' + obj.CinemaNm + '" data-rg="' + obj.RegionCd + '"></a>';
+// 			det += '<button type="button" class="btnCnItem' + (obj.HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
+// 			det += '</li>';
+// 			cnt++;
+// 		}
+// 		det += '</ul>';
+// 		tab += '<li' + ("all" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="전체" data-cd="all">전체 (' + cnt + ')</button></li>';
 		
-		//지역별
-		for (var i = 0; i < areaList.length; i++) {
-			var obj = areaList[i];
-			var cnt = 0;
-			det += '<ul class="subTheater" data-cd="' + obj.RegionCd + '"' + (obj.RegionCd != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
-			for (var j = 0; j < obj.AreaDetail.length; j++) {
-				det += '<li' + (obj.AreaDetail[j].CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
-				det += '<a href="#" class="btn-star' + (favoriteCinema.map(function(e){ return e.CinemaCd == obj.AreaDetail[j].CinemaCd; }).indexOf(true) > -1 ? ' active' : '') + '" data-cd="' + obj.AreaDetail[j].CinemaCd + '" data-nm="' + obj.AreaDetail[j].CinemaNm + '" data-rg="' + obj.AreaDetail[j].RegionCd + '"></a>';
-				det += '<button type="button" class="btnCnItem' + (obj.AreaDetail[j].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.AreaDetail[j].CinemaCd + '" title="' + obj.AreaDetail[j].CinemaNm + '">' + obj.AreaDetail[j].CinemaNm + '</button>';
-				det += '</li>';
-				cnt++;
-			}
-			det += '</ul>';
-			tab += '<li' + (obj.RegionCd == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="' + obj.RegionNm + '" data-cd="' + obj.RegionCd + '"' + (cnt == 0 ? ' disabled' : '') + '>' + obj.RegionNm + ' (' + cnt + ')</button></li>';
-		}
+// 		//지역별
+// 		for (var i = 0; i < areaList.length; i++) {
+// 			var obj = areaList[i];
+// 			var cnt = 0;
+// 			det += '<ul class="subTheater" data-cd="' + obj.RegionCd + '"' + (obj.RegionCd != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
+// 			for (var j = 0; j < obj.AreaDetail.length; j++) {
+// 				det += '<li' + (obj.AreaDetail[j].CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
+// 				det += '<a href="#" class="btn-star' + (favoriteCinema.map(function(e){ return e.CinemaCd == obj.AreaDetail[j].CinemaCd; }).indexOf(true) > -1 ? ' active' : '') + '" data-cd="' + obj.AreaDetail[j].CinemaCd + '" data-nm="' + obj.AreaDetail[j].CinemaNm + '" data-rg="' + obj.AreaDetail[j].RegionCd + '"></a>';
+// 				det += '<button type="button" class="btnCnItem' + (obj.AreaDetail[j].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.AreaDetail[j].CinemaCd + '" title="' + obj.AreaDetail[j].CinemaNm + '">' + obj.AreaDetail[j].CinemaNm + '</button>';
+// 				det += '</li>';
+// 				cnt++;
+// 			}
+// 			det += '</ul>';
+// 			tab += '<li' + (obj.RegionCd == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="' + obj.RegionNm + '" data-cd="' + obj.RegionCd + '"' + (cnt == 0 ? ' disabled' : '') + '>' + obj.RegionNm + ' (' + cnt + ')</button></li>';
+// 		}
 
-		$("#regionList").html(tab);
-		$("#cinemaList").html(det);
+// 		$("#regionList").html(tab);
+// 		$("#cinemaList").html(det);
 
-		if ($("#srchCinema").val() != "")
-			$("#srchCinema").keyup();
+// 		if ($("#srchCinema").val() != "")
+// 			$("#srchCinema").keyup();
 		
-		if ($("#TabRegionCd").val() == "all"){
-			if ($("#CinemaCd").val() == "all" && $('.subTheater[data-cd="favorite"] li').length > 0) {
-				$('.btnTheater[data-cd="favorite"]').click();
-			}else{
-				$('.btnTheater[data-cd="all"]').click();
-			}
-		} else {
-			$('.btnTheater[data-cd="' + $("#TabRegionCd").val() + '"]').click();
-		}
+// 		if ($("#TabRegionCd").val() == "all"){
+// 			if ($("#CinemaCd").val() == "all" && $('.subTheater[data-cd="favorite"] li').length > 0) {
+// 				$('.btnTheater[data-cd="favorite"]').click();
+// 			}else{
+// 				$('.btnTheater[data-cd="all"]').click();
+// 			}
+// 		} else {
+// 			$('.btnTheater[data-cd="' + $("#TabRegionCd").val() + '"]').click();
+// 		}
 		
-		$("#regionList li.active .btnTheater").focus();
-		$("#cinemaList .subTheater:visible li:first-child .btnCnItem").focus();
-		$("#cinemaList .subTheater:visible li.check .btnCnItem").focus();
-	}
+// 		$("#regionList li.active .btnTheater").focus();
+// 		$("#cinemaList .subTheater:visible li:first-child .btnCnItem").focus();
+// 		$("#cinemaList .subTheater:visible li.check .btnCnItem").focus();
+// 	}
 	
 	
 	// 상영 회차 리스트

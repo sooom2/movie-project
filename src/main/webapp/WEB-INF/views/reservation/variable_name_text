@@ -5,4 +5,14 @@ makeCinemaList 극장 리스트
 
 -----------
 
-.btnTheater // 영화관버튼
+.btnTheater // 지역 버튼
+.subTheater // 지역 내 영화관 버튼
+.btnMvItem // 영화 버튼
+
+
+11 -> 051
+41 -> 02
+28 -> 052
+42 -> 055
+
+<li><button type="button" class="btnTheater" title="부산" data-cd="KR-051">부산</button></li>
