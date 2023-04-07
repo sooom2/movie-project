@@ -24,38 +24,7 @@
 					<div class="title-membership">회원정보</div>
 					<form method="post" name="form-join2" action="abc">
 						<div class="wrap-inside">
-							<div class="join-detail">
-								<label class="label-input" for=""> <span>선호지점</span>
-									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
-										<select name="theaterCode" id="join-theater"
-											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="1001" selected="">선호지점변경시 선택</option>
-											<option value="051">부산점</option>
-											<option value="051">부산대연점</option>
-											<option value="02">강남점</option>
-											<option value="052">울산삼산점</option>
-											<option value="055">경남김해점</option>
-										</select>
-									</div> <span></span>
-								</label>
-							</div>
-							<div class="join-detail">
-								<label class="label-input" for=""> <span>선호장르</span>
-									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
-										<select name="theaterCode" id="join-theater"
-											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="1001" selected="">선호장르변경시 선택</option>
-											<option value="액션">액션</option>
-											<option value="드라마">드라마</option>
-											<option value="코미디">코미디</option>
-											<option value="애니메이션">애니메이션</option>
-											<option value="스릴러">스릴러</option>
-											<option value="로맨스">로맨스</option>
-											<option value="범죄">범죄</option>
-										</select>
-									</div> <span></span>
-								</label>
-							</div>
+						
 
 							<div class="join-detail">
 								<label class="label-input" for="id"> <span>아이디</span>
@@ -71,13 +40,12 @@
 							</div>
 							<div class="join-detail">
 								<div class="label-input">
-									<span class="title">비밀번호</span><input type="text" id="pass" value="********"> 
+									<span class="title">기존 비밀번호</span><input type="text" id="pass" value="********"> 
 								</div>
 							</div>
 							<div class="join-detail">
 								<div class="label-input">
-									<span class="title">비밀번호확인</span><input type="text" id="pass" value="********"> <a
-										href="#" class="btn-change changepwd">변경</a>
+									<span class="title">변경할 비밀번호</span><input type="text" id="pass" value="********">
 								</div>
 							</div>
 							<div class="join-detail">
@@ -97,13 +65,44 @@
 
 							<div class="join-detail">
 								<div class="label-input">
-									<span class="title">휴대폰번호</span> <span class="desc">010-5014-7709</span>
-									<a href="#" class="btn-change changephoneno">변경</a> <input
+									<span class="title">휴대폰번호</span> <span class="desc">010-1234-5678</span>
+									 <input
 										type="hidden" id="join-phone" name="phone" value="01050147709">
 								</div>
 							</div>
 							
-					
+						<div class="join-detail">
+								<label class="label-input" for=""> <span>선호지점</span>
+									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+										<select name="theaterCode" id="join-theater"
+											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
+											<option value="1001" selected="">지점변경시 선택</option>
+											<option value="051">부산점</option>
+											<option value="051">부산대연점</option>
+											<option value="02">강남점</option>
+											<option value="052">울산삼산점</option>
+											<option value="055">경남김해점</option>
+										</select>
+									</div> <span></span>
+								</label>
+							</div>
+							<div class="join-detail">
+								<label class="label-input" for=""> <span>선호장르</span>
+									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+										<select name="theaterCode" id="join-theater"
+											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
+											<option value="1001" selected="">장르변경시 선택</option>
+											<option value="액션">액션</option>
+											<option value="드라마">드라마</option>
+											<option value="코미디">코미디</option>
+											<option value="애니메이션">애니메이션</option>
+											<option value="스릴러">스릴러</option>
+											<option value="로맨스">로맨스</option>
+											<option value="범죄">범죄</option>
+										</select>
+									</div> <span></span>
+								</label>
+							</div>
 						</div>
 
 						<a href="javascript:;" name="btn-join-confirm" id="btn-mypage-ok"
