@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="username">
-						회원등급 <span class="right"> 일반 </span>
+						선호장르 <span class="right"> 스릴러 </span>
 					</div>
 
 				</div>
