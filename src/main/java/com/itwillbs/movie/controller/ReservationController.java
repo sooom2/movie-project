@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.movie.service.*;
@@ -14,10 +15,16 @@ public class ReservationController {
 	private ReservationService service;
 	
 	
-	@RequestMapping(value = "reservation", method = {RequestMethod.GET, RequestMethod.POST})
-	public String reservation() {
+	@GetMapping(value = "reservation")
+	public String reservation(Model model) {
 		List<HashMap<String, String>> cinema = service.selectCinema();
-		System.out.println(cinema);
+		model.addAttribute(cinema);
+		
+		// cinema 값 확인
+//		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
+//			System.out.println(a.getValue());
+//		}
+		
 		return "reservation/reservation";
 	}
 	@RequestMapping(value = "seat", method = {RequestMethod.GET, RequestMethod.POST})

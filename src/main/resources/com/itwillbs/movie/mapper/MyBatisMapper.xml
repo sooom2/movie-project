@@ -76,18 +76,6 @@
 	</update>
 	
 	
-	
-<!-- 	예매 -->
-	<select id="selectCinema" resultType="hashmap">
-		SELECT *
-			FROM cinema;
-	</select>
-
-
-
-
-
-<!-- 예매 end -->
 
 <!-- 상영중인 영화  -->
 	<select id="screeningMovie" resultType="hashmap">

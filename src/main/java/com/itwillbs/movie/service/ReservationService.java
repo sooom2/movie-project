@@ -11,7 +11,7 @@ import com.itwillbs.movie.mapper.*;
 @Service
 public class ReservationService {
 	@Autowired
-	private MyBatisMapper mapper;
+	private ReservationMapper mapper;
 	
 	public List<HashMap<String, String>> selectCinema() {
 		
