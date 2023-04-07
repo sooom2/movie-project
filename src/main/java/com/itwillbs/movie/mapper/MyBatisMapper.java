@@ -21,6 +21,9 @@ public interface MyBatisMapper {
 	
 	// ----------------------------------------------------------------------------------------
 	
+	// 스토어 기프카드 조회
+	List<HashMap<String, String>> selectGift();
+	
 
 	
 }

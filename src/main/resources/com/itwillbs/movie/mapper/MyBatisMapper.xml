@@ -43,6 +43,10 @@
 			 WHERE item_code = #{item_code}
 	</delete>
 	
+	<select id="selectGift" resultType="hashmap">
+		SELECT * FROM item
+			WHERE item_type = 'giftcard'
+	</select>
 	
 	
 </mapper>
