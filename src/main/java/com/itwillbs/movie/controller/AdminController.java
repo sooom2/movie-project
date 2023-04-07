@@ -31,6 +31,7 @@ public class AdminController {
 		return "admin/admin_item_pay";
 	}
 	
+	// 상품 조회
 	@RequestMapping(value = "admin_item_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemRegister(Model model) {
 		List<HashMap<String, String>> itemList = itemService.selectItem();
@@ -39,11 +40,20 @@ public class AdminController {
 		return "admin/admin_item_register";
 	}
 	
+	// 상품 등록
 	@RequestMapping(value = "admin_item_registerPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemRegisterPro(@RequestParam HashMap<String, String> item) {
 		
 		int registCount = itemService.registItem(item);
 		
+		return "redirect:/admin_item_register";
+	}
+	
+	// 상품 삭제
+	@RequestMapping(value = "admin_item_delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemDelete(String item_code) {
+		
+		int deleteCount = itemService.deleteItem(item_code);
 		
 		return "redirect:/admin_item_register";
 	}

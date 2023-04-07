@@ -13,6 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -101,6 +102,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input name="item_status" class="form-control" id="inputPasswordConfirm" type="text" placeholder="Confirm password" />
+                                                        <label for="inputPasswordConfirm">상품 상태</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><input class="btn btn-primary btn-block" type="submit" value="등록하기"></div>
                                             </div>
@@ -129,7 +138,7 @@
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter">상품 이미지</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
-									href="#" class="datatable-sorter">상품 상태</a></th>
+									href="#" class="datatable-sorter">상품 상태(new, hot, event)</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter"></a></th>
 							</tr>
@@ -143,11 +152,11 @@
 								<td>${item.get("item_name") }</td>
 								<td>${item.get("item_price") }</td>
 								<td>${item.get("item_detail") }</td>
-								<td>${item.get("item_image") }</td>
+								<td><img alt="" src="${item.get('item_image') }"></td>
 								<td>${item.get("item_status") }</td>
 								<td>
 									<input class="btn btn-primary btn-block" type="button" value="수정">
-									<input class="btn btn-primary btn-block" type="button" value="삭제">
+									<input onclick="location.href='admin_item_delete?item_code=${item.get('item_code')}'" class="btn btn-primary btn-block" type="button" value="삭제">
 								</td>
 							</tr>
 						</tbody>

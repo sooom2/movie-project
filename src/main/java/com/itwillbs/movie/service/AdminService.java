@@ -21,5 +21,9 @@ public class AdminService {
 		return mapper.selectItem();
 	}
 
+	public int deleteItem(String item_code) {
+		return mapper.deleteItem(item_code);
+	}
+
 
 }

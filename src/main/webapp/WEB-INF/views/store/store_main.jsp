@@ -91,7 +91,7 @@
 						<li class=""><a href="store_detail"
 							title="00 기프트카드 5만원권 상세보기">
 								<div class="soldout">SOLD OUT</div>
-								<div class="label new">NEW</div>
+								<div class="label new">new</div>
 								<div class="img">
 									<img
 										src="resources/images/store/gift5.png"
@@ -125,7 +125,7 @@
 						<li class=""><a href=""
 							title="러브콤보 상세보기">
 								<div class="soldout">SOLD OUT</div>
-								<div class="label hot">대표상품</div>
+								<div class="label hot">hot</div>
 								<div class="img">
 									<img
 										src="resources/images/store/pk1.png"
@@ -152,7 +152,7 @@
 						<li class=""><a href=""
 							title="더블콤보 상세보기">
 								<div class="soldout">SOLD OUT</div>
-								<div class="label event">BEST</div>
+								<div class="label event">event</div>
 								<div class="img">
 									<img
 										src="resources/images/store/pk2.png"
