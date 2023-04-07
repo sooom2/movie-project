@@ -33,6 +33,8 @@ public interface MyBatisMapper {
 
 	int updateItem(HashMap<String, String> item);
 
+	List<HashMap<String, String>> selectCinema();
+
 	
 
 	
