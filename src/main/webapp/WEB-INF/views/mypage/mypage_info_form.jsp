@@ -45,20 +45,28 @@
 										<select name="theaterCode" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<option value="1001" selected="">선호장르변경시 선택</option>
-											<option value="051">부산점</option>
-											<option value="051">부산대연점</option>
-											<option value="02">강남점</option>
-											<option value="052">울산삼산점</option>
-											<option value="055">경남김해점</option>
+											<option value="액션">액션</option>
+											<option value="드라마">드라마</option>
+											<option value="코미디">코미디</option>
+											<option value="애니메이션">애니메이션</option>
+											<option value="스릴러">스릴러</option>
+											<option value="로맨스">로맨스</option>
+											<option value="범죄">범죄</option>
 										</select>
 									</div> <span></span>
 								</label>
 							</div>
 
 							<div class="join-detail">
-								<label class="label-input" for="email"> <span>아이디(이메일)</span>
+								<label class="label-input" for="id"> <span>아이디</span>
 									<input type="text" id="memberId" name="memberId" class="input"
-									value="yeri7880@naver.com"> <span></span>
+									value="yeri12"> <span></span>
+								</label>
+							</div>
+							<div class="join-detail">
+								<label class="label-input" for="email"> <span>이메일</span>
+									<input type="text" id="memberId" name="memberId" class="input"
+									value="yeri12@naver.com"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
