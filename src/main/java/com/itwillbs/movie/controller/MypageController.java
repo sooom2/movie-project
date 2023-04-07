@@ -38,6 +38,12 @@ public class MypageController {
 		
 		return "mypage/mypage_info_form";
 	}
+	//회원정보수정
+	@GetMapping(value = "mypageRv")
+	public String mypageRv() {
+		
+		return "mypage/mypage_review_form";
+	}
 	
 	
 	

@@ -59,7 +59,8 @@
 					<li><a href="mypageR">예매/취소내역</a></li>
 					<li><a href="mypageS" class="">매점교환권</a></li>
 					<li><a href="mypageP" class="">포인트내역</a></li>
-					<li><a href="mypageQ" class=" selected">나의 문의내역</a></li>
+					<li><a href="mypageQ" class=" selected">문의내역</a></li>
+					<li><a href="mypageRv" class=" ">영화리뷰</a></li>
 				</ul>
 			</div>
 			

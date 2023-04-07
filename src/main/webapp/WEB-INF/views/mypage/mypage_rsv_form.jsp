@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/common.css" rel="stylesheet">
+<!-- <link href="resources/css/common.css" rel="stylesheet"> -->
 <link href="resources/css/mypage.css" rel="stylesheet">
-<link href="resources//css/inc.css" rel="stylesheet">
+<!-- <link href="resources//css/inc.css" rel="stylesheet"> -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
@@ -59,7 +59,8 @@
 					<li><a href="mypageR" class="selected">예매/취소내역</a></li>
 					<li><a href="mypageS" class="">매점교환권</a></li>
 					<li><a href="mypageP" class="">포인트내역</a></li>
-					<li><a href="mypageQ" class=" ">나의 문의내역</a></li>
+					<li><a href="mypageQ" class=" ">문의내역</a></li>
+					<li><a href="mypageRv" class=" ">영화리뷰</a></li>
 				</ul>
 			</div>
 			<script id="template-headerlatestcoupon-list"
