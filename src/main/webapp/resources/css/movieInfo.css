@@ -25,6 +25,15 @@
 	padding-top: 117px;
 }
 
+.section-main-movie-list .main-movie-list .wrap-slider ul li .over-a .over-btn-info
+	{
+	background: #8080803b;
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 1px 38px;
+	margin-left: 18px;
+}
+
 .section-movie-list ul {
 	display: block;
 	width: 890px;
@@ -62,13 +71,13 @@
 }
 
 .section-movie-list ul li .over-a.up {
-	background: url("../images/movies/bg-list-hover-up.png") center center
-		no-repeat;
+/* 	background: url("../images/movies/bg-list-hover-up.png") center center */
+/* 		no-repeat; */
 }
 
 .section-movie-list ul li .over-a.down {
-	background: url("../movies/bg-list-hover-down.png") center center
-		no-repeat;
+/* 	background: url("../movies/bg-list-hover-down.png") center center */
+/* 		no-repeat; */
 }
 
 .section-movie-list ul li .over-a a.rsv {
@@ -79,7 +88,7 @@
 	font-size: 16px;
 	color: #f3f3f3;
 	font-weight: normal;
-	padding-left: 46px;
+	padding-left: 50px;
 	background-color: transparent;
 }
 
@@ -91,7 +100,7 @@
 	font-size: 16px;
 	color: #f3f3f3;
 	font-weight: normal;
-	padding-left: 75px;
+	padding-left: 50px;
 	background-color: transparent;
 }
 
@@ -188,9 +197,9 @@
 	font-size: 17px;
 	width: 170px;
 	overflow: hidden !important;
-	/* border: 1px solid #b4b5b5; */
-	/* height: 30px; */
-	/* padding-left: 0px; */
+/* 	border: 1px solid #b4b5b5; */
+/* 	height: 30px; */
+	padding-left: 0px;
 	padding: 6px 0;
 	color: #000000;
 	text-align: center;
@@ -293,4 +302,50 @@
 .movie-date .rb-3 {
 	background: url("../images/movies/icon-rb-3.png") center center
 		no-repeat;
+}
+
+/* 예매하기 버튼*/
+.movie-list ol li .btn-util .case.col-2 .button:first-child {
+    margin-left: 0;
+}
+.movie-list ol li .btn-util .case.col-2 .button {
+    width: 74px;
+    margin-left: 5px;
+}
+.movie-list ol li .btn-util .case .button {
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.button.purple {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #503396;
+}
+a.button {
+    text-decoration: none;
+}
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+.button {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
 }
