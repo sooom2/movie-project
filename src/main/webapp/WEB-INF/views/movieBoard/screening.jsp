@@ -26,7 +26,7 @@
 		    <a href="/Movie/Info?MovieCode=${movie.get('info_movie_code') }" class="info">상세정보</a></span>
 		    <img src="https://file.cineq.co.kr/i.aspx?movieid=${movie.get('info_movie_code') }&amp;size=210" class="posterlist">
 		    <div class="movie-desc">
-		    <span class="label">1</span> ${movie.get('info_movie_title') }
+		    <span class="label"> </span> ${movie.get('info_movie_title') }
 		    <div class="btn-util">
 		    	<button type="button" class="button btn-like" data-no="01309400"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>1.9k</span></button>
                 <a href="#" class="button purple bokdBtn" data-no="01309400" title="영화 예매하기">예매</a>  </div>
