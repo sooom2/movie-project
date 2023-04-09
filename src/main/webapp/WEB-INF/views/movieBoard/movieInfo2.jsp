@@ -11,14 +11,9 @@
 <link href="resources/css/movieInfo.css" rel="stylesheet">
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/main.js"></script>
 </head>
 <body id="top">
-  
 <jsp:include page="../nav.jsp" />   
-<!-- <script type="text/javascript"> -->
-<!--      showTheater(0); -->
-<!-- </script> -->
 
  <div id="container">
 	<div id="content">
@@ -28,10 +23,10 @@
 		</div>
 
 		<div class="section group section-movie-info">
-
 			<div class="wrap">
 				<h3>
-					<span class="rate-12">12</span>스즈메의 문단속 (Suzume)
+					<span class="rate-12">12</span>
+					${movieInfo.info_movie_title }
 				</h3>
 
 				<img
@@ -67,7 +62,6 @@
 					되는데…
 				</div>
 			</div>
-			<!--.wrap-->
 		</div>
 	</div>
 </div>
@@ -83,5 +77,6 @@
         });
     })
 </script>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

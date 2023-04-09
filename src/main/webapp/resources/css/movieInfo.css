@@ -349,3 +349,160 @@ a:link {
     background-color: #fff;
     cursor: pointer;
 }
+
+/*============================================================
+/*
+/* [p]: movie info
+/*
+============================================================== */
+.section-movie-info {
+	background-color: #f9f9f9;
+}
+
+.section-movie-info .wrap {
+	width: 720px;
+	margin: 0 auto;
+	padding: 56px 30px 140px 270px;
+	background-color: #fff;
+	position: relative;
+}
+
+.section-movie-info .wrap .poster {
+	position: absolute;
+	top: 56px;
+	left: 65px;
+	box-shadow: 2px 6px 15px 0 rgba(0, 0, 0, 0.65);
+}
+
+.section-movie-info .wrap h3 {
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 24px;
+	border-bottom: 2px solid #7d7d7d;
+	line-height: 22px;
+	margin-top: -1px;
+	color: #494949;
+}
+
+.section-movie-info .wrap h3 .rate-all, .section-movie-info .wrap h3 .rate-12,
+	.section-movie-info .wrap h3 .rate-15, .section-movie-info .wrap h3 .rate-n,
+	.section-movie-info .wrap h3 .rate-x {
+	font-weight: bold;
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+	margin-right: 9px;
+	position: relative;
+	padding: 0;
+	overflow: hidden;
+	text-indent: -10000em;
+	position: relative;
+	top: 2px;
+	left: 2px;
+}
+
+.section-movie-info .wrap h3 .rate-all {
+	background: url("../images/movies/icon-rate-all.png") center center
+		no-repeat;
+}
+
+.section-movie-info .wrap h3 .rate-12 {
+	background: url("../images/movies/icon-rate-12.png") center center
+		no-repeat;
+}
+
+.section-movie-info .wrap h3 .rate-15 {
+	background: url("../images/movies/icon-rate-15.png") center center
+		no-repeat;
+}
+
+.section-movie-info .wrap h3 .rate-x {
+	background: url("../images/movies/icon-rate-x.png") center center
+		no-repeat;
+}
+
+.section-movie-info .wrap h3 .rate-n {
+	background: url("../images/movies/icon-rate-n.png") center center
+		no-repeat;
+}
+
+.section-movie-info .wrap .basic {
+	margin: 16px 0 0 31px;
+	color: #666;
+	font-size: 16px;
+	line-height: 1.94em;
+}
+
+.section-movie-info .wrap .basic span {
+	font-weight: bold;
+}
+
+.section-movie-info .wrap .btn-rsv {
+	margin: 18px 0 25px 31px;
+	width: 115px;
+	height: 39px;
+	border-radius: 5px;
+	background-color: #ca141e;
+	display: block;
+	line-height: 39px;
+	font-size: 17px;
+	color: #fff;
+	text-align: center;
+	display: block;
+}
+
+.section-movie-info .wrap .synopsis-title {
+	padding: 41px 0 20px 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #494949;
+	border: 1px solid #d8d8d8;
+	border-width: 1px 0 1px 0;
+	margin-top: 18px;
+}
+
+.section-movie-info .wrap .synopsis {
+	line-height: 2.19em;
+	color: #666;
+	padding: 21px 0 21px 30px;
+}
+
+.section-movie-info .wrap .synopsis strong {
+	color: #3a3a3a;
+}
+
+.section-movie-info .wrap .trailer-title {
+	padding: 41px 0 20px 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #494949;
+	border: 1px solid #d8d8d8;
+	border-width: 1px 0 0 0;
+}
+
+.section-movie-info .wrap iframe {
+	max-width: 720px;
+	max-height: 405px;
+}
+
+
+.wrap-movie-title {
+  background-color: #e5e5e5;
+  width: 100%;
+  height: 134px;
+  text-align: center; }
+  .wrap-movie-title h2.movie-title {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 25px;
+    color: #666;
+    font-weight: normal;
+    padding-top: 42px;
+    height: 46px; }
+    .wrap-movie-title h2.movie-title::after {
+      content: "";
+      border-bottom: 2px solid #979797;
+      display: block;
+      margin: 0 auto; }

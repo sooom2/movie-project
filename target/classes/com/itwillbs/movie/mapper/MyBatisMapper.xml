@@ -78,11 +78,16 @@
 	
 
 <!-- 상영중인 영화  -->
+<!-- RegistMapper 겹치는 부분 -->
 	<select id="screeningMovie" resultType="hashmap">
 		SELECT * 
 			FROM movieInfo
 	</select>
-	
+	<select id="selectMovieInfo" resultType="hashmap">
+		SELECT * 
+			FROM movieInfo
+			 WHERE info_movie_code = #{info_movie_code}
+	</select>
 	<!-- 멤버리스트 -->
 	<select id="selectMember" resultType="hashmap">
 		SELECT * FROM member

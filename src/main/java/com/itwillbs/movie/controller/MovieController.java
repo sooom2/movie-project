@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itwillbs.movie.service.MovieService;
 
@@ -32,8 +34,13 @@ public class MovieController {
 	public String latest() {
 		return "movieBoard/latest";
 	}
-	@RequestMapping(value = "MovieInfoTest", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieInfoTest() {
-		return "movieBoard/movieInfoTest";
+	
+	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieInfo(@RequestParam String movieCd, Model model) {
+		HashMap<String, String> movieInfo = service.selectMovieInfo(movieCd);
+		
+		model.addAttribute("movieInfo", movieInfo);
+		
+		return "movieBoard/movieInfo2";
 	}
 }

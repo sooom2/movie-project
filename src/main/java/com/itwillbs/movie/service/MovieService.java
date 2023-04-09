@@ -18,5 +18,11 @@ public class MovieService {
 		
 		return mapper.screeningMovie();
 	}
+	public HashMap<String, String> selectMovieInfo(String movieCd) {
+		
+		return mapper.selectMovieInfo(movieCd);
+	}
+
+
 
 }

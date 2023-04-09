@@ -46,6 +46,8 @@ public interface MyBatisMapper {
 
 
 	
+	// 영화 상세 정보 페이지
+	HashMap<String, String> selectMovieInfo(String movieCd);
 }
 
 

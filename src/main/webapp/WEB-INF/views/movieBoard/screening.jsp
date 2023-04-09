@@ -23,7 +23,7 @@
 		<c:forEach var="movie" items="${movie }">
 		    <li data-moviecode="${movie.get('info_movie_code') }">
 		    <span class="over over-a"><a href="#" class="rsv">예매하기</a>
-		    <a href="/Movie/Info?MovieCode=${movie.get('info_movie_code') }" class="info">상세정보</a></span>
+		    <a href="MovieInfo?movieCd=${movie.get('info_movie_code') }" class="info">상세정보</a></span>
 		    <img src="https://file.cineq.co.kr/i.aspx?movieid=${movie.get('info_movie_code') }&amp;size=210" class="posterlist">
 		    <div class="movie-desc">
 		    <span class="label"> </span> ${movie.get('info_movie_title') }
