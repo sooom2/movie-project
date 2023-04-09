@@ -38,7 +38,7 @@ public class MypageController {
 		
 		return "mypage/mypage_info_form";
 	}
-	//회원정보수정
+	//리뷰페이지
 	@GetMapping(value = "mypageRv")
 	public String mypageRv() {
 		
