@@ -71,11 +71,11 @@
 				<li><a href="" class="">극장정보</a>
 					<div class="theaterInfo">
 						<ul>
-							<li><a href="" class="" onmouseover="hideTheater()">00점</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">00점</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">00점</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">00점</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">00점</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">부산점</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">부산대연점</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">강남점</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">울산삼산점</a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">경남김해점</a></li>
 <!-- 							<li><a href="" class=""	onmouseover="hideTheater()">자주가는 영화관</a></li> -->
 						</ul>
 					</div>

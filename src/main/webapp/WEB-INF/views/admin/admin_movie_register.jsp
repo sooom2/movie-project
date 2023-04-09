@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -305,12 +307,13 @@ function previewImage(targetObj, View_area) {
 									<h3 class="text-center font-weight-light my-4">영화수정</h3>
 								</div>
 								<div class="card-body">
-									<form action="registMoviePro" method="post">
-									 <div class="row mb-4">
-                                      	<h5 style="text-align:left">포스터수정</h5>
-                                   		<div class="col-md-3 moviePoster_modi">
+									<form action="registMoviePro">
+									<div class="row mb-4">
+                                      	<h5 style="text-align:left">포스터등록</h5>
+                                   		<div class="col-md-3 moviePoster">
                                        		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
                                         </div>
+                                        
                                         <div class="col-md-8">
 											<div class="filebox">
 										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
@@ -413,10 +416,11 @@ function previewImage(targetObj, View_area) {
 			
 		});
 		
+		
 		function apibutton(){
 			
 			var movieCd = $('#api').val();
-			alert(movieCd);
+// 			alert(movieCd);
 			$.ajax({
 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
 			type : 'GET',
@@ -426,15 +430,27 @@ function previewImage(targetObj, View_area) {
 				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
 				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
 // 				let info_story = info_story; // 받아올거
+
+
 				let info_year = data.movieInfoResult.movieInfo.prdtYear;
-				
-				
 				let info_time = data.movieInfoResult.movieInfo.showTm;
-				let info_showdate = data.movieInfoResult.movieInfo.openDt;
 				
-				alert(info_movie_title);
-// 				
-				$('input[name=info_movie_poster]').attr('value',info_movie_poster);		
+				
+				let str = data.movieInfoResult.movieInfo.openDt;
+				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8);
+			
+				//상영일 > 종영일 계산하기
+				var info_enddate = new Date(info_showdate);
+				info_enddate.setDate(info_enddate.getDate() + 100);
+			    var dateObject = new Date(info_enddate);
+			    var isoDateString = dateObject.toISOString();
+			    var formattedDateString = isoDateString.slice(0, 10);
+			    
+			   	info_enddate = formattedDateString;
+			    
+// 			    alert(info_enddate);
+			    
+			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);		
 				$('input[name=info_movie_code]').attr('value',info_movie_code);		
 				$('input[name=info_movie_title]').attr('value',info_movie_title);		
 				$('input[name=info_year]').attr('value',info_year);		
@@ -473,17 +489,19 @@ function previewImage(targetObj, View_area) {
 													
 													<hr>
 													<form action="registMoviePro">
-														 <div class="row mb-4">
+														<div class="row mb-4">
 					                                      	<h5 style="text-align:left">포스터등록</h5>
 					                                   		<div class="col-md-3 moviePoster">
 					                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
 					                                        </div>
+					                                        
 					                                        <div class="col-md-8">
 																<div class="filebox">
 															    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
 																</div>
 					                                        </div>
 					                                     </div>
+										                                     
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
@@ -493,7 +511,7 @@ function previewImage(targetObj, View_area) {
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating">
-																	<input class="form-control" id="info_movie_title" name="info_movie_title" type="text" value="${info_movie_title}" /> 
+																	<input class="form-control" id="info_movie_title" name="info_movie_title" type="text" value="" /> 
 																	<label for="info_movie_title">영화제목</label>
 																</div>
 															</div>
@@ -501,13 +519,13 @@ function previewImage(targetObj, View_area) {
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating">
-																	<input class="form-control" id="info_year" name="info_year" type="text" value="${info_year}"/>
+																	<input class="form-control" id="info_year" name="info_year" type="text" value=""/>
 																	<label for="info_year">제작년도</label>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_time" name="info_time" type="text" value="${info_time}" />
+																	<input class="form-control" id="info_time" name="info_time" type="text" value="" />
 																	<label for="info_time">상영시간</label>
 																</div>
 															</div>
@@ -516,13 +534,13 @@ function previewImage(targetObj, View_area) {
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_showdate" name="info_showdate" type="date" value="${info_showdate}"/>
+																	<input class="form-control" id="info_showdate" name="info_showdate" type="date" value="2023-02-23"/>
 																	<label for="info_showdate">상영일</label>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_enddate" name="info_enddate" type="date" value="${info_enddate}" />
+																	<input class="form-control" id="info_enddate" name="info_enddate" type="date" value="" />
 																	 <label for="info_enddate">종영일<label>
 																</div>
 															</div>
