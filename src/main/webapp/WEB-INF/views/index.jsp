@@ -17,10 +17,25 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
-
-
-<script>
-</script>	
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20124079",
+			dataType:"json",
+			success: function(data){
+				let movieCd = data.movieInfoResult.movieInfo.movieCd;
+				let movieNm = data.movieInfoResult.movieInfo.movieNm;
+				let openDt = data.movieInfoResult.movieInfo.openDt;
+				let peopleNm = data.movieInfoResult.movieInfo.directors.peopleNm;
+				let watchGradeNm = data.movieInfoResult.movieInfo.audits.watchGradeNm;
+				let genreNm = data.movieInfoResult.movieInfo.genres.genreNm;
+				let prdtStatNm = data.movieInfoResult.movieInfo.prdtStatNm;
+// 				alert(movieCd);
+				
+			}
+		});
+	});
+</script>
 
 
 <script type="text/javascript">

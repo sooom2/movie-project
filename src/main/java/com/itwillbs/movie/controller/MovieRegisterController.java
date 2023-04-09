@@ -60,6 +60,7 @@ public class MovieRegisterController {
 	//영화등록
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String registMovie(@RequestParam HashMap<String, String> movie) {
+		
 		int registCount = movieRegisterServie.registMovie(movie);
 		return "redirect:/admin_movie_register";
 	}
