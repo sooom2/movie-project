@@ -20,25 +20,24 @@
 		<div id="content">
 			<div class="section group section-member">
 
-				<div class="title">회원가입</div>
+				<div class="title">결제</div>
 
 				<div class="wrap-member-box wrap-join-box" id="join_confirm_section">
 					<ul class="join-indicator">
 						<li>이메일 입력(소셜 가입)</li>
 						<li>회원정보 입력</li>
-						<li class="selected">가입 완료</li>
+						<li class="selected">결제 완료</li>
 					</ul>
 					<div class="member join-success">
 						<div class="end">
 							<div class="t1">
-								<strong>${member.get("member_name") }</strong> 님<br>회원가입이 완료되었습니다.
+								<strong></strong> 님<br>결제 완료되었습니다.
 							</div>
 							<div class="t2">
 								포인트 1000점 적립완료!<br>지금부터 아이무비에서 제공하는 다양한 서비스를 이용하실 수 있습니다.
 							</div>
 							<div class="btns">
-								<a href="main" class="btn-type-main">메인화면</a>
-								<a href="javascript:goLink('/member/login.do');" class="btn-typep-login">로그인</a>
+								<a href="${path }/index.jsp" class="btn-type-main">메인화면</a>
 							</div>
 						</div>
 					</div>
