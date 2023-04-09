@@ -198,7 +198,7 @@
 	width: 170px;
 	overflow: hidden !important;
 /* 	border: 1px solid #b4b5b5; */
-/* 	height: 30px; */
+	height: 30px;
 	padding-left: 0px;
 	padding: 6px 0;
 	color: #000000;
@@ -243,7 +243,7 @@
 }
 
 .movie-desc .rate-n {
-	background: url("../images/movies/icon-rate-n.png") center center
+	background: url("../images/movies/grade/icon-rate-n.png") center center
 		no-repeat;
 }
 
@@ -401,31 +401,41 @@ a:link {
 	position: relative;
 	top: 2px;
 	left: 2px;
+/* 	position: absolute; */
+/*     left: 0; */
+/*     top: 50%; */
+/*     margin-top: -10px; */
 }
 
 .section-movie-info .wrap h3 .rate-all {
-	background: url("../images/movies/icon-rate-all.png") center center
+	background: url("../images/movies/grade/icon-rate-all.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .section-movie-info .wrap h3 .rate-12 {
-	background: url("../images/movies/icon-rate-12.png") center center
+	background: url("../images/movies/grade/icon-rate-12.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .section-movie-info .wrap h3 .rate-15 {
-	background: url("../images/movies/icon-rate-15.png") center center
+	background: url("../images/movies/grade/icon-rate-15.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .section-movie-info .wrap h3 .rate-x {
-	background: url("../images/movies/icon-rate-x.png") center center
+	background: url("../images/movies/grade/icon-rate-x.png") center center
 		no-repeat;
+	background-size: 23px 23px;
+		
 }
 
 .section-movie-info .wrap h3 .rate-n {
-	background: url("../images/movies/icon-rate-n.png") center center
+	background: url("../images/movies/grade/icon-rate-n.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .section-movie-info .wrap .basic {
