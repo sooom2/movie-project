@@ -79,36 +79,28 @@
 		
 // 	});
 // }
-
-
-function doLatest() {
-	let dis = document.querySelector(".admin-modal-latest");
-	if (dis.style.display = "none") {
-		dis.style.display = "block"
-	} else {
-		dis.style.display = "none";
-	}
-}
-
-function doMovieRegister(){
-	let dis = document.querySelector(".admin-modal-register");
-	if (dis.style.display = "none") {
-		dis.style.display = "block"
-	} else {
-		dis.style.display = "none";
-	}
-}
-
-function modalClose() {
-	let dis = document.querySelector(".admin-modal-register");
-	let dis2 = document.querySelector(".admin-modal-latest");
-	let dis3 = document.querySelector(".admin-modal-modify");
-	dis.style.display = "none";
-	dis2.style.display = "none";
-	dis3.style.display = "none";
+function deleteMovie(){
+	alert("ddd");
 	
-	
+		let delConfirm = confirm("삭제하시겠습니까?");
+		if (delConfirm) {
+			alert($(".info_movie_code").val());
+			$.ajax({
+				type: "GET",
+				url: "deleteMovie",
+				data: {
+					info_movie_code: $(".info_movie_code").val()
+				},
+				datatype:"json",
+				success: function(data){
+					alert("삭제완료");
+					history.back();
+				}
+			});
+		}
 }
+	
+
 
 //이미지올리기
 function previewImage(targetObj, View_area) {
@@ -202,14 +194,16 @@ function previewImage(targetObj, View_area) {
 								
 									<form action="updateMovie">
 									<div class="row mb-4">
-                                      	<h5 style="text-align:left">포스터등록</h5>
+                                      	<h6 style="text-align:left">포스터수정</h6>
                                    		<div class="col-md-3 moviePoster">
-                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'>
+                                       		<img src="https://file.cineq.co.kr/i.aspx?movieid=${selectMovie.get('info_movie_code') }&amp;size=210" class="posterlist">
+                                       		</div>
                                         </div>
                                         
                                         <div class="col-md-8">
 											<div class="filebox">
-										    <input type="file" name="info_movie_poster" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')" style="margin-left: -142px;">
+										    <input type="file" name="info_movie_poster" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')" style="margin-left:-155px;">
 											</div>
                                         </div>
                                      </div>
@@ -273,7 +267,7 @@ function previewImage(targetObj, View_area) {
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<a class="btn btn-primary btn-block btn-del" href="">삭제</a>
+													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a>
 												</div>
 											</div>
 										</div>

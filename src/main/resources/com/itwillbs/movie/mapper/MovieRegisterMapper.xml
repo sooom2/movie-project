@@ -16,7 +16,7 @@
 				   , #{info_year}
 				   , #{info_time}
 				   , #{info_showdate}
-				   , '20990909'
+				   , #{info_enddate}
 				   , '0'
 			)
 </insert>
