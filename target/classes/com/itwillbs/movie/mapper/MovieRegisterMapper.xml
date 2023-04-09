@@ -35,15 +35,15 @@
 
 <!--수정 -->
 <update id="updateMovie">
-	UPDATE item 
-		SET info_movie_code = #{item_type}
-		  , info_movie_title = #{item_price}
-		  , info_movie_poster = #{item_name}
-		  , info_story = #{item_price}
-		  , info_year = #{item_detail}
-		  , info_time = #{item_image}
-		  , info_showdate = #{item_status}
-		  , info_enddate = #{item_status}
+	UPDATE movieinfo 
+		SET info_movie_code = #{info_movie_code}
+		  , info_movie_title = #{info_movie_title}
+		  , info_movie_poster = #{info_movie_poster}
+		  , info_story = #{info_story}
+		  , info_year = #{info_year}
+		  , info_time = #{info_time}
+		  , info_showdate = #{info_showdate}
+		  , info_enddate = #{info_enddate}
 	  WHERE info_movie_code = #{info_movie_code}
 </update>
 

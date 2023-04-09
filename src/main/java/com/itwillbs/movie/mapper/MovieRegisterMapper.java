@@ -19,5 +19,5 @@ public interface MovieRegisterMapper {
 	int deleteMovie(String info_movie_code);
 	
 	//영화정보수정
-	int updateMovie(String info_movie_code);
+	int updateMovie(HashMap<String, String> movie);
 }

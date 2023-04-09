@@ -1,5 +1,3 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,67 +21,66 @@
 
 
 
-function doDisplay(info_movie_code) {
-	let dis = document.querySelector(".admin-modal-modify");
-	if (dis.style.display = "none") {
-		dis.style.display = "block"
+// function doDisplay(info_movie_code) {
+// 	let dis = document.querySelector(".admin-modal-modify");
+// 	if (dis.style.display = "none") {
+// 		dis.style.display = "block"
 		
-			$.ajax({
-				type: "POST",
-				url: "selectMovie",
-				data: {
-					info_movie_code: info_movie_code
-				},
-				datatype:"json",
-				success: function(data){
+// 			$.ajax({
+// 				type: "POST",
+// 				url: "selectMovie",
+// 				data: {
+// 					info_movie_code: info_movie_code
+// 				},
+// 				datatype:"json",
+// 				success: function(data){
 					
-					let info_movie_code = result.info_movie_code;
-					let info_movie_title = result.info_movie_title;
-					let info_year = result.info_year;
-					let info_time = result.info_time;
-					let info_showdate = result.info_showdate;
-					let info_enddate = result.info_showdate;
-					let info_story = result.info_story;
+// 					let info_movie_code = result.info_movie_code;
+// 					let info_movie_title = result.info_movie_title;
+// 					let info_year = result.info_year;
+// 					let info_time = result.info_time;
+// 					let info_showdate = result.info_showdate;
+// 					let info_enddate = result.info_showdate;
+// 					let info_story = result.info_story;
 					
 					
-				}
-			});
+// 				}
+// 			});
 		
 		
 		
-		$(".info_movie_code").val(info_movie_code);
-		$(".info_movie_title").val(info_movie_title);
-		$(".info_year").val(info_year);
+// 		$(".info_movie_code").val(info_movie_code);
+// 		$(".info_movie_title").val(info_movie_title);
+// 		$(".info_year").val(info_year);
 		
 		
-	} else {
-		dis.style.display = "none";
-	}
+// 	} else {
+// 		dis.style.display = "none";
+// 	}
 	
 	
-	$(".btn-del").on("click",function(){
+// 	$(".btn-del").on("click",function(){
 		
-		let delConfirm = confirm("삭제하시겠습니까?");
-		if (delConfirm) {
-			$.ajax({
-				type: "GET",
-				url: "deleteMovie",
-				data: {
-					info_movie_code: info_movie_code
-				},
-				datatype:"json",
-				success: function(data){
-					alert("삭제완료");
-				}
-			});
-		}
+// 		let delConfirm = confirm("삭제하시겠습니까?");
+// 		if (delConfirm) {
+// 			$.ajax({
+// 				type: "GET",
+// 				url: "deleteMovie",
+// 				data: {
+// 					info_movie_code: info_movie_code
+// 				},
+// 				datatype:"json",
+// 				success: function(data){
+// 					alert("삭제완료");
+// 				}
+// 			});
+// 		}
 		
 		
-	});
-	
-	
-	
-}
+// 	});
+// }
+
+
 function doLatest() {
 	let dis = document.querySelector(".admin-modal-latest");
 	if (dis.style.display = "none") {
@@ -174,8 +171,7 @@ function previewImage(targetObj, View_area) {
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
-			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -212,10 +208,10 @@ function previewImage(targetObj, View_area) {
 								<div class="card-header">
 									<button type="button" class="close-modal"
 										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">영화등록</h3>
+									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
 								</div>
 								<div class="card-body">
-									<form action="registMoviePro">
+									<form action="registMoviePro"  method="POST" enctype="multipart/form-data">
 									<div class="row mb-4">
                                       	<h5 style="text-align:left">포스터등록</h5>
                                    		<div class="col-md-3 moviePoster">
@@ -307,7 +303,8 @@ function previewImage(targetObj, View_area) {
 									<h3 class="text-center font-weight-light my-4">영화수정</h3>
 								</div>
 								<div class="card-body">
-									<form action="registMoviePro">
+								
+									<form action="registMoviePro" method="POST" enctype="multipart/form-data">
 									<div class="row mb-4">
                                       	<h5 style="text-align:left">포스터등록</h5>
                                    		<div class="col-md-3 moviePoster">
@@ -485,10 +482,8 @@ function previewImage(targetObj, View_area) {
 										<div class="content">
 											<div class="subscribe">
 												<div class="motto">
-
-													
 													<hr>
-													<form action="registMoviePro">
+													<form action="registMoviePro"  method="POST" enctype="multipart/form-data">
 														<div class="row mb-4">
 					                                      	<h5 style="text-align:left">포스터등록</h5>
 					                                   		<div class="col-md-3 moviePoster">
@@ -573,7 +568,7 @@ function previewImage(targetObj, View_area) {
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">영화관리</h3>
-					<input class="btn btn-block btn-more" type="button" value="영화등록"
+					<input class="btn btn-block btn-more" type="button" value="직접영화등록"
 						onclick="doMovieRegister()"> <input
 						class="btn btn-block btn-more" type="button" value="최신영화불러오기"
 						onclick="doLatest()">
@@ -595,7 +590,7 @@ function previewImage(targetObj, View_area) {
 								<th data-sortable="true" style="width: 15%;"><a href="#"
 									class="datatable-sorter">줄거리</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="">수정</a></th>
+									class="">수정/삭제</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
@@ -612,7 +607,7 @@ function previewImage(targetObj, View_area) {
 <%-- 								<td><img alt="" src="${movie.get('info_movie_poster') }"></td> --%>
 								<td class="modi">
 										 			 
-								<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay(${movie.info_movie_code})">
+								<input onclick="location.href='selectMovie?info_movie_code=${movie.get('info_movie_code')}'" class="btn btn-block btn-more" type="button" value="M O R E">
 <!-- 								</a> -->
 								</td>
 							</tr>

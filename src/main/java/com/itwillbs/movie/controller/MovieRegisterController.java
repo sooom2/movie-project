@@ -18,8 +18,6 @@ public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterServie movieRegisterServie;
 	
-	@Autowired
-	private MovieService service;
 	
 	//영화관리페이지
 	//영화목록조회
@@ -42,9 +40,22 @@ public class MovieRegisterController {
 		model.addAttribute("selectMovie",selectMovie);
 		
 		System.out.println(selectMovie);
-		
-		return "admin/admin_movie_register";
+
+		return "admin/admin_movie_update";
 	}
+	
+	// 영화 정보 수정
+		@RequestMapping(value = "updateMovie", method = {RequestMethod.GET, RequestMethod.POST})
+		public String updateMoviePro(@RequestParam HashMap<String, String> movie) {
+			
+			System.out.println("ddddddddd"+movie);
+			
+			int updateCount = movieRegisterServie.updateMovie(movie);
+			
+			return "redirect:/admin_movie_register";
+		}
+
+	
 	
 	//영화등록
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
@@ -60,15 +71,6 @@ public class MovieRegisterController {
 		
 		return "redirect:/admin_movie_register";
 	}
-	
-	//영화 정보 수정
-	@RequestMapping(value = "updateMovie", method = {RequestMethod.GET, RequestMethod.POST})
-	public String updateMovie(String info_movie_code) {
-		int updateCount = movieRegisterServie.updateMovie(info_movie_code);
-		
-		return "redirect:/admin_movie_register";
-	}
-	
 	
 	
 	

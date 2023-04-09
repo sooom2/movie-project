@@ -35,8 +35,8 @@ public class MovieRegisterServie {
 	}
 	
 	//영화정보수정
-	public int updateMovie(String info_movie_code) {
-		return mapper.updateMovie(info_movie_code);
+	public int updateMovie(HashMap<String, String> movie) {
+		return mapper.updateMovie(movie);
 	}
 
 
