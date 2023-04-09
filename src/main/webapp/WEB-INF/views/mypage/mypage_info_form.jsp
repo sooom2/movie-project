@@ -39,25 +39,20 @@
 								</label>
 							</div>
 							<div class="join-detail">
-								<label class="label-input" for="pass"> <span>비밀번호</span>
-									<input type="password" id="join-pw" name="member_pw" class="input" value="********">
-									<span></span>
-								</label>
+								<div class="label-input">
+									<span class="title">기존 비밀번호</span><input type="text" id="pass" value="********"> 
+								</div>
 							</div>
-							
 							<div class="join-detail">
-								<label class="label-input" for="pass2"> 
-								<span>비밀번호 확인</span> 
-								<input type="password" id="join-pw2" name="password2" class="input" value="********">
-								<span></span>
-								</label>
+								<div class="label-input">
+									<span class="title">변경할 비밀번호</span><input type="text" id="pass" value="********">
+								</div>
 							</div>
-							
 							<div class="join-detail">
-								<label class="label-input" for="username"> <span>이름</span>
-									<input type="text" id="join-name" name="member_name" class="input" value="김예리" >
-									 <span></span>
-								</label>
+								<div class="label-input">
+									<span class="title">이름</span> <span class="desc">김예리</span> <input
+										type="hidden" name="username" value="김예리">
+								</div>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
@@ -69,10 +64,11 @@
 
 
 							<div class="join-detail">
-								<label class="label-input" for="phone"> <span>휴대폰번호</span>
-									<input type="text" id="join-phone" name="member_tel"
-									class="input input-numeric" value="010-1234-5678"> <span></span>
-								</label>
+								<div class="label-input">
+									<span class="title">휴대폰번호</span> <span class="desc">010-1234-5678</span>
+									 <input
+										type="hidden" id="join-phone" name="phone" value="01050147709">
+								</div>
 							</div>
 							
 						<div class="join-detail">
@@ -114,6 +110,22 @@
 				 
 					</form>
 
+					<!--- 소셜계정 막기 
+
+        <div class="title-membership">소셜 계정 연결</div>
+        <div class="wrap-inside">
+            <div class="join-detail">
+                <div class="label-input label-input2">
+                    <span class="social-nv">
+                        yeri7880@naver.com
+                        <a href="#" class="btn-delete">삭제</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+---->
+					<!--.소셜계정막기-->
 
 					<div class="title-membership title-quit">회원 탈퇴</div>
 					<div class="wrap-inside no-border">

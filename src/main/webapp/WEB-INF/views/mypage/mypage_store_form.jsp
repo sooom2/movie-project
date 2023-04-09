@@ -100,17 +100,15 @@
 							<tr>
 								<th>구매일자</th>
 								<th>구매한상품</th>
-								<th>상품구성</th>
 								<th>수량</th>
-								<th>금액</th>
+								<th>유효기간</th>
 								<th>구매취소</th>
 							</tr>
 							<tr>
 								<td>20230101</td>
-								<td>더블콤보</td>
-								<td>팝콘 (R) 2 + 탄산음료 (R) 2</td>
-								<td>1개</td>
-								<td>13,000원</td>
+								<td>아이무비콤보세트</td>
+								<td>1</td>
+								<td>20231231</td>
 								<td>취소버튼</td>
 							</tr>
 							
@@ -119,6 +117,10 @@
 				</div>
 				<!-- wrap-->
 			</div>
+
+
+
+
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />

@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/common.css" rel="stylesheet">
+<!-- <link href="resources/css/common.css" rel="stylesheet"> -->
 <link href="resources/css/mypage.css" rel="stylesheet">
-<link href="resources//css/inc.css" rel="stylesheet">
+<!-- <link href="resources//css/inc.css" rel="stylesheet"> -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
@@ -107,31 +107,31 @@
     </table>
 </script>
 
-<!-- 			<div id="content-notice" -->
-<!-- 				style="display: none; position: absolute; width: 400px; height: 220px; z-index: 15; top: 50%; left: 50%; background: white; border: 1px solid black; margin: -200px 0 0 0;"> -->
-<!-- 				<div class="section group"> -->
-<!-- 					<div class="col span_8_of_8" -->
-<!-- 						style="text-align: center; border-bottom: 1px solid gray; background: beige"> -->
-<!-- 						<div id="couponname" style="padding-top: 20px; font-size: 20px"></div> -->
+			<div id="content-notice"
+				style="display: none; position: absolute; width: 400px; height: 220px; z-index: 15; top: 50%; left: 50%; background: white; border: 1px solid black; margin: -200px 0 0 0;">
+				<div class="section group">
+					<div class="col span_8_of_8"
+						style="text-align: center; border-bottom: 1px solid gray; background: beige">
+						<div id="couponname" style="padding-top: 20px; font-size: 20px"></div>
 
-<!-- 						<div id="couponkey" -->
-<!-- 							style="padding-top: 10px; padding-bottom: 15px"></div> -->
-<!-- 					</div> -->
-<!-- 					<div class="col span_8_of_8" -->
-<!-- 						style="text-align: left; padding-top: 10px;"> -->
-<!-- 						<div>사용 방법</div> -->
-<!-- 						<div id="constraint" style="padding-left: 20px;"></div> -->
-<!-- 						<div id="theater" style="padding-left: 20px;"></div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="section group"> -->
-<!-- 					<div class="col span_8_of_8 notice-control"> -->
-<!-- 						<div class="desc" style="text-align: center;"> -->
-<!-- 							<button onclick="javascript:closemodal()">닫기</button> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+						<div id="couponkey"
+							style="padding-top: 10px; padding-bottom: 15px"></div>
+					</div>
+					<div class="col span_8_of_8"
+						style="text-align: left; padding-top: 10px;">
+						<div>사용 방법</div>
+						<div id="constraint" style="padding-left: 20px;"></div>
+						<div id="theater" style="padding-left: 20px;"></div>
+					</div>
+				</div>
+				<div class="section group">
+					<div class="col span_8_of_8 notice-control">
+						<div class="desc" style="text-align: center;">
+							<button onclick="javascript:closemodal()">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<div class="section group section-mypage">
@@ -143,21 +143,19 @@
 							<tr>
 								<th>예매번호</th>
 								<th>영화제목</th>
+								<th>상영일시</th>
 								<th>영화관</th>
 								<th>상영관</th>
 								<th>좌석번호</th>
-								<th>상영일자</th>
-								<th>상영시간</th>
 								<th>예매일자</th>
 							</tr>
 							<tr>
 								<td>202301011234</td>
 								<td>스파이더맨</td>
-								<td>아이무비부산점</td>
+								<td>20230406</td>
+								<td>아이무비xx지점</td>
 								<td>2관</td>
 								<td>13,14</td>
-								<td>20230406</td>
-								<td>13:30</td>
 								<td>20230401</td>
 							</tr>
 							
