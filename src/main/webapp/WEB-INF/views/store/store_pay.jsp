@@ -10,6 +10,38 @@
 <link href="resources/css/sub.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script type="text/javascript">
+	
+
+	var IMP = window.IMP; 
+	IMP.init("imp03276613"); 
+	
+	function requestPay() {
+	    IMP.request_pay({
+	        pg : $('input[name="radio_choice"]:checked').val(),
+	        pay_method : 'card',
+	        merchant_uid: "code" + new Date().getTime(), 
+	        name : ${item.get('item_name') },
+	        amount : ${item_price },
+	        buyer_email : 'mport@chai.finance',
+	        buyer_name : '홍길동',
+	        buyer_tel : '010-1234-5678',
+	        
+	    }, function (rsp) { // callback
+	        if (rsp.success) {
+			    alert("결제가 완료되었습니다.");
+			    location.href = "store_paySuccess?pay_method=" + rsp.pay_method + "&pay_code=" + rsp.merchant_uid + "&pay_price=" + rsp.paid_amount
+			    				+ "&pay_type=" + rsp.status;
+	        } else {
+	            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
+	            	  + rsp.error_msg + ")");
+	        }
+	    });
+	}
+
+	
+</script>
 </head>
 <body>
 <jsp:include page="../nav.jsp" />
@@ -152,6 +184,20 @@
 		                        </p>
 		                    </div>
 		                </div>
+		                <div class="choice">
+                            <div class="inbox">
+                                <p class="txt">결제수단 선택</p>
+                                    <div class="cell">
+                                        <input type="radio" id="radio_choice01" name="radio_choice" value="html5_inicis.INIBillTst">
+                                        <label for="radio_choice01">신용/체크카드</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="radio_choice01" name="radio_choice" value="kakaopay.TC0ONETIME">
+                                        <label for="radio_choice01">카카오페이</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="radio_choice01" name="radio_choice" value="tosspay.tosstest">
+                                        <label for="radio_choice01">토스페이</label>
+                                    </div>
+                            </div>
+		                </div>
+                        </div>
 
                         <!-- 결제수단 별 알림문구 -->
                         <div class="select-mobile-info" style="display:none;padding-top:20px;width:640px;margin:auto;">
@@ -302,7 +348,7 @@
 
             <div class="btn-group pt40">
                 <a href="store_main" class="button large w170px" id="btn_store_back" title="취소">취소</a>
-                <a href="#" class="button purple large w170px btn-modal-open" id="btn_store_pay_adapter" title="결제">결제</a>
+                <input type="button" onclick="requestPay()" value="결제" class="button purple large w170px btn-modal-open" id="btn_store_pay_adapter">
                 <a href="#" class="button purple large w170px btn-modal-open" id="btn_store_pay" title="결제" style="display: none;" w-data="600" h-data="400">결제</a>
 				<!--
                 <a href="javascript:execStorePayment();" class="button purple large w170px">결제테스트</a>

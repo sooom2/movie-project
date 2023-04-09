@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +57,15 @@ public class StoreController {
 		model.addAttribute("item_price", item_price);
 		
 		return "store/store_pay";
+	}
+	
+	@RequestMapping(value = "store_paySuccess", method = {RequestMethod.GET, RequestMethod.POST})
+	public String store_paySuccess(@RequestParam HashMap<String, String> pay, HttpSession session) {
+		System.out.println(pay);
+		String id = (String)session.getAttribute("sId");
+		
+		
+		return "store/store_paySuccess";
 	}
 	
 	
