@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.MovieRegisterServie;
+import com.itwillbs.movie.service.MovieService;
 
 @Controller
 public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterServie movieRegisterServie;
+	
+	@Autowired
+	private MovieService service;
 	
 	//영화관리페이지
 	//영화목록조회
@@ -65,4 +69,47 @@ public class MovieRegisterController {
 		return "redirect:/admin_movie_register";
 	}
 	
+	
+	
+	
+	
+	//-------------------메인 영화------------------------------------------------------------
+	
+	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+	public String screening(Model model) {
+		System.out.println("dddd...");
+//		List<HashMap<String, String>> movieList = service.screeningMovie();
+//		
+//		model.addAttribute("movie",movieList);
+//		System.out.println(model);
+//		
+		
+		return "index";
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

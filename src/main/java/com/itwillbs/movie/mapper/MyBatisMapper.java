@@ -9,6 +9,11 @@ public interface MyBatisMapper {
 	
 	// 로그인 확인
 	HashMap<String, String> chekUser(HashMap<String, String> login);
+	//회원목록조회
+	List<HashMap<String, String>> selectMember();
+	
+	
+	// ----------------------------------------------------------------------------------------
 	
 	// 관리자 상품 등록
 	int registItem(HashMap<String, String> item);
@@ -38,6 +43,8 @@ public interface MyBatisMapper {
 	
 	// 상영중인 영화 페이지 보기
 	List<HashMap<String, String>> screeningMovie();
+
+
 	
 }
 

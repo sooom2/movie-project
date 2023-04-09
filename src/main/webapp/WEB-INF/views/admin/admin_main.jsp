@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,42 +160,39 @@
 									<table id="datatablesSimple" class="datatable-table">
 										<thead>
 											<tr>
-												<th data-sortable="true" style="width: 7%;"><a
-													href="#" class="datatable-sorter">회원번호</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">아이디</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">이름</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">생년월일</a></th>
+													href="#" class="datatable-sorter">이메일</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">휴대폰번호</a></th>
+												<th data-sortable="true" style="width: 10%;"><a
+													href="#" class="datatable-sorter">포인트</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">선호지점</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">선호장르</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">소셜가입</a></th>	
-												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">가입일자</a></th>
-													
 											</tr>
 										</thead>
 										<!-- 회원목록 -->
+										<c:forEach var="member" items="${memberList }">
 										<tbody>
 											<tr data-index="0">
-												<td>1</td>
-												<td>admin</td>
-												<td>관리자</td>
-												<td>20230404</td>
-												<td>01012341561</td>
-												<td>서면</td>
-												<td>스릴러</td>
-												<td>카카오톡</td>
-												<td>20230404</td>
-
+												<td>${member.get("member_id") }</td>
+												<td>${member.get("member_name") }</td>
+												<td>${member.get("member_email") }</td>
+												<td>${member.get("member_tel") }</td>
+												<td>${member.get("member_point") }</td>
+												<td>${member.get("member_prefer_branch") }</td>
+												<td>${member.get("member_prefer_genre") }</td>
+												<td>${member.get("member_date") }</td>
 											</tr>
 										</tbody>
+										</c:forEach>
 									</table>
 								</div>
 								<div class="datatable-bottom">

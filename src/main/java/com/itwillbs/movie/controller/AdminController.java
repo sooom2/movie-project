@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.AdminService;
+import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterServie;
 import com.itwillbs.movie.service.StoreService;
 
@@ -23,13 +24,23 @@ public class AdminController {
 	@Autowired
 	private StoreService storeService;
 	
+	
 	@Autowired
-	private MovieRegisterServie movieRegisterServie;
+	private MemberService memberService;
 
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminMain() {
+	public String adminMain(Model model) {
+		
+		List<HashMap<String, String>> memberList = memberService.selectMember();
+		model.addAttribute("memberList", memberList);
+		
 		return "admin/admin_main";
 	}
+	
+	
+	
+	
+	
 	// 스토어======================================================================================
 	
 	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
