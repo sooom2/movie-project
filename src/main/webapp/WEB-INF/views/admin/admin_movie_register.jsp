@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,49 +12,157 @@
 <title>아이무비관리자페이지</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="resources/js/jquery-3.6.4.js"></script>
+
+<script type="text/javascript" src="resources/js/admin.js"></script>
+<!-- 모달 -->
 <script type="text/javascript">
-function doDisplay(){
 
-	let dis = document.querySelector(".admin-modal");
+
+
+function doDisplay(info_movie_code) {
+	let dis = document.querySelector(".admin-modal-modify");
+	if (dis.style.display = "none") {
+		dis.style.display = "block"
+		
+			$.ajax({
+				type: "POST",
+				url: "selectMovie",
+				data: {
+					info_movie_code: info_movie_code
+				},
+				datatype:"json",
+				success: function(data){
+					
+					let info_movie_code = result.info_movie_code;
+					let info_movie_title = result.info_movie_title;
+					let info_year = result.info_year;
+					let info_time = result.info_time;
+					let info_showdate = result.info_showdate;
+					let info_enddate = result.info_showdate;
+					let info_story = result.info_story;
+					
+					
+				}
+			});
+		
+		
+		
+		$(".info_movie_code").val(info_movie_code);
+		$(".info_movie_title").val(info_movie_title);
+		$(".info_year").val(info_year);
+		
+		
+	} else {
+		dis.style.display = "none";
+	}
 	
-	if(dis.style.display="none"){
-		dis.style.display="block"
+	
+	$(".btn-del").on("click",function(){
+		
+		let delConfirm = confirm("삭제하시겠습니까?");
+		if (delConfirm) {
+			$.ajax({
+				type: "GET",
+				url: "deleteMovie",
+				data: {
+					info_movie_code: info_movie_code
+				},
+				datatype:"json",
+				success: function(data){
+					alert("삭제완료");
+				}
+			});
+		}
 		
 		
-	} else{
-		dis.style.display="none";
+	});
+	
+	
+	
+}
+function doLatest() {
+	let dis = document.querySelector(".admin-modal-latest");
+	if (dis.style.display = "none") {
+		dis.style.display = "block"
+	} else {
+		dis.style.display = "none";
 	}
 }
 
-function modalClose(){
-	let dis = document.querySelector(".admin-modal");
-	let dis2 = document.querySelector(".admin-modal-all");
-	dis.style.display="none";
-	dis2.style.display="none";
-	
-}
-
-function doDisplay-all(){
-
-	let dis = document.querySelector(".admin-modal-all");
-	
-	if(dis.style.display="none"){
-		dis.style.display="block"
-		
-		
-	} else{
-		dis.style.display="none";
+function doMovieRegister(){
+	let dis = document.querySelector(".admin-modal-register");
+	if (dis.style.display = "none") {
+		dis.style.display = "block"
+	} else {
+		dis.style.display = "none";
 	}
 }
 
+function modalClose() {
+	let dis = document.querySelector(".admin-modal-register");
+	let dis2 = document.querySelector(".admin-modal-latest");
+	let dis3 = document.querySelector(".admin-modal-modify");
+	dis.style.display = "none";
+	dis2.style.display = "none";
+	dis3.style.display = "none";
+	
+	
+}
+
+//이미지올리기
+function previewImage(targetObj, View_area) {
+	var preview = document.getElementById(View_area); //div id
+	var ua = window.navigator.userAgent;
+
+ 
+		var files = targetObj.files;
+		
+		
+		for ( var i = 0; i < files.length; i++) {
+			var file = files[i];
+			
+			var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+			if (!file.type.match(imageType))
+				continue;
+			
+			var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+			alert(prevImg);
+			if (prevImg) {
+				preview.removeChild(prevImg);
+			}
+			var img = document.createElement("img"); 
+			img.id = "prev_" + View_area;
+			img.classList.add("obj");
+			img.file = file;
+			img.style.width = '170px'; 
+			img.style.height = '210px';
+			preview.appendChild(img);
+			
+			alert(targetObj.files.name);
+			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+				var reader = new FileReader();
+				reader.onloadend = (function(aImg) {
+					return function(e) {
+						aImg.src = e.target.result;
+					};
+				})(img);
+				reader.readAsDataURL(file);
+			}
+		}
+		
+		
+}
 
 
 
 </script>
+
+
 </head>
 <body class="sb-nav-fixed">
-	
+		
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
@@ -63,192 +172,472 @@ function doDisplay-all(){
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+		<form
+			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="fas fa-user fa-fw"></i>
-				</a>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-user fa-fw"></i>
+			</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" href="main">홈</a></li>
 					<li><hr class="dropdown-divider" /></li>
 					<li><a class="dropdown-item" href="logout">Logout</a></li>
-				</ul>
-			</li>
+				</ul></li>
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
 		<!-- 고정  -->
-		<jsp:include page="admin_nav.jsp"/>
+		<jsp:include page="admin_nav.jsp" />
 		<!-- 고정 -->
-			
-	
-		
+
+
+
 		<div id="layoutSidenav_content">
-		
-<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
+
+			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
-			 <main>
-			 <!-- 모달 -->
-                    <div class="container modal admin-modal" style="display: none">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card border-1 mt-5">
-                                    <div class="card-header">
-									<button type="button" class="close-modal"  onclick="modalClose()" style=" border: none;">닫기</button>
-                                    <h3 class="text-center font-weight-light my-4">영화관리</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <form> 
-                                      	  <div class="row mb-4">
-                                          	<h5 style="text-align:left">이미지등록</h5>
-                                       		<div class="col-md-3 moviePoster">
-                                             	<div>
-<!--                                              		<img class="" src="/movie-project/resources/images/movies/poster/m1.jpg"> -->
-                                             	</div>
-                                            </div>
-                                            <div class="col-md-8">
-                                            	<div class="filebox">
-	                                            	 <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-													    <label for="file">파일올리기</label> 
-												    <input type="file" id="file">
-                                            	</div>
-                                           	</div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">영화코드</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">영화제목</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" id="info_movie_year" type="text" placeholder="제작년도" />
-                                                        <label for="info_movie_year">제작년도</label>
-                                                    </div>
-                                                </div>
-                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="info_show_time" type="text" />
-                                                        <label for="info_show_time">상영시간</label>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">상영일</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">종영일<label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                            <div class="col-md">
-                                                 <div class="form-floating mb-3 mb-md-0">
-                                                     <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                     <label for="inputFirstName">줄거리</label>
-                                                 </div>
-                                             </div>
-                                            </div>
-                                            <div class="row">
-	                                            <div class="mt-4 mb-0 col-md-6">
-	                                                <div class="d-grid">
-	                                                <a class="btn btn-primary btn-block" href="">수정</a>
-	                                                </div>
-	                                            </div>
-	                                            <div class="mt-4 mb-0 col-md-6">
-	                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="">삭제</a></div>
-	                                            </div>
-                                            </div>
-                                        </form>
+			<main>
+				<!-- 영화등록모달 -->
+				<div class="container modal admin-modal-register" style="display: none">
+					<div class="row justify-content-center">
+						<div class="col-lg-7">
+							<div class="card border-1 mt-5">
+								<div class="card-header">
+									<button type="button" class="close-modal"
+										onclick="modalClose()" style="border: none;">닫기</button>
+									<h3 class="text-center font-weight-light my-4">영화등록</h3>
+								</div>
+								<div class="card-body">
+									<form action="registMoviePro">
+									<div class="row mb-4">
+                                      	<h5 style="text-align:left">포스터등록</h5>
+                                   		<div class="col-md-3 moviePoster">
+                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+                                        </div>
+                                        
+                                        <div class="col-md-8">
+											<div class="filebox">
+										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
+											</div>
+                                        </div>
                                      </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 테이블 -->
-                    <div class="datatable-container">
-                   <h3 class="text-center font-weight-light my-4">영화관리</h3>
-                    <input class="btn btn-block btn-more" type="button" value="영화등록" onclick="doDisplay()">
-                    <input class="btn btn-block btn-more" type="button" value="영화불러오기" onclick="doDisplay2()">
+									
+										
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_movie_code"class="form-control" id="info_movie_code" type="text" value="" />
+													<label for="info_movie_code">영화코드</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_movie_title" class="form-control" id="info_movie_title" type="text" /> 
+													<label for="info_movie_title">영화제목</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_year" class="form-control" id="info_year" type="text"/>
+													<label for="info_year">제작년도</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_time" class="form-control" id="info_time" type="" />
+													<label for="info_time">상영시간</label>
+												</div>
+											</div>
+
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_showdate" class="form-control" id="info_showdate" type="date"/>
+													<label for="info_showdate">상영일</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_enddate" class="form-control" id="info_enddate" type="date" />
+													 <label for="info_enddate">종영일<label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_story" class="form-control" id="info_story" type="text"/>
+													<label for="inputFirstName">줄거리</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block" type="submit" value="등록"> 
+											</div>
+										</div>
+									</form>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 등록 -->
+				
+				<!-- 수정/삭제 -->
+				<div class="container modal admin-modal-modify" style="display: none">
+					<div class="row justify-content-center">
+						<div class="col-lg-7">
+							<div class="card border-1 mt-5">
+								<div class="card-header">
+									<button type="button" class="close-modal"
+										onclick="modalClose()" style="border: none;">닫기</button>
+									<h3 class="text-center font-weight-light my-4">영화수정</h3>
+								</div>
+								<div class="card-body">
+									<form action="registMoviePro" method="post">
+									 <div class="row mb-4">
+                                      	<h5 style="text-align:left">포스터수정</h5>
+                                   		<div class="col-md-3 moviePoster_modi">
+                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+                                        </div>
+                                        <div class="col-md-8">
+											<div class="filebox">
+										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
+											</div>
+                                        </div>
+                                     </div>
+
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_movie_code" class="form-control info_movie_code" id="info_movie_code" type="text" value="" />
+													<label for="info_movie_code">영화코드</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_movie_title"  class="form-control info_movie_title" id="info_movie_title" type="text" /> 
+													<label for="info_movie_title">영화제목</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_year" class="form-control info_year" id="info_year" type="text"/>
+													<label for="info_year">제작년도</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_time" class="form-control info_time" id="info_time" type="text" />
+													<label for="info_time">상영시간</label>
+												</div>
+											</div>
+ 
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_showdate" class="form-control info_showdate" id="info_showdate" type="date"/>
+													<label for="info_showdate">상영일</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_enddate" class="form-control info_enddate" id="info_enddate" type="date" />
+													 <label for="info_enddate">종영일<label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_story" class="form-control info_story" id="info_story" type="text"/>
+													<label for="info_story">줄거리</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="mt-4 mb-0 col-md-6">
+												<div class="d-grid">
+													<input class="btn btn-primary btn-block" type="submit" value="수정">
+												</div>
+											</div>
+											<div class="mt-4 mb-0 col-md-6">
+												<div class="d-grid">
+													<a class="btn btn-primary btn-block btn-del" href="">삭제</a>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				<!-- 수정 -->
+
+<script>
+
+		$(function(){
+			$.ajax({
+				url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&targetDt=20190900',
+				type : 'GET',
+				success : function(data) {
+					var html = '';
+					html += '<option selected>영화를 고르시오</option>';
+					//console.log(data);
+					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
+						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
+						$('#api').html(html);
+					}
+						
+				}
+			});
+			
+		});
+		
+		function apibutton(){
+			
+			var movieCd = $('#api').val();
+			alert(movieCd);
+			$.ajax({
+			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
+			type : 'GET',
+			success : function(data) {
+				html = '';
+				let info_movie_code = data.movieInfoResult.movieInfo.movieCd;
+				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
+				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
+// 				let info_story = info_story; // 받아올거
+				let info_year = data.movieInfoResult.movieInfo.prdtYear;
+				
+				
+				let info_time = data.movieInfoResult.movieInfo.showTm;
+				let info_showdate = data.movieInfoResult.movieInfo.openDt;
+				
+				alert(info_movie_title);
+// 				
+				$('input[name=info_movie_poster]').attr('value',info_movie_poster);		
+				$('input[name=info_movie_code]').attr('value',info_movie_code);		
+				$('input[name=info_movie_title]').attr('value',info_movie_title);		
+				$('input[name=info_year]').attr('value',info_year);		
+				$('input[name=info_time]').attr('value',info_time);		
+				$('input[name=info_showdate]').attr('value',info_showdate);		
+				$('input[name=info_enddate]').attr('value',info_enddate);		
+
+			}
+
+		});
+			
+		}
+</script>	
+
+
+
+				<!-- 최신영화불러오기 -->
+				<div class="container modal admin-modal-latest"
+					style="display: none">
+					<div class="row justify-content-center">
+						<div class="col-lg-7">
+							<div class="card border-1 mt-5">
+								<div class="card-header" style="text-align: center">
+									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
+									<h3 class="text-center font-weight-light my-4">최신영화등록</h3>
+									<span>최신개봉 영화 목록 고르기 (10개)</span><br><br>
+									<select id="api" name="api"></select>									
+								 <input onclick="apibutton()"type="button" value="검색">	
+								</div>
+								<div class="card-body">
+									<div class="container">
+										<div class="content">
+											<div class="subscribe">
+												<div class="motto">
+
+													
+													<hr>
+													<form action="registMoviePro">
+														 <div class="row mb-4">
+					                                      	<h5 style="text-align:left">포스터등록</h5>
+					                                   		<div class="col-md-3 moviePoster">
+					                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+					                                        </div>
+					                                        <div class="col-md-8">
+																<div class="filebox">
+															    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
+																</div>
+					                                        </div>
+					                                     </div>
+														<div class="row mb-3">
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_movie_code" name="info_movie_code" type="text" value="" />
+																	<label for="info_movie_code">영화코드</label>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-floating">
+																	<input class="form-control" id="info_movie_title" name="info_movie_title" type="text" value="${info_movie_title}" /> 
+																	<label for="info_movie_title">영화제목</label>
+																</div>
+															</div>
+														</div>
+														<div class="row mb-3">
+															<div class="col-md-6">
+																<div class="form-floating">
+																	<input class="form-control" id="info_year" name="info_year" type="text" value="${info_year}"/>
+																	<label for="info_year">제작년도</label>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_time" name="info_time" type="text" value="${info_time}" />
+																	<label for="info_time">상영시간</label>
+																</div>
+															</div>
+				
+														</div>
+														<div class="row mb-3">
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_showdate" name="info_showdate" type="date" value="${info_showdate}"/>
+																	<label for="info_showdate">상영일</label>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_enddate" name="info_enddate" type="date" value="${info_enddate}" />
+																	 <label for="info_enddate">종영일<label>
+																</div>
+															</div>
+														</div>
+														<div class="row mb-3">
+															<div class="col-md">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_story" name="info_story" type="text"/>
+																	<label for="inputFirstName">줄거리</label>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="d-grid">
+																<input class="btn btn-primary btn-block" type="submit" value="등록"> 
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- 테이블 -->
+				<div class="datatable-container">
+					<h3 class="text-center font-weight-light my-4">영화관리</h3>
+					<input class="btn btn-block btn-more" type="button" value="영화등록"
+						onclick="doMovieRegister()"> <input
+						class="btn btn-block btn-more" type="button" value="최신영화불러오기"
+						onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">영화코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">제작년도</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">상영시간</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">상영일</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">종영일</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#" class="datatable-sorter">줄거리</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#" class="datatable-sorter">수정</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">영화코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">제작년도</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영시간</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영일</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">종영일</a></th>
+								<th data-sortable="true" style="width: 15%;"><a href="#"
+									class="datatable-sorter">줄거리</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="">수정</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
+						<c:forEach var="movie" items="${movieList }">
 						<tbody>
-							<tr data-index="0">
-								<td>15611889</td>
-								<td>리바운드</td>
-								<td>2023년</td>
-								<td>120분</td>
-								<td>2023-04-05</td>
-								<td>2099-04-05</td>
-								<td>~~~~~~~~~줄거리~~~~~~~~~~~~</td>
+							<tr style="text-align: center;" data-index="0">
+								<td>${movie.get("info_movie_code") }</td>
+								<td>${movie.get("info_movie_title") }</td>
+								<td>${movie.get("info_year") }</td>
+								<td>${movie.get("info_time") }분</td>
+								<td>${movie.get("info_showdate") }</td>
+								<td>${movie.get("info_enddate") }</td>
+								<td id="info_story">${movie.get("info_story") }</td>
+<%-- 								<td><img alt="" src="${movie.get('info_movie_poster') }"></td> --%>
 								<td class="modi">
-									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()">
+										 			 
+								<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay(${movie.info_movie_code})">
+<!-- 								</a> -->
 								</td>
 							</tr>
 						</tbody>
+						</c:forEach>
+							
+
+	
 					</table>
-					</div>
-                     <!-- 테이블 --> 
-                    
-                </main>
-			
-			
-			
-			
+				</div>
+				<!-- 테이블 -->
+
+			</main>
+
+
+
+
 			<!--들어갈내용 -->
-			
+
 			<!-- 푸터 -->
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
 					<div
 						class="d-flex align-items-center justify-content-between small">
 						<div class="text-muted">Copyright &copy; IMOVIE 2023</div>
-						<div>
-						</div>
+						<div></div>
 					</div>
 				</div>
 			</footer>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
 	<script src="assets/demo/chart-area-demo.js"></script>
 	<script src="assets/demo/chart-bar-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>

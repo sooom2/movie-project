@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.AdminService;
+import com.itwillbs.movie.service.MovieRegisterServie;
 import com.itwillbs.movie.service.StoreService;
 
 @Controller
@@ -22,6 +23,8 @@ public class AdminController {
 	@Autowired
 	private StoreService storeService;
 	
+	@Autowired
+	private MovieRegisterServie movieRegisterServie;
 
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain() {
@@ -81,12 +84,11 @@ public class AdminController {
 		}
 	
 	
-	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieRegister() {
-		return "admin/admin_movie_register";
-	}
 	
 	//영화===========================================================================================
+
+		
+	
 	
 	//영화관관리
 	@RequestMapping(value = "admin_cinema_register", method = {RequestMethod.GET, RequestMethod.POST})
@@ -105,6 +107,10 @@ public class AdminController {
 	public String movieResRegister() {
 		return "admin/admin_movie_res_register";
 	}
+
+	
+
+	
 	
 	//게시판============================================================================================
 	//공지사항

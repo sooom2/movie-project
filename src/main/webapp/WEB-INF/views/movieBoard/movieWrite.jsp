@@ -4,8 +4,9 @@
 <!doctype html>
 <html>
 <body class="landing-page landing-page2">
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		
 <div class="main" style="background-image: url('images/main.png')">
     <div class="cover black" data-color="black"></div>
     <div class="container">
@@ -16,7 +17,7 @@
             <div class="subscribe">
                 <div class="motto">
                 	
-                	<span>최신개봉 영화 목록 고르기 (10개)</span><br><br>
+                	<span>최신개봉 영화 목록 (10개)</span><br><br>
                 	<select id="api" name="api">
                 		
                 	
@@ -48,14 +49,6 @@
  					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
  						
  						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
- 						//html += '<td style="padding-right: 20px;">'+ data.boxOfficeResult.dailyBoxOfficeList[i].openDt + '</td>';
- 						/* html += '<td style="padding-right: 20px;">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd + '</td>'; */
- 						//html += '<td style="padding-right: 20px;" id="mo1"></td>';
- 						//html += '<td style="padding-right: 20px;" id="mo2"></td>';
- 						/* html += '<td>상세정보</td>'; */
- 						//html += '<td style="padding-right: 20px;" id="mo3"></td>';
- 						//html += '<td style="padding-right: 20px;" onclick="info('+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +')">상세정보더보기</td>'
- 						//html += '</tr>';
  						
  						$('#api').html(html);
  					}
@@ -74,7 +67,6 @@
 				type : 'GET',
 				success : function(data) {
 					html = '';
-					//alert(data.movieInfoResult.movieInfo.actors[0].peopleNm);
 					html += '<tr>';
 					html += '<td>영화코드</td>';
 					html += '<td><input type="text" id="midx" name="midx" value="'+ data.movieInfoResult.movieInfo.movieCd +'"></td>';
@@ -85,7 +77,7 @@
 					html += '</tr>';
 					html += '<tr>';
 					html += '<td>줄거리</td>';
-					html += '<td><input type="text" id="mCont" name="mCont"></td>';
+					html += '<td></td>';
 					html += '</tr>'
 					html += '<tr>';
 					html += '<td>감독/배우</td>';
@@ -162,7 +154,7 @@
 	 		return false; 		
 	 	});
 	
- 
+
  	
 	
 	</script>

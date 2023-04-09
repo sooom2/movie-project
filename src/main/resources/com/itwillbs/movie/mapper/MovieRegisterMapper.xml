@@ -2,4 +2,76 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.movie.mapper.MovieRegisterMapper">
 
+<select id="selectMovies" resultType="hashmap">
+	SELECT * FROM movieinfo
+</select>
+
+<insert id="registMovie">
+		INSERT INTO movieinfo
+			VALUES(
+				   #{info_movie_code}
+				   , #{info_movie_title}
+				   , #{info_movie_poster}
+				   , #{info_story}
+				   , #{info_year}
+				   , #{info_time}
+				   , #{info_showdate}
+				   , '20990909'
+				   , '0'
+			)
+</insert>
+
+<select id="selectMovie" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+	 WHERE info_movie_code = #{info_movie_code}
+</select>
+
+<delete id="deleteMovie">
+	DELETE 
+	  FROM movieinfo
+     WHERE info_movie_code = #{info_movie_code}
+</delete>
+
+<!--수정 -->
+<update id="updateMovie">
+	UPDATE item 
+		SET info_movie_code = #{item_type}
+		  , info_movie_title = #{item_price}
+		  , info_movie_poster = #{item_name}
+		  , info_story = #{item_price}
+		  , info_year = #{item_detail}
+		  , info_time = #{item_image}
+		  , info_showdate = #{item_status}
+		  , info_enddate = #{item_status}
+	  WHERE info_movie_code = #{info_movie_code}
+</update>
+
+<!-- info_movie_code -->
+<!-- info_movie_title -->
+<!-- info_movie_poster -->
+<!-- info_story -->
+<!-- info_year -->
+<!-- info_time -->
+<!-- info_showdate -->
+<!-- info_enddate -->
+<!-- like_count -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

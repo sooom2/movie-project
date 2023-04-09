@@ -81,8 +81,6 @@ function modalClose(){
                                     </div>
                                     <div class="card-body">
                                         <form> 
-                                        
-                                       
                                             <div class="row mb-3">
                                            		  <div class="col-md-4">
                                                     <div class="form-floating">
