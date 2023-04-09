@@ -20,67 +20,6 @@
 <script type="text/javascript">
 
 
-
-// function doDisplay(info_movie_code) {
-// 	let dis = document.querySelector(".admin-modal-modify");
-// 	if (dis.style.display = "none") {
-// 		dis.style.display = "block"
-		
-// 			$.ajax({
-// 				type: "POST",
-// 				url: "selectMovie",
-// 				data: {
-// 					info_movie_code: info_movie_code
-// 				},
-// 				datatype:"json",
-// 				success: function(data){
-					
-// 					let info_movie_code = result.info_movie_code;
-// 					let info_movie_title = result.info_movie_title;
-// 					let info_year = result.info_year;
-// 					let info_time = result.info_time;
-// 					let info_showdate = result.info_showdate;
-// 					let info_enddate = result.info_showdate;
-// 					let info_story = result.info_story;
-					
-					
-// 				}
-// 			});
-		
-		
-		
-// 		$(".info_movie_code").val(info_movie_code);
-// 		$(".info_movie_title").val(info_movie_title);
-// 		$(".info_year").val(info_year);
-		
-		
-// 	} else {
-// 		dis.style.display = "none";
-// 	}
-	
-	
-// 	$(".btn-del").on("click",function(){
-		
-// 		let delConfirm = confirm("삭제하시겠습니까?");
-// 		if (delConfirm) {
-// 			$.ajax({
-// 				type: "GET",
-// 				url: "deleteMovie",
-// 				data: {
-// 					info_movie_code: info_movie_code
-// 				},
-// 				datatype:"json",
-// 				success: function(data){
-// 					alert("삭제완료");
-// 				}
-// 			});
-// 		}
-		
-		
-// 	});
-// }
-
-
 function doLatest() {
 	let dis = document.querySelector(".admin-modal-latest");
 	if (dis.style.display = "none") {
@@ -211,7 +150,7 @@ function previewImage(targetObj, View_area) {
 									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
 								</div>
 								<div class="card-body">
-									<form action="registMoviePro"  method="POST" enctype="multipart/form-data">
+									<form action="registMoviePro">
 									<div class="row mb-4">
                                       	<h5 style="text-align:left">포스터등록</h5>
                                    		<div class="col-md-3 moviePoster">
@@ -272,7 +211,7 @@ function previewImage(targetObj, View_area) {
 										<div class="row mb-3">
 											<div class="col-md">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_story" class="form-control" id="info_story" type="text"/>
+													<input name="info_story" class="form-control" id="info_story" type="text" style="max-width: 100%"/>
 													<label for="inputFirstName">줄거리</label>
 												</div>
 											</div>
@@ -291,108 +230,6 @@ function previewImage(targetObj, View_area) {
 					</div>
 				</div>
 				<!-- 등록 -->
-				
-				<!-- 수정/삭제 -->
-				<div class="container modal admin-modal-modify" style="display: none">
-					<div class="row justify-content-center">
-						<div class="col-lg-7">
-							<div class="card border-1 mt-5">
-								<div class="card-header">
-									<button type="button" class="close-modal"
-										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">영화수정</h3>
-								</div>
-								<div class="card-body">
-								
-									<form action="registMoviePro" method="POST" enctype="multipart/form-data">
-									<div class="row mb-4">
-                                      	<h5 style="text-align:left">포스터등록</h5>
-                                   		<div class="col-md-3 moviePoster">
-                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
-                                        </div>
-                                        
-                                        <div class="col-md-8">
-											<div class="filebox">
-										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
-											</div>
-                                        </div>
-                                     </div>
-
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_movie_code" class="form-control info_movie_code" id="info_movie_code" type="text" value="" />
-													<label for="info_movie_code">영화코드</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input name="info_movie_title"  class="form-control info_movie_title" id="info_movie_title" type="text" /> 
-													<label for="info_movie_title">영화제목</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input name="info_year" class="form-control info_year" id="info_year" type="text"/>
-													<label for="info_year">제작년도</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_time" class="form-control info_time" id="info_time" type="text" />
-													<label for="info_time">상영시간</label>
-												</div>
-											</div>
- 
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_showdate" class="form-control info_showdate" id="info_showdate" type="date"/>
-													<label for="info_showdate">상영일</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_enddate" class="form-control info_enddate" id="info_enddate" type="date" />
-													 <label for="info_enddate">종영일<label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_story" class="form-control info_story" id="info_story" type="text"/>
-													<label for="info_story">줄거리</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<input class="btn btn-primary btn-block" type="submit" value="수정">
-												</div>
-											</div>
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<a class="btn btn-primary btn-block btn-del" href="">삭제</a>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
-				
-				
-				<!-- 수정 -->
-
 <script>
 
 		$(function(){
@@ -417,16 +254,18 @@ function previewImage(targetObj, View_area) {
 		function apibutton(){
 			
 			var movieCd = $('#api').val();
-// 			alert(movieCd);
+			if($(".posterList")){
+				$(".posterlist").remove();
+			}
 			$.ajax({
 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
 			type : 'GET',
 			success : function(data) {
+				
 				html = '';
 				let info_movie_code = data.movieInfoResult.movieInfo.movieCd;
 				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
 				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
-// 				let info_story = info_story; // 받아올거
 
 
 				let info_year = data.movieInfoResult.movieInfo.prdtYear;
@@ -444,8 +283,10 @@ function previewImage(targetObj, View_area) {
 			    var formattedDateString = isoDateString.slice(0, 10);
 			    
 			   	info_enddate = formattedDateString;
-			    
-// 			    alert(info_enddate);
+			   	
+			   	$(".poster").append(
+						"<img src='https://file.cineq.co.kr/i.aspx?movieid="+movieCd+"&amp;size=210' alt='포스터' class='poster posterlist'>"
+				);
 			    
 			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);		
 				$('input[name=info_movie_code]').attr('value',info_movie_code);		
@@ -482,12 +323,13 @@ function previewImage(targetObj, View_area) {
 										<div class="content">
 											<div class="subscribe">
 												<div class="motto">
-													<hr>
-													<form action="registMoviePro"  method="POST" enctype="multipart/form-data">
+													<form action="registMoviePro" >
 														<div class="row mb-4">
-					                                      	<h5 style="text-align:left">포스터등록</h5>
+					                                      	<h6 style="text-align:left">포스터</h6>
 					                                   		<div class="col-md-3 moviePoster">
-					                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+					                                       		<div id='View_area' class="poster" style='position:relative; height: 210px; dispaly: inline;'>
+					                                       		
+					                                       		</div>
 					                                        </div>
 					                                        
 					                                        <div class="col-md-8">
@@ -543,7 +385,7 @@ function previewImage(targetObj, View_area) {
 														<div class="row mb-3">
 															<div class="col-md">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_story" name="info_story" type="text"/>
+																	<input class="form-control" id="info_story" name="info_story" type="text" style="max-width: 100%"/>
 																	<label for="inputFirstName">줄거리</label>
 																</div>
 															</div>
