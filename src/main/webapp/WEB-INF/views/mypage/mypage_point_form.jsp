@@ -157,7 +157,6 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- wrap-->
 			</div>
 
 
