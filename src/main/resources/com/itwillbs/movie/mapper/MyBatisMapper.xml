@@ -6,13 +6,15 @@
 		INSERT INTO member
 			VALUES(
 				   #{member_id}
-				   , #{member_pw}
 				   , #{member_name}
+				   , #{member_pw}
+				   , #{member_bday}
 				   , #{member_email}
 				   , #{member_tel}
 				   , '1000'
 				   , #{member_prefer_branch}
 				   , #{member_prefer_genre}
+				   , now()
 			)
 	</insert>
 	
