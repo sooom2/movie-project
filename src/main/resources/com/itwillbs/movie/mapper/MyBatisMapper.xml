@@ -23,6 +23,13 @@
 			FROM member
 				WHERE member_id = #{member_id} AND member_pw = #{member_pw}
 	</select>
+	
+	<select id="selectMemberId" resultType="hashmap">
+		SELECT * 
+				FROM member
+					WHERE member_id = #{id}
+	</select>
+	
 	<insert id="registItem">
 		INSERT INTO item
 			VALUES(
@@ -77,6 +84,20 @@
 					WHERE item_code = #{item_code}
 	</update>
 	
+	<insert id="insertPay">
+		INSERT INTO pay
+			VALUES(
+				   #{pay_code}
+				 , #{id}
+				 , #{pay_type}
+				 , #{pay_price}
+				 , now()
+				 , 'N'
+				 , #{pay_status}
+			)
+			
+	</insert>
+	
 	
 
 <!-- 상영중인 영화  -->
@@ -90,6 +111,8 @@
 			FROM movieInfo
 			 WHERE info_movie_code = #{info_movie_code}
 	</select>
+	
+	
 	<!-- 멤버리스트 -->
 	<select id="selectMember" resultType="hashmap">
 		SELECT * FROM member

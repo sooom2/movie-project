@@ -63,7 +63,7 @@
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
-									<input type="text" id="join-bday" name="birthDate"
+									<input type="text" id="join-bday" name="member_bday"
 									class="input input-numeric" placeholder="예) 20170101">
 									<span></span>
 								</label>

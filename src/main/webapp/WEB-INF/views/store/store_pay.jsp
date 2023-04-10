@@ -22,17 +22,17 @@
 	        pg : $('input[name="radio_choice"]:checked').val(),
 	        pay_method : 'card',
 	        merchant_uid: "code" + new Date().getTime(), 
-	        name : ${item.get('item_name') },
+	        name : '홍길동',
 	        amount : ${item_price },
-	        buyer_email : 'mport@chai.finance',
-	        buyer_name : '홍길동',
-	        buyer_tel : '010-1234-5678',
+	        buyer_email : '${member.get('member_email')}',
+	        buyer_name : '${member.get('member_name')}',
+	        buyer_tel : '${member.get('member_tel')}',
 	        
 	    }, function (rsp) { // callback
 	        if (rsp.success) {
 			    alert("결제가 완료되었습니다.");
-			    location.href = "store_paySuccess?pay_method=" + rsp.pay_method + "&pay_code=" + rsp.merchant_uid + "&pay_price=" + rsp.paid_amount
-			    				+ "&pay_type=" + rsp.status;
+			    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" + rsp.pay_method + "&pay_price=" + rsp.paid_amount
+			    				+ "&pay_status=" + rsp.status;
 	        } else {
 	            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
 	            	  + rsp.error_msg + ")");

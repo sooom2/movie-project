@@ -106,7 +106,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input name="item_status" class="form-control" id="inputPasswordConfirm" type="text" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">상품 상태</label>
+                                                        <label for="inputPasswordConfirm">상품 상태(new, hot, event)</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,19 +125,19 @@
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 10%;"><a
+								<th data-sortable="true" style="width: 7%;"><a
 									href="#" class="datatable-sorter">상품 코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a
+								<th data-sortable="true" style="width: 7%;"><a
 									href="#" class="datatable-sorter">상품 타입</a></th>
 								<th data-sortable="true" style="width: 15%;"><a
 									href="#" class="datatable-sorter">상품 이름</a></th>
-								<th data-sortable="true" style="width: 10%;"><a
+								<th data-sortable="true" style="width: 7%;"><a
 									href="#" class="datatable-sorter">상품 가격</a></th>
-								<th data-sortable="true" style="width: 10%;"><a
+								<th data-sortable="true" style="width: 15%;"><a
 									href="#" class="datatable-sorter">상세 설명</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter">상품 이미지</a></th>
-								<th data-sortable="true" style="width: 10%;"><a
+								<th data-sortable="true" style="width: 15%;"><a
 									href="#" class="datatable-sorter">상품 상태(new, hot, event)</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter"></a></th>

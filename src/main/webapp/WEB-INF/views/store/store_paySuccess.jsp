@@ -31,7 +31,7 @@
 					<div class="member join-success">
 						<div class="end">
 							<div class="t1">
-								<strong></strong> 님<br>결제 완료되었습니다.
+								<strong></strong>${member.get('member_id') } 님<br>결제 완료되었습니다.
 							</div>
 							<div class="t2">
 								포인트 1000점 적립완료!<br>지금부터 아이무비에서 제공하는 다양한 서비스를 이용하실 수 있습니다.
