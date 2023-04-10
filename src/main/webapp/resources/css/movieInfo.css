@@ -70,15 +70,15 @@
 	opacity: 1;
 }
 
-.section-movie-list ul li .over-a.up {
+/* .section-movie-list ul li .over-a.up { */
 /* 	background: url("../images/movies/bg-list-hover-up.png") center center */
 /* 		no-repeat; */
-}
+/* } */
 
-.section-movie-list ul li .over-a.down {
+/* .section-movie-list ul li .over-a.down { */
 /* 	background: url("../movies/bg-list-hover-down.png") center center */
 /* 		no-repeat; */
-}
+/* } */
 
 .section-movie-list ul li .over-a a.rsv {
 	display: block;

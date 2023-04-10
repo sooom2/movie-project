@@ -16,8 +16,6 @@
                 <div class="motto">
                 	<span>최신개봉 영화 목록 </span><br>
                 	<select id="api" name="api">
-                		
-                	
                 	</select>
                 	<span>최신 개봉 영화</span><br>
                 	<select id="api" name="api"></select>
@@ -114,28 +112,20 @@
  			
  		}
  		
-// 		$('#form').submit(function(){
-			 // Get form
-	 	     // var form = $('#form')[0];
-	        // Create an FormData object 
-// 	        var formData = new FormData();
-// 	        formData.append("midx",$('#midx').val());
-// 	        formData.append("mRunTime",$('#mRunTime').val());
-// 			formData.append("mName",$('#mName').val());
-// 			formData.append("mCont",$('#mCont').val());
-// 			formData.append("mPer",$('#mPer').val());
-// 			formData.append("mDate",$('#mDate').val());
-// 			formData.append("mPhoto",$('#mPhoto')[0].files[0]);
-			
-// 	 		$.ajax({
-// 				url : '',
-// 				type : 'POST',
-// 				data : formData,
-// 	            processData: false,
-// 	            contentType: false,
-// 				success : function(data) {
-// 					location.reload();
-// 				}
+// 	 		var xhr = new XMLHttpRequest();
+// 	 		var url = 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&nation=대한민국');
+// 	 		/*URL*/ 
+// 	 		var queryParams = '?' + encodeURIComponent('ServiceKey=서비스키');
+// 	 		/*Service Key*/ 
+// 	 		queryParams += '&' + encodeURIComponent('val001') + '=' + encodeURIComponent('2018'));
+// 	 		/*상영년도*/ 
+// 	 		queryParams += '&' + encodeURIComponent('val002') + '=' + encodeURIComponent('01'));
+// 	 		/*상영월*/ xhr.open('GET', url + queryParams);
+// 	 		xhr.onreadystatechange = function () { 
+// 	 			if (this.readyState == 4) {
+// 	 			alert('Status: '+this.status+'Headers: '+JSON.stringify(this.getAllResponseHeaders())+'Body: '+this.responseText);
+// 	 			}
+	 		}
 				
 			});
 	 		return false; 		
