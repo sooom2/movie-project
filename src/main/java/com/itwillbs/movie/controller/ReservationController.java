@@ -14,7 +14,7 @@ public class ReservationController {
 	@Autowired
 	private ReservationService service;
 	
-	
+	// TEST CODE
 //	@GetMapping(value = "reservation_test")
 //	public String reservation_test(Model model) {
 //		List<HashMap<String, String>> cinema = service.selectCinema();
@@ -35,6 +35,16 @@ public class ReservationController {
 		List<HashMap<String, String>> cinema = service.selectCinema();
 		model.addAttribute("cinema", cinema);
 		
+		List<HashMap<String, String>> movieInfo = service.selectMovieInfo();
+		model.addAttribute("movieInfo", movieInfo);
+		
+//		List<HashMap<String, String>> movieTime = service.selectMovieTime();
+//		model.addAttribute("movieTime", movieTime);
+		
+		List<HashMap<String, String>> movie = service.selectMovie();
+		model.addAttribute("movie", movie);
+		
+		
 		
 		
 		// cinema 값 확인
@@ -43,8 +53,6 @@ public class ReservationController {
 //		}
 		
 //		System.out.println(cinema.get(0)); // cinema_code == '1'
-		
-		
 		
 		return "reservation/reservation";
 	}

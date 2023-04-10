@@ -61,6 +61,7 @@
 <!-- 				<input type="hidden" id="HidRating" name="HidRating" value=""> -->
 <!-- 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value=""> -->
 <!-- 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value=""> -->
+
 				
 				<!-- PC 전용 -->
 				<div class="reservation-pc page-type">
@@ -83,24 +84,6 @@
 										<div class="list-head">
 											<h5 class="r-h5">영화관</h5>
 										</div>
-<!-- 										<div class="tab"> -->
-<!-- 											<div class="scroll-wrapper scrollbar-inner" -->
-<!-- 												style="position: relative;"> -->
-<!-- 												<div class="scroll-element scroll-x scroll-scrollx_visible"> -->
-<!-- 													<div class="scroll-element_outer"> -->
-<!-- 														<div class="scroll-element_size"></div> -->
-<!-- 														<div class="scroll-element_track"></div> -->
-<!-- 														<div class="scroll-bar" style="width: 216px; left: 0px;"></div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 												<div class="scroll-element scroll-y scroll-scrollx_visible"> -->
-<!-- 													<div class="scroll-element_outer"> -->
-<!-- 														<div class="scroll-element_size"></div> -->
-<!-- 														<div class="scroll-element_track"></div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
 										<div class="list">
 											<!--1. 지역 선택 -->
 											<div class="step1">
@@ -127,44 +110,53 @@
 														
 														<!-- 하드코딩 고쳐야함 ㅠ^ㅠ -->
 														
-														<!-- 전체 클릭 -->
+														<!-- 전체 -->
 														<ul class="subTheater" data-cd="all" style="display: block;">
 															<c:forEach var="cinema" items="${cinema }">
 																<li>
-																<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
+																	<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
 																</li>
 															</c:forEach>
 														</ul>
 														
-														<!-- 부산 클릭 -->
+														<!-- 부산 -->
 														<ul class="subTheater" data-cd="051" style="display: none;">
 															<c:forEach var="cinema" items="${cinema }">
 																<c:if test="${cinema.location_code eq '051'}">
-																<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> <br>
+																	<li>
+																		<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button>
+																	</li>
 																</c:if>
+																
 															</c:forEach>
 														</ul>
-														<!-- 서울 클릭 -->
+														<!-- 서울 -->
 														<ul class="subTheater" data-cd="02" style="display: none;">
 															<c:forEach var="cinema" items="${cinema }">
 																<c:if test="${cinema.location_code eq '02'}">
-																<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> <br>
+																	<li>
+																		<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button>
+																	</li>
 																</c:if>
 															</c:forEach>
 														</ul>
-														<!-- 울산 클릭 -->
+														<!-- 울산 -->
 														<ul class="subTheater" data-cd="052" style="display: none;">
 															<c:forEach var="cinema" items="${cinema }">
 																<c:if test="${cinema.location_code eq '052'}">
-																<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> <br>
+																	<li>
+																		<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button>
+																	</li>
 																</c:if>
 															</c:forEach>
 														</ul>
-														<!-- 경남 클릭 -->
+														<!-- 경남 -->
 														<ul class="subTheater" data-cd="055" style="display: none;">
 															<c:forEach var="cinema" items="${cinema }">
 																<c:if test="${cinema.location_code eq '055'}">
-																<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> <br>
+																	<li>
+																		<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button>
+																	</li>
 																</c:if>
 															</c:forEach>
 														</ul>
@@ -197,44 +189,22 @@
 									<div class="mv-list">
 										<div class="list-head">
 											<h5 class="r-h5">영화</h5>
-											<a href="#" class="btn-search"></a>
-											<div class="search">
-												<input type="text" id="srchMovie" class="inp-mv"
-													placeholder="영화명을 입력해주세요."> <a href="#"
-													class="btn-srch"></a> <a href="#" class="btn-remove"></a>
-											</div>
 										</div>
 										<div class="tab2">
-											<a href="#" class="btnMovieTab active" data-tab="boxoffice">예매율순</a> 
-											<a href="#" class="btnMovieTab" data-tab="name">가나다 순</a>
+											<a href="#" class="btnMovieTab" data-tab="boxoffice">예매율순</a> 
+											<a href="#" class="btnMovieTab active" data-tab="name">가나다 순</a>
 										</div>
 										<div class="list">
 											<div class="scrollbar-inner">
 												<ul id="movieList">
-													<li>
-														<button type="button" class="btnMvItem" data-cd="021989"
-															data-url="https://img.dtryx.com/poster/2023/03/2D2C7516-D68F-4875-AF1E-45C50BDF8D1F.small.jpg"
-															data-rat="15" data-trt="15.82" data-rdt="2023-04-12"
-															title="사랑의 고고학">
-															<i class="age15"></i> 사랑의 고고학
-														</button>
-													</li>
-													<li>
-														<button type="button" class="btnMvItem" data-cd="021864"
-															data-url="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"
-															data-rat="12" data-trt="14.82" data-rdt="2023-03-08"
-															title="스즈메의 문단속">
-															<i class="age12"></i> 스즈메의 문단속
-														</button>
-													</li>
-													<li>
-														<button type="button" class="btnMvItem" data-cd="019476"
-															data-url="https://img.dtryx.com/poster/2022/03/07F44F77-F93A-44D0-8A9E-8E88E42E722D.small.jpg"
-															data-rat="15" data-trt="7.72" data-rdt="2017-03-30"
-															title="패왕별희 디 오리지널">
-															<i class="age15"></i> 패왕별희 디 오리지널
-														</button>
-													</li>
+													<c:forEach var="movieTitle" items="${movieInfo }">
+															<li>
+																<button type="button" class="btnMvItem" data-cd="${movieTitle.info_movie_code }"
+																	data-url="${movieTitle.info_movie_poster }"
+																	data-rdt="${movieTitle.info_showdate }"
+																	title="${movieTitle.info_movie_title }">${movieTitle.info_movie_title }</button>
+															</li>
+													</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -255,10 +225,6 @@
 									<div class="time">
 										<div class="list-head">
 											<h5 class="r-h5">상영시간</h5>
-											<div class="types">
-												<button type="button" class="btn-list"></button>
-												<button type="button" class="btn-thum active"></button>
-											</div>
 										</div>
 										<div class="list-body">
 											<div class="scroll-wrapper scrollbar-inner"
@@ -266,63 +232,51 @@
 												<div class="scrollbar-inner scroll-content"
 													style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
 													<div id="timeList">
-														<div class="list-type" style="display: none">
+														<div class="list-type">
 															<ul>
 																<ul class="mvTimeLine">
-																	<li>
-																		<button type="button" class="btnTime" data-cd="02"
-																			data-seq="3">
-																			<div class="loc">2관/2D(자막)</div>
-																			<div class="info">
-																				<p class="time">
-																					14:30<span>~16:32</span>
-																				</p>
-																				<p class="num">
-																					45/<span>47석</span>
-																				</p>
-																			</div>
-																		</button>
-																	</li>
-																	<li>
-																		<button type="button" class="btnTime" data-cd="02"
-																			data-seq="5">
-																			<div class="loc">2관/2D(자막)</div>
-																			<div class="info">
-																				<p class="time">
-																					19:25<span>~21:27</span>
-																				</p>
-																				<p class="num">
-																					47/<span>47석</span>
-																				</p>
-																			</div>
-																		</button>
-																	</li>
+																	<c:forEach var="movieTime" items="${movie }">
+																		<li>
+																			<button type="button" class="btnTime" data-cd="${movieTime.location_code }"
+																				data-seq="${movieTime.screen_code }">
+																				<div class="loc">${movieTime.screen_name }</div>
+																				<div class="info">
+																					<p class="time">
+																						${movieTime.sch_start_time }<span>~${movieTime.sch_last_time }</span>
+																					</p>
+																					<p class="num">
+																						89/<span>89석(수정필요))</span>
+																					</p>
+																				</div>
+																			</button>
+																		</li>
+																	</c:forEach>
 																</ul>
 															</ul>
 														</div>
-														<div class="thum-type">
-															<h5 class="thum-tit">2관/2D(자막)</h5>
-															<ul>
-																<li>
-																	<button type="button" class="btnTime" data-cd="02"
-																		data-seq="3">
-																		<strong>14:30<span>~16:32</span></strong>
-																		<p>
-																			45/<span>47석</span>
-																		</p>
-																	</button>
-																</li>
-																<li>
-																	<button type="button" class="btnTime" data-cd="02"
-																		data-seq="5">
-																		<strong>19:25<span>~21:27</span></strong>
-																		<p>
-																			47/<span>47석</span>
-																		</p>
-																	</button>
-																</li>
-															</ul>
-														</div>
+<!-- 														<div class="thum-type" style="display: none"> -->
+<!-- 															<h5 class="thum-tit">1관/2D(자막)</h5> -->
+<!-- 															<ul> -->
+<!-- 																<li> -->
+<!-- 																	<button type="button" class="btnTime" data-cd="01" -->
+<!-- 																		data-seq="1"> -->
+<!-- 																		<strong>10:30<span>~12:32</span></strong> -->
+<!-- 																		<p> -->
+<!-- 																			89/<span>89석</span> -->
+<!-- 																		</p> -->
+<!-- 																	</button> -->
+<!-- 																</li> -->
+<!-- 																<li> -->
+<!-- 																	<button type="button" class="btnTime" data-cd="01" -->
+<!-- 																		data-seq="3"> -->
+<!-- 																		<strong>16:10<span>~18:12</span></strong> -->
+<!-- 																		<p> -->
+<!-- 																			87/<span>89석</span> -->
+<!-- 																		</p> -->
+<!-- 																	</button> -->
+<!-- 																</li> -->
+<!-- 															</ul> -->
+<!-- 														</div> -->
 													</div>
 												</div>
 												<div class="scroll-element scroll-x">
@@ -342,41 +296,37 @@
 											</div>
 
 											<div class="info-box">
-												<div class="info">
-													<!-- 선택후 -->
-													<div class="img">
-														<img
-															src="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"> 
-<!-- 															포스터 출력 이미지 -->
+													<div class="info">
+														<!-- 선택후 -->
+														<div class="img"><img src="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"></div>
+														<div class="text">
+															<strong><span class="mvNm">스즈메의 문단속</span></strong>
+															<dl>
+																<dt>극장</dt>
+																<dd class="cnNm">1939시네마</dd>
+															</dl>
+															<dl>
+																<dt>상영관</dt>
+																<dd class="scNm"></dd>
+															</dl>
+															<dl>
+																<dt>상영등급</dt>
+																<dd class="rtNm">12세 이상 관람가</dd>
+															</dl>
+															<dl>
+																<dt>날짜</dt>
+																<dd class="plDt">2023-04-15(토)</dd>
+															</dl>
+															<dl>
+																<dt>상영시간</dt>
+																<dd class="tiNm"></dd>
+															</dl>
+														</div>
 													</div>
-													<div class="text">
-														<strong><span class="mvNm">스즈메의 문단속</span></strong>
-														<dl>
-															<dt>극장</dt>
-															<dd class="cnNm">1939시네마</dd>
-														</dl>
-														<dl>
-															<dt>상영관</dt>
-															<dd class="scNm"></dd>
-														</dl>
-														<dl>
-															<dt>상영등급</dt>
-															<dd class="rtNm">12세 이상 관람가</dd>
-														</dl>
-														<dl>
-															<dt>날짜</dt>
-															<dd class="plDt">2023-04-05(수)</dd>
-														</dl>
-														<dl>
-															<dt>상영시간</dt>
-															<dd class="tiNm"></dd>
-														</dl>
+													<div class="next">
+														<button type="button" id="btnNext">인원/좌석 선택</button>
 													</div>
 												</div>
-												<div class="next">
-													<button type="button" id="btnNext">인원/좌석 선택</button>
-												</div>
-											</div>
 										</div>
 
 									</div>
@@ -466,7 +416,6 @@
 <!-- 		</div> -->
 <!-- 	</div> -->
 	
-	
 	<script type="text/javascript" >
 	var movieList = [];
 	var cinemaList = [];
@@ -500,12 +449,11 @@
 			
 			console.log($("#TabRegionCd").val());
 			
-			test();
-			
-			
-			
 			$(".subTheater").hide();
 			$('.subTheater[data-cd="' + cd + '"]').show();
+			
+			
+			
 			
 			
 		});
@@ -533,14 +481,16 @@
 		
 // -----------------------------------------------------------------------------------	function end
 
+
+
 // 영화관 리스트 TEST
-	function test() {
-		var cinemaObject = [[${cinema}]];
-		console.log("test함수");
-// 		console.log(${cinema});
-		console.log(cinemaObject.cinema_name);
-		var tab = "";
-		var det = "";
+// 	function test() {
+// 		var cinemaObject = [[${cinema}]];
+// 		console.log("test함수");
+// // 		console.log(${cinema});
+// 		console.log(cinemaObject.cinema_name);
+// 		var tab = "";
+// 		var det = "";
 
 		//전체
 // 		for (var i = 0; i < cinemaList.length; i++) {
@@ -572,7 +522,7 @@
 // 		$("#regionList li.active .btnTheater").focus();
 // 		$("#cinemaList .subTheater:visible li:first-child .btnCnItem").focus();
 // 		$("#cinemaList .subTheater:visible li.check .btnCnItem").focus();
-	}
+// 	}
 
 	
 
@@ -686,21 +636,6 @@
 // 		setTime();
 // 	});
 	
-	$(document).on("click", ".btn-list", function(){
-		$(this).addClass("active");
-		$(".btn-thum").removeClass("active");
-		
-		$(".list-type").show();
-		$(".thum-type").hide();
-	});
-	
-	$(document).on("click", ".btn-thum", function(){
-		$(this).addClass("active");
-		$(".btn-list").removeClass("active");
-		
-		$(".list-type").hide();
-		$(".thum-type").show();
-	});
 
 	
 	

@@ -14,8 +14,19 @@ public class ReservationService {
 	private ReservationMapper mapper;
 	
 	public List<HashMap<String, String>> selectCinema() {
-		
 		return mapper.selectCinema();
+	}
+
+	public List<HashMap<String, String>> selectMovieInfo() {
+		return mapper.selectMovieInfo();
+	}
+
+//	public List<HashMap<String, String>> selectMovieTime() {
+//		return mapper.selectMovieTime();
+//	}
+
+	public List<HashMap<String, String>> selectMovie() {
+		return mapper.selectMovie();
 	}
 
 }
