@@ -64,16 +64,21 @@ public class StoreController {
 	// 결제 성공
 	@RequestMapping(value = "store_paySuccess", method = {RequestMethod.GET, RequestMethod.POST})
 	public String store_paySuccess(@RequestParam HashMap<String, String> pay, HttpSession session, Model model) {
-		System.out.println(pay);
 		String id = (String)session.getAttribute("sId");
 		HashMap<String, String> member = service.selectMemberId(id);
 		pay.put("id", id);
 		int insertPay = service.insertPay(pay);
-		System.out.println(insertPay);
+		
+		// 포인트 적립
+		HashMap<String, String> point = new HashMap<String, String>();
+		String pointResult = (Integer.parseInt(member.get("member_point")) + Integer.parseInt(pay.get("pay_price")) / 10) + "";
+		point.put("id", id);
+		point.put("point", pointResult);
+		int updatePoint = service.updatePoint(point);
+		pay.put("point", (Integer.parseInt(pay.get("pay_price")) / 10) + "");
+
 		model.addAttribute("member", member);
 		model.addAttribute("pay", pay);
-		
-		
 		
 		return "store/store_paySuccess";
 	}

@@ -42,10 +42,6 @@ public class AdminController {
 	
 	// 스토어======================================================================================
 	
-	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
-	public String itemPay() {
-		return "admin/admin_item_pay";
-	}
 	
 	// 상품 조회
 	@RequestMapping(value = "admin_item_register", method = {RequestMethod.GET, RequestMethod.POST})
@@ -85,14 +81,24 @@ public class AdminController {
 	}
 	
 	// 상품 수정
-		@RequestMapping(value = "admin_item_updatePro", method = {RequestMethod.GET, RequestMethod.POST})
-		public String itemUpdatePro(@RequestParam HashMap<String, String> item) {
-			
-			int updateCount = itemService.updateItem(item);
-			
-			return "redirect:/admin_item_register";
-		}
+	@RequestMapping(value = "admin_item_updatePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemUpdatePro(@RequestParam HashMap<String, String> item) {
+		
+		int updateCount = itemService.updateItem(item);
+		
+		return "redirect:/admin_item_register";
+	}
+	// 상품 결제 내역
+	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
+	public String itemPay(Model model) {
+		
+		List<HashMap<String, String>> pay = storeService.selectPay();
+		model.addAttribute("pay", pay);
+		
+		return "admin/admin_item_pay";
+	}
 	
+		
 	
 	
 	//영화===========================================================================================

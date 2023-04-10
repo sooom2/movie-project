@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 주의! mapper 태그 내의 namespace 속성에 현재 XML 파일과 연결될 자바 클래스를 명시해야한다! -->
 <mapper namespace="com.itwillbs.movie.mapper.MyBatisMapper">
+	
+	<!-- 회원가입 -->
 	<insert id="insertMember">
 		INSERT INTO member
 			VALUES(
@@ -18,6 +20,7 @@
 			)
 	</insert>
 	
+	<!-- 로그인 조회 -->
 	<select id="chekUser" resultType="hashmap">
 		SELECT * 
 			FROM member
@@ -30,18 +33,6 @@
 					WHERE member_id = #{id}
 	</select>
 	
-	<insert id="registItem">
-		INSERT INTO item
-			VALUES(
-				   #{item_code}
-				   , #{item_type}
-				   , #{item_name}
-				   , #{item_price}
-				   , #{item_detail}
-				   , #{item_image}
-				   , #{item_status}
-			)
-	</insert>
 	<select id="selectItem" resultType="hashmap">
 		SELECT * 
 			FROM item
@@ -72,6 +63,21 @@
 			WHERE item_code = #{item_code}
 	</select>
 	
+	<!-- 관리자 상품 등록 -->
+	<insert id="registItem">
+		INSERT INTO item
+			VALUES(
+				   #{item_code}
+				   , #{item_type}
+				   , #{item_name}
+				   , #{item_price}
+				   , #{item_detail}
+				   , #{item_image}
+				   , #{item_status}
+			)
+	</insert>
+	
+	<!-- 관리자 상품 수정 -->
 	<update id="updateItem">
 		UPDATE item 
 			SET item_type = #{item_type}
@@ -84,19 +90,33 @@
 					WHERE item_code = #{item_code}
 	</update>
 	
+	<!-- 상품 결제 조회 -->
+	<select id="selectPay" resultType="hashmap">
+		SELECT * FROM pay
+	</select>
+	
+	
+	<!-- 스토어 결제 -->
 	<insert id="insertPay">
 		INSERT INTO pay
 			VALUES(
 				   #{pay_code}
 				 , #{id}
+				 , #{item_code}
 				 , #{pay_type}
 				 , #{pay_price}
 				 , now()
 				 , 'N'
 				 , #{pay_status}
 			)
-			
 	</insert>
+	
+	<!-- 포인트 적립 -->
+	<update id="updatePoint">
+		UPDATE member
+			SET member_point = #{point}
+				WHERE member_id = #{id}
+	</update>
 	
 	
 

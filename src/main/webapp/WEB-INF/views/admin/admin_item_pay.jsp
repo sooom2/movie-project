@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,6 +77,8 @@
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter">회원 아이디</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
+									href="#" class="datatable-sorter">상품 코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter">결제 타입</a></th>
 								<th data-sortable="true" style="width: 10%;"><a
 									href="#" class="datatable-sorter">결제 가격</a></th>
@@ -91,19 +94,22 @@
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
+							<c:forEach var="pay" items="${pay }">
 							<tr data-index="0">
-								<td>!@#Dasd2asd334</td>
-								<td>admin</td>
-								<td>카드</td>
-								<td>20,000</td>
-								<td>2023-04-05</td>
-								<td></td>
-								<td>결제 완료</td>
+								<td>${pay.get('pay_code') }</td>
+								<td>${pay.get('member_id') }</td>
+								<td>${pay.get('item_code') }</td>
+								<td>${pay.get('pay_type') }</td>
+								<td>${pay.get('pay_price') }</td>
+								<td>${pay.get('pay_date') }</td>
+								<td>${pay.get('pay_cancel_date') }</td>
+								<td>${pay.get('pay_status') }</td>
 								<td>
 									<input class="btn btn-primary btn-block" type="button" value="수정">
 									<input class="btn btn-primary btn-block" type="button" value="삭제">
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					
