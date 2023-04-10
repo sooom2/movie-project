@@ -33,6 +33,9 @@ public interface MyBatisMapper {
 	// 관리자 상품 수정
 	int updateItem(HashMap<String, String> item);
 	
+	// 관리자 결제 조회
+	List<HashMap<String, String>> selectPay();
+	
 	// ----------------------------------------------------------------------------------------
 	
 	// 스토어 기프트카드 조회
@@ -60,6 +63,7 @@ public interface MyBatisMapper {
 	
 	// 영화 상세 정보 페이지
 	HashMap<String, String> selectMovieInfo(String movieCd);
+
 
 	
 
