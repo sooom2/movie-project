@@ -416,6 +416,9 @@
 <!-- 		</div> -->
 <!-- 	</div> -->
 	
+<!-- 	script안에 model 객체 받아오려면...??? -->
+	
+	
 	<script type="text/javascript" >
 	var movieList = [];
 	var cinemaList = [];
