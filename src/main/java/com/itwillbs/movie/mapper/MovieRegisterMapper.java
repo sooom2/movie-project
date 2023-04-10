@@ -20,4 +20,8 @@ public interface MovieRegisterMapper {
 	
 	//영화정보수정
 	int updateMovie(HashMap<String, String> movie);
+
+	//영화관별 상영관 조회
+	List<HashMap<String, String>> selectCinema(String cinema_name);
+
 }

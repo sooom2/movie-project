@@ -91,6 +91,28 @@ public class MovieRegisterController {
 	}
 	
 	
+//	//영화예매관리
+//	@RequestMapping(value = "admin_movie_res_register", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String movieResRegister(@RequestParam String cinema_name) {
+//		System.out.println(cinema_name);
+//		List<HashMap<String, String>> selectCinema = movieRegisterServie.selectCinema(cinema_name);
+//		System.out.println(selectCinema);
+//		return "admin/admin_movie_res_register";
+//	}
+	
+	
+	
+	//영화 일정 관리
+	@RequestMapping(value = "movieScheduleUpdate", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieSchedule() {
+//		System.out.println(cinema_name);
+//		List<HashMap<String, String>> selectCinema = movieRegisterServie.selectCinema(cinema_name);
+//		System.out.println(selectCinema);
+		
+		
+		return "admin/admin_schedule_update";
+	}
+	
 }
 
 

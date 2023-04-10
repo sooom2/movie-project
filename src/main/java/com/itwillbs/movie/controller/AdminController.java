@@ -33,7 +33,6 @@ public class AdminController {
 		
 		List<HashMap<String, String>> memberList = memberService.selectMember();
 		model.addAttribute("memberList", memberList);
-		
 		return "admin/admin_main";
 	}
 	

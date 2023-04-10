@@ -248,6 +248,8 @@ function previewImage(targetObj, View_area) {
 				}
 			});
 			
+		
+			
 		});
 		
 		
@@ -257,6 +259,7 @@ function previewImage(targetObj, View_area) {
 			if($(".posterList")){
 				$(".posterlist").remove();
 			}
+			
 			$.ajax({
 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
 			type : 'GET',
@@ -410,10 +413,8 @@ function previewImage(targetObj, View_area) {
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">영화관리</h3>
-					<input class="btn btn-block btn-more" type="button" value="직접영화등록"
-						onclick="doMovieRegister()"> <input
-						class="btn btn-block btn-more" type="button" value="최신영화불러오기"
-						onclick="doLatest()">
+					<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()"> 
+					<input class="btn btn-block btn-more" type="button" value="최신영화불러오기" onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
