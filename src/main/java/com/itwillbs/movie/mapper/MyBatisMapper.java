@@ -48,6 +48,8 @@ public interface MyBatisMapper {
 	// 스토어 결제 입력
 	int insertPay(HashMap<String, String> pay);
 	
+	// 스토어 결제 후 포인트 적립
+	int updatePoint(HashMap<String, String> point);
 	
 	// ------------------------------------------------------------------------------------------
 	
@@ -58,6 +60,7 @@ public interface MyBatisMapper {
 	
 	// 영화 상세 정보 페이지
 	HashMap<String, String> selectMovieInfo(String movieCd);
+
 	
 
 	

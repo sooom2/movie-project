@@ -37,6 +37,10 @@ public class StoreService {
 	public int insertPay(HashMap<String, String> pay) {
 		return mapper.insertPay(pay);
 	}
+
+	public int updatePoint(HashMap<String, String> point) {
+		return mapper.updatePoint(point);
+	}
 	
 	
 

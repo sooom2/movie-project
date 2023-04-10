@@ -22,7 +22,7 @@
 	        pg : $('input[name="radio_choice"]:checked').val(),
 	        pay_method : 'card',
 	        merchant_uid: "code" + new Date().getTime(), 
-	        name : '홍길동',
+	        name : '${item.get('item_name') }',
 	        amount : ${item_price },
 	        buyer_email : '${member.get('member_email')}',
 	        buyer_name : '${member.get('member_name')}',
@@ -32,7 +32,7 @@
 	        if (rsp.success) {
 			    alert("결제가 완료되었습니다.");
 			    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" + rsp.pay_method + "&pay_price=" + rsp.paid_amount
-			    				+ "&pay_status=" + rsp.status;
+			    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')};
 	        } else {
 	            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
 	            	  + rsp.error_msg + ")");

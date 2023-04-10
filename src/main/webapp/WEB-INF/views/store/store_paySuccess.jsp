@@ -24,8 +24,8 @@
 
 				<div class="wrap-member-box wrap-join-box" id="join_confirm_section">
 					<ul class="join-indicator">
-						<li>이메일 입력(소셜 가입)</li>
-						<li>회원정보 입력</li>
+						<li>로그인</li>
+						<li>스토어</li>
 						<li class="selected">결제 완료</li>
 					</ul>
 					<div class="member join-success">
@@ -34,10 +34,13 @@
 								<strong></strong>${member.get('member_id') } 님<br>결제 완료되었습니다.
 							</div>
 							<div class="t2">
-								포인트 1000점 적립완료!<br>지금부터 아이무비에서 제공하는 다양한 서비스를 이용하실 수 있습니다.
+								포인트 ${pay.get('point') }점 적립완료!<br>
+								아이무비 스토어를 이용해주셔서 감사합니다.<br><br>
+								(결제 상품은 마이페이지에서 확인 가능합니다.)
 							</div>
 							<div class="btns">
-								<a href="${path }/index.jsp" class="btn-type-main">메인화면</a>
+								<a href="main" class="btn-type-main">메인화면</a>
+								<a href="store_main" class="btn-type-main">스토어</a>
 							</div>
 						</div>
 					</div>

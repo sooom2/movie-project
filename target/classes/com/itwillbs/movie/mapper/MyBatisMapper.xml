@@ -84,19 +84,28 @@
 					WHERE item_code = #{item_code}
 	</update>
 	
+	
+	<!-- 스토어 결제 -->
 	<insert id="insertPay">
 		INSERT INTO pay
 			VALUES(
 				   #{pay_code}
 				 , #{id}
+				 , #{item_code}
 				 , #{pay_type}
 				 , #{pay_price}
 				 , now()
 				 , 'N'
 				 , #{pay_status}
 			)
-			
 	</insert>
+	
+	<!-- 포인트 적립 -->
+	<update id="updatePoint">
+		UPDATE member
+			SET member_point = #{point}
+				WHERE member_id = #{id}
+	</update>
 	
 	
 
