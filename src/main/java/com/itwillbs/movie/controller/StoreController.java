@@ -2,7 +2,6 @@ package com.itwillbs.movie.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,20 +48,31 @@ public class StoreController {
 	}
 	
 	
-	
+	// 스토어 결제
 	@RequestMapping(value = "store_pay", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store_pay(@RequestParam String item_code, @RequestParam String item_price, Model model) {
+	public String store_pay(@RequestParam String item_code, @RequestParam String item_price, HttpSession session, Model model) {
 		HashMap<String, String> item = service.selectCode(item_code);
+		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> member = service.selectMemberId(id);
 		model.addAttribute("item", item);
 		model.addAttribute("item_price", item_price);
+		model.addAttribute("member", member);
 		
 		return "store/store_pay";
 	}
 	
+	// 결제 성공
 	@RequestMapping(value = "store_paySuccess", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store_paySuccess(@RequestParam HashMap<String, String> pay, HttpSession session) {
+	public String store_paySuccess(@RequestParam HashMap<String, String> pay, HttpSession session, Model model) {
 		System.out.println(pay);
 		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> member = service.selectMemberId(id);
+		pay.put("id", id);
+		int insertPay = service.insertPay(pay);
+		System.out.println(insertPay);
+		model.addAttribute("member", member);
+		model.addAttribute("pay", pay);
+		
 		
 		
 		return "store/store_paySuccess";

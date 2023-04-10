@@ -3,6 +3,7 @@ package com.itwillbs.movie.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,14 @@ public class StoreService {
 
 	public HashMap<String, String> selectCode(String item_code) {
 		return mapper.selectCode(item_code);
+	}
+
+	public HashMap<String, String> selectMemberId(String id) {
+		return mapper.selectMemberId(id);
+	}
+
+	public int insertPay(HashMap<String, String> pay) {
+		return mapper.insertPay(pay);
 	}
 	
 	

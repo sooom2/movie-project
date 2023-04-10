@@ -47,6 +47,16 @@
 	  WHERE info_movie_code = #{info_movie_code}
 </update>
 
+<select id="selectCinema" resultType="hashmap">
+
+	SELECT cinema_name, screen_name
+	  FROM cinema 
+	  LEFT JOIN screen 
+	         ON cinema.cinema_code = screen.screen_cinema_code
+     WHERE cinema_name = #{cinema_name};
+     
+</select>
+
 <!-- info_movie_code -->
 <!-- info_movie_title -->
 <!-- info_movie_poster -->

@@ -222,8 +222,6 @@ function previewImage(targetObj, View_area) {
 											</div>
 										</div>
 									</form>
-
-
 								</div>
 							</div>
 						</div>
@@ -241,40 +239,82 @@ function previewImage(targetObj, View_area) {
 					html += '<option selected>영화를 고르시오</option>';
 					//console.log(data);
 					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
-						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
+						// 밑 api에서 movieCd가 아니라 movieNm을 요구해서 #api 값을 cd->nm으로
+// 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
+						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
 						$('#api').html(html);
+					
 					}
 						
 				}
 			});
+			
+		
 			
 		});
 		
 		
 		function apibutton(){
 			
-			var movieCd = $('#api').val();
+// 			var movieCd = $('#api').val();
+			var info_movie_title = $('#api').val();
 			if($(".posterList")){
 				$(".posterlist").remove();
 			}
+			
 			$.ajax({
-			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
+// 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
+			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=N6BL7Q77SG0M41244297&title='+info_movie_title,
 			type : 'GET',
-			success : function(data) {
-				
+			dataType: 'json',
+			success : function(Data) {// 미리 작업해둔게 Data 였어서 data에서 Data로 바꿨어요
+				/* 수정전 23.04.10 이전 
 				html = '';
 				let info_movie_code = data.movieInfoResult.movieInfo.movieCd;
 				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
 				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
-
-
 				let info_year = data.movieInfoResult.movieInfo.prdtYear;
 				let info_time = data.movieInfoResult.movieInfo.showTm;
 				
 				
+				*/
+				
+				
+				
+				
+				// 수정 후 23.04.10
+				/*줄거리*/
+				let info_story = Data.Data[0].Result[0].plots.plot[0].plotText;
+				/*스틸컷*/
+				let info_still = Data.Data[0].Result[0].stlls.split('|')[0];
+				/*국가*/
+				let info_nation = Data.Data[0].Result[0].nation;
+				/*포스터*/
+				let info_movie_poster = Data.Data[0].Result[0].posters.split('|')[0];
+				/*관람등급*/
+				let info_rating = Data.Data[0].Result[0].rating;
+				
+				Data.Data[0].Result[0].prodYear
+				/*감독*/
+				let info_director = Data.Data[0].Result[0].directors.director[0].directorNm;
+				/*배우*/
+				let info_actors = Data.Data[0].Result[0].actors.actor[0].actorNm
+						  + ", " + Data.Data[0].Result[0].actors.actor[1].actorNm
+						  + ", " + Data.Data[0].Result[0].actors.actor[2].actorNm;
+				/*상영시간 */
+				let info_time = Data.Data[0].Result[0].runtime;
+				/*상영일*/
+				let str = Data.Data[0].Result[0].repRlsDate;
+				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
+				
+				/*
 				let str = data.movieInfoResult.movieInfo.openDt;
 				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8);
-			
+				*/
+				
+				/*장르*/
+				let info_genre = Data.Data[0].Result[0].genre;
+				
 				//상영일 > 종영일 계산하기
 				var info_enddate = new Date(info_showdate);
 				info_enddate.setDate(info_enddate.getDate() + 100);
@@ -283,10 +323,17 @@ function previewImage(targetObj, View_area) {
 			    var formattedDateString = isoDateString.slice(0, 10);
 			    
 			   	info_enddate = formattedDateString;
-			   	
+				/*				수정 이전
 			   	$(".poster").append(
 						"<img src='https://file.cineq.co.kr/i.aspx?movieid="+movieCd+"&amp;size=210' alt='포스터' class='poster posterlist'>"
 				);
+			    */
+			   	$(".poster").append(
+						"<img src='"+info_movie_poster+"' alt='포스터' class='poster posterlist'>"
+				);
+			    
+			    // 영화코드 제작년도 아직 수정해야돼요
+			    // 줄거리도 칸에 넣는작업 남아있어요 
 			    
 			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);		
 				$('input[name=info_movie_code]').attr('value',info_movie_code);		
@@ -410,10 +457,8 @@ function previewImage(targetObj, View_area) {
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">영화관리</h3>
-					<input class="btn btn-block btn-more" type="button" value="직접영화등록"
-						onclick="doMovieRegister()"> <input
-						class="btn btn-block btn-more" type="button" value="최신영화불러오기"
-						onclick="doLatest()">
+					<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()"> 
+					<input class="btn btn-block btn-more" type="button" value="최신영화불러오기" onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>

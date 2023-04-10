@@ -270,6 +270,9 @@ function modalClose(){
                     <div class="datatable-container">
                    <h3 class="text-center font-weight-light my-4">영화예매관리</h3>
                    
+                   
+                  
+                   
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>

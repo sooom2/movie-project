@@ -39,5 +39,10 @@ public class MovieRegisterServie {
 		return mapper.updateMovie(movie);
 	}
 
+	//영화관 선택하면 상영관나오게
+	public List<HashMap<String, String>> selectCinema(String cinema_name) {
+		return mapper.selectCinema(cinema_name);
+	}
+
 
 }

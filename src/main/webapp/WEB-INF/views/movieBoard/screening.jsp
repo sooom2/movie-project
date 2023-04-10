@@ -6,16 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/inc.css" rel="stylesheet">
-<!-- css가 안먹어요 ㅠㅠㅠㅠ -->
-<link href="resources/css/movieInfo.css" rel="stylesheet">
-<link href="resources/css/common.css" rel="stylesheet">
+<jsp:include page="../nav.jsp" />   
+<link href="resources/css/inc.css" rel="stylesheet" type="text/css">
+<link href="resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 
 <body id="top">
-	<jsp:include page="../nav.jsp" />   
  	<div id="content">
            
 	<div class="selector"></div>
