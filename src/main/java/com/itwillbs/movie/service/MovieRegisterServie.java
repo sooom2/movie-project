@@ -38,11 +38,25 @@ public class MovieRegisterServie {
 	public int updateMovie(HashMap<String, String> movie) {
 		return mapper.updateMovie(movie);
 	}
+	//영화관리스트
+	public List<HashMap<String, String>> selectCinema() {
+		return mapper.selectCinema();
+	}
 
 	//영화관 선택하면 상영관나오게
-	public List<HashMap<String, String>> selectCinema(String cinema_name) {
-		return mapper.selectCinema(cinema_name);
+	public List<HashMap<String, String>> selectScreen(String cinema_name) {
+		return mapper.selectScreen(cinema_name);
 	}
+
+	public int scheduleRegister(HashMap<String, String> movieSchedule) {
+		return mapper.scheduleRegister(movieSchedule);
+	}
+
+	//영화예매목록	
+	public List<HashMap<String, String>> selectSchedule() {
+		return mapper.selectScheduleList();
+	}
+	
 
 
 }

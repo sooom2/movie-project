@@ -106,11 +106,6 @@ public class AdminController {
 		return "admin/admin_cinema_register";
 	}
 	
-	//상영일정관리
-	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String scheduleRegister() {
-		return "admin/admin_schedule_register";
-	}
 	
 	//영화예매관리
 	@RequestMapping(value = "admin_movie_res_register", method = {RequestMethod.GET, RequestMethod.POST})

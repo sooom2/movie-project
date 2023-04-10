@@ -47,14 +47,38 @@
 	  WHERE info_movie_code = #{info_movie_code}
 </update>
 
-<select id="selectCinema" resultType="hashmap">
-
-	SELECT cinema_name, screen_name
+<select id="selectScreen" resultType="hashmap">
+	SELECT screen_name,screen_code,location_code
 	  FROM cinema 
 	  LEFT JOIN screen 
 	         ON cinema.cinema_code = screen.screen_cinema_code
-     WHERE cinema_name = #{cinema_name};
-     
+     WHERE cinema_name = #{cinema_name}
+     ORDER BY screen_name;
+</select>
+
+<select id="selectCinema" resultType="hashmap">
+	SELECT * FROM cinema
+</select>
+
+<!-- 영화상영일정 -->
+<insert id="scheduleRegister">
+INSERT INTO schedule
+		VALUES (
+			   (SELECT *
+		          FROM (SELECT IFNULL(MAX(CAST(sch_code AS UNSIGNED)), 0) + 1
+						  FROM schedule) A)
+			 , #{sch_screen_code}
+			 , #{sch_cinema_code}
+			 , #{sch_movie_code}
+			 , #{sch_movie_date}	
+			 , #{sch_start_time}
+			 , #{sch_last_time}
+			 , #{location_code}
+			 ); 
+</insert>
+<!-- 영화상영일정목록 -->
+<select id="selectScheduleList" resultType="hashmap">
+	SELECT * FROM schedule
 </select>
 
 <!-- info_movie_code -->

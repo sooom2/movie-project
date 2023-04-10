@@ -11358,7 +11358,7 @@ body {
 	text-align: center;
 }
 
-.modal-bottom button {
+.modal-bottom a{
 	width: 115px;
 	height: 38px;
 	border: 0;
@@ -11371,7 +11371,7 @@ body {
 	margin: 0 3px;
 }
 
-.modal-bottom button.btn-modal2 {
+.modal-bottom .btn-modal2 {
 	background: #673bd4;
 }
 
@@ -11379,7 +11379,7 @@ body {
 	display: flex;
 }
 
-.modal-bottom.flex button {
+.modal-bottom.flex  {
 	width: 49%;
 }
 
@@ -11387,7 +11387,7 @@ body {
 	margin: 20px -20px -20px;
 }
 
-.admin_modal .modal-bottom.flex button {
+.admin_modal .modal-bottom.flex  {
 	width: 50%;
 	border-radius: 0;
 	margin: 0;
@@ -11464,7 +11464,7 @@ main{
 	text-align: center;
 }
 
-.modal-bottom button {
+.modal-bottom a{
 	width: 115px;
 	height: 38px;
 	border: 0;
@@ -11477,7 +11477,7 @@ main{
 	margin: 0 3px;
 }
 
-.modal-bottom button.btn-modal2 {
+.modal-bottom .btn-modal2 {
 	background: #673bd4;
 }
 
@@ -11485,7 +11485,7 @@ main{
 	display: flex;
 }
 
-.modal-bottom.flex button {
+.modal-bottom.flex {
 	width: 49%;
 	height: 50px;
 }

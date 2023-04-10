@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,40 +88,38 @@ $(function(){
 			 <!-- 모달 -->
                     <!-- 테이블 -->
                    <div class="datatable-container">
-                   <h3 class="text-center font-weight-light my-4">영화예매관리</h3>
+                   <h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
                     <input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제번호</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">회원ID</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">영화관명</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영관명</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">관람날짜</a></th>
-								<th data-sortable="true" style="width: 7%;"><a href="#" class="datatable-sorter">좌석</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제금액</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">결제일</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">수정</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">영화관코드</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">스크린코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화코드</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영날짜</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">시작시간</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">종료시간</a></th>
+								<th data-sortable="true" style="width: 8%;"></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
+						<!--   sch_screen_code 는 상영관이름(screen_name)으로 바꿔야하고-->
+						<!--   sch_cinema_code 는 영화관이름(cinema_name)으로 바꿔야하고-->
+						<c:forEach var="schedule" items="${scheduleList }">
 						<tbody>
 							<tr data-index="0">
-								<td>15611889</td>
-								<td>admin1</td>
-								<td>리바운드</td>
-								<td>서면점</td>
-								<td>1관</td>
-								<td>2023-04-05</td>
-								<td>A1,A2</td>
-								<td>\20,000원</td>
-								<td>2023-04-05</td>
+								<td>${schedule.get("sch_cinema_code") }</td>
+								<td>${schedule.get("sch_screen_code") }</td>
+								<td>${schedule.get("sch_movie_code") }</td>
+								<td>${schedule.get("sch_movie_date") }</td>
+								<td>${schedule.get("sch_start_time") }</td>
+								<td>${schedule.get("sch_last_time") }</td>
 								<td class="modi">
 									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()">
 								</td>
 							</tr>
 						</tbody>
+						</c:forEach>
 					</table>
 					</div>
                      <!-- 테이블 --> 

@@ -190,8 +190,16 @@ function previewImage(targetObj, View_area) {
 		<div id="layoutSidenav_content">
 			<main>
 				<!-- 수정/삭제 -->
-								<h3 class="text-center font-weight-light my-4">영화수정</h3>
-								
+				
+				
+				
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7" style="width: 1000px">
+                                <div class="card border-1 mt-5">
+                                    <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">상영일정관리</h3>
+                                    </div>
+                                    <div class="card-body">
 									<form action="updateMovie">
 									<div class="row mb-4">
                                       	<h6 style="text-align:left">포스터수정</h6>
@@ -272,7 +280,11 @@ function previewImage(targetObj, View_area) {
 											</div>
 										</div>
 									</form>
-			</main>
+									</div>
+									</div>
+									</div>
+									</div>
+									</main>
 
 
 
