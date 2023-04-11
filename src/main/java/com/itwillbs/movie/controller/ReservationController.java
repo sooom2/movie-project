@@ -31,7 +31,7 @@ public class ReservationController {
 	
 	
 	@GetMapping(value = "reservation")
-	public String reservation(Model model) {
+	public String reservation(Model model, String cd) {
 		List<HashMap<String, String>> cinema = service.selectCinema();
 		model.addAttribute("cinema", cinema);
 		
