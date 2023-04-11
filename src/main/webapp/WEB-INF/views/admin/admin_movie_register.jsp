@@ -328,14 +328,11 @@ function previewImage(targetObj, View_area) {
 						"<img src='https://file.cineq.co.kr/i.aspx?movieid="+movieCd+"&amp;size=210' alt='포스터' class='poster posterlist'>"
 				);
 			    */
-			   	$(".poster").append(
-						"<img src='"+info_movie_poster+"' alt='포스터' class='poster posterlist'>"
-				);
+			   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
 			    
-			    // 영화코드 제작년도 아직 수정해야돼요
-			    // 줄거리도 칸에 넣는작업 남아있어요 
 			    
-			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);//포스터		
+			    // 지금 무비 포스터가 input hidden으로 넣어둔 상태 
+			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);	//포스터		
 				$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
 				$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
 				$('input[name=info_year]').attr('value',info_year);		//제작년도
@@ -343,15 +340,16 @@ function previewImage(targetObj, View_area) {
 				$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
 				$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
 				$('input[name=info_story]').attr('value',info_story);			//줄거리
-
+				$('input[name=info_director]').attr('value',info_director);			//감독
+				$('input[name=info_nation]').attr('value',info_nation);			//제작국가
+				$('input[name=info_rating]').attr('value',info_rating);			//관람등급
+				$('input[name=info_genre]').attr('value',info_genre);			//장르
 			}
 
 		});
 			
 		}
 </script>	
-
-
 
 				<!-- 최신영화불러오기 -->
 				<div class="container modal admin-modal-latest"
@@ -376,7 +374,6 @@ function previewImage(targetObj, View_area) {
 					                                      	<h6 style="text-align:left">포스터</h6>
 					                                   		<div class="col-md-3 moviePoster">
 					                                       		<div id='View_area' class="poster" style='position:relative; height: 210px; dispaly: inline;'>
-					                                       		
 					                                       		</div>
 					                                        </div>
 					                                        
@@ -438,6 +435,13 @@ function previewImage(targetObj, View_area) {
 																</div>
 															</div>
 														</div>
+														<!-- hidden 영역 -->
+														<input type="hidden" name = "info_director">
+														<input type="hidden" name = "info_nation">
+														<input type="hidden" name = "info_rating">
+														<input type="hidden" name = "info_genre">
+														<input type="hidden" name = "info_movie_poster">
+														<!-- hidden 영역 -->
 														<div class="row">
 															<div class="d-grid">
 																<input class="btn btn-primary btn-block" type="submit" value="등록"> 
