@@ -9,15 +9,19 @@
 <insert id="registMovie">
 		INSERT INTO movieinfo
 			VALUES(
-				   #{info_movie_code}
+				     #{info_movie_code}
 				   , #{info_movie_title}
 				   , #{info_movie_poster}
 				   , #{info_story}
 				   , #{info_year}
 				   , #{info_time}
 				   , #{info_showdate}
-				   , #{info_enddate}
-				   , '0'
+				   , #{info_enddate} 
+				   , '0'	-- likeCount
+				   , #{info_director}
+				   , #{info_nation}
+				   , #{info_rating}
+				   , #{info_genre}
 			)
 </insert>
 
