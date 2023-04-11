@@ -237,27 +237,25 @@ function previewImage(targetObj, View_area) {
 				success : function(data) {
 					var html = '';
 					html += '<option selected>영화를 고르시오</option>';
-					//console.log(data);
 					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
 						// 밑 api에서 movieCd가 아니라 movieNm을 요구해서 #api 값을 cd->nm으로
 // 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
-						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
-						$('#api').html(html);
-					
-					}
+						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm
+									 +'"movieCd="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd
+									 		+'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
 						
+						$('#api').html(html);
+						
+					}
 				}
 			});
-			
-		
-			
 		});
-		
-		
-		function apibutton(){
 			
-// 			var movieCd = $('#api').val();
+		function apibutton(){
+			// 선택버튼 눌렀을 때 
 			var info_movie_title = $('#api').val();
+			var info_movie_code = $("#api > option:selected").attr('movieCd')
+			
 			if($(".posterList")){
 				$(".posterlist").remove();
 			}
@@ -278,7 +276,8 @@ function previewImage(targetObj, View_area) {
 				
 				
 				*/
-				
+				// 포스터나 스틸컷부분 추가 하려면 스플릿을 여기가 아닌 DB에서 빼올때 작업을 해야하나
+				// 시간관계상 나중에......
 				
 				
 				
@@ -293,8 +292,9 @@ function previewImage(targetObj, View_area) {
 				let info_movie_poster = Data.Data[0].Result[0].posters.split('|')[0];
 				/*관람등급*/
 				let info_rating = Data.Data[0].Result[0].rating;
+				/*제작년도*/
+				let info_year = Data.Data[0].Result[0].prodYear;
 				
-				Data.Data[0].Result[0].prodYear
 				/*감독*/
 				let info_director = Data.Data[0].Result[0].directors.director[0].directorNm;
 				/*배우*/
@@ -319,7 +319,7 @@ function previewImage(targetObj, View_area) {
 				var info_enddate = new Date(info_showdate);
 				info_enddate.setDate(info_enddate.getDate() + 100);
 			    var dateObject = new Date(info_enddate);
-			    var isoDateString = dateObject.toISOString();
+			    var isoDateString = dateObject.toISOString();				/// 리바운드 영화 넣었을때 오류 나는 부분 
 			    var formattedDateString = isoDateString.slice(0, 10);
 			    
 			   	info_enddate = formattedDateString;
@@ -335,13 +335,14 @@ function previewImage(targetObj, View_area) {
 			    // 영화코드 제작년도 아직 수정해야돼요
 			    // 줄거리도 칸에 넣는작업 남아있어요 
 			    
-			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);		
-				$('input[name=info_movie_code]').attr('value',info_movie_code);		
-				$('input[name=info_movie_title]').attr('value',info_movie_title);		
-				$('input[name=info_year]').attr('value',info_year);		
-				$('input[name=info_time]').attr('value',info_time);		
-				$('input[name=info_showdate]').attr('value',info_showdate);		
-				$('input[name=info_enddate]').attr('value',info_enddate);		
+			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);//포스터		
+				$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
+				$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
+				$('input[name=info_year]').attr('value',info_year);		//제작년도
+				$('input[name=info_time]').attr('value',info_time);		//상영시간
+				$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
+				$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
+				$('input[name=info_story]').attr('value',info_story);			//줄거리
 
 			}
 
@@ -361,8 +362,8 @@ function previewImage(targetObj, View_area) {
 								<div class="card-header" style="text-align: center">
 									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
 									<h3 class="text-center font-weight-light my-4">최신영화등록</h3>
-									<span>최신개봉 영화 목록 고르기 (10개)</span><br><br>
-									<select id="api" name="api"></select>									
+									<span>최신개봉 영화 목록 고르기</span><br><br>
+									<select id="api" name="api"> </select>
 								 <input onclick="apibutton()"type="button" value="검색">	
 								</div>
 								<div class="card-body">
@@ -433,7 +434,7 @@ function previewImage(targetObj, View_area) {
 															<div class="col-md">
 																<div class="form-floating mb-3 mb-md-0">
 																	<input class="form-control" id="info_story" name="info_story" type="text" style="max-width: 100%"/>
-																	<label for="inputFirstName">줄거리</label>
+																	<label for="info_story">줄거리</label>
 																</div>
 															</div>
 														</div>

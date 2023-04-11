@@ -46,7 +46,6 @@
 				<a href="#" class="btn-rsv">예매하기</a>
 
 				<h4 class="synopsis-title">줄거리</h4>
-
 				<div class="synopsis">
 				${movieInfo.info_story }
 				</div>

@@ -6,17 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="../nav.jsp" />   
-<link href="resources/css/inc.css" rel="stylesheet" type="text/css">
-<link href="resources/css/common.css" rel="stylesheet" type="text/css">
-<link href="resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="${pageContext.request.contextPath}/resources/css/inc.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
+<jsp:include page="../nav.jsp" />   
 
 </head>
 
 <body id="top">
+<div id = "container">
  	<div id="content">
-           
 	<div class="selector"></div>
 	<div class="section group section-movie-list screening">
     	<ul>
@@ -27,15 +27,14 @@
 		    <img src="https://file.cineq.co.kr/i.aspx?movieid=${movie.get('info_movie_code') }&amp;size=210" class="posterlist">
 		    <div class="movie-desc">
 		    <span class="label"> </span> ${movie.get('info_movie_title') }
+    		</div>
 		    <div class="btn-util">
 		    	<button type="button" class="button btn-like" data-no="01309400"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>1.9k</span></button>
                 <a href="#" class="button purple bokdBtn" data-no="01309400" title="영화 예매하기">예매</a>  </div>
-		   
-		    	</div>
-		    </li>
+  			</li>
 		</c:forEach>		    
- 	   </ul>
- 	   
+   		</ul>
+   		</div>
 	</div>
 </div>
 <script type="text/javascript">

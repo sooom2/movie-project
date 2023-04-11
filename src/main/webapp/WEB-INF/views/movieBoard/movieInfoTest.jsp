@@ -9,28 +9,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
-<div id="di">
-
-</div>
-<script>
-$(document).ready(
-				function() {
-					$.ajax({
-						url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f5eef3421c602c6cb7ea224104795888',
-						type : 'GET',
-						success : function(data) {
-							var html = '';
-							for(var i = 0; i < data.length; i++){
-								html += '<div>';
-								html += '영화제목 : '+ data.movieNm ;
-								html += '</div>';
-								
-							}
-							$('#di').html(html);
-						}
-					});
-				});
-</script>
-
+<!-- 삭제 ~ -->
 </body>
 </html>

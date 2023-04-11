@@ -15,6 +15,16 @@
 	margin: 0 auto 0 auto;
 	background-color: #f9f9f9;
 	padding: 0 0 120px;
+    overflow: hidden;
+    
+    
+/*     position: relative; */
+/*     float: left; */
+/*     width: 230px; */
+/*     height: 450px; */
+/*     margin: 0 0 0 60px; */
+/*     padding: 0; */
+/*     background-color: #fff; */
 }
 
 .section-movie-list.screening {
@@ -32,6 +42,7 @@
 	border-radius: 5px;
 	padding: 1px 38px;
 	margin-left: 18px;
+	
 }
 
 .section-movie-list ul {
@@ -44,6 +55,15 @@
 	display: inline-block;
 	margin: 0 3px 33px 3px;
 	position: relative;
+	
+/*     overflow: hidden; */
+/*     position: relative; */
+/*     float: left; */
+/*     width: 230px; */
+/*     height: 450px; */
+/*     margin: 0 0 0 60px; */
+/*     padding: 0; */
+/*     background-color: #fff; */
 }
 
 .section-movie-list ul li:nth-child(5n-4) {
@@ -194,15 +214,15 @@
 /*
 ============================================================== */
 .movie-desc {
-	font-size: 17px;
-	width: 170px;
-	overflow: hidden !important;
-/* 	border: 1px solid #b4b5b5; */
-	height: 30px;
-	padding-left: 0px;
-	padding: 6px 0;
-	color: #000000;
-	text-align: center;
+    width: 154px;
+    overflow: hidden !important;
+    border: 1px solid #b4b5b5;
+    height: 32px;
+    padding: 0 7px;
+    line-height: 31px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #89898a;
 }
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
@@ -454,7 +474,7 @@ a:link {
 	width: 115px;
 	height: 39px;
 	border-radius: 5px;
-	background-color: #ca141e;
+	background-color: #534cbf;
 	display: block;
 	line-height: 39px;
 	font-size: 17px;
