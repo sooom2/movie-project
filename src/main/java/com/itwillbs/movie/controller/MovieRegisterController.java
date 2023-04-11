@@ -3,19 +3,15 @@ package com.itwillbs.movie.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.movie.service.MovieRegisterServie;
-import com.itwillbs.movie.service.MovieService;
 
 @Controller
 public class MovieRegisterController {
@@ -61,16 +57,24 @@ public class MovieRegisterController {
 	//영화등록
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String registMovie(@RequestParam HashMap<String, String> movie) {
-		
+		System.out.println(movie);
 		int registCount = movieRegisterServie.registMovie(movie);
 		return "redirect:/admin_movie_register";
 	}
 	
 	//영화삭제
 	@RequestMapping(value = "deleteMovie", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieDelete(String info_movie_code) {
-		int deleteCount = movieRegisterServie.deleteMovie(info_movie_code);
+	public String movieDelete(@RequestParam String info_movie_code,Model model) {
+		System.out.println(info_movie_code);
 		
+		model.addAttribute("target", "deleteMovie");
+		
+		int deleteCount = movieRegisterServie.deleteMovie(info_movie_code);
+//		if(deleteCount > 0) {
+//			
+//			model.addAttribute("msg", "삭제하");
+//			
+//		}
 		return "redirect:/admin_movie_register";
 	}
 	
@@ -204,32 +208,36 @@ public class MovieRegisterController {
 	}
 	
 	//상영일정 수정
-	@RequestMapping(value = "movieScheduleUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieScheduleUpdatePro(@RequestParam HashMap<String, String> schedule) {
-		System.out.println(schedule);
+//	@RequestMapping(value = "movieScheduleUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String movieScheduleUpdatePro(@RequestParam HashMap<String, String> schedule) {
+//		System.out.println(schedule);
 //		int modifyCount = movieRegisterServie.movieScheduleUpdatePro(schedule);
 		
 		
-		return "";
-	}
+//		return "";
+//	}
 	
 
 	
 	//영화삭제
 	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteSchedule(String sch_code) {
-		int deleteCount = movieRegisterServie.deleteSchedule(sch_code);	
+	public String deleteSchedule(@RequestParam String sch_code,Model model) {
 		
-		return "admin/admin_movie_schedule_deletePro";
+		model.addAttribute("msg", "삭제하시겠습니까");
+		model.addAttribute("target","deleteSchedule");
+		
+		int deleteCount = movieRegisterServie.deleteSchedule(sch_code);	
+
+		
+		
+		return "redirect:/admin_schedule_register";
 	}
  	 	
+
+
+
+
 }
-
-
-
-
-
-
 
 
 

@@ -88,8 +88,8 @@ INSERT INTO schedule
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		,TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		,TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -104,8 +104,8 @@ INSERT INTO schedule
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		,TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		,TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -121,8 +121,8 @@ INSERT INTO schedule
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -138,8 +138,8 @@ INSERT INTO schedule
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -155,8 +155,8 @@ SELECT
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -172,8 +172,8 @@ SELECT
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -189,8 +189,8 @@ SELECT
 			,cinema.cinema_name 
 			,movieinfo.info_movie_title
 			,sch_movie_date
-			,sch_start_time
-			,sch_last_time
+			, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+			, TIME_FORMAT(sch_last_time, '%H:%i')AS sch_last_time
 			,sch_location
 	FROM schedule
 	LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -206,8 +206,8 @@ SELECT
 		,cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,sch_start_time
-		,sch_last_time
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
 	 FROM schedule
 	 LEFT JOIN screen ON screen.screen_code = sch_screen_code 
@@ -238,10 +238,6 @@ SELECT
 <!-- info_showdate -->
 <!-- info_enddate -->
 <!-- like_count -->
-
-
-
-
 
 
 

@@ -15,23 +15,31 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
-function deleteMovie(){
-		alert();
+
+function deleteSchedule(){
 	let delConfirm = confirm("삭제하시겠습니까?");
 	if (delConfirm) {
-		$.ajax({
-			type: "GET",
-			url: "deleteSchedule",
-			data: {
-				sch_code: ${selectSchedule.get('sch_code') }
-			},
-			datatype:"json",
-			success: function(data){
-				alert("삭제완료");
-				history.back();
-			}
-		});
+		location.href='deleteSchedule?sch_code=${selectSchedule.get('sch_code') }';
 	}
+}
+
+
+function deleteMovie(){
+// 	let delConfirm = confirm("삭제하시겠습니까?");
+// 	if (delConfirm) {
+// 		$.ajax({
+// 			type: "GET",
+// 			url: "deleteSchedule",
+// 			data: {
+// 				sch_code: ${selectSchedule.get('sch_code') }
+// 			},
+// 			datatype:"json",
+// 			success: function(data){
+// 				alert("삭제완료");
+// 				history.back();
+// 			}
+// 		});
+// 	}
 }
 
 function selectCinema(){
@@ -59,6 +67,8 @@ function selectCinema(){
 		}
 	});//ajax
 }
+
+
 
 $(function() {
     $("#sch_movie_date").datepicker({
@@ -200,29 +210,23 @@ $(function() {
                                                    </div>
                                              </div>
                                        </div>
+                                       
+                                       
                                        <div class="col-md-6">
-                                      	  <div class="form-floating mb-3 mb-md-0 selectbox">
-                                                   <div class="sch_last_time">
-                                                   	<label for="sch_last_time">상영종료시간 : </label>
-														<select name="sch_last_time">
-														    <option value="11:00">오전 11:00</option>
-														    <option value="12:00">오후 12:00</option>
-														    <option value="13:00">오후 1:00</option>
-														    <option value="14:00">오후 2:00</option>
-														    <option value="15:00">오후 3:00</option>
-														    <option value="16:00">오후 4:00</option>
-														    <option value="17:00">오후 5:00</option>
-														    <option value="18:00">오후 6:00</option>
-														    <option value="19:00">오후 7:00</option>
-														    <option value="20:00">오후 8:00</option>
-														    <option value="21:00">오후 9:00</option>
-														    <option value="22:00">오후 10:00</option>
-														</select>
-                                                   </div>
-                                             </div>
-                                       </div>
-                                </div>     
-                               
+<!-- 	                                      	  <div class="form-floating mb-3 mb-md-0"> -->
+<!-- 	                                                   <div class="sch_last_time"> -->
+<!-- 	                                                   	<input name="sch_last_time"class="form-control" id="sch_last_time" type="text" value="" /> -->
+<!-- 	                                                   	<label for="sch_last_time">상영종료시간 : </label> -->
+<!-- 	                                                   	<div class="col-md-6"> -->
+<!-- 	                                                   </div> -->
+<!-- 	                                             </div> -->
+<!-- 	                                       </div> -->
+										<div class="form-floating">
+											<input class="form-control" id="sch_last_time" name="info_year" type="text" value="몇시몇분">
+											<label for="info_year">상영종료시간</label>
+										</div>
+                               		 </div>     
+                               			</div>
                                 		<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
@@ -231,8 +235,9 @@ $(function() {
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a>
-												</div>
+<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
+													<input class="btn btn-primary btn-block btn-del" type="button" onclick="deleteSchedule()" value="삭제">
+												</div>															
 											</div>
 										</div>
                                    </form>

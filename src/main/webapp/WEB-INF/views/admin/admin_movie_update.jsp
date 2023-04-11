@@ -18,36 +18,31 @@
 <script type="text/javascript" src="resources/js/admin.js"></script>
 <!-- 모달 -->
 <script type="text/javascript">
-
-
 function deleteMovie(){
 	let delConfirm = confirm("삭제하시겠습니까?");
 	if (delConfirm) {
-		$.ajax({
-			type: "GET",
-			url: "deleteMovie",
-			aync : false
-			data: {
-				info_movie_code: $(".info_movie_code").val()
-			},
-			datatype:"json",
-			success: function(data){
-				alert("삭제완료");
-			}
-		}).then((arg) =>{    // 두번째 ajax를 실행한다.
-
-	        $.ajax({
-	            url: 'admin_schedule_register',
-	            type: 'POST',
-	            success: function(result2) {
-	            	alert("Ddd");
-	            }
-	        });
-		
-
-	});
-		
+		location.href='deleteMovie?info_movie_code=${selectMovie.get('info_movie_code')}'
 	}
+}
+
+function deleteMovie(){
+// 	let delConfirm = confirm("삭제하시겠습니까?");
+// 	if (delConfirm) {
+// 		$.ajax({
+// 			type: "GET",
+// 			url: "deleteMovie",
+// 			aync : false
+// 			data: {
+// 				info_movie_code: $(".info_movie_code").val()
+// 			},
+// 			datatype:"json",
+// 			success: function(data){
+// 				alert("삭제완료");
+// 			}
+// 		})
+// 	});
+		
+// 	}
 }
 	
 
@@ -225,7 +220,8 @@ function previewImage(targetObj, View_area) {
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a>
+<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
+													<input onclick="deleteMovie()" class="btn btn-block btn-more" type="button" value="삭제">
 												</div>
 											</div>
 										</div>
