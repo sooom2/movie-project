@@ -3,11 +3,14 @@ package com.itwillbs.movie.mapper;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import com.itwillbs.movie.vo.MemberVO;
 
 public interface MyBatisMapper {
 
-	int insertMember(HashMap<String, String> member);
+//	int insertMember(HashMap<String, String> member);
+	
+	//회원가입-수정
+	int insertMember(MemberVO member);
 	
 	// 로그인 확인
 	HashMap<String, String> chekUser(HashMap<String, String> login);
@@ -63,6 +66,8 @@ public interface MyBatisMapper {
 	
 	// 영화 상세 정보 페이지
 	HashMap<String, String> selectMovieInfo(String movieCd);
+
+
 
 
 	

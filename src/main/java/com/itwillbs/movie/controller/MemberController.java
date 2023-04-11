@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.MemberService;
+import com.itwillbs.movie.vo.MemberVO;
 
 @Controller
 public class MemberController {
@@ -78,17 +80,39 @@ public class MemberController {
 	
 	
 	// 회원가입 저장
+//	@PostMapping(value = "joinPro")
+//	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
+//		System.out.println(member);
+//		
+//		int insertCount = service.insertMember(member);
+//		
+//		model.addAttribute("member", member);
+//		
+//		
+//		return "member/mem_join_success";
+//	}
+	
+	
+	//회원가입저장(해싱작업추가)
 	@PostMapping(value = "joinPro")
-	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
-		System.out.println(member);
-		
-		int insertCount = service.insertMember(member);
-		
-		model.addAttribute("member", member);
-		
-		
+	public String joinPro(MemberVO member, Model model) {
+	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	String securePasswd = passwordEncoder.encode(member.getMember_pw());
+	member.setMember_pw(securePasswd);
+	int insertCount = service.registMember(member);
+	
+	if(insertCount > 0) { // 가입 성공
 		return "member/mem_join_success";
+	} else { // 가입 실패
+		model.addAttribute("msg", "회원 가입 실패!");
+		return "member/fail_back";
 	}
+	
+}
+	
+	
+	
+	
 
 	
 	// 로그아웃

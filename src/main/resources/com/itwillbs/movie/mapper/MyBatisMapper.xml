@@ -4,6 +4,23 @@
 <mapper namespace="com.itwillbs.movie.mapper.MyBatisMapper">
 	
 	<!-- 회원가입 -->
+<!-- 	<insert id="insertMember"> -->
+<!-- 		INSERT INTO member -->
+<!-- 			VALUES( -->
+<!-- 				   #{member_id} -->
+<!-- 				   , #{member_name} -->
+<!-- 				   , #{member_pw} -->
+<!-- 				   , #{member_bday} -->
+<!-- 				   , #{member_email} -->
+<!-- 				   , #{member_tel} -->
+<!-- 				   , '1000' -->
+<!-- 				   , #{member_prefer_branch} -->
+<!-- 				   , #{member_prefer_genre} -->
+<!-- 				   , now() -->
+<!-- 			) -->
+<!-- 	</insert> -->
+
+	<!-- 회원가입 수정-->
 	<insert id="insertMember">
 		INSERT INTO member
 			VALUES(
@@ -12,6 +29,7 @@
 				   , #{member_pw}
 				   , #{member_bday}
 				   , #{member_email}
+<!-- 					CONCAT(#{email1}, '@', #{email2}),  -->
 				   , #{member_tel}
 				   , '1000'
 				   , #{member_prefer_branch}
