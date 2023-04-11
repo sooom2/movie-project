@@ -43,6 +43,7 @@ public class MypageController {
 	public String mypageRv() {
 		
 		return "mypage/mypage_review_form";
+		
 	}
 	
 	

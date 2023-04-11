@@ -107,8 +107,9 @@
 							</div>
 						</div>
 
-						<a href="javascript:;" name="btn-join-confirm" id="btn-mypage-ok"
-							class="btn-confirm">수정</a>
+						<a href="javascript:;"  id="btn-mypage-ok"
+							class="btn-confirm">
+							<input type="submit" value="수정"/></a>
 				 
 					</form>
 

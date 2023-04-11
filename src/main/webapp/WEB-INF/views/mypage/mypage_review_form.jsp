@@ -10,8 +10,7 @@
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/mypage.css" rel="stylesheet">
 <link href="resources//css/inc.css" rel="stylesheet">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <body>
@@ -112,6 +111,7 @@
 							</tr>
 						</tbody>
 					</table>
+					
 					<form class="mystar" name="myform" id="myform" method="post">
 						<fieldset>
 							<span class="text-bold" >별점을 선택하고 최근에 본 영화의 리뷰를 작성해주세요</span> 
