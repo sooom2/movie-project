@@ -23,7 +23,7 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-
+<!-- ajax 수정하기, 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
