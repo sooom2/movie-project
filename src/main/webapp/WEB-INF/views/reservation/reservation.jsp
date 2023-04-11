@@ -23,7 +23,6 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<h3>${movie.get(0)}</h3>
 
 	<div class="content">
 		<div class="inner2">
@@ -112,7 +111,7 @@
 														<ul class="subTheater" data-cd="all" style="display: block;">
 															<c:forEach var="cinema" items="${cinema }">
 																<li>
-																	<button type="button" class="btnCnItem1" id="cinema_code" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
+																	<button type="button" class="btnCnItem" id="cinema_code" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
 																</li>
 															</c:forEach>
 														</ul>
@@ -446,7 +445,7 @@
 		
 		
 		// 영화관 클릭
-		$(".btnCnItem1").on("click", function(e){
+		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
 				console.log("cd:" + cd);
 			$.ajax({
@@ -461,17 +460,18 @@
 	 			},
 	 			error: function(xhr, textStatus, errorThrown) {
 	 				console.log("요청처리실패");
-	 				$("#resultArea").html(
-	 						"xhr = " + xhr + 
-	 						"<br>textStatus = " + textStatus +
-	 						"<br>errorThrown = " + errorThrown);
 	 			}
 	 		});
 			
+			$(".btnCnItem").parent().removeClass("check");
+			if ($("#CinemaCd").val() == $(this).data("cd")) {
+				$("#CinemaCd").val("all");
+			} else {
+				$("#CinemaCd").val($(this).data("cd"));
+				$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
+			}
+			setCinema();
 			
-			
-			var regionInfo = $('.btnCnItem[data-cd="' + cd + '"]').text();
-			console.log("rginfo:" + regionInfo);
 			
 		});
 		
@@ -521,21 +521,6 @@
 		setTime();
 	});
 	
-	$(document).on("click", ".btnBrandTab", function(e) {
-		e.preventDefault();
-		if ($(this).hasClass("disabled")) {
-			return;
-		}
-		
-		$(".btnBrandTab").removeClass("active");
-		$(this).addClass("active");
-		$("#TabBrandCd").val($(this).data("cd"));
-		$("#BrandCd").val($(this).data("cd"));
-		makeCinemaList();
-		makePlaydtList();
-		
-		$(".btnMovieType[data-type='all']").click();
-	});
 
 	$(document).on("click", ".btnTheater", function(e) {
 		var cd = $(this).data("cd");

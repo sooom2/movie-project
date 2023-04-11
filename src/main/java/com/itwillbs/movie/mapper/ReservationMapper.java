@@ -13,7 +13,7 @@ public interface ReservationMapper {
 //	List<HashMap<String, String>> selectMovieTime();
 
 
-	HashMap<String, String> selectmoviesList(String cd);
+	List<HashMap<String, String>> selectmoviesList(String cd);
 	
 	
 }
