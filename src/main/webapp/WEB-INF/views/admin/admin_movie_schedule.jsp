@@ -13,39 +13,6 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-function doScheduleMovie(){
-
-	let dis = document.querySelector(".admin-modal");
-	
-	if(dis.style.display="none"){
-		dis.style.display="block"
-		
-		
-	} else{
-		dis.style.display="none";
-	}
-}
-
-function modalClose(){
-	let dis = document.querySelector(".admin-modal");
-	dis.style.display="none";
-}
-	
-$(function(){
-	
-	$.ajax({
-		
-		url:admin_movie_res_register_pro,
-		data: admin_movie_res_register_pro,
-		type : 'POST',
-		success : function(data) {
-			alert(data)
-		}
-	});
-	
-});
-
-
 
 
 </script>

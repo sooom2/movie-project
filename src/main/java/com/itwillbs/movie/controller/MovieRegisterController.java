@@ -1,5 +1,10 @@
 package com.itwillbs.movie.controller;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -125,9 +130,100 @@ public class MovieRegisterController {
 	}
 	//영화일정등록
 	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule) {
+	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule) throws ParseException {
 		System.out.println("=============movieSchedulePro=========");
-		System.out.println(movieSchedule);
+//		System.out.println(movieSchedule);
+//		System.out.println(movieSchedule.get("sch_start_time"));
+		HashMap<String, String> selectInfoTime = movieRegisterServie.selectMovie(movieSchedule.get("sch_movie_code"));
+//		System.out.println(date+"Dddddddddddddddddddd");
+		//영화상영시간 "121"
+		
+		
+		String timeStr = selectInfoTime.get("info_time"); // 입력 문자열
+		
+		
+		
+		int minutes = Integer.parseInt(timeStr); // 분 단위로 변환
+		long info_time_sec = minutes * 60; //초
+		
+		
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+		Date date = sdf.parse(movieSchedule.get("sch_start_time"));
+
+		long startTimeSeconds = date.getTime();
+		
+		System.out.println("==========================================================");
+		System.out.println(startTimeSeconds);
+		
+		
+
+		// 분:초 형태의 문자열로 변환하기
+		
+		
+		System.out.println("==========================================================");
+		// Date 객체로 변환
+//		Date date = new Date(0, 0, 0, hours, remainingMinutes, 0);
+
+//		System.out.println("==========================================================");
+//		System.out.println(date);
+		// SimpleDateFormat 클래스를 사용하여 문자열로 변환
+//		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+//		String formattedTime = sdf.format(date);
+//
+		System.out.println("==========================================================");
+//		
+//		System.out.println(formattedTime);
+//		
+		System.out.println("==========================================================");
+		System.out.println(movieSchedule.get("sch_start_time"));
+//		String dateString = movieSchedule.get("sch_start_time");
+//		System.out.println(dateString);
+//		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		Date date2 = format.parse(dateString);
+//		System.out.println(date2);
+//		System.out.println("==========================================================");
+		 String sch_last_time = movieSchedule.get("sch_last_time");
+//		 sch_last_time = movieSchedule.get("sch_start_time") + info_time;
+//		 
+//		 String str = selectInfoTime.get("info_time"); // 숫자 string 값
+//        int num = Integer.parseInt(str)*60; // 정수형으로 변환
+//        
+//        
+//        String timeStr = movieSchedule.get("sch_start_time"); // 변환할 시간 문자열
+//        String pattern = "HH:mm"; 
+//
+//        
+//        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+//        try {
+//            Date date = sdf.parse(timeStr); // 문자열을 Date 객체로 변환
+//            System.out.println(date);
+//            
+////            date + 
+//            System.out.println("==========================================================");
+//            
+//            long timestamp = date.getTime() / 1000 / 60 ; // 타임스탬프(초 단위)를 구함
+//            System.out.println(num); // 정수
+//            System.out.println("==========================================================");
+//            System.out.println(timestamp);
+//            
+//            long result = num + timestamp; // 숫자와 타임스탬프 값을 더함
+//            System.out.println(result); // 더한 결과를 출력
+//            System.out.println("==========================================================");
+//            
+//            
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        
+        //
+		 
+		 
+		 
+		 
+		 
 		int scheduleRegisterCount = movieRegisterServie.scheduleRegister(movieSchedule);
 		
 		if(scheduleRegisterCount > 0){

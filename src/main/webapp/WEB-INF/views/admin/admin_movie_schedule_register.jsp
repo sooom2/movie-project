@@ -185,27 +185,27 @@ $(function() {
                                                    </div>
                                              </div>
                                        </div>
-                                       <div class="col-md-6">
-                                      	  <div class="form-floating mb-3 mb-md-0 selectbox">
-                                                   <div class="sch_last_time">
-                                                   	<label for="sch_last_time">상영종료시간 : </label>
-														<select name="sch_last_time">
-														    <option value="11:00">오전 11:00</option>
-														    <option value="12:00">오후 12:00</option>
-														    <option value="13:00">오후 1:00</option>
-														    <option value="14:00">오후 2:00</option>
-														    <option value="15:00">오후 3:00</option>
-														    <option value="16:00">오후 4:00</option>
-														    <option value="17:00">오후 5:00</option>
-														    <option value="18:00">오후 6:00</option>
-														    <option value="19:00">오후 7:00</option>
-														    <option value="20:00">오후 8:00</option>
-														    <option value="21:00">오후 9:00</option>
-														    <option value="22:00">오후 10:00</option>
-														</select>
-                                                   </div>
-                                             </div>
-                                       </div>
+<!--                                        <div class="col-md-6"> -->
+<!--                                       	  <div class="form-floating mb-3 mb-md-0 selectbox"> -->
+<!--                                                    <div class="sch_last_time"> -->
+<!--                                                    	<label for="sch_last_time">상영종료시간 : </label> -->
+<!-- 														<select name="sch_last_time"> -->
+<!-- 														    <option value="11:00">오전 11:00</option> -->
+<!-- 														    <option value="12:00">오후 12:00</option> -->
+<!-- 														    <option value="13:00">오후 1:00</option> -->
+<!-- 														    <option value="14:00">오후 2:00</option> -->
+<!-- 														    <option value="15:00">오후 3:00</option> -->
+<!-- 														    <option value="16:00">오후 4:00</option> -->
+<!-- 														    <option value="17:00">오후 5:00</option> -->
+<!-- 														    <option value="18:00">오후 6:00</option> -->
+<!-- 														    <option value="19:00">오후 7:00</option> -->
+<!-- 														    <option value="20:00">오후 8:00</option> -->
+<!-- 														    <option value="21:00">오후 9:00</option> -->
+<!-- 														    <option value="22:00">오후 10:00</option> -->
+<!-- 														</select> -->
+<!--                                                    </div> -->
+<!--                                              </div> -->
+<!--                                        </div> -->
                                 </div>     
                                       
                                 		<div class="row">
