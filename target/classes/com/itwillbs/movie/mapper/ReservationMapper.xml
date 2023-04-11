@@ -27,17 +27,16 @@
 
 
 
-	<!-- 영화상세정보, 영화관, 상영관, 영화일정, (좌석) -->
-	<!-- 안쓰는 컬럼 정리하기, 좌석 정보 추가 후 JOIN 추가 -->
-	<select id="selectMovie" resultType="hashmap">
-		SELECT *
-			FROM schedule sd 
-				JOIN cinema c
-					ON sd.sch_cinema_code = c.cinema_code
-						JOIN screen sc 
-							ON sd.sch_screen_code = sc.screen_code
-								JOIN movieinfo m 
-									ON m.info_movie_code = sd.sch_movie_code 
-										WHERE c.cinema_name = #{cd};
+	<!-- 영화관 - 영화리스트 -->
+	<select id="selectmoviesList" resultType="hashmap">
+	<!-- 각 영화관에 상영하는 영화리스트 출력 (중복값 제거함)	-->
+		select distinct c.cinema_code, c.cinema_name, m.info_movie_title
+			from cinema c
+				join schedule s 
+					on c.cinema_code = s.sch_cinema_code 
+						join movieinfo m 
+							on m.info_movie_code = s.sch_movie_code 
+								where c.cinema_name = #{cd};
+
 	</select>
 </mapper>

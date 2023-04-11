@@ -43,10 +43,10 @@ public class ReservationController {
 		
 		System.out.println("String cd: " + cd);
 		
-		HashMap<String, String> movie = service.selectMovie(cd);
-		model.addAttribute("movie", movie);
+		HashMap<String, String> moviesList = service.selectmoviesList(cd);
+		model.addAttribute("moviesList", moviesList);
 		
-		System.out.println(movie);
+		System.out.println(moviesList);
 		
 		// cinema 값 확인
 //		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
