@@ -120,9 +120,7 @@ $(function() {
 													<select name="sch_movie_code" id="sch_movie_code">
 													<option value="none" selected="selected" disabled>영화를 선택하세요</option>
 													<option value="none" disabled>=======================</option>
-                                                   	<c:forEach var="movie" items="${movieList }">
 										   			 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-                                                   	</c:forEach>
 													</select>
                                                    </div>
                                                </div>

@@ -64,6 +64,9 @@
 	SELECT * FROM cinema
 </select>
 
+<!-- ==================================scheduleRegister : 11:37 -->
+<!-- {sch_movie_date=, sch_movie_code=20210544, sch_cinema_code=1, location_code=051, sch_screen_code=3, sch_start_time=10:00} -->
+
 <!-- 영화상영일정 -->
 <insert id="scheduleRegister">
 INSERT INTO schedule
@@ -71,13 +74,13 @@ INSERT INTO schedule
 			   (SELECT *
 		          FROM (SELECT IFNULL(MAX(CAST(sch_code AS UNSIGNED)), 0) + 1
 						  FROM schedule) A)
-			 , #{sch_screen_code}
-			 , #{sch_cinema_code}
-			 , #{sch_movie_code}
-			 , #{sch_movie_date}	
-			 , #{sch_start_time}
+			 , #{sch_screen_code} --
+			 , #{sch_cinema_code} --
+			 , #{sch_movie_code} --
+			 , #{sch_movie_date}	--
+			 , #{sch_start_time} --
 			 , #{sch_last_time}
-			 , #{location_code}
+			 , #{location_code} --
 			 ) 
 </insert>
 <!-- 영화상영일정목록 -->
@@ -215,12 +218,11 @@ SELECT
 	 LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 	WHERE sch_code = #{sch_code}
 </select>
-<update id="updateSchedule">
-<!-- 	UPDATE schedule  -->
-<!-- 		SET sch_movie_date = #{sch_movie_date} -->
-<!-- 		  , sch_start_time = #{sch_start_time} -->
-<!-- 		  , sch_last_time = #{sch_last_time} -->
-<!-- 	  WHERE sch_code = #{sch_code} -->
+<update id="movieScheduleUpdate">
+	UPDATE schedule 
+		SET sch_movie_date = #{sch_movie_date}
+		  , sch_start_time = #{sch_start_time}
+	  WHERE sch_code = #{sch_code}
 </update>
 <delete id="deleteSchedule">
 	DELETE 
@@ -228,7 +230,13 @@ SELECT
      WHERE sch_code = #{sch_code}
 </delete>
 
-
+<!-- <select id="infoMovieCode" resultType="hashmap"> -->
+<!-- 	select info_movie_code -->
+<!-- 	  FROM schedule  -->
+<!-- 	  LEFT JOIN movieinfo -->
+<!-- 	    ON schedule.sch_movie_code= movieinfo.info_movie_code -->
+<!-- 	 WHERE info_movie_title = #{info_movie_title} -->
+<!-- </select> -->
 <!-- info_movie_code -->
 <!-- info_movie_title -->
 <!-- info_movie_poster -->

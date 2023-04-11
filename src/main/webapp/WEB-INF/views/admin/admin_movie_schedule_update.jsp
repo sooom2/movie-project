@@ -131,7 +131,7 @@ $(function() {
                             <h3 class="text-center font-weight-light my-4">상영일정수정</h3>
                             </div>
                             <div class="card-body">
-                                <form action="movieScheduleUpdatePro"> 
+                                <form action="updateSchedule"> 
                                     <div class="row mb-3">
                                      	<div class="col-md-4">
                                             <div class="form-floating mb-3 mb-md-0">
@@ -144,51 +144,42 @@ $(function() {
                                     <div class="row mb-3">
                                        	<div class="col-md-6 " >
                                                <div class="form-floating mb-3 mb-md-0 selectbox" >
-                                                   <div class="sch_movie_code">
-                                                   	<label for="sch_movie_code">영화선택 : </label>
-													<select name="sch_movie_code" id="sch_movie_code"  style="width: 300px">
-													<option value="${movie.get('info_movie_code') }" selected="selected" disabled="disabled">${selectSchedule.get('info_movie_title') }</option>
+                                                   <div class="info_movie_code">
+                                                   	<label for="info_movie_code">영화선택 : </label>
+													<select name="info_movie_code" id="sch_movie_code"  style="width: 300px">
+													
+													<option value="${movie.get('info_movie_code') }">${selectSchedule.get('info_movie_title') }</option>
 													</select>
                                                    </div>
                                                </div>
                                           </div>
                                        </div>
                                        <hr>
-                                       
-                                       
+    					                   
                                        <div class="row mb-3">
                                       	  <div class="col-md-6 ">
                                              <div class="form-floating mb-3 mb-md-0 selectbox">
                                                  <div class="cinema_name">
                                                  	<label for="cinema_name">지점명 : </label>
 													<select name="sch_cinema_code" onchange="selectCinema()"  style="width: 300px">
-														<option value="${cinema.get('cinema_code') }" selected="selected" disabled="disabled">${selectSchedule.get("cinema_name")}</option>
-<%-- 														<c:forEach var="cinema" items="${cinemaList }"> --%>
-<%-- 													    	<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option> --%>
-<%-- 														</c:forEach> --%>
+														<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option>
 													</select>
-													<c:forEach var="cinema" items="${cinemaList }">
-													 <input type="hidden" name="location_code" value="${cinema.get('location_code') }">
-													</c:forEach>
                                                  </div>
                                              </div>
                                            </div>
-                                           
+                                           <input type="hidden" name="sch_code" value="${selectSchedule.get('sch_code') }">
                                            <div class="col-md-6">
                                                <div class="form-floating mb-3 mb-md-0 selectbox">
                                                    <div class="screen_name">
                                                    	<label for="screen_name">상영관 : </label>
 														<select name="sch_screen_code" class="selectScreen_name" style="width: 300px">
-<!-- 														<option value="none" disabled>상영관을 선택하세요</option> -->
-<!-- 														<option value="none" disabled>=======================</option> -->
-														<option selected="selected" value="${cinema.get('screen_code') }" disabled="disabled">${selectSchedule.get("screen_name")}</option>
+														<option value="${selectSchedule.get('screen_name')}">${selectSchedule.get("screen_name")}</option>
 														</select>
                                                    </div>
                                                </div>
                                           	</div>
                                        </div>
                                        <div class="row mb-3">
-                                       	
                                       	  <div class="col-md-6">
                                       	  <div class="form-floating mb-3 mb-md-0 selectbox">
                                                    <div class="sch_start_time">
@@ -222,8 +213,6 @@ $(function() {
 <!-- 	                                             </div> -->
 <!-- 	                                       </div> -->
 										<div class="form-floating">
-											<input class="form-control" id="sch_last_time" name="info_year" type="text" value="몇시몇분">
-											<label for="info_year">상영종료시간</label>
 										</div>
                                		 </div>     
                                			</div>

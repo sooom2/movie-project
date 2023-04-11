@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.mapper.MovieRegisterMapper;
 
@@ -83,7 +85,7 @@ public class MovieRegisterServie {
 	}
 	
 	//영화일정 상세정보
-	public HashMap<String, String> selectSchedule(String sch_code) {
+	public HashMap<String, String> detailSchedule(String sch_code) {
 		return mapper.selectSchedule(sch_code);
 	}
 	//영화일정 삭제
@@ -91,9 +93,19 @@ public class MovieRegisterServie {
 		return mapper.deleteSchedule(sch_code);
 	}
 
-//	public int movieScheduleUpdatePro(HashMap<String, String> schedule) {
-//		return mapper.updateSchedule(schedule);
-//	}
+	public int movieScheduleUpdatePro(HashMap<String, String> schedule) {
+		return mapper.movieScheduleUpdate(schedule);
+	}
+
+
+	public HashMap<String, String> infoMovieCode(String info_movie_title) {
+		return mapper.infoMovieCode(info_movie_title);
+	}
+
+	public int lastTimeUpdate(HashMap<String, String> schedule) {
+		return mapper.lastTimeUpdate(schedule);
+	}
+
 
 	
 
