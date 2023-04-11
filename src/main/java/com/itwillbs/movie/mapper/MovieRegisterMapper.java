@@ -33,4 +33,19 @@ public interface MovieRegisterMapper {
 	//영화상영일정목록
 	List<HashMap<String, String>> selectScheduleList();
 
+	List<HashMap<String, String>> cinemaNameSort();
+	List<HashMap<String, String>> screenNameSort();
+	List<HashMap<String, String>> movieNameSort();
+	List<HashMap<String, String>> schDateSort();
+	List<HashMap<String, String>> schStartSort();
+	List<HashMap<String, String>> schLastSort();
+
+	//영화상영 상세정보
+	HashMap<String, String> selectSchedule(String sch_code);
+	
+	//영화 상영일정 삭제
+	int deleteSchedule(String sch_code);
+
+//	int updateSchedule(HashMap<String, String> schedule);
+
 }

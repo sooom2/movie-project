@@ -7,6 +7,7 @@ import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,15 +49,12 @@ public class MovieRegisterController {
 	}
 	
 	// 영화 정보 수정
-		@RequestMapping(value = "updateMovie", method = {RequestMethod.GET, RequestMethod.POST})
-		public String updateMoviePro(@RequestParam HashMap<String, String> movie) {
-			
-			System.out.println("ddddddddd"+movie);
-			
-			int updateCount = movieRegisterServie.updateMovie(movie);
-			
-			return "redirect:/admin_movie_register";
-		}
+	@RequestMapping(value = "updateMovie", method = {RequestMethod.GET, RequestMethod.POST})
+	public String updateMoviePro(@RequestParam HashMap<String, String> movie) {
+		
+		int updateCount = movieRegisterServie.updateMovie(movie);
+		return "redirect:/admin_movie_register";
+	}
 
 	
 	
@@ -93,10 +91,11 @@ public class MovieRegisterController {
 		return "index";
 	}
 	
+	//-------------------------------------------------------------------------------------------------
+	// 영화 일정 ( Movie Schedule )
+	//-------------------------------------------------------------------------------------------------
 	
-	
-	
-	//영화 일정 관리 // 영화관 상영관들고오기
+	//영화 일정등록 // 영화관 상영관들고오기
 	@RequestMapping(value = "movieScheduleUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedule(Model model,String cinema_name) {
 		System.out.println(cinema_name);
@@ -105,9 +104,7 @@ public class MovieRegisterController {
 		List<HashMap<String, String>> cinemaList = movieRegisterServie.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
 		
-		
-		
-		return "admin/admin_schedule_update";
+		return "admin/admin_movie_schedule_register";
 	}
 	// 영화관에맞는 상영관 표시
 	@ResponseBody
@@ -123,7 +120,7 @@ public class MovieRegisterController {
 		return selectScreen;
 	}
 	//영화일정등록
-	@RequestMapping(value = "movieScheduleUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule) {
 		System.out.println("=============movieSchedulePro=========");
 		System.out.println(movieSchedule);
@@ -136,19 +133,96 @@ public class MovieRegisterController {
 		return "redirect:/admin_schedule_register";
 	}
 	
-	//영화일정목록
-	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
+	//영화일정목록 
+ 	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleRegister(Model model) {
 		List<HashMap<String, String>> scheduleList = movieRegisterServie.selectSchedule();
-		List<HashMap<String, String>> movieList = movieRegisterServie.selectMoives();
-		List<HashMap<String, String>> cinemaList = movieRegisterServie.selectCinema();
 		model.addAttribute("scheduleList", scheduleList);
-		model.addAttribute("movieList", movieList);
-		model.addAttribute("cinemaList", cinemaList);
+		System.out.println(scheduleList);
 		
-		return "admin/admin_schedule_register";
+		return "admin/admin_movie_schedule";
+	}
+ 	
+ 	//지점명정렬
+ 	@RequestMapping(value = "cinemaNameSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String cinemaNameSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.cinemaNameSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		System.out.println(scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	
+ 	//상영관정렬
+ 	@RequestMapping(value = "screenNameSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String screenNameSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.screenNameSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	
+ 	//상영관정렬
+ 	@RequestMapping(value = "movieNameSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String movieNameSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.movieNameSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	
+ 	
+ 	//상영관정렬
+ 	@RequestMapping(value = "schDateSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String schDateSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schDateSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	// 시작시간정렬
+ 	@RequestMapping(value = "schStartSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String schStartSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schStartSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	// 마지막시간정렬
+ 	@RequestMapping(value = "schLastSort", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String schLastSort(Model model) {
+ 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schLastSort();
+ 		model.addAttribute("scheduleList", scheduleList);
+ 		return "admin/admin_movie_schedule";
+ 	}
+ 	
+ 	
+	//상영일정 수정 - 상영 상세 정보 (날짜랑 시간만 바꿀수 있음)
+	@RequestMapping(value = "selectSchedule", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectSchedule(@RequestParam String sch_code,Model model) {
+		
+		HashMap<String, String> selectSchedule = movieRegisterServie.selectSchedule(sch_code);
+		
+		model.addAttribute("selectSchedule",selectSchedule);
+		System.out.println(model);
+		return "admin/admin_movie_schedule_update";
 	}
 	
+	//상영일정 수정
+	@RequestMapping(value = "movieScheduleUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieScheduleUpdatePro(@RequestParam HashMap<String, String> schedule) {
+		System.out.println(schedule);
+//		int modifyCount = movieRegisterServie.movieScheduleUpdatePro(schedule);
+		
+		
+		return "";
+	}
+	
+
+	
+	//영화삭제
+	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteSchedule(String sch_code) {
+		int deleteCount = movieRegisterServie.deleteSchedule(sch_code);	
+		
+		return "admin/admin_movie_schedule_deletePro";
+	}
+ 	 	
 }
 
 

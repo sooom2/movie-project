@@ -9,8 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -94,31 +92,27 @@ $(function() {
 		<!-- 고정  -->
 		<jsp:include page="admin_nav.jsp"/>
 		<!-- 고정 -->
-			
-
-		
 		<div id="layoutSidenav_content">
 			<!-- 들어갈내용 -->
 			 <main>
-                   <div class="row justify-content-center">
-                       <div class="col-lg-7" style="width: 1000px">
-                           <div class="card border-1 mt-5">
-                               <div class="card-header">
-                               <h3 class="text-center font-weight-light my-4">상영일정관리</h3>
-                               </div>
-                               <div class="card-body">
-                                   <form action="movieScheduleUpdatePro"> 
-                                       <div class="row mb-3">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7" style="width: 1000px">
+                        <div class="card border-1 mt-5">
+                            <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">상영일정등록</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="movieScheduleRegisterPro"> 
+                                    <div class="row mb-3">
+                                     	<div class="col-md-4">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input name="sch_movie_date" class="form-control" id="sch_movie_date" type="text" value=""/>
+                                                <label for="res_date">날짜선택</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                        
-                                        	<div class="col-md-4">
-                                               <div class="form-floating mb-3 mb-md-0">
-                                                   <input name="sch_movie_date" class="form-control" id="sch_movie_date" type="text" value=""/>
-                                                   <label for="res_date">날짜선택</label>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       
-                                          <div class="row mb-3">
+                                    <div class="row mb-3">
                                        	<div class="col-md-6 " >
                                                <div class="form-floating mb-3 mb-md-0 selectbox" >
                                                    <div class="sch_movie_code">
@@ -132,7 +126,7 @@ $(function() {
 													</select>
                                                    </div>
                                                </div>
-                                               </div>
+                                          </div>
                                        </div>
                                        <hr>
                                        
@@ -233,9 +227,6 @@ $(function() {
                    </div>
                     
                 </main>
-			
-			
-			
 			
 			
 			<!--들어갈내용 -->

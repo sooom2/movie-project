@@ -20,84 +20,34 @@
 <script type="text/javascript">
 
 
-
-// function doDisplay(info_movie_code) {
-// 	let dis = document.querySelector(".admin-modal-modify");
-// 	if (dis.style.display = "none") {
-// 		dis.style.display = "block"
-		
-// 			$.ajax({
-// 				type: "POST",
-// 				url: "selectMovie",
-// 				data: {
-// 					info_movie_code: info_movie_code
-// 				},
-// 				datatype:"json",
-// 				success: function(data){
-					
-// 					let info_movie_code = result.info_movie_code;
-// 					let info_movie_title = result.info_movie_title;
-// 					let info_year = result.info_year;
-// 					let info_time = result.info_time;
-// 					let info_showdate = result.info_showdate;
-// 					let info_enddate = result.info_showdate;
-// 					let info_story = result.info_story;
-					
-					
-// 				}
-// 			});
-		
-		
-		
-// 		$(".info_movie_code").val(info_movie_code);
-// 		$(".info_movie_title").val(info_movie_title);
-// 		$(".info_year").val(info_year);
-		
-		
-// 	} else {
-// 		dis.style.display = "none";
-// 	}
-	
-	
-// 	$(".btn-del").on("click",function(){
-		
-// 		let delConfirm = confirm("삭제하시겠습니까?");
-// 		if (delConfirm) {
-// 			$.ajax({
-// 				type: "GET",
-// 				url: "deleteMovie",
-// 				data: {
-// 					info_movie_code: info_movie_code
-// 				},
-// 				datatype:"json",
-// 				success: function(data){
-// 					alert("삭제완료");
-// 				}
-// 			});
-// 		}
-		
-		
-// 	});
-// }
 function deleteMovie(){
-	alert("ddd");
-	
-		let delConfirm = confirm("삭제하시겠습니까?");
-		if (delConfirm) {
-			alert($(".info_movie_code").val());
-			$.ajax({
-				type: "GET",
-				url: "deleteMovie",
-				data: {
-					info_movie_code: $(".info_movie_code").val()
-				},
-				datatype:"json",
-				success: function(data){
-					alert("삭제완료");
-					history.back();
-				}
-			});
-		}
+	let delConfirm = confirm("삭제하시겠습니까?");
+	if (delConfirm) {
+		$.ajax({
+			type: "GET",
+			url: "deleteMovie",
+			aync : false
+			data: {
+				info_movie_code: $(".info_movie_code").val()
+			},
+			datatype:"json",
+			success: function(data){
+				alert("삭제완료");
+			}
+		}).then((arg) =>{    // 두번째 ajax를 실행한다.
+
+	        $.ajax({
+	            url: 'admin_schedule_register',
+	            type: 'POST',
+	            success: function(result2) {
+	            	alert("Ddd");
+	            }
+	        });
+		
+
+	});
+		
+	}
 }
 	
 

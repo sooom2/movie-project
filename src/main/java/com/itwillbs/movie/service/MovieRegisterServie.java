@@ -48,14 +48,53 @@ public class MovieRegisterServie {
 		return mapper.selectScreen(cinema_name);
 	}
 
+	//영화일정 등록
 	public int scheduleRegister(HashMap<String, String> movieSchedule) {
 		return mapper.scheduleRegister(movieSchedule);
 	}
 
-	//영화예매목록	
+	//영화 일정 목록	
 	public List<HashMap<String, String>> selectSchedule() {
 		return mapper.selectScheduleList();
 	}
+
+	public List<HashMap<String, String>> cinemaNameSort() {
+		return mapper.cinemaNameSort();
+	}
+
+	public List<HashMap<String, String>> screenNameSort() {
+		return mapper.screenNameSort();
+	}
+
+	public List<HashMap<String, String>> movieNameSort() {
+		return mapper.movieNameSort();
+	}
+
+	public List<HashMap<String, String>> schDateSort() {
+		return mapper.schDateSort();
+	}
+
+	public List<HashMap<String, String>> schStartSort() {
+		return mapper.schStartSort();
+	}
+
+	public List<HashMap<String, String>> schLastSort() {
+		return mapper.schLastSort();
+	}
+	
+	//영화일정 상세정보
+	public HashMap<String, String> selectSchedule(String sch_code) {
+		return mapper.selectSchedule(sch_code);
+	}
+	//영화일정 삭제
+	public int deleteSchedule(String sch_code) {
+		return mapper.deleteSchedule(sch_code);
+	}
+
+//	public int movieScheduleUpdatePro(HashMap<String, String> schedule) {
+//		return mapper.updateSchedule(schedule);
+//	}
+
 	
 
 

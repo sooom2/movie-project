@@ -53,7 +53,7 @@
 	  LEFT JOIN screen 
 	         ON cinema.cinema_code = screen.screen_cinema_code
      WHERE cinema_name = #{cinema_name}
-     ORDER BY screen_name;
+     ORDER BY screen_name
 </select>
 
 <select id="selectCinema" resultType="hashmap">
@@ -74,12 +74,156 @@ INSERT INTO schedule
 			 , #{sch_start_time}
 			 , #{sch_last_time}
 			 , #{location_code}
-			 ); 
+			 ) 
 </insert>
 <!-- 영화상영일정목록 -->
 <select id="selectScheduleList" resultType="hashmap">
-	SELECT * FROM schedule
+	SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 </select>
+
+<select id="cinemaNameSort" resultType="hashmap">
+	SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY cinema.cinema_name
+</select>
+
+<select id="screenNameSort" resultType="hashmap">
+	SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY screen.screen_name
+</select>
+
+<select id="movieNameSort" resultType="hashmap">
+	SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY movieinfo.info_movie_title
+</select>
+
+<select id="schDateSort" resultType="hashmap">
+SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY sch_movie_date
+</select>
+
+<select id="schStartSort" resultType="hashmap">
+SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+  FROM schedule
+  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY sch_start_time
+</select>
+
+<select id="schLastSort" resultType="hashmap">
+	SELECT 
+			sch_code
+			,screen.screen_name
+			,cinema.cinema_name 
+			,movieinfo.info_movie_title
+			,sch_movie_date
+			,sch_start_time
+			,sch_last_time
+			,sch_location
+	FROM schedule
+	LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+	LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+	LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+	ORDER BY sch_last_time
+</select>
+
+<select id="selectSchedule" resultType="hashmap">
+	SELECT 
+		sch_code
+		,screen.screen_name
+		,cinema.cinema_name 
+		,movieinfo.info_movie_title
+		,sch_movie_date
+		,sch_start_time
+		,sch_last_time
+		,sch_location
+	 FROM schedule
+	 LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+	 LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+	 LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+	WHERE sch_code = #{sch_code}
+</select>
+<update id="updateSchedule">
+<!-- 	UPDATE schedule  -->
+<!-- 		SET sch_movie_date = #{sch_movie_date} -->
+<!-- 		  , sch_start_time = #{sch_start_time} -->
+<!-- 		  , sch_last_time = #{sch_last_time} -->
+<!-- 	  WHERE sch_code = #{sch_code} -->
+</update>
+<delete id="deleteSchedule">
+	DELETE 
+	  FROM schedule
+     WHERE sch_code = #{sch_code}
+</delete>
+
 
 <!-- info_movie_code -->
 <!-- info_movie_title -->

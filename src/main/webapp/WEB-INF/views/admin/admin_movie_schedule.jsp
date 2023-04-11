@@ -46,6 +46,8 @@ $(function(){
 });
 
 
+
+
 </script>
 </head>
 <body class="sb-nav-fixed">
@@ -93,13 +95,13 @@ $(function(){
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">영화관코드</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">스크린코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화코드</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영날짜</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">시작시간</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">종료시간</a></th>
-								<th data-sortable="true" style="width: 8%;"></th>
+								<th data-sortable="true" style="width: 8%;"><a href="cinemaNameSort" class="datatable-sorter">지점명</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="screenNameSort" class="datatable-sorter">상영관명</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="movieNameSort" class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="schDateSort" class="datatable-sorter">상영날짜</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="schStartSort" class="datatable-sorter">시작시간</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="schLastSort" class="datatable-sorter">종료시간</a></th>
+								<th data-sortable="true" style="width: 8%;">수정/삭제</th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
@@ -108,14 +110,15 @@ $(function(){
 						<c:forEach var="schedule" items="${scheduleList }">
 						<tbody>
 							<tr data-index="0">
-								<td>${schedule.get("sch_cinema_code") }</td>
-								<td>${schedule.get("sch_screen_code") }</td>
-								<td>${schedule.get("sch_movie_code") }</td>
+								<td>${schedule.get("cinema_name") }</td>
+								<td>${schedule.get("screen_name") }</td>
+								<td>${schedule.get("info_movie_title") }</td>
 								<td>${schedule.get("sch_movie_date") }</td>
 								<td>${schedule.get("sch_start_time") }</td>
 								<td>${schedule.get("sch_last_time") }</td>
 								<td class="modi">
-									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()">
+									<a></a>
+									<input onclick="location.href='selectSchedule?sch_code=${schedule.get('sch_code')}'" class="btn btn-block btn-more" type="button" value="M O R E">
 								</td>
 							</tr>
 						</tbody>
