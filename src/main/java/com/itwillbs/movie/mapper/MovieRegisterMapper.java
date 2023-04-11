@@ -3,6 +3,9 @@ package com.itwillbs.movie.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
 public interface MovieRegisterMapper {
 	
 	//영화등록
@@ -27,8 +30,8 @@ public interface MovieRegisterMapper {
 	//영화관-상영관 조회
 	List<HashMap<String, String>> selectScreen(String cinema_name);
 	
-	//영화상영일정추가
-	int scheduleRegister(HashMap<String, String> movieSchedule);
+	//영화상영일정추가  ..@Param("boardno")int boardno, @Param("userno")int userno
+	int scheduleRegister(@RequestParam("movieSchedule") HashMap<String, String> movieSchedule);
 	
 	//영화상영일정목록
 	List<HashMap<String, String>> selectScheduleList();
@@ -46,6 +49,13 @@ public interface MovieRegisterMapper {
 	//영화 상영일정 삭제
 	int deleteSchedule(String sch_code);
 
-//	int updateSchedule(HashMap<String, String> schedule);
+	int movieScheduleUpdate(HashMap<String, String> schedule);
+
+
+	HashMap<String, String> infoMovieCode(String info_movie_title);
+
+
+	int lastTimeUpdate(HashMap<String, String> schedule);
+
 
 }
