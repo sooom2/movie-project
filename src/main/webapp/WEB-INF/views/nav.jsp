@@ -15,9 +15,9 @@
 		}
 	}
 </script>
-<link href="resources/css/common.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
-<script type="text/javascript" src="resources/js/main.js"></script>
+<link href="${path }/resources/css/common.css" rel="stylesheet">
+<link href="${path }/resources/css/inc.css" rel="stylesheet">
+<script type="text/javascript" src="${path }/resources/js/main.js"></script>
 </head>
 <body>
 
