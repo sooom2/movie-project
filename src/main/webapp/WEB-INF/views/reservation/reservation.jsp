@@ -628,12 +628,12 @@
             const month = date.getMonth() + 1;
             for (i = date.getDate(); i <= lastDay.getDate(); i++) {
 
-                const button = document.createElement("button");
+                const dateBtn = document.createElement("button");
                 const spanWeekOfDay = document.createElement("span");
                 const spanDay = document.createElement("span");
 
                 //class넣기
-                button.classList = "movie-date-wrapper"
+                dateBtn.classList = "movie-date-wrapper"
                 spanWeekOfDay.classList = "movie-week-of-day";
                 spanDay.classList = "movie-day";
 
@@ -649,27 +649,27 @@
                     spanDay.classList.add("sunday");
                 }
                 spanWeekOfDay.innerHTML = dayOfWeek;
-                button.append(spanWeekOfDay);
+                dateBtn.append(spanWeekOfDay);
                 //날짜 넣기
                 spanDay.innerHTML = i;
-                button.append(spanDay);
+                dateBtn.append(spanDay);
                 //button.append(i);
-                reserveDate.append(button);
+                reserveDate.append(dateBtn);
 
-                dayClickEvent(button);
+//                 dayClickEvent(button);
             }
 
         
 
-        function dayClickEvent(button) {
-            button.addEventListener("click", function() {
-                const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-                movieDateWrapperActive.forEach((list) => {
-                    list.classList.remove("movie-date-wrapper-active");
-                })
-                button.classList.add("movie-date-wrapper-active");
-            })
-        }
+//         function dayClickEvent(button) {
+//             button.addEventListener("click", function() {
+//                 const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
+//                 movieDateWrapperActive.forEach((list) => {
+//                     list.classList.remove("movie-date-wrapper-active");
+//                 })
+//                 button.classList.add("movie-date-wrapper-active");
+//             })
+//         }
     </script>
 <!--     // 날짜 end -->
     
@@ -677,40 +677,40 @@
 		<!-- // footer -->
 		<jsp:include page="../footer.jsp"></jsp:include>
 		
-	<div class="modal" id="mAlert">
-		<div class="modal-dialog" style="max-width:340px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4>알림</h4>
-					<button type="button" class="close-modal" onclick="$('#mAlert').modal({show:0});">닫기</button>
-				</div>
-				<div class="modal-body">
-					<div class="modal-txt">
-					</div>
-					<div class="modal-bottom text-right">
-						<button type="button" class="btn-modal2 close-modal" onclick="$('#mAlert').modal({show:0});">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="modal" id="mAlert"> -->
+<!-- 		<div class="modal-dialog" style="max-width:340px"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<h4>알림</h4> -->
+<!-- 					<button type="button" class="close-modal" onclick="$('#mAlert').modal({show:0});">닫기</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<div class="modal-txt"> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-bottom text-right"> -->
+<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="$('#mAlert').modal({show:0});">확인</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
-	<div class="modal" id="oAlert">
-		<div class="modal-dialog" style="width:340px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4>알림</h4>
-					<button type="button" class="close-modal" onclick="closeModal('oAlert');">닫기</button>
-				</div>
-				<div class="modal-body">
-					<div class="modal-txt">
-					</div>
-					<div class="modal-bottom text-right">
-						<button type="button" class="btn-modal2 close-modal" onclick="closeModal('oAlert');">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="modal" id="oAlert"> -->
+<!-- 		<div class="modal-dialog" style="width:340px"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<h4>알림</h4> -->
+<!-- 					<button type="button" class="close-modal" onclick="closeModal('oAlert');">닫기</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<div class="modal-txt"> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-bottom text-right"> -->
+<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="closeModal('oAlert');">확인</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 </body>
 </html>

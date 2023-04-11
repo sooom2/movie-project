@@ -15,18 +15,18 @@ public class ReservationController {
 	private ReservationService service;
 	
 	// TEST CODE
-//	@GetMapping(value = "reservation_test")
-//	public String reservation_test(Model model) {
-//		List<HashMap<String, String>> cinema = service.selectCinema();
-//		model.addAttribute("cinema", cinema);
-//		
-//		// cinema 값 확인
-////		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
-////			System.out.println(a.getValue());
-////		}
-//		
-//		return "reservation/reservation_test";
-//	}
+	@GetMapping(value = "reservation_test")
+	public String reservation_test(Model model) {
+		List<HashMap<String, String>> cinema = service.selectCinema();
+		model.addAttribute("cinema", cinema);
+		
+		// cinema 값 확인
+//		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
+//			System.out.println(a.getValue());
+//		}
+		
+		return "reservation/reservation_test";
+	}
 	
 	
 	
