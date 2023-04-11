@@ -37,6 +37,7 @@
 						JOIN screen sc 
 							ON sd.sch_screen_code = sc.screen_code
 								JOIN movieinfo m 
-									ON m.info_movie_code = sd.sch_movie_code ;
+									ON m.info_movie_code = sd.sch_movie_code 
+										WHERE c.cinema_name = #{cd};
 	</select>
 </mapper>

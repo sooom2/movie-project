@@ -12,7 +12,7 @@ public interface ReservationMapper {
 	// 상영관 조회
 //	List<HashMap<String, String>> selectMovieTime();
 
-	List<HashMap<String, String>> selectMovie();
+	HashMap<String, String> selectMovie(String cd);
 	
 	
 }

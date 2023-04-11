@@ -112,7 +112,7 @@
 														<ul class="subTheater" data-cd="all" style="display: block;">
 															<c:forEach var="cinema" items="${cinema }">
 																<li>
-																	<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
+																	<button type="button" class="btnCnItem1" id="cinema_code" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
 																</li>
 															</c:forEach>
 														</ul>
@@ -159,18 +159,21 @@
 										<div class="list">
 											<div class="scrollbar-inner">
 												<ul id="movieList">
-														<c:forEach var="movieList" items="${movie }">
-															<c:if test="${movieList.get('cinema_code') eq '1'}">
+												
+												
+<!-- 															수정전코드 -->
+<%-- 														<c:forEach var="movieList" items="${movie }"> --%>
+<%-- 															<c:if test="${movieList.get('cinema_code') eq '1'}"> --%>
 														
 															
-																<li>
-																	<button type="button" class="btnMvItem" data-cd="${movieList.info_movie_code }"
-																		data-url="${movieList.info_movie_poster }"
-																		data-rdt="${movieTime.sch_start_time } + '~' +${movieTime.sch_last_time }"
-																		title="${movieList.info_movie_title }">${movieList.info_movie_title }</button>
-																</li>
-															</c:if>
-														</c:forEach>
+<!-- 																<li> -->
+<%-- 																	<button type="button" class="btnMvItem" data-cd="${movieList.info_movie_code }" --%>
+<%-- 																		data-url="${movieList.info_movie_poster }" --%>
+<%-- 																		data-rdt="${movieTime.sch_start_time } + '~' +${movieTime.sch_last_time }" --%>
+<%-- 																		title="${movieList.info_movie_title }">${movieList.info_movie_title }</button> --%>
+<!-- 																</li> -->
+<%-- 															</c:if> --%>
+<%-- 														</c:forEach> --%>
 												</ul>
 											</div>
 										</div>
@@ -443,42 +446,31 @@
 		
 		
 		// 영화관 클릭
-		$(".btnCnItem").on("click", function(e){
+		$(".btnCnItem1").on("click", function(e){
 			var cd = $(this).data("cd");
-			console.log("cd:" + cd);
-			
-// 			$.ajax({
-// 	 			type: "get",
-// 	 			url: "reservation", // AJAX 로 요청할 요청 주소(URL)
-// 	 			data: { // 전송할 데이터가 복수개일 경우 중괄호로 묶기
-// 	 				// 폼에서 입력한 데이터를 가져와서 파라미터로 표현(전송)하는 경우
-// 	 				// 파라미터명 : 데이터 형식으로 지정
-// // 	 					id: $("#id").val(), // id 선택자의 value 속성값을 id 파라미터로 저장
-// // 	 					passwd: $("#passwd").val() // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
-// // 	 					cd: $(".btnCnItem[data-cd]").val()
-// 	 				// -------- 값을 직접 지정 시 --------
-// 	// 				id: "admin", // id 선택자의 value 속성값을 id 파라미터로 저장
-// 	// 				passwd: "1234" // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
-// 	 			},
-// 	 			dataType: "text",
-// 	 			success: function(response) { // 요청 처리 성공 시 자동으로 호출되는 콜백함수
-// 	 				// 익명 함수 파라미터로 응답 데이터가 전달됨(처리하는 페이지에서 응답한 결과)
-// 	 				// id 선택자 "resultArea" 영역에 응답 데이터(response) 출력하기
-// // 	 				$("#resultArea").html(response);
-// 	 				console.log("요청처리성공");
-// 	 			},
-// 	 			error: function(xhr, textStatus, errorThrown) {
-// 	 				$("#resultArea").html(
-// 	 						"xhr = " + xhr + 
-// 	 						"<br>textStatus = " + textStatus +
-// 	 						"<br>errorThrown = " + errorThrown);
-// 	 			}
-// 	 		});
+				console.log("cd:" + cd);
+			$.ajax({
+	 			type: "get",
+	 			url: "reservation",
+	 			data: { 
+	 					cd: $("#cinema_code").text()
+	 			},
+	 			dataType: "text",
+	 			success: function(response) { // 요청 처리 성공 시 자동으로 호출되는 콜백함수
+	 				console.log("요청처리성공");
+	 			},
+	 			error: function(xhr, textStatus, errorThrown) {
+	 				console.log("요청처리실패");
+	 				$("#resultArea").html(
+	 						"xhr = " + xhr + 
+	 						"<br>textStatus = " + textStatus +
+	 						"<br>errorThrown = " + errorThrown);
+	 			}
+	 		});
 			
 			
 			
 			var regionInfo = $('.btnCnItem[data-cd="' + cd + '"]').text();
-			//ajx로 reservation=? url로 cd값 보내고 컨트롤러에서 파라미터값 전달 받고 쿼리 where = ? 넣어서
 			console.log("rginfo:" + regionInfo);
 			
 		});
@@ -493,14 +485,8 @@
 			$(this).addClass("active");
 			$("#Sort").val($(this).data("tab"));
 			
-// 			getMainList();
 			makeMovieList();
 		});
-		
-		// 인원/좌석 선택 버튼 클릭
-// 		$("#btnNext").on("click", function(e) {
-// 		});
-		
 	});
 		
 // -----------------------------------------------------------------------------------	function end
@@ -526,11 +512,6 @@
 		}
 		setMovie();
 		
-// 		getMainList();
-		makeBrandList();
-		makeCinemaList();
-		makePlaydtList();
-		
 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all")
 			getTimeList();
 		else
@@ -550,7 +531,6 @@
 		$(this).addClass("active");
 		$("#TabBrandCd").val($(this).data("cd"));
 		$("#BrandCd").val($(this).data("cd"));
-// 		getMainList();
 		makeCinemaList();
 		makePlaydtList();
 		
@@ -576,18 +556,18 @@
 	});
 
 	// 영화관 클릭
-	$(document).on("click", ".btnCnItem", function(e) {
-		$(".btnCnItem").parent().removeClass("check");
-		if ($("#CinemaCd").val() == $(this).data("cd")) {
-			$("#CinemaCd").val("all");
-		} else {
-			$("#CinemaCd").val($(this).data("cd"));
-			$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
-		}
-		console.log($("#CinemaCd").val());
-		setCinema();
+// 	$(document).on("click", ".btnCnItem", function(e) {
+// 		$(".btnCnItem").parent().removeClass("check");
+// 		if ($("#CinemaCd").val() == $(this).data("cd")) {
+// 			$("#CinemaCd").val("all");
+// 		} else {
+// 			$("#CinemaCd").val($(this).data("cd"));
+// 			$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
+// 		}
+// 		console.log($("#CinemaCd").val());
+// 		setCinema();
 		
-	});
+// 	});
 
 
 	
