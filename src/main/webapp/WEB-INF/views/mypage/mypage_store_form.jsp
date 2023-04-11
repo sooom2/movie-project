@@ -57,7 +57,7 @@
 			<div class="section group section-mypage-select">
 				<ul class="selector-summary">
 					<li><a href="mypageR" class="">예매/취소내역</a></li>
-					<li><a href="mypageS" class="selected">매점교환권</a></li>
+					<li><a href="mypageS" class="selected">결제내역</a></li>
 					<li><a href="mypageP" class="">포인트내역</a></li>
 					<li><a href="mypageQ" class=" ">문의내역</a></li>
 					<li><a href="mypageRv" class=" ">영화리뷰</a></li>
