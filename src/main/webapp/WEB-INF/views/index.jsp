@@ -707,7 +707,7 @@
 						
 			
 						<dd>
-							<a href="store_detail?item_code=${gift_item_code }">
+							<a href="store_detail?item_code=${gift.item_code }">
 								<div class="img_wrap" data-scale="false">
 									<img src="${gift.item_image }" alt="상품이미지">
 								</div>

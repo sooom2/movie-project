@@ -71,9 +71,11 @@
 				<li><a href="" class="">극장정보</a>
 					<div class="theaterInfo">
 						<ul>
-						<c:forEach var="cinema" items="${cinemaList }">
-							<li><a href="" class="" onmouseover="hideTheater()">${cinema.get('cinema_name')}</a></li>
-						</c:forEach>
+<%-- 						<c:forEach var="cinema" items="${cinemaList }"> --%>
+							<li><a href="" class="" onmouseover="hideTheater()"></a></li>
+							<li><a href="" class="" onmouseover="hideTheater()">전체극장</a></li>
+<%-- 						</c:forEach> --%>
+						
 						</ul>
 					</div>
 				</li>

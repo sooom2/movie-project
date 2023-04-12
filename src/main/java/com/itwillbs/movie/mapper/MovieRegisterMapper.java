@@ -30,6 +30,7 @@ public interface MovieRegisterMapper {
 	//영화관리스트
 	List<HashMap<String, String>> selectCinema();
 
+	
 	//영화관-상영관 조회
 	List<HashMap<String, String>> selectScreen(String cinema_name);
 	

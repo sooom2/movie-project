@@ -39,6 +39,8 @@ public class MemberController {
 		List<HashMap<String, String>> gift = storeService.selectItem();
 		List<HashMap<String, String>> food = storeService.selectFood();
 		List<HashMap<String, String>> ticket = storeService.selectTicket();
+		System.out.println(gift);
+		
 		
 		model.addAttribute("gift", gift);
 		model.addAttribute("food", food);
