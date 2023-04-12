@@ -13,7 +13,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="resources/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -145,13 +145,13 @@
 														for="inputPassword">문의지점</label>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPasswordConfirm"
-														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">문의유형</label>
-												</div>
-											</div>
+											<!-- 											<div class="col-md-6"> -->
+											<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+											<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
+											<!-- 														type="password" placeholder="Confirm password" /> <label -->
+											<!-- 														for="inputPasswordConfirm">문의유형</label> -->
+											<!-- 												</div> -->
+											<!-- 											</div> -->
 										</div>
 										<div class="row mb-3">
 											<div class="col-md-6">
@@ -241,8 +241,8 @@
 									class="datatable-sorter">작성자명</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">문의지점</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">문의유형</a></th>
+								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">문의유형</a></th> -->
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
@@ -257,30 +257,32 @@
 									class="datatable-sorter">수정</a></th>
 							</tr>
 						</thead>
-						<!-- 회원목록 -->
-						<tbody>
-							<c:forEach var="lostBoard" items="${lostBoardList }">
+						<!-- 게시판목록 -->
+							<tbody>
+						<c:forEach var="lostBoard" items="${lostBoardList }">
 								<tr data-index="0">
 									<td>${lostBoard.member_id }</td>
 									<td>${lostBoard.lost_name }</td>
-									<td>${lostBoard.cinema_name }</td>
-									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
-									</td>
-									<td>${lostBoard.lost_board_rep }</td>
-									<td>${lostBoard.lost_write_date }</td>
+									<td>${lostBoard.get("cinema_name") }</td>
+									<td id="lost_subject"><a
+										href="lostBoardDetail?lost_code=${lostBoard.get('lost_code') }&pageNum=${pageNum }">${lostBoard.get("lost_subject") }</a></td>
+									<td>${lostBoard.get("lost_board_rep") }</td>
+									<td>${lostBoard.get("lost_write_date") }</td>
+									<td class="modi"><input class="btn btn-block btn-more"
+										type="button" value="M O R E" onclick="doDisplay()"></td>
 								</tr>
-							</c:forEach>
-							<tr data-index="0">
-								<td>회원ID입력</td>
-								<td>작성자명</td>
-								<td>문의지점</td>
-								<td>제목</td>
-								<td>답글유무</td>
-								<td>작성일</td>
-								<td class="modi"><input class="btn btn-block btn-more"
-									type="button" value="M O R E" onclick="doDisplay()"></td>
-							</tr>
-						</tbody>
+<!-- 								<tr data-index="0"> -->
+<!-- 									<td>회원ID입력</td> -->
+<!-- 									<td>작성자명</td> -->
+<!-- 									<td>문의지점</td> -->
+<!-- 									<td>제목</td> -->
+<!-- 									<td>답글유무</td> -->
+<!-- 									<td>작성일</td> -->
+<!-- 									<td class="modi"><input class="btn btn-block btn-more" -->
+<!-- 										type="button" value="M O R E" onclick="doDisplay()"></td> -->
+<!-- 								</tr> -->
+						</c:forEach>
+							</tbody>
 					</table>
 				</div>
 				<!-- 테이블 -->
