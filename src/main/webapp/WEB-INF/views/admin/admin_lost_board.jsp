@@ -131,8 +131,6 @@
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPassword"
 														type="password" placeholder="Create a password" /> <label
-<<<<<<< member
-=======
 														for="inputPassword">이메일</label>
 												</div>
 											</div>
@@ -175,7 +173,6 @@
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPassword"
 														type="password" placeholder="Create a password" /> <label
->>>>>>> 63a9674 commit
 														for="inputPassword">첨부파일</label>
 												</div>
 											</div>
@@ -283,11 +280,8 @@
 									class="datatable-sorter">작성자명</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">문의지점</a></th>
-<<<<<<< member
-=======
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">문의유형</a></th> -->
->>>>>>> 63a9674 commit
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 <!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
@@ -302,7 +296,6 @@
 									class="datatable-sorter">수정</a></th>
 							</tr>
 						</thead>
-<<<<<<< member
 						<!-- 회원목록 -->
 						<tbody>
 							<tr data-index="0">
@@ -315,7 +308,6 @@
 									type="button" value="M O R E" onclick="doDisplay()"></td>
 							</tr>
 						</tbody>
-=======
 						<!-- 게시판목록 -->
 							<tbody>
 						<c:forEach var="lostBoard" items="${lostBoardList }">
@@ -342,7 +334,6 @@
 <!-- 								</tr> -->
 						</c:forEach>
 							</tbody>
->>>>>>> 63a9674 commit
 					</table>
 				</div>
 				<!-- 테이블 -->

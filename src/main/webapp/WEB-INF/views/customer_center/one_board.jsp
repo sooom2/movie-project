@@ -7,15 +7,15 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <!-- 상단 -->
-<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
+<link href="resources/css/sub.css" rel="stylesheet">
 <!-- 본문 -->
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+<link href="resources/css/main.css" rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
