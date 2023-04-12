@@ -31,6 +31,12 @@ public class MovieRegisterServie {
 		return mapper.selectMovie(info_movie_code);
 	}
 	
+	//스케쥴의 상세정보
+	public HashMap<String, String> selectSchMovie(String sch_code) {
+		return mapper.selectSchMovie(sch_code);
+	}
+	
+	
 	//영화삭제
 	public int deleteMovie(String info_movie_code) {
 		return mapper.deleteMovie(info_movie_code);

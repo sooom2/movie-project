@@ -72,14 +72,7 @@ public class MovieRegisterController {
 	public String movieDelete(@RequestParam String info_movie_code,Model model) {
 		System.out.println(info_movie_code);
 		
-		model.addAttribute("target", "deleteMovie");
-		
 		int deleteCount = movieRegisterServie.deleteMovie(info_movie_code);
-//		if(deleteCount > 0) {
-//			
-//			model.addAttribute("msg", "삭제하");
-//			
-//		}
 		return "redirect:/admin_movie_register";
 	}
 	
@@ -131,63 +124,34 @@ public class MovieRegisterController {
 	//영화일정등록
 	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule,Model model) throws ParseException {
-		System.out.println("=============movieSchedulePro=========");
-//		System.out.println(movieSchedule);
-//		System.out.println(movieSchedule.get("sch_start_time"));
 		HashMap<String, String> selectInfoTime = movieRegisterServie.selectMovie(movieSchedule.get("sch_movie_code"));
-		//영화상영시간 "121"
-
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); //변환형식
 		
-		String strNum = selectInfoTime.get("info_time");
-//
-//		// 정수로 변환
-		int num = Integer.parseInt(strNum);
-//		// Calendar 객체 생성 및 시간 설정
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.HOUR_OF_DAY, num / 60);
-		cal.set(Calendar.MINUTE, num % 60);
-//
-//		// "00:00" 형식의 문자열로 변환
-		String runningTime = sdf.format(cal.getTime());
-		
-		System.out.println("러닝타임 : " +runningTime);
-		
-		
-		
-		
+		String runningTime = selectInfoTime.get("info_time");
 		String strTime2 = movieSchedule.get("sch_start_time");
-		System.out.println(" 시작시간 : "+strTime2);
-		Date runTime = sdf.parse(runningTime);
-		Date startTime = sdf.parse(strTime2);
+		Date runTime = sdf.parse(runningTime); //date 변환
+		Date startTime = sdf.parse(strTime2); ////date 변환
 		
-//		cal = Calendar.getInstance();
-		
+		// 변환한값을 cal객체의 add메서드써서 더함
 		cal.setTime(startTime);
 		cal.add(Calendar.HOUR_OF_DAY, runTime.getHours());
 		cal.add(Calendar.MINUTE, runTime.getMinutes());
 		cal.add(Calendar.SECOND, runTime.getSeconds());
-//
 		Date sumDate = cal.getTime();
 		
+		
 		String sch_last_time = movieSchedule.get("sch_last_time");
-		
 		sch_last_time = sdf.format(sumDate);
-		
 		movieSchedule.put("sch_last_time", sch_last_time);
 		
-		
-	
-		System.out.println(movieSchedule);
-		System.out.println("==========================================================");
 		
 		int scheduleRegisterCount = movieRegisterServie.scheduleRegister(movieSchedule);
 		
 		if(scheduleRegisterCount > 0){
 			System.out.println("예매등록성공");
 		}
-		
 		return "redirect:/admin_schedule_register";
 	}
 	
@@ -255,76 +219,11 @@ public class MovieRegisterController {
 	public String selectSchedule(@RequestParam String sch_code,Model model) {
 		System.out.println("selectSchedule");
 		HashMap<String, String> selectSchedule = movieRegisterServie.detailSchedule(sch_code);
-		
 		model.addAttribute("selectSchedule",selectSchedule);
 		System.out.println(model);
 		return "admin/admin_movie_schedule_update";
 	}
 	
-	
-	
-	
-	//상영일정 수정 xxxx
-//	@RequestMapping(value = "movieScheduleUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String movieScheduleUpdatePro(HashMap<String, String> selectSchedule) throws ParseException {
-//		System.out.println("movieScheduleUpdatePro=====================");
-//		System.out.println("=======================================================");
-//		System.out.println(selectSchedule.get("sch_movie_code"));
-//		System.out.println("=======================================================");
-//		
-//		System.out.println("Ddddddddd");
-//		HashMap<String, String> selectInfoTime = movieRegisterServie.selectMovie(selectSchedule.get("sch_movie_code"));
-////		System.out.println(date+"Dddddddddddddddddddd");
-//		//영화상영시간 "121"
-//
-//		
-//		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-//		
-//		String strNum = selectInfoTime.get("info_time");
-////
-////		// 정수로 변환
-//		int num = Integer.parseInt(strNum);
-////		// Calendar 객체 생성 및 시간 설정
-//		Calendar cal = Calendar.getInstance();
-//		cal.set(Calendar.HOUR_OF_DAY, num / 60);
-//		cal.set(Calendar.MINUTE, num % 60);
-////
-////		// "00:00" 형식의 문자열로 변환
-//		String runningTime = sdf.format(cal.getTime());
-//		
-//		System.out.println("러닝타임 : " +runningTime);
-//		
-//		
-//		
-//		
-//		String strTime2 = selectSchedule.get("sch_start_time");
-//		System.out.println(" 시작시간 : "+strTime2);
-//		Date runTime = sdf.parse(runningTime);
-//		Date startTime = sdf.parse(strTime2);
-//		
-////		cal = Calendar.getInstance();
-//		
-//		cal.setTime(startTime);
-//		cal.add(Calendar.HOUR_OF_DAY, runTime.getHours());
-//		cal.add(Calendar.MINUTE, runTime.getMinutes());
-//		cal.add(Calendar.SECOND, runTime.getSeconds());
-////
-//		Date sumDate = cal.getTime();
-//		
-//		String sch_last_time = selectSchedule.get("sch_last_time");
-//		
-//		sch_last_time = sdf.format(sumDate);
-//		
-//		selectSchedule.put("sch_last_time", sch_last_time);
-//		
-//		
-//		
-//		int modifyCount = movieRegisterServie.movieScheduleUpdatePro(selectSchedule);
-//		
-//		return "";
-//	}
-	
-
 	
 	//영화삭제
 	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
@@ -332,66 +231,47 @@ public class MovieRegisterController {
 		
 		
 		int deleteCount = movieRegisterServie.deleteSchedule(sch_code);	
-
-		
 		
 		return "redirect:/admin_schedule_register";
 	}
  	 	
 	// 영화 정보 수정
 	@RequestMapping(value = "updateSchedule", method = {RequestMethod.GET, RequestMethod.POST})
-	public String updateSchedule(@RequestParam HashMap<String, String> schedule, Model model) {
-		System.out.println("=================================================");
+	public String updateSchedule(@RequestParam HashMap<String, String> schedule, Model model) throws ParseException {
 		System.out.println(schedule);
-		System.out.println("=================================================");
+		System.out.println("=============================");
+		System.out.println(schedule.get("sch_code"));
 		
+		HashMap<String, String> selectInfoTime = movieRegisterServie.selectSchMovie(schedule.get("sch_code"));
+		System.out.println("=============================");
+		System.out.println(selectInfoTime);
+		System.out.println("=============================");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); //변환형식
+		
+		Calendar cal = Calendar.getInstance();
+		String runningTime = selectInfoTime.get("info_time");
+		String strTime2 = schedule.get("sch_start_time");
+		Date runTime = sdf.parse(runningTime); //date 변환
+		Date startTime = sdf.parse(strTime2); ////date 변환
+		
+		// 변환한값을 cal객체의 add메서드써서 더함
+		cal.setTime(startTime);
+		cal.add(Calendar.HOUR_OF_DAY, runTime.getHours());
+		cal.add(Calendar.MINUTE, runTime.getMinutes());
+		cal.add(Calendar.SECOND, runTime.getSeconds());
+		Date sumDate = cal.getTime();
+		
+		
+		String sch_last_time = schedule.get("sch_last_time");
+		sch_last_time = sdf.format(sumDate);
+		schedule.put("sch_last_time", sch_last_time);
+		
+		System.out.println("=================제에발================");
+		System.out.println(schedule);
+		System.out.println("=================제에발================");
 		
 		int modifyCount = movieRegisterServie.movieScheduleUpdatePro(schedule);
-		
-//		HashMap<String, String> selectInfoTime = movieRegisterServie.selectMovie(schedule.get("info_movie_code"));
-//	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-//	
-//	String strNum = selectInfoTime.get("info_time");
-//	int num = Integer.parseInt(strNum);
-////	// Calendar 객체 생성 및 시간 설정
-//	Calendar cal = Calendar.getInstance();
-//	cal.set(Calendar.HOUR_OF_DAY, num / 60);
-//	cal.set(Calendar.MINUTE, num % 60);
-////
-////	// "00:00" 형식의 문자열로 변환
-//	String runningTime = sdf.format(cal.getTime());
-//	
-//	System.out.println("러닝타임 : " +runningTime);
-//	
-//	
-//	
-//	
-//	String strTime2 = schedule.get("sch_start_time");
-//	System.out.println(" 시작시간 : "+strTime2);
-//	Date runTime = sdf.parse(runningTime);
-//	Date startTime = sdf.parse(strTime2);
-	
-//	cal = Calendar.getInstance();
-	
-//	cal.setTime(startTime);
-//	cal.add(Calendar.HOUR_OF_DAY, runTime.getHours());
-//	cal.add(Calendar.MINUTE, runTime.getMinutes());
-//	cal.add(Calendar.SECOND, runTime.getSeconds());
-//
-//	Date sumDate = cal.getTime();
-//	
-//	String sch_last_time = schedule.get("sch_last_time");
-//	
-//	sch_last_time = sdf.format(sumDate);
-//	
-//	schedule.put("sch_last_time", sch_last_time);
-//	
-//	
-//	
-//	int modifyCount = movieRegisterServie.movieScheduleUpdatePro(schedule);
-		
-		
-		
 		
 		return "redirect:/admin_schedule_register";
 	}

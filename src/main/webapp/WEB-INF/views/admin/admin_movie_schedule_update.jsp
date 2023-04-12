@@ -24,24 +24,6 @@ function deleteSchedule(){
 }
 
 
-function deleteMovie(){
-// 	let delConfirm = confirm("삭제하시겠습니까?");
-// 	if (delConfirm) {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "deleteSchedule",
-// 			data: {
-// 				sch_code: ${selectSchedule.get('sch_code') }
-// 			},
-// 			datatype:"json",
-// 			success: function(data){
-// 				alert("삭제완료");
-// 				history.back();
-// 			}
-// 		});
-// 	}
-}
-
 function selectCinema(){
 	alert("change");
 	$.ajax({
@@ -144,18 +126,18 @@ $(function() {
                                     <div class="row mb-3">
                                        	<div class="col-md-6 " >
                                                <div class="form-floating mb-3 mb-md-0 selectbox" >
-                                                   <div class="info_movie_code">
-                                                   	<label for="info_movie_code">영화선택 : </label>
-													<select name="info_movie_code" id="sch_movie_code"  style="width: 300px">
-													
-													<option value="${movie.get('info_movie_code') }">${selectSchedule.get('info_movie_title') }</option>
+                                                   <div class="info_movie_title">
+                                                   	<label for="info_movie_title">영화선택 : </label>
+													<select name="info_movie_title" id="sch_movie_code"  style="width: 300px">
+													<option value="${selectSchedule.get('info_movie_title') }">${selectSchedule.get('info_movie_title') }</option>
 													</select>
                                                    </div>
+                                                   <input type="hidden" name="sch_code" value="${selectSchedule.get('sch_code') }">
+                                                   
                                                </div>
                                           </div>
                                        </div>
                                        <hr>
-    					                   
                                        <div class="row mb-3">
                                       	  <div class="col-md-6 ">
                                              <div class="form-floating mb-3 mb-md-0 selectbox">

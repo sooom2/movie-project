@@ -507,7 +507,7 @@ function previewImage(targetObj, View_area) {
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
 								<td>${movie.get("info_year") }</td>
-								<td>${movie.get("info_time") }분</td>
+								<td>${movie.get("info_time") }</td>
 								<td>${movie.get("info_showdate") }</td>
 								<td>${movie.get("info_enddate") }</td>
 								<td id="info_story">${movie.get("info_story") }</td>
