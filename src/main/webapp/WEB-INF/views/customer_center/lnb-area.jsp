@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="resources/css/sub.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
 <body>
 	<div class="lnb-area addchat">
 		<nav id="lnb" class="ty2">
