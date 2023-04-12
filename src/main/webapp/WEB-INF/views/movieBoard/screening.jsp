@@ -22,15 +22,15 @@
     	<ul>
 		<c:forEach var="movie" items="${movieList }">
 		    <li data-moviecode="${movie.info_movie_code }">
-		    <span class="over over-a"><a href="#" class="rsv">예매하기</a>
-		    <a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">상세정보</a></span>
-		    <!-- img 파일 경로 수정 필요함  -->
-		    <img src="${movie.info_movie_poster}" class="posterlist">
-		    <div class="movie-desc">
-		    	<span class="label"> 12 </span>
-		    	<span class="rate-12">12</span>
-		    	 ${movie.info_movie_title }
-    		</div>
+			    <span class="over over-a">
+			    	<a href="#" class="rsv">예매하기</a>
+			    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">상세정보</a>
+		    	</span>
+		    	<img src="${movie.info_movie_poster}" class="posterlist">
+		    	<div class="movie-desc">
+		    		<span class="label"> 12 </span>
+		    		<span class="rate-12">12</span>${movie.info_movie_title }
+    			</div>
 		    <div class="btn-util">
 		    	<button type="button" class="button btn-like" data-no="01309400">
 	    			<i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i>

@@ -320,8 +320,8 @@ function previewImage(targetObj, View_area) {
 				let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
 				let runningTime = date.toLocaleTimeString("en-US", options);
 				
-				
-				alert(runningTime);
+//				확인용으로 올려둔 alert 주석 처리 04.12. 16:50
+// 				alert(runningTime);
 				
 				
 				

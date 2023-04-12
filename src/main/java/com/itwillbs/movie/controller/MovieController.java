@@ -39,9 +39,7 @@ public class MovieController {
 	
 	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
-		System.out.println(info_movie_code);
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
-		
 		model.addAttribute("movieInfo", movieInfo);
 		
 		return "movieBoard/movieInfo2";
