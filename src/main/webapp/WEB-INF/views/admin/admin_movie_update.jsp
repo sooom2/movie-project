@@ -19,33 +19,12 @@
 <!-- 모달 -->
 <script type="text/javascript">
 function deleteMovie(){
+	alert("Dddd");
 	let delConfirm = confirm("삭제하시겠습니까?");
 	if (delConfirm) {
 		location.href='deleteMovie?info_movie_code=${selectMovie.get('info_movie_code')}'
 	}
 }
-
-function deleteMovie(){
-// 	let delConfirm = confirm("삭제하시겠습니까?");
-// 	if (delConfirm) {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "deleteMovie",
-// 			aync : false
-// 			data: {
-// 				info_movie_code: $(".info_movie_code").val()
-// 			},
-// 			datatype:"json",
-// 			success: function(data){
-// 				alert("삭제완료");
-// 			}
-// 		})
-// 	});
-		
-// 	}
-}
-	
-
 
 //이미지올리기
 function previewImage(targetObj, View_area) {

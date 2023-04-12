@@ -1,6 +1,7 @@
 package com.itwillbs.movie.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.MemberService;
+import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.StoreService;
 import com.itwillbs.movie.vo.MemberVO;
 
 @Controller
@@ -20,10 +23,28 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
-
+	@Autowired
+	private StoreService storeService;
+	@Autowired
+	private MovieRegisterService movieRegisterService;
 
 	@GetMapping(value = "main")
-	public String main() {
+	public String main(Model model) {
+		
+		//nav에 지점 목록
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		
+		//메인스토어 뿌리기
+		List<HashMap<String, String>> gift = storeService.selectItem();
+		List<HashMap<String, String>> food = storeService.selectFood();
+		List<HashMap<String, String>> ticket = storeService.selectTicket();
+		
+		model.addAttribute("gift", gift);
+		model.addAttribute("food", food);
+		model.addAttribute("ticket", ticket);
+		
+		
 		return "index";
 	}
 	

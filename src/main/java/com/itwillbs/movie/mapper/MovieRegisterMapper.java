@@ -17,6 +17,9 @@ public interface MovieRegisterMapper {
 	//영화상세목록
 	HashMap<String, String> selectMovie(String info_movie_code);
 	
+	//스케쥴상세
+	HashMap<String, String> selectSchMovie(String sch_code);
+	
 	
 	//영화삭제
 	int deleteMovie(String info_movie_code);
