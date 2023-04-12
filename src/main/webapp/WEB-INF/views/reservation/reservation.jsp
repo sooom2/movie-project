@@ -21,25 +21,14 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/front.js?v=1680673895731"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
-	<script type="text/javascript">
-	$(function(){
-		 $("#dateBtn").on("click", function(e){
-			 alert("Ddd");
-		}
-			
-	});
-	
-	</script>
-
 </head>
-
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
 
 
 
 
-<!-- ajax 수정하기, 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
+<!-- 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
@@ -94,10 +83,10 @@
 								<!-- // head -->
 
 								<div class="body">
-									<!-- 영화관 -->
+									<!-- 극장 -->
 									<div class="cinema-list">
 										<div class="list-head">
-											<h5 class="r-h5">영화관</h5>
+											<h5 class="r-h5">극장</h5>
 										</div>
 										<div class="list">
 											<!--1. 지역 선택 -->
@@ -106,7 +95,7 @@
 													<div class="scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 533px;">
 														<ul id="regionList">
 															<li>
-															<button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite"> 즐겨찾는 영화관</button></li>
+															<button type="button" class="btnTheater" title="즐겨찾는 극장" data-cd="favorite"> 즐겨찾는 극장</button></li>
 															<li class="active"><button type="button" class="btnTheater" title="전체" data-cd="all">전체</button></li>
 															<li><button type="button" class="btnTheater" title="부산" data-cd="051">부산</button></li>
 															<li><button type="button" class="btnTheater" title="서울" data-cd="02">서울</button></li>
@@ -116,11 +105,11 @@
 													</div>
 												</div>
 											</div>
-											<!--2. 영화관 선택 -->
+											<!--2. 극장 선택 -->
 											<div class="step2">
 												<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
 													<div id="cinemaList" class="scrollbar-inner scroll-content" style="height: 533px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
-														<!-- 즐겨찾는 영화관 클릭시 나타나는 탭 -->
+														<!-- 즐겨찾는 극장 클릭시 나타나는 탭 -->
 														<ul class="subTheater" data-cd="favorite" style="display: none"></ul>
 															
 														<!-- 전체 -->
@@ -160,7 +149,7 @@
 											</div>
 										</div>
 									</div>
-									<!-- // 영화관 -->
+									<!-- // 극장 -->
 
 									<!-- 영화리스트 -->
 									<div class="mv-list">
@@ -272,16 +261,16 @@
 															<strong><span class="mvNm">스즈메의 문단속</span></strong>
 															<dl>
 																<dt>극장</dt>
-																<dd class="cnNm">1939시네마</dd>
+																<dd class="cnNm">극장을 선택해주세요</dd>
 															</dl>
 															<dl>
 																<dt>상영관</dt>
 																<dd class="scNm"></dd>
 															</dl>
-<!-- 															<dl> -->
-<!-- 																<dt>상영등급</dt> -->
-<!-- 																<dd class="rtNm">12세 이상 관람가</dd> -->
-<!-- 															</dl> -->
+															<dl>
+																<dt>상영등급</dt>
+																<dd class="rtNm">12세 이상 관람가</dd>
+															</dl>
 															<dl>
 																<dt>날짜</dt>
 																<dd class="plDt">2023-04-15(토)</dd>
@@ -338,7 +327,7 @@
 
 
 
-<!-- // 즐겨찾는 영화관 비회원으로 했을 때 -->
+<!-- // 즐겨찾는 극장 비회원으로 했을 때 -->
 	<div class="modal" id="login">
 		<div class="modal-dialog" style="max-width:350px">
 			<div class="modal-content">
@@ -394,7 +383,7 @@
 	var favoriteCinema = [];
 	var timer = null;
 	//---
-	
+
 	
 	$(function() {
 		
@@ -422,6 +411,7 @@
 			var cd = $(this).data("cd");
 			
 			// 비회원인 경우 로그인 후 이용해주세요 
+			// 즐겨찾는 극장
 			if (cd == "favorite") {
 				$("#login").modal();
 				return;
@@ -431,21 +421,16 @@
 			$(".btnTheater").parent().removeClass("active");
 			$(this).parent().addClass("active");
 			
-			// location_code 저장
-			$("#TabRegionCd").val($(this).data("cd"));
-			
-// 			console.log($("#TabRegionCd").val());
 			
 			$(".subTheater").hide();
 			$('.subTheater[data-cd="' + cd + '"]').show();
 			
-// 			test();
 			
 			
 		});
 		
 		
-		// 영화관 클릭
+		// 극장 클릭
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
 				console.log("cd:" + cd);
@@ -462,13 +447,28 @@
 	 				for(let movie of response) {
 // 	 					console.log(movie.info_movie_title);
 	 					let movieTitle = movie.info_movie_title;
+	 					let movieCode = movie.info_movie_code;
+	 					let movieImg = movie.info_movie_poster;
+	 					let movieRating = movie.info_rating;
+	 					console.log("movieRating: " + movieRating);
 // 	 					console.log("movieTitle: " + movieTitle);
+// 	 					console.log("movieCode: " + movieCode);
 	 					var str = "";
 	 					str += "<li>";
-	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " title='";
-	 					str += movieTitle + "'>" + movieTitle + "</button>";
+	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + "data-cd=" + movieCode;
+	 					str += " data-rat=" + movieRating;
+	 					str += " data-url=" + movieImg;
+	 					str += " title='" + movieTitle + "'>";
+	 					str += movieTitle + "</button>";
 	 					str += "</li>";
 	 					$("#movieList").append(str);
+	 					
+// 	 					<button type="button" class="btnMvItem" data-cd="019904"
+// 							data-url="https://img.dtryx.com/poster/2022/06/EBFBA151-CC1E-40AD-A108-990343803DF2.small.jpg"
+// 							data-rat="15" data-trt="0.00" data-rdt="2022-06-29"
+// 							title="헤어질 결심">
+// 							<i class="age15"></i> 헤어질 결심
+// 						</button>
 	 				}
 	 			},
 	 			error: function(xhr, textStatus, errorThrown) {
@@ -481,7 +481,7 @@
 				$("#CinemaCd").val("all");
 			} else {
 				$("#CinemaCd").val($(this).data("cd"));
-				$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
+				$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 극장 클릭시 테두리
 			}
 			setCinema();
 			
@@ -490,30 +490,26 @@
 		
 		
 		
+		
 		// 예매율순 | 가나다순 클릭
-		$(".btnMovieTab").on("click", function(e) { 
-			e.preventDefault();
-			$(".btnMovieTab").removeClass("active");
-			$(this).addClass("active");
-			$("#Sort").val($(this).data("tab"));
+// 		$(".btnMovieTab").on("click", function(e) { 
+// 			e.preventDefault();
+// 			$(".btnMovieTab").removeClass("active");
+// 			$(this).addClass("active");
+// 			$("#Sort").val($(this).data("tab"));
 			
-			makeMovieList();
-		});
+// 			makeMovieList();
+// 		});
 	});
 		
 // -----------------------------------------------------------------------------------	function end
-// 	function test() {
-// 		var text = '${cinema}';
-// 		console.log("cinema :" + text);
-	
-// 	}
 
 
 	
 
 // 영화 클릭
 	$(document).on("click", ".btnMvItem", function(e) {
-		e.preventDefault();
+// 		e.preventDefault();
 		$("#movieList li").removeClass("check");
 		if ($("#MovieCd").val() == $(this).data("cd")) {
 			$("#MovieCd").val("all");
@@ -551,19 +547,6 @@
 		$('.subTheater[data-cd="' + cd + '"]').show();
 	});
 
-	// 영화관 클릭
-// 	$(document).on("click", ".btnCnItem", function(e) {
-// 		$(".btnCnItem").parent().removeClass("check");
-// 		if ($("#CinemaCd").val() == $(this).data("cd")) {
-// 			$("#CinemaCd").val("all");
-// 		} else {
-// 			$("#CinemaCd").val($(this).data("cd"));
-// 			$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
-// 		}
-// 		console.log($("#CinemaCd").val());
-// 		setCinema();
-		
-// 	});
 
 
 	
@@ -582,12 +565,13 @@
 	
 	// 영화 선택 (우측 상영시간 아래 부분)
 	function setMovie() {
-		
+		console.log("setmovie()");
 		var cd = $("#MovieCd").val();
+		console.log("cd=>" + cd);
 		if (cd == "all") {
 			$(".info .img img").remove();
 			$(".info .mvNm").html("&nbsp;");
-// 			$(".info .rtNm").text(""); // 상영등급
+			$(".info .rtNm").text(""); // 상영등급
 			
 			$("#HidRating").val("");
 			$("#HidMovieUrl").val("");
@@ -599,7 +583,7 @@
 			$(".info .img img").remove();
 			$(".info .img").append('<img src="' + obj.data("url") + '">');
 			$(".info .mvNm").text(obj.attr("title"));
-// 			$(".info .rtNm").text(getRatingTxt(obj.data("rat")));
+			$(".info .rtNm").text(obj.data("rat"));
 
 			$("#HidRating").val(obj.data("rat"));
 			$("#HidMovieUrl").val(obj.data('url'));
@@ -611,7 +595,7 @@
 	// 극장 선택
 	function setCinema() {
 		var cd = $("#CinemaCd").val();
-		
+		console.log("setCinema내부) cd = " + cd);
 		if (cd == "all") {
 			$(".cnNm").text("");
 		} else {
@@ -624,7 +608,6 @@
 
 	
 		
-// 	});
 </script> 
 
 <!-- 	 // 날짜 -->
@@ -666,9 +649,7 @@
                 dateBtn.append(spanDay);
                 //button.append(i);
                 reserveDate.append(dateBtn);
-	
-                
-                
+
 //                 dayClickEvent(button);
             }
 

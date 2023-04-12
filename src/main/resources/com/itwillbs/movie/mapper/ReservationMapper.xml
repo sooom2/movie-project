@@ -19,7 +19,7 @@
 	<!-- 영화관 - 영화리스트 -->
 	<select id="selectmoviesList" resultType="hashmap">
 	<!-- 각 영화관에 상영하는 영화리스트 출력 -->
-		select distinct m.info_movie_title
+		select distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating
 			from cinema c
 				join schedule s 
 					on c.cinema_code = s.sch_cinema_code 

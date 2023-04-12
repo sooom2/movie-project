@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.*"%>
 <!doctype html>
 <html>
 <head>
@@ -23,8 +24,11 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<h3>${movie.get(0)}</h3>
 
+
+
+
+<!-- ajax 수정하기, 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
@@ -112,7 +116,7 @@
 														<ul class="subTheater" data-cd="all" style="display: block;">
 															<c:forEach var="cinema" items="${cinema }">
 																<li>
-																	<button type="button" class="btnCnItem" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
+																	<button type="button" class="btnCnItem" id="cinema_code" data-cd="${cinema.cinema_code }" title="${cinema.cinema_name }">${cinema.cinema_name }</button> 
 																</li>
 															</c:forEach>
 														</ul>
@@ -159,18 +163,6 @@
 										<div class="list">
 											<div class="scrollbar-inner">
 												<ul id="movieList">
-														<c:forEach var="movieList" items="${movie }">
-															<c:if test="${movieList.get('cinema_code') eq '1'}">
-														
-															
-																<li>
-																	<button type="button" class="btnMvItem" data-cd="${movieList.info_movie_code }"
-																		data-url="${movieList.info_movie_poster }"
-																		data-rdt="${movieTime.sch_start_time } + '~' +${movieTime.sch_last_time }"
-																		title="${movieList.info_movie_title }">${movieList.info_movie_title }</button>
-																</li>
-															</c:if>
-														</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -394,11 +386,6 @@
 
 	
 	$(function() {
-// 		getMainList();
-// 		makeBrandList();
-// 		makeCinemaList();
-// 		makeMovieList();
-// 		makePlaydtList();
 		
 		if ($("#MovieCd").val() != "all")
 			setMovie();
@@ -441,7 +428,7 @@
 			$(".subTheater").hide();
 			$('.subTheater[data-cd="' + cd + '"]').show();
 			
-			test();
+// 			test();
 			
 			
 		});
@@ -450,41 +437,43 @@
 		// 영화관 클릭
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
-			console.log("cd:" + cd);
-			
+				console.log("cd:" + cd);
+				$(".btnMvItem").hide();
 			$.ajax({
-	 			type: "get",
-	 			url: "reservation", // AJAX 로 요청할 요청 주소(URL)
-	 			data: { // 전송할 데이터가 복수개일 경우 중괄호로 묶기
-	 				// 폼에서 입력한 데이터를 가져와서 파라미터로 표현(전송)하는 경우
-	 				// 파라미터명 : 데이터 형식으로 지정
-	 					id: $("#id").val(), // id 선택자의 value 속성값을 id 파라미터로 저장
-	 					passwd: $("#passwd").val() // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
-	 					cd: $(".btnCnItem[data-cd]").val()
-	 				// -------- 값을 직접 지정 시 --------
-	// 				id: "admin", // id 선택자의 value 속성값을 id 파라미터로 저장
-	// 				passwd: "1234" // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
+	 			type: "POST",
+	 			url: "moviesList",
+	 			data: { 
+	 					cd: cd
 	 			},
-	 			dataType: "text",
-	 			success: function(response) { // 요청 처리 성공 시 자동으로 호출되는 콜백함수
-	 				// 익명 함수 파라미터로 응답 데이터가 전달됨(처리하는 페이지에서 응답한 결과)
-	 				// id 선택자 "resultArea" 영역에 응답 데이터(response) 출력하기
-// 	 				$("#resultArea").html(response);
+	 			dataType: "json",
+	 			success: function(response) { 
 	 				console.log("요청처리성공");
+	 				for(let movie of response) {
+// 	 					console.log(movie.info_movie_title);
+	 					let movieTitle = movie.info_movie_title;
+// 	 					console.log("movieTitle: " + movieTitle);
+	 					var str = "";
+	 					str += "<li>";
+	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " title='";
+	 					str += movieTitle + "'>" + movieTitle + "</button>";
+	 					str += "</li>";
+	 					$("#movieList").append(str);
+	 				}
 	 			},
 	 			error: function(xhr, textStatus, errorThrown) {
-	 				$("#resultArea").html(
-	 						"xhr = " + xhr + 
-	 						"<br>textStatus = " + textStatus +
-	 						"<br>errorThrown = " + errorThrown);
+	 				console.log("요청처리실패");
 	 			}
 	 		});
 			
+			$(".btnCnItem").parent().removeClass("check");
+			if ($("#CinemaCd").val() == $(this).data("cd")) {
+				$("#CinemaCd").val("all");
+			} else {
+				$("#CinemaCd").val($(this).data("cd"));
+				$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
+			}
+			setCinema();
 			
-			
-			var regionInfo = $('.btnCnItem[data-cd="' + cd + '"]').text();
-			//ajx로 reservation=? url로 cd값 보내고 컨트롤러에서 파라미터값 전달 받고 쿼리 where = ? 넣어서
-			console.log("rginfo:" + regionInfo);
 			
 		});
 		
@@ -498,23 +487,16 @@
 			$(this).addClass("active");
 			$("#Sort").val($(this).data("tab"));
 			
-// 			getMainList();
 			makeMovieList();
 		});
-		
-		// 인원/좌석 선택 버튼 클릭
-// 		$("#btnNext").on("click", function(e) {
-// 		});
-		
 	});
 		
 // -----------------------------------------------------------------------------------	function end
-	function test() {
-		var text = '${cinema}';
-// 		console.log(text);
+// 	function test() {
+// 		var text = '${cinema}';
+// 		console.log("cinema :" + text);
 	
-	}
-
+// 	}
 
 
 	
@@ -531,11 +513,6 @@
 		}
 		setMovie();
 		
-// 		getMainList();
-		makeBrandList();
-		makeCinemaList();
-		makePlaydtList();
-		
 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all")
 			getTimeList();
 		else
@@ -545,90 +522,39 @@
 		setTime();
 	});
 	
-	$(document).on("click", ".btnBrandTab", function(e) {
-		e.preventDefault();
-		if ($(this).hasClass("disabled")) {
+
+	$(document).on("click", ".btnTheater", function(e) {
+		var cd = $(this).data("cd");
+		
+		if (cd == "favorite") {
+			$("#login").modal();
 			return;
 		}
 		
-		$(".btnBrandTab").removeClass("active");
-		$(this).addClass("active");
-		$("#TabBrandCd").val($(this).data("cd"));
-		$("#BrandCd").val($(this).data("cd"));
-// 		getMainList();
-		makeCinemaList();
-		makePlaydtList();
 		
-		$(".btnMovieType[data-type='all']").click();
+		$(".btnTheater").parent().removeClass("active");
+		$(this).parent().addClass("active");
+		
+		$("#TabRegionCd").val($(this).data("cd"));
+		
+		$(".subTheater").hide();
+		$('.subTheater[data-cd="' + cd + '"]').show();
 	});
-
-// 	$(document).on("click", ".btnTheater", function(e) {
-// 		var cd = $(this).data("cd");
-		
-// 		if (cd == "favorite") {
-// 			$("#login").modal();
-// 			return;
-// 		}
-		
-		
-// 		$(".btnTheater").parent().removeClass("active");
-// 		$(this).parent().addClass("active");
-		
-// 		$("#TabRegionCd").val($(this).data("cd"));
-		
-// 		$(".subTheater").hide();
-// 		$('.subTheater[data-cd="' + cd + '"]').show();
-// 	});
 
 	// 영화관 클릭
-	$(document).on("click", ".btnCnItem", function(e) {
-		$(".btnCnItem").parent().removeClass("check");
-		if ($("#CinemaCd").val() == $(this).data("cd")) {
-			$("#CinemaCd").val("all");
-		} else {
-			$("#CinemaCd").val($(this).data("cd"));
-			$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
-		}
-		console.log($("#CinemaCd").val());
-		setCinema();
-		
-// 		getMainList();
-// 		makeMovieList();
-// 		makePlaydtList();
-		
-// 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all")
-// 			getTimeList();
-// 		else
-// 			timeList = [];
-		
-// 		makeTimeList();
-// 		setTime();
-	});
-
-// 	$(document).on("click", ".btnDay", function(e) {
-// 		$(".btnDay").parent().removeClass("check");
-// 		if ($("#PlaySDT").val() == $(this).data("dt")) {
-// 			$("#PlaySDT").val("all");
+// 	$(document).on("click", ".btnCnItem", function(e) {
+// 		$(".btnCnItem").parent().removeClass("check");
+// 		if ($("#CinemaCd").val() == $(this).data("cd")) {
+// 			$("#CinemaCd").val("all");
 // 		} else {
-// 			$("#PlaySDT").val($(this).data("dt"));
-// 			$(this).parent().addClass("check");
+// 			$("#CinemaCd").val($(this).data("cd"));
+// 			$('.btnCnItem[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 영화관 클릭시 테두리
 // 		}
-// 		setPlayDT();
+// 		console.log($("#CinemaCd").val());
+// 		setCinema();
 		
-// 		getMainList();
-// 		makeBrandList();
-// 		makeCinemaList();
-// 		makeMovieList();
-		
-// 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all")
-// 			getTimeList();
-// 		else
-// 			timeList = [];
-		
-// 		makeTimeList();
-// 		setTime();
 // 	});
-	
+
 
 	
 	
@@ -640,198 +566,9 @@
 	
 	
 	
-	// 리아(RIA) 영화 및 상영일자 리스트
-// 	function getMainList() {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "/reserve/main_list.do",
-// 			async: false,
-// 			data: $("#dataForm").serialize(),
-// 			cache: false,
-// 			dataType: 'json',
-// 			success: function(res) {
-// 				movieList = res.MovieList;
-// 				cinemaList = res.CinemaList;
-// 				areaList = res.AreaList;
-// 				playSdtList = res.PlaySdtList;
-// 			}
-// 		});
-// 	}
-	
-	// 영화 리스트 작성
-// 	function makeMovieList() {
-// 		var rst = '';
-// 		var cnt = 0;
-// 		var list = [];
-	
-// 		list = '${movieInfo}';
-
-		
-// 		for (var i = 0; i < list.length; i++) {
-// 			var obj = list[i];
-// 			console.log(obj);
-// 			if (obj.MovieCd != "") {
-// 				console.log("mvcd: " + obj.MovieCd);
-// 				rst += '<li' + (obj.MovieCd == $("#MovieCd").val() ? ' class="check"' : '') + '>';
-// 				rst += '	<button type="button" class="btnMvItem' + (obj.HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.MovieCd + '" data-url="' + obj.Url + '" data-rat="' + obj.Rating + '" data-trt="' + (obj.TicketRate !== undefined ? parseFloat(obj.TicketRate).toFixed(2) : '0.00') + '" data-rdt="' + obj.ReleaseDT + '" title="' + obj.MovieNm + '">';
-// 				rst += '		<i class="age' + getRating(obj.Rating) + '"></i>';
-// 				rst += '		' + obj.MovieNm + '';
-// 				rst += '	</button>';
-// 				rst += '</li>';
-// 				cnt++;
-// 			}
-// 		}
-		
-// 		$("#movieList").html(rst);
-		
-// 		if ($("#srchMovie").val() != "")
-// 			$("#srchMovie").keyup();
-		
-// 		$("#movieList li:first-child .btnMvItem").focus();
-// 		$("#movieList li.check .btnMvItem").focus();
-// 	}
 	
 	
-	// 극장 리스트 작성
-// 	function makeCinemaList() {
-// 		var tab = "";
-// 		var det = "";
-
-// 		//즐겨찾는 극장
-// 		var cnt = 0;
-// 		for (var i = 0; i < favoriteCinema.length; i++) {
-// 			var obj = favoriteCinema[i];
-// 			var c = cinemaList.map(function(e){ return e.CinemaCd == obj.CinemaCd; }).indexOf(true);
-// 			if (c > -1) {
-// 				det += '<li' + (obj.CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
-// 				det += '<a href="#" class="btn-star active" data-cd="' + obj.CinemaCd + '" data-nm="' + obj.CinemaNm + '" data-rg="' + obj.RegionCd + '"></a>';
-// 				det += '<button type="button" class="btnCnItem' + (cinemaList[c].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
-// 				det += '</li>';
-// 				cnt++;
-// 			}
-// 		}
-// 		det += '</ul>';
-// 		tab += '<li' + ("favorite" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="즐겨찾는 영화관" data-cd="favorite">즐겨찾는 영화관 <span>(' + cnt + ')</span></button></li>';
-		
-// 		//전체
-// 		cnt = 0;
-// 		for (var i = 0; i < cinemaList.length; i++) {
-// 			var obj = cinemaList[i];
-// 			det += '<li>';
-// 			det += '<button type="button" class="btnCnItem' + ' data-cd="' + obj.CinemaCd + '" title="' + obj.CinemaNm + '">' + obj.CinemaNm + '</button>';
-// 			det += '</li>';
-// 			cnt++;
-// 		}
-// 		det += '</ul>';
-// 		tab += '<li' + ("all" == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="전체" data-cd="all">전체 (' + cnt + ')</button></li>';
-		
-// 		//지역별
-// 		for (var i = 0; i < areaList.length; i++) {
-// 			var obj = areaList[i];
-// 			var cnt = 0;
-// 			det += '<ul class="subTheater" data-cd="' + obj.RegionCd + '"' + (obj.RegionCd != $("#TabRegionCd").val() ? ' style="display:none"' : '') + '>';
-// 			for (var j = 0; j < obj.AreaDetail.length; j++) {
-// 				det += '<li' + (obj.AreaDetail[j].CinemaCd == $("#CinemaCd").val() ? ' class="check"' : '') + '>';
-// 				det += '<a href="#" class="btn-star' + (favoriteCinema.map(function(e){ return e.CinemaCd == obj.AreaDetail[j].CinemaCd; }).indexOf(true) > -1 ? ' active' : '') + '" data-cd="' + obj.AreaDetail[j].CinemaCd + '" data-nm="' + obj.AreaDetail[j].CinemaNm + '" data-rg="' + obj.AreaDetail[j].RegionCd + '"></a>';
-// 				det += '<button type="button" class="btnCnItem' + (obj.AreaDetail[j].HiddenYn == "N" ? '"' : ' disabled" disabled') + ' data-cd="' + obj.AreaDetail[j].CinemaCd + '" title="' + obj.AreaDetail[j].CinemaNm + '">' + obj.AreaDetail[j].CinemaNm + '</button>';
-// 				det += '</li>';
-// 				cnt++;
-// 			}
-// 			det += '</ul>';
-// 			tab += '<li' + (obj.RegionCd == $("#TabRegionCd").val() ? ' class="active"' : '') + '><button type="button" class="btnTheater" title="' + obj.RegionNm + '" data-cd="' + obj.RegionCd + '"' + (cnt == 0 ? ' disabled' : '') + '>' + obj.RegionNm + ' (' + cnt + ')</button></li>';
-// 		}
-
-// 		$("#regionList").html(tab);
-// 		$("#cinemaList").html(det);
-
-// 		if ($("#srchCinema").val() != "")
-// 			$("#srchCinema").keyup();
-		
-// 		if ($("#TabRegionCd").val() == "all"){
-// 			if ($("#CinemaCd").val() == "all" && $('.subTheater[data-cd="favorite"] li').length > 0) {
-// 				$('.btnTheater[data-cd="favorite"]').click();
-// 			}else{
-// 				$('.btnTheater[data-cd="all"]').click();
-// 			}
-// 		} else {
-// 			$('.btnTheater[data-cd="' + $("#TabRegionCd").val() + '"]').click();
-// 		}
-		
-// 		$("#regionList li.active .btnTheater").focus();
-// 		$("#cinemaList .subTheater:visible li:first-child .btnCnItem").focus();
-// 		$("#cinemaList .subTheater:visible li.check .btnCnItem").focus();
-// 	}
 	
-	
-	// 상영 회차 리스트
-// 	function getTimeList() {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "/reserve/showseq_list.do",
-// 			async: false,
-// 			data: $("#dataForm").serialize(),
-// 			cache: false,
-// 			dataType: 'json',
-// 			success: function(res) {
-// 				if (res.Showseqlist !== undefined) {
-// 					timeList = res.Showseqlist;
-// 				} else {
-// 					timeList = [];	
-// 				}
-// 			}
-// 		});
-// 	}
-
-	// 상영 회차 리스트 작성
-// 	function makeTimeList() {
-// 		var rst = "";
-// 		var cnt = 0;
-		
-// 		var list = "";
-// 		var thum = "";
-// 		for (var i = 0; i < timeList.length; i++) {
-// 			var obj = timeList[i];
-// 			if (obj.MovieDetail.length > 0){
-// 				list += '<ul>';
-// 				list += '	<ul class="mvTimeLine">';
-// 				thum += '<h5 class="thum-tit">' + obj.ScreenNm + '/' + obj.ScreeningInfo + '</h5>';
-// 				thum += '<ul>';
-// 				for (var j = 0; j < obj.MovieDetail.length; j++) {
-// 					list += '	<li' + (obj.MovieDetail[j].ScreenCd == $("#ScreenCd").val() && obj.MovieDetail[j].ShowSeq == $("#ShowSeq").val() ? ' class="check"' : '') + '>';
-// 					list += '		<button type="button" class="btnTime" data-cd="' + obj.MovieDetail[j].ScreenCd + '" data-seq="' + obj.MovieDetail[j].ShowSeq + '">';
-// 					list += '			<div class="loc">' + obj.ScreenNm + '/' + obj.ScreeningInfo + '</div>';
-// 					list += '			<div class="info">';
-// 					list += '				<p class="time">' + obj.MovieDetail[j].StartTime + '<span>~' + obj.MovieDetail[j].EndTime + '</span></p>';
-// 					list += '				<p class="num">' + fnParseInt(obj.MovieDetail[j].RemainSeatCnt) + '/<span>' + fnParseInt(obj.MovieDetail[j].TotalSeatCnt) + '석</span></p>';
-// 					list += '			</div>';
-// 					list += '		</button>';
-// 					list += '	</li>';
-					
-// 					thum += '	<li' + (obj.MovieDetail[j].ScreenCd == $("#ScreenCd").val() && obj.MovieDetail[j].ShowSeq == $("#ShowSeq").val() ? ' class="check"' : '') + '>';
-// 					thum += '		<button type="button" class="btnTime" data-cd="' + obj.MovieDetail[j].ScreenCd + '" data-seq="' + obj.MovieDetail[j].ShowSeq + '">';
-// 					thum += '			<strong>' + obj.MovieDetail[j].StartTime + '<span>~' + obj.MovieDetail[j].EndTime + '</span></strong>';
-// 					thum += '			<p>' + fnParseInt(obj.MovieDetail[j].RemainSeatCnt) + '/<span>' + fnParseInt(obj.MovieDetail[j].TotalSeatCnt) + '석</span></p>';
-// 					thum += '		</button>';
-// 					thum += '	</li>';
-// 					cnt++;
-// 				}
-// 				list += '</ul>';
-// 				thum += '</ul>';
-// 			}
-// 		}
-		
-// 		if (cnt > 0) {
-// 			rst += '<div class="list-type"' + ($(".btn-thum").hasClass("active") ? ' style="display: none"' : '') + '>' + list + '</div>';
-// 			rst += '<div class="thum-type"' + ($(".btn-list").hasClass("active") ? ' style="display: none"' : '') + '>' + thum + '</div>';
-// 		} else {
-// 			rst = '<div class="none"><div class="desc">영화, 영화관 , 날짜를<br>선택해주세요</div></div>';
-// 		}
-		
-// 		$("#timeList").html(rst);
-		
-// 		$("#timeList .btnTime").eq(0).focus();
-// 		$("#timeList li.check .btnTime").focus();
-// 	}
 	
 	// 영화 선택 (우측 상영시간 아래 부분)
 	function setMovie() {
@@ -873,119 +610,9 @@
 		}
 	}
 	
-	// 날짜 선택
-// 	function setPlayDT() {
-// 		var date = $("#PlaySDT").val();
-		
-// 		if (date == "all") {
-// 			$(".plDt").text("");
-// 		} else {
-// 			$(".plDt").text($.datepicker.formatDate('yy-mm-dd(D)', new Date(date)));
-// 		}
-// 	}
 	
-	// 시간 선택
-// 	function setTime() {
-// 		var cd = $("#ScreenCd").val();
-// 		var seq = $("#ShowSeq").val();
-		
-// 		var time = null;
-// 		if (cd != "" && seq != "") {
-// 			for (var i = 0; i < timeList.length && !time; i++) {
-// 				for (var j = 0; j < timeList[i].MovieDetail.length; j++) {
-// 					if (timeList[i].MovieDetail[j].ScreenCd == cd && timeList[i].MovieDetail[j].ShowSeq == seq){
-// 						time = timeList[i].MovieDetail[j];
-// 						break;
-// 					}
-// 				}
-// 			}
-// 		}
-		
-// 		if (time != null) {
-// 			$("#BrandCd").val(time.BrandCd);
-// 			$("#MovieKindCd").val(time.MovieKindCd);
-// 			$("#MovieNm").val(time.MovieNm);
-// 			$("#CinemaNm").val(time.CinemaNm);
-// 			$("#PlayTimeType").val(time.PlayTimeType);
-// 			$("#PlayTimeTypeNm").val(time.PlayTimeTypeNm);
-// 			$("#StartTime").val(time.StartTime);
-// 			$("#EndTime").val(time.EndTime);
-// 			$("#ScreenNm").val(time.ScreenNm);
-// 			$("#ScreenType").val(time.ScreenType);
-// 			$("#ScreenTypeNm").val(time.ScreenTypeNm);
-// 			$("#ScreeningInfo").val(time.ScreeningInfo);
-			
-// 			$(".scNm").text(time.ScreenNm + " " + time.ScreeningInfo + "");
-// 			$(".tiNm").text(time.StartTime + "~" + time.EndTime);
-// 		} else {
-// 			$("#ScreenCd").val("");
-// 			$("#ShowSeq").val("");
-// 			$("#BrandCd").val($("#TabBrandCd").val());
-// 			$("#MovieKindCd").val("");
-// 			$("#MovieNm").val("");
-// 			$("#CinemaNm").val("");
-// 			$("#PlayTimeType").val("");
-// 			$("#PlayTimeTypeNm").val("");
-// 			$("#StartTime").val("");
-// 			$("#EndTime").val("");
-// 			$("#ScreenNm").val("");
-// 			$("#ScreenType").val("");
-// 			$("#ScreenTypeNm").val("");
-// 			$("#ScreeningInfo").val("");
-			
-// 			$(".scNm").text("");
-// 			$(".tiNm").text("");
-// 		}
-// 	}
 
-	// 선호영화관 조회
-// 	function getFavoriteCinema() {
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "/reserve/favorite_cinema.do",
-// 			async: false,
-// 			data: $("#dataForm").serialize(),
-// 			cache: false,
-// 			dataType: 'json',
-// 			success: function(res) {
-// 				for (var i = 1; i <= 3; i++) {
-// 					if (fnParseStr(eval("res.CinemaCd" + i)) != ""){
-// 						var favorite = [];
-// 						favorite.CinemaCd = fnParseStr(eval("res.CinemaCd" + i));
-// 						favorite.CinemaNm = fnParseStr(eval("res.CinemaNm" + i));
-// 						favorite.RegionCd = fnParseStr(eval("res.RegionCd" + i));
-// 						favoriteCinema.push(favorite);
-// 					}
-// 				}
-// 			}
-// 		});
-// 	}
 	
-	// 선호영화관 등록
-// 	function setFavoriteCinema() {
-// 		var cinemaCd1 = favoriteCinema[0] !== undefined ? fnParseStr(favoriteCinema[0].CinemaCd) : "";
-// 		var cinemaCd2 = favoriteCinema[1] !== undefined ? fnParseStr(favoriteCinema[1].CinemaCd) : "";
-// 		var cinemaCd3 = favoriteCinema[2] !== undefined ? fnParseStr(favoriteCinema[2].CinemaCd) : "";
-		
-// 		$.ajax({
-// 			type: "POST",
-// 			url: "/reserve/favorite_cinema.do",
-// 			async: false,
-// 			data: { CinemaCd1: cinemaCd1, CinemaCd2: cinemaCd2, CinemaCd3: cinemaCd3, ssid: sessionStorage.getItem("ssid"), tokn: sessionStorage.getItem("tokn"), hold: sessionStorage.getItem("hold") },
-// 			cache: false,
-// 			dataType: 'json',
-// 			success: function(res) {
-// 			},
-// 			error: function(request, status, error){
-// 				console.log('code: '+request.status+'\n'+'message: '+request.responseText+'\n'+'error: '+error);
-// 			}
-// 		});
-// 	}
-	
-// 	$(document).on("click", ".btn-star", function(e) {
-// 		e.preventDefault();
-		
-// 		$("#login").modal();
 		
 // 	});
 </script> 
@@ -1002,12 +629,12 @@
             const month = date.getMonth() + 1;
             for (i = date.getDate(); i <= lastDay.getDate(); i++) {
 
-                const button = document.createElement("button");
+                const dateBtn = document.createElement("button");
                 const spanWeekOfDay = document.createElement("span");
                 const spanDay = document.createElement("span");
 
                 //class넣기
-                button.classList = "movie-date-wrapper"
+                dateBtn.classList = "movie-date-wrapper"
                 spanWeekOfDay.classList = "movie-week-of-day";
                 spanDay.classList = "movie-day";
 
@@ -1023,27 +650,27 @@
                     spanDay.classList.add("sunday");
                 }
                 spanWeekOfDay.innerHTML = dayOfWeek;
-                button.append(spanWeekOfDay);
+                dateBtn.append(spanWeekOfDay);
                 //날짜 넣기
                 spanDay.innerHTML = i;
-                button.append(spanDay);
+                dateBtn.append(spanDay);
                 //button.append(i);
-                reserveDate.append(button);
+                reserveDate.append(dateBtn);
 
-                dayClickEvent(button);
+//                 dayClickEvent(button);
             }
 
         
 
-        function dayClickEvent(button) {
-            button.addEventListener("click", function() {
-                const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-                movieDateWrapperActive.forEach((list) => {
-                    list.classList.remove("movie-date-wrapper-active");
-                })
-                button.classList.add("movie-date-wrapper-active");
-            })
-        }
+//         function dayClickEvent(button) {
+//             button.addEventListener("click", function() {
+//                 const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
+//                 movieDateWrapperActive.forEach((list) => {
+//                     list.classList.remove("movie-date-wrapper-active");
+//                 })
+//                 button.classList.add("movie-date-wrapper-active");
+//             })
+//         }
     </script>
 <!--     // 날짜 end -->
     
@@ -1051,40 +678,40 @@
 		<!-- // footer -->
 		<jsp:include page="../footer.jsp"></jsp:include>
 		
-	<div class="modal" id="mAlert">
-		<div class="modal-dialog" style="max-width:340px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4>알림</h4>
-					<button type="button" class="close-modal" onclick="$('#mAlert').modal({show:0});">닫기</button>
-				</div>
-				<div class="modal-body">
-					<div class="modal-txt">
-					</div>
-					<div class="modal-bottom text-right">
-						<button type="button" class="btn-modal2 close-modal" onclick="$('#mAlert').modal({show:0});">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="modal" id="mAlert"> -->
+<!-- 		<div class="modal-dialog" style="max-width:340px"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<h4>알림</h4> -->
+<!-- 					<button type="button" class="close-modal" onclick="$('#mAlert').modal({show:0});">닫기</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<div class="modal-txt"> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-bottom text-right"> -->
+<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="$('#mAlert').modal({show:0});">확인</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
-	<div class="modal" id="oAlert">
-		<div class="modal-dialog" style="width:340px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4>알림</h4>
-					<button type="button" class="close-modal" onclick="closeModal('oAlert');">닫기</button>
-				</div>
-				<div class="modal-body">
-					<div class="modal-txt">
-					</div>
-					<div class="modal-bottom text-right">
-						<button type="button" class="btn-modal2 close-modal" onclick="closeModal('oAlert');">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="modal" id="oAlert"> -->
+<!-- 		<div class="modal-dialog" style="width:340px"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<h4>알림</h4> -->
+<!-- 					<button type="button" class="close-modal" onclick="closeModal('oAlert');">닫기</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<div class="modal-txt"> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-bottom text-right"> -->
+<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="closeModal('oAlert');">확인</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 </body>
 </html>
