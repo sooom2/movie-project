@@ -9,15 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.itwillbs.movie.service.MovieService;
+import com.itwillbs.movie.service.MovieRegisterServie;
 
 @Controller
 public class MovieController {
 	
 	@Autowired
-	private MovieService service;
+	private MovieRegisterServie service;
 	
 	
 	//영화목록페이지
@@ -40,6 +39,7 @@ public class MovieController {
 	
 	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
+		System.out.println(info_movie_code);
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
 		
 		model.addAttribute("movieInfo", movieInfo);

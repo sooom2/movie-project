@@ -29,7 +29,7 @@ public class MovieRegisterController {
 	//영화목록조회
 	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieRegister(Model model) {
-		List<HashMap<String, String>> movieList = movieRegisterServie.selectMoives();
+		List<HashMap<String, String>> movieList = movieRegisterServie.selectMovies();
 		model.addAttribute("movieList", movieList);
 		return "admin/admin_movie_register";
 	}
@@ -108,7 +108,7 @@ public class MovieRegisterController {
 	@RequestMapping(value = "movieScheduleUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedule(Model model,String cinema_name) {
 		System.out.println(cinema_name);
-		List<HashMap<String, String>> movieList = movieRegisterServie.selectMoives();
+		List<HashMap<String, String>> movieList = movieRegisterServie.selectMovies();
 		model.addAttribute("movieList", movieList);
 		List<HashMap<String, String>> cinemaList = movieRegisterServie.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
