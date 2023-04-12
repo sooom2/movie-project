@@ -25,39 +25,39 @@
 						<div class="wrap-inside">
 							<div class="join-detail">
 								<label class="label-input" for="id"> <span>아이디</span>
-									<input type="text" id="memberId" name="memberId" class="input"
-									value="yeri12"> <span></span>
+									<input type="text" id="memberId" name="memberId" readonly="readonly"					
+									value="${member.member_id}"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
 									<input type="text" id="memberId" name="memberId" class="input"
-									value="yeri12@naver.com"> <span></span>
+									value="${member.member_email }"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>기존 비밀번호</span>
-									<input type="password" id="join-pw" name="member_pw" class="input" value="********">
+									<input type="password" id="join-pw" name="member_pw" class="input" value="">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass2"> 
 								<span>변경하실 비밀번호</span> 
-								<input type="password" id="join-pw2" name="password2" class="input" value="********">
+								<input type="password" id="join-pw2" name="password2" class="input" placeholder="암호를 변경하시려면 입력하세요">
 								<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="username"> <span>이름</span>
-									<input type="text" id="join-name" name="member_name" class="input" value="김예리" >
+									<input type="text" id="join-name" name="member_name" class="input" value="${member.member_name }" >
 									 <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
 									<input type="text" id="join-bday" name="birthDate"
-									class="input input-numeric" value="19930330"
+									class="input input-numeric" value="${member.member_bday}"
 									placeholder="예) 20170101"> <span></span>
 								</label>
 							</div>
@@ -66,7 +66,7 @@
 							<div class="join-detail">
 								<label class="label-input" for="phone"> <span>휴대폰번호</span>
 									<input type="text" id="join-phone" name="member_tel"
-									class="input input-numeric" value="010-1234-5678"> <span></span>
+									class="input input-numeric" value="${member.member_tel }"> <span></span>
 								</label>
 							</div>
 							
