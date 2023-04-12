@@ -20,7 +20,7 @@ public class MovieRegisterService {
 	}
 	
 	//영화 목록
-	public List<HashMap<String, String>> selectMoives() {
+	public List<HashMap<String, String>> selectMovies() {
 		return mapper.selectMovies();
 	}
 	

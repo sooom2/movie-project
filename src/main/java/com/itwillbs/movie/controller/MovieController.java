@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.itwillbs.movie.service.MovieRegisterServie;
+import com.itwillbs.movie.service.MovieRegisterService;
 
 @Controller
 public class MovieController {
 	
 	@Autowired
-	private MovieRegisterServie service;
+	private MovieRegisterService service;
 	
 	
 	//영화목록페이지
