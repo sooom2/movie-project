@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.*"%>
 <!doctype html>
 <html>
 <head>
@@ -23,6 +24,10 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
+
+
+
+
 <!-- ajax 수정하기, 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
 	<div class="content">
 		<div class="inner2">
@@ -158,21 +163,6 @@
 										<div class="list">
 											<div class="scrollbar-inner">
 												<ul id="movieList">
-												
-												
-<!-- 															수정전코드 -->
-<%-- 														<c:forEach var="movieList" items="${movie }"> --%>
-<%-- 															<c:if test="${movieList.get('cinema_code') eq '1'}"> --%>
-														
-															
-<!-- 																<li> -->
-<%-- 																	<button type="button" class="btnMvItem" data-cd="${movieList.info_movie_code }" --%>
-<%-- 																		data-url="${movieList.info_movie_poster }" --%>
-<%-- 																		data-rdt="${movieTime.sch_start_time } + '~' +${movieTime.sch_last_time }" --%>
-<%-- 																		title="${movieList.info_movie_title }">${movieList.info_movie_title }</button> --%>
-<!-- 																</li> -->
-<%-- 															</c:if> --%>
-<%-- 														</c:forEach> --%>
 												</ul>
 											</div>
 										</div>
@@ -438,7 +428,7 @@
 			$(".subTheater").hide();
 			$('.subTheater[data-cd="' + cd + '"]').show();
 			
-			test();
+// 			test();
 			
 			
 		});
@@ -448,15 +438,27 @@
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
 				console.log("cd:" + cd);
+				$(".btnMvItem").hide();
 			$.ajax({
-	 			type: "get",
-	 			url: "reservation",
+	 			type: "POST",
+	 			url: "moviesList",
 	 			data: { 
-	 					cd: $("#cinema_code").text()
+	 					cd: cd
 	 			},
-	 			dataType: "text",
-	 			success: function(response) { // 요청 처리 성공 시 자동으로 호출되는 콜백함수
+	 			dataType: "json",
+	 			success: function(response) { 
 	 				console.log("요청처리성공");
+	 				for(let movie of response) {
+// 	 					console.log(movie.info_movie_title);
+	 					let movieTitle = movie.info_movie_title;
+// 	 					console.log("movieTitle: " + movieTitle);
+	 					var str = "";
+	 					str += "<li>";
+	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " title='";
+	 					str += movieTitle + "'>" + movieTitle + "</button>";
+	 					str += "</li>";
+	 					$("#movieList").append(str);
+	 				}
 	 			},
 	 			error: function(xhr, textStatus, errorThrown) {
 	 				console.log("요청처리실패");
@@ -490,12 +492,11 @@
 	});
 		
 // -----------------------------------------------------------------------------------	function end
-	function test() {
-		var text = '${cinema}';
-// 		console.log(text);
+// 	function test() {
+// 		var text = '${cinema}';
+// 		console.log("cinema :" + text);
 	
-	}
-
+// 	}
 
 
 	
