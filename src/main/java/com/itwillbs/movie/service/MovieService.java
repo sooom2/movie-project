@@ -6,21 +6,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itwillbs.movie.mapper.MyBatisMapper;
+import com.itwillbs.movie.mapper.MovieRegisterMapper;
 
 @Service
 public class MovieService {
 	
 	@Autowired
-	private MyBatisMapper mapper;
+	private MovieRegisterMapper mapper;
 	
-	public List<HashMap<String, String>> screeningMovie() {
+	public List<HashMap<String, String>> selectMovies() {
 		
-		return mapper.screeningMovie();
+		return mapper.selectMovies();
 	}
-	public HashMap<String, String> selectMovieInfo(String movieCd) {
+	public HashMap<String, String> selectMovie(String movieCd) {
 		
-		return mapper.selectMovieInfo(movieCd);
+		return mapper.selectMovie(movieCd);
 	}
 
 

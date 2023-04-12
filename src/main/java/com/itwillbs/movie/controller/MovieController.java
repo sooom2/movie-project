@@ -18,26 +18,29 @@ public class MovieController {
 	
 	@Autowired
 	private MovieService service;
-
+	
+	
+	//영화목록페이지
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
 	public String screening(Model model) {
 		
-		List<HashMap<String, String>> movieList = service.screeningMovie();
+		List<HashMap<String, String>> movieList = service.selectMovies();
 		
-		model.addAttribute("movie",movieList);
+		model.addAttribute("movieList",movieList);
 		
 		
 		return "movieBoard/screening";
 	}
-	//
+	
+	// 최신개봉순이긴한데 아직 만드는중
 	@RequestMapping(value = "latest", method = {RequestMethod.GET, RequestMethod.POST})
 	public String latest() {
 		return "movieBoard/latest";
 	}
 	
 	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
-	public String movieInfo(@RequestParam String movieCd, Model model) {
-		HashMap<String, String> movieInfo = service.selectMovieInfo(movieCd);
+	public String movieInfo(@RequestParam String info_movie_code, Model model) {
+		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
 		
 		model.addAttribute("movieInfo", movieInfo);
 		
