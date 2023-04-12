@@ -17,37 +17,7 @@
 <body>
 	<div id="nav" class="area__gnbmovingbar">
 		<ul>
-			<li class=""><a
-				href="https://www.lottecinema.co.kr/NLCHS/Ticketing">예매</a>
-			<div style="display: none;">
-					<ul style="opacity: 0;">
-						<li><a href="https://www.lottecinema.co.kr/NLCHS/Ticketing"
-							title="예매하기">예매하기</a></li>
-						<li><a
-							href="https://www.lottecinema.co.kr/NLCHS/Ticketing/Schedule"
-							title="상영시간표">상영시간표</a></li>
-						<li><a
-							href="https://www.lottecinema.co.kr/NLCHS/Ticketing/DiscountGuide"
-							title="할인안내">할인안내</a></li>
-					</ul>
-				</div></li>
-			<li class=""><a href="https://www.lottecinema.co.kr/NLCHS/Movie">영화</a>
-			<div style="display: none;">
-					<ul style="opacity: 0;">
-						<li><a href="https://www.lottecinema.co.kr/NLCHS/Movie"
-							title="홈">홈</a></li>
-						<li class=""><a
-							href="https://www.lottecinema.co.kr/NLCHS/Movie/List?flag=1"
-							title="현재상영작">현재상영작</a></li>
-						<li class=""><a
-							href="https://www.lottecinema.co.kr/NLCHS/Movie/List?flag=5"
-							title="상영예정작">상영예정작</a></li>
-						<li><a href="https://www.lottecinema.co.kr/NLCHS/Movie/Arte"
-							title="아르떼">아르떼</a></li>
-						<li><a href="https://www.lottecinema.co.kr/NLCHS/Movie/NTOK"
-							title="국립극장">국립극장</a></li>
-					</ul>
-				</div></li>
+			
 			<li class=""><a href="#">영화관</a>
 			<div style="display: none;">
 					<ul style="opacity: 0;">

@@ -21,7 +21,18 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/front.js?v=1680673895731"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
+	<script type="text/javascript">
+	$(function(){
+		 $("#dateBtn").on("click", function(e){
+			 alert("Ddd");
+		}
+			
+	});
+	
+	</script>
+
 </head>
+
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
 
@@ -383,7 +394,7 @@
 	var favoriteCinema = [];
 	var timer = null;
 	//---
-
+	
 	
 	$(function() {
 		
@@ -476,7 +487,6 @@
 			
 			
 		});
-		
 		
 		
 		
@@ -656,7 +666,9 @@
                 dateBtn.append(spanDay);
                 //button.append(i);
                 reserveDate.append(dateBtn);
-
+	
+                
+                
 //                 dayClickEvent(button);
             }
 
