@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.movie.mapper.BoardMapper">
+	
+	<!-- 분실물 저장 -->
+	<insert id="insertLostBoard">
+		INSERT
+			INTO lost_board
+			VALUES (
+				 null
+				,#{member_id}
+				,#{cinema_name}
+				,#{lost_name}
+				,#{lost_subject}
+				,#{lost_content}
+				,#{lost_tel}
+				,#{lost_email}
+				,#{lost_date}
+				,now()
+				,#{lost_passwd}
+				,'N'
+				,#{lost_board_rep_content}
+			)
+	</insert>
+	
+	<!-- 분실물 목록 -->
+	<select id="selectLostBoardList" resultType="com.itwillbs.movie.vo.BoardVO">
+		SELECT * 
+			FROM lost_board
+			ORDER BY 
+				lost_code DESC
+			LIMIT 10
+	</select>
+	
+	<!-- 1대1 저장 -->
+	<insert id="insertOneBoard">
+		INSERT 
+			INTO one_board
+			VALUES (
+				null
+				,#{member_id}
+				,#{one_name}
+				,#{one_tel}
+				,#{one_email}
+				,#{one_location}
+				,#{one_question_type}
+				,#{one_subject}
+				,#{one_content}
+				,#{one_fileimg}
+				,now()
+				,#{one_passwd}
+				,'N'
+				,#{one_rep_board_content}
+			)
+	</insert>
+	
+	<!-- 1대1 목록 -->
+	<select id="selectOneBoardList" resultType="hashmap">
+		SELECT * 
+			FROM one_board
+			ORDER BY 
+				one_code DESC
+			LIMIT 10
+	</select>
+	
+</mapper>
