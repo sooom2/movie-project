@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
-
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 			<div id="contents">
@@ -27,7 +27,7 @@
 				<div class="clearfix">
 					<ul class="dot-list">
 						<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. <a
-							href="/support/lost/form" class="button float-r"
+							href="lost_form" class="button float-r"
 							title="분실물 문의 등록하기">분실물 문의</a>
 						</li>
 						<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
@@ -40,47 +40,47 @@
 						</strong>
 					</p>
 
-					<div class="dropdown bootstrap-select bs3">
-						<select id="theater" title="지역 선택" class="selectpicker"
-							tabindex="-98"><option class="bs-title-option" value=""></option>
-							<option value="">지역 선택</option>
+<!-- 					<div class="dropdown bootstrap-select bs3"> -->
+<!-- 						<select id="theater" title="지역 선택" class="selectpicker" -->
+<!-- 							tabindex="-98"><option class="bs-title-option" value=""></option> -->
+<!-- 							<option value="">지역 선택</option> -->
 
-							<option value="10">서울</option>
+<!-- 							<option value="10">서울</option> -->
 
-							<option value="30">경기</option>
+<!-- 							<option value="30">경기</option> -->
 
-							<option value="35">인천</option>
+<!-- 							<option value="35">인천</option> -->
 
-							<option value="45">대전/충청/세종</option>
+<!-- 							<option value="45">대전/충청/세종</option> -->
 
-							<option value="55">부산/대구/경상</option>
+<!-- 							<option value="55">부산/대구/경상</option> -->
 
-							<option value="65">광주/전라</option>
+<!-- 							<option value="65">광주/전라</option> -->
 
-							<option value="70">강원</option>
+<!-- 							<option value="70">강원</option> -->
 
-							<option value="80">제주</option>
+<!-- 							<option value="80">제주</option> -->
 
-						</select>
-						<button type="button"
-							class="btn dropdown-toggle btn-default bs-placeholder"
-							data-toggle="dropdown" role="button" data-id="theater"
-							title="지역 선택">
-							<div class="filter-option">
-								<div class="filter-option-inner">
-									<div class="filter-option-inner-inner">지역 선택</div>
-								</div>
-							</div>
-							<span class="bs-caret"><span class="caret"></span></span>
-						</button>
-						<div class="dropdown-menu open" role="combobox">
-							<div class="inner open" role="listbox" aria-expanded="false"
-								tabindex="-1">
-								<ul class="dropdown-menu inner "></ul>
-							</div>
-						</div>
-					</div>
-
+<!-- 						</select> -->
+<!-- 						<button type="button" -->
+<!-- 							class="btn dropdown-toggle btn-default bs-placeholder" -->
+<!-- 							data-toggle="dropdown" role="button" data-id="theater" -->
+<!-- 							title="지역 선택"> -->
+<!-- 							<div class="filter-option"> -->
+<!-- 								<div class="filter-option-inner"> -->
+<!-- 									<div class="filter-option-inner-inner">지역 선택</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<span class="bs-caret"><span class="caret"></span></span> -->
+<!-- 						</button> -->
+<!-- 						<div class="dropdown-menu open" role="combobox"> -->
+<!-- 							<div class="inner open" role="listbox" aria-expanded="false" -->
+<!-- 								tabindex="-1"> -->
+<!-- 								<ul class="dropdown-menu inner "></ul> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
 					<div class="dropdown bootstrap-select disabled ml07 bs3">
 						<select id="theater02" title="극장 선택" class="selectpicker ml07"
 							disabled="disabled" tabindex="-98"><option
@@ -168,20 +168,30 @@
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
 								<th scope="col">제목</th>
-								<th scope="col">접수상태</th>
+								<th scope="col">답변상태</th>
 								<th scope="col">등록일</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>8608</td>
-								<td>이수</td>
-								<th scope="row"><a href="#layer-01"
-									class="btn-layer-open moveBtn" data-sn="600414"
-									data-no="9555810" title="분실물 문의 상세보기">분실물</a></th>
-								<td>미답변</td>
-								<td>2023.04.01</td>
-							</tr>
+<!-- 							<tr> -->
+<!-- 								<td>8608</td> -->
+<!-- 								<td>이수</td> -->
+<!-- 								<th scope="row"><a href="#layer-01" -->
+<!-- 									class="btn-layer-open moveBtn" data-sn="600414" -->
+<!-- 									data-no="9555810" title="분실물 문의 상세보기">분실물</a></th> -->
+<!-- 								<td>미답변</td> -->
+<!-- 								<td>2023.04.01</td> -->
+<!-- 							</tr> -->
+							<c:forEach var="lostBoard" items="${lostBoardList }">
+								<tr>
+									<td>${lostBoard.lost_code }</td>
+									<td>${lostBoard.cinema_name }</td>
+									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+									</td>
+									<td>${lostBoard.lost_board_rep }</td>
+									<td>${lostBoard.lost_write_date }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -213,19 +223,47 @@
 
 				<!-- pagination -->
 				<nav class="pagination">
-					<strong class="active">1</strong> <a title="2페이지보기"
-						href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
-						href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기"
-						href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기"
-						href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기"
-						href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기"
-						href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기"
-						href="javascript:void(0)" pagenum="8">8</a> <a title="9페이지보기"
-						href="javascript:void(0)" pagenum="9">9</a> <a title="10페이지보기"
-						href="javascript:void(0)" pagenum="10">10</a> <a
-						title="이후 10페이지 보기" href="javascript:void(0)" class="control next"
-						pagenum="11">next</a> <a title="마지막 페이지 보기"
-						href="javascript:void(0)" class="control last" pagenum="861">last</a>
+<!-- 					<strong class="active">1</strong> <a title="2페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="8">8</a> <a title="9페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="9">9</a> <a title="10페이지보기" -->
+<!-- 						href="javascript:void(0)" pagenum="10">10</a> <a -->
+<!-- 						title="이후 10페이지 보기" href="javascript:void(0)" class="control next" -->
+<!-- 						pagenum="11">next</a> <a title="마지막 페이지 보기" -->
+<!-- 						href="javascript:void(0)" class="control last" pagenum="861">last</a> -->
+					<c:choose>
+						<c:when test="${pageNum > 1 }">
+							<input type="button" value="이전" onclick="location.href='lost_board?pageNum=${pageNum - 1}'">
+						</c:when>
+						<c:otherwise>
+							<input type="button" value="이전">
+						</c:otherwise>
+					</c:choose>
+					
+					<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+						<c:choose>
+							<c:when test="${pageNum eq num }">
+								<b>${num }</b>
+							</c:when>
+							<c:otherwise>
+								<a href="lost_board?pageNum=${num }">${num }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${pageNum < pageInfo.maxPage }">
+							<input type="button" value="다음" onclick="location.href='lost_board?pageNum=${pageNum + 1}'">
+						</c:when>
+						<c:otherwise>
+							<input type="button" value="다음">
+						</c:otherwise>
+					</c:choose>
 				</nav>
 				<!--// pagination -->
 			</div>
