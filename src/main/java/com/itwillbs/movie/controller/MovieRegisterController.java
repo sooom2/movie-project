@@ -20,14 +20,13 @@ import com.itwillbs.movie.service.MovieRegisterService;
 @Controller
 public class MovieRegisterController {
 	@Autowired
-	private MovieRegisterService movieRegisterServie;
-	
+	private MovieRegisterService movieRegisterService;
 	
 	//영화관리페이지
 	//영화목록조회
 	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieRegister(Model model) {
-		List<HashMap<String, String>> movieList = movieRegisterServie.selectMoives();
+		List<HashMap<String, String>> movieList = movieRegisterService.selectMoives();
 		model.addAttribute("movieList", movieList);
 		return "admin/admin_movie_register";
 	}
@@ -38,7 +37,7 @@ public class MovieRegisterController {
 		System.out.println(info_movie_code);
 		
 		
-		HashMap<String, String> selectMovie = movieRegisterServie.selectMovie(info_movie_code);
+		HashMap<String, String> selectMovie = movieRegisterService.selectMovie(info_movie_code);
 		
 		System.out.println(selectMovie);
 		model.addAttribute("selectMovie",selectMovie);
@@ -52,7 +51,7 @@ public class MovieRegisterController {
 	@RequestMapping(value = "updateMovie", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateMoviePro(@RequestParam HashMap<String, String> movie) {
 		System.out.println(movie);
-		int updateCount = movieRegisterServie.updateMovie(movie);
+		int updateCount = movieRegisterService.updateMovie(movie);
 		return "redirect:/admin_movie_register";
 	}
 
@@ -61,7 +60,7 @@ public class MovieRegisterController {
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String registMovie(@RequestParam HashMap<String, String> movie) {
 		System.out.println(movie);
-		int registCount = movieRegisterServie.registMovie(movie);
+		int registCount = movieRegisterService.registMovie(movie);
 		return "redirect:/admin_movie_register";
 	}
 	
@@ -70,7 +69,7 @@ public class MovieRegisterController {
 	public String movieDelete(@RequestParam String info_movie_code,Model model) {
 		System.out.println(info_movie_code);
 		
-		int deleteCount = movieRegisterServie.deleteMovie(info_movie_code);
+		int deleteCount = movieRegisterService.deleteMovie(info_movie_code);
 		return "redirect:/admin_movie_register";
 	}
 	
@@ -99,9 +98,9 @@ public class MovieRegisterController {
 	@RequestMapping(value = "movieScheduleUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedule(Model model,String cinema_name) {
 		System.out.println(cinema_name);
-		List<HashMap<String, String>> movieList = movieRegisterServie.selectMoives();
+		List<HashMap<String, String>> movieList = movieRegisterService.selectMoives();
 		model.addAttribute("movieList", movieList);
-		List<HashMap<String, String>> cinemaList = movieRegisterServie.selectCinema();
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
 		
 		return "admin/admin_movie_schedule_register";
@@ -114,7 +113,7 @@ public class MovieRegisterController {
 			,@RequestParam("cinema_name") String cinema_name
 			,@RequestParam("cinema_code") String cinema_code
 			 ){
-		List<HashMap<String, String>> selectScreen = movieRegisterServie.selectScreen(cinema_name);
+		List<HashMap<String, String>> selectScreen = movieRegisterService.selectScreen(cinema_name);
 		System.out.println(selectScreen);
 		
 		return selectScreen;
@@ -122,7 +121,7 @@ public class MovieRegisterController {
 	//영화일정등록
 	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule,Model model) throws ParseException {
-		HashMap<String, String> selectInfoTime = movieRegisterServie.selectMovie(movieSchedule.get("sch_movie_code"));
+		HashMap<String, String> selectInfoTime = movieRegisterService.selectMovie(movieSchedule.get("sch_movie_code"));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); //변환형식
 		
@@ -145,7 +144,7 @@ public class MovieRegisterController {
 		movieSchedule.put("sch_last_time", sch_last_time);
 		
 		
-		int scheduleRegisterCount = movieRegisterServie.scheduleRegister(movieSchedule);
+		int scheduleRegisterCount = movieRegisterService.scheduleRegister(movieSchedule);
 		
 		if(scheduleRegisterCount > 0){
 			System.out.println("예매등록성공");
@@ -156,7 +155,7 @@ public class MovieRegisterController {
 	//영화일정목록 
  	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleRegister(Model model) {
-		List<HashMap<String, String>> scheduleList = movieRegisterServie.selectSchedule();
+		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule();
 		model.addAttribute("scheduleList", scheduleList);
 		System.out.println(scheduleList);
 		
@@ -166,7 +165,7 @@ public class MovieRegisterController {
  	//지점명정렬
  	@RequestMapping(value = "cinemaNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String cinemaNameSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.cinemaNameSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.cinemaNameSort();
  		model.addAttribute("scheduleList", scheduleList);
  		System.out.println(scheduleList);
  		return "admin/admin_movie_schedule";
@@ -175,7 +174,7 @@ public class MovieRegisterController {
  	//상영관정렬
  	@RequestMapping(value = "screenNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String screenNameSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.screenNameSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.screenNameSort();
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
@@ -183,7 +182,7 @@ public class MovieRegisterController {
  	//상영관정렬
  	@RequestMapping(value = "movieNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String movieNameSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.movieNameSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.movieNameSort();
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
@@ -192,21 +191,21 @@ public class MovieRegisterController {
  	//상영관정렬
  	@RequestMapping(value = "schDateSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String schDateSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schDateSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.schDateSort();
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
  	// 시작시간정렬
  	@RequestMapping(value = "schStartSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String schStartSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schStartSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.schStartSort();
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
  	// 마지막시간정렬
  	@RequestMapping(value = "schLastSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String schLastSort(Model model) {
- 		List<HashMap<String, String>> scheduleList = movieRegisterServie.schLastSort();
+ 		List<HashMap<String, String>> scheduleList = movieRegisterService.schLastSort();
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
@@ -216,7 +215,7 @@ public class MovieRegisterController {
 	@RequestMapping(value = "selectSchedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String selectSchedule(@RequestParam String sch_code,Model model) {
 		System.out.println("selectSchedule");
-		HashMap<String, String> selectSchedule = movieRegisterServie.detailSchedule(sch_code);
+		HashMap<String, String> selectSchedule = movieRegisterService.detailSchedule(sch_code);
 		model.addAttribute("selectSchedule",selectSchedule);
 		System.out.println(model);
 		return "admin/admin_movie_schedule_update";
@@ -228,7 +227,7 @@ public class MovieRegisterController {
 	public String deleteSchedule(@RequestParam String sch_code,Model model) {
 		
 		
-		int deleteCount = movieRegisterServie.deleteSchedule(sch_code);	
+		int deleteCount = movieRegisterService.deleteSchedule(sch_code);	
 		
 		return "redirect:/admin_schedule_register";
 	}
@@ -240,7 +239,7 @@ public class MovieRegisterController {
 		System.out.println("=============================");
 		System.out.println(schedule.get("sch_code"));
 		
-		HashMap<String, String> selectInfoTime = movieRegisterServie.selectSchMovie(schedule.get("sch_code"));
+		HashMap<String, String> selectInfoTime = movieRegisterService.selectSchMovie(schedule.get("sch_code"));
 		System.out.println("=============================");
 		System.out.println(selectInfoTime);
 		System.out.println("=============================");
@@ -269,7 +268,7 @@ public class MovieRegisterController {
 		System.out.println(schedule);
 		System.out.println("=================제에발================");
 		
-		int modifyCount = movieRegisterServie.movieScheduleUpdatePro(schedule);
+		int modifyCount = movieRegisterService.movieScheduleUpdatePro(schedule);
 		
 		return "redirect:/admin_schedule_register";
 	}

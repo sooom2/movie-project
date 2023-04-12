@@ -15,6 +15,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+function confirmUpdate() {
+	return confirm("수정하시겠습니까?");
+}
 
 function deleteSchedule(){
 	let delConfirm = confirm("삭제하시겠습니까?");
@@ -22,6 +25,7 @@ function deleteSchedule(){
 		location.href='deleteSchedule?sch_code=${selectSchedule.get('sch_code') }';
 	}
 }
+
 
 
 function selectCinema(){
@@ -113,7 +117,7 @@ $(function() {
                             <h3 class="text-center font-weight-light my-4">상영일정수정</h3>
                             </div>
                             <div class="card-body">
-                                <form action="updateSchedule"> 
+                                <form action="updateSchedule" onsubmit="return confirmUpdate()"> 
                                     <div class="row mb-3">
                                      	<div class="col-md-4">
                                             <div class="form-floating mb-3 mb-md-0">
@@ -201,7 +205,7 @@ $(function() {
                                 		<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<input class="btn btn-primary btn-block" type="submit" value="수정">
+													<input class="btn btn-primary btn-block btn-update" type="submit" value="수정" >
 												</div>
 											</div>
 											<div class="mt-4 mb-0 col-md-6">

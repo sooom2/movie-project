@@ -16,9 +16,7 @@
 <script src="resources/js/jquery-3.6.4.js"></script>
 
 <script type="text/javascript" src="resources/js/admin.js"></script>
-<!-- 모달 -->
 <script type="text/javascript">
-
 
 function doLatest() {
 	let dis = document.querySelector(".admin-modal-latest");
@@ -100,6 +98,14 @@ function previewImage(targetObj, View_area) {
 
 </head>
 <body class="sb-nav-fixed">
+		
+	<c:if test="${not empty sessionScope.sId }">
+		<script type="text/javascript">
+			alert("잘못된 접근입니다!");
+			location.href = "./";
+		</script>
+	</c:if>	
+		
 		
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
