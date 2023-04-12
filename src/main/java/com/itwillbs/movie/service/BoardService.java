@@ -22,7 +22,7 @@ public class BoardService {
 		return mapper.insertLostBoard(board);
 	}
 	
-	// 분실물 목록
+	// 고객센터 홈 분실물 목록과 관리자 분실물 목록
 	public List<BoardVO> getLostBoardList() {
 //		System.out.println("service: " + mapper.selectLostBoardList());
 		return mapper.selectLostBoardList();

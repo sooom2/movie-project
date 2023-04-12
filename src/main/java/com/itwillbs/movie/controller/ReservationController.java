@@ -2,6 +2,7 @@ package com.itwillbs.movie.controller;
 
 import java.util.*;
 
+import org.json.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
@@ -15,22 +16,21 @@ public class ReservationController {
 	private ReservationService service;
 	
 	// TEST CODE
-	@GetMapping(value = "reservation_test")
-	public String reservation_test(Model model) {
-		List<HashMap<String, String>> cinema = service.selectCinema();
-		model.addAttribute("cinema", cinema);
-		
-		// cinema 값 확인
-//		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
-//			System.out.println(a.getValue());
-//		}
-		
-		return "reservation/reservation_test";
-	}
+//	@GetMapping(value = "reservation_test")
+//	public String reservation_test(Model model) {
+//		List<HashMap<String, String>> cinema = service.selectCinema();
+//		model.addAttribute("cinema", cinema);
+//		
+//		// cinema 값 확인
+////		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
+////			System.out.println(a.getValue());
+////		}
+//		
+//		return "reservation/reservation_test";
+//	}
 	
 	
-	
-	@GetMapping(value = "reservation")
+	@RequestMapping(value = "reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reservation(Model model, String cd) {
 		List<HashMap<String, String>> cinema = service.selectCinema();
 		model.addAttribute("cinema", cinema);
@@ -38,23 +38,10 @@ public class ReservationController {
 		List<HashMap<String, String>> movieInfo = service.selectMovieInfo();
 		model.addAttribute("movieInfo", movieInfo);
 		
-//		List<HashMap<String, String>> movieTime = service.selectMovieTime();
-//		model.addAttribute("movieTime", movieTime);
-		
-		System.out.println("String cd: " + cd);
-		
-		List<HashMap<String, String>> moviesList = service.selectmoviesList(cd);
-		model.addAttribute("moviesList", moviesList);
-		
-//		System.out.println(moviesList);
-//		for(Map.Entry<String, String> list : moviesList.get(0).entrySet()) {
-//			System.out.println(list.getValue());
-//		}
-		
 		
 		// cinema 값 확인
 //		for(Map.Entry<String, String> a : cinema.get(0).entrySet()) {
-//			System.out.println(a.getValue());
+//			System.out.println("controller cinema: " + a.getValue());
 //		}
 		
 //		System.out.println(cinema.get(0)); // cinema_code == '1'
@@ -62,6 +49,19 @@ public class ReservationController {
 		return "reservation/reservation";
 	}
 	
+	@ResponseBody
+	@PostMapping("moviesList")
+	public String moviesList(String cd) {
+		System.out.println("String cd: " + cd);
+		
+		
+		List<HashMap<String, String>> moviesList = service.selectmoviesList(cd);
+		
+		JSONArray ja = new JSONArray(moviesList);
+		System.out.println(ja);
+		
+		return ja.toString();
+	}
 	
 	
 	

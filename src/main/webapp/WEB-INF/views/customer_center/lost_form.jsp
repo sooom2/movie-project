@@ -193,10 +193,10 @@
 						</table>
 					</div>
 
-<!-- 					<div class="btn-group pt40"> -->
-<!-- 						<button type="submit" class="button purple large">등록</button> -->
-						<input type="submit" value="등록">
-<!-- 					</div> -->
+					<div class="btn-group pt40">
+						<button type="submit" class="button purple large">등록</button>
+<!-- 						<input type="submit" value="등록"> -->
+					</div>
 				</form>
 			</div>
 		</div>

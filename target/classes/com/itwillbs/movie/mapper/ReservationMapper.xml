@@ -14,17 +14,6 @@
 				ORDER by info_movie_title ASC;
 	</select>
 
-	<!-- 시간 정보 (상영관코드, 상영관이름, 시작시간, 종료시간, 위치코드)-->
-	<!-- (임시)좌석 정보빼고 넣어둠. 수정 필요 -->
-<!-- 	<select id="selectMovieTime" resultType="hashmap"> -->
-<!-- 		SELECT sc.screen_code, sc.screen_name, sd.sch_start_time, sd.sch_last_time, c.location_code -->
-<!-- 			FROM schedule sd  -->
-<!-- 				JOIN cinema c -->
-<!-- 					ON sd.sch_cinema_code = c.cinema_code -->
-<!-- 						JOIN screen sc  -->
-<!-- 							ON sd.sch_screen_code = sc.screen_code; -->
-<!-- 	</select> -->
-
 
 
 	<!-- 영화관 - 영화리스트 -->
@@ -36,7 +25,7 @@
 					on c.cinema_code = s.sch_cinema_code 
 						join movieinfo m 
 							on m.info_movie_code = s.sch_movie_code 
-								where c.cinema_name = #{cd};
+								where c.cinema_code = #{cd};
 
 	</select>
 </mapper>
