@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,14 +139,14 @@
 											</div>
 
 										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">문의지점</label>
-												</div>
-											</div>
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">문의지점</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
 											<!-- 											<div class="col-md-6"> -->
 											<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
 											<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
@@ -153,15 +154,15 @@
 											<!-- 														for="inputPasswordConfirm">문의유형</label> -->
 											<!-- 												</div> -->
 											<!-- 											</div> -->
-										</div>
+<!-- 										</div> -->
 										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">제목</label>
-												</div>
-											</div>
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">제목</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPasswordConfirm"
@@ -213,6 +214,7 @@
 										<!-- 											</div> -->
 										<!-- 										</div> -->
 										<div class="row mb-3">
+											
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPassword"
@@ -256,7 +258,7 @@
 										<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">수정</a>
+													<a class="btn btn-primary btn-block" href="">답글등록</a>
 												</div>
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
@@ -278,24 +280,26 @@
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
+								<th data-sortable="true" style="width: 5%;"><a href="#"
+									class="datatable-sorter">글번호</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
 									class="datatable-sorter">작성자명</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">문의지점</a></th>
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">문의유형</a></th> -->
-								<th data-sortable="true" style="width: 7%;"><a href="#"
+								<th data-sortable="true" style="width: 30%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">내용</a></th> -->
-								<th data-sortable="true" style="width: 20%;"><a href="#"
+								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">답글유무</a></th>
 								<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">답변내용</a></th> -->
 								<th data-sortable="true" style="width: 20%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#"
-									class="datatable-sorter">수정</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">답글등록</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
@@ -315,12 +319,13 @@
 							<c:forEach var="lostBoard" items="${lostBoardList }">
 								<tr data-index="0">
 									<%-- 									<td>${lostBoard.member_id }</td> --%>
+									<td>${lostBoard.lost_code }</td>
 									<td>${lostBoard.lost_name }</td>
-									<td>${lostBoard.get("cinema_name") }</td>
+									<td>${lostBoard.cinema_name }</td>
 									<td id="lost_subject"><a
-										href="lostBoardDetail?lost_code=${lostBoard.get('lost_code') }&pageNum=${pageNum }">${lostBoard.get("lost_subject") }</a></td>
-									<td>${lostBoard.get("lost_board_rep") }</td>
-									<td>${lostBoard.get("lost_write_date") }</td>
+										href="lostBoardDetail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a></td>
+									<td>${lostBoard.lost_board_rep }</td>
+									<td>${lostBoard.lost_write_date }</td>
 									<td class="modi"><input class="btn btn-block btn-more"
 										type="button" value="M O R E" onclick="doDisplay()"></td>
 								</tr>

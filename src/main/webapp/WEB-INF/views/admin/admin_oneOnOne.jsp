@@ -83,7 +83,7 @@
 								<div class="card-header">
 									<button type="button" class="close-modal"
 										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">1대1문의</h3>
+									<h3 class="text-center font-weight-light my-4">1:1문의</h3>
 								</div>
 								<div class="card-body">
 									<form>
@@ -164,7 +164,7 @@
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPasswordConfirm"
 														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">작성일</label>
+														for="inputPasswordConfirm">답글유무</label>
 												</div>
 											</div>
 										</div>
@@ -173,14 +173,14 @@
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPassword"
 														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">답글유무</label>
+														for="inputPassword">답글내용</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPasswordConfirm"
 														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">답변내용</label>
+														for="inputPasswordConfirm">작성일</label>
 												</div>
 											</div>
 										</div>
@@ -212,7 +212,7 @@
 										<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">수정</a>
+													<a class="btn btn-primary btn-block" href="">답글등록</a>
 												</div>
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
@@ -253,7 +253,7 @@
 								<th data-sortable="true" style="width: 20%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
 								<th data-sortable="true" style="width: 20%;"><a href="#"
-									class="datatable-sorter">수정</a></th>
+									class="datatable-sorter">답글등록</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
