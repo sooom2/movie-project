@@ -42,6 +42,10 @@ public class MemberController {
 		System.out.println(gift);
 		
 		
+		//영화 뿌리기
+		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
+		
+		model.addAttribute("movie", movieList);
 		model.addAttribute("gift", gift);
 		model.addAttribute("food", food);
 		model.addAttribute("ticket", ticket);

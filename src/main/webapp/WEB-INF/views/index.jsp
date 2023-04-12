@@ -17,26 +17,6 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$.ajax({
-			url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20124079",
-			dataType:"json",
-			success: function(data){
-				let movieCd = data.movieInfoResult.movieInfo.movieCd;
-				let movieNm = data.movieInfoResult.movieInfo.movieNm;
-				let openDt = data.movieInfoResult.movieInfo.openDt;
-				let peopleNm = data.movieInfoResult.movieInfo.directors.peopleNm;
-				let watchGradeNm = data.movieInfoResult.movieInfo.audits.watchGradeNm;
-				let genreNm = data.movieInfoResult.movieInfo.genres.genreNm;
-				let prdtStatNm = data.movieInfoResult.movieInfo.prdtStatNm;
-// 				alert(movieCd);
-				
-			}
-		});
-	});
-</script>
-
 
 <script type="text/javascript">
 	$(function() {
@@ -365,118 +345,30 @@
 				</ul>
 
 
-				<!--  박스오피스 -->
-				<c:forEach var="movie" items="${movie }">
+				<!--  박스오피스 -->		<!-- forEach문이 두개 있었는데 뭔지 몰라서 일단 주석처리 04.12. 18:19 -->
+<%-- 				<c:forEach var="movie" items="${movieList }"> --%>
 				<div class="wrap-slider wrap-bo">
 					<ul class="bxslider-bo">
-						<c:forEach var="movie" items="${movie }">
-						    <li data-moviecode="${movie.get('info_movie_code') }">
-						    <span class="over over-a"><a href="#" class="rsv">예매하기</a>
-						    <a href="/Movie/Info?MovieCode=${movie.get('info_movie_code') }" class="info">상세정보</a></span>
-						    <img src="https://file.cineq.co.kr/i.aspx?movieid=${movie.get('info_movie_code') }&amp;size=210" class="posterlist">
+					
+						<c:forEach var="movie" items="${movie}">
+						    <li data-moviecode="${movie.info_movie_code }">
+						    	<span class="over over-a">
+						    		<a href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
+						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
+						    	</span>
+						    <img src="${movie.info_movie_poster }" class="posterlist">
 						    <div class="movie-desc">
-						    <span class="label"> </span> ${movie.get('info_movie_title') }
-						    <div class="btn-util">
-						    	<button type="button" class="button btn-like" data-no="01309400"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>1.9k</span></button>
-				                <a href="#" class="button purple bokdBtn" data-no="01309400" title="영화 예매하기">예매</a>  </div>
+						    	<span class="rate-15">${movie.info_rating }</span>
+						    		${movie.info_movie_title }
 						    	</div>
-						    </li>
+						 	  	<div class="like-btn">
+									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
+									<span class="likeNum">${movie.like_count }</span></a>
+							</div>
+				   		 </li>
 						</c:forEach>	
-
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m1.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"> <span -->
-<!-- 									class="likeNum">70.M</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" /> -->
-<!-- 								<div class="movie-desc"> -->
-<!-- 									</span>스즈메의 문단속 -->
-<!-- 								</div> -->
-<!-- 						</a> -->
-
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"> <span -->
-<!-- 									class="likeNum">70.M</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"><span -->
-<!-- 									class="likeNum">608</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m1.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"><span -->
-<!-- 									class="likeNum">50K</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m1.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"><span -->
-<!-- 									class="likeNum">60K</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m1.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"><span -->
-<!-- 									class="likeNum">46K</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
+						
+							
 <!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
 <!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
 <!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
@@ -494,7 +386,7 @@
 <!-- 							</div></li> -->
 					</ul>
 				</div>
-				</c:forEach>
+<%-- 			</c:forEach> --%>
 
 				<!--  최신개봉작 -->
 				<div class="wrap-slider wrap-lr">
@@ -505,7 +397,7 @@
 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
 						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
 								<div class="movie-desc">
-									<!-- 								<span class="rate-15">15세이상</span> -->
+								<span class="rate-15">15세이상</span>
 									소울메이트
 								</div>
 						</a> <!--  좋아요 -->
