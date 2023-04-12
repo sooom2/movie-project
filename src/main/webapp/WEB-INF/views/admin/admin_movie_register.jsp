@@ -305,20 +305,6 @@ function previewImage(targetObj, View_area) {
 						  + ", " + Data.Data[0].Result[0].actors.actor[2].actorNm;
 				/*상영시간 */
 				let info_time = Data.Data[0].Result[0].runtime;
-				
-				/* 23.04.12*/
-				/*상영시간 00:00타입으로 변환  */
-				let strNum = info_time;
-				let num = parseInt(strNum);
-				let date = new Date(0, 0, 0, Math.floor(num / 60), num % 60);
-				let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
-				let runningTime = date.toLocaleTimeString("en-US", options);
-				
-				
-				alert(runningTime);
-				
-				
-				
 				/*상영일*/
 				let str = Data.Data[0].Result[0].repRlsDate;
 				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
@@ -351,7 +337,7 @@ function previewImage(targetObj, View_area) {
 				$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
 				$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
 				$('input[name=info_year]').attr('value',info_year);		//제작년도
-				$('input[name=info_time]').attr('value',runningTime);		//상영시간
+				$('input[name=info_time]').attr('value',info_time);		//상영시간
 				$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
 				$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
 				$('input[name=info_story]').attr('value',info_story);			//줄거리
