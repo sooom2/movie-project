@@ -23,13 +23,13 @@
 			<jsp:include page="lnb-area.jsp" />
 
 			<div id="contents">
-				<h2 class="tit">분실물 문의</h2>
+				<h2 class="tit">1대1 문의 내역</h2>
 
 				<div class="clearfix">
 					<ul class="dot-list">
-						<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. <a
-							href="lost_form" class="button float-r" title="분실물 문의 등록하기">분실물
-								문의</a>
+						<li>
+<!-- 						<a href="lost_form" class="button float-r" title="분실물 문의 등록하기">분실물 -->
+<!-- 								문의</a> -->
 						</li>
 						<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
 					</ul>
@@ -134,7 +134,7 @@
 							title="접수상태 선택">
 							<div class="filter-option">
 								<div class="filter-option-inner">
-									<div class="filter-option-inner-inner">접수상태 선택</div>
+									<div class="filter-option-inner-inner">답변상태 선택</div>
 								</div>
 							</div>
 							<span class="bs-caret"><span class="caret"></span></span>
@@ -168,6 +168,7 @@
 							<tr>
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
+								<th scope="col">작성자명</th>
 								<th scope="col">제목</th>
 								<th scope="col">답변상태</th>
 								<th scope="col">등록일</th>
@@ -183,14 +184,15 @@
 <!-- 								<td>미답변</td> -->
 <!-- 								<td>2023.04.01</td> -->
 <!-- 							</tr> -->
-							<c:forEach var="lostBoard" items="${lostBoardList }">
+							<c:forEach var="oneBoard" items="${oneBoardList }">
 								<tr>
-									<td>${lostBoard.lost_code }</td>
-									<td>${lostBoard.cinema_name }</td>
-									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+									<td>${oneBoard.one_code }</td>
+									<td>${oneBoard.one_location }</td>
+									<td>${oneBoard.one_name }</td>
+									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${oneBoard.one_subject }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
 									</td>
-									<td>${lostBoard.lost_board_rep }</td>
-									<td>${lostBoard.lost_write_date }</td>
+									<td>${oneBoard.one_rep_board }</td>
+									<td>${oneBoard.one_write_date }</td>
 								</tr>
 							</c:forEach>
 						</tbody>

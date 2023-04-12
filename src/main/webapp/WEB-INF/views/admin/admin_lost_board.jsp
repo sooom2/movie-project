@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,22 +88,22 @@
 								</div>
 								<div class="card-body">
 									<form>
-<!-- 										<div class="row mb-4"> -->
-<!-- 											<h5 style="text-align: left">이미지수정</h5> -->
-<!-- 											<div class="col-md-3 moviePoster"> -->
-<!-- 												<div> -->
-<!-- 													<img class="" -->
-<!-- 														src="/movie-project/resources/images/movies/poster/m1.jpg"> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-md-8"> -->
-<!-- 												<div class="filebox"> -->
-<!-- 													<input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
-<!-- 													<label for="file">파일올리기</label> <input type="file" -->
-<!-- 														id="file"> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
+										<!-- 										<div class="row mb-4"> -->
+										<!-- 											<h5 style="text-align: left">이미지수정</h5> -->
+										<!-- 											<div class="col-md-3 moviePoster"> -->
+										<!-- 												<div> -->
+										<!-- 													<img class="" -->
+										<!-- 														src="/movie-project/resources/images/movies/poster/m1.jpg"> -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 											<div class="col-md-8"> -->
+										<!-- 												<div class="filebox"> -->
+										<!-- 													<input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
+										<!-- 													<label for="file">파일올리기</label> <input type="file" -->
+										<!-- 														id="file"> -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 										</div> -->
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
@@ -200,15 +201,15 @@
 												</div>
 											</div>
 										</div>
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<div class="col-md"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputFirstName" type="text" -->
-<!-- 														placeholder="Enter your first name" /> <label -->
-<!-- 														for="inputFirstName">문의지점</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
+										<!-- 										<div class="row mb-3"> -->
+										<!-- 											<div class="col-md"> -->
+										<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+										<!-- 													<input class="form-control" id="inputFirstName" type="text" -->
+										<!-- 														placeholder="Enter your first name" /> <label -->
+										<!-- 														for="inputFirstName">문의지점</label> -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 										</div> -->
 										<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
@@ -230,7 +231,7 @@
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">일대일문의</h3>
+					<h3 class="text-center font-weight-light my-4">분실물문의</h3>
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -244,12 +245,12 @@
 									class="datatable-sorter">문의유형</a></th>
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
-<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
-<!-- 									class="datatable-sorter">내용</a></th> -->
+								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">내용</a></th> -->
 								<th data-sortable="true" style="width: 20%;"><a href="#"
 									class="datatable-sorter">답글유무</a></th>
-<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
-<!-- 									class="datatable-sorter">답변내용</a></th> -->
+								<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">답변내용</a></th> -->
 								<th data-sortable="true" style="width: 20%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
 								<th data-sortable="true" style="width: 20%;"><a href="#"
@@ -258,11 +259,21 @@
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
+							<c:forEach var="lostBoard" items="${lostBoardList }">
+								<tr data-index="0">
+									<td>${lostBoard.member_id }</td>
+									<td>${lostBoard.lost_name }</td>
+									<td>${lostBoard.cinema_name }</td>
+									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+									</td>
+									<td>${lostBoard.lost_board_rep }</td>
+									<td>${lostBoard.lost_write_date }</td>
+								</tr>
+							</c:forEach>
 							<tr data-index="0">
-								<td>회원ID</td>
+								<td>회원ID입력</td>
 								<td>작성자명</td>
 								<td>문의지점</td>
-								<td>문의유형</td>
 								<td>제목</td>
 								<td>답글유무</td>
 								<td>작성일</td>
