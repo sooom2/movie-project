@@ -183,6 +183,7 @@
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">공지사항</h3>
+					 <input class="btn btn-block btn-more" type="button" value="공지등록" onclick="location.href='movieScheduleUpdate'">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -197,7 +198,7 @@
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">수정</a></th>
+									class="datatable-sorter">수정/삭제</a></th>
 <!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
 <!-- 									class="datatable-sorter">줄거리</a></th> -->
 <!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->

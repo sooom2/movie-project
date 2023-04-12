@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -234,41 +235,55 @@
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-<!-- 								<th data-sortable="true" style="width: 7%;"><a href="#" -->
-<!-- 									class="datatable-sorter">회원ID</a></th> -->
+								<th data-sortable="true" style="width: 5%;"><a href="#"
+									class="datatable-sorter">글번호</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
 									class="datatable-sorter">작성자명</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">문의지점</a></th>
 <!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 <!-- 									class="datatable-sorter">문의유형</a></th> -->
-								<th data-sortable="true" style="width: 7%;"><a href="#"
+								<th data-sortable="true" style="width: 30%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 <!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 <!-- 									class="datatable-sorter">내용</a></th> -->
-								<th data-sortable="true" style="width: 20%;"><a href="#"
+								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">답글유무</a></th>
 <!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
 <!-- 									class="datatable-sorter">답변내용</a></th> -->
 								<th data-sortable="true" style="width: 20%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#"
+								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">답글등록</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
-							<tr data-index="0">
+							<c:forEach var="oneBoard" items="${oneBoardList }">
+								<tr>
+									<td>${oneBoard.one_code }</td>
+									<td>${oneBoard.one_name }</td>
+									<td>${oneBoard.one_location }</td>
+									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${oneBoard.one_subject }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+									</td>
+									<td>${oneBoard.one_rep_board }</td>
+									<td>${oneBoard.one_write_date }</td>
+									<td class="modi"><input class="btn btn-block btn-more"
+										type="button" value="M O R E" onclick="doDisplay()"></td>
+								</tr>
+							</c:forEach>
+<!-- 							<tr data-index="0"> -->
 <!-- 								<td>회원ID</td> -->
-								<td>작성자명</td>
-								<td>문의지점</td>
+<!-- 								<td>작성자명</td> -->
+<!-- 								<td>작성자명</td> -->
+<!-- 								<td>문의지점</td> -->
 <!-- 								<td>문의유형</td> -->
-								<td>제목</td>
-								<td>답글유무</td>
-								<td>작성일</td>
-								<td class="modi"><input class="btn btn-block btn-more"
-									type="button" value="M O R E" onclick="doDisplay()"></td>
-							</tr>
+<!-- 								<td>제목</td> -->
+<!-- 								<td>답글유무</td> -->
+<!-- 								<td>작성일</td> -->
+<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
+<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
+<!-- 							</tr> -->
 						</tbody>
 					</table>
 				</div>

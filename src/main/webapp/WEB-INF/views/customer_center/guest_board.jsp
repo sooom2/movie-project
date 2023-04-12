@@ -1,93 +1,133 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<link
-	href="${pageContext.request.contextPath }/resources/css/common.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css"
-	rel="stylesheet">
-<!-- ìƒë‹¨ -->
-<link href="${pageContext.request.contextPath }/resources/css/sub.css"
-	rel="stylesheet">
-<!-- ë³¸ë¬¸ -->
+<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+<!-- »ó´Ü -->
+<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
+<!-- º»¹® -->
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
-
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
-			<div id="contents">
-				<h2 class="tit">ë¹„íšŒì› ë¬¸ì˜ë‚´ì—­ í™•ì¸</h2>
-				<div class="table-wrap mt10">
-					<table class="board-form va-m">
-						<caption>
-							ì•„ì´ë””ì´ë¦„, íœ´ëŒ€í° ë²ˆí˜¸, ì¸ì¦ë²ˆí˜¸ í•­ëª©ì„ ê°€ì§„ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ìž…ë ¥ í‘œ
-							<!--ì•„ì´ë””ì´ë¦„, íœ´ëŒ€í° ë²ˆí˜¸, ì¸ì¦ë²ˆí˜¸ í•­ëª©ì„ ê°€ì§„ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ìž…ë ¥ í‘œ-->
-						</caption>
-						<colgroup>
-							<col style="width: 150px;">
-							<col>
-						</colgroup>
-						<tbody>
-							<input id="ibxSchPwdLoginId" type="hidden" value="">
-							<!--ì´ë¦„-->
-							<input id="ibxSchPwdMbNm" type="hidden" value="">
-							<!--íœ´ëŒ€í° ë²ˆí˜¸-->
-							<tr>
-								<th scope="row"><label for="nonMbNm">ì´ë¦„</label><em
-									class="font-orange">*</em></th>
-								<td><input type="text" maxlength="20"
-									class="input-text w150px" oninput="maxLengthCheck(this)"
-									name="nonMbNm" id="nonMbNm" title="ì´ë¦„"></td>
-							</tr>
-							<tr>
-								<th scope="row"><label for="nonMbTelno">íœ´ëŒ€í° ë²ˆí˜¸<!--íœ´ëŒ€í° ë²ˆí˜¸--></label><em
-									class="font-orange">*</em></th>
-								<td><input type="text" id="nonMbTelno" name="nonMbTelno"
-									maxlength="3" class="input-text w60px numType userData"
-									title="í•¸ë“œí°ë²ˆí˜¸ ì²«ìžë¦¬ ìž…ë ¥"> <span>-</span> <input type="text"
-									id="nonMbTelno2" name="nonMbTelno2" maxlength="4"
-									class="input-text w70px numType userData" title="í•¸ë“œí°ë²ˆí˜¸ ì¤‘ê°„ìžë¦¬ ìž…ë ¥">
-									<span>-</span> <input type="text" id="nonMbTelno3"
-									name="nonMbTelno3" maxlength="4"
-									class="input-text w70px numType userData"
-									title="í•¸ë“œí°ë²ˆí˜¸ ë§ˆì§€ë§‰ìžë¦¬ ìž…ë ¥">
-									<div id="nonMbTelnoAlert" class="fc_r mt05 display-none">íœ´ëŒ€í°
-										ë²ˆí˜¸ë¥¼ ì •í™•ížˆ ìž…ë ¥í•´ì£¼ì„¸ìš”.</div></td>
-							</tr>
-							<tr>
-								<th scope="row"><label for="nonMbEmail">ì´ë©”ì¼</label><em
-									class="font-orange">*</em></th>
-								<td><input type="email" maxlength="50"
-									oninput="maxLengthCheck(this)" class="input-text w260px"
-									name="nonMbEmail" id="nonMbEmail" title="ì´ë©”ì¼">
-									<div id="nonMbEmailAlert" class="fc_r mt05 display-none">ì´ë©”ì¼ì„
-										ì •í™•ížˆ ìž…ë ¥í•´ì£¼ì„¸ìš”.</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<p class="reset mt10">* ë¹„íšŒì› ì •ë³´ ì˜¤ ìž…ë ¥ ì‹œ ë¬¸ì˜ë‚´ì—­ í™•ì¸ì´ ì–´ë ¤ìš¸ ìˆ˜ ìžˆìœ¼ë‹ˆ ë‹¤ì‹œ í•œë²ˆ
-					í™•ì¸í•´ ì£¼ì‹œê¸° ë°”ëžë‹ˆë‹¤.</p>
 
-				<div class="btn-group pt40">
-					<button type="button" class="button large purple"
-						id="nonMbInqCnfmBtn" title="í™•ì¸" disabled="">ë¹„íšŒì› ë¬¸ì˜ë‚´ì—­ í™•ì¸</button>
-				</div>
-			</div>
+			<div id="contents">
+            <h2 class="tit">ºñÈ¸¿ø ¹®ÀÇ³»¿ª</h2>
+            <div class="tab-purple mb20">
+                <ul>
+                    <li data-url="/mypage/myinquiry?cd=INQD01" class="on"><a href="#" class="btn" data-cd="INQD01" title="1:1 ¹®ÀÇ³»¿ª ÅÇÀ¸·Î ÀÌµ¿">1:1 ¹®ÀÇ³»¿ª</a></li>
+                    <li data-url="/mypage/myinquiry?cd=INQD03"><a href="#" class="btn" data-cd="INQD03" title="´ÜÃ¼°ü¶÷/´ë°ü ¹®ÀÇ³»¿ª ÅÇÀ¸·Î ÀÌµ¿">´ÜÃ¼°ü¶÷/´ë°ü ¹®ÀÇ³»¿ª</a></li>
+                    <li data-url="/mypage/myinquiry?cd=INQD02"><a href="#" class="btn" data-cd="INQD02" title="ºÐ½Ç¹° ¹®ÀÇ³»¿ª ÅÇÀ¸·Î ÀÌµ¿">ºÐ½Ç¹° ¹®ÀÇ³»¿ª</a></li>
+                    <li data-url="/mypage/myinquiry?cd=INQD04"><a href="#" class="btn" data-cd="INQD04" title="Á¦ÈÞ/±¤°í/ºÎ´ë»ç¾÷ ¹®ÀÇ³»¿ª ÅÇÀ¸·Î ÀÌµ¿">Á¦ÈÞ/±¤°í/ºÎ´ë»ç¾÷ ¹®ÀÇ³»¿ª</a></li>
+                </ul>
+            </div>
+
+            <div class="mypage-infomation mt20">
+                <ul class="dot-list mb20">
+                    <li id="tabDesc">°í°´¼¾ÅÍ¸¦ ÅëÇØ ³²±â½Å 1:1 ¹®ÀÇ³»¿ªÀ» È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.</li>
+                    <!-- <li>¹®ÀÇÇÏ½Ã±â Àü <a href="/support/faq" class="a-link"><strong>ÀÚÁÖ¹¯´ÂÁú¹®</strong></a>À» È®ÀÎÇÏ½Ã¸é ±Ã±ÝÁõÀ» ´õ¿í ºü¸£°Ô ÇØ°áÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù</li> -->
+                </ul>
+
+                <div class="btn-group right">
+                    <a href="#" class="button" id="inqBtn" title="1:1 ¹®ÀÇÇÏ±â">1:1 ¹®ÀÇÇÏ±â</a>
+                </div>
+            </div>
+
+            <div class="board-list-util mb10">
+                <p class="result-count">
+                    <!-- to °³¹ß : °Ë»öÀ» ¾ÈÇÑ °æ¿ì -->
+                    <strong>ÀüÃ¼ (<b id="totalCnt">0</b>°Ç)</strong>
+                </p>
+
+                <div class="dropdown bootstrap-select bs3"><select id="custInqStatCd" onchange="javascript:$('#searchBtn').click();" class="" tabindex="-98">
+                    <option value="">ÀüÃ¼</option>
+                    
+                        
+                            <option value="INQST1">¹Ì´äº¯</option>
+                        
+                    
+                        
+                            <option value="INQST2">´äº¯¿Ï·á</option>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                </select><button type="button" class="btn dropdown-toggle btn-default bs-placeholder" data-toggle="dropdown" role="button" data-id="custInqStatCd" title="ÀüÃ¼"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">ÀüÃ¼</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner "></ul></div></div></div>
+
+                <div class="board-search ml07">
+                    <input type="text" title="°Ë»ö¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." class="input-text" id="searchTxt" value="">
+                    <button type="button" class="btn-search-input" id="searchBtn">°Ë»ö</button>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="board-list a-c">
+                    <caption>¹øÈ£, ±ØÀå, À¯Çü, Á¦¸ñ, ´äº¯»óÅÂ, µî·ÏÀÏ ¼ø¼­·Î º¸¿©ÁÖ´Â 1:1 ¹®ÀÇ ³»¿ª Ç¥ÀÔ´Ï´Ù</caption>
+                    <colgroup>
+                        <col style="width:80px">
+                        <col style="width:140px;">
+                        <col style="width:120px;">
+                        <col>
+                        <col style="width:160px;">
+                        <col style="width:100px;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">¹øÈ£</th>
+                        <th scope="col">±ØÀå</th>
+                        <th scope="col">À¯Çü</th>
+                        <th scope="col">Á¦¸ñ</th>
+                        <th scope="col">´äº¯»óÅÂ</th>
+                        <th scope="col">µî·ÏÀÏ</th>
+                    </tr>
+                    </thead>
+                    <tbody><tr><td colspan="6">¸ñ·ÏÀÌ ¾ø½À´Ï´Ù.</td></tr></tbody>
+                </table>
+            </div>
+            <section id="layer-01" class="layer-popup" style="top: 31px; left: 304.5px; width: 500px; height:300px; opacity: 1; display: none;">
+                <div class="wrap">
+                    <header class="layer-header">
+                        <h3 class="tit">
+                            ºñ¹Ð¹øÈ£ ÀÔ·Â
+                        </h3>
+                    </header>
+
+                    <div class="layer-con">
+                        <p>±Û ÀÛ¼º½Ã ÀÔ·ÂÇÑ ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>
+                        <div class="box-gray a-c">
+                            <input type="password" id="password" title="ºñ¹Ð¹øÈ£ ÀÔ·Â" class="input-text w250px">
+                            <p class="fc_r mt10 mb0">ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>
+                        </div>
+                        <div class="btn-group">
+                            <a href="#" class="button small lyclose" id="cancelBtn" title="Ãë¼Ò">Ãë¼Ò</a>
+                            <a href="#" class="button small purple" id="chkBtn" title="È®ÀÎ">È®ÀÎ</a>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-layer-close">·¹ÀÌ¾î ´Ý±â</button>
+                </div>
+            </section>
+            <!-- pagination -->
+            <nav class="pagination"></nav>
+            <!--// pagination -->
+        </div>
 		</div>
 	</div>
-
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>

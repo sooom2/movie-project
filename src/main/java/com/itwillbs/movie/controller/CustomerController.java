@@ -101,10 +101,15 @@ public class CustomerController {
 		
 	}
 	
-	// 비회원문의내역
-	@RequestMapping(value = "guest_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String guestBoard() {
-		return "customer_center/guest_board";
+//	// 비회원문의내역
+//	@RequestMapping(value = "guest_board", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String guestBoard() {
+//		return "customer_center/guest_board";
+//	}
+	// 비회원문의확인
+	@RequestMapping(value = "guest_confirm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String guestConfirm() {
+		return "customer_center/guest_confirm";
 	}
 	
 	
@@ -119,11 +124,13 @@ public class CustomerController {
 	public String adminNoticeBoard() {
 		return "admin/admin_notice_board";
 	}
+	
 	//자주묻는 질문
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminFaq() {
 		return "admin/admin_faq";
 	}
+	
 	// 분실물 문의 페이지
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLostBoard(Model model) {
@@ -138,14 +145,28 @@ public class CustomerController {
 //	public String adminLostBoard() {
 //		return "admin/admin_lost_board";
 //	}
-	//1대1 문의
+	
+//	//1대1 문의
+//	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String adminOneOnOne() {
+//		return "admin/admin_oneOnOne";
+//	}
+	// 1대1 문의 내역 페이지
 	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminOneOnOne() {
+	public String adminOneOnOne(Model model) {
+		
+		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
+		System.out.println(oneBoardList);
+		model.addAttribute("oneBoardList", oneBoardList);
+//			System.out.println("Controller: " + model);
 		return "admin/admin_oneOnOne";
+		
 	}
+	
 	//비회원 문의내역
 	@RequestMapping(value = "admin_guest_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminGuestBoard() {
 		return "admin/admin_guest_board";
 	}	
+	
 }

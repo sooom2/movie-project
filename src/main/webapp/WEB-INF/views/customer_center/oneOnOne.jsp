@@ -6,15 +6,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/resources/css/common.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css"
+	rel="stylesheet">
 <!-- 상단 -->
-<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css"
+	rel="stylesheet">
 <!-- 본문 -->
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/main.css"
+	rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -45,11 +50,11 @@
 						<dd style="font-size: 13px;">
 							귀하께서 문의하신 다음의 내역은 법률에 의거 개인정보 수집·이용에 대한 본인동의가 필요한 항목입니다.<br>
 							<br> [개인정보의 수집 및 이용목적]<br> 회사는 1:1 문의 내역의 확인, 요청사항 처리
-							또는 완료 시 원활한 의사소통 경로 확보를 위해 수집하고 있습니다.<br>
-							<br> [필수 수집하는 개인정보의 항목]<br> 이름, 휴대전화, 이메일, 문의내용<br>
-							<br> [개인정보의 보유기간 및 이용기간]<br> <span class="ismsimp">문의
-								접수 ~ 처리 완료 후 3년<br> (단, 관계법령의 규정에 의하여 보존 할 필요성이 있는 경우에는 관계
-								법령에 따라 보존)<br> 자세한 내용은 '개인정보 처리방침'을 확인하시기 바랍니다.
+							또는 완료 시 원활한 의사소통 경로 확보를 위해 수집하고 있습니다.<br> <br> [필수 수집하는
+							개인정보의 항목]<br> 이름, 휴대전화, 이메일, 문의내용<br> <br> [개인정보의
+							보유기간 및 이용기간]<br> <span class="ismsimp">문의 접수 ~ 처리 완료
+								후 3년<br> (단, 관계법령의 규정에 의하여 보존 할 필요성이 있는 경우에는 관계 법령에 따라 보존)<br>
+								자세한 내용은 '개인정보 처리방침'을 확인하시기 바랍니다.
 							</span>
 						</dd>
 					</dl>
