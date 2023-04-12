@@ -700,43 +700,24 @@
 
 				<li class="pakage">
 					<dl class="giftcon_list">
-						<dt>
-							패키지<a href="store_main" alt="패키지" class="btn_more pak">더보기</a>
-						</dt>
-
+					<dt>
+							스토어상품<a href="store_main" alt="" class="btn_more pak">더보기</a>
+					</dt>
+				<c:forEach var="gift" items="${gift }"> 
+						
+			
 						<dd>
-							<a href="store_main">
+							<a href="store_detail?item_code=${gift_item_code }">
 								<div class="img_wrap" data-scale="false">
-									<img src="resources/images/store/pk1.png" alt="우리 패키지">
+									<img src="${gift.item_image }" alt="상품이미지">
 								</div>
 								<div class="giftcon_info_wrap">
-									<span>싱글 패키지</span> <strong>18,000원</strong>
+									<span>${gift.item_name }</span> <strong>${gift.item_price }원</strong>
 								</div>
 							</a>
 						</dd>
 
-						<dd>
-							<a href="">
-								<div class="img_wrap" data-scale="false">
-									<img src="resources/images/store/pk2.png" alt="나랑 너 패키지">
-								</div>
-								<div class="giftcon_info_wrap">
-									<span>러브콤보 패키지</span> <strong>30,000원</strong>
-								</div>
-							</a>
-						</dd>
-
-						<dd>
-							<a href="">
-								<div class="img_wrap" data-scale="false">
-									<img src="resources/images/store/pk3.png" alt="좋은 날 패키지">
-								</div>
-								<div class="giftcon_info_wrap">
-									<span>패밀리 패키지</span> <strong>43,000원</strong>
-								</div>
-							</a>
-						</dd>
-
+				</c:forEach>
 					</dl>
 				</li>
 				<li class="bestReview">
@@ -796,8 +777,8 @@
 							<div id="ctl00_PlaceHolderContent_notice_wrap"
 								class="notice_wrap">
 								<strong>공지사항</strong> <a href="" class="btn_link">[00][000]
-									휴점일 공지 (4월 3일)</a> <a href="${path }/customer_center/cc_home.jsp"
-									id="notice_more" class="btn_more">더보기</a>
+									휴점일 공지 (4월 3일)</a>
+								<a href="cc_home" id="notice_more" class="btn_more">더보기</a>
 							</div>
 							<div class="client_wrap">
 								<dl class="client_list">
@@ -812,8 +793,9 @@
 									</dd>
 								</dl>
 								<div class="client_btn_wrap" id="client_btn_wrap">
-									<a href="">FAQ</a> <a href="">1:1 문의</a> <a href="">분실물 문의</a>
-									<a href="">대관/단체 문의</a>
+									<a href="faq">FAQ</a> 
+									<a href="oneOnOne">1:1 문의</a> 
+									<a href="lost_board">분실물 문의</a>
 								</div>
 							</div>
 						</div>
