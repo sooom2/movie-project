@@ -24,6 +24,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		return "mypage/mypage_rsv_form";
 	} 
+	
 	//포인트조회
 	@GetMapping(value = "mypageP")
 	public String mypageP() {

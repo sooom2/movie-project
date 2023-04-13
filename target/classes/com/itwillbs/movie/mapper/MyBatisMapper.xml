@@ -39,10 +39,15 @@
 	</insert>
 	
 	<!-- 로그인 조회 -->
+<!-- 	<select id="chekUser" resultType="hashmap"> -->
+<!-- 		SELECT *  -->
+<!-- 			FROM member -->
+<!-- 				WHERE member_id = #{member_id} AND member_pw = #{member_pw} -->
+<!-- 	</select> -->
 	<select id="chekUser" resultType="hashmap">
 		SELECT * 
 			FROM member
-				WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+				WHERE member_id = #{member_id} 
 	</select>
 	
 	<select id="selectMemberId" resultType="hashmap">

@@ -31,8 +31,6 @@ public class MemberController {
 	@GetMapping(value = "main")
 	public String main(Model model) {
 		
-		
-		
 		//메인스토어 뿌리기
 		List<HashMap<String, String>> gift = storeService.selectItem();
 		List<HashMap<String, String>> food = storeService.selectFood();
@@ -81,21 +79,48 @@ public class MemberController {
 		return "member/guest_join_form";
 	}
 	
-	//회원 로그인 확인
+//	//회원 로그인 확인
+//	@PostMapping(value = "loginPro")
+//	public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
+//		
+//		HashMap<String, String> member = service.checkUser(login);
+//		
+//		if(member == null) {
+//			model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
+//			return "member/fail_back";
+//		} else {
+//			session.setAttribute("sId", member.get("member_id"));
+//			return "redirect:/main";
+//		}
+//		
+//	}
+	//회원 로그인 확인 - 해싱작업 수정
 	@PostMapping(value = "loginPro")
 	public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
-		
-		HashMap<String, String> member = service.checkUser(login);
-		
-		if(member == null) {
-			model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
-			return "member/fail_back";
-		} else {
-			session.setAttribute("sId", member.get("member_id"));
-			return "redirect:/main";
-		}
-		
+	    String memberId = login.get("member_id");
+	    String password = login.get("member_pw");
+
+	    HashMap<String, String> member = service.checkUser(login);
+
+	    if (member == null) {
+	        model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
+	        return "member/fail_back";
+	    }
+
+	    String hashedPassword = member.get("member_pw");
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+	    if (passwordEncoder.matches(password, hashedPassword)) {
+	        session.setAttribute("sId", memberId);
+	        return "redirect:/main";
+	    }
+
+	    model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
+	    return "member/fail_back";
 	}
+	
+	
+	
 	// 회원가입폼
 	@GetMapping(value = "joinform")
 	public String loginform() {
@@ -135,10 +160,6 @@ public class MemberController {
 	
 }
 	
-	
-	
-	
-
 	
 	// 로그아웃
 	@GetMapping(value = "logout")
