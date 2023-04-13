@@ -184,15 +184,354 @@
             <!--// box-pulldown -->
     </div>
 </div>
+<!-- 모달창 -->
+<section id="layer_chk_theater" class="modal-layer" style="z-index: 505;">
+<div class="wrap" style="width: 600px; height: 530px; margin-left: -300px; margin-top: -265px;">
+	<header class="layer-header">
+		<h3 class="tit">사용가능극장 </h3>
+	</header>
+	<!-- layer-con -->
+	<div class="layer-con" style="height: 485px;">
+		<!-- layer-goods-theater -->
+		<div class="layer-goods-theater">
+			<p class="txt">선택하신 상품의 사용가능한 극장입니다.</p>
+			<div class="area">
+				<ul class="modalTab">
+						<li class="on">
+							<button type="button" class="btn">서울 (19)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>강남</li>
+									
+										<li>강남대로(씨티)</li>
+									
+										<li>강동</li>
+									
+										<li>군자</li>
+									
+										<li>더 부티크 목동현대백화점</li>
+									
+										<li>동대문</li>
+									
+										<li>마곡</li>
+									
+										<li>목동</li>
+									
+										<li>상봉</li>
+									
+										<li>상암월드컵경기장</li>
+									
+										<li>성수</li>
+									
+										<li>센트럴</li>
+									
+										<li>송파파크하비오</li>
+									
+										<li>신촌</li>
+									
+										<li>이수</li>
+									
+										<li>창동</li>
+									
+										<li>코엑스</li>
+									
+										<li>홍대</li>
+									
+										<li>화곡</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">경기 (30)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>고양스타필드</li>
+									
+										<li>광명AK플라자</li>
+									
+										<li>광명소하</li>
+									
+										<li>금정AK플라자</li>
+									
+										<li>김포한강신도시</li>
+									
+										<li>남양주</li>
+									
+										<li>남양주현대아울렛 스페이스원</li>
+									
+										<li>동탄</li>
+									
+										<li>미사강변</li>
+									
+										<li>백석벨라시타</li>
+									
+										<li>별내</li>
+									
+										<li>부천스타필드시티</li>
+									
+										<li>분당</li>
+									
+										<li>수원</li>
+									
+										<li>수원남문</li>
+									
+										<li>수원호매실</li>
+									
+										<li>시흥배곧</li>
+									
+										<li>안산중앙</li>
+									
+										<li>안성스타필드</li>
+									
+										<li>양주</li>
+									
+										<li>영통</li>
+									
+										<li>용인기흥</li>
+									
+										<li>용인테크노밸리</li>
+									
+										<li>의정부민락</li>
+									
+										<li>일산</li>
+									
+										<li>킨텍스</li>
+									
+										<li>파주금촌</li>
+									
+										<li>파주운정</li>
+									
+										<li>파주출판도시</li>
+									
+										<li>하남스타필드</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">인천 (5)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>검단</li>
+									
+										<li>송도</li>
+									
+										<li>영종</li>
+									
+										<li>인천논현</li>
+									
+										<li>청라지젤</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">대전/충청/세종 (15)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>공주</li>
+									
+										<li>논산</li>
+									
+										<li>대전</li>
+									
+										<li>대전신세계 아트앤사이언스</li>
+									
+										<li>대전유성</li>
+									
+										<li>대전중앙로</li>
+									
+										<li>대전현대아울렛</li>
+									
+										<li>세종(조치원)</li>
+									
+										<li>세종나성</li>
+									
+										<li>세종청사</li>
+									
+										<li>오창</li>
+									
+										<li>진천</li>
+									
+										<li>천안</li>
+									
+										<li>청주사창</li>
+									
+										<li>홍성내포</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">부산/대구/경상 (26)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>경북도청</li>
+									
+										<li>경산하양</li>
+									
+										<li>경주</li>
+									
+										<li>구미강동</li>
+									
+										<li>김천</li>
+									
+										<li>남포항</li>
+									
+										<li>대구신세계(동대구)</li>
+									
+										<li>대구이시아</li>
+									
+										<li>덕천</li>
+									
+										<li>마산</li>
+									
+										<li>문경</li>
+									
+										<li>부산극장</li>
+									
+										<li>부산대</li>
+									
+										<li>북대구(칠곡)</li>
+									
+										<li>사상</li>
+									
+										<li>삼천포</li>
+									
+										<li>양산</li>
+									
+										<li>양산증산</li>
+									
+										<li>울산</li>
+									
+										<li>정관</li>
+									
+										<li>진주(중안)</li>
+									
+										<li>창원</li>
+									
+										<li>창원_P</li>
+									
+										<li>창원내서</li>
+									
+										<li>포항</li>
+									
+										<li>해운대(장산)</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">광주/전라 (10)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>광주상무</li>
+									
+										<li>광주하남</li>
+									
+										<li>목포하당(포르모)</li>
+									
+										<li>순천</li>
+									
+										<li>여수웅천</li>
+									
+										<li>전대(광주)</li>
+									
+										<li>전주객사</li>
+									
+										<li>전주송천</li>
+									
+										<li>전주혁신</li>
+									
+										<li>첨단</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">강원 (5)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+										<li>남춘천</li>
+									
+										<li>속초</li>
+									
+										<li>원주</li>
+									
+										<li>원주센트럴</li>
+									
+										<li>춘천석사</li>
+									
+								</ul>
+							</div>
+						</li>
+					
+						<li>
+							<button type="button" class="btn">제주 (0)</button>
+							<div class="cont">
+								<ul class="dot-list">
+									
+								</ul>
+							</div>
+						</li>
+					
+				</ul>
+			</div>
+			<p class="mt20 a-c">* 사용가능극장은 당사의 사정에 의해 변경될 수 있습니다.</p>
+		</div>
+	</div>
+
+	<button type="button" class="btn-modal-close">레이어 닫기</button>
+</div>
+</section>
 <jsp:include page="../footer.jsp"/>
 	<script>
 		$(function() {
 			
-			$('.box-pulldown').click(function() {
-				$('.box-pulldown').removeClass('on');
+			// 모달창 클릭
+			$('.a-link').on("click", function() {
+				$('#layer_chk_theater').addClass('on');
+			});
+			
+			// 모달창 목록
+			$('ul.modalTab li').click(function() {
+				$('ul.modalTab li').removeClass('on');
 				$(this).addClass('on');
 			})
 			
+			// 모달창 취소
+			$('.btn-modal-close').on("click", function() {
+				$('#layer_chk_theater').removeClass('on');
+			});
+			
+			
+			// 하단 박스 클릭
+			$('.box-pulldown').click(function() {
+				
+               if($(this).attr('class') == 'box-pulldown on') {
+				$('.box-pulldown').removeClass('on');
+               } else if($(this).attr('class') == 'box-pulldown') {
+               	$('.box-pulldown').removeClass('on');
+				$(this).addClass('on');
+               }
+	               
+			});
+			
+			// 상품수량 + 버튼
 			$('.btn.plus').click(function() {
 				var currentVal = parseInt($('.input-text').val());
 				if(currentVal < $('.input-text').attr('max')) {
@@ -201,6 +540,7 @@
 				$('.money em').html(${item.get('item_price') } * $('.input-text').val());
 			})
 			
+			// 상품수량 - 버튼
 			$('.btn.minus').click(function() {
 				var currentVal = parseInt($('.input-text').val());
 				if(currentVal > $('.input-text').attr('min')) {

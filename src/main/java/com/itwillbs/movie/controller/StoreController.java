@@ -58,7 +58,14 @@ public class StoreController {
 		model.addAttribute("item_price", item_price);
 		model.addAttribute("member", member);
 		
-		return "store/store_pay";
+		if(id == null) {
+			model.addAttribute("msg", "로그인 후 이용가능합니다.");
+			return "member/fail_back";
+		} else {
+			return "store/store_pay";
+		}
+		
+		
 	}
 	
 	// 결제 성공

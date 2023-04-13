@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="java.util.*"%>
 <!doctype html>
 <html>
 <head>
@@ -24,8 +23,6 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-
-
 
 
 <!-- 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
@@ -193,22 +190,22 @@
 														<div class="list-type">
 															<ul>
 																<ul class="mvTimeLine">
-																	<c:forEach var="movieTime" items="${movie }">
-																		<li>
-																			<button type="button" class="btnTime" data-cd="${movieTime.location_code }"
-																				data-seq="${movieTime.screen_code }">
-																				<div class="loc">${movieTime.screen_name }</div>
-																				<div class="info">
-																					<p class="time">
-																						${movieTime.sch_start_time }<span>~${movieTime.sch_last_time }</span>
-																					</p>
-																					<p class="num">
-																						89/<span>89석(수정필요))</span>
-																					</p>
-																				</div>
-																			</button>
-																		</li>
-																	</c:forEach>
+<%-- 																	<c:forEach var="movieTime" items="${movie }"> --%>
+<!-- 																		<li> -->
+<%-- 																			<button type="button" class="btnTime" data-cd="${movieTime.location_code }" --%>
+<%-- 																				data-seq="${movieTime.screen_code }"> --%>
+<%-- 																				<div class="loc">${movieTime.screen_name }</div> --%>
+<!-- 																				<div class="info"> -->
+<!-- 																					<p class="time"> -->
+<%-- 																						${movieTime.sch_start_time }<span>~${movieTime.sch_last_time }</span> --%>
+<!-- 																					</p> -->
+<!-- 																					<p class="num"> -->
+<!-- 																						89/<span>89석(수정필요))</span> -->
+<!-- 																					</p> -->
+<!-- 																				</div> -->
+<!-- 																			</button> -->
+<!-- 																		</li> -->
+<%-- 																	</c:forEach> --%>
 																</ul>
 															</ul>
 														</div>
@@ -375,13 +372,13 @@
 <!-- 	</div> -->
 	
 	
-	<script type="text/javascript" >
-	var movieList = [];
-	var cinemaList = [];
-	var areaList = [];
-	var timeList = [];
-	var favoriteCinema = [];
-	var timer = null;
+<script type="text/javascript" >
+// 	var movieList = [];
+// 	var cinemaList = [];
+// 	var areaList = [];
+// 	var timeList = [];
+// 	var favoriteCinema = [];
+// 	var timer = null;
 	//---
 
 	
@@ -406,6 +403,9 @@
 			$('.btnTime[data-cd="' + $("#ScreenCd").val() + '"][data-seq="' + $("#ShowSeq").val() + '"]').click();
 		}
 		
+	}); //function end
+
+
 		// 지역 클릭
 		$(".btnTheater").on("click", function(e){
 			var cd = $(this).data("cd");
@@ -426,17 +426,17 @@
 			$('.subTheater[data-cd="' + cd + '"]').show();
 			
 			
-			
 		});
-		
-		
+
+
+
 		// 극장 클릭
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
-				console.log("cd:" + cd);
+// 				console.log("cd:" + cd);
 				$(".btnMvItem").hide();
 			$.ajax({
-	 			type: "POST",
+	 			type: "GET",
 	 			url: "moviesList",
 	 			data: { 
 	 					cd: cd
@@ -450,7 +450,7 @@
 	 					let movieCode = movie.info_movie_code;
 	 					let movieImg = movie.info_movie_poster;
 	 					let movieRating = movie.info_rating;
-	 					console.log("movieRating: " + movieRating);
+// 	 					console.log("movieRating: " + movieRating);
 // 	 					console.log("movieTitle: " + movieTitle);
 // 	 					console.log("movieCode: " + movieCode);
 	 					var str = "";
@@ -487,11 +487,8 @@
 			
 			
 		});
-		
-		
-		
-		
-		// 예매율순 | 가나다순 클릭
+	
+// 예매율순 | 가나다순 클릭
 // 		$(".btnMovieTab").on("click", function(e) { 
 // 			e.preventDefault();
 // 			$(".btnMovieTab").removeClass("active");
@@ -500,14 +497,9 @@
 			
 // 			makeMovieList();
 // 		});
-	});
 		
-// -----------------------------------------------------------------------------------	function end
-
-
-	
-
-// 영화 클릭
+		
+// 영화리스트 클릭
 	$(document).on("click", ".btnMvItem", function(e) {
 // 		e.preventDefault();
 		$("#movieList li").removeClass("check");
@@ -537,7 +529,6 @@
 			return;
 		}
 		
-		
 		$(".btnTheater").parent().removeClass("active");
 		$(this).parent().addClass("active");
 		
@@ -555,10 +546,6 @@
 	$(document).on("click", ".btnTime", function(){
 		alert("TEST : 상영시간 버튼클릭");
 	});
-	
-	
-	
-	
 	
 	
 	
@@ -605,69 +592,67 @@
 	}
 	
 	
+	// 날짜 선택
+	const date = new Date();
+	const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+	const reserveDate = document.querySelector(".reserve-date");
+
+    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+
+        const dateButton = document.createElement("button");
+        dateButton.setAttribute('type', 'button');    // submit 막기
+        const spanWeekOfDay = document.createElement("span");
+        const spanDay = document.createElement("span");
+
+        //class넣기
+        dateButton.classList = "movie-date-wrapper"
+        spanWeekOfDay.classList = "movie-week-of-day";
+        spanDay.classList = "movie-day";
+
+        //weekOfDay[new Date(2023-04-00)]
+        const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
+
+        //요일 넣기
+        if (dayOfWeek === "토") {
+            spanWeekOfDay.classList.add("saturday");
+            spanDay.classList.add("saturday");
+        } else if (dayOfWeek === "일") {
+            spanWeekOfDay.classList.add("sunday");
+            spanDay.classList.add("sunday");
+        }
+        spanWeekOfDay.innerHTML = dayOfWeek;
+        dateButton.append(spanWeekOfDay);
+        
+        //날짜 넣기
+        spanDay.innerHTML = i;
+        dateButton.append(spanDay);
+        reserveDate.append(dateButton);
+
+        dayClickEvent(dateButton);
+    }
+
+        
+
+	function dayClickEvent(dateButton) {
+		dateButton.addEventListener("click", function() {
+		const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
+		movieDateWrapperActive.forEach((list) => {
+		list.classList.remove("movie-date-wrapper-active");
+			})
+		dateButton.classList.add("movie-date-wrapper-active");
+		})
+	}
+	
+	
+	
+	// 상영관 < 좌석 DB 정보 추가 후 수정 필요>
 
 	
 		
 </script> 
-
-<!-- 	 // 날짜 -->
-	 <script>
-        const date = new Date();
-        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        const reserveDate = document.querySelector(".reserve-date");
-
-      
-            const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
-            const year = date.getFullYear();
-            const month = date.getMonth() + 1;
-            for (i = date.getDate(); i <= lastDay.getDate(); i++) {
-
-                const dateBtn = document.createElement("button");
-                const spanWeekOfDay = document.createElement("span");
-                const spanDay = document.createElement("span");
-
-                //class넣기
-                dateBtn.classList = "movie-date-wrapper"
-                spanWeekOfDay.classList = "movie-week-of-day";
-                spanDay.classList = "movie-day";
-
-                //weekOfDay[new Date(2023-03-날짜)]
-                const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
-
-                //요일 넣기
-                if (dayOfWeek === "토") {
-                    spanWeekOfDay.classList.add("saturday");
-                    spanDay.classList.add("saturday");
-                } else if (dayOfWeek === "일") {
-                    spanWeekOfDay.classList.add("sunday");
-                    spanDay.classList.add("sunday");
-                }
-                spanWeekOfDay.innerHTML = dayOfWeek;
-                dateBtn.append(spanWeekOfDay);
-                //날짜 넣기
-                spanDay.innerHTML = i;
-                dateBtn.append(spanDay);
-                //button.append(i);
-                reserveDate.append(dateBtn);
-
-//                 dayClickEvent(button);
-            }
-
-        
-
-//         function dayClickEvent(button) {
-//             button.addEventListener("click", function() {
-//                 const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-//                 movieDateWrapperActive.forEach((list) => {
-//                     list.classList.remove("movie-date-wrapper-active");
-//                 })
-//                 button.classList.add("movie-date-wrapper-active");
-//             })
-//         }
-    </script>
-<!--     // 날짜 end -->
-    
-    
 		<!-- // footer -->
 		<jsp:include page="../footer.jsp"></jsp:include>
 		
