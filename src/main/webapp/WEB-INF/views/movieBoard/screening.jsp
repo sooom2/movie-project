@@ -32,8 +32,7 @@
 		    	</span>
 		    	<img src="${movie.info_movie_poster}" class="posterlist">
 		    	<div class="movie-desc">
-		    		<span class="label"> 12 </span>
-		    		<span class="rate-12">12</span>
+		    		<p class="rate-15">${movie.info_rating }</p>
 		    		<p title="${movie.info_movie_title }" class="tit">${movie.info_movie_title }</p>
     			</div>
 		    <div class="btn-util">

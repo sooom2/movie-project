@@ -32,9 +32,9 @@ public class MovieController {
 	}
 	
 	// 최신개봉순이긴한데 아직 만드는중
-	@RequestMapping(value = "latest", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
 	public String latest() {
-		return "movieBoard/latest";
+		return "movieBoard/comming";
 	}
 	
 	

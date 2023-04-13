@@ -56,11 +56,11 @@
 				</li>
 			
 			
-				<li><a href="" class="" onmouseover="hideTheater()"> 영화 </a>
+				<li><a href="screening" class="" onmouseover="hideTheater()"> 영화 </a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="screening" class=""	onmouseover="hideTheater()">현재상영작</a></li>
-							<li><a href="latest" class=""	onmouseover="hideTheater()">최신개봉작</a></li>
+							<li><a href="comming" class=""	onmouseover="hideTheater()">상영예정작</a></li>
 							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
 						</ul>
 					</div>

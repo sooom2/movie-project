@@ -215,23 +215,18 @@
 /*
 ============================================================== */
 .movie-desc {
-	/*
-    font-size: 17px;
+	
+ 	font-size: 17px;
 	width: 170px;
-	overflow: hidden !important;
-	white-space : nowrap;
+/* 	overflow: hidden !important; */
+/* 	white-space : nowrap; */
 	padding: 6px 0;
-	color: #000000;
-	text-align: center;
-	*/
-    overflow: hidden;
-    display: block;
+/* 	color: #000000; */
+/* 	text-align: center; */
+	
+    position: relative;
     width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 2px 0 0 1px;
-    font-size: 1.3333em;
-    font-weight: 400;
+    line-height: 25px;
 }
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,

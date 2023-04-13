@@ -1218,6 +1218,7 @@ header {
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
 	.movie-desc .rate-n, .movie-desc .rate-x {
+	background-size: 23px 23px;				/*추가 삽입*/
 	font-weight: bold;
 	color: #fff;
 	width: 20px;
