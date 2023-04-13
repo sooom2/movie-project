@@ -46,7 +46,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="mypageRv"/>
 </div>
 <script type="text/javascript">
 //     $(function () {
