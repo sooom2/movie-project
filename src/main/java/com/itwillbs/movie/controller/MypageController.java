@@ -18,8 +18,10 @@ public class MypageController {
 
 	//예매내역
 	@GetMapping(value = "mypageR")
-	public String mypageR() {
-		
+	public String mypageR(HttpSession session, MemberVO member, Model model) {
+		String id = (String)session.getAttribute("sId");
+		member= service.getMemberInfo(id);
+		model.addAttribute("member", member);
 		return "mypage/mypage_rsv_form";
 	} 
 	//포인트조회

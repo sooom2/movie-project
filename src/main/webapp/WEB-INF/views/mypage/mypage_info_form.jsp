@@ -75,12 +75,12 @@
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="theaterCode" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="1001" selected="">지점변경시 선택</option>
-											<option value="051">부산점</option>
-											<option value="051">부산대연점</option>
-											<option value="02">강남점</option>
-											<option value="052">울산삼산점</option>
-											<option value="055">경남김해점</option>
+<!-- 											<option value="">지점변경시 선택</option> -->
+											<option value="부산점" <c:if test="${member.member_prefer_branch eq '부산점'}">selected</c:if>>부산점</option>
+											<option value="부산대연점" <c:if test="${member.member_prefer_branch eq '부산대연점'}">selected</c:if>>부산대연점</option>
+											<option value="강남점" <c:if test="${member.member_prefer_branch eq '강남점'}">selected</c:if>>강남점</option>
+											<option value="울산삼산점" <c:if test="${member.member_prefer_branch eq '울산삼산점'}">selected</c:if>>울산삼산점</option>
+											<option value="김해점" <c:if test="${member.member_prefer_branch eq '김해점'}">selected</c:if>>김해점</option>
 										</select>
 									</div> <span></span>
 								</label>
@@ -90,14 +90,13 @@
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="theaterCode" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="1001" selected="">장르변경시 선택</option>
-											<option value="액션">액션</option>
-											<option value="드라마">드라마</option>
-											<option value="코미디">코미디</option>
-											<option value="애니메이션">애니메이션</option>
-											<option value="스릴러">스릴러</option>
-											<option value="로맨스">로맨스</option>
-											<option value="범죄">범죄</option>
+<!-- 											<option value="1001" selected="">장르변경시 선택</option> -->
+											<option value="액션"<c:if test="${member.member_prefer_genre eq '액션'}">selected</c:if>>액션</option>
+											<option value="드라마"<c:if test="${member.member_prefer_genre eq '드라마'}">selected</c:if>>드라마</option>
+											<option value="코미디"<c:if test="${member.member_prefer_genre eq '코미디' }">selected</c:if>>코미디</option>
+											<option value="애니메이션"<c:if test="${member.member_prefer_genre eq '애니메이션' }">selected</c:if>>애니메이션</option>
+											<option value="스릴러"<c:if test="${member.member_prefer_genre eq '스릴러' }">selected</c:if>>스릴러</option>
+											<option value="범죄"<c:if test="${member.member_prefer_genre eq '범죄' }">selected</c:if>>범죄</option>
 										</select>
 									</div> <span></span>
 								</label>

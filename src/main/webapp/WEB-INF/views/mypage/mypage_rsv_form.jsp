@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">  
 <title>Insert title here</title>
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/mypage.css" rel="stylesheet">
@@ -27,16 +27,16 @@
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
-						${sessionScope.sId }님<span class="point">0P</span>
+						${member.member_name } 님<span class="point">${member.member_point }P</span>
 					</div>
 
 					<div class="username">
-						선호극장 <span class="right"> 000 </span>
+						선호극장 <span class="right"> ${member.member_prefer_branch } </span>
 
 					</div>
 
 					<div class="username">
-						선호장르 <span class="right"> 스릴러 </span>
+						선호장르 <span class="right"> ${member.member_prefer_genre } </span>
 					</div>
 
 				</div>
