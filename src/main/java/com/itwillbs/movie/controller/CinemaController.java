@@ -34,7 +34,7 @@ public class CinemaController {
 		System.out.println(locationList);
 		System.out.println("=============================");
 		
-		
+		//enum  
 		
 		
 		return "cinema/cinema_all";
