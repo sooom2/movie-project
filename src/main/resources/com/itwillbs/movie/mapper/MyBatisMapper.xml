@@ -108,13 +108,8 @@
 					WHERE item_code = #{item_code}
 	</update>
 	
-	<!-- 상품 결제 조회 -->
-	<select id="selectPay" resultType="hashmap">
-		SELECT * FROM pay
-	</select>
 	
-	
-	<!-- 스토어 결제 -->
+	<!-- 스토어 결제 저장-->
 	<insert id="insertPay">
 		INSERT INTO pay
 			VALUES(
@@ -128,6 +123,18 @@
 				 , #{pay_status}
 			)
 	</insert>
+	
+	<!-- 상품 결제 조회 -->
+	<select id="selectPay" resultType="hashmap">
+		SELECT * FROM pay
+	</select>
+	
+	<!-- 결제 내역 삭제 -->
+	<delete id="payDelete">
+		DELETE FROM pay
+			WHERE pay_code = #{pay_code}
+	</delete>
+	
 	
 	<!-- 포인트 적립 -->
 	<update id="updatePoint">

@@ -106,7 +106,7 @@
 								<td>${pay.get('pay_status') }</td>
 								<td>
 									<input class="btn btn-primary btn-block" type="button" value="수정">
-									<input class="btn btn-primary btn-block" type="button" value="삭제">
+									<input onclick="location.href='admin_pay_delete?pay_code=${pay.get('pay_code') }'" class="btn btn-primary btn-block"  type="button" value="삭제">
 								</td>
 							</tr>
 							</c:forEach>

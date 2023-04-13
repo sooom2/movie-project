@@ -96,6 +96,21 @@ public class AdminController {
 		return "admin/admin_item_pay";
 	}
 	
+	// 상품 결제 내역 삭제
+	@RequestMapping(value = "admin_pay_delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String payDelete(String pay_code, Model model) {
+		
+		int deleteCount = storeService.payDelete(pay_code);
+		
+		if(deleteCount > 0) {
+			return "redirect:/admin_item_pay";
+		} else {
+			model.addAttribute("msg", "결제내역 삭제 실패.");
+			return "member/fail_back";
+		}
+		
+	}
+	
 		
 	
 	

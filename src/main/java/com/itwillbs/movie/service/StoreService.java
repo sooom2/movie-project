@@ -29,21 +29,29 @@ public class StoreService {
 	public HashMap<String, String> selectCode(String item_code) {
 		return mapper.selectCode(item_code);
 	}
-
+	
 	public HashMap<String, String> selectMemberId(String id) {
 		return mapper.selectMemberId(id);
 	}
-
+	
+	// 결제 내역 저장
 	public int insertPay(HashMap<String, String> pay) {
 		return mapper.insertPay(pay);
 	}
-
+	
+	// 포인트 적립
 	public int updatePoint(HashMap<String, String> point) {
 		return mapper.updatePoint(point);
 	}
-
+	
+	// 결제 내역 조회
 	public List<HashMap<String, String>> selectPay() {
 		return mapper.selectPay();
+	}
+	
+	// 결제 내역 삭제
+	public int payDelete(String pay_code) {
+		return mapper.payDelete(pay_code);
 	}
 	
 	

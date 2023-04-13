@@ -56,6 +56,8 @@ public interface MyBatisMapper {
 	
 	// 스토어 결제 후 포인트 적립
 	int updatePoint(HashMap<String, String> point);
+
+	int payDelete(String pay_code);
 	
 	// ------------------------------------------------------------------------------------------
 	
