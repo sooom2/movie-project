@@ -31,9 +31,7 @@ public class MemberController {
 	@GetMapping(value = "main")
 	public String main(Model model) {
 		
-		//nav에 지점 목록
-		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-		model.addAttribute("cinemaList",cinemaList);
+		
 		
 		//메인스토어 뿌리기
 		List<HashMap<String, String>> gift = storeService.selectItem();

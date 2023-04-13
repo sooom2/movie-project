@@ -20,7 +20,6 @@
 <script type="text/javascript" src="${path }/resources/js/main.js"></script>
 </head>
 <body>
-
 <div id="header" data-loginstatus="0">
 		<nav class="secondary">
 			<ul>
@@ -68,7 +67,7 @@
 				</li>
 
 
-				<li><a href="" class="">극장정보</a>
+				<li><a href="cinemaList" class="">극장정보</a>
 					<div class="theaterInfo">
 						<ul>
 <%-- 						<c:forEach var="cinema" items="${cinemaList }"> --%>
