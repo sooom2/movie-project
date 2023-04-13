@@ -11,12 +11,15 @@
 }
 
 .section-movie-list {
-	width: 100%;
-	margin: 0 auto 0 auto;
-	background-color: #f9f9f9;
-	padding: 0 0 120px;
-    overflow: hidden;
-    
+	background-color: #ececec;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 40px 0 55px 0;
+/*     overflow: hidden; */
+/*    	background-color: #ececec; */
+/* 	max-width: 100%; */
+/* 	margin: 0 auto; */
+/* 	padding: 40px 0 55px 0; */
     
 /*     position: relative; */
 /*     float: left; */
@@ -35,7 +38,7 @@
 	padding-top: 117px;
 }
 
-.section-main-movie-list .main-movie-list .wrap-slider ul li .over-a .over-btn-info
+.section-movie-list .movie-list .wrap-slider ul li .over-a .over-btn-info
 	{
 	background: #8080803b;
 	border: 1px solid;
@@ -56,14 +59,7 @@
 	margin: 0 3px 33px 3px;
 	position: relative;
 	
-/*     overflow: hidden; */
-/*     position: relative; */
-/*     float: left; */
-/*     width: 230px; */
-/*     height: 450px; */
-/*     margin: 0 0 0 60px; */
-/*     padding: 0; */
-/*     background-color: #fff; */
+
 }
 
 .section-movie-list ul li:nth-child(5n-4) {
@@ -77,9 +73,9 @@
 .section-movie-list ul li .over-a {
 	opacity: 0;
 	display: block;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.7);
 	width: 100%;
-	height: 243px;
+	height: 230px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -101,26 +97,31 @@
 /* } */
 
 .section-movie-list ul li .over-a a.rsv {
-	display: block;
-	width: 124px;
-	height: 121px;
-	line-height: 137px;
-	font-size: 16px;
-	color: #f3f3f3;
-	font-weight: normal;
-	padding-left: 50px;
-	background-color: transparent;
+/* 	display: block; */
+/* 	width: 168px; */
+/* 	height: 121px; */
+/* 	line-height: 220px; */
+/* 	font-size: 16px; */
+/* 	color: #f3f3f3; */
+/* 	font-weight: normal; */
+/* 	background-color: transparent; */
+	/* 아래는 메인 페이지 */
+    background: #8080803b;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 1px 38px;
+    margin-left: 18px;
+	
 }
 
 .section-movie-list ul li .over-a a.info {
 	display: block;
-	width: 95px;
-	height: 122px;
-	line-height: 98px;
+	width: 168px;
+	height: 110px;
+	line-height: 50px;
 	font-size: 16px;
 	color: #f3f3f3;
 	font-weight: normal;
-	padding-left: 50px;
 	background-color: transparent;
 }
 
@@ -214,15 +215,23 @@
 /*
 ============================================================== */
 .movie-desc {
-    width: 154px;
-    overflow: hidden !important;
-    border: 1px solid #b4b5b5;
-    height: 32px;
-    padding: 0 7px;
-    line-height: 31px;
-    background-color: #fff;
-    font-size: 14px;
-    color: #89898a;
+	/*
+    font-size: 17px;
+	width: 170px;
+	overflow: hidden !important;
+	white-space : nowrap;
+	padding: 6px 0;
+	color: #000000;
+	text-align: center;
+	*/
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 2px 0 0 1px;
+    font-size: 1.3333em;
+    font-weight: 400;
 }
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
@@ -536,3 +545,39 @@ a:link {
       border-bottom: 2px solid #979797;
       display: block;
       margin: 0 auto; }
+      
+ .like-btn {
+	margin-top: 0px;
+	padding-bottom: 6px;
+}
+
+.like-btn .icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f1f1f1;
+	margin: 6px 25px;
+	padding: 4px 4px;
+	border-radius: 8px;
+	border: 1px solid #c1c1c1;
+}
+
+.like-btn .icon:hover {
+	background-color: #e5e5e5;
+}
+
+.icon.heart img {
+	width: 19px !important;
+	height: 17px !important;
+}
+
+.heart {
+	transform-origin: center;
+}
+
+.heart .likeNum {
+	color: #232323;
+	margin-left: 5px;
+	font-size: 14px;
+}
+  

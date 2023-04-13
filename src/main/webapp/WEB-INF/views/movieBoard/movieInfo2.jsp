@@ -34,11 +34,7 @@
 					<li><span>기 &nbsp; &nbsp; &nbsp;본 : </span> ${movieInfo.info_nation} | ${movieInfo.info_time} | ${movieInfo.info_genre }</li>
 					<li><span>개 봉 일 : </span> ${movieInfo.info_showdate }</li>
 					<li><span>감 &nbsp; &nbsp; &nbsp;독 : </span> ${movieInfo.info_director }</li>
-					<li><span>배 &nbsp; &nbsp; &nbsp;우 : </span> 배우
-<!-- 					<a	href="http://movie.naver.com/movie/bi/pi/basic.naver?code=363249">하라 나노카</a>(이와토 스즈메 목소리), -->
-<!-- 					 <a	href="http://movie.naver.com/movie/bi/pi/basic.naver?code=305540">마츠무라 호쿠토</a>(무나카타 소타 목소리), -->
-<!-- 					  <a href="http://movie.naver.com/movie/bi/pi/basic.naver?code=408">후카츠 에리</a>(이와토 타마키 목소리) -->
-					  </li>
+<!-- 					<li><span>배 &nbsp; &nbsp; &nbsp;우 : </span> 배우</li> -->
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
 				<a href="#" class="btn-rsv">예매하기</a>
@@ -50,6 +46,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="mypageRv"/>
 </div>
 <script type="text/javascript">
 //     $(function () {
