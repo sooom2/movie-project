@@ -32,9 +32,11 @@ public class ReservationController {
 	
 	@RequestMapping(value = "reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reservation(Model model, String cd) {
+		// 극장
 		List<HashMap<String, String>> cinema = service.selectCinema();
 		model.addAttribute("cinema", cinema);
 		
+		// 영화상세정보
 		List<HashMap<String, String>> movieInfo = service.selectMovieInfo();
 		model.addAttribute("movieInfo", movieInfo);
 		
@@ -49,11 +51,11 @@ public class ReservationController {
 		return "reservation/reservation";
 	}
 	
+	// 영화리스트
 	@ResponseBody
 	@GetMapping("moviesList")
 	public String moviesList(String cd) {
 		System.out.println("String cd: " + cd);
-		
 		
 		List<HashMap<String, String>> moviesList = service.selectmoviesList(cd);
 		
@@ -63,6 +65,13 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
+	
+	@ResponseBody
+	@GetMapping("TimeList")
+	public String timeList() {
+		
+		return "dfsdfsdf";
+	}
 	
 	
 	

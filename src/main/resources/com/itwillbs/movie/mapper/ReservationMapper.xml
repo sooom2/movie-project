@@ -26,6 +26,7 @@
 						join movieinfo m 
 							on m.info_movie_code = s.sch_movie_code 
 								where c.cinema_code = #{cd};
-
 	</select>
+	
+	
 </mapper>

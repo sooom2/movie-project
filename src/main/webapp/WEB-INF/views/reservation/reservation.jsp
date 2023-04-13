@@ -25,7 +25,6 @@
 <jsp:include page="../nav.jsp"></jsp:include>
 
 
-<!-- 날짜 이름바꾸고 버튼 함수 지워도 왜 페이지 넘어가는지 모르겠음... -->
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
@@ -37,7 +36,7 @@
 				<input type="hidden" id="BrandCd" name="BrandCd" value="dtryx">
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="all">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="all">
-				<input type="hidden" id="PlaySDT" name="PlaySDT" value="all">
+				<input type="hidden" id="ScreenTime" name="ScreenTime" value="all">
 				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="">
 				<input type="hidden" id="ShowSeq" name="ShowSeq" value="">
@@ -390,12 +389,12 @@
 		if ($("#CinemaCd").val() != "all")
 			setCinema();
 		
-// 		if ($("#PlaySDT").val() != "all")
-// 			setPlayDT();
+		if ($("#ScreenTime").val() != "all")
+			setTime();
 		
-		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all") {
+		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all") {
 			getTimeList();
-			makeTimeList();
+// 			makeTimeList();
 		}
 		
 		if ($("#ScreenCd").val() != "" && $("#ShowSeq").val() != "") {
@@ -428,8 +427,6 @@
 			
 		});
 
-
-
 		// 극장 클릭
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
@@ -443,7 +440,7 @@
 	 			},
 	 			dataType: "json",
 	 			success: function(response) { 
-	 				console.log("요청처리성공");
+	 				console.log("btnCnItem : 요청처리성공");
 	 				for(let movie of response) {
 // 	 					console.log(movie.info_movie_title);
 	 					let movieTitle = movie.info_movie_title;
@@ -462,17 +459,10 @@
 	 					str += movieTitle + "</button>";
 	 					str += "</li>";
 	 					$("#movieList").append(str);
-	 					
-// 	 					<button type="button" class="btnMvItem" data-cd="019904"
-// 							data-url="https://img.dtryx.com/poster/2022/06/EBFBA151-CC1E-40AD-A108-990343803DF2.small.jpg"
-// 							data-rat="15" data-trt="0.00" data-rdt="2022-06-29"
-// 							title="헤어질 결심">
-// 							<i class="age15"></i> 헤어질 결심
-// 						</button>
 	 				}
 	 			},
 	 			error: function(xhr, textStatus, errorThrown) {
-	 				console.log("요청처리실패");
+	 				console.log("btnCnItem : 요청처리실패");
 	 			}
 	 		});
 			
@@ -501,7 +491,7 @@
 		
 // 영화리스트 클릭
 	$(document).on("click", ".btnMvItem", function(e) {
-// 		e.preventDefault();
+		e.preventDefault();
 		$("#movieList li").removeClass("check");
 		if ($("#MovieCd").val() == $(this).data("cd")) {
 			$("#MovieCd").val("all");
@@ -511,35 +501,47 @@
 		}
 		setMovie();
 		
-		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#PlaySDT").val() != "all")
+		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all")
 			getTimeList();
 		else
 			timeList = [];
 		
-		makeTimeList();
+		
+// 		makeTimeList();
 		setTime();
 	});
 	
 
-	$(document).on("click", ".btnTheater", function(e) {
-		var cd = $(this).data("cd");
+
+
+
+	// 날짜 클릭
+	$(".reserve-date").on("click", function(e) {
 		
-		if (cd == "favorite") {
-			$("#login").modal();
-			return;
-		}
-		
-		$(".btnTheater").parent().removeClass("active");
-		$(this).parent().addClass("active");
-		
-		$("#TabRegionCd").val($(this).data("cd"));
-		
-		$(".subTheater").hide();
-		$('.subTheater[data-cd="' + cd + '"]').show();
+		console.log("날짜클릭함");
+		getTimeList();
+// 		$.ajax({
+// 			type: "GET",
+// 			url: "TimeList",
+// 			data: $("#dataForm").serialize(),
+// 			dataType: "json",
+// 			success: function(response) {
+// 				console.log("getTimeList : 요청처리성공")
+// 			},
+// 			error: function(xhr, textStatus, errorThrown) {
+//  				console.log("getTimeList : 요청처리실패");
+//  			}
+// 		});
 	});
-
-
-
+	
+	
+// 	영화일정 : 시작시간 종료시간
+// 	상영관: 상영관코드 상영관명
+// 	on 상영관코드
+	// 상영시간
+	function getTimeList() {
+		
+	}
 	
 	
 	// 상영시간 버튼 클릭
@@ -549,7 +551,7 @@
 	
 	
 	
-	
+	// --------------------------------------------- 최종 선택 화면
 	// 영화 선택 (우측 상영시간 아래 부분)
 	function setMovie() {
 		console.log("setmovie()");
@@ -562,8 +564,8 @@
 			
 			$("#HidRating").val("");
 			$("#HidMovieUrl").val("");
-			$("#HidTicketRate").val("");
-			$("#HidReleaseDT").val("");
+// 			$("#HidTicketRate").val("");
+// 			$("#HidReleaseDT").val("");
 		} else {
 			var obj = $('.btnMvItem[data-cd="' + cd + '"]');
 			console.log(obj);
@@ -574,15 +576,14 @@
 
 			$("#HidRating").val(obj.data("rat"));
 			$("#HidMovieUrl").val(obj.data('url'));
-			$("#HidTicketRate").val(obj.data('trt'));
-			$("#HidReleaseDT").val(obj.data('rdt'));
+// 			$("#HidTicketRate").val(obj.data('trt'));
+// 			$("#HidReleaseDT").val(obj.data('rdt'));
 		}
 	}
 	
 	// 극장 선택
 	function setCinema() {
 		var cd = $("#CinemaCd").val();
-		console.log("setCinema내부) cd = " + cd);
 		if (cd == "all") {
 			$(".cnNm").text("");
 		} else {
@@ -590,6 +591,15 @@
 			$(".cnNm").text(obj.attr('title'));
 		}
 	}
+	
+	
+	function setTime() {
+	}
+	
+	
+	
+	
+	// --------------------------------------------- 최종 선택 화면 end	
 	
 	
 	// 날짜 선택
