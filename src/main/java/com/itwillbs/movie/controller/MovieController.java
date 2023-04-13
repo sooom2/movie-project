@@ -37,11 +37,20 @@ public class MovieController {
 		return "movieBoard/latest";
 	}
 	
+	
+	// 영화상세페이지
+	// Post매핑으로 하고 저장되지 않은 movie_code 를 보냈을 때는 메인 페이지로 보내야함
 	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
-		model.addAttribute("movieInfo", movieInfo);
 		
+		// 우리가 갖고 있는 movie_code를 요청 보내지 않으면 메인페이지로 보내기 
+		if(movieInfo == null) {
+			return "redirect:/main";
+		}
+		
+		
+		model.addAttribute("movieInfo", movieInfo);
 		return "movieBoard/movieInfo2";
 	}
 }
