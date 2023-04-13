@@ -159,8 +159,150 @@
 														<div id="ssSeat" class="seatWrap">
 															<div class="seatSelectWrapper">
 																<div class="seatSelectContainer">
-																	<div class="seatMap" id="seatMap" style="width: 432px; height: 252px;"><div class="child" style="top:36px;left:0px">A</div><div class="child" style="top:72px;left:0px">B</div><div class="child" style="top:108px;left:0px">C</div><div class="child" style="top:144px;left:0px">D</div><div class="child" style="top:180px;left:0px">E</div><button type="button" data-id="0" class="seat available" style="top:36px;left:36px;background-color:#C8C8C8">A1</button><button type="button" data-id="1" class="seat available soldout" style="top:36px;left:72px;background-color:#C8C8C8">A2</button><button type="button" data-id="2" class="seat available soldout" style="top:36px;left:108px;background-color:#C8C8C8">A3</button><button type="button" data-id="3" class="seat soldout" style="top:36px;left:180px;background-color:#3D3F51" disabled="">A5</button><button type="button" data-id="4" class="seat soldout" style="top:36px;left:216px;background-color:#3D3F51" disabled="">A6</button><button type="button" data-id="5" class="seat available" style="top:36px;left:288px;background-color:#C8C8C8">A8</button><button type="button" data-id="6" class="seat available" style="top:36px;left:324px;background-color:#C8C8C8">A9</button><button type="button" data-id="7" class="seat available soldout" style="top:72px;left:36px;background-color:#C8C8C8">B1</button><button type="button" data-id="8" class="seat available soldout" style="top:72px;left:72px;background-color:#C8C8C8">B2</button><button type="button" data-id="9" class="seat available" style="top:72px;left:108px;background-color:#C8C8C8">B3</button><button type="button" data-id="10" class="seat available" style="top:72px;left:144px;background-color:#C8C8C8">B4</button><button type="button" data-id="11" class="seat available soldout" style="top:72px;left:180px;background-color:#C8C8C8">B5</button><button type="button" data-id="12" class="seat available" style="top:72px;left:216px;background-color:#C8C8C8">B6</button><button type="button" data-id="13" class="seat available" style="top:72px;left:252px;background-color:#C8C8C8">B7</button><button type="button" data-id="14" class="seat available" style="top:72px;left:288px;background-color:#C8C8C8">B8</button><button type="button" data-id="15" class="seat available" style="top:72px;left:324px;background-color:#C8C8C8">B9</button><button type="button" data-id="16" class="seat available" style="top:108px;left:36px;background-color:#C8C8C8">C1</button><button type="button" data-id="17" class="seat available" style="top:108px;left:72px;background-color:#C8C8C8">C2</button><button type="button" data-id="18" class="seat available soldout" style="top:108px;left:108px;background-color:#C8C8C8">C3</button><button type="button" data-id="19" class="seat available" style="top:108px;left:144px;background-color:#C8C8C8">C4</button><button type="button" data-id="20" class="seat available" style="top:108px;left:180px;background-color:#C8C8C8">C5</button><button type="button" data-id="21" class="seat available soldout" style="top:108px;left:216px;background-color:#C8C8C8">C6</button><button type="button" data-id="22" class="seat available" style="top:108px;left:252px;background-color:#C8C8C8">C7</button><button type="button" data-id="23" class="seat available" style="top:108px;left:288px;background-color:#C8C8C8">C8</button><button type="button" data-id="24" class="seat available" style="top:108px;left:324px;background-color:#C8C8C8">C9</button><button type="button" data-id="25" class="seat available" style="top:144px;left:36px;background-color:#C8C8C8">D1</button><button type="button" data-id="26" class="seat available" style="top:144px;left:72px;background-color:#C8C8C8">D2</button><button type="button" data-id="27" class="seat available" style="top:144px;left:108px;background-color:#C8C8C8">D3</button><button type="button" data-id="28" class="seat available soldout" style="top:144px;left:144px;background-color:#C8C8C8">D4</button><button type="button" data-id="29" class="seat available" style="top:144px;left:180px;background-color:#C8C8C8">D5</button><button type="button" data-id="30" class="seat available" style="top:144px;left:216px;background-color:#C8C8C8">D6</button><button type="button" data-id="31" class="seat available soldout" style="top:144px;left:252px;background-color:#C8C8C8">D7</button><button type="button" data-id="32" class="seat available" style="top:144px;left:288px;background-color:#C8C8C8">D8</button><button type="button" data-id="33" class="seat available" style="top:144px;left:324px;background-color:#C8C8C8">D9</button><button type="button" data-id="34" class="seat available" style="top:180px;left:36px;background-color:#C8C8C8">E1</button><button type="button" data-id="35" class="seat available" style="top:180px;left:72px;background-color:#C8C8C8">E2</button><button type="button" data-id="36" class="seat available" style="top:180px;left:108px;background-color:#C8C8C8">E3</button><button type="button" data-id="37" class="seat available" style="top:180px;left:144px;background-color:#C8C8C8">E4</button><button type="button" data-id="38" class="seat available soldout" style="top:180px;left:180px;background-color:#C8C8C8">E5</button><button type="button" data-id="39" class="seat available soldout" style="top:180px;left:216px;background-color:#C8C8C8">E6</button><button type="button" data-id="40" class="seat available" style="top:180px;left:252px;background-color:#C8C8C8">E7</button><button type="button" data-id="41" class="seat soldout" style="top:180px;left:288px;background-color:#3D3F51" disabled="">E8</button><button type="button" data-id="42" class="seat soldout" style="top:180px;left:324px;background-color:#3D3F51" disabled="">E9</button><button type="button" data-id="43" class="seat soldout" style="top:180px;left:360px;background-color:#3D3F51" disabled="">E10</button><div class="exit right" style="top:72px;left:396px">출구</div></div>
-																</div>
+																		<div class="seatMap" id="seatMap"
+																			style="width: 432px; height: 252px;">
+																			<div class="child" style="top: 36px; left: 0px">A</div>
+																			<div class="child" style="top: 72px; left: 0px">B</div>
+																			<div class="child" style="top: 108px; left: 0px">C</div>
+																			<div class="child" style="top: 144px; left: 0px">D</div>
+																			<div class="child" style="top: 180px; left: 0px">E</div>
+																			<button type="button" data-id="0"
+																				class="seat available"
+																				style="top: 36px; left: 36px; background-color: #C8C8C8">A1</button>
+																			<button type="button" data-id="1"
+																				class="seat available soldout"
+																				style="top: 36px; left: 72px; background-color: #C8C8C8">A2</button>
+																			<button type="button" data-id="2"
+																				class="seat available soldout"
+																				style="top: 36px; left: 108px; background-color: #C8C8C8">A3</button>
+																			<button type="button" data-id="3"
+																				class="seat soldout"
+																				style="top: 36px; left: 180px; background-color: #3D3F51"
+																				disabled="">A5</button>
+																			<button type="button" data-id="4"
+																				class="seat soldout"
+																				style="top: 36px; left: 216px; background-color: #3D3F51"
+																				disabled="">A6</button>
+																			<button type="button" data-id="5"
+																				class="seat available"
+																				style="top: 36px; left: 288px; background-color: #C8C8C8">A8</button>
+																			<button type="button" data-id="6"
+																				class="seat available"
+																				style="top: 36px; left: 324px; background-color: #C8C8C8">A9</button>
+																			<button type="button" data-id="7"
+																				class="seat available soldout"
+																				style="top: 72px; left: 36px; background-color: #C8C8C8">B1</button>
+																			<button type="button" data-id="8"
+																				class="seat available soldout"
+																				style="top: 72px; left: 72px; background-color: #C8C8C8">B2</button>
+																			<button type="button" data-id="9"
+																				class="seat available"
+																				style="top: 72px; left: 108px; background-color: #C8C8C8">B3</button>
+																			<button type="button" data-id="10"
+																				class="seat available"
+																				style="top: 72px; left: 144px; background-color: #C8C8C8">B4</button>
+																			<button type="button" data-id="11"
+																				class="seat available soldout"
+																				style="top: 72px; left: 180px; background-color: #C8C8C8">B5</button>
+																			<button type="button" data-id="12"
+																				class="seat available"
+																				style="top: 72px; left: 216px; background-color: #C8C8C8">B6</button>
+																			<button type="button" data-id="13"
+																				class="seat available"
+																				style="top: 72px; left: 252px; background-color: #C8C8C8">B7</button>
+																			<button type="button" data-id="14"
+																				class="seat available"
+																				style="top: 72px; left: 288px; background-color: #C8C8C8">B8</button>
+																			<button type="button" data-id="15"
+																				class="seat available"
+																				style="top: 72px; left: 324px; background-color: #C8C8C8">B9</button>
+																			<button type="button" data-id="16"
+																				class="seat available"
+																				style="top: 108px; left: 36px; background-color: #C8C8C8">C1</button>
+																			<button type="button" data-id="17"
+																				class="seat available"
+																				style="top: 108px; left: 72px; background-color: #C8C8C8">C2</button>
+																			<button type="button" data-id="18"
+																				class="seat available soldout"
+																				style="top: 108px; left: 108px; background-color: #C8C8C8">C3</button>
+																			<button type="button" data-id="19"
+																				class="seat available"
+																				style="top: 108px; left: 144px; background-color: #C8C8C8">C4</button>
+																			<button type="button" data-id="20"
+																				class="seat available"
+																				style="top: 108px; left: 180px; background-color: #C8C8C8">C5</button>
+																			<button type="button" data-id="21"
+																				class="seat available soldout"
+																				style="top: 108px; left: 216px; background-color: #C8C8C8">C6</button>
+																			<button type="button" data-id="22"
+																				class="seat available"
+																				style="top: 108px; left: 252px; background-color: #C8C8C8">C7</button>
+																			<button type="button" data-id="23"
+																				class="seat available"
+																				style="top: 108px; left: 288px; background-color: #C8C8C8">C8</button>
+																			<button type="button" data-id="24"
+																				class="seat available"
+																				style="top: 108px; left: 324px; background-color: #C8C8C8">C9</button>
+																			<button type="button" data-id="25"
+																				class="seat available"
+																				style="top: 144px; left: 36px; background-color: #C8C8C8">D1</button>
+																			<button type="button" data-id="26"
+																				class="seat available"
+																				style="top: 144px; left: 72px; background-color: #C8C8C8">D2</button>
+																			<button type="button" data-id="27"
+																				class="seat available"
+																				style="top: 144px; left: 108px; background-color: #C8C8C8">D3</button>
+																			<button type="button" data-id="28"
+																				class="seat available soldout"
+																				style="top: 144px; left: 144px; background-color: #C8C8C8">D4</button>
+																			<button type="button" data-id="29"
+																				class="seat available"
+																				style="top: 144px; left: 180px; background-color: #C8C8C8">D5</button>
+																			<button type="button" data-id="30"
+																				class="seat available"
+																				style="top: 144px; left: 216px; background-color: #C8C8C8">D6</button>
+																			<button type="button" data-id="31"
+																				class="seat available soldout"
+																				style="top: 144px; left: 252px; background-color: #C8C8C8">D7</button>
+																			<button type="button" data-id="32"
+																				class="seat available"
+																				style="top: 144px; left: 288px; background-color: #C8C8C8">D8</button>
+																			<button type="button" data-id="33"
+																				class="seat available"
+																				style="top: 144px; left: 324px; background-color: #C8C8C8">D9</button>
+																			<button type="button" data-id="34"
+																				class="seat available"
+																				style="top: 180px; left: 36px; background-color: #C8C8C8">E1</button>
+																			<button type="button" data-id="35"
+																				class="seat available"
+																				style="top: 180px; left: 72px; background-color: #C8C8C8">E2</button>
+																			<button type="button" data-id="36"
+																				class="seat available"
+																				style="top: 180px; left: 108px; background-color: #C8C8C8">E3</button>
+																			<button type="button" data-id="37"
+																				class="seat available"
+																				style="top: 180px; left: 144px; background-color: #C8C8C8">E4</button>
+																			<button type="button" data-id="38"
+																				class="seat available soldout"
+																				style="top: 180px; left: 180px; background-color: #C8C8C8">E5</button>
+																			<button type="button" data-id="39"
+																				class="seat available soldout"
+																				style="top: 180px; left: 216px; background-color: #C8C8C8">E6</button>
+																			<button type="button" data-id="40"
+																				class="seat available"
+																				style="top: 180px; left: 252px; background-color: #C8C8C8">E7</button>
+																			<button type="button" data-id="41"
+																				class="seat soldout"
+																				style="top: 180px; left: 288px; background-color: #3D3F51"
+																				disabled="">E8</button>
+																			<button type="button" data-id="42"
+																				class="seat soldout"
+																				style="top: 180px; left: 324px; background-color: #3D3F51"
+																				disabled="">E9</button>
+																			<div class="exit right"
+																				style="top: 72px; left: 396px">출구</div>
+																		</div>
+																	</div>
 															</div>
 														</div>
 													</div>
@@ -628,9 +770,9 @@
 
 			if (seat.SeatStatus.toUpperCase() == 'AVAILABLE' && seat.IsSelectable == true) {
 				// 장애인석여부
-				if (seat.SeatType.toUpperCase() == 'DISABLED') {
-					$('.seat[data-id="' + id + '"]').css('background-color', '#FE223C');
-				} else {
+// 				if (seat.SeatType.toUpperCase() == 'DISABLED') {
+// 					$('.seat[data-id="' + id + '"]').css('background-color', '#FE223C');
+// 				} else {
 					// 커플석,3인소파,4인소파
 					if (fnParseInt(seat.DefaultUnitCnt) > 1) {
 						var ableList = seatList.filter(function (s) {
@@ -923,13 +1065,13 @@
 
 			if (seat.SeatStatus.toUpperCase() == 'AVAILABLE' && seat.IsSelectable == true) {
 				// 장애인석여부
-				if (seat.SeatType.toUpperCase() == 'DISABLED') {
-					togetherSeatList.push({
-						SeatGroup: seat.SeatGroup,
-						SeatNo: seat.SeatNo,
-						Idx: seat.Idx
-					});
-				} else {
+// 				if (seat.SeatType.toUpperCase() == 'DISABLED') {
+// 					togetherSeatList.push({
+// 						SeatGroup: seat.SeatGroup,
+// 						SeatNo: seat.SeatNo,
+// 						Idx: seat.Idx
+// 					});
+// 				} else {
 					// 커플석,3인소파,4인소파
 					if (fnParseInt(seat.DefaultUnitCnt) > 1) {
 						var ableList = seatList.filter(function (s) {
@@ -1044,9 +1186,9 @@
 		}
 
 		// 좌석타입이 장애인석일경우 일반석으로 변환처리
-		if (selectedSeatType.toUpperCase() == 'DISABLED') {
-			selectedSeatType = 'normal';
-		}
+// 		if (selectedSeatType.toUpperCase() == 'DISABLED') {
+// 			selectedSeatType = 'normal';
+// 		}
 
 		// 선택가능 좌석이 없을 경우 선택불가처리
 		if (selectableSeatCnt == 0) {

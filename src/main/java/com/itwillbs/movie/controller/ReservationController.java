@@ -50,7 +50,7 @@ public class ReservationController {
 	}
 	
 	@ResponseBody
-	@PostMapping("moviesList")
+	@GetMapping("moviesList")
 	public String moviesList(String cd) {
 		System.out.println("String cd: " + cd);
 		
