@@ -4,10 +4,13 @@
 	
 	<!-- 분실물 저장 -->
 	<insert id="insertLostBoard">
+		<selectKey keyProperty="lost_code" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(lost_code), 0) FROM lost_board
+		</selectKey>
 		INSERT
 			INTO lost_board
 			VALUES (
-				 null
+				 #{lost_code} + 1
 				,#{member_id}
 				,#{cinema_name}
 				,#{lost_name}
@@ -31,6 +34,20 @@
 				lost_code DESC
 			LIMIT 10
 	</select>
+	
+	<!-- 분실물 상세 -->
+	<select id="selectLostDetail" resultType="hashmap">
+		SELECT *
+			FROM lost_board
+			WHERE lost_code = #{lost_code}
+	</select>
+	
+	<!-- 분실물 삭제 -->
+	<delete id="deleteLostBoard">
+		DELETE 
+			FROM lost_board
+			WHERE lost_code = #{lost_code}
+	</delete>
 	
 	<!-- 1대1 저장 -->
 	<insert id="insertOneBoard">

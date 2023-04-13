@@ -27,6 +27,18 @@ public class BoardService {
 //		System.out.println("service: " + mapper.selectLostBoardList());
 		return mapper.selectLostBoardList();
 	}
+
+	// 분실물 상세
+	public HashMap<String, String> getLostDetail(HashMap<String, String> map) {
+		
+		return mapper.selectLostDetail(map);
+	}
+
+	// 분실물 삭제
+	public int getLostDelete(HashMap<String, String> map) {
+		
+		return mapper.deleteLostBoard(map);
+	}
 	
 	// 1대1 저장
 	public int registOneBoard(HashMap<String, String> map) {
@@ -38,6 +50,9 @@ public class BoardService {
 	public List<HashMap<String, String>> getOneBoardList() {
 		return mapper.selectOneBoardList();
 	}
+	
+	
+	
 	
 	
 	

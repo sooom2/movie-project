@@ -13,11 +13,19 @@ public interface BoardMapper {
 	// 분실물 목록
 	List<BoardVO> selectLostBoardList();
 
+	// 분실물 상세
+	HashMap<String, String> selectLostDetail(HashMap<String, String> map);
+
+	// 분실물 삭제
+	int deleteLostBoard(HashMap<String, String> map);
+
 	// 1대1 저장
 	int insertOneBoard(HashMap<String, String> map);
 
 	// 1대1 문의 목록
 	List<HashMap<String, String>> selectOneBoardList();
+
+
 	
 	
 	

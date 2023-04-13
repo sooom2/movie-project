@@ -66,6 +66,31 @@ public class CustomerController {
 			model.addAttribute("msg", "등록 실패");
 			return "fail_back";
 		}
+	}
+	
+	// 분실물 상세
+	@RequestMapping(value = "lost_detail", method = {RequestMethod.GET, RequestMethod.POST})
+	public String lostDetail(@RequestParam HashMap<String, String> map, Model model) {
+		
+		map = boardService.getLostDetail(map);
+		model.addAttribute("map", map);
+		
+//		List<BoardVO> lostBoardList = boardService.getLostBoardList();
+//		model.addAttribute("lostBoardList", lostBoardList);
+				
+		return "customer_center/lost_detail";
+	}
+	// 분실물 삭제
+	@RequestMapping(value = "lost_deletePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String lostDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getLostDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/lost_board";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
 		
 	}
 	
