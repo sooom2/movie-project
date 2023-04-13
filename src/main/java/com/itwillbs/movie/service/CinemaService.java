@@ -21,6 +21,10 @@ public class CinemaService {
 		return mapper.location_find();
 	}
 
+	public List<HashMap<String, String>> location() {
+		return mapper.location();
+	}
+
 	
 	
 

@@ -41,14 +41,16 @@ $('.sel-city').on('click', function() {
 					<div class="theater-box" style="height: 292px;">
 						<div class="theater-place">
 							<ul>
-							<c:forEach var="cinema" items="${cinemaList }"> 
 								<li class="">
-									<button type="button" class="sel-city">${cinema.get('location_code') }</button>
-							</c:forEach>
+									<c:forEach var="location" items="${location }">
+									<button type="button" class="sel-city">${location.get('location_name') }</button>
+									</c:forEach>
 									<div class="theater-list">
 										<ul>
-											<li value="${cinema.get('cinema_code') }">
-											<a href="/cinema?cinema_code=${cinema.get('cinema_code') }"	title="${cinema.get('cinema_name') } 상세보기">${cinema.get('cinema_name') }</a></li>
+<%-- 										<c:forEach var="cinema" items="${cinemaList }">  --%>
+<%-- 											<li value="${cinema.get('cinema_code') }"> --%>
+<%-- 											<a href="/cinema?cinema_code=${cinema.get('cinema_code') }"	title="${cinema.get('cinema_name') } 상세보기">${cinema.get('cinema_name') }</a></li> --%>
+<%-- 										</c:forEach> --%>
 										</ul>
 									</div>
 								</li>

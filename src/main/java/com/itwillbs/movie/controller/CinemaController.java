@@ -34,7 +34,8 @@ public class CinemaController {
 		System.out.println(locationList);
 		System.out.println("=============================");
 		
-		//enum  
+		List<HashMap<String, String>> location = cinemaService.location();
+		System.out.println(location);
 		
 		
 		return "cinema/cinema_all";

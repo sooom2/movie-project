@@ -78,17 +78,6 @@ public class MovieRegisterController {
 	
 	//-------------------메인 영화------------------------------------------------------------
 	
-	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-	public String screening(Model model) {
-		System.out.println("dddd...");
-//		List<HashMap<String, String>> movieList = service.screeningMovie();
-//		
-//		model.addAttribute("movie",movieList);
-//		System.out.println(model);
-//		
-		
-		return "index";
-	}
 	
 	//-------------------------------------------------------------------------------------------------
 	// 영화 일정 ( Movie Schedule )

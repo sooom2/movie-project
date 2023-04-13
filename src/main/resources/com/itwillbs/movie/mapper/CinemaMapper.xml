@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.movie.mapper.CinemaMapper">
 <select id="location_find" resultType="hashmap">
-	SELECT DISTINCT location_code
-	  FROM cinema 
-  ORDER BY location_code;
+	SELECT cinema_name,location.location_code,location_name
+      FROM cinema
+ LEFT JOIN location
+        ON cinema.location_code = location.location_code
 </select>
+<select id="location" resultType="hashmap">
+	SELECT location_name
+	  FROM location
+</select>
+
 </mapper>
 	
