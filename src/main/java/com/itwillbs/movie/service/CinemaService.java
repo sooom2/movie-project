@@ -15,14 +15,12 @@ public class CinemaService {
 
 	@Autowired
 	private CinemaMapper mapper;
-	
-	//중복되지않는 지역번호 찾기
-	public List<HashMap<String, String>> location_find() {
-		return mapper.location_find();
-	}
-
 	public List<HashMap<String, String>> location() {
 		return mapper.location();
+	}
+
+	public List<HashMap<String, String>> locationCinema(String location_name) {
+		return mapper.locationCinema(location_name);
 	}
 
 	

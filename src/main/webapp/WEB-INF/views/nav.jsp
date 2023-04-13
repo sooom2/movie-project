@@ -72,7 +72,7 @@
 						<ul>
 <%-- 						<c:forEach var="cinema" items="${cinemaList }"> --%>
 							<li><a href="" class="" onmouseover="hideTheater()"></a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">전체극장</a></li>
+							<li><a href="cinemaList" class="" onmouseover="hideTheater()">전체극장</a></li>
 <%-- 						</c:forEach> --%>
 						
 						</ul>
@@ -85,8 +85,8 @@
 				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li>
+<!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
+<!-- 							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li> -->
 							<li><a href="" class="" onmouseover="hideTheater()">진행중인 이벤트</a></li>
 						</ul>
 					</div>

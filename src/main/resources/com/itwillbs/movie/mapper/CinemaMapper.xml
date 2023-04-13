@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.movie.mapper.CinemaMapper">
-<select id="location_find" resultType="hashmap">
-	SELECT cinema_name,location.location_code,location_name
-      FROM cinema
- LEFT JOIN location
-        ON cinema.location_code = location.location_code
-</select>
+
+
+
 <select id="location" resultType="hashmap">
-	SELECT location_name
-	  FROM location
+	SELECT * FROM location
+</select>
+<!-- <select id="locationCinema" resultType="hashmap"> -->
+<!-- 	SELECT  -->
+<!-- 			cinema_name -->
+<!-- 			,location.location_code -->
+<!-- 			,location_name -->
+<!--       FROM cinema -->
+<!--  LEFT JOIN location  -->
+<!--         ON cinema.location_code = location.location_code -->
+<!--   ORDER BY location_name -->
+<!-- </select> -->
+<select id="locationCinema" resultType="hashmap">
+	SELECT cinema_name
+      FROM cinema
+ LEFT JOIN location 
+        ON cinema.location_code = location.location_code
+  	 WHERE location_name = #{location_name}
 </select>
 
 </mapper>
