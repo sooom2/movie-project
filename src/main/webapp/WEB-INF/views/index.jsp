@@ -367,23 +367,6 @@
 							</div>
 				   		 </li>
 						</c:forEach>	
-						
-							
-<!-- 						<li data-moviecode=""><span class="over over-a"> <a -->
-<!-- 								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a> -->
-<!-- 								<a href="" class="info"><span class="over-btn-info">상세정보</span></a> -->
-<!-- 						</span> <a href=""> <img src="resources/images/movies/poster/m1.jpg" /> -->
-<!-- 								<div class="movie-desc">스즈메의 문단속</div> -->
-<!-- 						</a> -->
-<!-- 							<div class="grade" style="text-align: center"> -->
-<!-- 								<span>예매율 : </span> <strong>55.0%</strong> -->
-<!-- 							</div> -->
-<!-- 							<div class="like-btn"> -->
-<!-- 								<a href="javascript:;" class="icon heart"> <img -->
-<!-- 									src="resources/images/ico/before-like.png" alt="찜하기"><span -->
-<!-- 									class="likeNum">21</span> -->
-<!-- 								</a> -->
-<!-- 							</div></li> -->
 					</ul>
 				</div>
 <%-- 			</c:forEach> --%>

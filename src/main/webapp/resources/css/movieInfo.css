@@ -48,15 +48,17 @@
 	
 }
 
+
+/* 목록페이지의 ul*/
 .section-movie-list ul {
 	display: block;
-	width: 890px;
+	width: 1100px;
 	margin: 0 auto;
 }
 
 .section-movie-list ul li {
 	display: inline-block;
-	margin: 0 3px 33px 3px;
+	margin: 0 25px 100px 3px;
 	position: relative;
 	
 
@@ -214,23 +216,23 @@
 /* [m]: movie list
 /*
 ============================================================== */
-.movie-desc {
-	
- 	font-size: 17px;
-	width: 170px;
-/* 	overflow: hidden !important; */
-/* 	white-space : nowrap; */
-	padding: 6px 0;
-/* 	color: #000000; */
-/* 	text-align: center; */
-	
+/* 영화 페이지 등급&이름 표시*/
+.movie-desc {	
+    width: 154px;
+    overflow: hidden !important;
+    border: 1px solid #b4b5b5;
+    height: 32px;
+    padding: 0 7px;
+    line-height: 31px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #89898a;
     position: relative;
-    width: 100%;
-    line-height: 25px;
 }
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
 	.movie-desc .rate-n, .movie-desc .rate-x {
+	
 	font-weight: bold;
 	color: #fff;
 	width: 20px;
@@ -238,32 +240,35 @@
 	display: inline-block;
 	text-align: center;
 	margin-right: 7px;
-	position: relative;
 	padding: 0;
 	overflow: hidden;
 	text-indent: -10000em;
-	position: relative;
-	top: 4px;
+	top: 6px;
+	position: absolute;
 }
 
 .movie-desc .rate-all {
 	background: url("../images/movies/icon-rate-all.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .movie-desc .rate-12 {
 	background: url("../images/movies/icon-rate-12.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .movie-desc .rate-15 {
 	background: url("../images/movies/icon-rate-15.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .movie-desc .rate-x {
 	background: url("../images/movies/icon-rate-x.png") center center
 		no-repeat;
+	background-size: 23px 23px;
 }
 
 .movie-desc .rate-n {
@@ -271,20 +276,17 @@
 		no-repeat;
 }
 
-.movie-desc .label {
-	display: block;
-	width: 20px;
-	height: 28px;
+.movie-desc .tit {
+
 	overflow: hidden;
-	background: url("../images/movies/icon-list-label.png") center center
-		no-repeat;
-	position: absolute;
-	top: 0;
-	left: 5px;
-	font-size: 14px;
-	text-align: center;
-	line-height: 18px;
-	color: #000;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 2px 0 0 25px;
+    font-size: 1.3333em;
+    font-weight: 400;
+    
 }
 
 .movie-date {
@@ -343,12 +345,7 @@
     margin: 0;
     padding: 0;
 }
-.button.purple {
-    color: #fff;
-    line-height: 36px;
-    border: 0;
-    background: #503396;
-}
+
 a.button {
     text-decoration: none;
 }
@@ -358,19 +355,18 @@ a:link {
 }
 .button {
     display: inline-block;
-    height: 36px;
+    height: 34px;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 33px;
     text-align: center;
     line-height: 34px;
-    color: #503396;
+    color: #fff !important;
     font-weight: 400;
     border-radius: 4px;
-    font-family: NanumBarunGothic,Dotum,'돋움',sans-serif;
     text-decoration: none;
     border: 1px solid #503396;
     vertical-align: middle;
-    background-color: #fff;
+    background-color: #503396;
     cursor: pointer;
 }
 
@@ -544,6 +540,7 @@ a:link {
  .like-btn {
 	margin-top: 0px;
 	padding-bottom: 6px;
+    float: left;
 }
 
 .like-btn .icon {
@@ -551,8 +548,8 @@ a:link {
 	align-items: center;
 	justify-content: center;
 	background-color: #f1f1f1;
-	margin: 6px 25px;
-	padding: 4px 4px;
+	margin: 0px 4px 0 0;
+	padding: 7px 15px;
 	border-radius: 8px;
 	border: 1px solid #c1c1c1;
 }
@@ -576,3 +573,12 @@ a:link {
 	font-size: 14px;
 }
   
+/* 영화 목록 페이지에서 좋아요, 예매버튼 부분 */
+.section-movie-list .btn-util{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    padding-top: 8px;
+}
