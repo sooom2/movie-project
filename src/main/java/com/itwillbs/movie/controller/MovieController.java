@@ -33,7 +33,12 @@ public class MovieController {
 	
 	// 최신개봉순이긴한데 아직 만드는중
 	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
-	public String latest() {
+	public String latest(Model model) {
+		
+		List<HashMap<String, String>> movieList = service.selectMovies();
+		
+		model.addAttribute("movieList",movieList);
+		
 		return "movieBoard/comming";
 	}
 	

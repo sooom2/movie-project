@@ -6,38 +6,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/common.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
-<link href="resources/css/movieInfo.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+<link href="${pageContext.request.contextPath}/resources/css/inc.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+<jsp:include page="../nav.jsp" />   
 </head>
 
 <body id="top">
-	<jsp:include page="../nav.jsp" />   
- 	<div id="content">
-           
-	<div class="selector"></div>
-	<div class="section group section-movie-list screening">
-    	<ul>
-		<c:forEach var="movie" items="${movie }">
-		    <li data-moviecode="${movie.get('info_movie_code') }">
-		    <span class="over over-a"><a href="#" class="rsv">예매하기</a>
-		    <a href="MovieInfo?movieCd=${movie.get('info_movie_code') }" class="info">상세정보</a></span>
-		    <img src="https://file.cineq.co.kr/i.aspx?movieid=${movie.get('info_movie_code') }&amp;size=210" class="posterlist">
-		    <div class="movie-desc">
-		    <span class="label"> </span> ${movie.get('info_movie_title') }
-		    <div class="btn-util">
-		    	<button type="button" class="button btn-like" data-no="01309400"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>1.9k</span></button>
-                <a href="#" class="button purple bokdBtn" data-no="01309400" title="영화 예매하기">예매</a>  </div>
-		   
-		    	</div>
-		    </li>
-		</c:forEach>		    
- 	   </ul>
- 	   
+<div id = "container">
+ 		<div id="content">
+			<div class="selector"></div>
+			<div class="section group section-movie-list comming">
+   				<ul>
+					<c:forEach var="movie" items="${movieList }">
+					    <li data-moviecode="${movie.info_movie_code }">
+						    <span class="over over-a">
+						    	<a href="#" class="rsv">
+						    		<span class="over-btn-rsv">예매하기</span></a>
+						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
+						    		<span class="over-btn-info">상세정보</span></a>
+					    	</span>
+					    	<img src="${movie.info_movie_poster}" class="posterlist">
+					    	<div class="movie-desc">
+					    		<p class="rate-15">${movie.info_rating } ,</p>
+					    		<p title="${movie.info_movie_title }" class="tit">${movie.info_movie_title }</p>
+			    			</div>
+			    			
+					    <div class="btn-util">
+							 <div class="like-btn">
+								<a href="javascript:;" class="icon heart">
+									<img src="resources/images/ico/before-like.png" alt="찜하기">
+									<span class="likeNum">${movie.like_count }</span>
+								</a>
+							</div>
+			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매</a>
+			           		 </div>
+			  			</li>
+					</c:forEach>		    
+   				</ul>
+   			</div>
+		</div>
 	</div>
-</div>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
@@ -55,7 +66,7 @@
             $(this).closest("ul").find("span.over").removeClass("on");
         });
 
-        $("ul>li a.rsv", "div.screening").click(function (e) {
+        $("ul>li a.rsv", "div.comming").click(function (e) {
             e.preventDefault();
             var movieCode = $(this).closest("li").data("moviecode");
 
