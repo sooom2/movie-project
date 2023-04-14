@@ -9,6 +9,29 @@
 			FROM member
 			WHERE member_id = #{id}
 	</select>
+	
+	<!-- 비밀번호 조회 -->
+	<select id="selectPasswd" resultType="string">
+		SELECT member_pw FROM member
+		WHERE member_id = #{member_id}
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="updateMemberInfo" >
+	 UPDATE member
+	 	SET 
+	 	member_email = #{member_email}
+	 	<if test = "member_pw2 neq ''">
+	 	,member_pw = #{member_pw2}
+	 	</if>
+	 	,member_name = #{member_name}
+	 	,member_bday = #{member_bday}
+	 	,member_tel = #{member_tel}
+	 	,member_prefer_branch = #{member_prefer_branch}
+	 	,member_prefer_genre = #{member_prefer_genre}
+		WHERE member_id = #{member_id}
+	
+	</update>
   
   
 </mapper>

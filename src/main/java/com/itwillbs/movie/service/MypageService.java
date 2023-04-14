@@ -1,5 +1,7 @@
 package com.itwillbs.movie.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,14 @@ public class MypageService {
 
 	public MemberVO getMemberInfo(String id) {
 		return mapper.selectMemberInfo(id);
+	}
+
+	public String getPasswd(String id) {
+		return mapper.selectPasswd(id);
+	}
+
+	public int updateMemberInfo(HashMap<String, String> update) {
+		return mapper.updateMemberInfo(update);
 	}
 	
 	

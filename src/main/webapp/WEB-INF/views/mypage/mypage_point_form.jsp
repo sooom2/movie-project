@@ -23,20 +23,20 @@
 			</div>
 			<div class="section group section-mypage-summary">
 				<div class="summary summary-1">
-					<h3>회원정보</h3>
+									<h3>회원정보</h3>
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
-						김예리 <span class="point">0P</span>
+						${member.member_name } 님<span class="point">${member.member_point }P</span>
 					</div>
 
 					<div class="username">
-						선호극장 <span class="right"> 000 </span>
+						선호극장 <span class="right"> ${member.member_prefer_branch } </span>
 
 					</div>
 
 					<div class="username">
-						선호장르 <span class="right"> 스릴러 </span>
+						선호장르 <span class="right"> ${member.member_prefer_genre } </span>
 					</div>
 
 				</div>
