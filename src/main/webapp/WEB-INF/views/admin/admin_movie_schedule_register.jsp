@@ -18,6 +18,8 @@
 
 function selectCinema(){
 	alert("change");
+	
+	alert($(".cinema_name option:selected").val());
 	$.ajax({
 		type: "POST",
 		url: "screenSelect",
@@ -27,7 +29,9 @@ function selectCinema(){
 		},
 		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
 			
-			$('.selectScreen_name option').remove();
+			alert(result);
+			
+			$(".selectScreen_name option").remove();
 			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
 			$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
 			for(var i=0; i<result.length; i++){
