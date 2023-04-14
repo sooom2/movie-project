@@ -174,7 +174,13 @@
 	<select id="selectMember" resultType="hashmap">
 		SELECT * FROM member
 	</select>
-	
+
+	<!-- 메인페이지 핫상품3개 -->
+	<select id="selectHot" resultType="hashmap">
+		SELECT *
+		  FROM item
+		 WHERE item_status = 'hot'
+	</select>
 </mapper>
 
 

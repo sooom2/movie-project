@@ -33,6 +33,10 @@ public class MemberService {
 	public int registMember(MemberVO member) {
 		return mapper.insertMember(member);
 	}
+	//최신 핫상품 (3개)보여주기
+	public List<HashMap<String, String>> selectHotItem() {
+		return mapper.selectHot();
+	}
 
 	
 }

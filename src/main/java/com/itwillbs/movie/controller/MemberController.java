@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
@@ -31,24 +34,21 @@ public class MemberController {
 	@GetMapping(value = "main")
 	public String main(Model model) {
 		
-		//메인스토어 뿌리기
-		List<HashMap<String, String>> gift = storeService.selectItem();
-		List<HashMap<String, String>> food = storeService.selectFood();
-		List<HashMap<String, String>> ticket = storeService.selectTicket();
-		System.out.println(gift);
 		
+		//메인스토어 뿌리기
+		List<HashMap<String, String>> hotItem = service.selectHotItem();
 		
 		//영화 뿌리기
 		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
 		
 		model.addAttribute("movie", movieList);
-		model.addAttribute("gift", gift);
-		model.addAttribute("food", food);
-		model.addAttribute("ticket", ticket);
-		
+		model.addAttribute("hotItem", hotItem);
 		
 		return "index";
 	}
+	
+
+	
 	
 	//회원로그인
 	@GetMapping(value = "memLogin")

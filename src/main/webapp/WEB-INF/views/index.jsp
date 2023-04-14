@@ -2,17 +2,17 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <c:set var="path" value="${pageContext.request.contextPath}" /> --%>
-
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <html>
 <head>
 <title>Insert title here</title>
-<link href="resources/css/main.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
-<link href="resources/css/common.css" rel="stylesheet">
+<link href="${path }/resources/css/main.css" rel="stylesheet">
+<link href="${path }/resources/css/main2.css" rel="stylesheet">
+<link href="${path }/resources/css/inc.css" rel="stylesheet">
+<link href="${path }/resources/css/common.css" rel="stylesheet">
 
 
-<link href="resources/css/jquery.bxslider.css" rel="stylesheet">
+<link href="${path }/resources/css/jquery.bxslider.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
@@ -578,21 +578,18 @@
 					<dt>
 							스토어상품<a href="store_main" alt="" class="btn_more pak">더보기</a>
 					</dt>
-				<c:forEach var="gift" items="${gift }"> 
-						
-			
+					<c:forEach var="hotItem" items="${hotItem }"> 
 						<dd>
-							<a href="store_detail?item_code=${gift.item_code }">
+							<a href="store_detail?item_code=">
 								<div class="img_wrap" data-scale="false">
-									<img src="${gift.item_image }" alt="상품이미지">
+									<img src="${hotItem.item_image }" alt="상품이미지">
 								</div>
 								<div class="giftcon_info_wrap">
-									<span>${gift.item_name }</span> <strong>${gift.item_price }원</strong>
+									<span>${hotItem.item_name }</span> <strong>${hotItem.item_price }원</strong>
 								</div>
 							</a>
 						</dd>
-
-				</c:forEach>
+					</c:forEach>
 					</dl>
 				</li>
 				<li class="bestReview">
