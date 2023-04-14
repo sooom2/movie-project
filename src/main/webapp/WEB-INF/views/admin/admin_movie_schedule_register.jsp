@@ -121,8 +121,8 @@ $(function() {
                                                <div class="form-floating mb-3 mb-md-0 selectbox" >
                                                    <div class="sch_movie_code">
                                                    	<label for="sch_movie_code">영화선택 : </label>
-													<select name="sch_movie_code" id="sch_movie_code">
-													<option value="none" selected="selected" disabled>영화를 선택하세요</option>
+													<select name="sch_movie_code" id="sch_movie_code" style="width: 300px;">
+													<option value="none" selected="selected" disabled >영화를 선택하세요</option>
 													<option value="none" disabled>=======================</option>
 													<c:forEach var="movie" items="${movieList }">
 										   				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
