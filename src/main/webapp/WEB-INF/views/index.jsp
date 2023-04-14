@@ -580,7 +580,7 @@
 					</dt>
 					<c:forEach var="hotItem" items="${hotItem }"> 
 						<dd>
-							<a href="store_detail?item_code=">
+							<a href="store_detail?item_code=${hotItem.item_code }">
 								<div class="img_wrap" data-scale="false">
 									<img src="${hotItem.item_image }" alt="상품이미지">
 								</div>
