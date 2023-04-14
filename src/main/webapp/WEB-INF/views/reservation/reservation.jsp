@@ -153,8 +153,8 @@
 											<h5 class="r-h5">영화</h5>
 										</div>
 										<div class="tab2">
-<!-- 											<a href="#" class="btnMovieTab" data-tab="boxoffice">예매율순</a>  -->
-<!-- 											<a href="#" class="btnMovieTab active" data-tab="name">가나다 순</a> -->
+											<a href="#" class="btnMovieTab" data-tab="boxoffice">선호장르</a> 
+											<a href="#" class="btnMovieTab active" data-tab="name">전체</a>
 										</div>
 										<div class="list">
 											<div class="scrollbar-inner">
@@ -479,15 +479,16 @@
 		});
 	
 // 예매율순 | 가나다순 클릭
-// 		$(".btnMovieTab").on("click", function(e) { 
-// 			e.preventDefault();
-// 			$(".btnMovieTab").removeClass("active");
-// 			$(this).addClass("active");
-// 			$("#Sort").val($(this).data("tab"));
+		$(".btnMovieTab").on("click", function(e) { 
+			e.preventDefault();
+			$(".btnMovieTab").removeClass("active");
+			$(this).addClass("active");
+			$("#Sort").val($(this).data("tab"));
 			
-// 			makeMovieList();
-// 		});
+			makeMovieList();
+		});
 		
+// 선호 영화 장르만 보기 체크박스 선택?
 		
 // 영화리스트 클릭
 	$(document).on("click", ".btnMvItem", function(e) {
@@ -517,8 +518,8 @@
 
 	// 날짜 클릭
 	$(".reserve-date").on("click", function(e) {
-		
-		console.log("날짜클릭함");
+		var cd = $(this).data("cd");
+		console.log("날짜클릭함 cd : " + cd);
 		getTimeList();
 // 		$.ajax({
 // 			type: "GET",
@@ -538,6 +539,7 @@
 // 	영화일정 : 시작시간 종료시간
 // 	상영관: 상영관코드 상영관명
 // 	on 상영관코드
+
 	// 상영시간
 	function getTimeList() {
 		
@@ -551,7 +553,7 @@
 	
 	
 	
-	// --------------------------------------------- 최종 선택 화면
+	// --------------------------------------------- 최종 선택 미리보기
 	// 영화 선택 (우측 상영시간 아래 부분)
 	function setMovie() {
 		console.log("setmovie()");
@@ -599,24 +601,28 @@
 	
 	
 	
-	// --------------------------------------------- 최종 선택 화면 end	
+	// --------------------------------------------- 최종 선택 미리보기 end
 	
 	
 	// 날짜 선택
 	const date = new Date();
 	const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 	const reserveDate = document.querySelector(".reserve-date");
-
+	
     const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
+    
+    // i = 일
     for (i = date.getDate(); i <= lastDay.getDate(); i++) {
-
+		
         const dateButton = document.createElement("button");
         dateButton.setAttribute('type', 'button');    // submit 막기
         const spanWeekOfDay = document.createElement("span");
         const spanDay = document.createElement("span");
 
+        
+        
         //class넣기
         dateButton.classList = "movie-date-wrapper"
         spanWeekOfDay.classList = "movie-week-of-day";
@@ -624,12 +630,12 @@
 
         //weekOfDay[new Date(2023-04-00)]
         const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
-
+        
         //요일 넣기
-        if (dayOfWeek === "토") {
+        if (dayOfWeek == "토") {
             spanWeekOfDay.classList.add("saturday");
             spanDay.classList.add("saturday");
-        } else if (dayOfWeek === "일") {
+        } else if (dayOfWeek == "일") {
             spanWeekOfDay.classList.add("sunday");
             spanDay.classList.add("sunday");
         }
@@ -637,6 +643,7 @@
         dateButton.append(spanWeekOfDay);
         
         //날짜 넣기
+        dateButton.setAttribute("data-cd", i);	// 각 버튼 data-cd에 날짜 데이터 저장 (1,2,3,4,5...30)
         spanDay.innerHTML = i;
         dateButton.append(spanDay);
         reserveDate.append(dateButton);
