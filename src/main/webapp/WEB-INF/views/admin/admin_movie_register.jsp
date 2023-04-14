@@ -485,7 +485,7 @@ function previewImage(targetObj, View_area) {
 						<thead>
 							<tr>
 								<th data-sortable="true" style="width: 8%;"><a href="infoMovieCodeSort" class="datatable-sorter">영화코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="movieNameSort" class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="infoMovieNameSort" class="datatable-sorter">영화제목</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoYearSort"	class="datatable-sorter">제작년도</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoTimeSort"	class="datatable-sorter">상영시간</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoShowDateSort"	class="datatable-sorter">상영일</a></th>
