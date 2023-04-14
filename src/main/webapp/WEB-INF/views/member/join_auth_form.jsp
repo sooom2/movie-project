@@ -11,6 +11,9 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script>
+
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
