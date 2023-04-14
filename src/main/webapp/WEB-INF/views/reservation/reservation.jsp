@@ -23,7 +23,9 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-
+<!-- 추가로 수정할 것 -->
+<!-- 주석이랑 들여쓰기 정리하기 -->
+<!-- 선택 안한 상태에서도 전체 목록 출력되게 -->
 
 	<div class="content">
 		<div class="inner2">
@@ -378,8 +380,187 @@
 // 	var timeList = [];
 // 	var favoriteCinema = [];
 // 	var timer = null;
-	//---
 
+
+	//---
+// 	영화일정 : 시작시간 종료시간
+// 	상영관: 상영관코드 상영관명
+// 	on 상영관코드
+
+	// 상영시간
+	function getTimeList() {
+	console.log("getTimeList()");
+		$.ajax({
+			type: "GET",
+			url: "movieTimeList",
+			data: {
+				cd : cd
+			},
+			dataType: "json",
+			success: function(response) {
+				console.log("getTimeList : 요청처리성공")
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				console.log("getTimeList : 요청처리실패");
+				
+			}
+		});
+
+
+// 	$.ajax({
+// 			type: "GET",
+// 			url: "TimeList",
+// 			data: { 
+// 					cd : cd
+// 			},
+// 			dataType: "json",
+// 			success: function(response) { 
+// 				console.log("btnCnItem : 요청처리성공");
+// 				for(let movie of response) {
+// //					console.log(movie.info_movie_title);
+// 					let movieTitle = movie.info_movie_title;
+// 					let movieCode = movie.info_movie_code;
+// 					let movieImg = movie.info_movie_poster;
+// 					let movieRating = movie.info_rating;
+// //					console.log("movieRating: " + movieRating);
+// //					console.log("movieTitle: " + movieTitle);
+// //					console.log("movieCode: " + movieCode);
+// 					var str = "";
+// 					str += "<li>";
+// 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + "data-cd=" + movieCode;
+// 					str += " data-rat=" + movieRating;
+// 					str += " data-url=" + movieImg;
+// 					str += " title='" + movieTitle + "'>";
+// 					str += movieTitle + "</button>";
+// 					str += "</li>";
+// 					$("#movieList").append(str);
+// 				}
+// 			},
+// 			error: function(xhr, textStatus, errorThrown) {
+// 				console.log("btnCnItem : 요청처리실패");
+// 			}
+// 		});
+	}
+	
+	
+	
+	
+	
+	
+	// --------------------------------------------- 최종 선택 미리보기 (우측 상영시간 하단)
+	// 영화
+	function setMovie() {
+		console.log("setmovie()");
+		var cd = $("#MovieCd").val();
+		console.log("cd=>" + cd);
+		if (cd == "all") {
+			$(".info .img img").remove();
+			$(".info .mvNm").html("&nbsp;");
+			$(".info .rtNm").text(""); // 상영등급
+			
+			$("#HidRating").val("");
+			$("#HidMovieUrl").val("");
+// 			$("#HidTicketRate").val("");
+// 			$("#HidReleaseDT").val("");
+		} else {
+			var obj = $('.btnMvItem[data-cd="' + cd + '"]');
+			console.log(obj);
+			$(".info .img img").remove();
+			$(".info .img").append('<img src="' + obj.data("url") + '">');
+			$(".info .mvNm").text(obj.attr("title"));
+			$(".info .rtNm").text(obj.data("rat"));
+
+			$("#HidRating").val(obj.data("rat"));
+			$("#HidMovieUrl").val(obj.data('url'));
+// 			$("#HidTicketRate").val(obj.data('trt'));
+// 			$("#HidReleaseDT").val(obj.data('rdt'));
+		}
+	}
+	
+	// 극장
+	function setCinema() {
+		var cd = $("#CinemaCd").val();
+		if (cd == "all") {
+			$(".cnNm").text("");
+		} else {
+			var obj = $('.btnCnItem[data-cd="' + cd + '"]');
+			$(".cnNm").text(obj.attr('title'));
+		}
+	}
+	
+	// 상영관, 상영시간
+	function setTime() {
+	}
+	
+	
+	
+	
+	// --------------------------------------------- 최종 선택 미리보기 end
+	
+	
+	// 날짜 선택
+	const date = new Date();
+	const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+	const reserveDate = document.querySelector(".reserve-date");
+	
+    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    
+    // i = 일
+    for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+		
+        const dateButton = document.createElement("button");
+        dateButton.setAttribute('type', 'button');    // submit 막기
+        const spanWeekOfDay = document.createElement("span");
+        const spanDay = document.createElement("span");
+
+        
+        
+        //class넣기
+        dateButton.classList = "movie-date-wrapper"
+        spanWeekOfDay.classList = "movie-week-of-day";
+        spanDay.classList = "movie-day";
+
+        //weekOfDay[new Date(2023-04-00)]
+        const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
+        
+        //요일 넣기
+        if (dayOfWeek == "토") {
+            spanWeekOfDay.classList.add("saturday");
+            spanDay.classList.add("saturday");
+        } else if (dayOfWeek == "일") {
+            spanWeekOfDay.classList.add("sunday");
+            spanDay.classList.add("sunday");
+        }
+        spanWeekOfDay.innerHTML = dayOfWeek;
+        dateButton.append(spanWeekOfDay);
+        
+        //날짜 넣기
+//         dateButton.setAttribute("data-cd", i);	// 각 버튼 data-cd에 날짜 데이터 저장 (1,2,3,4,5...30)
+        spanDay.innerHTML = i;
+        spanDay.setAttribute("data-cd", i);	// span 태그 안 : 각 버튼 data-cd 날짜 데이터 저장 (1,2,3,4,5...30)
+        dateButton.append(spanDay);
+        reserveDate.append(dateButton);
+
+        dayClickEvent(dateButton);
+    }
+
+        
+
+	function dayClickEvent(dateButton) {
+		dateButton.addEventListener("click", function() {
+		const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
+		movieDateWrapperActive.forEach((list) => {
+		list.classList.remove("movie-date-wrapper-active");
+			})
+		dateButton.classList.add("movie-date-wrapper-active");
+		})
+	}
+	
+	// 상영관 < 좌석 DB 정보 추가 후 수정 필요>
+	
+	
 	
 	$(function() {
 		
@@ -402,10 +583,13 @@
 			$('.btnTime[data-cd="' + $("#ScreenCd").val() + '"][data-seq="' + $("#ShowSeq").val() + '"]').click();
 		}
 		
-	}); //function end
+		
+		
+		
+	
 
 
-		// 지역 클릭
+		// 지역 클릭시 극장 출력
 		$(".btnTheater").on("click", function(e){
 			var cd = $(this).data("cd");
 			
@@ -427,16 +611,16 @@
 			
 		});
 
-		// 극장 클릭
+		// 극장 클릭시 영화리스트 출력
 		$(".btnCnItem").on("click", function(e){
 			var cd = $(this).data("cd");
 // 				console.log("cd:" + cd);
-				$(".btnMvItem").hide();
-			$.ajax({
+			$(".btnMvItem").hide();
+			$.ajax({													// 함수로 따로 뺄까?
 	 			type: "GET",
 	 			url: "moviesList",
 	 			data: { 
-	 					cd: cd
+	 					cd : cd
 	 			},
 	 			dataType: "json",
 	 			success: function(response) { 
@@ -509,165 +693,32 @@
 		
 		
 // 		makeTimeList();
+
 		setTime();
 	});
 	
 
 
-
-
-	// 날짜 클릭
-	$(".reserve-date").on("click", function(e) {
-		var cd = $(this).data("cd");
-		console.log("날짜클릭함 cd : " + cd);
-		getTimeList();
-// 		$.ajax({
-// 			type: "GET",
-// 			url: "TimeList",
-// 			data: $("#dataForm").serialize(),
-// 			dataType: "json",
-// 			success: function(response) {
-// 				console.log("getTimeList : 요청처리성공")
-// 			},
-// 			error: function(xhr, textStatus, errorThrown) {
-//  				console.log("getTimeList : 요청처리실패");
-//  			}
-// 		});
-	});
-	
-	
-// 	영화일정 : 시작시간 종료시간
-// 	상영관: 상영관코드 상영관명
-// 	on 상영관코드
-
-	// 상영시간
-	function getTimeList() {
 		
-	}
-	
-	
-	// 상영시간 버튼 클릭
-	$(document).on("click", ".btnTime", function(){
-		alert("TEST : 상영시간 버튼클릭");
-	});
-	
-	
-	
-	// --------------------------------------------- 최종 선택 미리보기
-	// 영화 선택 (우측 상영시간 아래 부분)
-	function setMovie() {
-		console.log("setmovie()");
-		var cd = $("#MovieCd").val();
-		console.log("cd=>" + cd);
-		if (cd == "all") {
-			$(".info .img img").remove();
-			$(".info .mvNm").html("&nbsp;");
-			$(".info .rtNm").text(""); // 상영등급
-			
-			$("#HidRating").val("");
-			$("#HidMovieUrl").val("");
-// 			$("#HidTicketRate").val("");
-// 			$("#HidReleaseDT").val("");
-		} else {
-			var obj = $('.btnMvItem[data-cd="' + cd + '"]');
-			console.log(obj);
-			$(".info .img img").remove();
-			$(".info .img").append('<img src="' + obj.data("url") + '">');
-			$(".info .mvNm").text(obj.attr("title"));
-			$(".info .rtNm").text(obj.data("rat"));
-
-			$("#HidRating").val(obj.data("rat"));
-			$("#HidMovieUrl").val(obj.data('url'));
-// 			$("#HidTicketRate").val(obj.data('trt'));
-// 			$("#HidReleaseDT").val(obj.data('rdt'));
-		}
-	}
-	
-	// 극장 선택
-	function setCinema() {
-		var cd = $("#CinemaCd").val();
-		if (cd == "all") {
-			$(".cnNm").text("");
-		} else {
-			var obj = $('.btnCnItem[data-cd="' + cd + '"]');
-			$(".cnNm").text(obj.attr('title'));
-		}
-	}
-	
-	
-	function setTime() {
-	}
-	
-	
-	
-	
-	// --------------------------------------------- 최종 선택 미리보기 end
-	
-	
-	// 날짜 선택
-	const date = new Date();
-	const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-	const reserveDate = document.querySelector(".reserve-date");
-	
-    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    
-    // i = 일
-    for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+		// 날짜 클릭
+		$(".movie-day").on("click", function(e){
+			cd = $(this).data("cd");
+			console.log("날짜클릭함 cd : " + cd);		// 선택한 날짜의 일 출력
 		
-        const dateButton = document.createElement("button");
-        dateButton.setAttribute('type', 'button');    // submit 막기
-        const spanWeekOfDay = document.createElement("span");
-        const spanDay = document.createElement("span");
 
-        
-        
-        //class넣기
-        dateButton.classList = "movie-date-wrapper"
-        spanWeekOfDay.classList = "movie-week-of-day";
-        spanDay.classList = "movie-day";
+			getTimeList();
 
-        //weekOfDay[new Date(2023-04-00)]
-        const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
-        
-        //요일 넣기
-        if (dayOfWeek == "토") {
-            spanWeekOfDay.classList.add("saturday");
-            spanDay.classList.add("saturday");
-        } else if (dayOfWeek == "일") {
-            spanWeekOfDay.classList.add("sunday");
-            spanDay.classList.add("sunday");
-        }
-        spanWeekOfDay.innerHTML = dayOfWeek;
-        dateButton.append(spanWeekOfDay);
-        
-        //날짜 넣기
-        dateButton.setAttribute("data-cd", i);	// 각 버튼 data-cd에 날짜 데이터 저장 (1,2,3,4,5...30)
-        spanDay.innerHTML = i;
-        dateButton.append(spanDay);
-        reserveDate.append(dateButton);
 
-        dayClickEvent(dateButton);
-    }
+		});
+		
+		
+		// 상영시간 클릭
+		$(document).on("click", ".btnTime", function(){
+			alert("TEST : 상영시간 버튼클릭");
+		});
+		
+}); //function end	
 
-        
-
-	function dayClickEvent(dateButton) {
-		dateButton.addEventListener("click", function() {
-		const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-		movieDateWrapperActive.forEach((list) => {
-		list.classList.remove("movie-date-wrapper-active");
-			})
-		dateButton.classList.add("movie-date-wrapper-active");
-		})
-	}
-	
-	
-	
-	// 상영관 < 좌석 DB 정보 추가 후 수정 필요>
-
-	
 		
 </script> 
 		<!-- // footer -->

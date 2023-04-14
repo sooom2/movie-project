@@ -11,6 +11,9 @@ public interface ReservationMapper {
 
 	// 영화 리스트 조회
 	List<HashMap<String, String>> selectmoviesList(String cd);
+
+	// 상영 시간 조회
+	List<HashMap<String, String>> selectMovieTimeList(String cd);
 	
 	
 }

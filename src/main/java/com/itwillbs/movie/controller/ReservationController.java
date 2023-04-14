@@ -65,12 +65,16 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
-	
+	// 상영시간리스트
 	@ResponseBody
-	@GetMapping("TimeList")
-	public String timeList() {
+	@GetMapping("movieTimeList")
+	public String timeList(String cd) {
+		System.out.println("movieTimeList cd : " + cd);
+		List<HashMap<String, String>> movieTimeList = service.selectMovieTimeList(cd);
+		JSONArray ja = new JSONArray(movieTimeList);
+		System.out.println(ja);
 		
-		return "dfsdfsdf";
+		return ja.toString();
 	}
 	
 	

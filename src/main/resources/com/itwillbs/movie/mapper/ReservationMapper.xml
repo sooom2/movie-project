@@ -17,8 +17,8 @@
 
 
 	<!-- 영화관 - 영화리스트 -->
-	<select id="selectmoviesList" resultType="hashmap">
 	<!-- 각 영화관에 상영하는 영화리스트 출력 -->
+	<select id="selectmoviesList" resultType="hashmap">
 		select distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating
 			from cinema c
 				join schedule s 
@@ -26,6 +26,16 @@
 						join movieinfo m 
 							on m.info_movie_code = s.sch_movie_code 
 								where c.cinema_code = #{cd};
+	</select>
+	
+	
+	<!-- 상영 시간 리스트 -->
+	<!-- 매개변수 : String cd (날짜) -->
+	<!-- 영화일정 : 시작시간 종료시간 -->
+	<!-- 상영관: 상영관코드 상영관명 -->
+	<!-- 극장 : (극장코드) -->
+	<select id="selectMovieTimeList" resultType="hashmap">
+	
 	</select>
 	
 	

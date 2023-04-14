@@ -27,4 +27,10 @@ public class ReservationService {
 		return mapper.selectmoviesList(cd);
 	}
 
+	public List<HashMap<String, String>> selectMovieTimeList(String cd) {
+		return mapper.selectMovieTimeList(cd);
+	}
+
+	
+
 }
