@@ -22,7 +22,7 @@
 					<!-- 무비 -->
 					<div class="sb-sidenav-menu-heading">MOVIE</div>
 						
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#storeMgm" aria-expanded="false" aria-controls="storeMgm">
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#movie" aria-expanded="false" aria-controls="movie">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 영화관리
@@ -30,7 +30,7 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="storeMgm" aria-labelledby="" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="movie" aria-labelledby="" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="admin_movie_register">최신영화등록</a>
 								<a class="nav-link" href="admin_movie_comming_register">상영예정작등록</a>
