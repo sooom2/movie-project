@@ -16,41 +16,40 @@
 </head>
 
 <body id="top">
-
-<div id = "container">
- 	<div id="content">
-	<div class="selector"></div>
-	<div class="section group section-movie-list screening">
-    	<ul>
-		<c:forEach var="movie" items="${movieList }">
-		    <li data-moviecode="${movie.info_movie_code }">
-			    <span class="over over-a">
-			    	<a href="#" class="rsv">
-			    		<span class="over-btn-rsv">예매하기</span></a>
-			    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
-			    		<span class="over-btn-info">상세정보</span></a>
-		    	</span>
-		    	<img src="${movie.info_movie_poster}" class="posterlist">
-		    	<div class="movie-desc">
-		    		<p class="rate-15">${movie.info_rating } ,</p>
-		    		<p title="${movie.info_movie_title }" class="tit">${movie.info_movie_title }</p>
-    			</div>
-    			
-		    <div class="btn-util">
-				 <div class="like-btn">
-					<a href="javascript:;" class="icon heart">
-						<img src="resources/images/ico/before-like.png" alt="찜하기">
-						<span class="likeNum">${movie.like_count }</span>
-					</a>
-				</div>
-                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매</a>
-            </div>
-  			</li>
-		</c:forEach>		    
-   		</ul>
-   		</div>
+	<div id = "container">
+ 		<div id="content">
+			<div class="selector"></div>
+			<div class="section group section-movie-list screening">
+   				<ul>
+					<c:forEach var="movie" items="${movieList }">
+					    <li data-moviecode="${movie.info_movie_code }">
+						    <span class="over over-a">
+						    	<a href="#" class="rsv">
+						    		<span class="over-btn-rsv">예매하기</span></a>
+						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
+						    		<span class="over-btn-info">상세정보</span></a>
+					    	</span>
+					    	<img src="${movie.info_movie_poster}" class="posterlist">
+					    	<div class="movie-desc">
+					    		<p class="rate-15">${movie.info_rating } ,</p>
+					    		<p title="${movie.info_movie_title }" class="tit">${movie.info_movie_title }</p>
+			    			</div>
+			    			
+					    <div class="btn-util">
+							 <div class="like-btn">
+								<a href="javascript:;" class="icon heart">
+									<img src="resources/images/ico/before-like.png" alt="찜하기">
+									<span class="likeNum">${movie.like_count }</span>
+								</a>
+							</div>
+			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매</a>
+			           		 </div>
+			  			</li>
+					</c:forEach>		    
+   				</ul>
+   			</div>
+		</div>
 	</div>
-</div>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
