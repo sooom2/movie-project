@@ -576,7 +576,7 @@
 				<li class="pakage">
 					<dl class="giftcon_list">
 					<dt>
-							스토어상품<a href="store_main" alt="" class="btn_more pak">더보기</a>
+							HOT ITEM<a href="store_main" alt="" class="btn_more pak">더보기</a>
 					</dt>
 					<c:forEach var="hotItem" items="${hotItem }"> 
 						<dd>
