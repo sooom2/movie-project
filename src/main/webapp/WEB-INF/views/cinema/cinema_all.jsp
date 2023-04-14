@@ -12,9 +12,6 @@
 <script type="text/javascript" src="${path}/resources/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
-
-
-
 function cinemaNameClick(){
 	
 $('.theater-place li').click(function() {
@@ -45,20 +42,7 @@ $('.theater-place li').click(function() {
 			}
 			
 		});//ajax
-	
-	
-
-	
-	// jQuery 객체를 가리키는 변수
-	
-  
-	
-	
-
 }
-	
-
-
 </script>
 </head>
 <body>
@@ -68,7 +52,6 @@ $('.theater-place li').click(function() {
 		<div id="content">
 			<div class="section group section-member" id="memberInfo">
 				<div class="inner-wrap">
-				${locationCinema[0] }
 				<h2 class="tit">전체 극장</h2>
 					<div class="theater-box" style="height: 250px;">
 						<div class="theater-place">
@@ -78,31 +61,124 @@ $('.theater-place li').click(function() {
 									<button type="button" class="sel-ctiy" value=${location.get('location_name') } onclick="cinemaNameClick()">${location.get('location_name') } </button>
 									<div class="theater-list">
 										<ul>
+										<li>
+										<span style="font-weight: 300">지역을 선택해주세요</span>
+										</li>
 										</ul>
 									</div>
 								</li>
 							</ul>
 							</c:forEach>
-							
-						
 					</div>
-							
-			
-						
 
 						<div class="user-theater">
 
 
 							<!-- 로그인 전 -->
 							<div style="padding-left: 15px">
-								<i class="iconset ico-favo-theater"></i> 나의 선호영화관 정보 <a href=""
-									class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
+								<img src="resources/images/ico/after-like.png" alt="찜하기" style="width: 22px;  display: inline-block; margin-bottom: -3px;" >
+								 나의 선호영화관 정보 <a href="" class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
 							</div>
 							<c:if test="${not empty sessionScope.sId  }">
 
 							</c:if>
 						</div>
 						</div>
+						
+						
+						
+						
+						
+						<div class="tit-util mt70 mb15">
+						<h3 class="tit">극장 공지사항</h3>
+						<a href="/support/notice?ti=3" class="more" title="극장 공지사항 더보기">더보기
+							<i class="iconset ico-arr-right-gray"></i>
+						</a>
+					</div>
+
+
+					<div class="table-wrap">
+						<table class="board-list">
+							<caption>극장, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
+							<colgroup>
+								<col style="width: 150px;">
+								<col>
+								<col style="width: 150px;">
+								<col style="width: 120px;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">극장</th>
+									<th scope="col">제목</th>
+									<th scope="col">지역</th>
+									<th scope="col">등록일</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr>
+									<td>성수</td>
+									<th scope="row"><a
+										href="/support/notice/detail?artiNo=10827&amp;bbsNo=9"
+										title="[성수] 7층 부티크 사용 제한 안내 (4/13 목) 상세보기"> [성수] 7층 부티크 사용
+											제한 안내 (4/13 목) </a></th>
+									<td>서울</td>
+									<td>2023.04.10</td>
+								</tr>
+
+								<tr>
+									<td>상암월드컵경기장</td>
+									<th scope="row"><a
+										href="/support/notice/detail?artiNo=10821&amp;bbsNo=9"
+										title="[상암월드컵경기장] K리그 축구 경기로 인한 주차 안내 상세보기"> [상암월드컵경기장]
+											K리그 축구 경기로 인한 주차 안내 </a></th>
+									<td>서울</td>
+									<td>2023.04.03</td>
+								</tr>
+
+								<tr>
+									<td>광명AK플라자</td>
+									<th scope="row"><a
+										href="/support/notice/detail?artiNo=10817&amp;bbsNo=9"
+										title="[광명AK플라자]주차장 이용 안내 상세보기"> [광명AK플라자]주차장 이용 안내 </a></th>
+									<td>경기</td>
+									<td>2023.03.31</td>
+								</tr>
+
+								<tr>
+									<td>동대문</td>
+									<th scope="row"><a
+										href="/support/notice/detail?artiNo=10816&amp;bbsNo=9"
+										title="[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) 상세보기">
+											[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) </a></th>
+									<td>서울</td>
+									<td>2023.03.31</td>
+								</tr>
+
+								<tr>
+									<td>전대(광주)</td>
+									<th scope="row"><a
+										href="/support/notice/detail?artiNo=10813&amp;bbsNo=9"
+										title="[전대(광주)] 관람요금 변경 안내 (4/17부터~) 상세보기"> [전대(광주)] 관람요금
+											변경 안내 (4/17부터~) </a></th>
+									<td>광주/전라</td>
+									<td>2023.03.28</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
 	
 	
@@ -130,90 +206,12 @@ $('.theater-place li').click(function() {
 					<!-- 					</ul> -->
 					<!-- 				</div> -->
 
-					<!-- 공지사항  -->
-<!-- 					<div class="tit-util mt70 mb15"> -->
-<!-- 						<h3 class="tit">극장 공지사항</h3> -->
-<!-- 						<a href="/support/notice?ti=3" class="more" title="극장 공지사항 더보기">더보기 -->
-<!-- 							<i class="iconset ico-arr-right-gray"></i> -->
-<!-- 						</a> -->
-<!-- 					</div> -->
+<!-- 					공지사항  -->
+					
 
-
-<!-- 					<div class="table-wrap"> -->
-<!-- 						<table class="board-list"> -->
-<%-- 							<caption>극장, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption> --%>
-<%-- 							<colgroup> --%>
-<%-- 								<col style="width: 150px;"> --%>
-<%-- 								<col> --%>
-<%-- 								<col style="width: 150px;"> --%>
-<%-- 								<col style="width: 120px;"> --%>
-<%-- 							</colgroup> --%>
-<!-- 							<thead> -->
-<!-- 								<tr> -->
-<!-- 									<th scope="col">극장</th> -->
-<!-- 									<th scope="col">제목</th> -->
-<!-- 									<th scope="col">지역</th> -->
-<!-- 									<th scope="col">등록일</th> -->
-<!-- 								</tr> -->
-<!-- 							</thead> -->
-<!-- 							<tbody> -->
-
-<!-- 								<tr> -->
-<!-- 									<td>성수</td> -->
-<!-- 									<th scope="row"><a -->
-<!-- 										href="/support/notice/detail?artiNo=10827&amp;bbsNo=9" -->
-<!-- 										title="[성수] 7층 부티크 사용 제한 안내 (4/13 목) 상세보기"> [성수] 7층 부티크 사용 -->
-<!-- 											제한 안내 (4/13 목) </a></th> -->
-<!-- 									<td>서울</td> -->
-<!-- 									<td>2023.04.10</td> -->
-<!-- 								</tr> -->
-
-<!-- 								<tr> -->
-<!-- 									<td>상암월드컵경기장</td> -->
-<!-- 									<th scope="row"><a -->
-<!-- 										href="/support/notice/detail?artiNo=10821&amp;bbsNo=9" -->
-<!-- 										title="[상암월드컵경기장] K리그 축구 경기로 인한 주차 안내 상세보기"> [상암월드컵경기장] -->
-<!-- 											K리그 축구 경기로 인한 주차 안내 </a></th> -->
-<!-- 									<td>서울</td> -->
-<!-- 									<td>2023.04.03</td> -->
-<!-- 								</tr> -->
-
-<!-- 								<tr> -->
-<!-- 									<td>광명AK플라자</td> -->
-<!-- 									<th scope="row"><a -->
-<!-- 										href="/support/notice/detail?artiNo=10817&amp;bbsNo=9" -->
-<!-- 										title="[광명AK플라자]주차장 이용 안내 상세보기"> [광명AK플라자]주차장 이용 안내 </a></th> -->
-<!-- 									<td>경기</td> -->
-<!-- 									<td>2023.03.31</td> -->
-<!-- 								</tr> -->
-
-<!-- 								<tr> -->
-<!-- 									<td>동대문</td> -->
-<!-- 									<th scope="row"><a -->
-<!-- 										href="/support/notice/detail?artiNo=10816&amp;bbsNo=9" -->
-<!-- 										title="[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) 상세보기"> -->
-<!-- 											[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) </a></th> -->
-<!-- 									<td>서울</td> -->
-<!-- 									<td>2023.03.31</td> -->
-<!-- 								</tr> -->
-
-<!-- 								<tr> -->
-<!-- 									<td>전대(광주)</td> -->
-<!-- 									<th scope="row"><a -->
-<!-- 										href="/support/notice/detail?artiNo=10813&amp;bbsNo=9" -->
-<!-- 										title="[전대(광주)] 관람요금 변경 안내 (4/17부터~) 상세보기"> [전대(광주)] 관람요금 -->
-<!-- 											변경 안내 (4/17부터~) </a></th> -->
-<!-- 									<td>광주/전라</td> -->
-<!-- 									<td>2023.03.28</td> -->
-<!-- 								</tr> -->
-<!-- 							</tbody> -->
-<!-- 						</table> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
+				</div>
 			</div>
 		</div>
-	</div>
 
 
 	<jsp:include page="../footer.jsp" />

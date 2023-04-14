@@ -61,5 +61,13 @@ public interface MovieRegisterMapper {
 
 	int lastTimeUpdate(HashMap<String, String> schedule);
 
+	List<HashMap<String, String>> infoMovieCodeSort();
+	List<HashMap<String, String>> infoMovieNameSort();
+	List<HashMap<String, String>> infoYearSort();
+	List<HashMap<String, String>> infoTimeSort();
+	List<HashMap<String, String>> infoShowDateSort();
+	List<HashMap<String, String>> infoEndDateSort();
+	List<HashMap<String, String>> infoStorySort();
+
 
 }

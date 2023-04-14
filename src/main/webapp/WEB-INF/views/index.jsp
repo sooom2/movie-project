@@ -10,8 +10,6 @@
 <link href="${path }/resources/css/main2.css" rel="stylesheet">
 <link href="${path }/resources/css/inc.css" rel="stylesheet">
 <link href="${path }/resources/css/common.css" rel="stylesheet">
-
-
 <link href="${path }/resources/css/jquery.bxslider.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

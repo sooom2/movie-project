@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -158,7 +159,7 @@ public class MovieRegisterController {
 		
 		return "admin/admin_movie_schedule";
 	}
- 	
+ 	// 영화일정 페이지 정렬 ======================================================
  	//지점명정렬
  	@RequestMapping(value = "cinemaNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String cinemaNameSort(Model model) {
@@ -206,6 +207,7 @@ public class MovieRegisterController {
  		model.addAttribute("scheduleList", scheduleList);
  		return "admin/admin_movie_schedule";
  	}
+ 	// 영화일정 페이지 정렬 ======================================================
  	
  	
 	//상영일정 수정 - 상영 상세 정보 (날짜랑 시간만 바꿀수 있음)
@@ -271,7 +273,63 @@ public class MovieRegisterController {
 	}
 
 
-
+	// 영화 페이지 정렬=============================================================================
+	//지점명정렬
+	
+//	     
+	
+	
+	// 영화코드정렬
+ 	@GetMapping(value = "infoMovieCodeSort")
+ 	public String infoMovieCodeSort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoMovieCodeSort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ // 영화코드정렬
+  	@GetMapping(value = "infoMovieNameSort")
+  	public String infoMovieNameSort(Model model) {
+  		List<HashMap<String, String>> movieList = movieRegisterService.infoMovieNameSort();
+  		model.addAttribute("movieList", movieList);
+  		return "admin/admin_movie_register";
+  	}
+ 	
+ 	// 제작년도
+ 	@GetMapping(value = "infoYearSort")
+ 	public String infoYearSort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoYearSort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ 	//상영시간
+ 	@GetMapping(value = "infoTimeSort")
+ 	public String infoTimeSort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoTimeSort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ 	@GetMapping(value = "infoShowDateSort")
+ 	public String infoShowDateSort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoShowDateSort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ 	@GetMapping(value = "infoEndDateSort")
+ 	public String infoEndDateSort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoEndDateSort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ 	@GetMapping(value = "infoStorySort")
+ 	public String infoStorySort(Model model) {
+ 		List<HashMap<String, String>> movieList = movieRegisterService.infoStorySort();
+ 		model.addAttribute("movieList", movieList);
+ 		return "admin/admin_movie_register";
+ 	}
+ 	
+ 	
+ 	
+	
 }
 
 

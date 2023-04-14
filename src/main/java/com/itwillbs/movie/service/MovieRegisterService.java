@@ -110,6 +110,34 @@ public class MovieRegisterService {
 		return mapper.lastTimeUpdate(schedule);
 	}
 
+	public List<HashMap<String, String>> infoMovieCodeSort() {
+		return mapper.infoMovieCodeSort();
+	}
+
+	public List<HashMap<String, String>> infoMovieNameSort() {
+		return mapper.infoMovieNameSort();
+	}
+
+	public List<HashMap<String, String>> infoYearSort() {
+		return mapper.infoYearSort();
+	}
+
+	public List<HashMap<String, String>> infoTimeSort() {
+		return mapper.infoTimeSort();
+	}
+
+	public List<HashMap<String, String>> infoShowDateSort() {
+		return mapper.infoShowDateSort();
+	}
+
+	public List<HashMap<String, String>> infoEndDateSort() {
+		return mapper.infoEndDateSort();
+	}
+
+	public List<HashMap<String, String>> infoStorySort() {
+		return mapper.infoStorySort();
+	}
+
 
 	
 

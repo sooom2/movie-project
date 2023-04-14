@@ -72,8 +72,6 @@
 	SELECT * FROM cinema
 </select>
 
-<!-- ==================================scheduleRegister : 11:37 -->
-<!-- {sch_movie_date=, sch_movie_code=20210544, sch_cinema_code=1, location_code=051, sch_screen_code=3, sch_start_time=10:00} -->
 
 <!-- 영화상영일정 -->
 <insert id="scheduleRegister">
@@ -94,14 +92,14 @@ INSERT INTO schedule
 <!-- 영화상영일정목록 -->
 <select id="selectScheduleList" resultType="hashmap">
 	SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
 		,movieinfo.info_movie_title
 		,sch_movie_date
-		,TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
-		,TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
+		, sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -110,14 +108,14 @@ INSERT INTO schedule
 
 <select id="cinemaNameSort" resultType="hashmap">
 	SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
-		,TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
-		,TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
+		, sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -127,11 +125,11 @@ INSERT INTO schedule
 
 <select id="screenNameSort" resultType="hashmap">
 	SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
@@ -144,11 +142,11 @@ INSERT INTO schedule
 
 <select id="movieNameSort" resultType="hashmap">
 	SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
 		,sch_location
@@ -161,14 +159,14 @@ INSERT INTO schedule
 
 <select id="schDateSort" resultType="hashmap">
 SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		, sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -178,14 +176,14 @@ SELECT
 
 <select id="schStartSort" resultType="hashmap">
 SELECT 
-		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		, sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -195,14 +193,14 @@ SELECT
 
 <select id="schLastSort" resultType="hashmap">
 	SELECT 
-			sch_code
-			,screen.screen_name
-			,cinema.cinema_name 
-			,movieinfo.info_movie_title
-			,sch_movie_date
+			  sch_code
+			, screen.screen_name
+			, cinema.cinema_name 
+			, movieinfo.info_movie_title
+			, sch_movie_date
 			, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 			, TIME_FORMAT(sch_last_time, '%H:%i')AS sch_last_time
-			,sch_location
+			, sch_location
 	FROM schedule
 	LEFT JOIN screen ON screen.screen_code = sch_screen_code 
 	LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -213,13 +211,13 @@ SELECT
 <select id="selectSchedule" resultType="hashmap">
 	SELECT 
 		sch_code
-		,screen.screen_name
-		,cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		, sch_location
 	 FROM schedule
 	 LEFT JOIN screen ON screen.screen_code = sch_screen_code 
 	 LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -239,23 +237,41 @@ SELECT
      WHERE sch_code = #{sch_code}
 </delete>
 
-<!-- <select id="infoMovieCode" resultType="hashmap"> -->
-<!-- 	select info_movie_code -->
-<!-- 	  FROM schedule  -->
-<!-- 	  LEFT JOIN movieinfo -->
-<!-- 	    ON schedule.sch_movie_code= movieinfo.info_movie_code -->
-<!-- 	 WHERE info_movie_title = #{info_movie_title} -->
-<!-- </select> -->
-<!-- info_movie_code -->
-<!-- info_movie_title -->
-<!-- info_movie_poster -->
-<!-- info_story -->
-<!-- info_year -->
-<!-- info_time -->
-<!-- info_showdate -->
-<!-- info_enddate -->
-<!-- like_count -->
-
+<select id="infoMovieCodeSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_movie_code
+</select>
+<select id="infoMovieNameSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_movie_title
+</select>
+<select id="infoYearSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_year
+</select>
+<select id="infoTimeSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_time
+</select>
+<select id="infoShowDateSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_showdate
+</select>
+<select id="infoEndDateSort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_enddate
+</select>
+<select id="infoStorySort" resultType="hashmap">
+	SELECT * 
+	  FROM movieinfo
+  ORDER BY info_story
+</select>
 
 
 
