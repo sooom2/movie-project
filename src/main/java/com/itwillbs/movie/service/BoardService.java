@@ -46,9 +46,21 @@ public class BoardService {
 		return mapper.insertOneBoard(map);
 	}
 
-	// 1대1 문의 내역
+	// 1대1 문의 목록
 	public List<HashMap<String, String>> getOneBoardList() {
 		return mapper.selectOneBoardList();
+	}
+
+	// 공지사항 등록
+	public int registNoticeBoard(HashMap<String, String> map) {
+		
+		return mapper.insertNoticeBoard(map);
+	}
+
+	// 공지사항 목록
+	public List<HashMap<String, String>> getNoticeBoardList() {
+		
+		return mapper.selectNoticeBoardList();
 	}
 	
 	

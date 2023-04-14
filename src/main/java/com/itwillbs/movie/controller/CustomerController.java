@@ -38,7 +38,7 @@ public class CustomerController {
 		return "customer_center/faq";
 	}
 	
-	// 분실물 문의 페이지
+	// 분실물 문의 페이지 목록
 	@RequestMapping(value = "lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String lostBoard(Model model) {
 		
@@ -54,7 +54,7 @@ public class CustomerController {
 		return "customer_center/lost_form";
 	}
 	
-	// 분실물 문의 작성
+	// 분실물 문의 등록
 	@PostMapping(value = "/lostWritePro")
 	public String lostWritePro(BoardVO board, Model model) {
 		int insertCount = boardService.registLostBoard(board);
@@ -138,25 +138,63 @@ public class CustomerController {
 	}
 	
 	
-	
-	
-	
-	
 	//관리자게시판============================================================================================
 	
-	//공지사항
+	// 관리자 공지사항
 	@RequestMapping(value = "admin_notice_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminNoticeBoard() {
+	public String adminNoticeBoard(Model model) {
+		
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
+//		System.out.println(noticeBoardList);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+//		System.out.println(model);
 		return "admin/admin_notice_board";
+		
+//		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
+//		System.out.println(oneBoardList);
+//		model.addAttribute("oneBoardList", oneBoardList);
+////		System.out.println("Controller: " + model);
+//		return "customer_center/one_board";
+		
 	}
 	
-	//자주묻는 질문
+	// 관리자 공지 등록창
+	@RequestMapping(value = "admin_notice_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminNoticeRegister() {
+		return "admin/admin_notice_register";
+	}
+
+	// 관리자 공지 등록
+	@RequestMapping(value = "notice_register_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeRegisterPro(@RequestParam HashMap<String, String> map, Model model) {
+		
+		int insertCount = boardService.registNoticeBoard(map);
+		if(insertCount > 0) {
+			return "redirect:/admin_notice_board";
+		} else {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
+		
+//		int insertCount = boardService.registLostBoard(board);
+//		if(insertCount > 0) {
+//			
+//			return "redirect:/lost_board";
+//		} 
+//		else {
+//			model.addAttribute("msg", "등록 실패");
+//			return "fail_back";
+//		}
+		
+	}
+	
+	// 관리자 자주묻는 질문
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminFaq() {
 		return "admin/admin_faq";
 	}
 	
-	// 분실물 문의 페이지
+	// 관리자 분실물 문의 페이지
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLostBoard(Model model) {
 		
@@ -176,7 +214,7 @@ public class CustomerController {
 //	public String adminOneOnOne() {
 //		return "admin/admin_oneOnOne";
 //	}
-	// 1대1 문의 내역 페이지
+	// 관리자 1대1 문의 내역 페이지
 	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminOneOnOne(Model model) {
 		
@@ -188,10 +226,14 @@ public class CustomerController {
 		
 	}
 	
-	//비회원 문의내역
+	// 관리자 비회원 문의내역
 	@RequestMapping(value = "admin_guest_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminGuestBoard() {
 		return "admin/admin_guest_board";
-	}	
+	}
+	
+		
+	
+	
 	
 }

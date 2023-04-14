@@ -75,6 +75,95 @@
 			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			<main>
+				
+				<div class="container modal admin-modal-register" style="display: none">
+					<div class="row justify-content-center">
+						<div class="col-lg-7">
+							<div class="card border-1 mt-5">
+								<div class="card-header">
+									<button type="button" class="close-modal"
+										onclick="modalClose()" style="border: none;">닫기</button>
+									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
+								</div>
+								<div class="card-body">
+									<form action="registMoviePro">
+									<div class="row mb-4">
+                                      	<h5 style="text-align:left">포스터등록</h5>
+                                   		<div class="col-md-3 moviePoster">
+                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
+                                        </div>
+                                        
+                                        <div class="col-md-8">
+											<div class="filebox">
+										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
+											</div>
+                                        </div>
+                                     </div>
+									
+										
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_movie_code"class="form-control" id="info_movie_code" type="text" value="" />
+													<label for="info_movie_code">영화코드</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_movie_title" class="form-control" id="info_movie_title" type="text" /> 
+													<label for="info_movie_title">영화제목</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input name="info_year" class="form-control" id="info_year" type="text"/>
+													<label for="info_year">제작년도</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_time" class="form-control" id="info_time" type="" />
+													<label for="info_time">상영시간</label>
+												</div>
+											</div>
+
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_showdate" class="form-control" id="info_showdate" type="date"/>
+													<label for="info_showdate">상영일</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_enddate" class="form-control" id="info_enddate" type="date" />
+													 <label for="info_enddate">종영일</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="info_story" class="form-control" id="info_story" type="text" style="max-width: 100%"/>
+													<label for="inputFirstName">줄거리</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block" type="submit" value="등록"> 
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<!-- 모달 -->
 				<div class="container modal admin-modal" style="display: none">
 					<div class="row justify-content-center">
@@ -200,6 +289,7 @@
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
 					<table id="datatablesSimple" class="datatable-table">
+						<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()">
 						<thead>
 							<tr>
 								<th data-sortable="true" style="width: 7%;"><a href="#"

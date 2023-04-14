@@ -181,7 +181,7 @@
 								<col style="width: 116px;">
 							</colgroup>
 							<thead>
-								<tr>
+								<tr style="line-height: 38px; text-align: center;">
 									<th scope="col">번호</th>
 									<th scope="col">극장</th>
 									<th scope="col">제목</th>

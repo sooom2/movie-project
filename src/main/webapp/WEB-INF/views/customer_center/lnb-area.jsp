@@ -28,7 +28,7 @@
 			<!-- 고객센터 메뉴일때만 출력 -->
 			<div class="left-customer-info">
 				<p class="tit">
-					메가박스 고객센터
+					IMOVIE 고객센터
 					<span>Dream center</span>
 				</p>
 				<p class="time"><i class="iconset ico-clock"></i> 10:00~19:00</p>

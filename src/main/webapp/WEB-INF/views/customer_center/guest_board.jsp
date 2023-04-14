@@ -87,7 +87,7 @@
                         <col style="width:100px;">
                     </colgroup>
                     <thead>
-                    <tr>
+                    <tr style="line-height: 38px">
                         <th scope="col">번호</th>
                         <th scope="col">극장</th>
                         <th scope="col">유형</th>
