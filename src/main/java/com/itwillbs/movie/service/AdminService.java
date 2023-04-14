@@ -28,6 +28,25 @@ public class AdminService {
 	public int updateItem(HashMap<String, String> item) {
 		return mapper.updateItem(item);
 	}
+	
+	// 결제 내역 조회
+	public List<HashMap<String, String>> selectPay() {
+		return mapper.selectPay();
+	}
+	
+	// 결제 내역 삭제
+	public int payDelete(String pay_code) {
+		return mapper.payDelete(pay_code);
+	}
+	
+	// 결제 내역 조회(pay_code)
+	public HashMap<String, String> selectPayUpdate(String pay_code) {
+		return mapper.selectPayUpdate(pay_code);
+	}
+	// 결제 내역 수정
+	public int updatePay(HashMap<String, String> pay) {
+		return mapper.payUpdate(pay);
+	}
 
 
 }

@@ -123,13 +123,13 @@
 				 , #{item_code}
 				 , #{pay_type}
 				 , #{pay_price}
-				 , now()
+				 , DATE_FORMAT('20200405','%Y-%m-%d')
 				 , 'N'
 				 , #{pay_status}
 			)
 	</insert>
 	
-	<!-- 상품 결제 조회 -->
+	<!-- 결제 조회 -->
 	<select id="selectPay" resultType="hashmap">
 		SELECT * FROM pay
 	</select>
@@ -139,6 +139,26 @@
 		DELETE FROM pay
 			WHERE pay_code = #{pay_code}
 	</delete>
+	
+	<!-- 결제 조회(pay_code) -->
+	<select id="selectPayUpdate" resultType="hashmap">
+		SELECT * FROM pay
+			WHERE pay_code = #{pay_code}
+	</select>
+	
+	<!-- 결제 수정 -->
+	<update id="payUpdate">
+		UPDATE pay
+			SET pay_code = #{pay_code}
+			  , member_id = #{member_id}
+			  , item_code = #{item_code}
+			  , pay_type = #{pay_type}
+			  , pay_price = #{pay_price}
+			  , pay_date = #{pay_date}
+			  , pay_cancel_date = #{pay_cancel_date}
+			  , pay_status = #{pay_status}
+			 	WHERE pay_code = #{pay_code}
+	</update>
 	
 	
 	<!-- 포인트 적립 -->
