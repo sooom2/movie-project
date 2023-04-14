@@ -44,6 +44,8 @@
 <!-- 			FROM member -->
 <!-- 				WHERE member_id = #{member_id} AND member_pw = #{member_pw} -->
 <!-- 	</select> -->
+
+	<!-- 로그인 조회 -해싱 -->
 	<select id="chekUser" resultType="hashmap">
 		SELECT * 
 			FROM member
