@@ -22,6 +22,14 @@ public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
 	
+	//영화예매관리
+	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String admin_movie_comming_register() {
+		return "admin/admin_movie_comming_register";
+	}
+	
+	
+	
 	//영화관리페이지
 	//영화목록조회
 	@RequestMapping(value = "admin_movie_register", method = {RequestMethod.GET, RequestMethod.POST})

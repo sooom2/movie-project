@@ -43,6 +43,8 @@ function modalClose() {
 	dis.style.display = "none";
 	dis2.style.display = "none";
 	dis3.style.display = "none";
+	
+	
 }
 
 //이미지올리기
@@ -88,6 +90,8 @@ function previewImage(targetObj, View_area) {
 		
 		
 }
+
+
 
 </script>
 
@@ -376,8 +380,8 @@ function previewImage(targetObj, View_area) {
 							<div class="card border-1 mt-5">
 								<div class="card-header" style="text-align: center">
 									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">최신영화등록</h3>
-									<span>최신개봉 영화 목록 고르기</span><br><br>
+									<h3 class="text-center font-weight-light my-4">상영 예정작 등록</h3>
+									<span>영화목록</span><br><br>
 									<select id="api" name="api"> </select>
 								 <input onclick="apibutton()"type="button" value="검색">	
 								</div>
@@ -478,20 +482,27 @@ function previewImage(targetObj, View_area) {
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">최신영화등록</h3>
-					<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()"> 
-					<input class="btn btn-block btn-more" type="button" value="최신영화불러오기" onclick="doLatest()">
+					<h3 class="text-center font-weight-light my-4">상영예정작등록</h3>
+					<input class="btn btn-block btn-more" type="button" value="영화불러오기" onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 8%;"><a href="infoMovieCodeSort" class="datatable-sorter">영화코드</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="infoMovieNameSort" class="datatable-sorter">영화제목</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="infoYearSort"	class="datatable-sorter">제작년도</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="infoTimeSort"	class="datatable-sorter">상영시간</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="infoShowDateSort"	class="datatable-sorter">상영일</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="infoEndDateSort"	class="datatable-sorter">종영일</a></th>
-								<th data-sortable="true" style="width: 15%;"><a href="infoStorySort" class="datatable-sorter">줄거리</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#" class="">수정/삭제</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">영화코드</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">제작년도</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영시간</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영일</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">종영일</a></th>
+								<th data-sortable="true" style="width: 15%;"><a href="#"
+									class="datatable-sorter">줄거리</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="">수정/삭제</a></th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->

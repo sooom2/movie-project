@@ -21,11 +21,10 @@ public class AdminController {
 	private AdminService itemService;
 	@Autowired
 	private StoreService storeService;
-	
-	
 	@Autowired
 	private MemberService memberService;
 
+	// 관리자 페이지
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model) {
 		
@@ -35,10 +34,6 @@ public class AdminController {
 	}
 	
 	
-	
-	
-	
-	// 스토어======================================================================================
 	
 	
 	// 상품 조회
@@ -86,21 +81,22 @@ public class AdminController {
 		
 		return "redirect:/admin_item_register";
 	}
-	// 상품 결제 내역
+	
+	// 결제 내역
 	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
 	public String itemPay(Model model) {
 		
-		List<HashMap<String, String>> pay = storeService.selectPay();
+		List<HashMap<String, String>> pay = itemService.selectPay();
 		model.addAttribute("pay", pay);
 		
 		return "admin/admin_item_pay";
 	}
 	
-	// 상품 결제 내역 삭제
+	// 결제 내역 삭제
 	@RequestMapping(value = "admin_pay_delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String payDelete(String pay_code, Model model) {
 		
-		int deleteCount = storeService.payDelete(pay_code);
+		int deleteCount = itemService.payDelete(pay_code);
 		
 		if(deleteCount > 0) {
 			return "redirect:/admin_item_pay";
@@ -108,10 +104,28 @@ public class AdminController {
 			model.addAttribute("msg", "결제내역 삭제 실패.");
 			return "member/fail_back";
 		}
-		
 	}
 	
+	// 결제 수정 화면
+	@RequestMapping(value = "admin_item_payUpdate", method = {RequestMethod.GET, RequestMethod.POST})
+	public String payUpdate(@RequestParam String pay_code, Model model) {
 		
+		HashMap<String, String> pay = itemService.selectPayUpdate(pay_code);
+		model.addAttribute("pay", pay);
+		
+		return "admin/admin_item_payUpdate";
+	}
+	
+	// 결제 수정
+	@RequestMapping(value = "admin_item_payUpdatePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String payUpdatePro(@RequestParam HashMap<String, String> pay) {
+		
+		int updateCount = itemService.updatePay(pay);
+		
+		return "redirect:/admin_item_pay";
+	}
+	
+	
 	
 	
 	//영화===========================================================================================
@@ -133,7 +147,6 @@ public class AdminController {
 	}
 
 	
-
 	
 	
 

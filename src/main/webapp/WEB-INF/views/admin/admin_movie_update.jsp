@@ -135,7 +135,7 @@ function previewImage(targetObj, View_area) {
                                         
                                         <div class="col-md-8">
 											<div class="filebox">
-										    <input type="file" name="info_movie_poster" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')" style="margin-left:-155px;">
+										    <input type="file" name="info_movie_poster" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')" style="margin-left:-80px;">
 											</div>
                                         </div>
                                      </div>

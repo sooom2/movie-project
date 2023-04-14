@@ -20,37 +20,38 @@ function cinemaNameClick(){
 $('.theater-place li').click(function() {
 	  $('.theater-place li.on').removeClass('on');
 	  $(this).addClass('on');
-});
-	let cityName = $(event.target).val();
-	// jQuery 객체를 가리키는 변수
-	let $clickedButton = $(this);
+});	  
+	  
+	  let cityName = $(event.target).val();
+	  let $clickedButton = $(this);
 	
-    $.ajax({
-		type: "GET",
-		url: "cinemaList",
-		data: {
-			location_name: cityName
-		},
-		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-// 		 	$("div.theater-place li.on").removeClass('on');
-			$(this).parent().addClass('on');
-// 		 	$clickedButton.parent().addClass('on');
-// 			alert($clickedButton.parent());
-		 	let _h1 = $('.user-theater').outerHeight();
-		 	let _h2 = $('.theater-place').outerHeight();
-		 	let _h0 = $("div.theater-place li.on .theater-list").outerHeight();
-		 	let _hAll = _h0 + _h1 + _h2;
+	  $.ajax({
+			type: "GET",
+			url: "locationCinema",
+			data: {
+				location_name: cityName
+			},
+			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
+				$('.theater-list ul li').empty();
+					$(this).parent().addClass('on');
+					for(var i=0; i<result.length; i++){
+						$(".theater-list ul").append('<li>'+result[i].cinema_name+'</li>');
+					}
+					
+			},
+			error:function(request,status,error){
+				
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+			
+		});//ajax
+	
+	
 
-		 	$('.theater-box').outerHeight(_hAll);
-			
-			
-		},
-		error:function(request,status,error){
-	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	     
-		}
-		
-	});//ajax
+	
+	// jQuery 객체를 가리키는 변수
+	
+  
 	
 	
 
@@ -67,25 +68,23 @@ $('.theater-place li').click(function() {
 		<div id="content">
 			<div class="section group section-member" id="memberInfo">
 				<div class="inner-wrap">
+				${locationCinema[0] }
 				<h2 class="tit">전체 극장</h2>
 					<div class="theater-box" style="height: 250px;">
 						<div class="theater-place">
 							<c:forEach var="location" items="${location }">
 							<ul >
-							<li >
-								<button type="button" class="sel-ctiy" value=${location.get('location_name') } onclick="cinemaNameClick()">${location.get('location_name') } </button>
-								<div class="theater-list">
-									<ul>
-										<c:forEach var="cinema" items="${locationCinema }">
-											<li>
-												<a href="" title="">${cinema.cinema_name }</a>
-											</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</li>
+								<li >
+									<button type="button" class="sel-ctiy" value=${location.get('location_name') } onclick="cinemaNameClick()">${location.get('location_name') } </button>
+									<div class="theater-list">
+										<ul>
+										</ul>
+									</div>
+								</li>
 							</ul>
 							</c:forEach>
+							
+						
 					</div>
 							
 			

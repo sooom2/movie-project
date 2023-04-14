@@ -58,6 +58,13 @@ public interface MyBatisMapper {
 	int updatePoint(HashMap<String, String> point);
 
 	int payDelete(String pay_code);
+
+	HashMap<String, String> selectPayUpdate(String pay_code);
+
+	int payUpdate(HashMap<String, String> pay);
+
+	//메인화면 핫상품 3개 보여주기 
+	List<HashMap<String, String>> selectHot();
 	
 	// ------------------------------------------------------------------------------------------
 	

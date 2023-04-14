@@ -11421,11 +11421,11 @@ main{
 }
 
 #profile_pt {
-	margin-top: 178px;
+	margin-top: 175px;
 	/* margin-right: 190px; */
-	margin-left: -265px;
+	margin-left: -24px;
 	display: inline-block;
-	height: 31px;
+	height: 32px;
 	padding: -1px 7px;
 	/* vertical-align: middle; */
 	border: 1px solid #dddddd;
@@ -11433,28 +11433,7 @@ main{
 	color: #999999;
 }
 
-.filebox label {
-    display: inline-block;
-    /* padding: 10px 20px; */
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    /* cursor: pointer; */
-    height: 40px;
-    /* margin-left: 14px; */
-    width: 100px;
-    line-height: 40px;
-    padding-left: 9px;
-}
 
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
 .datatable-table td{
 	line-height: 40px;
 }
@@ -11512,8 +11491,9 @@ body ::-webkit-scrollbar {
 }
 
 .filebox{
-    width: 500px;
-    height: 210px;
+    width: 497px;
+    height: 201px;
+    text-align: left;
 }
 
 
@@ -11572,6 +11552,20 @@ background : url(../images/movies/poster/imgRegister.png) no-repeat ;
     border: 1px solid #dddddd;
     width: 78%;
     color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    /* padding: 10px 20px; */
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    /* cursor: pointer; */
+    height: 40px;
+    /* margin-left: 14px; */
+    width: 100px;
+    line-height: 40px;
+    padding-left: 9px;
 }
 
 

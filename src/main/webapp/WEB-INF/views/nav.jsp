@@ -82,7 +82,7 @@
 				</ul>
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-				<li><a href="" class="" onmouseover="hideTheater()">이벤트</a>
+				<li><a href="event" class="" onmouseover="hideTheater()">이벤트</a>
 					<div class="tertiary">
 						<ul>
 <!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
