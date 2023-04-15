@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.movie.service.BoardService;
 import com.itwillbs.movie.service.CinemaService;
 import com.itwillbs.movie.service.MovieRegisterService;
 
@@ -32,13 +33,20 @@ public class CinemaController {
 		List<HashMap<String, String>> location = cinemaService.location();
 		model.addAttribute("location",location);
 		System.out.println(location_name);
+		
+		
+		List<HashMap<String, String>> noticeList = cinemaService.noticeList();
+		model.addAttribute("noticeList",noticeList);
+		
 		// 지역선택했을때 그지점 목록
 		List<HashMap<String, String>> locationCinema = cinemaService.locationCinema(location_name);
 		System.out.println("모델값 :"+model);
 		
+		
+		
 		return "cinema/cinema_all";
 	}
-	
+	//선택한 지역을 넘겨서 받은결과값
 	@ResponseBody
 	@RequestMapping(value = "locationCinema",produces = "application/json; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
 	public List<HashMap<String, String>> locationCinema(String location_name, Model model){
@@ -48,5 +56,13 @@ public class CinemaController {
 		
 		return locationCinema;
 	}
+	
+//	
+//	public String noticeBoard(Model model){
+//		
+//		
+//		System.out.println(noticeList);
+//		return "cinema/cinema_all";
+//	}
 	
 }

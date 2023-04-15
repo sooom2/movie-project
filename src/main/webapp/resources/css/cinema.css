@@ -2,6 +2,10 @@
 a{
 	color:#000;
 }
+a:active, a:focus, a:hover {
+    color: #666;
+    text-decoration: underline;
+}
 
 h2.tit {
     font-size: 1.8666em;
@@ -193,7 +197,7 @@ h2.tit {
     left: 0;
     line-height: 54px;
     /* border-radius: 0 0 10px 10px; */
-    background-color: #e4e4e4;
+    background-color: #f0f0f0;
 }
 
 .theater-box .user-theater ul.theater-circle {
@@ -208,7 +212,7 @@ h2.tit {
     height: 25px;
     line-height: 24px;
     border-radius: 25px;
-    background-color: #fff
+    border: 1px solid #8c8c8c;
 }
 
 .theater-box .user-theater a.button.float-r {
@@ -327,7 +331,7 @@ table select {
     color: #222;
     border: 1px solid #eaeaea;
     border-width: 0 0 1px 0;
-    background-color: #f2f4f5;
+    background-color: #f0f0f0;
     line-height: 50px;
 }
 
@@ -479,7 +483,7 @@ button:focus {
 .button:hover {
     color: #351f67;
     text-decoration: none;
-    background-color: #f2f4f8
+    background-color: #d9d9d9;
 }
 
 .button:focus {
@@ -491,4 +495,344 @@ button:focus {
     padding: 0px 6px;
     line-height: 30px;
     font-size: .9333em;
+}
+
+/*모달*/
+.modal {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 8000;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0 auto 15px;
+    padding: 0 20px;
+    max-width : 700px;
+    margin-top: 100px;
+    
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    outline: none;
+    overflow: hidden;
+    border-radius: 0;
+    padding: 20px;
+    border-radius: 10px;
+   
+}
+
+/****************************************************************************************************************************************
+	회원
+****************************************************************************************************************************************/
+/*로그인*/
+.login-tit{
+	font-size: 28px;
+}
+
+
+.mem-login {
+    width: 490px !important;
+    margin: 0 auto;
+}
+.member-detail {
+    display: block;
+    margin: 17px 0;
+    /* height: 40px; */
+    /* width: 100%; */
+    vertical-align: top;
+    width: 438px;
+    position: relative;
+}
+.member .etc {
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+.modal-header .close-modal {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    width: 25px;
+    height: 25px;
+    background: url(../images/member/ico_modal_close.png) no-repeat 50% 50%;
+    text-indent: -9999px;
+}
+
+.member-detail label.label-input {
+    width: 490px;
+    height: 40px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border: 1px solid #d8d8d8;
+    font-size: 14px;
+    color: #666;
+    display: block;
+    line-height: 38px;
+    padding-left: 20px;
+    position: relative;
+}
+.member-detail input[type=text], .member-detail input[type=password] {
+    width: 251px;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background-color: #f9f9f9;
+    border: 0;
+    border-left: 1px solid #b7b7b7;
+    margin-left: 122px;
+    padding-left: 14px;
+    font-size: 14px;
+    color: #3a3a3a;
+    margin-top: -5px;
+}
+.list-tabs:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.list-tabs a {
+	float: left;
+	font-size: 20px;
+	opacity: 0.5;
+	height: 58px;
+	line-height: 55px;
+	position: relative;
+	margin-right: 25px;
+}
+.member .find {
+	text-align: right;
+	margin: 10px 0 15px;
+}
+
+.member .find a {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	color: #909090;
+	line-height: 18px;
+}
+
+.member .find a+a {
+	padding-left: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #909090;
+}
+
+.member .orther-login .tit {
+	max-width: 260px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.member .orther-login .tit span {
+	position: relative;
+	display: block;
+}
+
+.member .orther-login .tit span strong {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 12px;
+	background: #fff;
+	font-size: 12px;
+	color: #8f9bb3;
+	position: relative;
+	z-index: 2;
+}
+
+.member .orther-login .tit span:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	height: 1px;
+	background: #e4e9f2;
+}
+
+.member .orther-login .btns {
+	text-align: center;
+	padding: 12px 0 30px;
+}
+
+.member .orther-login .btns a {
+	margin: 0 8px;
+}
+
+.member .orther-login .btns a img {
+	width: 52px;
+	display: inline;
+}
+
+.member .orther-login .desc {
+	text-align: center;
+	font-size: 12px;
+	line-height: 1.4;
+	color: #909090;
+	word-break: keep-all;
+}
+
+.member .orther-login .desc span {
+	color: #673bd4;
+}
+
+.member .check-desc {
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #909090;
+	word-break: keep-all;
+}
+
+.member .check-desc p {
+	padding-left: 14px;
+	text-indent: -14px;
+}
+
+.member .check-desc p+p {
+	margin-top: 3px;
+}
+/*로그인*/
+.member .end {
+	padding: 40px 0 90px;
+	text-align: center;
+	/* width: 960px; */
+	margin: 0 auto;
+}
+
+.member .end .t1 {
+	padding-top: 133px;
+	background: url(../images/member/joinSucess.png) no-repeat 50% -80px;
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+.member .end .t2 {
+	font-size: 14px;
+	line-height: 1.4;
+	color: #909090;
+	margin: 15px 0 45px;
+}
+
+.member .end .btns {
+	width: 100%;
+}
+
+.member .end .btns a {
+	width: calc(40% - 20px);
+	margin: 0 auto;
+	background-color: #5d46b5;
+	height: 35px;
+	border-radius: 10px;
+	color: #fff;
+	font-weight: 300;
+	line-height: 35px;
+	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.member .end .btns .btn-type-main {
+	padding: 5px 40px;
+}
+
+.member .end .btns .btn-typep-login {
+	padding: 5px 50px;
+}
+
+
+.member .orther-login .btns {
+	text-align: center;
+	padding: 12px 0 30px;
+}
+
+.member .orther-login .btns a {
+	margin: 0 8px;
+}
+
+.login-social a.nv {
+	background-image: url("../images/member/ico_naver.png");
+	background-size: 50px 50px;
+}
+
+.login-social a.kt {
+	background-image: url("../images/member/ico_kakao.png");
+	background-size: 50px;
+}
+
+.login-social a.fb {
+	background-image: url("../images/member/btn-social-fb.png");
+}
+.member-desc1 {
+	font-size: 16px;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.member-desc1 p {
+	padding-top: 20px;
+}
+
+.member {
+	max-width: 100%;
+	padding: 0 20px;
+	padding-top: 55px;
+	margin: 0 auto;
+}
+
+
+.list-tabs a:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 0;
+	bottom: -1px;
+	height: 3px;
+	background: #673bd4;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+.btn-type0 {
+	display: inline-block;
+	width: 100%;
+	height: 48px;
+	line-height: 46px;
+	border-radius: 4px;
+	text-align: center;
+	background: #673bd4;
+	font-size: 16px;
+	color: #fff;
+	border: none;
+}
+
+.list-tabs a:hover, .list-tabs a.active {
+	opacity: 1;
+	font-weight: 600;
+}
+
+.list-tabs a:hover:before, .list-tabs a.active:before {
+	width: 100%;
+	opacity: 1;
+}
+.member .list-tabs {
+	margin-bottom: 40px;
+}
+
+.member .list-tabs a {
+	height: 40px;
+	line-height: 38px;
+	color: #464646;
 }
