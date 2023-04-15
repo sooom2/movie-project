@@ -237,138 +237,99 @@ function previewImage(targetObj, View_area) {
 <script>
 
 		$(function(){
+			var info_movie_title = "";
+			var info_movie_code = "";
+			var info_story = "";
+			var info_still = "";
+			var info_nation = "";
+			var info_movie_poster = "";
+			var info_rating = "";
+			var info_year = "";
+			var info_director = "";
+			var info_actors = "";
+			var info_time = "";
+
+			var str = "";
+			var info_showdate = ""; 
+			var info_genre = "";
+			
 			var targetDay = new Date()
 			$.ajax({
-				url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&targetDt=20190900',
+				url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=N6BL7Q77SG0M41244297&deailt=N&releaseDts=20230414&listCount=10',
 				type : 'GET',
+				dataType: 'json',
 				success : function(data) {
 					var html = '';
-					html += '<option selected>영화를 고르시오</option>';
-					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
-						// 밑 api에서 movieCd가 아니라 movieNm을 요구해서 #api 값을 cd->nm으로
-// 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
-						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm
-									 +'"movieCd="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd
-									 		+'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
+					html += '<option selected>개봉 예정작 선택</option>';
+					for (var i = 0; i <  data.Data[0].Result.length; i++) {
 						
-						$('#api').html(html);
+						 info_movie_title = data.Data[0].Result[i].title;
+						 info_movie_code = data.Data[0].Result[i].Commcodes
 						
-					}
+						 info_story = data.Data[0].Result[i].plots.plot[0].plotText;
+						/*스틸컷*/
+						 info_still = data.Data[0].Result[i].stlls.split('|')[0];
+						/*국가*/
+						 info_nation = data.Data[0].Result[i].nation;
+						/*포스터*/
+						 info_movie_poster = data.Data[0].Result[i].posters.split('|')[0];
+						/*관람등급*/
+						 info_rating = data.Data[0].Result[i].rating;
+						/*제작년도*/
+						 info_year = data.Data[0].Result[i].prodYear;
+						
+						/*감독*/
+						 info_director = data.Data[0].Result[i].directors.director[0].directorNm;
+						/*상영시간 */
+						 info_time = data.Data[0].Result[i].runtime;
+						
+											
+						/*상영일*/
+						str = data.Data[0].Result[i].repRlsDate;
+						info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
+						
+						/*장르*/
+						info_genre = data.Data[0].Result[i].genre;
+						
+						$('#api').html('<option value="'+ info_movie_title + '"info_movie_code="'+ info_movie_code + '">'+ info_movie_title + '</option>');
+					}	
 				}
 			});
 		});
-			
 		function apibutton(){
-			// 선택버튼 눌렀을 때 
-			var info_movie_title = $('#api').val();
-			var info_movie_code = $("#api > option:selected").attr('movieCd')
 			
-			if($(".posterList")){
-				$(".posterlist").remove();
-			}
+			let strNum = info_time;
+			let num = parseInt(strNum);
+			let date = new Date(0, 0, 0, Math.floor(num / 60), num % 60);
+			let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
+			let runningTime = date.toLocaleTimeString("en-US", options);
+						
 			
-			$.ajax({
-// 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
-			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=N6BL7Q77SG0M41244297&sort=prodYear,1&title='+info_movie_title,
-			type : 'GET',
-			dataType: 'json',
-			success : function(Data) {// 미리 작업해둔게 Data 였어서 data에서 Data로 바꿨어요
-				/* 수정전 23.04.10 이전 
-				html = '';
-				let info_movie_code = data.movieInfoResult.movieInfo.movieCd;
-				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
-				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
-				let info_year = data.movieInfoResult.movieInfo.prdtYear;
-				let info_time = data.movieInfoResult.movieInfo.showTm;
-				
-				
-				*/
-				// 포스터나 스틸컷부분 추가 하려면 스플릿을 여기가 아닌 DB에서 빼올때 작업을 해야하나
-				// 시간관계상 나중에......
-				
-				
-				
-				// 수정 후 23.04.10
-				// 문제됐던점 : 정렬 추가 
-				/*줄거리*/
-				let info_story = Data.Data[0].Result[0].plots.plot[0].plotText;
-				/*스틸컷*/
-				let info_still = Data.Data[0].Result[0].stlls.split('|')[0];
-				/*국가*/
-				let info_nation = Data.Data[0].Result[0].nation;
-				/*포스터*/
-				let info_movie_poster = Data.Data[0].Result[0].posters.split('|')[0];
-				/*관람등급*/
-				let info_rating = Data.Data[0].Result[0].rating;
-				/*제작년도*/
-				let info_year = Data.Data[0].Result[0].prodYear;
-				
-				/*감독*/
-				let info_director = Data.Data[0].Result[0].directors.director[0].directorNm;
-				/*배우*/
-				let info_actors = Data.Data[0].Result[0].actors.actor[0].actorNm
-						  + ", " + Data.Data[0].Result[0].actors.actor[1].actorNm
-						  + ", " + Data.Data[0].Result[0].actors.actor[2].actorNm;
-				/*상영시간 */
-				let info_time = Data.Data[0].Result[0].runtime;
-				
-				/* 23.04.12*/
-				/*상영시간 00:00타입으로 변환  */
-				let strNum = info_time;
-				let num = parseInt(strNum);
-				let date = new Date(0, 0, 0, Math.floor(num / 60), num % 60);
-				let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
-				let runningTime = date.toLocaleTimeString("en-US", options);
-				
-//				확인용으로 올려둔 alert 주석 처리 04.12. 16:50
-// 				alert(runningTime);
-				
-				
-				
-				/*상영일*/
-				let str = Data.Data[0].Result[0].repRlsDate;
-				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
-				
-				/*
-				let str = data.movieInfoResult.movieInfo.openDt;
-				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8);
-				*/
-				
-				/*장르*/
-				let info_genre = Data.Data[0].Result[0].genre;
-				
-				//상영일 > 종영일 계산하기
-					var info_enddate = new Date(info_showdate);
-					info_enddate.setDate(info_enddate.getDate() + 100);
-				    var dateObject = new Date(info_enddate);
-				    var isoDateString = dateObject.toISOString();				/// 리바운드 영화 넣었을때 오류 나는 부분 
-				    var formattedDateString = isoDateString.slice(0, 10);
-				   	info_enddate = formattedDateString;
-				/*				수정 이전
-			   	$(".poster").append(
-						"<img src='https://file.cineq.co.kr/i.aspx?movieid="+movieCd+"&amp;size=210' alt='포스터' class='poster posterlist'>"
-				);
-			    */
-			   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
-			    
-			    
-			    // 지금 무비 포스터가 input hidden으로 넣어둔 상태 
-			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);	//포스터		
-				$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
-				$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
-				$('input[name=info_year]').attr('value',info_year);		//제작년도
-				$('input[name=info_time]').attr('value',runningTime);		//상영시간
-				$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
-				$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
-				$('input[name=info_story]').attr('value',info_story);			//줄거리
-				$('input[name=info_director]').attr('value',info_director);			//감독
-				$('input[name=info_nation]').attr('value',info_nation);			//제작국가
-				$('input[name=info_rating]').attr('value',info_rating);			//관람등급
-				$('input[name=info_genre]').attr('value',info_genre);			//장르
-			}
+			//상영일 > 종영일 계산하기
+				var info_enddate = new Date(info_showdate);
+				info_enddate.setDate(info_enddate.getDate() + 100);
+			    var dateObject = new Date(info_enddate);
+			    var isoDateString = dateObject.toISOString();				/// 리바운드 영화 넣었을때 오류 나는 부분 
+			    var formattedDateString = isoDateString.slice(0, 10);
+			   	info_enddate = formattedDateString;
+			   	console.log(isoDateString);
 
-		});
-			
+		   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
+		    
+		    
+		    // 지금 무비 포스터가 input hidden으로 넣어둔 상태 
+		    $('input[name=info_movie_poster]').attr('value',info_movie_poster);	//포스터		
+			$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
+			$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
+			$('input[name=info_year]').attr('value',info_year);		//제작년도
+			$('input[name=info_time]').attr('value',runningTime);		//상영시간
+			$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
+			$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
+			$('input[name=info_story]').attr('value',info_story);			//줄거리
+			$('input[name=info_director]').attr('value',info_director);			//감독
+			$('input[name=info_nation]').attr('value',info_nation);			//제작국가
+			$('input[name=info_rating]').attr('value',info_rating);			//관람등급
+			$('input[name=info_genre]').attr('value',info_genre);			//장르
 		}
 </script>	
 
