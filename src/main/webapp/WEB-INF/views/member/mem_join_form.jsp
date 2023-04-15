@@ -35,13 +35,6 @@
 							    <span></span>
 								</label>
 							</div>
-
-							<div class="join-detail">
-								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="join-id2" name="member_email" class="input" value="" placeholder="인증받은 이메일자동입력">
-									<span></span>
-								</label>
-							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>비밀번호</span>
 									<input type="password" id="join-pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
@@ -59,6 +52,38 @@
 								<label class="label-input" for="username"> <span>이름</span>
 									<input type="text" id="join-name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
 									 <span></span>
+								</label>
+							</div>
+							
+							
+							<div class="join-detail">
+								<label class="label-input" for="username"> <span>성별</span>
+									<div class="gender-select">
+										<input type="radio" class="gender" name="member_gender" value="남" id="female" onclick=""><label for="member_gender">남 </label>
+										<input type="radio" class="gender" name="member_gender" value="여" id="male" onclick=""><label for="member_gender">여 </label>
+									</div>
+								</label>
+							</div>
+							
+							<div class="join-detail">
+			                    <label class="label-input" for="phone" style="width:320px;display:inline-block;">
+			                        <span>우편번호</span>
+			                        <input type="text" style="width:140px;display:inline-block;" id="join-post" name="postSearch" class="input" placeholder="우편번호입력">
+			                        <span></span>
+			                    </label>
+			                    <a href="#" class="btnsub btnsms" id="postSearch">우변번호 검색</a>
+			                </div>
+							<div class="join-detail">
+								<label class="label-input" for="address"> <span>주소</span>
+									<input type="text" id="join-add" name="member_address" class="input" value="" placeholder="주소입력">
+									
+									<span></span>
+								</label>
+							</div>
+							<div class="join-detail">
+								<label class="label-input" for="email"> <span>이메일</span>
+									<input type="text" id="join-id2" name="member_email" class="input" value="" placeholder="인증받은 이메일자동입력">
+									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
@@ -131,7 +156,6 @@
 										</tr>
 									</table>
 								</div>
-
 							</div>
 							 <input type="hidden" id="socialId" name="socialId" value="">
 							 <input type="hidden" id="userFrom" name="userFrom" value="4">

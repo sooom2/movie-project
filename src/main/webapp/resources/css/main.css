@@ -4231,5 +4231,17 @@ header {
 .star_rate.type6 .star.starR2 {
     margin-right: 10px;
 }
+.gender-select {
+    margin-top: 9px;
+    width: 251px;
+    height: 23px;
+    border: 0;
+    border-left: 1px solid #b7b7b7;
+    margin-left: 122px;
+    padding-left: 14px;
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 22px;
+}
 
 
