@@ -12,6 +12,18 @@
 <script type="text/javascript" src="${path}/resources/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
+
+function doDisplay(){
+	let dis = document.querySelector(".modal-type2");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+		
+	} else{
+		dis.style.display="none";
+	}
+}
+
 function cinemaNameClick(){
 	
 $('.theater-place li').click(function() {
@@ -32,7 +44,7 @@ $('.theater-place li').click(function() {
 				$('.theater-list ul li').empty();
 					$(this).parent().addClass('on');
 					for(var i=0; i<result.length; i++){
-						$(".theater-list ul").append('<li>'+result[i].cinema_name+'</li>');
+						$(".theater-list ul").append('<li><a href="cinemaDetail?cinema_code='+result[i].cinema_code+'">'+result[i].cinema_name+'</a></li>');
 					}
 					
 			},
@@ -42,11 +54,93 @@ $('.theater-place li').click(function() {
 			}
 			
 		});//ajax
-}
+}//cinemaClick
+
+
+
+
 </script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
+	
+	<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
+	<div class="modal-dialog" style="">
+	<div class="modal-content">
+	<div class="member mem-login">
+		<div class="modal-header">
+			<span class="login-tit">회원 로그인</span>
+			<button type="button" class="close-modal" onclick="modalClose()">닫기</button>
+		</div>
+<!-- 		탭 -->
+		<div class="tabs-cont">
+			<div class="cont">
+				<form id="loginForm"  action ="loginPro" method="post">
+					<div class="find">
+					<a href="javascript:doDisplay();">아이디/비밀번호 찾기</a>
+					<a href="memAuth">회원가입</a>
+					</div>
+<!-- 					<input type="hidden" name="cgid" value=""> -->
+					<div class="member-detail">
+                      <label class="label-input" for="memberid"><span>아이디</span><input type="text" id="memberid" class="input" name="member_id" value="" placeholder="아이디를 입력해주세요"><span></span></label>
+                    </div>
+					<div class="member-detail">
+                      <label class="label-input" for="memberpasswd"><span>패스워드</span><input type="text" id="memberpw" class="input" name="member_pw" value="" placeholder="비밀번호를 입력해주세요"><span></span></label>
+                    </div>
+					<div class="etc">
+						<label><input type="checkbox" id="SaveID" class="checkbox"><em></em><span>아이디 저장</span></label>
+						</div>
+					<button type="submit" class="btn-type0">로그인</button>
+				</form>
+					<div class="orther-login">
+						<p class="tit"><span><strong>간편로그인</strong></span></p>
+						<div class="btns">
+							<span onclick="kakaoLogin();">
+							<a href="#" class="btn-kakao"><img src="resources/images/member/ico_kakao.png"></a>
+							</span>
+							<a href="#" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div></div>
+				
+				<!-- 회원 비밀번호 찾기 모달창 -->
+		<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
+			<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>회원 비밀번호 찾기</h4>
+						<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
+					</div>
+					<div class="modal-body">
+						<h3 class="h3-member">아이디</h3>
+						<div class="mb20"><input type="text" id="memberId" class="inp-member onlyNumber" placeholder="아이디를 입력해주세요" maxlength="8"></div>
+						<h3 class="h3-member">이메일주소</h3>
+						<div class="inp-box1 mb20">
+							<input type="tel" id="memberEmail" class="inp-member onlyNumber" placeholder="이메일주소를 입력해주세요">
+						</div>
+					</div>
+					<div class="modal-bottom flex">
+						<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
+						<button type="button" class="btn-modal2" id="btnFind">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form id="form-kakao-login" method="post" action="kakao">
+   			<input type="hidden" name="email"/>
+   			<input type="hidden" name="name"/>
+   			<input type="hidden" name="gender"/>
+   			<input type="hidden" name="accessToken"/>
+   		</form>
+		</div>
+	</div>
+	
+	
+	
+	
+
 
 	<div id="container">
 		<div id="content">
@@ -75,12 +169,26 @@ $('.theater-place li').click(function() {
 
 
 							<!-- 로그인 전 -->
-							<div style="padding-left: 15px">
+							<c:if test="${empty sessionScope.sId  }">
+							<div style="padding:0 15px">
 								<img src="resources/images/ico/after-like.png" alt="찜하기" style="width: 22px;  display: inline-block; margin-bottom: -3px;" >
-								 나의 선호영화관 정보 <a href="" class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
+								 나의 선호영화관 정보 <a href="javascript:doDisplay();" class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
 							</div>
+							</c:if>
 							<c:if test="${not empty sessionScope.sId  }">
-
+							<!-- 로그인 전 -->
+							<!-- 로그인후 -->
+							<div style="padding:0 15px">
+								<img src="resources/images/ico/after-like.png" alt="찜하기" style="width: 22px;  display: inline-block; margin-bottom: -3px;" >
+								<span class="font-gblue">${sessionScope.sId }</span>님의 선호영화관
+								<ul class="theater-circle">
+									<li>
+										<a href="/theater?areaCd=55&amp;brchNo=0046" title="부산점 상세보기">부산점</a>
+									</li>
+								</ul>
+<!-- 								<a href="" class="button small" title="선호영화관 관리"> <i class="iconset ico-edit"></i> 선호영화관 관리</a> -->
+							</div>
+							<!-- 로그인 후 -->
 							</c:if>
 						</div>
 						</div>
@@ -91,7 +199,7 @@ $('.theater-place li').click(function() {
 						
 						<div class="tit-util mt70 mb15">
 						<h3 class="tit">극장 공지사항</h3>
-						<a href="/support/notice?ti=3" class="more" title="극장 공지사항 더보기">더보기
+						<a href="notice_board" class="more" title="극장 공지사항 더보기">더보기
 							<i class="iconset ico-arr-right-gray"></i>
 						</a>
 					</div>
@@ -115,55 +223,15 @@ $('.theater-place li').click(function() {
 								</tr>
 							</thead>
 							<tbody>
-
+							<c:forEach var="noticeList" items="${noticeList }">
 								<tr>
-									<td>성수</td>
-									<th scope="row"><a
-										href="/support/notice/detail?artiNo=10827&amp;bbsNo=9"
-										title="[성수] 7층 부티크 사용 제한 안내 (4/13 목) 상세보기"> [성수] 7층 부티크 사용
-											제한 안내 (4/13 목) </a></th>
-									<td>서울</td>
-									<td>2023.04.10</td>
+									<td>${noticeList.get("cinema_name")}</td>
+									<th scope="row">
+									<a href="" title="[${noticeList.get('cinema_name')}] ${noticeList.get('notice_subject')} 상세보기">[${noticeList.get('cinema_name')}]<span>${noticeList.get('notice_subject')}</span></a></th>
+									<td>${noticeList.get('location_name')}</td>
+									<td>${noticeList.get('notice_write_date') }</td>
 								</tr>
-
-								<tr>
-									<td>상암월드컵경기장</td>
-									<th scope="row"><a
-										href="/support/notice/detail?artiNo=10821&amp;bbsNo=9"
-										title="[상암월드컵경기장] K리그 축구 경기로 인한 주차 안내 상세보기"> [상암월드컵경기장]
-											K리그 축구 경기로 인한 주차 안내 </a></th>
-									<td>서울</td>
-									<td>2023.04.03</td>
-								</tr>
-
-								<tr>
-									<td>광명AK플라자</td>
-									<th scope="row"><a
-										href="/support/notice/detail?artiNo=10817&amp;bbsNo=9"
-										title="[광명AK플라자]주차장 이용 안내 상세보기"> [광명AK플라자]주차장 이용 안내 </a></th>
-									<td>경기</td>
-									<td>2023.03.31</td>
-								</tr>
-
-								<tr>
-									<td>동대문</td>
-									<th scope="row"><a
-										href="/support/notice/detail?artiNo=10816&amp;bbsNo=9"
-										title="[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) 상세보기">
-											[동대문] 3월 31일 건물 화재발생으로 인한 운영중단 안내 (~4/5까지) </a></th>
-									<td>서울</td>
-									<td>2023.03.31</td>
-								</tr>
-
-								<tr>
-									<td>전대(광주)</td>
-									<th scope="row"><a
-										href="/support/notice/detail?artiNo=10813&amp;bbsNo=9"
-										title="[전대(광주)] 관람요금 변경 안내 (4/17부터~) 상세보기"> [전대(광주)] 관람요금
-											변경 안내 (4/17부터~) </a></th>
-									<td>광주/전라</td>
-									<td>2023.03.28</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>

@@ -23,6 +23,10 @@ public class CinemaService {
 		return mapper.locationCinema(location_name);
 	}
 
+	public List<HashMap<String, String>> noticeList() {
+		return mapper.noticeList();
+	}
+
 	
 	
 
