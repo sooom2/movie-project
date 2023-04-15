@@ -27,7 +27,6 @@ function selectCinema(){
 		},
 		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
 			
-			alert(result);
 			
 			$(".selectScreen_name option").remove();
 			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
