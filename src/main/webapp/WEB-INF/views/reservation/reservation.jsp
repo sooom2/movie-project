@@ -23,9 +23,19 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<!-- 추가로 수정할 것 -->
-<!-- 주석이랑 들여쓰기 정리하기 -->
-<!-- 선택 안한 상태에서도 전체 목록 출력되게 -->
+<!-- 추후 수정 목록 -->
+<!-- 주석, 들여쓰기 정리 -->
+<!-- 1-ver1 선택 안한 상태에서도 전체 목록 출력 -->
+<!-- 1-ver2 초기화면 영화리스트 : 극장을 선택해주세요 -->
+<!-- 영화 상세페이지에서 예매하기 누르면 값 받아와서 영화 리스트에서 그 영화 클릭되어있게 -> 선작업: 극장명, 날짜 where cinema_code -->
+<!-- 극장명 검색, 영화명 검색 -->
+<!-- 선호장르 영화리스트 -->
+<!-- 선택후 좌석 넘어가기 전 관람등급 확인창 -->
+
+
+
+<!-- typeof 하면 number인데 constroller에서 매개변수 String이 왜 되지...? -->
+
 
 	<div class="content">
 		<div class="inner2">
@@ -41,7 +51,6 @@
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="all">
 				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="">
-				<input type="hidden" id="ShowSeq" name="ShowSeq" value="">
 				
 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx">
 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all">
@@ -148,7 +157,7 @@
 										</div>
 									</div>
 									<!-- // 극장 -->
-
+									
 									<!-- 영화리스트 -->
 									<div class="mv-list">
 										<div class="list-head">
@@ -161,6 +170,7 @@
 										<div class="list">
 											<div class="scrollbar-inner">
 												<ul id="movieList">
+													
 												</ul>
 											</div>
 										</div>
@@ -189,25 +199,8 @@
 													style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
 													<div id="timeList">
 														<div class="list-type">
-															<ul>
-																<ul class="mvTimeLine">
-<%-- 																	<c:forEach var="movieTime" items="${movie }"> --%>
-<!-- 																		<li> -->
-<%-- 																			<button type="button" class="btnTime" data-cd="${movieTime.location_code }" --%>
-<%-- 																				data-seq="${movieTime.screen_code }"> --%>
-<%-- 																				<div class="loc">${movieTime.screen_name }</div> --%>
-<!-- 																				<div class="info"> -->
-<!-- 																					<p class="time"> -->
-<%-- 																						${movieTime.sch_start_time }<span>~${movieTime.sch_last_time }</span> --%>
-<!-- 																					</p> -->
-<!-- 																					<p class="num"> -->
-<!-- 																						89/<span>89석(수정필요))</span> -->
-<!-- 																					</p> -->
-<!-- 																				</div> -->
-<!-- 																			</button> -->
-<!-- 																		</li> -->
-<%-- 																	</c:forEach> --%>
-																</ul>
+															<ul class="mvTimeLine">
+															
 															</ul>
 														</div>
 <!-- 														<div class="thum-type" style="display: none"> -->
@@ -254,12 +247,12 @@
 											<div class="info-box">
 													<div class="info">
 														<!-- 선택후 -->
-														<div class="img"><img src="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"></div>
+														<div class="img"><img src="${pageContext.request.contextPath }/resources/images/rsv/res_test.png"></div>
 														<div class="text">
-															<strong><span class="mvNm">스즈메의 문단속</span></strong>
+															<strong><span class="mvNm"></span></strong>
 															<dl>
 																<dt>극장</dt>
-																<dd class="cnNm">극장을 선택해주세요</dd>
+																<dd class="cnNm"></dd>
 															</dl>
 															<dl>
 																<dt>상영관</dt>
@@ -267,11 +260,11 @@
 															</dl>
 															<dl>
 																<dt>상영등급</dt>
-																<dd class="rtNm">12세 이상 관람가</dd>
+																<dd class="rtNm"></dd>
 															</dl>
 															<dl>
 																<dt>날짜</dt>
-																<dd class="plDt">2023-04-15(토)</dd>
+																<dd class="plDt"></dd>
 															</dl>
 															<dl>
 																<dt>상영시간</dt>
@@ -280,7 +273,7 @@
 														</div>
 													</div>
 													<div class="next">
-														<button type="submit" id="btnNext">인원/좌석 선택</button>
+														<button type="button" id="btnNext">인원/좌석 선택</button>
 													</div>
 												</div>
 											</div>
@@ -380,6 +373,16 @@
 // 	var timeList = [];
 // 	var favoriteCinema = [];
 // 	var timer = null;
+var CnItemCd = ""; 	// 극장코드
+var MvItemCd = ""; 	// 영화코드
+var dateCd = ""; 	// 날짜 일 코드
+
+var schCd = "";
+var screenCd = ""; 	// 상영관코드
+var screenName = ""; // 상영관명
+var mvTime = "";	// 상영시간
+var mvDay = "";		// 상영일
+
 
 
 	//---
@@ -390,15 +393,61 @@
 	// 상영시간
 	function getTimeList() {
 	console.log("getTimeList()");
+	
 		$.ajax({
 			type: "GET",
 			url: "movieTimeList",
 			data: {
-				cd : cd
+				CnItemCd : CnItemCd,
+				MvItemCd : MvItemCd,
+				dateCd : dateCd
 			},
 			dataType: "json",
 			success: function(response) {
-				console.log("getTimeList : 요청처리성공")
+				console.log("getTimeList : 요청처리성공");
+			 	for(let movie of response) {
+		 			let schCode = movie.sch_code;
+		 			let screenCode = movie.screen_code;
+		 			let screenName = movie.screen_name;
+		 			let startTime = movie.sch_start_time;
+		 			let lastTime = movie.sch_last_time;
+		 			mvDay = movie.sch_movie_date;
+		 			
+		 			console.log("schCode : " + schCode);
+		 			console.log("screenCode : " + screenCode);
+		 			console.log("screenName : " + screenName);
+		 			console.log("startTime : " + startTime);
+		 			console.log("lastTime : " + lastTime);
+		 			console.log("mvDay : " + mvDay);
+		 			
+		 			
+		 			var str = "";
+		 			str += "<li>";
+		 			str += "<button type=" + "'button'" + " class=" + "'btnTime'" + " data-cd='" + schCode;
+		 			str += "' data-seq='" + screenCode;
+		 			str += "' data-sn='" + screenName;
+		 			str += "' data-st='" + startTime;
+		 			str += "' data-lt='" + lastTime;
+		 			str += "'>";
+		 			
+		 			str += "<div class='loc'>" + screenName + "</div>";
+		 			str += "<div class='info'>";
+		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
+		 			
+		 			// 좌석 정보 추후 수정
+		 			str += "<p class='num'>86/<span>89석</span></p>";
+		 			
+		 			str += "</div>";
+		 			str += "</button>";
+		 			str += "</li>";
+		 			
+		 			console.log(str);
+					$(".mvTimeLine").append(str);
+					setDay();
+		 			
+		 			
+	 		}
+				
 			},
 			error: function(xhr, textStatus, errorThrown) {
 				console.log("getTimeList : 요청처리실패");
@@ -406,44 +455,7 @@
 			}
 		});
 
-
-// 	$.ajax({
-// 			type: "GET",
-// 			url: "TimeList",
-// 			data: { 
-// 					cd : cd
-// 			},
-// 			dataType: "json",
-// 			success: function(response) { 
-// 				console.log("btnCnItem : 요청처리성공");
-// 				for(let movie of response) {
-// //					console.log(movie.info_movie_title);
-// 					let movieTitle = movie.info_movie_title;
-// 					let movieCode = movie.info_movie_code;
-// 					let movieImg = movie.info_movie_poster;
-// 					let movieRating = movie.info_rating;
-// //					console.log("movieRating: " + movieRating);
-// //					console.log("movieTitle: " + movieTitle);
-// //					console.log("movieCode: " + movieCode);
-// 					var str = "";
-// 					str += "<li>";
-// 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + "data-cd=" + movieCode;
-// 					str += " data-rat=" + movieRating;
-// 					str += " data-url=" + movieImg;
-// 					str += " title='" + movieTitle + "'>";
-// 					str += movieTitle + "</button>";
-// 					str += "</li>";
-// 					$("#movieList").append(str);
-// 				}
-// 			},
-// 			error: function(xhr, textStatus, errorThrown) {
-// 				console.log("btnCnItem : 요청처리실패");
-// 			}
-// 		});
 	}
-	
-	
-	
 	
 	
 	
@@ -479,7 +491,7 @@
 	
 	// 극장
 	function setCinema() {
-		var cd = $("#CinemaCd").val();
+		var cd = $("#CinemaCd").val(); ;
 		if (cd == "all") {
 			$(".cnNm").text("");
 		} else {
@@ -488,12 +500,18 @@
 		}
 	}
 	
-	// 상영관, 상영시간
+	// 상영관명, 상영시간
 	function setTime() {
+		$(".scNm").text(screenName); 	// 상영관명
+		$(".tiNm").text(mvTime); 		// 상영시간
 	}
 	
 	
-	
+	// 날짜
+	function setDay() {
+		console.log("setDay()-----------")
+		$(".plDt").text(mvDay); 
+	}
 	
 	// --------------------------------------------- 최종 선택 미리보기 end
 	
@@ -537,7 +555,6 @@
         dateButton.append(spanWeekOfDay);
         
         //날짜 넣기
-//         dateButton.setAttribute("data-cd", i);	// 각 버튼 data-cd에 날짜 데이터 저장 (1,2,3,4,5...30)
         spanDay.innerHTML = i;
         spanDay.setAttribute("data-cd", i);	// span 태그 안 : 각 버튼 data-cd 날짜 데이터 저장 (1,2,3,4,5...30)
         dateButton.append(spanDay);
@@ -558,7 +575,6 @@
 		})
 	}
 	
-	// 상영관 < 좌석 DB 정보 추가 후 수정 필요>
 	
 	
 	
@@ -575,13 +591,8 @@
 		
 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all") {
 			getTimeList();
-// 			makeTimeList();
 		}
 		
-		if ($("#ScreenCd").val() != "" && $("#ShowSeq").val() != "") {
-			//setTime();
-			$('.btnTime[data-cd="' + $("#ScreenCd").val() + '"][data-seq="' + $("#ShowSeq").val() + '"]').click();
-		}
 		
 		
 		
@@ -610,17 +621,19 @@
 			
 			
 		});
-
 		// 극장 클릭시 영화리스트 출력
 		$(".btnCnItem").on("click", function(e){
-			var cd = $(this).data("cd");
+// 			var cd = $(this).data("cd");
+			CnItemCd = $(this).data("cd");
+			console.log("CnItemCd type:" + typeof CnItemCd);
+			console.log("CnItemCd : " + CnItemCd);
 // 				console.log("cd:" + cd);
 			$(".btnMvItem").hide();
 			$.ajax({													// 함수로 따로 뺄까?
 	 			type: "GET",
 	 			url: "moviesList",
 	 			data: { 
-	 					cd : cd
+	 				CnItemCd : CnItemCd
 	 			},
 	 			dataType: "json",
 	 			success: function(response) { 
@@ -636,12 +649,13 @@
 // 	 					console.log("movieCode: " + movieCode);
 	 					var str = "";
 	 					str += "<li>";
-	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + "data-cd=" + movieCode;
-	 					str += " data-rat=" + movieRating;
-	 					str += " data-url=" + movieImg;
-	 					str += " title='" + movieTitle + "'>";
+	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
+	 					str += "' data-rat='" + movieRating;
+	 					str += "' data-url='" + movieImg;
+	 					str += "' title='" + movieTitle + "'>";
 	 					str += movieTitle + "</button>";
 	 					str += "</li>";
+	 					console.log(str);
 	 					$("#movieList").append(str);
 	 				}
 	 			},
@@ -662,7 +676,7 @@
 			
 		});
 	
-// 예매율순 | 가나다순 클릭
+// 선호장르 | 전체(default) 클릭
 		$(".btnMovieTab").on("click", function(e) { 
 			e.preventDefault();
 			$(".btnMovieTab").removeClass("active");
@@ -672,10 +686,13 @@
 			makeMovieList();
 		});
 		
-// 선호 영화 장르만 보기 체크박스 선택?
+
 		
 // 영화리스트 클릭
 	$(document).on("click", ".btnMvItem", function(e) {
+		MvItemCd = $(this).data("cd");
+// 		console.log(typeof MvItemCd);
+		console.log("MvItem 클릭 MvItemCd : " + MvItemCd);
 		e.preventDefault();
 		$("#movieList li").removeClass("check");
 		if ($("#MovieCd").val() == $(this).data("cd")) {
@@ -685,15 +702,6 @@
 			$(this).parent().addClass("check");
 		}
 		setMovie();
-		
-		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all")
-			getTimeList();
-		else
-			timeList = [];
-		
-		
-// 		makeTimeList();
-
 		setTime();
 	});
 	
@@ -702,11 +710,18 @@
 		
 		// 날짜 클릭
 		$(".movie-day").on("click", function(e){
-			cd = $(this).data("cd");
-			console.log("날짜클릭함 cd : " + cd);		// 선택한 날짜의 일 출력
-		
-
+			dateCd = $(this).data("cd");
+			console.log("날짜클릭함 dateCd : " + dateCd);		// 선택한 날짜의 일 출력
+			console.log("날짜클릭함 : -------");
+// 			console.log(typeof CnItemCd);					// number타입인데 왜 String으로 보내는거 가능...? 
+// 			console.log(MvItemCd);
+// 			console.log(dateCd);
+			
+			$(".btnTime").hide();
 			getTimeList();
+			
+			
+			
 
 
 		});
@@ -714,9 +729,39 @@
 		
 		// 상영시간 클릭
 		$(document).on("click", ".btnTime", function(){
-			alert("TEST : 상영시간 버튼클릭");
+			console.log("btnTime----------------------------------");
+			var startTime = $(this).data("st");
+			var lastTime = $(this).data("lt");
+			mvTime = startTime + "~" + lastTime;
+			screenName = $(this).data("sn");
+// 			console.log("screenCd: " + screenCd);
+// 			console.log("mvTime:" + mvTime);
+// 			console.log("schCd:" + schCd);
+
+
+			$(".btnTime").removeClass("check");
+			
+			$("#ScreenTime").val(mvTime);
+			$("#ScreenCd").val($(this).data("cd"));
+			$('.btnTime[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 클릭시 테두리
+			
+			console.log("#ScreenTime:" + $("#ScreenTime").val());
+			console.log("#ScreenCd:" + $("#ScreenCd").val());
+			
+			
+			
+			
+			setTime();
+			
 		});
 		
+		
+		
+		
+		// 인원/좌석 선택 클릭
+// 		$(".btnNext").on("click", function(e) {
+// 			$("#dataForm").submit();
+// 		});
 }); //function end	
 
 		

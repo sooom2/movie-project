@@ -2,6 +2,7 @@ package com.itwillbs.movie.controller;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.*;
 import org.json.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -54,10 +55,10 @@ public class ReservationController {
 	// 영화리스트
 	@ResponseBody
 	@GetMapping("moviesList")
-	public String moviesList(String cd) {
-		System.out.println("String cd: " + cd);
+	public String moviesList(String CnItemCd) {
+//		System.out.println("String CnItemCd: " + CnItemCd);
 		
-		List<HashMap<String, String>> moviesList = service.selectmoviesList(cd);
+		List<HashMap<String, String>> moviesList = service.selectmoviesList(CnItemCd);
 		
 		JSONArray ja = new JSONArray(moviesList);
 		System.out.println(ja);
@@ -68,9 +69,10 @@ public class ReservationController {
 	// 상영시간리스트
 	@ResponseBody
 	@GetMapping("movieTimeList")
-	public String timeList(String cd) {
-		System.out.println("movieTimeList cd : " + cd);
-		List<HashMap<String, String>> movieTimeList = service.selectMovieTimeList(cd);
+	public String timeList(@Param("CnItemCd") String CnItemCd, @Param("MvItemCd") String MvItemCd, @Param("dateCd") String dateCd) {
+		System.out.println("movieTimeList----------------------------------------------");
+		System.out.println("CnItemCd : " + CnItemCd + ", MvItemCd: " + MvItemCd + ", dateCd: " + dateCd);
+		List<HashMap<String, String>> movieTimeList = service.selectMovieTimeList(CnItemCd, MvItemCd, dateCd);
 		JSONArray ja = new JSONArray(movieTimeList);
 		System.out.println(ja);
 		

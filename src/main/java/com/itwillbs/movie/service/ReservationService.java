@@ -23,13 +23,14 @@ public class ReservationService {
 
 
 
-	public List<HashMap<String, String>> selectmoviesList(String cd) {
-		return mapper.selectmoviesList(cd);
+	public List<HashMap<String, String>> selectmoviesList(String CnItemCd) {
+		return mapper.selectmoviesList(CnItemCd);
 	}
 
-	public List<HashMap<String, String>> selectMovieTimeList(String cd) {
-		return mapper.selectMovieTimeList(cd);
+	public List<HashMap<String, String>> selectMovieTimeList(String cnItemCd, String mvItemCd, String dateCd) {
+		return mapper.selectMovieTimeList(cnItemCd, mvItemCd, dateCd);
 	}
+
 
 	
 
