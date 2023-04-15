@@ -1,6 +1,8 @@
 package com.itwillbs.movie.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -62,7 +64,9 @@ public class MypageController {
 	}
 	//회원정보수정
 	@GetMapping(value = "mypageI")
-	public String mypageI(HttpSession session, Model model) {
+	public String mypageI(HttpSession session, Model model, String location_name, HttpSession request) {
+		
+
 		String id = (String)session.getAttribute("sId");
 		
 		if(id ==null) {
@@ -108,6 +112,40 @@ public class MypageController {
 			return "member/fail_back";
 		}
 		
+		
+	}
+	
+	//회원탈퇴
+	@PostMapping(value = "quitPro")
+	public String quitPro(@RequestParam HashMap<String, String> quit, HttpSession session, Model model ) {
+		//세션아이디 저장
+		String id = (String)session.getAttribute("sId");
+		String password = quit.get("member_pw");
+		//아이디와 일치하는 레코드의 패스워드 조회
+		String dbPasswd = service.getPasswd(id);
+		
+		System.out.println("평문 암호 : " + password + ", 해싱 암호 : " + dbPasswd);
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		if(passwordEncoder.matches(password, dbPasswd)) {	
+			int deleteCount = service.quitMember(quit);
+			
+			if(deleteCount > 0) {
+				session.invalidate();
+				model.addAttribute("msg", "탈퇴가 완료되었습니다!");
+				model.addAttribute("target", "main");
+				return "success";
+			} else {
+				model.addAttribute("msg", "탈퇴 실패!");
+				return "fail_back";
+			}
+		
+		} else {
+			model.addAttribute("msg", "권한이 없습니다!");
+			return "fail_back";
+		
+		}
 		
 	}
 	

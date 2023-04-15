@@ -25,6 +25,14 @@ public class MypageService {
 	public int updateMemberInfo(HashMap<String, String> update) {
 		return mapper.updateMemberInfo(update);
 	}
+
+	public int quitMember(HashMap<String, String> quit) {
+		return mapper.deleteMember(quit);
+	}
+
+
+	
+	
 	
 	
 

@@ -33,5 +33,10 @@
 	
 	</update>
   
-  
+  	<delete id = "deleteMember">
+  		DELETE 
+  			FROM member
+  			WHERE member_id = #{member_id}
+  	</delete>
+  	
 </mapper>

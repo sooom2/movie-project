@@ -12,5 +12,11 @@ public interface MypageMapper {
 
 	int updateMemberInfo(HashMap<String, String> update);
 
+	int deleteMember(HashMap<String, String> quit);
+
+
+	
+
+
 
 }

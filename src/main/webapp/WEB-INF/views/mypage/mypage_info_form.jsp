@@ -15,6 +15,7 @@
 <body>
 
 	<jsp:include page="../nav.jsp" />
+	
 	<div id="container">
 		<div id="content">
 			<div class="section group section-member" id="memberInfo">
@@ -70,12 +71,12 @@
 								</label>
 							</div>
 							
+							
 						<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="member_prefer_branch" id="member_prefer_branch"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-<!-- 											<option value="">지점변경시 선택</option> -->
 											<option value="부산점" <c:if test="${member.member_prefer_branch eq '부산점'}">selected</c:if>>부산점</option>
 											<option value="부산대연점" <c:if test="${member.member_prefer_branch eq '부산대연점'}">selected</c:if>>부산대연점</option>
 											<option value="강남점" <c:if test="${member.member_prefer_branch eq '강남점'}">selected</c:if>>강남점</option>
@@ -92,6 +93,7 @@
 											<option value="울산신천점" <c:if test="${member.member_prefer_branch eq '울산신천점'}">selected</c:if>>울산신천점</option>
 											<option value="울산동구점" <c:if test="${member.member_prefer_branch eq '울산동구점'}">selected</c:if>>울산동구점</option>
 										</select>
+
 									</div> <span></span>
 								</label>
 							</div>
@@ -100,7 +102,6 @@
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="member_prefer_genre" id="member_prefer_genre"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-<!-- 											<option value="1001" selected="">장르변경시 선택</option> -->
 											<option value="액션"<c:if test="${member.member_prefer_genre eq '액션'}">selected</c:if>>액션</option>
 											<option value="드라마"<c:if test="${member.member_prefer_genre eq '드라마'}">selected</c:if>>드라마</option>
 											<option value="코미디"<c:if test="${member.member_prefer_genre eq '코미디' }">selected</c:if>>코미디</option>
@@ -117,14 +118,13 @@
 							class="btn-confirm">
 						<button type="submit">수정</button>	</a>
 				 
-					</form>
-
 					<div class="title-membership title-quit">회원 탈퇴</div>
 					<div class="wrap-inside no-border">
 						<span class="quit-desc">탈퇴 신청시 환불금액등의 확인 후 탈퇴처리가 진행되며 포인트,
-							등록한 관람권 등이 삭제되고 30일 이내 재가입이 불가하오니 신중히 결정해주시기 바랍니다.</span> <a href="memberQuit"
-							class="btn-quit withdrawmember">회원 탈퇴하기</a>
+							등록한 관람권 등이 삭제되고 30일 이내 재가입이 불가하오니 신중히 결정해주시기 바랍니다.</span> <a href=""
+							class="btn-quit withdrawmember"><button type="submit" formaction="quitPro">회원 탈퇴하기</button></a>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
