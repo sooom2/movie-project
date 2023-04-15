@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,30 +139,30 @@
 											</div>
 
 										</div>
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputPassword" -->
-<!-- 														type="password" placeholder="Create a password" /> <label -->
-<!-- 														for="inputPassword">문의지점</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
+										<!-- 										<div class="row mb-3"> -->
+										<!-- 											<div class="col-md-6"> -->
+										<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+										<!-- 													<input class="form-control" id="inputPassword" -->
+										<!-- 														type="password" placeholder="Create a password" /> <label -->
+										<!-- 														for="inputPassword">문의지점</label> -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 											<div class="col-md-6"> -->
+										<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+										<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
+										<!-- 														type="password" placeholder="Confirm password" /> <label -->
+										<!-- 														for="inputPasswordConfirm">문의유형</label> -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 										</div> -->
+										<div class="row mb-3">
 											<!-- 											<div class="col-md-6"> -->
 											<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-											<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
-											<!-- 														type="password" placeholder="Confirm password" /> <label -->
-											<!-- 														for="inputPasswordConfirm">문의유형</label> -->
+											<!-- 													<input class="form-control" id="inputPassword" -->
+											<!-- 														type="password" placeholder="Create a password" /> <label -->
+											<!-- 														for="inputPassword">제목</label> -->
 											<!-- 												</div> -->
 											<!-- 											</div> -->
-<!-- 										</div> -->
-										<div class="row mb-3">
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputPassword" -->
-<!-- 														type="password" placeholder="Create a password" /> <label -->
-<!-- 														for="inputPassword">제목</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPasswordConfirm"
@@ -214,7 +214,7 @@
 										<!-- 											</div> -->
 										<!-- 										</div> -->
 										<div class="row mb-3">
-											
+
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input class="form-control" id="inputPassword"
@@ -304,15 +304,15 @@
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
-<!-- 							<tr data-index="0"> -->
-<!-- 								<td>작성자명</td> -->
-<!-- 								<td>문의지점</td> -->
-<!-- 								<td>제목</td> -->
-<!-- 								<td>답글유무</td> -->
-<!-- 								<td>작성일</td> -->
-<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
-<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
-<!-- 							</tr> -->
+							<!-- 							<tr data-index="0"> -->
+							<!-- 								<td>작성자명</td> -->
+							<!-- 								<td>문의지점</td> -->
+							<!-- 								<td>제목</td> -->
+							<!-- 								<td>답글유무</td> -->
+							<!-- 								<td>작성일</td> -->
+							<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
+							<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
+							<!-- 							</tr> -->
 						</tbody>
 						<!-- 게시판목록 -->
 						<tbody>

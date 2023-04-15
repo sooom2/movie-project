@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,29 +145,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>상암월드컵경기장</td>
-								<td>공지</td>
-								<th><a href="#" class="moveBtn" data-no="10821"
-									title="공지사항 상세보기"><span class="font-green"></span>[<span
-										class="font-green"></span>상<span class="font-green"></span>암<span
-										class="font-green"></span>월<span class="font-green"></span>드<span
-										class="font-green"></span>컵<span class="font-green"></span>경<span
-										class="font-green"></span>기<span class="font-green"></span>장<span
-										class="font-green"></span>]<span class="font-green"></span> <span
-										class="font-green"></span>K<span class="font-green"></span>리<span
-										class="font-green"></span>그<span class="font-green"></span> <span
-										class="font-green"></span>축<span class="font-green"></span>구<span
-										class="font-green"></span> <span class="font-green"></span>경<span
-										class="font-green"></span>기<span class="font-green"></span>로<span
-										class="font-green"></span> <span class="font-green"></span>인<span
-										class="font-green"></span>한<span class="font-green"></span> <span
-										class="font-green"></span>주<span class="font-green"></span>차<span
-										class="font-green"></span> <span class="font-green"></span>안<span
-										class="font-green"></span>내<span class="font-green"></span></a></th>
-								<td>2023.04.03</td>
-							</tr>
+							<c:forEach var="noticeBoard" items="${noticeBoardList }">
+								<tr data-index="0">
+									<td>${noticeBoard.notice_code }</td>
+									<td>${noticeBoard.cinema_name }</td>
+									<td>공지</td>
+									<td id="notice_subject"><a
+										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
+									</td>
+									<td>${noticeBoard.notice_write_date }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

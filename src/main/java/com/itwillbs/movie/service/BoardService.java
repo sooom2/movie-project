@@ -62,6 +62,18 @@ public class BoardService {
 		
 		return mapper.selectNoticeBoardList();
 	}
+
+	// 공지사항 상세
+	public HashMap<String, String> getNoticeDetail(HashMap<String, String> map) {
+		
+		return mapper.selectNoticeDetail(map);
+	}
+
+	// 자주묻는 질문 목록
+	public List<HashMap<String, String>> getFaqBoardList() {
+		
+		return mapper.selectFaqBoardList();
+	}
 	
 	
 	

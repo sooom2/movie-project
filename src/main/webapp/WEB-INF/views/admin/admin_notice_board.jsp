@@ -262,8 +262,8 @@
 								<tr data-index="0">
 									<td>${noticeBoard.notice_code }</td>
 									<td>${noticeBoard.cinema_name }</td>
-									<td id="lost_subject"><a
-										href="lost_detail?lost_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
+									<td id="notice_subject"><a
+										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
 									</td>
 									<td>${noticeBoard.notice_write_date }</td>
 									<td class="modi"><input class="btn btn-block btn-more"

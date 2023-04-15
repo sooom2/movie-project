@@ -31,6 +31,12 @@ public interface BoardMapper {
 	// 공지사항 목록
 	List<HashMap<String, String>> selectNoticeBoardList();
 
+	// 공지사항 상세
+	HashMap<String, String> selectNoticeDetail(HashMap<String, String> map);
+
+	// 자주묻는 질문 목록
+	List<HashMap<String, String>> selectFaqBoardList();
+
 
 	
 	

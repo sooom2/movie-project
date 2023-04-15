@@ -28,8 +28,26 @@ public class CustomerController {
 	
 	// 공지사항
 	@RequestMapping(value = "notice_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String noticeBoard() {
+	public String noticeBoard(Model model) {
+		
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
+//		System.out.println(noticeBoardList);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+//		System.out.println(model);
 		return "customer_center/notice_board";
+	}
+	
+	// 공지사항 상세
+	@RequestMapping(value = "notice_detail", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeDetail(@RequestParam HashMap<String, String> map, Model model) {
+		
+		map = boardService.getNoticeDetail(map);
+		model.addAttribute("map", map);
+		
+//			List<BoardVO> lostBoardList = boardService.getLostBoardList();
+//			model.addAttribute("lostBoardList", lostBoardList);
+				
+		return "customer_center/notice_detail";
 	}
 
 	// 자주묻는 질문
@@ -75,11 +93,9 @@ public class CustomerController {
 		map = boardService.getLostDetail(map);
 		model.addAttribute("map", map);
 		
-//		List<BoardVO> lostBoardList = boardService.getLostBoardList();
-//		model.addAttribute("lostBoardList", lostBoardList);
-				
 		return "customer_center/lost_detail";
 	}
+	
 	// 분실물 삭제
 	@RequestMapping(value = "lost_deletePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String lostDeletePro(@RequestParam HashMap<String, String> map, Model model) {
@@ -149,13 +165,6 @@ public class CustomerController {
 		model.addAttribute("noticeBoardList", noticeBoardList);
 //		System.out.println(model);
 		return "admin/admin_notice_board";
-		
-//		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
-//		System.out.println(oneBoardList);
-//		model.addAttribute("oneBoardList", oneBoardList);
-////		System.out.println("Controller: " + model);
-//		return "customer_center/one_board";
-		
 	}
 	
 	// 관리자 공지 등록창
@@ -175,22 +184,16 @@ public class CustomerController {
 			model.addAttribute("msg", "등록 실패!");
 			return "fail_back";
 		}
-		
-//		int insertCount = boardService.registLostBoard(board);
-//		if(insertCount > 0) {
-//			
-//			return "redirect:/lost_board";
-//		} 
-//		else {
-//			model.addAttribute("msg", "등록 실패");
-//			return "fail_back";
-//		}
-		
 	}
 	
 	// 관리자 자주묻는 질문
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminFaq() {
+	public String adminFaq(Model model) {
+		
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList();
+//		System.out.println(noticeBoardList);
+		model.addAttribute("faqBoardList", faqBoardList);
+//		System.out.println(model);
 		return "admin/admin_faq";
 	}
 	

@@ -96,10 +96,25 @@
 			)
 	</insert>
 	
+	<!-- 공지사항 목록 -->
 	<select id="selectNoticeBoardList" resultType="hashmap">
 		SELECT *
 			FROM notice_board
 			ORDER BY notice_code DESC
+	</select>
+	
+	<!-- 공지사항 상세 -->
+	<select id="selectNoticeDetail" resultType="hashmap">
+		SELECT *
+			FROM notice_board
+			WHERE notice_code = #{notice_code}
+	</select>
+	
+	<!-- 자주묻는 질문 목록 -->
+	<select id="selectFaqBoardList" resultType="hashmap">
+		SELECT * 
+			FROM faq_board 
+			WHERE faq_num = #{faq_num}
 	</select>
 	
 </mapper>
