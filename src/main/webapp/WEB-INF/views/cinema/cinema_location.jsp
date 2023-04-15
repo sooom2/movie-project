@@ -81,7 +81,7 @@
 					      
 					      
 					      var infowindow = new google.maps.InfoWindow({
-					    	  content: cinemaName
+					    	  content: "아이무비 "+cinemaName
 					    	  });
 					    	 
 					    	google.maps.event.addListener(marker,'mouseover', function() {
