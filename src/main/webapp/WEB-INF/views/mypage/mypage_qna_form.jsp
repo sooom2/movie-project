@@ -46,7 +46,7 @@
 					</h3>
 				</div>
 				<div class="summary summary-3">
-					<h3>나의 관람권</h3>
+					<h3>추천영화</h3>
 					<span class="coupon-box">
 						<input type="text" name="coupon" class="input-coupon"
 						placeholder="관람권/쿠폰 번호를 빈칸 없이 입력해주세요."> <a href="#"
@@ -95,24 +95,40 @@
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>나의게시판</div>
+						>나의문의내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
-						<tbody>
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<!-- 								<th>문의지점</th> -->
+<!-- 								<th>문의유형</th> -->
+<!-- 								<th>제목</th> -->
+<!-- 								<th>작성일자</th> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td>아이무비부산대연점</td> -->
+<!-- 								<td>예매</td> -->
+<!-- 								<td><a href="">예매 관련 질문 드립니다 !! </a></td> -->
+<!-- 								<td>20230303</td> -->
+<!-- 							</tr> -->
+							
+<!-- 						</tbody> -->
+						<thead>
 							<tr>
 								<th>문의지점</th>
 								<th>문의유형</th>
 								<th>제목</th>
 								<th>작성일자</th>
-								<th>답글유무</th>
 							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="qnaList" items="${qnaList}">
 							<tr>
-								<td>아이무비부산대연점</td>
-								<td>예매</td>
-								<td><a href="">예매 관련 질문 드립니다 !! </a></td>
-								<td>20230303</td>
-								<td>미답변</td>
+								<td>${qnaList.get("one_location")}</td>
+								<td>${qnaList.get("one_question_type")}</td>
+								<td><a href="">${qnaList.get("one_subject")}</a></td>
+								<td>${qnaList.get("one_write_date")}</td>
 							</tr>
-							
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>

@@ -1,6 +1,7 @@
 package com.itwillbs.movie.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class MypageService {
 	public int quitMember(HashMap<String, String> quit) {
 		return mapper.deleteMember(quit);
 	}
+
+	public  List<HashMap<String, String>> qnaList(String id) {
+		return mapper.qnaList(id);
+	}
+
 
 
 	

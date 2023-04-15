@@ -33,10 +33,23 @@
 	
 	</update>
   
-  	<delete id = "deleteMember">
+  	<delete id = "deleteMember" >
   		DELETE 
   			FROM member
   			WHERE member_id = #{member_id}
   	</delete>
+  	
+  	<select id = "qnaList" resultType = "hashmap" >
+  		SELECT 
+  			one_location
+  			,one_question_type
+  			,one_subject
+  			,one_write_date
+  		FROM one_board 
+  		WHERE member_id = #{id}
+  		ORDER BY one_write_date DESC
+  		
+  		
+  	</select>
   	
 </mapper>

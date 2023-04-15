@@ -46,7 +46,7 @@
 					</h3>
 				</div>
 				<div class="summary summary-3">
-					<h3>나의 관람권</h3>
+					<h3>추천영화</h3>
 					<span class="coupon-box">
 						<input type="text" name="coupon" class="input-coupon"
 						placeholder="관람권/쿠폰 번호를 빈칸 없이 입력해주세요."> <a href="#"

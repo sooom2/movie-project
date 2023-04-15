@@ -1,6 +1,5 @@
 package com.itwillbs.movie.controller;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,15 +59,18 @@ public class MypageController {
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
+		List<HashMap<String, String>> qnaList = service.qnaList(id);
+		model.addAttribute("qnaList",qnaList);
+		
 		return "mypage/mypage_qna_form";
 	}
 	//회원정보수정
 	@GetMapping(value = "mypageI")
-	public String mypageI(HttpSession session, Model model, String location_name, HttpSession request) {
+	public String mypageI(HttpSession session, Model model) {
 		
 
 		String id = (String)session.getAttribute("sId");
-		
+
 		if(id ==null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "member/fail_back";
