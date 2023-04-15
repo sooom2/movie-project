@@ -221,7 +221,7 @@
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
 	.movie-desc .rate-n, .movie-desc .rate-x {
-	
+	background-size: 23px 23px !important;
 	font-weight: bold;
 	color: #fff;
 	width: 20px;
@@ -239,25 +239,21 @@
 .movie-desc .rate-all {
 	background: url("../images/movies/icon-rate-all.png") center center
 		no-repeat;
-	background-size: 23px 23px;
 }
 
 .movie-desc .rate-12 {
 	background: url("../images/movies/icon-rate-12.png") center center
 		no-repeat;
-	background-size: 23px 23px;
 }
 
 .movie-desc .rate-15 {
 	background: url("../images/movies/icon-rate-15.png") center center
 		no-repeat;
-	background-size: 23px 23px;
 }
 
 .movie-desc .rate-x {
 	background: url("../images/movies/icon-rate-x.png") center center
 		no-repeat;
-	background-size: 23px 23px;
 }
 
 .movie-desc .rate-n {

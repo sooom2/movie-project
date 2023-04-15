@@ -896,11 +896,12 @@ header {
 	padding: 6px 0;
 	color: #000000;
 	text-align: center;
+	white-space : nowrap;								/* 추가삽입 04.15. 13:19*/
 }
 
 .movie-desc .rate-all, .movie-desc .rate-12, .movie-desc .rate-15,
 	.movie-desc .rate-n, .movie-desc .rate-x {
-	background-size: 23px 23px;				/*추가 삽입*/
+	background-size: 23px 23px !important;				/*추가 삽입 <-- !important 추가 삽입*/  
 	font-weight: bold;
 	color: #fff;
 	width: 20px;
