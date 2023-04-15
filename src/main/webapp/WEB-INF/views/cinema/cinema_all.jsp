@@ -25,36 +25,38 @@ function doDisplay(){
 }
 
 function cinemaNameClick(){
-	
-$('.theater-place li').click(function() {
-	  $('.theater-place li.on').removeClass('on');
-	  $(this).addClass('on');
-});	  
-	  
-	  let cityName = $(event.target).val();
-	  let $clickedButton = $(this);
-	
-	  $.ajax({
-			type: "GET",
-			url: "locationCinema",
-			data: {
-				location_name: cityName
-			},
-			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-				$('.theater-list ul li').empty();
-					$(this).parent().addClass('on');
-					for(var i=0; i<result.length; i++){
-						$(".theater-list ul").append('<li><a href="cinemaDetail?cinema_code='+result[i].cinema_code+'">'+result[i].cinema_name+'</a></li>');
-					}
-					
-			},
-			error:function(request,status,error){
-				
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}
-			
-		});//ajax
-}//cinemaClick
+    let cityName = $(event.target).val();
+    let $clickedButton = $(this);
+    
+    $('.theater-place .loc .theater-list').click(function(e) {
+  	  e.stopPropagation(); // theater-list 영역 클릭했을때 on 되는거 막기
+  	});
+  	
+
+    $('.theater-place .loc').click(function() {
+        $('.theater-place .loc.on').removeClass('on');
+        $(this).addClass('on');
+    });    
+
+    $.ajax({
+        type: "GET",
+        url: "locationCinema",
+        data: {
+            location_name: cityName
+        },
+        success: function(result){
+            $('.theater-list ul li').empty();
+            $('.theater-place .loc.on').removeClass('on'); // 모든 loc 태그에서 on 클래스 제거
+            $clickedButton.parent().addClass('on'); // 선택한 버튼의 부모 태그에 on 클래스 추가
+            for(var i=0; i<result.length; i++){
+                $(".theater-list ul").append('<li><a href="cinemaDetail?cinema_code='+result[i].cinema_code+'">'+result[i].cinema_name+'</a></li>');
+            }
+        },
+        error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+}
 
 
 function modalClose(){
@@ -151,21 +153,21 @@ function modalClose(){
 				<h2 class="tit">전체 극장</h2>
 					<div class="theater-box" style="height: 250px;">
 						<div class="theater-place">
-							<c:forEach var="location" items="${location }">
-							<ul >
-								<li >
-									<button type="button" class="sel-ctiy" value=${location.get('location_name') } onclick="cinemaNameClick()">${location.get('location_name') } </button>
-									<div class="theater-list">
-										<ul>
-										<li>
-										<span style="font-weight: 300">지역을 선택해주세요</span>
-										</li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-							</c:forEach>
-					</div>
+						  <ul>
+						    <c:forEach var="location" items="${location }">
+						      <li class="loc">
+						        <button type="button" class="sel-ctiy" value="${location.get('location_name')}" onclick="cinemaNameClick.call(this)">${location.get('location_name')}</button>
+						        <div class="theater-list">
+						          <ul>
+						            <li>
+						              <span style="font-weight: 300">지역을 선택해주세요</span>
+						            </li>
+						          </ul>
+						        </div>
+						      </li>
+						    </c:forEach>
+						  </ul>
+						</div>
 
 						<div class="user-theater">
 
