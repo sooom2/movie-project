@@ -29,6 +29,13 @@
 	ORDER BY notice_write_date desc
 	LIMIT 5
 </select>
+<select id="cinemaDetail" resultType="hashmap">
+	SELECT *
+	  FROM cinema
+	 WHERE cinema_code = #{cinema_code}
+
+
+</select>
 
 </mapper>
 	

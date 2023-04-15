@@ -14,6 +14,7 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 
+
 function doDisplay(){
 	let dis = document.querySelector(".modal-type2");
 	

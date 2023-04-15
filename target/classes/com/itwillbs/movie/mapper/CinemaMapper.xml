@@ -7,22 +7,34 @@
 <select id="location" resultType="hashmap">
 	SELECT * FROM location
 </select>
-<!-- <select id="locationCinema" resultType="hashmap"> -->
-<!-- 	SELECT  -->
-<!-- 			cinema_name -->
-<!-- 			,location.location_code -->
-<!-- 			,location_name -->
-<!--       FROM cinema -->
-<!--  LEFT JOIN location  -->
-<!--         ON cinema.location_code = location.location_code -->
-<!--   ORDER BY location_name -->
-<!-- </select> -->
 <select id="locationCinema" resultType="hashmap">
-	SELECT cinema_name
+	SELECT cinema_name,
+		   cinema_code
       FROM cinema
  LEFT JOIN location 
         ON cinema.location_code = location.location_code
   	 WHERE location_name = #{location_name}
+</select>
+
+<select id="noticeList" resultType="hashmap">
+	SELECT cinema.cinema_name
+	  ,location_name
+	  ,notice_subject
+	  ,notice_write_date 
+	FROM notice_board
+	LEFT JOIN cinema
+	ON cinema.cinema_name = notice_board.cinema_name
+	LEFT JOIN location 
+	ON location.location_code = cinema.location_code
+	ORDER BY notice_write_date desc
+	LIMIT 5
+</select>
+<select id="cinemaDetail" resultType="hashmap">
+	SELECT *
+	  FROM cinema
+	 WHERE cinema_code = #{cinema_code}
+
+
 </select>
 
 </mapper>

@@ -57,7 +57,9 @@ $('.theater-place li').click(function() {
 }//cinemaClick
 
 
-
+function modalClose(){
+	 $('.modal-type2').hide();
+}
 
 </script>
 </head>

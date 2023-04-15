@@ -27,6 +27,10 @@ public class CinemaService {
 		return mapper.noticeList();
 	}
 
+	public List<HashMap<String, String>> cinemaDetail(String cinema_code) {
+		return mapper.cinemaDetail(cinema_code);
+	}
+
 	
 	
 

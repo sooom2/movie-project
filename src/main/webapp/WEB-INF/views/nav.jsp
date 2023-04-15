@@ -26,7 +26,7 @@
 			<c:choose>
 				<c:when test="${empty sessionScope.sId }">
 					<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
-					<li><a href="memJoin">회원가입</a></li>
+					<li><a href="memAuth">회원가입</a></li>
 					<li><a href="guestRsv" class="">비회원예매내역</a></li>
 					<li><a href="admin" class="">관리자</a></li>
 				</c:when>
@@ -45,23 +45,23 @@
 		<nav class="primary">
 			
 			<ul class="nav_left">
-				<li><a href="" class="" onmouseover="hideTheater()">예매</a>
+				<li><a href="" class="" onmouseover="">예매</a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="reservation" class="" onmouseover="hideTheater()">빠른예매</a></li>
-							<li><a href="" class="" onmouseover="hideTheater()">상영시간표</a></li>
-							<li><a href="" class=""	onmouseover="hideTheater()">비회원예매내역</a></li>
+							<li><a href="reservation" class="" onmouseover="">빠른예매</a></li>
+							<li><a href="" class="" onmouseover="">상영시간표</a></li>
+							<li><a href="" class=""	onmouseover="">비회원예매내역</a></li>
 						</ul>
 					</div>
 				</li>
 			
 			
-				<li><a href="screening" class="" onmouseover="hideTheater()"> 영화 </a>
+				<li><a href="screening" class="" onmouseover=""> 영화 </a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="screening" class=""	onmouseover="hideTheater()">현재상영작</a></li>
-							<li><a href="comming" class=""	onmouseover="hideTheater()">상영예정작</a></li>
-							<li><a href="" class=""	onmouseover="hideTheater()">후 기</a></li>
+							<li><a href="screening" class=""	onmouseover="">현재상영작</a></li>
+							<li><a href="comming" class=""	onmouseover="">상영예정작</a></li>
+							<li><a href="" class=""	onmouseover="">후 기</a></li>
 						</ul>
 					</div>
 				</li>
@@ -71,38 +71,38 @@
 					<div class="theaterInfo">
 						<ul>
 <%-- 						<c:forEach var="cinema" items="${cinemaList }"> --%>
-							<li><a href="" class="" onmouseover="hideTheater()"></a></li>
-							<li><a href="cinemaList" class="" onmouseover="hideTheater()">전체극장</a></li>
+							<li><a href="" class="" onmouseover=""></a></li>
+							<li><a href="cinemaList" class="" onmouseover="">전체극장</a></li>
 <%-- 						</c:forEach> --%>
 						
 						</ul>
 					</div>
 				</li>
-				<li id=""><a href="store_main" class="" onmouseover="hideTheater()">스토어</a>
+				<li id=""><a href="store_main" class="" onmouseover="">스토어</a>
 				</ul>
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
-				<li><a href="event" class="" onmouseover="hideTheater()">이벤트</a>
+				<li><a href="event" class="" onmouseover="">이벤트</a>
 					<div class="tertiary">
 						<ul>
 <!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
 <!-- 							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li> -->
-							<li><a href="" class="" onmouseover="hideTheater()">진행중인 이벤트</a></li>
+							<li><a href="" class="" onmouseover="">진행중인 이벤트</a></li>
 						</ul>
 					</div>
 					</li>
 				</li>
-				<li id="cs"><a href="cc_home" class="" onmouseover="hideTheater()">고객센터</a>
+				<li id="cs"><a href="cc_home" class="" onmouseover=")">고객센터</a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="faq" class="" onmouseover="hideTheater()">자주묻는 질문</a></li>
-							<li><a href="notice_board" class="" onmouseover="hideTheater()">공지사항</a></li>
-							<li><a href="oneOnOne" class="" onmouseover="hideTheater()">1:1문의</a></li>
-							<li><a href="lost_board" class="" onmouseover="hideTheater()">분실물 문의</a></li>
+							<li><a href="faq" class="" onmouseover="">자주묻는 질문</a></li>
+							<li><a href="notice_board" class="" onmouseover="">공지사항</a></li>
+							<li><a href="oneOnOne" class="" onmouseover="">1:1문의</a></li>
+							<li><a href="lost_board" class="" onmouseover="">분실물 문의</a></li>
 						</ul>
 					</div>
 				</li>
-				<li id=""><a href="mypageR" class="" onmouseover="hideTheater()">마이페이지</a>
+				<li id=""><a href="mypageR" class="" onmouseover="">마이페이지</a>
 				</li>
 			</ul>
 <!-- 			<a href="" class="btn-simple-rsv simplereservepop">간편예매</a> -->
