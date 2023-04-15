@@ -32,11 +32,6 @@
 <!-- 선호장르 영화리스트 -->
 <!-- 선택후 좌석 넘어가기 전 관람등급 확인창 -->
 
-
-
-<!-- typeof 하면 number인데 constroller에서 매개변수 String이 왜 되지...? -->
-
-
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
@@ -203,29 +198,6 @@
 															
 															</ul>
 														</div>
-<!-- 														<div class="thum-type" style="display: none"> -->
-<!-- 															<h5 class="thum-tit">1관/2D(자막)</h5> -->
-<!-- 															<ul> -->
-<!-- 																<li> -->
-<!-- 																	<button type="button" class="btnTime" data-cd="01" -->
-<!-- 																		data-seq="1"> -->
-<!-- 																		<strong>10:30<span>~12:32</span></strong> -->
-<!-- 																		<p> -->
-<!-- 																			89/<span>89석</span> -->
-<!-- 																		</p> -->
-<!-- 																	</button> -->
-<!-- 																</li> -->
-<!-- 																<li> -->
-<!-- 																	<button type="button" class="btnTime" data-cd="01" -->
-<!-- 																		data-seq="3"> -->
-<!-- 																		<strong>16:10<span>~18:12</span></strong> -->
-<!-- 																		<p> -->
-<!-- 																			87/<span>89석</span> -->
-<!-- 																		</p> -->
-<!-- 																	</button> -->
-<!-- 																</li> -->
-<!-- 															</ul> -->
-<!-- 														</div> -->
 													</div>
 												</div>
 												<div class="scroll-element scroll-x">
@@ -713,9 +685,6 @@ var mvDay = "";		// 상영일
 			dateCd = $(this).data("cd");
 			console.log("날짜클릭함 dateCd : " + dateCd);		// 선택한 날짜의 일 출력
 			console.log("날짜클릭함 : -------");
-// 			console.log(typeof CnItemCd);					// number타입인데 왜 String으로 보내는거 가능...? 
-// 			console.log(MvItemCd);
-// 			console.log(dateCd);
 			
 			$(".btnTime").hide();
 			getTimeList();
