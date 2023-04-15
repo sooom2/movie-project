@@ -17,9 +17,7 @@
 <script type="text/javascript">
 
 function selectCinema(){
-	alert("change");
 	
-	alert($(".cinema_name option:selected").val());
 	$.ajax({
 		type: "POST",
 		url: "screenSelect",
@@ -59,7 +57,7 @@ $(function() {
             ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
             ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
             ,minDate: "0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            ,maxDate: "+100D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+            ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
     });                           
 });
 
