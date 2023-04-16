@@ -36,6 +36,20 @@ public class MypageService {
 	}
 
 
+	public List<HashMap<String, String>> revList(String id) {
+		return mapper.revList(id);
+	}
+
+	public int insertReview(HashMap<String, String> review) {
+		return  mapper.insertReview(review);
+	}
+	
+	public HashMap<String, String> selectMemberId(String id) {
+		return mapper.selectMemberId(id);
+	}
+
+
+
 
 	
 	

@@ -10,6 +10,12 @@
 			WHERE member_id = #{id}
 	</select>
 	
+	<select id="selectMemberId" resultType="hashmap">
+		SELECT * 
+			FROM member
+			WHERE member_id = #{id}
+	</select>
+	
 	<!-- 비밀번호 조회 -->
 	<select id="selectPasswd" resultType="string">
 		SELECT member_pw FROM member
@@ -49,7 +55,30 @@
   		WHERE member_id = #{id}
   		ORDER BY one_write_date DESC
   		
-  		
+  	</select>
+  	
+  	<insert id= "insertReview" >
+  		INSERT 
+  			INTO review
+  			VALUES (
+  			#{rev_code}
+  			,#{rev_movie_code} 
+  			,#{rev_movie_title}
+  			,#{id}
+			,#{rev_rating}
+			,#{rev_content}
+			,now()
+  			)
+  	</insert>
+  	
+  	<select id = "revList" resultType = "hashmap" >
+  		SELECT 
+  			 rev_movie_title
+  			,rev_content
+  			,rev_rating
+  			,rev_date
+  		FROM review
+  		WHERE rev_id = #{id}
   	</select>
   	
 </mapper>

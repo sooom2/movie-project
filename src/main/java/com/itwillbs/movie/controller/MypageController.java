@@ -73,7 +73,7 @@ public class MypageController {
 
 		if(id ==null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
-			return "member/fail_back";
+			return "fail_back";
 		}
 		
 		MemberVO member = service.getMemberInfo(id);
@@ -87,7 +87,7 @@ public class MypageController {
 		
 		if(id == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
-			return "member/fail_back";
+			return "fail_back";
 		}
 		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -95,7 +95,7 @@ public class MypageController {
 		
 		if(Epasswd == null || !passwordEncoder.matches(update.get("member_pw"), Epasswd)) {
 			model.addAttribute("msg", "비밀번호 확인필수!");
-			return "member/fail_back";
+			return "fail_back";
 		}
 		
 		if(!update.get("member_pw2").equals("")) {
@@ -111,7 +111,7 @@ public class MypageController {
 			
 		} else {
 			model.addAttribute("msg", "회원정보수정 실패!");
-			return "member/fail_back";
+			return "fail_back";
 		}
 		
 		
@@ -158,13 +158,39 @@ public class MypageController {
 	public String mypageRv(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		member= service.getMemberInfo(id);
+		
+		List<HashMap<String, String>> revList = service.revList(id);
+		model.addAttribute("revList",revList);
+		
 		model.addAttribute("member", member);
 		
 		return "mypage/mypage_review_form";
 		
 	}
 	
-	
+	@PostMapping(value="mypageRvPro")
+	public String mypageRvPro(@RequestParam HashMap<String, String> review, HttpSession session,  Model model) {
+		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> member = service.selectMemberId(id);
+		
+		review.put("id", id);
+
+		int insertCount = service.insertReview(review);
+		
+		if(insertCount > 0 ) {
+			model.addAttribute("msg", "리뷰가 등록 되었습니다.");
+			model.addAttribute("target", "mypageRv");
+
+			return "success";
+		
+		} else {
+			
+			model.addAttribute("msg", "리뷰 등록 실패!");
+			return "fail_back";
+		}
+		
+		
+	}
 	
 	
 	

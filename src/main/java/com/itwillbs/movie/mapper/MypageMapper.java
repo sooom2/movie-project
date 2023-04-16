@@ -17,6 +17,13 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> qnaList(String id);
 
+	int insertReview(HashMap<String, String> review);
+
+	List<HashMap<String, String>> revList(String id);
+
+	HashMap<String, String> selectMemberId(String id);
+
+
 
 	
 

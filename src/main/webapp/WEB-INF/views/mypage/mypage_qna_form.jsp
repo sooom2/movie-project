@@ -97,21 +97,6 @@
 					<div style="margin-top: -40px; margin-bottom: 10px;"
 						>나의문의내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
-<!-- 						<tbody> -->
-<!-- 							<tr> -->
-<!-- 								<th>문의지점</th> -->
-<!-- 								<th>문의유형</th> -->
-<!-- 								<th>제목</th> -->
-<!-- 								<th>작성일자</th> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>아이무비부산대연점</td> -->
-<!-- 								<td>예매</td> -->
-<!-- 								<td><a href="">예매 관련 질문 드립니다 !! </a></td> -->
-<!-- 								<td>20230303</td> -->
-<!-- 							</tr> -->
-							
-<!-- 						</tbody> -->
 						<thead>
 							<tr>
 								<th>문의지점</th>
