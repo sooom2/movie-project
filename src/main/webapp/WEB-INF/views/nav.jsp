@@ -7,24 +7,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-// 		Kakao.init('bf0c05681627cc5d65f40192f843de1b'); //발급받은 키 
-// 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
-// 		Kakao.Auth.setAccessToken('${sessionScope.token}');
-		
 	function logout() {
-		location.href="https://kauth.kakao.com/oauth/logout?client_id=bf0c05681627cc5d65f40192f843de1b&logout_redirect_uri=http://localhost:8080/movie-project/logout";
-// 		if(Kakao.Auth.getAccessToken()) {
-// 			console.log(Kakao.Auth.getAccessToeken());
-// 		} else {
-// 			console.log('Not logged in.');
-// 			return;
-// 		}
 		
-		let isLogout = confirm("로그아웃 하시겠습니까?");
-		
-		if(isLogout) {
-			location.href = "logout";
+		// 카카오 로그인 아닐시 session "token" = true
+		if(${sessionScope.token == true}){
+			let isLogout = confirm("로그아웃 하시겠습니까?");
+			
+			if(isLogout) {
+				location.href = "logout";
+			}
+			
+		} else {
+			location.href="https://kauth.kakao.com/oauth/logout?client_id=bf0c05681627cc5d65f40192f843de1b&logout_redirect_uri=http://localhost:8080/movie-project/logout";
+			
 		}
+		
+		
 	}
 </script>
 <link href="${path }/resources/css/common.css" rel="stylesheet">

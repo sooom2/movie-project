@@ -112,6 +112,7 @@ public class MemberController {
 
 	    if (passwordEncoder.matches(password, hashedPassword)) {
 	        session.setAttribute("sId", memberId);
+	        session.setAttribute("token", "true");
 	        return "redirect:/main";
 	    }
 
@@ -125,6 +126,7 @@ public class MemberController {
 		System.out.println(kakao);
 		
 		HashMap<String, String> member = service.kakaoMember(kakao.get("email"));
+		session.setAttribute("token", kakao.get("accessToken"));
 		
 		// 회원 판별
 		if(member == null) {
@@ -132,8 +134,8 @@ public class MemberController {
 			model.addAttribute("target", "joinform");
 			
 			return "member/success";
+			
 		} else {
-			session.setAttribute("token", kakao.get("accessToken"));
 			session.setAttribute("sId", member.get("member_id"));
 			
 			return "redirect:/main";
