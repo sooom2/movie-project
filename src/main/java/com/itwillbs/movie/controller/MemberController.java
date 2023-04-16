@@ -119,6 +119,28 @@ public class MemberController {
 	    return "member/fail_back";
 	}
 	
+	// 카카오 로그인 확인
+	@PostMapping(value = "kakao")
+	public String kakao(@RequestParam HashMap<String, String> kakao, Model model, HttpSession session) {
+		System.out.println(kakao);
+		
+		HashMap<String, String> member = service.kakaoMember(kakao.get("email"));
+		
+		// 회원 판별
+		if(member == null) {
+			model.addAttribute("msg", "회원이 아닙니다. 회원가입 페이지로 이동합니다.");
+			model.addAttribute("target", "joinform");
+			
+			return "member/success";
+		} else {
+			session.setAttribute("token", kakao.get("accessToken"));
+			session.setAttribute("sId", member.get("member_id"));
+			
+			return "redirect:/main";
+		}
+		
+	}
+	
 	
 	
 	// 회원가입폼

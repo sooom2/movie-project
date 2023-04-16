@@ -37,6 +37,11 @@ public class MemberService {
 	public List<HashMap<String, String>> selectHotItem() {
 		return mapper.selectHot();
 	}
+	
+	// 카카오 회원 확인
+	public HashMap<String, String> kakaoMember(String email) {
+		return mapper.selectKakao(email);
+	}
 
 	
 }

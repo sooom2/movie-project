@@ -52,6 +52,12 @@
 				WHERE member_id = #{member_id} 
 	</select>
 	
+	<!-- 카카오 회원 확 -->
+	<select id="selectKakao" resultType="hashmap">
+		SELECT * FROM member
+			WHERE member_email = #{email}
+	</select>
+	
 	<select id="selectMemberId" resultType="hashmap">
 		SELECT * 
 				FROM member

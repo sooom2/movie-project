@@ -65,6 +65,8 @@ public interface MyBatisMapper {
 
 	//메인화면 핫상품 3개 보여주기 
 	List<HashMap<String, String>> selectHot();
+
+	HashMap<String, String> selectKakao(String email);
 	
 	// ------------------------------------------------------------------------------------------
 	
