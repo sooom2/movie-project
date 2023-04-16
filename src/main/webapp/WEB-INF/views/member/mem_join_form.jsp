@@ -82,7 +82,7 @@
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="join-id2" name="member_email" class="input" value="" placeholder="인증받은 이메일자동입력">
+									<input type="text" id="join-id2" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력">
 									<span></span>
 								</label>
 							</div>

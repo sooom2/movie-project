@@ -133,7 +133,7 @@ public class MovieRegisterController {
 		cal.setTime(startTime);
 		cal.add(Calendar.HOUR_OF_DAY, runTime.getHours());
 		cal.add(Calendar.MINUTE, runTime.getMinutes());
-		cal.add(Calendar.SECOND, runTime.getSeconds());
+//		cal.add(Calendar.SECOND, runTime.getSeconds());
 		Date sumDate = cal.getTime();
 		
 		

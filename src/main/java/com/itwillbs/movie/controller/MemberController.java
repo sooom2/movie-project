@@ -11,11 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.movie.service.MailSendService;
 import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
 import com.itwillbs.movie.service.StoreService;
@@ -30,7 +29,10 @@ public class MemberController {
 	private StoreService storeService;
 	@Autowired
 	private MovieRegisterService movieRegisterService;
+	@Autowired
+	private MailSendService mailService;
 
+	
 	@GetMapping(value = "main")
 	public String main(Model model) {
 		
@@ -125,9 +127,8 @@ public class MemberController {
 	}
 	
 	// 카카오 로그인 확인
-	@PostMapping(value = "kakao")
+	@PostMapping(value = "kakaoLogin")
 	public String kakao(@RequestParam HashMap<String, String> kakao, Model model, HttpSession session) {
-		System.out.println(kakao);
 		
 		HashMap<String, String> member = service.kakaoMember(kakao.get("email"));
 		session.setAttribute("token", kakao.get("accessToken"));
@@ -147,12 +148,40 @@ public class MemberController {
 		
 	}
 	
+	// 카카오 회원가입
+	@PostMapping(value = "kakaoJoin")
+	public String kakaoJoin(@RequestParam HashMap<String, String> kakao, Model model) {
+		model.addAttribute("email", kakao.get("email"));
+		
+		return "member/mem_join_form";
+	}
+	
+	
+//	// 네이버 로그인
+//	@PostMapping(value = "naver")
+//	public String naver(@RequestParam HashMap<String, String> naver, Model model, HttpSession session) {
+//		
+//		System.out.println(naver);
+//		
+//		return "";
+//	}
+	
+	
+	// 이메일 인증
+	@GetMapping(value = "mailCheck")
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println(email);
+		return mailService.joinEmail(email);
+	}
+	
+	
 	
 	
 	// 회원가입폼
 	@GetMapping(value = "joinform")
-	public String loginform() {
-		
+	public String loginform(String email, Model model) {
+		model.addAttribute("email", email);
 		return "member/mem_join_form";
 	}
 	
@@ -196,6 +225,7 @@ public class MemberController {
 		
 		return "redirect:/main";
 	}
+	
 	
 	
 }

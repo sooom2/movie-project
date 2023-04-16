@@ -6,7 +6,7 @@ a {
 
 a:active, a:focus, a:hover {
 	color: #666;
-	text-decoration: underline;
+/* 	text-decoration: underline; */
 }
 
 h2.tit {
@@ -1002,27 +1002,27 @@ button:focus {
 
 .section-theater-body .wrap .cal ul li a.prev {
 	width: 58px;
-	background: url("/images/theaters/btn-cal-prev.png") center center
+	background: url("../images/cinema/btn-cal-prev.png") center center
 		no-repeat;
 	overflow: hidden;
 	text-indent: -10000em;
 }
 
 .section-theater-body .wrap .cal ul li a.prev:hover {
-	background: url("/images/theaters/btn-cal-prev-on.png") center center
+	background: url("../images/cinema/btn-cal-prev-on.png") center center
 		no-repeat;
 }
 
 .section-theater-body .wrap .cal ul li a.next {
 	width: 58px;
-	background: url("/images/theaters/btn-cal-next.png") center center
+	background: url("../images/cinema/btn-cal-next.png") center center
 		no-repeat;
 	overflow: hidden;
 	text-indent: -10000em;
 }
 
 .section-theater-body .wrap .cal ul li a.next:hover {
-	background: url("/images/theaters/btn-cal-next-on.png") center center
+	background: url("../images/cinema/btn-cal-next-on.png") center center
 		no-repeat;
 }
 
@@ -1039,10 +1039,12 @@ button:focus {
 }
 
 .section-theater-body .wrap .cal ul li a.selected {
-	background: url("/images/theaters/bg-cal-selected.png") center center
+	background: url("../images/cinema/bg-cal-selected.png") center center
 		no-repeat;
 	color: #fff;
 }
+
+
 
 .section-theater-body .wrap .cal ul li a.selected .day {
 	color: #fff;
@@ -1393,11 +1395,18 @@ button:focus {
 	margin-bottom: 11px;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-all,
-	.section-theater-body .wrap .content .each-movie-time .title .rate-12,
-	.section-theater-body .wrap .content .each-movie-time .title .rate-15,
-	.section-theater-body .wrap .content .each-movie-time .title .rate-n,
-	.section-theater-body .wrap .content .each-movie-time .title .rate-x {
+.section-theater-body .wrap .content .each-movie-time .movie-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #494949;
+    margin-bottom: 11px;
+}
+
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-all,
+	.section-theater-body .wrap .content .each-movie-time .movie-title .rate-12,
+	.section-theater-body .wrap .content .each-movie-time .movie-title .rate-15,
+	.section-theater-body .wrap .content .each-movie-time .movie-title .rate-n,
+	.section-theater-body .wrap .content .each-movie-time .movie-title .rate-x {
 	font-weight: bold;
 	color: #fff;
 	width: 20px;
@@ -1413,32 +1422,32 @@ button:focus {
 	top: 2px;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-all {
-	background: url("/images/movies/icon-rate-all.png") center center
-		no-repeat;
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-all {
+	background: url("/images/movies/icon-rate-all.png") center center no-repeat;
+	background-size: cover;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-12 {
-	background: url("/images/movies/icon-rate-12.png") center center
-		no-repeat;
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-12 {
+	background: url("../images/movies/icon-rate-12.png") center center no-repeat;
+	background-size: cover;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-15 {
-	background: url("/images/movies/icon-rate-15.png") center center
-		no-repeat;
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-15 {
+	background: url("../images/movies/icon-rate-15.png") center center no-repeat;
+	background-size: cover;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-x {
-	background: url("/images/movies/icon-rate-x.png") center center
-		no-repeat;
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-x {
+	background: url("../images/movies/icon-rate-x.png") center center no-repeat;
+	background-size: cover;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .rate-n {
-	background: url("/images/movies/icon-rate-n.png") center center
-		no-repeat;
+.section-theater-body .wrap .content .each-movie-time .movie-title .rate-n {
+	background: url("../images/movies/icon-rate-n.png") center center no-repeat;
+	background-size: cover;
 }
 
-.section-theater-body .wrap .content .each-movie-time .title .aux {
+.section-theater-body .wrap .content .each-movie-time .movie-title .aux {
 	color: #c39c71;
 	font-weight: normal;
 }
