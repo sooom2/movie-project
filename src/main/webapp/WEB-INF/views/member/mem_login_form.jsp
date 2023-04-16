@@ -12,6 +12,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript">
 
 
@@ -30,9 +31,9 @@ function modalClose(){
 	 $('.modal-type2').hide();
 }
 
-Kakao.init('bf0c05681627cc5d65f40192f843de1b'); //발급받은 키 
-Kakao.isInitialized(); // sdk초기화여부판단
-//카카오로그인
+// 카카오 로그인
+Kakao.init('bf0c05681627cc5d65f40192f843de1b'); 
+Kakao.isInitialized(); 
 function kakaoLogin() {
     Kakao.Auth.login({
       success: function (response) {
@@ -63,6 +64,51 @@ function kakaoLogin() {
       },
     })
   }
+
+
+// 네이버 로그인
+// function naverLogin() {
+
+// 	var naverLogin = new naver.LoginWithNaverId(
+// 			{
+// 				clientId: "R9808Fi38tLfxNR6b3ym", 
+// 				callbackUrl: "http://localhost:8080/movie-project/memLogin", 
+// 				isPopup: false,
+// 				callbackHandle: true
+// 			}
+// 		);	
+
+// 	naverLogin.init();
+
+// 	window.addEventListener('load', function () {
+// 		naverLogin.getLoginStatus(function (status) {
+			
+// 			if (status) {
+// 				var email = naverLogin.user.getEmail();
+// 				var name = naverLogin.user.getNickName();
+// 	    		console.log(email);
+// 	    		console.log(name);
+// 				console.log(naverLogin.user);
+	    		
+// 	            if( email == undefined || email == null) {
+// 					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+// 					naverLogin.reprompt();
+// 					return;
+// 				}
+	            
+// 	            $('#form-naver-login input[name=email]').val(email);
+// 				$('#form-naver-login input[name=name]').val(name);
+// 				// 사용자 정보가 포함된 폼을 서버로 제출.
+// 				document.querySelector('#form-naver-login').submit();
+	            
+// 			} else {
+// 				console.log("callback 처리에 실패하였습니다.");
+// 			}
+// 		});
+// 	});			   
+	
+// };
+
 
 
 
@@ -104,7 +150,9 @@ function kakaoLogin() {
 							<span onclick="kakaoLogin();">
 							<a href="#" class="btn-kakao"><img src="resources/images/member/ico_kakao.png"></a>
 							</span>
-							<a href="#" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
+							<span onclick="naverLogin();">
+							<a id="naverIdLogin_loginButton" href="#" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -131,11 +179,16 @@ function kakaoLogin() {
 				</div>
 			</div>
 		</div>
-		<form id="form-kakao-login" method="post" action="kakao">
+		<form id="form-kakao-login" method="post" action="kakaoLogin">
    			<input type="hidden" name="email"/>
    			<input type="hidden" name="name"/>
    			<input type="hidden" name="gender"/>
    			<input type="hidden" name="accessToken"/>
+   		</form>
+   		
+   		<form id="form-naver-login" method="post" action="naver">
+   			<input type="hidden" name="email"/>
+   			<input type="hidden" name="name"/>
    		</form>
 	
 	
