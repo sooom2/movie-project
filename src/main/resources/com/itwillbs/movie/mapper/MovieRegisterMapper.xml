@@ -3,7 +3,21 @@
 <mapper namespace="com.itwillbs.movie.mapper.MovieRegisterMapper">
 
 <select id="selectMovies" resultType="hashmap">
-	SELECT * FROM movieinfo
+		SELECT 
+			*
+			,  CASE 
+					WHEN datediff(info_showdate, now())>= 0 tHEN '상영예정'
+					WHEN datediff(info_showdate, now()) > 0 THEN '상영종료' 
+					ELSE '상영중'
+					END AS 'status'
+			, CASE info_rating
+					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+					WHEN '15세관람가' 					THEN 'rate-15'
+					WHEN '12세관람가' 					THEN 'rate-12'
+					WHEN '전체관람가' 					THEN 'rate-all' 
+					ELSE ''
+					END AS 'rate'
+  			FROM movieinfo
 </select>
 
 <insert id="registMovie">
@@ -26,7 +40,15 @@
 </insert>
 
 <select id="selectMovie" resultType="hashmap">
-	SELECT * 
+	SELECT 
+		* 
+		, CASE info_rating
+					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+					WHEN '15세관람가' 					THEN 'rate-15'
+					WHEN '12세관람가' 					THEN 'rate-12'
+					WHEN '전체관람가' 					THEN 'rate-all' 
+					ELSE ''
+					END AS 'rate'
 	  FROM movieinfo
 	 WHERE info_movie_code = #{info_movie_code}
 </select>

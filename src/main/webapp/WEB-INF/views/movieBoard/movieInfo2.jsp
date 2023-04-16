@@ -7,14 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/common.css" rel="stylesheet">
-<link href="resources/css/movieInfo.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/inc.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body id="top">
 <jsp:include page="../nav.jsp" />   
-
  <div id="container">
 	<div id="content">
 
@@ -25,7 +24,7 @@
 		<div class="section group section-movie-info">
 			<div class="wrap">
 				<h3>
-					<span class="rate-12">${movieInfo.info_rating }</span>
+					<span class="${movieInfo.rate }">${movieInfo.info_rating }</span>
 					${movieInfo.info_movie_title }
 				</h3>
 				<img src="${movieInfo.info_movie_poster }" alt="포스터" class="poster posterlist" />

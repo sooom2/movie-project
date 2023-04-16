@@ -19,7 +19,7 @@ public class MovieController {
 	private MovieRegisterService service;
 	
 	
-	//영화목록페이지
+	// 영화목록페이지
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
 	public String screening(Model model) {
 		
@@ -31,7 +31,7 @@ public class MovieController {
 		return "movieBoard/screening";
 	}
 	
-	// 최신개봉순이긴한데 아직 만드는중
+	// 상영예정작
 	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
 	public String latest(Model model) {
 		
