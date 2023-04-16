@@ -8,7 +8,7 @@
 			,  CASE 
 					WHEN datediff(info_showdate, now())>= 0 tHEN '상영예정'
 					WHEN datediff(info_showdate, now()) > 0 THEN '상영종료' 
-					ELSE '상영중'
+					ELSE '예매하기'
 					END AS 'status'
 			, CASE info_rating
 					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
@@ -31,7 +31,7 @@
 				   , #{info_time}
 				   , #{info_showdate}
 				   , #{info_enddate} 
-				   , '0'	-- likeCount
+				   , '0'										-- likeCount
 				   , #{info_director}
 				   , #{info_nation}
 				   , #{info_rating}
@@ -43,12 +43,17 @@
 	SELECT 
 		* 
 		, CASE info_rating
-					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
-					WHEN '15세관람가' 					THEN 'rate-15'
-					WHEN '12세관람가' 					THEN 'rate-12'
-					WHEN '전체관람가' 					THEN 'rate-all' 
-					ELSE ''
-					END AS 'rate'
+			WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+			WHEN '15세관람가' 					THEN 'rate-15'
+			WHEN '12세관람가' 					THEN 'rate-12'
+			WHEN '전체관람가' 					THEN 'rate-all' 
+			ELSE ''
+			END AS 'rate'
+		,  CASE 
+			WHEN datediff(info_showdate, now())>= 0 tHEN '상영예정'
+			WHEN datediff(info_showdate, now()) > 0 THEN '상영종료' 
+			ELSE '예매하기'
+			END AS 'status'
 	  FROM movieinfo
 	 WHERE info_movie_code = #{info_movie_code}
 </select>

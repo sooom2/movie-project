@@ -339,6 +339,7 @@ a:link {
     text-decoration: none;
 }
 .button {
+    width: 60px;
     display: inline-block;
     height: 34px;
     margin: 0;

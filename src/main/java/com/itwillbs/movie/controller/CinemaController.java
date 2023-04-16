@@ -1,5 +1,9 @@
 package com.itwillbs.movie.controller;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.protobuf.TextFormat.ParseException;
 import com.itwillbs.movie.service.BoardService;
 import com.itwillbs.movie.service.CinemaService;
 import com.itwillbs.movie.service.MovieRegisterService;
@@ -56,20 +61,51 @@ public class CinemaController {
 		List<HashMap<String, String>> locationCinema = cinemaService.locationCinema(location_name);
 		return locationCinema;
 	}
-	
+	//예매
 	@GetMapping("/cinemaDetail")
-	public String cinemaDetail(@RequestParam("cinema_code") String cinema_code,Model model) {
-		System.out.println("==================cinemaDetail===========================");
-		System.out.println(cinema_code);
-		System.out.println("=====================cinemaDetail========================");
+	public String cinemaDetail(
+			  @RequestParam("cinema_code") String cinema_code
+//			, @RequestParam("play_date") String play_date
+			, Model model
+			) throws JsonProcessingException, ParseException {
+		
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
+//		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,play_date);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String cinemaDetailJson = objectMapper.writeValueAsString(cinemaDetail);
+		model.addAttribute("cinemaDetailJson", cinemaDetailJson);
+		
+		
+		List<HashMap<String, Object>> schList = cinemaService.schList(cinema_code);
+
+		for (HashMap<String, Object> sch : schList) {
+		    Time sch_start_time = (Time) sch.get("sch_start_time"); // Time 타입으로 값을 받아옴
+		    String sch_start_time_str = sch_start_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
+		    sch.put("sch_start_time", sch_start_time_str); // 변경된 값을 다시 HashMap에 넣음
+		
+		    Time sch_last_time = (Time) sch.get("sch_last_time"); // sch_last_time 값을 Time 타입으로 받아옴
+		    String sch_last_time_str = sch_last_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
+		    sch.put("sch_last_time", sch_last_time_str); 
+		
+		}
+		
 		model.addAttribute("cinema_code",cinema_code);
 		model.addAttribute("cinemaDetail",cinemaDetail);
+		model.addAttribute("schList",schList);
+		
+		
+		
+		System.out.println("=======================================");
+		System.out.println(schList);
+		System.out.println("=======================================");
 		
 		return "cinema/cinema_detail";
 	}
 	
+
 	
+	// 위치
 	@GetMapping("/cinemaLocation")
 	public String cinemaLocation(@RequestParam("cinema_code") String cinema_code,Model model) throws JsonProcessingException {
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
@@ -88,19 +124,10 @@ public class CinemaController {
 	
 
 	
-	@GetMapping("test")
-	public String test() {
-		return "cinema/test";
-	}
-	
-	
-	
+	//이벤트
 	@GetMapping("/cinemaEvent")
 	public String cinemaEvent(@RequestParam("cinema_code") String cinema_code,Model model) {
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
-		System.out.println("======================cinemaEvent=======================");
-		System.out.println(cinema_code);
-		System.out.println("===================cinemaEvent=========================");
 		
 		//파라미터를 받아온것도 model에넣어주고 / 결과값도 넣어줘야함
 		model.addAttribute("cinema_code", cinema_code);
@@ -108,11 +135,9 @@ public class CinemaController {
 		return "cinema/cinema_event";
 	}
 	
+	//관람료
 	@GetMapping("/cinemaPrice")
 	public String cinemaPrice(@RequestParam("cinema_code") String cinema_code, Model model) {
-		System.out.println("===================cinemaPrice==========================");
-		System.out.println(cinema_code);
-		System.out.println("===================cinemaPrice==========================");
 		
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
 		

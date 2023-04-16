@@ -48,7 +48,7 @@
 
 					<div class="addr">${cinema.get('cinema_address')}</div>
 					
-					<div id="map" style="width: 1000px;height: 500px;"></div>
+					<div id="map" style="width: 1000px;height: 500px; margin-bottom:50px;"></div>
 
 					<script>
 					   function myMap(){
