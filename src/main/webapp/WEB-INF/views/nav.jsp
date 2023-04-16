@@ -69,7 +69,7 @@
 				<li><a href="screening" class="" onmouseover=""> 영화 </a>
 					<div class="tertiary">
 						<ul>
-							<li><a href="screening" class=""	onmouseover="">현재상영작</a></li>
+							<li><a href="screening" class=""	onmouseover="">박스오피스</a></li>
 							<li><a href="comming" class=""	onmouseover="">상영예정작</a></li>
 							<li><a href="" class=""	onmouseover="">후 기</a></li>
 						</ul>

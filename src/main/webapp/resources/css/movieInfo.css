@@ -18,11 +18,7 @@
 
 }
 
-.section-movie-list.screening {
-	padding-top: 169px;
-}
-
-.section-movie-list.latest, .section-movie-list.comming {
+.section-movie-list.screening, .section-movie-list.latest, .section-movie-list.comming {
 	padding-top: 117px;
 }
 .section-movie-list ul li .over-a .over-btn-rsv
@@ -338,7 +334,7 @@ a:link {
     color: #444;
     text-decoration: none;
 }
-.button {
+.section-movie-list.screening ul li btn-util .button {
     width: 60px;
     display: inline-block;
     height: 34px;
@@ -353,6 +349,23 @@ a:link {
     border: 1px solid #503396;
     vertical-align: middle;
     background-color: #503396;
+    cursor: pointer;
+}
+.section-movie-list.comming ul li btn-util .button{
+    width: 60px;
+    display: inline-block;
+    height: 34px;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center;
+    line-height: 34px;
+    color: #fff !important;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #666;
     cursor: pointer;
 }
 

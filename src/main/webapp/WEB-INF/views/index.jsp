@@ -233,15 +233,15 @@
 			$(this).removeClass("on");
 		});
 
-		$("ul>li a.rsv", "div.wrap-slider").click(function(e) {
-			e.preventDefault();
-			var movieCode = $(this).closest("li").data("moviecode");
+// 		$("ul>li a.rsv", "div.wrap-slider").click(function(e) {
+// 			e.preventDefault();
+// 			var movieCode = $(this).closest("li").data("moviecode");
 
-			$.desktop.reserve.openMovie({
-				movieCode : movieCode
-			});
-			return false;
-		});
+// 			$.desktop.reserve.openMovie({
+// 				movieCode : movieCode
+// 			});
+// 			return false;
+// 		});
 
 		//heart 좋아요 클릭시! 하트 뿅
 		$(function() {
@@ -343,20 +343,19 @@
 				</ul>
 
 
-				<!--  박스오피스 -->		<!-- forEach문이 두개 있었는데 뭔지 몰라서 일단 주석처리 04.12. 18:19 -->
 <%-- 				<c:forEach var="movie" items="${movieList }"> --%>
 				<div class="wrap-slider wrap-bo">
 					<ul class="bxslider-bo">
 					
-						<c:forEach var="movie" items="${movie}">
+						<c:forEach var="movie" items="${movie}" end = "9" >
 						    <li data-moviecode="${movie.info_movie_code }">
 						    	<span class="over over-a">
-						    		<a href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
+						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
 						    <img src="${movie.info_movie_poster }" class="posterlist">
 						    <div class="movie-desc">
-						    	<span class="rate-15">${movie.info_rating }</span>
+						    	<span class="${movie.rate }">${movie.info_rating }</span>
 						    		${movie.info_movie_title }
 						    	</div>
 						 	  	<div class="like-btn">
@@ -372,197 +371,47 @@
 				<!--  최신개봉작 -->
 				<div class="wrap-slider wrap-lr">
 					<ul class="bxslider-lr">
-						<!--  영화 하나 -->
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">
-								<span class="rate-15">15세이상</span>
-									소울메이트
-								</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<!--  영화 하나 -->
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">소울메이트</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">소울메이트</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">소울메이트</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">
-									</span>소울메이트
-								</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">
-									</span>소울메이트
-								</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m2.jpg" />
-								<div class="movie-desc">
-									</span>소울메이트
-								</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-
-
+					
+						<c:forEach var="movie" items="${ascendigMovieList}" end = "9" >
+						    <li data-moviecode="${movie.info_movie_code }">
+						    	<span class="over over-a">
+						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
+						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
+						    	</span>
+						    <img src="${movie.info_movie_poster }" class="posterlist">
+						    <div class="movie-desc">
+						    	<span class="${movie.rate }">${movie.info_rating }</span>
+						    		${movie.info_movie_title }
+						    	</div>
+						 	  	<div class="like-btn">
+									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
+									<span class="likeNum">${movie.like_count }</span></a>
+							</div>
+				   		 </li>
+						</c:forEach>	
 					</ul>
 				</div>
 
 				<!--  상영예정작 -->
 				<div class="wrap-slider wrap-cs">
 					<ul class="bxslider-cs">
-						<!--  영화 하나 -->
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">
-									</span>리바운드
-								</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<!--  영화 하나 -->
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
-						<li data-moviecode=""><span class="over over-a"> <a
-								href="#" class="rsv"><span class="over-btn-rsv">예매하기</span></a>
-								<a href="" class="info"><span class="over-btn-info">상세정보</span></a>
-						</span> <a href=""> <img src="resources/images/movies/poster/m3.jpg" />
-								<div class="movie-desc">리바운드</div>
-						</a> <!--  좋아요 -->
-							<div class="like-btn">
-								<a href="javascript:;" class="icon heart"> <img
-									src="resources/images/ico/before-like.png" alt="찜하기"><span
-									class="likeNum">21</span>
-								</a>
-							</div></li>
+						<c:forEach var="movie" items="${commingMovieList}" end = "9" >
+						    <li data-moviecode="${movie.info_movie_code }">
+						    	<span class="over over-a">
+						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
+						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
+						    	</span>
+						    <img src="${movie.info_movie_poster }" class="posterlist">
+						    <div class="movie-desc">
+						    	<span class="${movie.rate }">${movie.info_rating }</span>
+						    		${movie.info_movie_title }
+						    	</div>
+						 	  	<div class="like-btn">
+									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
+									<span class="likeNum">${movie.like_count }</span></a>
+							</div>
+				   		 </li>
+						</c:forEach>	
 					</ul>
 				</div>
 			</div>

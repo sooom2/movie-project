@@ -13,9 +13,15 @@ public interface MovieRegisterMapper {
 	
 	//영화목록
 	List<HashMap<String, String>> selectMovies();
-
+	
+	
+	//상영예정작목록 *4.16생성
+	List<HashMap<String, String>> selectCommingMovies();
+	//최신영화순 조회 *4.16생성
+	List<HashMap<String, String>> selectAscendingMovies();
 	//영화상세목록
 	HashMap<String, String> selectMovie(String info_movie_code);
+	
 	
 	//스케쥴상세
 	HashMap<String, String> selectSchMovie(String sch_code);

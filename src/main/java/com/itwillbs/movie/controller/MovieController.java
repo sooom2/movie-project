@@ -33,9 +33,19 @@ public class MovieController {
 	
 	// 상영예정작
 	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
-	public String latest(Model model) {
+	public String comming(Model model) {
 		
-		List<HashMap<String, String>> movieList = service.selectMovies();
+		List<HashMap<String, String>> movieList = service.selectCommingMovies();
+		
+		model.addAttribute("movieList",movieList);
+		
+		return "movieBoard/comming";
+	}
+	// 상영예정작
+	@RequestMapping(value = "ascending", method = {RequestMethod.GET, RequestMethod.POST})
+	public String ascending(Model model) {
+		
+		List<HashMap<String, String>> movieList = service.selectAscendingMovies();
 		
 		model.addAttribute("movieList",movieList);
 		
@@ -49,7 +59,7 @@ public class MovieController {
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
 		
-		// 우리가 갖고 있는 movie_code를 요청 보내지 않으면 메인페이지로 보내기 
+		// DB에 없는 movie_code를 요청 보내지 않으면 메인페이지로 보내기 
 		if(movieInfo == null) {
 			return "redirect:/main";
 		}

@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.movie.mapper.MovieRegisterMapper">
-
+<!-- sql 재사용 문법 -->
+<sql id = "sqlSelect">
+SELECT *
+	,  CASE 
+		WHEN datediff(info_showdate, now()) &gt; 0 THEN '상영예정'
+		WHEN datediff(info_enddate, now()) &lt; 0 THEN '상영종료'  
+		ELSE '예매하기'
+		END AS 'status'
+	, CASE info_rating													
+		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+		WHEN '15세관람가' 					THEN 'rate-15'
+		WHEN '12세관람가' 					THEN 'rate-12'
+		WHEN '전체관람가' 					THEN 'rate-all' 
+		ELSE ''
+		END AS 'rate'			
+ FROM movieinfo
+</sql>
+<!-- 현재 상영작 -->
 <select id="selectMovies" resultType="hashmap">
-		SELECT 
-			*
-			,  CASE 
-					WHEN datediff(info_showdate, now())>= 0 tHEN '상영예정'
-					WHEN datediff(info_showdate, now()) > 0 THEN '상영종료' 
-					ELSE '예매하기'
-					END AS 'status'
-			, CASE info_rating
-					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
-					WHEN '15세관람가' 					THEN 'rate-15'
-					WHEN '12세관람가' 					THEN 'rate-12'
-					WHEN '전체관람가' 					THEN 'rate-all' 
-					ELSE ''
-					END AS 'rate'
-  			FROM movieinfo
+<include refid="sqlSelect"/>
+	WHERE
+		now()
+			BETWEEN info_showdate
+			AND	info_enddate
+</select>
+
+<!-- 상영 예정영화 조회 -->
+<select id="selectCommingMovies" resultType="hashmap">
+<include refid="sqlSelect"/>
+	WHERE
+		datediff(info_showdate, now()) &gt; 0
+</select>
+<!-- 최신 개봉순 조회 -->
+<select id="selectAscendingMovies" resultType="hashmap">
+<include refid="sqlSelect"/>
+	WHERE
+		now()
+			BETWEEN info_showdate
+			AND	info_enddate
+	ORDER BY
+		info_showdate DESC
 </select>
 
 <insert id="registMovie">
@@ -39,22 +63,9 @@
 			)
 </insert>
 
+<!--  영화 상세 정보 -->
 <select id="selectMovie" resultType="hashmap">
-	SELECT 
-		* 
-		, CASE info_rating
-			WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
-			WHEN '15세관람가' 					THEN 'rate-15'
-			WHEN '12세관람가' 					THEN 'rate-12'
-			WHEN '전체관람가' 					THEN 'rate-all' 
-			ELSE ''
-			END AS 'rate'
-		,  CASE 
-			WHEN datediff(info_showdate, now())>= 0 tHEN '상영예정'
-			WHEN datediff(info_showdate, now()) > 0 THEN '상영종료' 
-			ELSE '예매하기'
-			END AS 'status'
-	  FROM movieinfo
+<include refid="sqlSelect"/>
 	 WHERE info_movie_code = #{info_movie_code}
 </select>
 

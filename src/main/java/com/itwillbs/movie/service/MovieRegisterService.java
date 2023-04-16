@@ -24,6 +24,15 @@ public class MovieRegisterService {
 		return mapper.selectMovies();
 	}
 	
+	//상영예정 영화 목록 4.16 생성
+	public List<HashMap<String, String>> selectCommingMovies() {
+			return mapper.selectCommingMovies();
+	}
+	//최신 개봉순 영화 4.16 생성
+	public List<HashMap<String, String>> selectAscendingMovies() {
+		return mapper.selectAscendingMovies();
+	}	
+	
 	//영화 상세정보
 	public HashMap<String, String> selectMovie(String info_movie_code) {
 		return mapper.selectMovie(info_movie_code);

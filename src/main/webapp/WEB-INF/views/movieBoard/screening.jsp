@@ -24,8 +24,8 @@
 					<c:forEach var="movie" items="${movieList }">
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
-						    	<a href="#" class="rsv">
-						    		<span class="over-btn-rsv">예매하기</span></a>
+						    	<a href="reservation" class="rsv">
+						    		<span class="over-btn-rsv">${movie.status }</span></a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
 					    	</span>
@@ -42,7 +42,7 @@
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>
-			                <a href="reservation" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매하기</a>
+			                <a href="reservation" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">${movie.status }</a>
 			           		 </div>
 			  			</li>
 					</c:forEach>		    
@@ -67,15 +67,15 @@
             $(this).closest("ul").find("span.over").removeClass("on");
         });
 		
-        $("ul>li a.rsv", "div.screening").click(function (e) {
-            e.preventDefault();
-            var info_movie_code = $(this).closest("li").data("moviecode");
+//         $("ul>li a.rsv", "div.screening").click(function (e) {
+//             e.preventDefault();
+//             var info_movie_code = $(this).closest("li").data("moviecode");
 
-            $.desktop.reserve.openMovie({
-                movieCode: movieCode
-            });
-            return false;
-        });
+//             $.desktop.reserve.openMovie({
+//                 movieCode: movieCode
+//             });
+//             return false;
+//         });
     });
    </script>
 	<jsp:include page="../footer.jsp"/>

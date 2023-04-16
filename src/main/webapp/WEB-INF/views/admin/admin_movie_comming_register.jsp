@@ -253,7 +253,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				ServiceKey : 'N6BL7Q77SG0M41244297',	// 서비스 키 값을 여기 표시하면 안될 것 같은데.. 어떻게 처리해야할지 모름
 				releaseDts :targetDay,
 				deailt : 'N',
-				listCount : '50'
+				listCount : '100'
 			},
 			type : 'GET',
 			dataType: 'json',
