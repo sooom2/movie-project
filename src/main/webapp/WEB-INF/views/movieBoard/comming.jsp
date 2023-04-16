@@ -40,7 +40,7 @@
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>
-			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매하기</a>
+			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">${movie.status }</a>
 			           		 </div>
 			  			</li>
 					</c:forEach>		    

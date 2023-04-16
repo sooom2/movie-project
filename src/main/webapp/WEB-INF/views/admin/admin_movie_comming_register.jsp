@@ -253,7 +253,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				ServiceKey : 'N6BL7Q77SG0M41244297',	// 서비스 키 값을 여기 표시하면 안될 것 같은데.. 어떻게 처리해야할지 모름
 				releaseDts :targetDay,
 				deailt : 'N',
-				listCount : '20'
+				listCount : '50'
 			},
 			type : 'GET',
 			dataType: 'json',
@@ -295,9 +295,8 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 			$(".posterlist").remove();
 		}
 		let i = $("#api > option:selected").attr('num')
-		let info_movie_code = data.Data[0].Result[i].CommCodes.CommCode[0].CodeNo ;
-		console.log(info_movie_code);
-		let info_movie_title = data.Data[0].Result[i].title
+		let info_movie_code  =data.Data[0].Result[i].CommCodes.CommCode[0].CodeNo ;
+		let info_movie_title =data.Data[0].Result[i].title.trim();																					// kmdbAPI에서 title 앞에 공백이 붙어서 trim 처리
 		/*줄거리*/
 		let info_story = data.Data[0].Result[i].plots.plot[0].plotText;
 		/*스틸컷*/

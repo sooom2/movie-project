@@ -36,7 +36,7 @@
 <!-- 					<li><span>배 &nbsp; &nbsp; &nbsp;우 : </span> 배우</li> -->
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
-				<a href="#" class="btn-rsv">예매하기</a>
+				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
 		
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
