@@ -34,8 +34,23 @@ public interface BoardMapper {
 	// 공지사항 상세
 	HashMap<String, String> selectNoticeDetail(HashMap<String, String> map);
 
+	// 공지사항 수정창
+	HashMap<String, String> selectNoticeBoard(String notice_code);
+
+	// 공지사항 수정
+	int updateNoticeBoard(HashMap<String, String> map);
+
+	// 공지사항 삭제
+	int deleteNoticeBoard(HashMap<String, String> map);
+
 	// 자주묻는 질문 목록
 	List<HashMap<String, String>> selectFaqBoardList();
+
+	// 자주묻는 질문 등록
+	int insertFaqBoard(HashMap<String, String> map);
+
+
+
 
 
 	

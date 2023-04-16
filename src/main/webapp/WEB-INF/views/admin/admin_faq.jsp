@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,34 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath }/resources/css/styles.css"
+	rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
+	function modalClose() {
+		let dis = document.querySelector(".modal");
+		let dis2 = document.querySelector(".admin-modal-update");
+		dis.style.display = "none";
+		dis2.style.display = "none";
+	}
+
 	function doDisplay() {
 
-		let dis = document.querySelector(".admin-modal");
+		let dis2 = document.querySelector(".admin-modal-update");
+
+		if (dis2.style.display = "none") {
+			dis2.style.display = "block"
+
+		} else {
+			dis2.style.display = "none";
+		}
+	}
+
+	function doNoticeRegister() {
+
+		let dis = document.querySelector(".admin-modal-register");
 
 		if (dis.style.display = "none") {
 			dis.style.display = "block"
@@ -27,11 +49,33 @@
 			dis.style.display = "none";
 		}
 	}
-
-	function modalClose() {
-		let dis = document.querySelector(".admin-modal");
-		dis.style.display = "none";
+	
+	function selectCinema(){
+		alert("change");
+		$.ajax({
+			type: "POST",
+			url: "screenSelect",
+			data: {
+				cinema_code: $(".cinema_name option:selected").val(),
+			  	cinema_name: $(".cinema_name option:selected").text()
+			},
+			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
+				
+				$('.selectScreen_name option').remove();
+				$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+				$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
+				for(var i=0; i<result.length; i++){
+					$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
+				}
+				
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		     
+			}
+		});//ajax
 	}
+	
 </script>
 </head>
 <body class="sb-nav-fixed">
@@ -68,271 +112,181 @@
 		<jsp:include page="admin_nav.jsp" />
 		<!-- 고정 -->
 
-
-
 		<div id="layoutSidenav_content">
 
-			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			<main>
-				
-				<div class="container modal admin-modal-register" style="display: none">
+				<!-- 등록 모달 -->
+				<div class="container modal admin-modal-register"
+					style="display: none">
 					<div class="row justify-content-center">
 						<div class="col-lg-7">
 							<div class="card border-1 mt-5">
 								<div class="card-header">
 									<button type="button" class="close-modal"
 										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
+									<h3 class="text-center font-weight-light my-4">자주묻는 질문 등록</h3>
 								</div>
-								<div class="card-body">
-									<form action="registMoviePro">
-									<div class="row mb-4">
-                                      	<h5 style="text-align:left">포스터등록</h5>
-                                   		<div class="col-md-3 moviePoster">
-                                       		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
-                                        </div>
-                                        
-                                        <div class="col-md-8">
-											<div class="filebox">
-										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
-											</div>
-                                        </div>
-                                     </div>
-									
-										
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_movie_code"class="form-control" id="info_movie_code" type="text" value="" />
-													<label for="info_movie_code">영화코드</label>
+								<div class="row justify-content-center">
+									<div class="col-lg-7" style="width: 700px">
+										<div class="card-body">
+											<form action="faq_register_pro">
+												<div class="row mb-3">
+													<div>
+														<div class="form-floating mb-3 mb-md-0 ">
+															<input class="form-control" id="faq_question"
+																name="faq_question" type="text" value="" /> <label
+																for="faq_question">질문</label>
+														</div>
+													</div>
 												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input name="info_movie_title" class="form-control" id="info_movie_title" type="text" /> 
-													<label for="info_movie_title">영화제목</label>
+												<div class="row mb-3">
+													<div>
+														<div class="form-floating mb-3 mb-md-0 ">
+															<input class="form-control" id="faq_group"
+																name="faq_group" type="text" value="" /> <label
+																for="faq_group">문의유형</label>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input name="info_year" class="form-control" id="info_year" type="text"/>
-													<label for="info_year">제작년도</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_time" class="form-control" id="info_time" type="" />
-													<label for="info_time">상영시간</label>
-												</div>
-											</div>
+<!-- 												<div class="row mb-3"> -->
+<!-- 													<div> -->
+<!-- 														<div class="col-md-6 "> -->
+<!-- 															<div class="form-floating mb-3 mb-md-0 selectbox"> -->
+<!-- 																<div class="cinema_name"> -->
+<!-- 																	<label for="cinema_name">영화관명 : </label> <select -->
+<!-- 																		name="sch_cinema_code" onchange="selectCinema()" -->
+<!-- 																		style="width: 300px"> -->
+<%-- 																		<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option> --%>
+<!-- 																	</select> -->
+<!-- 																</div> -->
+<!-- 															</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
 
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_showdate" class="form-control" id="info_showdate" type="date"/>
-													<label for="info_showdate">상영일</label>
+												<hr>
+												<div class="row mb-3">
+													<div class="form-floating mb-3 mb-md-0 text">
+														<div>
+															<textarea name="faq_answer" class="form-control"
+																id="faq_answer" placeholder="내용" rows="10"></textarea>
+														</div>
+													</div>
 												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_enddate" class="form-control" id="info_enddate" type="date" />
-													 <label for="info_enddate">종영일</label>
+
+												<div class="row">
+													<div class="mt-4 mb-0 ">
+														<div class="d-grid">
+															<input class="btn btn-primary btn-block" type="submit"
+																value="등록">
+														</div>
+													</div>
 												</div>
-											</div>
+											</form>
 										</div>
-										<div class="row mb-3">
-											<div class="col-md">
-												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_story" class="form-control" id="info_story" type="text" style="max-width: 100%"/>
-													<label for="inputFirstName">줄거리</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="d-grid">
-												<input class="btn btn-primary btn-block" type="submit" value="등록"> 
-											</div>
-										</div>
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- ================================================================= -->
 				
-				<!-- 모달 -->
-				<div class="container modal admin-modal" style="display: none">
-					<div class="row justify-content-center">
-						<div class="col-lg-7">
-							<div class="card border-1 mt-5">
-								<div class="card-header">
-									<button type="button" class="close-modal"
-										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
-								</div>
-								<div class="card-body">
-									<form>
-<!-- 										<div class="row mb-4"> -->
-<!-- 											<h5 style="text-align: left">이미지수정</h5> -->
-<!-- 											<div class="col-md-3 moviePoster"> -->
-<!-- 												<div> -->
-<!-- 													<img class="" -->
-<!-- 														src="/movie-project/resources/images/movies/poster/m1.jpg"> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-md-8"> -->
-<!-- 												<div class="filebox"> -->
-<!-- 													<input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
-<!-- 													<label for="file">파일올리기</label> <input type="file" -->
-<!-- 														id="file"> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputFirstName" type="text"
-														placeholder="Enter your first name" /> <label
-														for="inputFirstName">글번호</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputFirstName" type="text"
-														placeholder="Enter your first name" /> <label
-														for="inputFirstName">글분류</label>
-												</div>
-											</div>
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating"> -->
-<!-- 													<input class="form-control" id="inputLastName" type="text" -->
-<!-- 														placeholder="Enter your last name" /> <label -->
-<!-- 														for="inputLastName">질문</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-										</div>
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating"> -->
-<!-- 													<input class="form-control" id="inputLastName" type="text" -->
-<!-- 														placeholder="Enter your last name" /> <label -->
-<!-- 														for="inputLastName">답변</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputPassword" -->
-<!-- 														type="password" placeholder="Create a password" /> <label -->
-<!-- 														for="inputPassword">작성일</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-
-<!-- 										</div> -->
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputPassword" -->
-<!-- 														type="password" placeholder="Create a password" /> <label -->
-<!-- 														for="inputPassword">작성일</label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
-<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
-<!-- 														type="password" placeholder="Confirm password" /> <label -->
-<!-- 														for="inputPasswordConfirm">종영일<label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-										<div class="row mb-3">
-											<div class="col-md">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputFirstName" type="text"
-														placeholder="Enter your first name" /> <label
-														for="inputFirstName">질문</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputFirstName" type="text"
-														placeholder="Enter your first name" /> <label
-														for="inputFirstName">답변</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">수정</a>
-												</div>
-											</div>
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">삭제</a>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<!-- 테이블 -->
 				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
+					<h3 class="text-center font-weight-light my-4">공지사항</h3>
+					<input class="btn btn-block btn-more" type="button" value="공지등록" onclick="doNoticeRegister()">
 					<table id="datatablesSimple" class="datatable-table">
-						<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()">
 						<thead>
 							<tr>
 								<th data-sortable="true" style="width: 7%;"><a href="#"
-									class="datatable-sorter">글번호</a></th>
+									class="datatable-sorter">공지번호</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">글분류</a></th>
+									class="datatable-sorter">영화관명</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
-									class="datatable-sorter">질문</a></th>
-<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
-<!-- 									class="datatable-sorter">내용</a></th> -->
-<!-- 								<th data-sortable="true" style="width: 7%;"><a href="#" -->
-<!-- 									class="datatable-sorter">답변</a></th> -->
-								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">조회수</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#"
+									class="datatable-sorter">제목</a></th>
+								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">내용</a></th> -->
+								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
-								<th data-sortable="true" style="width: 20%;"><a href="#"
-									class="datatable-sorter">수정</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">수정/삭제</a></th>
+								<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">줄거리</a></th> -->
+								<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
+								<!-- 									class="datatable-sorter">수정</a></th> -->
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
-							<tr data-index="0">
-								<td>글번호</td>
-								<td>글분류</td>
-								<td>질문</td>
-<!-- 								<td>답변</td> -->
-								<td>조회수</td>
-<!-- 								<td>2099-04-05</td> -->
-								<td>작성일</td>
-								<td class="modi"><input class="btn btn-block btn-more"
-									type="button" value="M O R E" onclick="doDisplay()"></td>
-							</tr>
+							<c:forEach var="noticeBoard" items="${noticeBoardList }">
+								<tr data-index="0">
+									<td>${noticeBoard.notice_code }</td>
+									<td>${noticeBoard.cinema_name }</td>
+									<td id="notice_subject"><a
+										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
+									</td>
+									<td>${noticeBoard.notice_write_date }</td>
+									<td class="modi"><input class="btn btn-block btn-more"
+										type="button" value="M O R E" onclick="location.href='admin_notice_update?notice_code=${noticeBoard.notice_code }'"></td>
+								</tr>
+							</c:forEach>
+							<!-- 							<tr data-index="0"> -->
+							<!-- 								<td>공지번호</td> -->
+							<!-- 								<td>영화관명</td> -->
+							<!-- 								<td>제목</td> -->
+							<!-- 								<td>120분</td> -->
+							<!-- 								<td>2023-04-05</td> -->
+							<!-- 								<td>2099-04-05</td> -->
+							<!-- 								<td>작성일</td> -->
+							<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
+							<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
+							<!-- 							</tr> -->
 						</tbody>
 					</table>
 				</div>
+				
 				<!-- 테이블 -->
-
+				<div class="datatable-container">
+					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
+					<input class="btn btn-block btn-more" type="button" value="자주묻는 질문"
+						onclick="doNoticeRegister()">
+					<table id="datatablesSimple" class="datatable-table">
+						<thead>
+							<tr>
+								<th data-sortable="true" style="width: 7%;"><a href="#"
+									class="datatable-sorter">질문번호</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">문의유형</a></th>
+								<th data-sortable="true" style="width: 13%;"><a href="#"
+									class="datatable-sorter">질문</a></th>
+<!-- 								<th data-sortable="true" style="width: 7%;"><a href="#" -->
+<!-- 									class="datatable-sorter">작성일</a></th> -->
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">수정/삭제</a></th>
+							</tr>
+						</thead>
+						<!-- 회원목록 -->
+						<tbody>
+							<c:forEach var="faqBoard" items="${faqBoardList }">
+								<tr data-index="0">
+									<td>${faqBoard.faq_num }</td>
+									<td>${faqBoard.faq_group }</td>
+									<td id="notice_subject"><a
+										href="notice_detail?notice_code=${faqBoard.faq_question }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
+									</td>
+<%-- 									<td>${faqBoard.notice_write_date }</td> --%>
+									<td class="modi"><input class="btn btn-block btn-more"
+										type="button" value="M O R E" onclick="doDisplay()"></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				
+			<!-- 테이블 -->
 			</main>
-
-
-
-
+			
 			<!--들어갈내용 -->
 
 			<!-- 푸터 -->

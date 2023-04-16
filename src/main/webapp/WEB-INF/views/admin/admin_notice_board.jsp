@@ -10,20 +10,23 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath }/resources/css/styles.css"
+	rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 <script type="text/javascript">
-	
-
 	function modalClose() {
 		let dis = document.querySelector(".modal");
 		let dis2 = document.querySelector(".admin-modal-update");
 		dis.style.display = "none";
 		dis2.style.display = "none";
 	}
-	
-	function doDisplay() {
+
+	function doDisplay(${noticeBoard.notice_code}) {
 
 		let dis2 = document.querySelector(".admin-modal-update");
 
@@ -34,7 +37,7 @@
 			dis2.style.display = "none";
 		}
 	}
-	
+
 	function doNoticeRegister() {
 
 		let dis = document.querySelector(".admin-modal-register");
@@ -46,7 +49,32 @@
 			dis.style.display = "none";
 		}
 	}
-
+	
+	function selectCinema(){
+		alert("change");
+		$.ajax({
+			type: "POST",
+			url: "screenSelect",
+			data: {
+				cinema_code: $(".cinema_name option:selected").val(),
+			  	cinema_name: $(".cinema_name option:selected").text()
+			},
+			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
+				
+				$('.selectScreen_name option').remove();
+				$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+				$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
+				for(var i=0; i<result.length; i++){
+					$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
+				}
+				
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		     
+			}
+		});//ajax
+	}
 	
 </script>
 </head>
@@ -91,14 +119,15 @@
 			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			<main>
-				<!-- 모달 -->
+				<!-- 등록 모달 -->
 				<div class="container modal admin-modal-register"
 					style="display: none">
 					<div class="row justify-content-center">
 						<div class="col-lg-7">
 							<div class="card border-1 mt-5">
 								<div class="card-header">
-									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
+									<button type="button" class="close-modal"
+										onclick="modalClose()" style="border: none;">닫기</button>
 									<h3 class="text-center font-weight-light my-4">공지사항 등록</h3>
 								</div>
 								<div class="row justify-content-center">
@@ -108,36 +137,46 @@
 												<div class="row mb-3">
 													<div>
 														<div class="form-floating mb-3 mb-md-0 ">
-															<input class="form-control" id="info_time"
-																name="info_time" type="text" value="" /> <label
-																for="info_time">제목</label>
+															<input class="form-control" id="notice_subject"
+																name="notice_subject" type="text" value="" /> <label
+																for="notice_subject">제목</label>
 														</div>
 													</div>
 												</div>
 												<div class="row mb-3">
+
 													<div>
-														<div class="form-floating mb-3 mb-md-0 selectbox">
-															<div class="screen_name">
-																<label for="screen_name">상영관 : </label> <select
-																	name="sch_screen_code" class="selectScreen_name"
-																	style="width: 300px">
-																	<option value="none" selected="selected" disabled>상영관을
-																		선택하세요</option>
-																	<option value="none" disabled>=======================</option>
-																</select>
+<!-- 														<div class="col-md-6 "> -->
+															<div class="form-floating mb-3 mb-md-0 selectbox">
+																<div class="cinema_name">
+																	<label for="cinema_name">영화관명 : </label> <select
+																		name="sch_cinema_code" onchange="selectCinema()"
+																		style="width: 300px">
+																		<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option>
+																	</select>
+																</div>
 															</div>
-														</div>
+<!-- 														</div> -->
+<!-- 														<div class="form-floating mb-3 mb-md-0 selectbox"> -->
+<!-- 															<div class="screen_name"> -->
+<!-- 																<label for="screen_name">상영관 : </label> <select -->
+<!-- 																	name="sch_screen_code" class="selectScreen_name" -->
+<!-- 																	style="width: 300px"> -->
+<!-- 																	<option value="none" selected="selected" disabled>상영관을 -->
+<!-- 																		선택하세요</option> -->
+<!-- 																	<option value="none" disabled>=======================</option> -->
+<!-- 																</select> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
 													</div>
 												</div>
 
 												<hr>
 												<div class="row mb-3">
-
 													<div class="form-floating mb-3 mb-md-0 text">
 														<div>
-															<textarea name="board_content" class="form-control"
-																id="board_content" placeholder="내용" rows="10"></textarea>
-
+															<textarea name="notice_content" class="form-control"
+																id="notice_content" placeholder="내용" rows="10"></textarea>
 														</div>
 													</div>
 												</div>
@@ -160,81 +199,95 @@
 				</div>
 				<!-- ================================================================= -->
 				<!-- 수정 모달 -->
-				<div class="container modal admin-modal-update" style="display: none">
-					<div class="row justify-content-center">
-						<div class="col-lg-7">
-							<div class="card border-1 mt-5">
-								<div class="card-header">
-									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">공지사항 수정</h3>
-								</div>
-								<div class="row justify-content-center">
-									<div class="col-lg-7" style="width: 700px">
-										<div class="card-body">
-											<form action="notice_register_pro">
-												<div class="row mb-3">
-													<div>
-														<div class="form-floating mb-3 mb-md-0 ">
-															<input class="form-control" id="info_time"
-																name="info_time" type="text" value="" /> <label
-																for="info_time">제목</label>
-														</div>
-													</div>
-												</div>
-												<div class="row mb-3">
-													<div>
-														<div class="form-floating mb-3 mb-md-0 selectbox">
-															<div class="screen_name">
-																<label for="screen_name">상영관 : </label> <select
-																	name="sch_screen_code" class="selectScreen_name"
-																	style="width: 300px">
-																	<option value="none" selected="selected" disabled>상영관을
-																		선택하세요</option>
-																	<option value="none" disabled>=======================</option>
-																</select>
-															</div>
-														</div>
-													</div>
-												</div>
+<!-- 				<div class="container modal admin-modal-update" -->
+<!-- 					style="display: none"> -->
+<!-- 					<div class="row justify-content-center"> -->
+<!-- 						<div class="col-lg-7"> -->
+<!-- 							<div class="card border-1 mt-5"> -->
+<!-- 								<div class="card-header"> -->
+<!-- 									<button type="button" class="close-modal" -->
+<!-- 										onclick="modalClose()" style="border: none;">닫기</button> -->
+<!-- 									<h3 class="text-center font-weight-light my-4">공지사항 수정</h3> -->
+<!-- 								</div> -->
+<!-- 								<div class="row justify-content-center"> -->
+<!-- 									<div class="col-lg-7" style="width: 700px"> -->
+<!-- 										<div class="card-body"> -->
+<!-- 											<form action="notice_update_pro"> -->
+<!-- 											<input type="hidden" name = "notice_code" value=""> -->
+<!-- 												<div class="row mb-3"> -->
+<!-- 													<div> -->
+<!-- 														<div class="form-floating mb-3 mb-md-0 "> -->
+<!-- 															<input class="form-control" id="notice_subject" -->
+<!-- 																name="notice_subject" type="text" value="" /> <label -->
+<!-- 																for="notice_subject">제목</label> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="row mb-3"> -->
+<!-- 													<div class="col-md-6 "> -->
+<!-- 			                                             <div class="form-floating mb-3 mb-md-0 selectbox"> -->
+<!-- 			                                                 <div class="cinema_name"> -->
+<!-- 			                                                 	<label for="cinema_name">지점명 : </label> -->
+<!-- 																<select name="sch_cinema_code" onchange="selectCinema()"  style="width: 300px"> -->
+<%-- 																	<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option> --%>
+<!-- 																</select> -->
+<!-- 			                                                 </div> -->
+<!-- 			                                             </div> -->
+<!-- 			                                           </div> -->
+<!-- 													<div> -->
+<!-- 														<div class="form-floating mb-3 mb-md-0 selectbox"> -->
+<!-- 															<div class="screen_name"> -->
+<!-- 																<label for="screen_name">상영관 : </label> <select -->
+<!-- 																	name="sch_screen_code" class="selectScreen_name" -->
+<!-- 																	style="width: 300px"> -->
+<!-- 																	<option value="none" selected="selected" disabled>상영관을 -->
+<!-- 																		선택하세요</option> -->
+<!-- 																	<option value="none" disabled>=======================</option> -->
+<!-- 																</select> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
 
-												<hr>
-												<div class="row mb-3">
+<!-- 												<hr> -->
+<!-- 												<div class="row mb-3"> -->
 
-													<div class="form-floating mb-3 mb-md-0 text">
-														<div>
-															<textarea name="board_content" class="form-control"
-																id="board_content" placeholder="내용" rows="10"></textarea>
+<!-- 													<div class="form-floating mb-3 mb-md-0 text"> -->
+<!-- 														<div> -->
+<!-- 															<textarea name="notice_content" class="form-control" -->
+<!-- 																id="notice_content" placeholder="내용" rows="10"></textarea> -->
 
-														</div>
-													</div>
-												</div>
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
 
-												<div class="row">
-													<div class="mt-4 mb-0 ">
-														<div class="d-grid">
-															<input class="btn btn-primary btn-block" type="submit"
-																value="등록">
-														</div>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- 수정 모달 -->
+<!-- 												<div class="row"> -->
+<!-- 													<div class="mt-4 mb-0 col-md-6"> -->
+<!-- 														<div class="d-grid"> -->
+<!-- 															<input class="btn btn-primary btn-block" type="submit" -->
+<!-- 																value="수정"> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 													<div class="mt-4 mb-0 col-md-6"> -->
+<!-- 														<div class="d-grid"> -->
+<!-- 															<input class="btn btn-primary btn-block" type="submit" -->
+<!-- 																value="삭제"> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</form> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">공지사항</h3>
-					<input class="btn btn-block btn-more" type="button" value="공지등록"
-						onclick="doNoticeRegister()">
+					<input class="btn btn-block btn-more" type="button" value="공지등록" onclick="doNoticeRegister()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -267,7 +320,7 @@
 									</td>
 									<td>${noticeBoard.notice_write_date }</td>
 									<td class="modi"><input class="btn btn-block btn-more"
-										type="button" value="M O R E" onclick="doDisplay()"></td>
+										type="button" value="M O R E" onclick="location.href='admin_notice_update?notice_code=${noticeBoard.notice_code }'"></td>
 								</tr>
 							</c:forEach>
 							<!-- 							<tr data-index="0"> -->

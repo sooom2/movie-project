@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link
+	href="${pageContext.request.contextPath }/resources/css/common.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/main.css"
+	rel="stylesheet">
 <body>
 	<jsp:include page="../nav.jsp" />
 
@@ -76,8 +83,7 @@
 
 									<li><a href="" class="faqBtn" data-idx="1" title="질문 상세보기">
 											<span class="font-roboto">1</span>&nbsp; <span
-											class="font-gblue">[분류코드]</span> 제목 <span
-											class="date">날짜</span>
+											class="font-gblue">[분류코드]</span> 제목 <span class="date">날짜</span>
 									</a></li>
 
 								</ol>
@@ -88,17 +94,16 @@
 							<div class="tit-area">
 								<h3 class="tit small">공지사항</h3>
 
-								<a href="" class="more" title="더보기">더보기 <i
+								<a href="notice_board" class="more" title="더보기">더보기 <i
 									class="iconset ico-arr-right-gray ml07"></i></a>
 							</div>
 
 							<div class="decimal-list">
 								<ol>
-
 									<li><a href="" class="moveBtn" data-no="10813"
 										title="공지사항 상세보기"> <span class="font-purple"><i
-												class="iconset ico-marker"></i> [영화관이름]</span> 제목
-											<span class="date">날짜</span>
+												class="iconset ico-marker"></i> [영화관이름]</span> 제목 <span
+											class="date">날짜</span>
 									</a></li>
 								</ol>
 							</div>
@@ -110,6 +115,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../footer.jsp"/>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

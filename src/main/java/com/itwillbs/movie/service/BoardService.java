@@ -69,11 +69,37 @@ public class BoardService {
 		return mapper.selectNoticeDetail(map);
 	}
 
+	// 공지사항 수정창
+	public HashMap<String, String> getNoticeBoard(String notice_code) {
+		
+		return mapper.selectNoticeBoard(notice_code);
+	}
+
+	// 공지사항 수정
+	public int registNoticeUpdate(HashMap<String, String> map) {
+		
+		return mapper.updateNoticeBoard(map);
+	}
+
 	// 자주묻는 질문 목록
 	public List<HashMap<String, String>> getFaqBoardList() {
 		
 		return mapper.selectFaqBoardList();
 	}
+
+	// 자주묻는 질문 등록
+	public int registFaqBoard(HashMap<String, String> map) {
+		
+		return mapper.insertFaqBoard(map);
+	}
+
+	// 공지사항 삭제
+	public int getNoticeDelete(HashMap<String, String> map) {
+		
+		return mapper.deleteNoticeBoard(map);
+	}
+
+	
 	
 	
 	

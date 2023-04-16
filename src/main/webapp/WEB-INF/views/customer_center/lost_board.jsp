@@ -254,6 +254,7 @@
 						<!-- 						title="이후 10페이지 보기" href="javascript:void(0)" class="control next" -->
 						<!-- 						pagenum="11">next</a> <a title="마지막 페이지 보기" -->
 						<!-- 						href="javascript:void(0)" class="control last" pagenum="861">last</a> -->
+						<section id="pageList">
 						<c:choose>
 							<c:when test="${pageNum > 1 }">
 								<input type="button" value="이전"
@@ -285,6 +286,7 @@
 								<input type="button" value="다음">
 							</c:otherwise>
 						</c:choose>
+						</section>
 					</nav>
 					<!--// pagination -->
 				</div>

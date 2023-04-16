@@ -156,7 +156,7 @@ public class CustomerController {
 	
 	//관리자게시판============================================================================================
 	
-	// 관리자 공지사항
+	// 관리자 공지사항 목록
 	@RequestMapping(value = "admin_notice_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminNoticeBoard(Model model) {
 		
@@ -165,12 +165,6 @@ public class CustomerController {
 		model.addAttribute("noticeBoardList", noticeBoardList);
 //		System.out.println(model);
 		return "admin/admin_notice_board";
-	}
-	
-	// 관리자 공지 등록창
-	@RequestMapping(value = "admin_notice_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminNoticeRegister() {
-		return "admin/admin_notice_register";
 	}
 
 	// 관리자 공지 등록
@@ -186,7 +180,45 @@ public class CustomerController {
 		}
 	}
 	
-	// 관리자 자주묻는 질문
+	// 관리자 공지 수정창
+	@RequestMapping(value = "admin_notice_update", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminNoticeUpdate(@RequestParam String notice_code, Model model) {
+		
+		HashMap<String, String> noticeBoard = boardService.getNoticeBoard(notice_code);
+		System.out.println(noticeBoard);
+		model.addAttribute("noticeBoard", noticeBoard);
+		System.out.println(model);
+		return "admin/admin_notice_update";
+	}
+	
+	// 관리자 공지 수정
+	@RequestMapping(value = "notice_update_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeUpdatePro(@RequestParam HashMap<String, String> map, Model model) {
+		int updateCount = boardService.registNoticeUpdate(map);
+		System.out.println(updateCount);
+		if(updateCount > 0) {
+			return "redirect:/admin_notice_board";
+		} else {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+	}
+	
+	// 공지사항 삭제
+	@RequestMapping(value = "notice_delete_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getNoticeDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/admin_notice_board";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	// 관리자 자주묻는 질문 목록
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminFaq(Model model) {
 		
@@ -195,6 +227,19 @@ public class CustomerController {
 		model.addAttribute("faqBoardList", faqBoardList);
 //		System.out.println(model);
 		return "admin/admin_faq";
+	}
+	
+	// 관리자 자주 묻는 질문 등록
+	@RequestMapping(value = "faq_register_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String faqRegisterPro(@RequestParam HashMap<String, String> map, Model model) {
+		
+		int insertCount = boardService.registFaqBoard(map);
+		if(insertCount > 0) {
+			return "redirect:/admin_faq";
+		} else {
+			model.addAttribute("msg", "등록 실패!");
+			return "fail_back";
+		}
 	}
 	
 	// 관리자 분실물 문의 페이지

@@ -110,11 +110,50 @@
 			WHERE notice_code = #{notice_code}
 	</select>
 	
+	<!-- 공지사항 수정창 -->
+	<select id="selectNoticeBoard" resultType="hashmap">
+		SELECT *
+			FROM notice_board
+			WHERE notice_code = #{notice_code}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNoticeBoard">
+		UPDATE notice_board
+			SET notice_subject = #{notice_subject}
+			, cinema_name = #{cinema_name}
+			, notice_content = #{notice_content}
+			WHERE notice_code = #{notice_code}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNoticeBoard">
+		DELETE 
+			FROM notice_board
+			WHERE notice_code = #{notice_code}
+	</delete>
+	
+	<!-- 자주묻는 질문 등록 -->
+	<insert id="insertFaqBoard">
+		<selectKey keyProperty="faq_num" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(faq_num), 0) FROM faq_board
+		</selectKey>
+		INSERT
+			INTO faq_board
+			VALUES(
+				#{faq_num} + 1
+				, #{faq_group}
+				, #{faq_question}
+				, #{faq_answer}
+				, #{faq_count}
+			)
+	</insert>
+	
 	<!-- 자주묻는 질문 목록 -->
 	<select id="selectFaqBoardList" resultType="hashmap">
 		SELECT * 
 			FROM faq_board 
-			WHERE faq_num = #{faq_num}
+			ORDER BY faq_num DESC
 	</select>
 	
 </mapper>

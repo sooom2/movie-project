@@ -30,20 +30,6 @@
 			<div id="contents">
 				<h2 class="tit">공지사항</h2>
 
-				<div class="tab-block mb30">
-					<ul>
-						<li class="on tabBtn"><button type="button"
-								class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
-
-						<li class="tabBtn"><button type="button" class="btn"
-								data-no="81" title="메가박스 공지 보기">메가박스 공지</button></li>
-
-						<li class="tabBtn"><button type="button" class="btn"
-								data-no="82" title="지점 공지 보기">지점 공지</button></li>
-
-					</ul>
-				</div>
-
 				<div class="board-list-util">
 					<p class="result-count">
 						<strong>전체 <em class="font-gblue">5,852</em>건
