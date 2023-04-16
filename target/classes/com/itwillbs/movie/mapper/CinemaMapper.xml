@@ -33,6 +33,30 @@
 	SELECT *
 	  FROM cinema
 	 WHERE cinema_code = #{cinema_code}
+</select>
+<select id="schList" resultType="hashmap">
+	SELECT 
+		    schedule.sch_movie_date
+		  , schedule.sch_start_time
+		  , schedule.sch_last_time
+		  , cinema.cinema_name
+		  , cinema.cinema_code
+		  , movieInfo.info_rating
+		  , movieInfo.info_movie_code
+		  , movieInfo.info_movie_title
+		  , screen.screen_name
+		  , schedule.sch_screen_code
+	 FROM schedule 
+LEFT JOIN cinema 
+	   ON cinema.cinema_code = schedule.sch_cinema_code
+LEFT JOIN movieInfo
+	   ON movieInfo.info_movie_code = schedule.sch_movie_code
+LEFT JOIN screen
+       on screen.screen_code = schedule.sch_screen_code
+       where 1=1
+       and sch_cinema_code = #{cinema_code}
+<!--        and schedule.sch_movie_date=#{play_date} -->
+
 
 
 </select>
