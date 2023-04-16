@@ -13,7 +13,6 @@
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <jsp:include page="../nav.jsp" />   
 </head>
-
 <body id="top">
 <div id = "container">
  		<div id="content">
@@ -30,7 +29,7 @@
 					    	</span>
 					    	<img src="${movie.info_movie_poster}" class="posterlist">
 					    	<div class="movie-desc">
-					    		<p class="rate-15">${movie.info_rating } ,</p>
+					    		<p class="${movie.rate }">,</p>
 					    		<p title="${movie.info_movie_title }" class="tit">${movie.info_movie_title }</p>
 			    			</div>
 			    			
@@ -41,7 +40,7 @@
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>
-			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매</a>
+			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매하기</a>
 			           		 </div>
 			  			</li>
 					</c:forEach>		    
