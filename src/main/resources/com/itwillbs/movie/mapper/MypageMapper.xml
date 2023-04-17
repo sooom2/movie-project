@@ -92,6 +92,18 @@
   			 
   	</select>
   	
-  	
+  	<insert id= "insertPoint" >
+
+		INSERT 
+  			INTO point
+  			VALUES (
+  			(SELECT *
+  			  FROM (SELECT IFNULL(MAX(point_code),0) FROM point) A)+1
+  			, #{id}
+  			,'리뷰작성 이벤트'
+			,'500'
+			,now()
+  			);
+  	</insert>
   	
 </mapper>

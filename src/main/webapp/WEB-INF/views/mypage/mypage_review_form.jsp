@@ -153,7 +153,7 @@
 							<label for="rate5">★</label>
 						</fieldset>
 						<div>
-							<textarea id="reviewContents" name="rev_content" placeholder="아이무비 리뷰이벤트 !!! 리뷰작성시 100포인트를 지급합니다."></textarea>
+							<textarea id="reviewContents" name="rev_content" placeholder="아이무비 리뷰이벤트 !!! 리뷰작성시 500포인트를 지급합니다."></textarea>
 						</div>
 					<section id="reviewbtnArea">
 						<div ><input type="submit" value="리뷰등록">&nbsp;&nbsp;</div>

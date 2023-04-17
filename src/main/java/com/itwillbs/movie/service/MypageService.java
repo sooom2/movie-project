@@ -52,6 +52,10 @@ public class MypageService {
 		return mapper.movieList(id);
 	}
 
+	public int insertPoint(String id) {
+		return mapper.insertPoint(id);
+	}
+
 
 
 

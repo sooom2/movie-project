@@ -203,8 +203,10 @@ public class MypageController {
 		int insertCount = service.insertReview(review);
 		
 		if(insertCount > 0 ) {
+			
 			model.addAttribute("msg", "리뷰가 등록 되었습니다.");
 			model.addAttribute("target", "mypageRv");
+			service.insertPoint(id);
 
 			return "success";
 		
