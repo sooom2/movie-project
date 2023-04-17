@@ -30,8 +30,7 @@ public class ReservationController {
 //		return "reservation/reservation_test";
 //	}
 	
-	
-	@RequestMapping(value = "reservation", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping("reservation")
 	public String reservation(Model model, String cd) {
 		// 극장
 		List<HashMap<String, String>> cinema = service.selectCinema();
@@ -85,11 +84,22 @@ public class ReservationController {
 	public String seat(Model model, String schCd) {
 		
 		// 예매 테이블 조회 => 데이터가 존재하면 jsp에서 좌석 사용불가처리 (매개변수 : 일정코드)
-		List<HashMap<String, String>> reservationList = service.selectReservationList(schCd);
-		model.addAttribute("reservationList", reservationList);
+//		List<HashMap<String, String>> reservationList = service.selectReservationList(schCd);
+//		model.addAttribute("reservationList", reservationList);
 		
 		return "reservation/seat";
 	}
+	
+	@ResponseBody
+	@GetMapping("reservationList")
+	public String reservationList(Model model, String schCd) {
+		// 예매 테이블 조회 => 데이터가 존재하면 jsp에서 좌석 사용불가처리 (매개변수 : 일정코드)
+		List<HashMap<String, String>> reservationList = service.selectReservationList(schCd);
+		model.addAttribute("rereservation/seatservationList", reservationList);
+		System.out.println(reservationList);
+		return "reservation/seat";
+	}
+	
 	
 	
 }

@@ -31,10 +31,14 @@ public class ReservationService {
 		return mapper.selectMovieTimeList(cnItemCd, mvItemCd, dateCd);
 	}
 
+
+//	public List<HashMap<String, String>> selectReservationList(String schCd) {
+//		return mapper.selectReservationList(schCd);
+//	}
+
 	public List<HashMap<String, String>> selectReservationList(String schCd) {
 		return mapper.selectReservationList(schCd);
 	}
-
 
 	
 

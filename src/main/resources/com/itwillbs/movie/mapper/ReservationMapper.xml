@@ -42,6 +42,7 @@
 		                               		and sd.sch_movie_date like CONCAT('%',#{dateCd});
 	</select>
 	
+	<!-- 예매 좌석 조회 -->
 	<select id="selectReservationList" resultType="hashmap">
 		select res_sch_code, res_seat_line, res_seat_num
 			from reservation

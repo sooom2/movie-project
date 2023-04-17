@@ -88,6 +88,7 @@
 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="">
 				<input type="hidden" id="HoldGuID" name="HoldGuID" value="">
 								
+				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
 				
 				<div class="reservation-pc single page-type">
 					<div class="in-wrap">
@@ -302,18 +303,26 @@
 	</div>
 		</div>
 <script type="text/javascript">
-	let seatLine = 6;	// 1~5
-	let seatNum = 10;   // 1~9
-	let num = 0;		// data-id 0부터 count++
-	let seatSum = 45;	// 총 좌석수
-	let left = 36;		// 좌석 x축
-	let y = 36; 		// 좌석 y축
-	let asc = 65;		// 아스키코드 65 == 'A'
+	let seatLine = 6;		// 1~5
+	let seatNum = 10;   	// 1~9
+	let num = 0;			// data-id 0부터 count++
+	let seatSum = 45;		// 총 좌석수
+	let left = 36;			// 좌석 x축
+	let y = 36; 			// 좌석 y축
+	let asc = 65;			// 아스키코드 65 == 'A'
+// 	let resSeatLine = "";	// 예약한 행
+// 	let resSeatNum = "";	// 예약한 열
+// 	let resSeat = "";
+	let schCd = $("#schCd").val();
 	
 	
 	$(function() {
+// 		console.log(${reservationList.get(0).res_seat_num});
+// 		console.log("${reservationList.size()}:" + ${reservationList.size()});
 		
-		// 좌석생성
+// 		resSeat = {${reservationList.get(0).res_seat_line},${reservationList.get(0).res_seat_num}};
+		
+		// 좌석 생성
 		for(let i = 1; i < seatLine; i++) {
 			y = 36;
 			y *= i;
@@ -321,6 +330,17 @@
 			
 			for(let j = 1; j < seatNum; j++) {
 				let alp = String.fromCharCode(asc);								// 좌석 행 출력  
+// 				debugger;
+				
+				
+				// 버튼 생성 전 
+				// reservationList에서 res_seat_line, res_seat_num 값 select 후
+				// 데이터 존재시 버튼 컬러 변경 , disabled 속성 추가
+				// 
+				
+				
+// 				eeee();
+				reservationList();
 				
 				var str = "";
 				str += "<button type='button' data-id='";
@@ -340,13 +360,46 @@
 			asc++;
 		}
 		
-		// 
+		// 판매완료 좌석
 		
 		
+		 // get(i) 왜 증가 x??
+// 		function eeee() {
+// 			for(i = 0; i < ${reservationList.size()}; i++) {
+// 				debugger;
+				
+// 				console.log(${reservationList.get(i).get('res_seat_line')} + "," + ${reservationList.get(i).get('res_seat_num')} );
+				
+// 			}
+// 		}
 		
 		
-		
-		
+		function reservationList() {
+			$.ajax({
+	 			type: "GET",
+	 			url: "reservationList",
+	 			data: { 
+	 				schCd: schCd
+	 			},
+	 			dataType: "String",
+	 			success: function(response) { 
+	 				console.log("btnCnItem : 요청처리성공");
+	 				
+	 				for(movie of response) {
+	 					let resSeatLine = reservationList.res_seat_line;
+	 					let resSeatNum = reservationList.res_seat_num;
+	 					
+	 					console.log(resSeatLine + ", " + resSeatNum);
+	 					
+	 					
+	 				}
+	 				
+	 			},
+	 			error: function(xhr, textStatus, errorThrown) {
+	 				console.log("btnCnItem : 요청처리실패");
+	 			}
+	 		});
+		}
 		
 		
 		
