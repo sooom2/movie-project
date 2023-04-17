@@ -46,7 +46,7 @@
 						</ul>
 
 
-
+						<div class="title">상영시간표</div>
 
 						<!-- 날짜 -->
 
@@ -169,29 +169,42 @@
 					       $.ajax({
 					           type: "GET",
 					           url: "schList",
-					           data: {
+					           data: { 
 					        	   date: selDateData,
 					        	   cinema_code: ${cinema.get('cinema_code')}
 					           },
+					           datatype: "json",
 					           success: function(data) {
 					        	   
+					        	   console.log(data);
+					        	    
+					        	    var html = '';
+					        	    
+					        	    if (data.length === 0) {
+					        	        $('.each-movie-time').html('<span style="font-size: 23px;text-align:center">상영 일정이 존재하지 않습니다.</span>');
+					        	        return;
+					        	    }
 					        	   
-					        	   var schList = JSON.parse(data.schListJson);  // 변환된 객체를 사용
-									console.log(schList);
-					        	   var html = '';
-					               for (var i = 0; i < data.length; i++) {
-					                   html += '';
-					                   html += '<span class="' + schList[i].rate + '">15</span>' + schList[i].info_movie_title;
-					                   html += '</div>';
-					                   html += '<div class="screen">';
-					                   html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
-					                   html += '<br>' + schList[i].screen_name;
-					                   html += '</div>';
-					                   html += '<div class="time-block">';
-					                   html += '<div class="time" data-playdate="' + schList[i].sch_movie_date + '" data-theatercode="' + schList[i].sch_screen_code + '" data-moviecode="' + schList[i].sch_movie_code + '">';
-					                   html += '<a href="#">' + schList[i].sch_start_time + '<span class="to"> ~ ' + schList[i].sch_last_time + '</span> <span class="seats-status">94 / ' + schList[i].seat_count + ' 받아올총좌석수 </span></a>';
-					                   html += '</div></div></div></div>';
-					               }
+					        	    for (var i = 0; i < data.length; i++) {
+					        	        html += '';
+					        	        html += '<div class="movie-title">';
+					        	        html += '<span class="' + data[i].rate + '">15</span>' + data[i].info_movie_title;
+					        	        html += '</div>';
+					        	        html += '<div class="screen">';
+					        	        html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
+					        	        html += '<br>' + data[i].screen_name;
+					        	        html += '</div>';
+					        	        html += '<div class="time-block">';
+					        	        html += '<div class="time" data-playdate="' + data[i].sch_movie_date + '" data-theatercode="' + data[i].sch_screen_code + '" data-moviecode="' + data[i].info_movie_code + '">';
+					        	        html += '<a href="reservation">' + data[i].sch_start_time + '<span class="to"> ~ ' + data[i].sch_last_time + '</span> <span class="seats-status">45 / ' + data[i].seat_count + '</span></a></div>';
+					        	        
+					        	        
+					        	        html += '</div>';
+					        	        html += '</div>';
+					        	        html += '</div>';
+					        	        
+					        	    }
+					               $('.each-movie-time').empty();
 					               // 생성한 HTML을 해당 요소에 삽입
 					               $('.each-movie-time').append(html);
 					        	},
@@ -221,30 +234,9 @@
 							
 							
 							
-<%-- 						<c:forEach var="schList" items="${schList }"> --%>
-<!-- 							<div class="each-movie-time"> -->
-<!-- 								<div class="movie-title"> -->
-<%-- 									<span class="${schList.get('rate') }">15</span>${schList.get('info_movie_title') } --%>
-<!-- 								</div> -->
-
-<!-- 								<div class="screen"> -->
-<!-- 									<div class="screen-name" style="font-size: 15px; line-height: 20px;"> -->
-<%-- 										<br>${schList.get('screen_name') } --%>
-<!-- 									</div> -->
-<!-- 									<div class="time-block"> -->
-
-<%-- 										<div class="time" data-playdate="${schList.get('sch_movie_date') }" data-theatercode=${schList.get('sch_screen_code') } data-moviecode="${schList.get('sch_movie_code') }"> --%>
-<%-- 											<a href="#"> ${schList.get('sch_start_time') }<span class="to"> ~ ${schList.get('sch_last_time') }</span> <span --%>
-<%-- 												class="seats-status">94 / ${schList.get('seat_count') } 받아올총좌석수 </span> --%>
-<!-- <!-- 														  (남은좌석수) --> -->
-<!-- 											</a> -->
-<!-- 										</div> -->
-
-<!-- 									</div> -->
-<!-- 								</div> -->
-
-<!-- 							</div> -->
-<%-- 							</c:forEach> --%>
+							<div class="each-movie-time">
+								<!-- 일정 들어갈 자리 -->
+							</div>
 							
 							
 							

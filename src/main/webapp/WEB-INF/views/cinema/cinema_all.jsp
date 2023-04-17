@@ -188,7 +188,9 @@ function modalClose(){
 								<span class="font-gblue">${sessionScope.sId }</span>님의 선호영화관
 								<ul class="theater-circle">
 									<li>
-										<a href="/theater?areaCd=55&amp;brchNo=0046" title="부산점 상세보기">부산점</a>
+<%-- 									<c:forEach var="mem" items="${myPreferCinema }"> --%>
+										<a href="cinemaDetail" title="부산점 상세보기">부산점</a>
+<%-- 									</c:forEach> --%>
 									</li>
 								</ul>
 <!-- 								<a href="" class="button small" title="선호영화관 관리"> <i class="iconset ico-edit"></i> 선호영화관 관리</a> -->

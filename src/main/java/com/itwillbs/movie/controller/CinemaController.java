@@ -1,7 +1,11 @@
 package com.itwillbs.movie.controller;
 
+import java.io.IOException;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.protobuf.TextFormat.ParseException;
 import com.itwillbs.movie.service.CinemaService;
 import com.itwillbs.movie.service.MovieRegisterService;
@@ -30,6 +38,7 @@ public class CinemaController {
 	@GetMapping(value="cinemaList")
 	public String cinemaList(
 			String location_name,
+//			HttpSession session,
 			Model model) {
 		System.out.println(location_name);
 		//지역목록
@@ -41,11 +50,14 @@ public class CinemaController {
 		List<HashMap<String, String>> noticeList = cinemaService.noticeList();
 		model.addAttribute("noticeList",noticeList);
 		
-		// 지역선택했을때 그지점 목록
-		List<HashMap<String, String>> locationCinema = cinemaService.locationCinema(location_name);
-		System.out.println("모델값 :"+model);
+		
+//		String id = (String)session.getAttribute("sId");
+//		System.out.println(id);
+//		HashMap<String, String> myPreferCinema = cinemaService.preferCinema(id);
 		
 		
+//		System.out.println(myPreferCinema);
+// 		model.addAttribute("myPreferCinema",myPreferCinema);
 		
 		return "cinema/cinema_all";
 	}
@@ -75,9 +87,7 @@ public class CinemaController {
 		model.addAttribute("cinemaDetailJson", cinemaDetailJson);
 		
 		
-		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
-		System.out.println("==================================");
-		System.out.println("==================================");
+//		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
 //		for (HashMap<String, Object> sch : schList) {
 //		    Time sch_start_time = (Time) sch.get("sch_start_time"); // Time 타입으로 값을 받아옴
 //		    String sch_start_time_str = sch_start_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
@@ -91,11 +101,11 @@ public class CinemaController {
 		
 		model.addAttribute("cinema_code",cinema_code);
 		model.addAttribute("cinemaDetail",cinemaDetail);
-		model.addAttribute("schList", schList);
+//		model.addAttribute("schList", schList);
 		
 		
 		System.out.println("=====================");
-		System.out.println(schList);
+//		System.out.println(schList);
 		System.out.println("=====================");
 		System.out.println(model);
 		
@@ -104,13 +114,26 @@ public class CinemaController {
 	
 	@ResponseBody
 	@RequestMapping(value = "schList",produces = "application/json; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
-	public List<HashMap<String, String>> schList(String cinema_code, String date,Model model) throws JsonProcessingException{
-		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
+	public String schList(String cinema_code, String date,Model model) throws JsonProcessingException{
 		ObjectMapper objectMapper = new ObjectMapper();
+		SimpleModule module = new SimpleModule();
+		module.addSerializer(Time.class, new JsonSerializer<Time>() {
+		    @Override
+		    public void serialize(Time value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+		        gen.writeString(value.toString());
+		    }
+		});
+		objectMapper.registerModule(module);
+
+		// JSON으로 변환할 객체
+		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code, date);
+
 		String schListJson = objectMapper.writeValueAsString(schList);
-		model.addAttribute("schListJson",schListJson);
-		System.out.println(model);
-		return schList;
+		System.out.println(schListJson);
+//		model.addAttribute("schListJson", schListJson);
+		
+		
+		return schListJson;
 	}
 	
 	
@@ -156,6 +179,15 @@ public class CinemaController {
 	}
 	
 	
+//	@GetMapping("preferCinema")
+//	public String preferCinema(HttpSession session,Model model) {
+//		
+//		
+// 		
+// 		
+//		return "cinema/cinema_all";
+////		return "";
+//	}
 	
 	
 }
