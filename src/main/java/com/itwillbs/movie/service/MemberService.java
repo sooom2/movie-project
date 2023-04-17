@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.movie.mapper.MyBatisMapper;
-import com.itwillbs.movie.vo.MemberVO;
 
 @Service
 public class MemberService {
@@ -30,7 +29,11 @@ public class MemberService {
 	}
 
 	//회원추가수정
-	public int registMember(MemberVO member) {
+//	public int registMember(MemberVO member) {
+//		return mapper.insertMember(member);
+//	}
+	public int registMember(HashMap<String, String> member) {
+		// TODO Auto-generated method stub
 		return mapper.insertMember(member);
 	}
 	//최신 핫상품 (3개)보여주기
@@ -52,6 +55,11 @@ public class MemberService {
 	public int renewPw(HashMap<String, String> member) {
 		return mapper.renewPw(member);
 	}
+
+	public int insertPoint(String id) {
+		return mapper.insertPoint(id);
+	}
+
 
 	
 }

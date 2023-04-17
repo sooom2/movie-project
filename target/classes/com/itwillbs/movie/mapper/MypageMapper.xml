@@ -93,7 +93,6 @@
   	</select>
   	
   	<insert id= "insertPoint" >
-
 		INSERT 
   			INTO point
   			VALUES (

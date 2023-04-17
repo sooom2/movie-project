@@ -249,14 +249,30 @@ public class MemberController {
 	
 	
 	//회원가입저장(해싱작업추가)
+//	@PostMapping(value = "joinPro")
+//	public String joinPro(MemberVO member, Model model, HttpSession session) {
+//		String id = (String)session.getAttribute("sId");
+//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//		String securePasswd = passwordEncoder.encode(member.getMember_pw());
+//		member.setMember_pw(securePasswd);
+//		int insertCount = service.registMember(member);
+//		if(insertCount > 0) { // 가입 성공
+//			service.insertPoint(id);
+//			return "member/mem_join_success";
+//		} else { // 가입 실패
+//			model.addAttribute("msg", "회원 가입 실패!");
+//			return "member/fail_back";
+//		}
+//		
+//	}
 	@PostMapping(value = "joinPro")
-	public String joinPro(MemberVO member, Model model) {
+	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String securePasswd = passwordEncoder.encode(member.getMember_pw());
-		member.setMember_pw(securePasswd);
+		String securePasswd = passwordEncoder.encode(member.get("member_pw"));
+		member.put("member_pw", securePasswd);
 		int insertCount = service.registMember(member);
-		
 		if(insertCount > 0) { // 가입 성공
+			service.insertPoint(member.get("member_id"));
 			return "member/mem_join_success";
 		} else { // 가입 실패
 			model.addAttribute("msg", "회원 가입 실패!");

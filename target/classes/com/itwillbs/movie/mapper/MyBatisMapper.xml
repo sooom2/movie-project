@@ -37,6 +37,18 @@
 				   , now()
 			)
 	</insert>
+	<insert id= "insertPoint" >
+		INSERT 
+  			INTO point
+  			VALUES (
+  			(SELECT *
+  			  FROM (SELECT IFNULL(MAX(point_code),0) FROM point) A)+1
+  			,#{member_id}
+  			,'회원가입 축하 이벤트'
+			,'1000'
+			,now()
+  			);
+  	</insert>
 	
 	<!-- 로그인 조회 -->
 <!-- 	<select id="chekUser" resultType="hashmap"> -->
