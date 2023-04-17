@@ -1,7 +1,5 @@
 package com.itwillbs.movie.controller;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,49 +59,60 @@ public class CinemaController {
 	//예매
 	@GetMapping("cinemaDetail")
 	public String cinemaDetail(
-			  @RequestParam("cinema_code") String cinema_code
-			, @RequestParam(value= "play_date",required=false) String play_date
-			, Model model
-			) throws JsonProcessingException, ParseException {
-		System.out.println("=제에발=================================================");
-		System.out.println(play_date);
-		System.out.println("=제에발=================================================");
+	          @RequestParam(value="cinema_code", required=false) String cinema_code
+	        , @RequestParam(value= "date", required=false) String date
+	        , Model model
+	        ) throws JsonProcessingException, ParseException {
+		System.out.println("==================================");
+		System.out.println(date);
+		System.out.println("==================================");
 		
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
-//		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,play_date);
+//		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		String cinemaDetailJson = objectMapper.writeValueAsString(cinemaDetail);
 		model.addAttribute("cinemaDetailJson", cinemaDetailJson);
 		
 		
-		List<HashMap<String, Object>> schList = cinemaService.schList(cinema_code);
-
-		for (HashMap<String, Object> sch : schList) {
-		    Time sch_start_time = (Time) sch.get("sch_start_time"); // Time 타입으로 값을 받아옴
-		    String sch_start_time_str = sch_start_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
-		    sch.put("sch_start_time", sch_start_time_str); // 변경된 값을 다시 HashMap에 넣음
-		
-		    Time sch_last_time = (Time) sch.get("sch_last_time"); // sch_last_time 값을 Time 타입으로 받아옴
-		    String sch_last_time_str = sch_last_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
-		    sch.put("sch_last_time", sch_last_time_str); 
-		
-		}
+		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
+		System.out.println("==================================");
+		System.out.println("==================================");
+//		for (HashMap<String, Object> sch : schList) {
+//		    Time sch_start_time = (Time) sch.get("sch_start_time"); // Time 타입으로 값을 받아옴
+//		    String sch_start_time_str = sch_start_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
+//		    sch.put("sch_start_time", sch_start_time_str); // 변경된 값을 다시 HashMap에 넣음
+//		
+//		    Time sch_last_time = (Time) sch.get("sch_last_time"); // sch_last_time 값을 Time 타입으로 받아옴
+//		    String sch_last_time_str = sch_last_time.toString().substring(0, 5); // Time 객체를 String으로 변환 후, hh:mm 형식으로 변경
+//		    sch.put("sch_last_time", sch_last_time_str); 
+//		
+//		}
 		
 		model.addAttribute("cinema_code",cinema_code);
 		model.addAttribute("cinemaDetail",cinemaDetail);
-		model.addAttribute("schList",schList);
+		model.addAttribute("schList", schList);
 		
 		
-		
-//		System.out.println("=======================================");
-//		System.out.println(schList);
-//		System.out.println("=======================================");
+		System.out.println("=====================");
+		System.out.println(schList);
+		System.out.println("=====================");
+		System.out.println(model);
 		
 		return "cinema/cinema_detail";
 	}
 	
-
+	@ResponseBody
+	@RequestMapping(value = "schList",produces = "application/json; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
+	public List<HashMap<String, String>> schList(String cinema_code, String date,Model model) throws JsonProcessingException{
+		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,date);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String schListJson = objectMapper.writeValueAsString(schList);
+		model.addAttribute("schListJson",schListJson);
+		System.out.println(model);
+		return schList;
+	}
+	
 	
 	// 위치
 	@GetMapping("/cinemaLocation")

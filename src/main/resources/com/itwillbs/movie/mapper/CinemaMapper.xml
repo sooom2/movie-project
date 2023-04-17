@@ -65,7 +65,7 @@
 	       on screen.screen_code = schedule.sch_screen_code
 	       where 1=1
 	       and sch_cinema_code = #{cinema_code}
-<!-- 	       and schedule.sch_movie_date=#{play_date} -->
+	       and sch_movie_date=#{date}
 	
 	</select>
 
