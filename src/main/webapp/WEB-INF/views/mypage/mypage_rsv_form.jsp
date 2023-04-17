@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/mypage.css" rel="stylesheet">
-<link href="resources//css/inc.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
@@ -27,7 +27,7 @@
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
-						${member.member_name } 님<span class="point">${member.member_point }P</span>
+						${member.member_name } 님<span class="point">${member.member_point } P</span>
 					</div>
 
 					<div class="username">
@@ -47,11 +47,10 @@
 				</div>
 				<div class="summary summary-3">
 					<h3>추천영화</h3>
-					<span class="coupon-box">
-						<input type="text" name="coupon" class="input-coupon"
-						placeholder="관람권/쿠폰 번호를 빈칸 없이 입력해주세요."> <a href="#"
-						class="btn-register-coupon">등록</a>
-					</span>
+					<c:forEach var="movieList" items="${movieList}">
+					&nbsp;&nbsp; <?xml version="1.0" ?><svg class="feather feather-video" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polygon points="23 7 16 12 23 17 23 7"/><rect height="14" rx="2" ry="2" width="15" x="1" y="5"/></svg>
+						${movieList.get("info_movie_title")}<br>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="section group section-mypage-select">

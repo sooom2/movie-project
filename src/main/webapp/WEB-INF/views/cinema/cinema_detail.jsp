@@ -23,7 +23,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="section group section-theater-head"
-					style="background: url('/movie-project/resources/images/cinema/${cinema.get('cinema_photo')}') center center no-repeat;">
+					style="background: url('${path}/resources/images/cinema/${cinema.get('cinema_photo')}') center center no-repeat;">
 					<div class="wrap">
 						<span class="name-2"><span
 							style="background: rgba(0, 0, 0, 0.4); padding-right: 5px; padding-left: 5px;"><span>${cinema.get('cinema_name') }</span></span></span>
@@ -210,7 +210,7 @@
 							<c:forEach var="schList" items="${schList }">
 							<div class="each-movie-time">
 								<div class="movie-title">
-									<span class="rate-15">15</span>${schList.get('info_movie_title') }
+									<span class="${schList.get('rate') }">15</span>${schList.get('info_movie_title') }
 								</div>
 
 								<div class="screen">

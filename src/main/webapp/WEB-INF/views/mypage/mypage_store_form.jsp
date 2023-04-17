@@ -23,7 +23,7 @@
 			</div>
 			<div class="section group section-mypage-summary">
 				<div class="summary summary-1">
-										<h3>회원정보</h3>
+					<h3>회원정보</h3>
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
@@ -46,12 +46,10 @@
 					</h3>
 				</div>
 				<div class="summary summary-3">
-					<h3>나의 관람권</h3>
-					<span class="coupon-box">
-						<input type="text" name="coupon" class="input-coupon"
-						placeholder="관람권/쿠폰 번호를 빈칸 없이 입력해주세요."> <a href="#"
-						class="btn-register-coupon">등록</a>
-					</span>
+					<h3>추천영화</h3>
+					<c:forEach var="movieList" items="${movieList}">
+						${movieList.get("info_movie_title")}<br>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="section group section-mypage-select">

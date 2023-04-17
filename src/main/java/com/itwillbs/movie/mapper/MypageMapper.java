@@ -23,6 +23,8 @@ public interface MypageMapper {
 
 	HashMap<String, String> selectMemberId(String id);
 
+	List<HashMap<String, String>> movieList(String id);
+
 
 
 	
