@@ -10,8 +10,7 @@
 <link href="${path }/resources/css/cinema.css" rel="stylesheet">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script async=""
-	src="https://www.googletagmanager.com/gtag/js?id=UA-125235578-1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-125235578-1"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${path}/js/main.js"></script>
 <script type="text/javascript">
@@ -57,153 +56,25 @@
 							<ul>
 								<li class="prev-btn"><a href="#" class="prev">이전</a></li>
 								
-<!-- <!-- 								오늘 --> 
-<!-- 								<li class="datelist" data-date="" data-month="" data-year="" data-montheng="" style="display:"> -->
-<!-- 									<a href="#" class="today"><span class="day"></span></a> -->
-<!-- 								</li> -->
-<!-- 								<li class="datelist" data-date="" data-month="" data-year="" data-montheng="" style="display:"> -->
-<!-- 									<a href="#" class=""><span class="day"></span></a> -->
-<!-- 								</li> -->
-
-									
-								
 								
 								
 								<li class="next-btn"><a href="#" class="next">이전</a></li>
 							</ul>
 						</div>
 						
-						
-						
-						
 						<script type="text/javascript">
-// 							// 현재 날짜 가져오기
-// 							$(function () {
-// 								let cinemaDetail = JSON.parse('${cinemaDetailJson}');
-// 								const currentDate = new Date();
-// 								const currentMonth = currentDate.getMonth(); // 현재 월의 숫자(0~11)를 가져옴
-// 								const monthNames = ["January", "February", "March", "April", "May", "June",
-// 					                  "July", "August", "September", "October", "November", "December"];
-// 								const currentYear = currentDate.getFullYear();
-// 								const currentDay = currentDate.getDate();
-								
-// 								let index = 0;
-// 								let viewCount = 7;
-// 						        let selectedDate = $("ul>li.datelist>a.selected", "div.section div.cal").closest("li").data("date");
-// 						        let selectedListType = "movie";
-// 						        let cinemaCode = cinemaDetail.cinema_code;
-								
-// 								//달 표시
-// 								$('.cal .big-m').text(monthNames[currentMonth]);
-// 								//년 달 표시
-// 								$('.cal .small-yyyym').text(currentYear + " " + monthNames[currentMonth]);
-								
-// 								$('.datelist .today span').text("오늘");
-// 								$('.datelist .today span').after(currentDay);
-								
-								
-								
-								
-// 						        function dateView() {
-// 						            var start = (index * viewCount);
-// 						            var end = start + viewCount;
-// 						            $("ul>li.datelist", "div.section div.cal").hide();
-						            
-// 						            for (var i = start; i < end; i++) {
-// 						                $("ul>li.datelist:eq(" + i + ")", "div.section div.cal").show();
-// 						            }
-		
-// 						            $('.cal .big-m').text($("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("month"));
-// 						            $('.cal .small-yyyym').text(
-// 						                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("year") + " " +
-// 						                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("montheng")
-// 						            );
-// 						        }
-		
-						        
-						        
-// 						        function loadMovie() {
-// 						            var playDate = selectedDate.replace(/-/gi, '');
-// 						            if (selectedListType == "time") {
-// 						                $.post("/cinemaDetail", { TheaterCode: cinemaCode, PlayDate: playDate }, function (data) {
-// 						                    $("div.theater-movie", "div.section-theater-body").html(data);
-// 						                });
-// 						            } else {
-// 						                $.post("/cinemaDetail", { TheaterCode: theaterCode, PlayDate: playDate }, function (data) {
-// 						                    $("div.theater-movie", "div.section-theater-body").html(data);
-// 						                });
-// 						            }
-// 						        }
-		
-// 						        $("li>a.next", "div.cal").click(function (e) {
-// 						            e.preventDefault();
-// 						            index++;
-// 						            if (index > 4) {
-// 						                index = 4;
-// 						                return false;
-// 						            }
-// 						            dateView();
-// 						            return false;
-// 						        });
-		
-// 						        $("li>a.prev", "div.cal").click(function (e) {
-// 						            e.preventDefault();
-// 						            index--;
-// 						            if (index < 0) {
-// 						                index = 0;
-// 						                return false;
-// 						            }
-		
-// 						            dateView();
-// 						            return false;
-// 						        });
-		
-// 						        $("li.datelist>a", "div.cal").click(function (e) {
-// 						            e.preventDefault();
-// 						            var $li = $(this).closest("li");
-		
-// 						            if ($(this).hasClass("disabled") == true) {
-// 						                return false;
-// 						            }
-		
-// 						            $("ul>li.datelist>a.selected", "div.cal").removeClass("selected");
-// 						            $("ul>li.datelist>a._sat", "div.cal").addClass("sat").removeClass("_sat");
-// 						            $("ul>li.datelist>a._sun", "div.cal").addClass("sun").removeClass("_sun");
-		
-// 						            $(this).addClass("selected");
-		
-// 						            if ($(this).hasClass("sun")) {
-// 						                $(this).addClass("_sun").removeClass("sun");
-// 						            }
-// 						            if ($(this).hasClass("sat")) {
-// 						                $(this).addClass("_sat").removeClass("sat");
-// 						            }
-		
-// // 						            $("span.big-m", "div.cal").text($li.data("month"));
-// 						            $("small-yyyym", "div.cal").text(
-// 						                $li.data("year") + " " +
-// 						                $li.data("montheng")
-// 						            );
-						            
-// 						            selectedDate = $(this).closest("li").data("date");
-// 						            loadMovie();
-// 						            return false;
-// 						        });
-		
-// 						        $("a", "div.selector-sub").click(function (e) {
-// 						            e.preventDefault();
-// 						            $("a", "div.selector-sub").parent().find("a").removeClass("selected");
-// 						            $(this).addClass("selected");
-// 						            selectedListType = $(this).data("listtype");
-// 						            loadMovie();
-// 						            return false;
-// 						        });
-		
-		
-// 						        loadMovie();
-// 						    });
-						</script>
-						<script type="text/javascript">
+						$(document).ready(function() {
+							 const today = new Date();
+							  const todayStr = today.getFullYear() + "-" + (today.getMonth()+1).toString().padStart(2, '0') + "-" + today.getDate().toString().padStart(2, '0');
+							  const todayEl = document.querySelector("span.selDate[data-date='" + todayStr + "']");
+							  todayEl.click();
+
+							  const selDateData = todayEl.getAttribute('data-date');
+							  console.log(selDateData)
+							  
+						});
+						
+						
 						// 날짜 선택
 						const date = new Date();
 						
@@ -235,6 +106,10 @@
 						    const aTag = document.createElement("a");
 						    aTag.setAttribute("href", "#");
 						    aTag.classList.add("selectDate");
+						    
+// 						    if (i === date.getDate()) {
+// 						        aTag.classList.add("selected");
+// 						    }
 						
 						    const spanWeekOfDay = document.createElement("span"); // 요일
 						    const spanDay = document.createElement("span");
@@ -281,24 +156,47 @@
 					         previousSelectedDate.classList.remove('selected');
 					       
 					       }
+					       
+					       
+					       
+					       
 					       selectDate.classList.add('selected');
 					       const selDateElement = this.querySelector('.selDate');
 					       //선택한 날짜
 						   const selDateData = selDateElement.dataset.date;
 					       
-					       alert(selDateData);
-					       
-					       
+// 					       alert(selDateData);
 					       $.ajax({
 					           type: "GET",
-					           url: "cinemaDetail",
+					           url: "schList",
 					           data: {
-					        	   play_date: selDateData
+					        	   date: selDateData,
+					        	   cinema_code: ${cinema.get('cinema_code')}
 					           },
-					           success: function(result){
+					           success: function(data) {
 					        	   
-					           },
+					        	   
+					        	   var schList = JSON.parse(data.schListJson);  // 변환된 객체를 사용
+									console.log(schList);
+					        	   var html = '';
+					               for (var i = 0; i < data.length; i++) {
+					                   html += '';
+					                   html += '<span class="' + schList[i].rate + '">15</span>' + schList[i].info_movie_title;
+					                   html += '</div>';
+					                   html += '<div class="screen">';
+					                   html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
+					                   html += '<br>' + schList[i].screen_name;
+					                   html += '</div>';
+					                   html += '<div class="time-block">';
+					                   html += '<div class="time" data-playdate="' + schList[i].sch_movie_date + '" data-theatercode="' + schList[i].sch_screen_code + '" data-moviecode="' + schList[i].sch_movie_code + '">';
+					                   html += '<a href="#">' + schList[i].sch_start_time + '<span class="to"> ~ ' + schList[i].sch_last_time + '</span> <span class="seats-status">94 / ' + schList[i].seat_count + ' 받아올총좌석수 </span></a>';
+					                   html += '</div></div></div></div>';
+					               }
+					               // 생성한 HTML을 해당 요소에 삽입
+					               $('.each-movie-time').append(html);
+					        	},
 					           error:function(request,status,error){
+					        	   alert("bbb")
 					               alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					           }
 					       });
@@ -307,9 +205,6 @@
 					   });
 					   
 						
-// 					   const selDateElement = document.querySelector('.selDate');
-// 					   const selDateData = selDateElement.dataset.date;
-// 					   console.log(selDateData); 
 						
 						</script>					
 
@@ -326,30 +221,30 @@
 							
 							
 							
-							<c:forEach var="schList" items="${schList }">
-							<div class="each-movie-time">
-								<div class="movie-title">
-									<span class="${schList.get('rate') }">15</span>${schList.get('info_movie_title') }
-								</div>
+<%-- 						<c:forEach var="schList" items="${schList }"> --%>
+<!-- 							<div class="each-movie-time"> -->
+<!-- 								<div class="movie-title"> -->
+<%-- 									<span class="${schList.get('rate') }">15</span>${schList.get('info_movie_title') } --%>
+<!-- 								</div> -->
 
-								<div class="screen">
-									<div class="screen-name" style="font-size: 15px; line-height: 20px;">
-										<br>${schList.get('screen_name') }
-									</div>
-									<div class="time-block">
+<!-- 								<div class="screen"> -->
+<!-- 									<div class="screen-name" style="font-size: 15px; line-height: 20px;"> -->
+<%-- 										<br>${schList.get('screen_name') } --%>
+<!-- 									</div> -->
+<!-- 									<div class="time-block"> -->
 
-										<div class="time" data-playdate="${schList.get('sch_movie_date') }" data-theatercode=${schList.get('sch_screen_code') } data-moviecode="${schList.get('sch_movie_code') }">
-											<a href="#"> ${schList.get('sch_start_time') }<span class="to"> ~ ${schList.get('sch_last_time') }</span> <span
-												class="seats-status">94 / ${schList.get('seat_count') } 받아올총좌석수 </span>
-<!-- 														  (남은좌석수) -->
-											</a>
-										</div>
+<%-- 										<div class="time" data-playdate="${schList.get('sch_movie_date') }" data-theatercode=${schList.get('sch_screen_code') } data-moviecode="${schList.get('sch_movie_code') }"> --%>
+<%-- 											<a href="#"> ${schList.get('sch_start_time') }<span class="to"> ~ ${schList.get('sch_last_time') }</span> <span --%>
+<%-- 												class="seats-status">94 / ${schList.get('seat_count') } 받아올총좌석수 </span> --%>
+<!-- <!-- 														  (남은좌석수) --> -->
+<!-- 											</a> -->
+<!-- 										</div> -->
 
-									</div>
-								</div>
+<!-- 									</div> -->
+<!-- 								</div> -->
 
-							</div>
-							</c:forEach>
+<!-- 							</div> -->
+<%-- 							</c:forEach> --%>
 							
 							
 							
