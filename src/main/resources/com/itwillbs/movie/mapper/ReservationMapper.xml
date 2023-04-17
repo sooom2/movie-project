@@ -42,5 +42,11 @@
 		                               		and sd.sch_movie_date like CONCAT('%',#{dateCd});
 	</select>
 	
+	<select id="selectReservationList" resultType="hashmap">
+		select res_sch_code, res_seat_line, res_seat_num
+			from reservation
+				where res_sch_code = #{schCd};
+	</select>
+	
 	
 </mapper>

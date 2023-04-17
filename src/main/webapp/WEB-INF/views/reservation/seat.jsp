@@ -238,31 +238,6 @@
 																			<div class="child" style="top: 108px; left: 0px">C</div>
 																			<div class="child" style="top: 144px; left: 0px">D</div>
 																			<div class="child" style="top: 180px; left: 0px">E</div>
-<!-- 																			<button type="button" data-id="0" -->
-<!-- 																				class="seat available" -->
-<!-- 																				style="top: 36px; left: 36px; background-color: #C8C8C8">A1</button> -->
-<!-- 																			<button type="button" data-id="1" -->
-<!-- 																				class="seat available soldout" -->
-<!-- 																				style="top: 36px; left: 72px; background-color: #C8C8C8">A2</button> -->
-<!-- 																			<button type="button" data-id="2" -->
-<!-- 																				class="seat available soldout" -->
-<!-- 																				style="top: 36px; left: 108px; background-color: #C8C8C8">A3</button> -->
-<!-- 																			<button type="button" data-id="3" -->
-<!-- 																				class="seat soldout" -->
-<!-- 																				style="top: 36px; left: 180px; background-color: #3D3F51" -->
-<!-- 																				disabled="">A5</button> -->
-<!-- 																			<button type="button" data-id="4" -->
-<!-- 																				class="seat soldout" -->
-<!-- 																				style="top: 36px; left: 216px; background-color: #3D3F51" -->
-<!-- 																				disabled="">A6</button> -->
-<!-- 																			<button type="button" data-id="5" -->
-<!-- 																				class="seat available" -->
-<!-- 																				style="top: 36px; left: 288px; background-color: #C8C8C8">A8</button> -->
-<!-- 																			<button type="button" data-id="6" -->
-<!-- 																				class="seat available" -->
-<!-- 																				style="top: 36px; left: 324px; background-color: #C8C8C8">A9</button> -->
-<!-- 																								<div class="exit right" -->
-<!-- 																				style="top: 72px; left: 396px">출구</div> -->
 																		</div>
 																	</div>
 																</div>
@@ -333,11 +308,11 @@
 	let seatSum = 45;	// 총 좌석수
 	let left = 36;		// 좌석 x축
 	let y = 36; 		// 좌석 y축
-	let asc = 65;		// 아스키코드 65=='A'
+	let asc = 65;		// 아스키코드 65 == 'A'
 	
 	
 	$(function() {
-// <button type="button" data-id="0"class="seat available" style="top: 36px; left: 36px; background-color: #C8C8C8">A1</button>
+		
 		// 좌석생성
 		for(let i = 1; i < seatLine; i++) {
 			y = 36;
@@ -363,8 +338,19 @@
 			} //j
 			left = 36;
 			asc++;
-			
 		}
+		
+		// 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	});
 

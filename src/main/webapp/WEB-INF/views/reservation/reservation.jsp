@@ -376,7 +376,7 @@ var mvDay = "";		// 상영일
 		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
 		 			
 		 			// 좌석 정보 추후 수정
-		 			str += "<p class='num'>86/<span>89석</span></p>";
+		 			str += "<p class='num'>45/<span>45석</span></p>";
 		 			
 		 			str += "</div>";
 		 			str += "</button>";
