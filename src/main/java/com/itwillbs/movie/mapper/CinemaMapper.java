@@ -14,6 +14,7 @@ public interface CinemaMapper {
 	List<HashMap<String, String>> noticeList();
 	List<HashMap<String, String>> cinemaDetail(String cinema_code);
 	List<HashMap<String, String>> schList(@Param("cinema_code") String cinema_code,@Param("date") String date);
+	HashMap<String, String> preferCinema(String id);
 	
 
 }

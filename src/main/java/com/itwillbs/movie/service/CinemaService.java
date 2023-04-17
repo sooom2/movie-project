@@ -42,6 +42,11 @@ public class CinemaService {
 		return mapper.schList(cinema_code,date);
 	}
 
+
+	public HashMap<String, String> preferCinema(String id) {
+		return mapper.preferCinema(id);
+	}
+
 //	public List<HashMap<String, Object>> schList(String cinema_code, String date) {
 //		System.out.println(date);
 //		return mapper.schList(cinema_code,date);
