@@ -77,6 +77,28 @@
 //             return false;
 //         });
     });
+	$(function() {
+		var $likeBtn = $('.icon.heart');
+
+		$likeBtn.click(function() {
+			$likeBtn.toggleClass('active');
+
+			if ($likeBtn.hasClass('active')) {
+				$(this).find('img').attr({
+					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+					alt : '찜하기 완료'
+				});
+
+			} else {
+				$(this).find('i').removeClass('fas').addClass('far')
+				$(this).find('img').attr({
+					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+					alt : "찜하기"
+				})
+			}
+		})
+	})
+});
    </script>
 	<jsp:include page="../footer.jsp"/>
 </body>
