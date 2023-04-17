@@ -253,7 +253,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				ServiceKey : 'N6BL7Q77SG0M41244297',	// 서비스 키 값을 여기 표시하면 안될 것 같은데.. 어떻게 처리해야할지 모름
 				releaseDts :targetDay,
 				deailt : 'N',
-				listCount : '100'
+				listCount : '10'
 			},
 			type : 'GET',
 			dataType: 'json',
@@ -286,7 +286,8 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
  		// 에러 나올 수 있는 상황 :
  		// 1) 상영시작일이 00일 경우
 	 	// 2) 상영시간이 ""인 경우
-	 	// 3)영화코드가 없는 경우
+	 	// 3) 영화코드가 없는 경우
+	 	// 4) 포스터가 없는 경우
 	 	// 진짜 ...
 	 	
 	 	

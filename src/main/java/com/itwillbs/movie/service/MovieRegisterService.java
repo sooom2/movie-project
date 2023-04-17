@@ -13,36 +13,40 @@ public class MovieRegisterService {
 	
 	@Autowired
 	private MovieRegisterMapper mapper;
+	//영화 목록
+	public List<HashMap<String, String>> selectMovies() {
+		return mapper.selectMovies();
+	}
+	//상영예정 영화 목록 
+	public List<HashMap<String, String>> selectCommingMovies() {
+		return mapper.selectCommingMovies();
+	}
+	//최신 영화 목록
+	public List<HashMap<String, String>> selectAscendingMovies() {
+		return mapper.selectAscendingMovies();
+	}
+	
+	
+	//영화 상세정보
+	public HashMap<String, String> selectMovie(String info_movie_code) {
+		return mapper.selectMovie(info_movie_code);
+	}
+	//영화 상세정보 - 리뷰
+	public HashMap<String, String> selectMovieReview(String info_movie_code) {
+		return mapper.selectMovieReview(info_movie_code);
+	}
+	
 	
 	//영화등록
 	public int registMovie(HashMap<String, String> movie) {
 		return mapper.registMovie(movie);
 	}
 	
-	//영화 목록
-	public List<HashMap<String, String>> selectMovies() {
-		return mapper.selectMovies();
-	}
-	
-	//상영예정 영화 목록 4.16 생성
-	public List<HashMap<String, String>> selectCommingMovies() {
-			return mapper.selectCommingMovies();
-	}
-	//최신 개봉순 영화 4.16 생성
-	public List<HashMap<String, String>> selectAscendingMovies() {
-		return mapper.selectAscendingMovies();
-	}	
-	
-	//영화 상세정보
-	public HashMap<String, String> selectMovie(String info_movie_code) {
-		return mapper.selectMovie(info_movie_code);
-	}
 	
 	//스케쥴의 상세정보
 	public HashMap<String, String> selectSchMovie(String sch_code) {
 		return mapper.selectSchMovie(sch_code);
 	}
-	
 	
 	//영화삭제
 	public int deleteMovie(String info_movie_code) {

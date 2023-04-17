@@ -58,7 +58,7 @@ public class MovieController {
 	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
-		
+		HashMap<String, String> movieInfoReview = service.selectMovieReview(info_movie_code);
 		// DB에 없는 movie_code를 요청 보내지 않으면 메인페이지로 보내기 
 		if(movieInfo == null) {
 			return "redirect:/main";
@@ -66,6 +66,7 @@ public class MovieController {
 		
 		
 		model.addAttribute("movieInfo", movieInfo);
+		model.addAttribute("movieInfoReview", movieInfoReview);
 		return "movieBoard/movieInfo2";
 	}
 }

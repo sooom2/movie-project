@@ -37,13 +37,14 @@
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
 				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
-		
+				<!-- !!상영예정작인 영화는 예매하기가 아닌 상영예정이라고 표시해야함!! -->
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
 					${movieInfo.info_story }
 				</div>
 			</div>
 		</div>
+		<jsp:include page="movie_review_form.jsp"/>
 	</div>
 </div>
 <script type="text/javascript">

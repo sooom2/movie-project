@@ -70,7 +70,7 @@
 			,now()
   			)
   	</insert>
-  	
+
   	<select id = "revList" resultType = "hashmap" >
   		SELECT 
   			 rev_movie_title
