@@ -40,6 +40,18 @@ public class BoardService {
 		return mapper.deleteLostBoard(map);
 	}
 	
+	// 분실물 답변 창
+	public HashMap<String, String> getLostBoard(String lost_code) {
+		
+		return mapper.selectLostBoard(lost_code);
+	}
+	
+	// 분실물 답변 등록
+	public int registLostUpdate(HashMap<String, String> map) {
+		
+		return mapper.updatLostBoard(map);
+	}
+	
 	// 1대1 저장
 	public int registOneBoard(HashMap<String, String> map) {
 //		System.out.println("service: " + map);
@@ -81,6 +93,12 @@ public class BoardService {
 		return mapper.updateNoticeBoard(map);
 	}
 
+	// 공지사항 삭제
+	public int getNoticeDelete(HashMap<String, String> map) {
+		
+		return mapper.deleteNoticeBoard(map);
+	}
+
 	// 자주묻는 질문 목록
 	public List<HashMap<String, String>> getFaqBoardList() {
 		
@@ -93,11 +111,46 @@ public class BoardService {
 		return mapper.insertFaqBoard(map);
 	}
 
-	// 공지사항 삭제
-	public int getNoticeDelete(HashMap<String, String> map) {
+	// 자주묻는 질문 수정창
+	public HashMap<String, String> getFaqBoard(String faq_code) {
 		
-		return mapper.deleteNoticeBoard(map);
+		return mapper.selectFaqBoard(faq_code);
 	}
+
+	// 자주묻는 질문 수정
+	public int registFaqUpdate(HashMap<String, String> map) {
+		
+		return mapper.updatFaqBoard(map);
+	}
+
+	// 자주묻는 질문 삭제
+	public int getFaqDelete(HashMap<String, String> map) {
+		
+		return mapper.deleteFaqBoard(map);
+	}
+
+	// 1:1 답변창
+	public HashMap<String, String> getOneBoard(String one_code) {
+		
+		return mapper.selectOneBoard(one_code);
+	}
+
+	// 1:1 답변등록
+	public int registOneUpdate(HashMap<String, String> map) {
+		
+		return mapper.updatOneBoard(map);
+	}
+	
+	// 1:1 삭제
+	public int getOneDelete(HashMap<String, String> map) {
+		
+		return mapper.deleteOnBoard(map);
+	}
+
+	
+
+	
+
 
 	
 	

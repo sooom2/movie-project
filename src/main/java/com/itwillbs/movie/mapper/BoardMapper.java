@@ -19,6 +19,12 @@ public interface BoardMapper {
 	// 분실물 삭제
 	int deleteLostBoard(HashMap<String, String> map);
 
+	// 분실물 등록창
+	HashMap<String, String> selectLostBoard(String lost_code);
+	
+	// 분실물 답변 등록
+	int updatLostBoard(HashMap<String, String> map);
+	
 	// 1대1 등록
 	int insertOneBoard(HashMap<String, String> map);
 
@@ -48,6 +54,28 @@ public interface BoardMapper {
 
 	// 자주묻는 질문 등록
 	int insertFaqBoard(HashMap<String, String> map);
+
+	// 자주묻는 질문 수정창
+	HashMap<String, String> selectFaqBoard(String faq_code);
+
+	// 자주묻는 질문 수정
+	int updatFaqBoard(HashMap<String, String> map);
+
+	// 자주묻는 질문 삭제
+	int deleteFaqBoard(HashMap<String, String> map);
+
+	// 1:1 답변창 
+	HashMap<String, String> selectOneBoard(String one_code);
+
+	// 1:1 답변등록
+	int updatOneBoard(HashMap<String, String> map);
+	
+	// 1:1 삭제
+	int deleteOnBoard(HashMap<String, String> map);
+
+	
+
+	
 
 
 

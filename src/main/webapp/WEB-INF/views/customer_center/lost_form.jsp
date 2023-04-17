@@ -132,7 +132,7 @@
 								<tr>
 									<th scope="row"><label for="name">이름</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="lost_name" id="name"
+									<td><input type="text" name="member_id" id="name"
 										class="input-text" value="" autocomplete="new-password"
 										maxlength="50"></td>
 									<th scope="row"><label for="name">영화관명</label> <em

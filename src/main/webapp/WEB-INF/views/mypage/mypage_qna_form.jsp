@@ -106,7 +106,7 @@
 						<tbody>
 						<c:forEach var="qnaList" items="${qnaList}">
 							<tr>
-								<td>${qnaList.get("one_location")}</td>
+								<td>${qnaList.get("cinema_name")}</td>
 								<td>${qnaList.get("one_question_type")}</td>
 								<td><a href="">${qnaList.get("one_subject")}</a></td>
 								<td>${qnaList.get("one_write_date")}</td>

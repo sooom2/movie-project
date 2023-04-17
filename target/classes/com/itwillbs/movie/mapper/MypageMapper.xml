@@ -47,7 +47,7 @@
   	
   	<select id = "qnaList" resultType = "hashmap" >
   		SELECT 
-  			one_location
+  			cinema_name
   			,one_question_type
   			,one_subject
   			,one_write_date
