@@ -123,13 +123,25 @@ public class CustomerController {
 		int insertCount = boardService.registOneBoard(map);
 		if(insertCount > 0) {
 			
-			return "redirect:/one_board";
+			return "redirect:/one_list";
 		} 
 		else {
 			model.addAttribute("msg", "등록 실패");
 			return "fail_back";
 		}
 	}
+	
+//	// 분실물 문의 페이지 목록
+//	@RequestMapping(value = "one_detail_list", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String one_list(Model model) {
+//		// 하다만거===================================================================================================================
+//		List<BoardVO> oneBoardList = boardService.getOneBoardList();
+//		model.addAttribute("oneBoardList", oneBoardList);
+////			System.out.println("Controller: " + model);
+//		return "customer_center/one_list";
+//	}
+	
+	
 	// 1대1 문의 내역 페이지
 	@RequestMapping(value = "one_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneBoard(Model model) {
