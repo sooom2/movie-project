@@ -27,6 +27,11 @@ public class MypageController {
 	public String mypageR(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		
+		if(id ==null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			return "fail_back";
+		}
+		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
 		
