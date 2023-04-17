@@ -41,7 +41,7 @@ h2.tit {
 	/* border-radius: 10px; */
 }
 
-/* �좎룞�쇿뜝�덈샑�좑옙 */
+/* �좎럩占썹뙴占썲뜝�뚳옙�⑼옙占썲뜝�덌옙占쏙옙占썲뜝�뚳옙占쏙옙 */
 .wrap-sitemap-title h2.sitemap-title {
 	display: inline-block;
 	margin: 0 auto;
@@ -222,7 +222,7 @@ h2.tit {
 	margin-top: 12px
 }
 
-/* �잙갭占쏙옙占� 占썩뫀踰듿뜝�숈삕占썽뜮占� */
+/* �좎럩占쏙옙揶쏉옙占쏙옙占쏙옙占쏙옙占쏙옙�좑옙 占쏙옙占썩뫖占썹뵓怨뺧옙�⑼옙占썲뜝�뚳옙占쏙옙占쏙옙占쏙옙�덌옙占쏙옙占썲뜝占� */
 .table-wrap {
 	position: relative;
 	border-top: 1px solid #555
@@ -446,7 +446,7 @@ button {
 	cursor: pointer;
 	letter-spacing: -.5px;
 	font-weight: 400;
-	font-family: NanumBarunGothic, Dotum, '�좎럥肉�뜝占�', sans-serif;
+	font-family: NanumBarunGothic, Dotum, '�좎럩占쏙옙罐占쏙옙�좎럥占쏙옙占쏙옙�좑옙', sans-serif;
 	width: 100%;
 	text-align: center !important;
 }
@@ -472,7 +472,7 @@ button:focus {
 	color: #000000;
 	font-weight: 400;
 	border-radius: 4px;
-	font-family: NanumBarunGothic, Dotum, '�좎럥肉�뜝占�', sans-serif;
+	font-family: NanumBarunGothic, Dotum, sans-serif;
 	text-decoration: none;
 	border: 1px solid #535353;
 	/* vertical-align: middle; */
@@ -497,7 +497,7 @@ button:focus {
 	font-size: .9333em;
 }
 
-/*嶺뚮ㅄ維�占쏙옙*/
+/*�꿔꺂占쏙옙占쏙옙力놂옙�좎뜴占쏙옙占쏙옙占쏙옙*/
 .modal {
 	display: none;
 	position: fixed;
@@ -533,9 +533,9 @@ button:focus {
 }
 
 /****************************************************************************************************************************************
-	�좎럥�ｏ옙占�
+	�좎럩占쏙옙恝�숂�占쏙옙占쏙옙占썲뜝占�
 ****************************************************************************************************************************************/
-/*�β돦裕꾬옙�쏆삕�좑옙*/
+/*�좎떥��占쏙옙�믭옙熬곎딉옙占썲뜝�뚳옙占쏙옙占썲뜝�뚳옙占쏙옙*/
 .login-tit {
 	font-size: 28px;
 }
@@ -710,7 +710,7 @@ button:focus {
 .member .check-desc p+p {
 	margin-top: 3px;
 }
-/*�β돦裕꾬옙�쏆삕�좑옙*/
+/*�좎떥��占쏙옙�믭옙熬곎딉옙占썲뜝�뚳옙占쏙옙占썲뜝�뚳옙占쏙옙*/
 .member .end {
 	padding: 40px 0 90px;
 	text-align: center;
@@ -1210,6 +1210,7 @@ button:focus {
 	background-size: cover;
 }
 
+
 .section-theater-body .wrap .content .desc .rate-n {
 	background: url("../images/movies/icon-rate-n.png") center center
 		no-repeat;
@@ -1251,50 +1252,7 @@ button:focus {
 	width: 120px;
 }
 
-.section-theater-body .wrap .content .table-movie-time tr td .rate-all,
-	.section-theater-body .wrap .content .table-movie-time tr td .rate-12,
-	.section-theater-body .wrap .content .table-movie-time tr td .rate-15,
-	.section-theater-body .wrap .content .table-movie-time tr td .rate-n,
-	.section-theater-body .wrap .content .table-movie-time tr td .rate-x {
-	font-weight: bold;
-	color: #fff;
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-	text-align: center;
-	margin-right: 6px;
-	position: relative;
-	padding: 0;
-	overflow: hidden;
-	text-indent: -10000em;
-	position: relative;
-	top: 3px;
-}
 
-.section-theater-body .wrap .content .table-movie-time tr td .rate-all {
-	background: url("/images/movies/icon-rate-all.png") center center
-		no-repeat;
-}
-
-.section-theater-body .wrap .content .table-movie-time tr td .rate-12 {
-	background: url("/images/movies/icon-rate-12.png") center center
-		no-repeat;
-}
-
-.section-theater-body .wrap .content .table-movie-time tr td .rate-15 {
-	background: url("/images/movies/icon-rate-15.png") center center
-		no-repeat;
-}
-
-.section-theater-body .wrap .content .table-movie-time tr td .rate-x {
-	background: url("/images/movies/icon-rate-x.png") center center
-		no-repeat;
-}
-
-.section-theater-body .wrap .content .table-movie-time tr td .rate-n {
-	background: url("/images/movies/icon-rate-n.png") center center
-		no-repeat;
-}
 
 .section-theater-body .wrap .content .table-movie-time tr td .from {
 	font-size: 17px;
@@ -1423,7 +1381,7 @@ button:focus {
 }
 
 .section-theater-body .wrap .content .each-movie-time .movie-title .rate-all {
-	background: url("/images/movies/icon-rate-all.png") center center no-repeat;
+	background: url("../images/movies/icon-rate-all.png") center center no-repeat;
 	background-size: cover;
 }
 
@@ -2169,7 +2127,7 @@ table.bbs-view tr td.share ul {
 }
 
 table.bbs-view tr td.share ul:before {
-	content: "�⑤벊��";
+	content: "�좎뜦占썬끇占썲뜝�숈삕";
 	border-right: 1px solid #ccc;
 	display: inline-block;
 	padding-right: 18px;
@@ -2292,7 +2250,7 @@ table.bbs-list.bbs-list-theater-price td.kind2 {
 	display: block;
 	margin: 0 auto;
 }
-/*지도*/
+/*筌욑옙占쏙옙*/
 .section-theater-body .wrap .addr {
 	height: 48px;
 	background-color: rgba(0, 0, 0, 0.66);
