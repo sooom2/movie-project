@@ -48,6 +48,10 @@ public class MypageService {
 		return mapper.selectMemberId(id);
 	}
 
+	public List<HashMap<String, String>> movieList(String id) {
+		return mapper.movieList(id);
+	}
+
 
 
 

@@ -26,6 +26,10 @@ public class MypageController {
 	@GetMapping(value = "mypageR")
 	public String mypageR(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
+		
+		List<HashMap<String, String>> movieList = service.movieList(id);
+		model.addAttribute("movieList",movieList);
+		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		return "mypage/mypage_rsv_form";
@@ -35,6 +39,11 @@ public class MypageController {
 	@GetMapping(value = "mypageP")
 	public String mypageP(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
+		
+		List<HashMap<String, String>> movieList = service.movieList(id);
+		model.addAttribute("movieList",movieList);
+		
+		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
@@ -46,6 +55,11 @@ public class MypageController {
 	@GetMapping(value = "mypageS")
 	public String mypageS(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
+		
+		List<HashMap<String, String>> movieList = service.movieList(id);
+		model.addAttribute("movieList",movieList);
+		
+		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
@@ -56,6 +70,11 @@ public class MypageController {
 	@GetMapping(value = "mypageQ")
 	public String mypageQ(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
+		
+		List<HashMap<String, String>> movieList = service.movieList(id);
+		model.addAttribute("movieList",movieList);
+		
+		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
@@ -159,6 +178,9 @@ public class MypageController {
 		String id = (String)session.getAttribute("sId");
 		member= service.getMemberInfo(id);
 		
+		List<HashMap<String, String>> movieList = service.movieList(id);
+		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> revList = service.revList(id);
 		model.addAttribute("revList",revList);
 		
@@ -171,8 +193,6 @@ public class MypageController {
 	@PostMapping(value="mypageRvPro")
 	public String mypageRvPro(@RequestParam HashMap<String, String> review, HttpSession session,  Model model) {
 		String id = (String)session.getAttribute("sId");
-		HashMap<String, String> member = service.selectMemberId(id);
-		
 		review.put("id", id);
 
 		int insertCount = service.insertReview(review);

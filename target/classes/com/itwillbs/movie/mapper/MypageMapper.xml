@@ -81,4 +81,17 @@
   		WHERE rev_id = #{id}
   	</select>
   	
+  	<select id = "movieList" resultType= "hashmap">
+  		SELECT info_movie_title
+		FROM movieinfo
+		WHERE info_genre 
+		LIKE	(concat ("%",
+					(SELECT member_prefer_genre 
+                        FROM member 
+                        WHERE member_id = #{id}),"%"));
+  			 
+  	</select>
+  	
+  	
+  	
 </mapper>
