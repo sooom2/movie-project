@@ -55,144 +55,263 @@
 							<span class="big-m"></span> 
 							<span class="small-yyyym"></span>
 							<ul>
-								<li><a href="#" class="prev">이전</a></li>
-								<li class="datelist" data-date="2023-04-16" data-month="April" data-year="2023" data-montheng="April" style="display:">
-									<a href="#" class="today selected sun"><span class="day">오늘</span>16</a>
-								</li>
-								<li class="datelist" data-date="2023-04-17" data-month="April" data-year="2023" data-montheng="April" style="display:">
-									<a href="#" class=""><span class="day">월</span>17</a>
-								</li>
-								<li class="datelist" data-date="2023-04-18" data-month="April" data-year="2023" data-montheng="April" style="display:">
-									<a href="#" class=""><span class="day">화</span>18</a>
-								</li>
-								<li class="datelist" data-date="2023-04-19" data-month="April" data-year="2023" data-montheng="April" style="display:">
-									<a href="#" class=""><span class="day">수</span>19</a>
-								</li>
-								<li class="datelist" data-date="2023-04-20" data-month="April" data-year="2023" data-montheng="April" style="display:">
-									<a href="#" class=""><span class="day">목</span>20</a>
-								</li>
-								<li><a href="#" class="next">이전</a></li>
+								<li class="prev-btn"><a href="#" class="prev">이전</a></li>
+								
+<!-- <!-- 								오늘 --> 
+<!-- 								<li class="datelist" data-date="" data-month="" data-year="" data-montheng="" style="display:"> -->
+<!-- 									<a href="#" class="today"><span class="day"></span></a> -->
+<!-- 								</li> -->
+<!-- 								<li class="datelist" data-date="" data-month="" data-year="" data-montheng="" style="display:"> -->
+<!-- 									<a href="#" class=""><span class="day"></span></a> -->
+<!-- 								</li> -->
+
+									
+								
+								
+								
+								<li class="next-btn"><a href="#" class="next">이전</a></li>
 							</ul>
 						</div>
+						
+						
+						
+						
 						<script type="text/javascript">
-					
-					// 현재 날짜 가져오기
-					$(function () {
-						let cinemaDetail = JSON.parse('${cinemaDetailJson}');
-						let currentDate = new Date();
-						let currentMonth = currentDate.getMonth(); // 현재 월의 숫자(0~11)를 가져옴
-						let monthNames = ["January", "February", "March", "April", "May", "June",
+// 							// 현재 날짜 가져오기
+// 							$(function () {
+// 								let cinemaDetail = JSON.parse('${cinemaDetailJson}');
+// 								const currentDate = new Date();
+// 								const currentMonth = currentDate.getMonth(); // 현재 월의 숫자(0~11)를 가져옴
+// 								const monthNames = ["January", "February", "March", "April", "May", "June",
+// 					                  "July", "August", "September", "October", "November", "December"];
+// 								const currentYear = currentDate.getFullYear();
+// 								const currentDay = currentDate.getDate();
+								
+// 								let index = 0;
+// 								let viewCount = 7;
+// 						        let selectedDate = $("ul>li.datelist>a.selected", "div.section div.cal").closest("li").data("date");
+// 						        let selectedListType = "movie";
+// 						        let cinemaCode = cinemaDetail.cinema_code;
+								
+// 								//달 표시
+// 								$('.cal .big-m').text(monthNames[currentMonth]);
+// 								//년 달 표시
+// 								$('.cal .small-yyyym').text(currentYear + " " + monthNames[currentMonth]);
+								
+// 								$('.datelist .today span').text("오늘");
+// 								$('.datelist .today span').after(currentDay);
+								
+								
+								
+								
+// 						        function dateView() {
+// 						            var start = (index * viewCount);
+// 						            var end = start + viewCount;
+// 						            $("ul>li.datelist", "div.section div.cal").hide();
+						            
+// 						            for (var i = start; i < end; i++) {
+// 						                $("ul>li.datelist:eq(" + i + ")", "div.section div.cal").show();
+// 						            }
+		
+// 						            $('.cal .big-m').text($("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("month"));
+// 						            $('.cal .small-yyyym').text(
+// 						                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("year") + " " +
+// 						                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("montheng")
+// 						            );
+// 						        }
+		
+						        
+						        
+// 						        function loadMovie() {
+// 						            var playDate = selectedDate.replace(/-/gi, '');
+// 						            if (selectedListType == "time") {
+// 						                $.post("/cinemaDetail", { TheaterCode: cinemaCode, PlayDate: playDate }, function (data) {
+// 						                    $("div.theater-movie", "div.section-theater-body").html(data);
+// 						                });
+// 						            } else {
+// 						                $.post("/cinemaDetail", { TheaterCode: theaterCode, PlayDate: playDate }, function (data) {
+// 						                    $("div.theater-movie", "div.section-theater-body").html(data);
+// 						                });
+// 						            }
+// 						        }
+		
+// 						        $("li>a.next", "div.cal").click(function (e) {
+// 						            e.preventDefault();
+// 						            index++;
+// 						            if (index > 4) {
+// 						                index = 4;
+// 						                return false;
+// 						            }
+// 						            dateView();
+// 						            return false;
+// 						        });
+		
+// 						        $("li>a.prev", "div.cal").click(function (e) {
+// 						            e.preventDefault();
+// 						            index--;
+// 						            if (index < 0) {
+// 						                index = 0;
+// 						                return false;
+// 						            }
+		
+// 						            dateView();
+// 						            return false;
+// 						        });
+		
+// 						        $("li.datelist>a", "div.cal").click(function (e) {
+// 						            e.preventDefault();
+// 						            var $li = $(this).closest("li");
+		
+// 						            if ($(this).hasClass("disabled") == true) {
+// 						                return false;
+// 						            }
+		
+// 						            $("ul>li.datelist>a.selected", "div.cal").removeClass("selected");
+// 						            $("ul>li.datelist>a._sat", "div.cal").addClass("sat").removeClass("_sat");
+// 						            $("ul>li.datelist>a._sun", "div.cal").addClass("sun").removeClass("_sun");
+		
+// 						            $(this).addClass("selected");
+		
+// 						            if ($(this).hasClass("sun")) {
+// 						                $(this).addClass("_sun").removeClass("sun");
+// 						            }
+// 						            if ($(this).hasClass("sat")) {
+// 						                $(this).addClass("_sat").removeClass("sat");
+// 						            }
+		
+// // 						            $("span.big-m", "div.cal").text($li.data("month"));
+// 						            $("small-yyyym", "div.cal").text(
+// 						                $li.data("year") + " " +
+// 						                $li.data("montheng")
+// 						            );
+						            
+// 						            selectedDate = $(this).closest("li").data("date");
+// 						            loadMovie();
+// 						            return false;
+// 						        });
+		
+// 						        $("a", "div.selector-sub").click(function (e) {
+// 						            e.preventDefault();
+// 						            $("a", "div.selector-sub").parent().find("a").removeClass("selected");
+// 						            $(this).addClass("selected");
+// 						            selectedListType = $(this).data("listtype");
+// 						            loadMovie();
+// 						            return false;
+// 						        });
+		
+		
+// 						        loadMovie();
+// 						    });
+						</script>
+						<script type="text/javascript">
+						// 날짜 선택
+						const date = new Date();
+						
+						const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0); //마지막날
+						const reserveDate = document.querySelector(".cal ul li"); // 예매날
+						
+						
+						
+					    // 숫자
+						const month = String(date.getMonth() + 1).padStart(2, '0'); //월
+						
+						// 영어로 표기하기위한
+					    const monthName = date.getMonth() ; //월
+						const monthNames = ["January", "February", "March", "April", "May", "June",
 			                  "July", "August", "September", "October", "November", "December"];
-						let currentYear = currentDate.getFullYear();
 						
-						let index = 0;
-						let viewCount = 7;
-				        let selectedDate = $("ul>li.datelist>a.selected", "div.section div.cal").closest("li").data("date");
-				        let selectedListType = "movie";
-				        let cinemaCode = cinemaDetail.cinema_code;
-						console.log(monthNames[currentMonth]);
-						$('.cal .big-m').text(monthNames[currentMonth]);
-						$('.cal .small-yyyym').text(currentYear + " " + monthNames[currentMonth]);
+					    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
+					    const year = date.getFullYear(); //년 
+					    
+					    $('.cal span.big-m').text(monthNames[monthName]);
+					    $('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
+					    
+					    
+					    // i = 일
+					   for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+						    const dayList = document.createElement("li");
+						    dayList.classList.add("date-list");
 						
-				        function dateView() {
-				            var start = (index * viewCount);
-				            var end = start + viewCount;
-				            $("ul>li.datelist", "div.section div.cal").hide();
-				            for (var i = start; i < end; i++) {
-				                $("ul>li.datelist:eq(" + i + ")", "div.section div.cal").show();
-				            }
+						    const aTag = document.createElement("a");
+						    aTag.setAttribute("href", "#");
+						    aTag.classList.add("selectDate");
+						
+						    const spanWeekOfDay = document.createElement("span"); // 요일
+						    const spanDay = document.createElement("span");
+						    
+						    spanDay.classList.add("selDate");
+						
+						    //weekOfDay[new Date(2023-04-00)]
+						    const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
+							
+// 						    alert(dayOfWeek); //월화수목~~~ 
+							
+						    //요일 넣기
+						    if (dayOfWeek == "토") {
+						        spanWeekOfDay.classList.add("sat");
+						        spanDay.classList.add("sat");
+						        aTag.classList.add("sat"); //토요일이면 a태그에 "sat" 클래스 추가
+						    } else if (dayOfWeek == "일") {
+						        spanWeekOfDay.classList.add("sun");
+						        spanDay.classList.add("sun");
+						        aTag.classList.add("sun"); //일요일이면 a태그에 "sun" 클래스 추가
+						    }
+						    
+						    spanWeekOfDay.innerHTML = dayOfWeek;
+						
+						    //날짜 넣기
+						    spanDay.innerHTML = i;
+						    spanDay.setAttribute("data-cd", i);    // span 태그 안 : 각 버튼 data-cd 날짜 데이터 저장 (1,2,3,4,5...30)
+						    spanDay.setAttribute("data-month", month);
+						    spanDay.setAttribute("data-year", year);
+						    spanDay.setAttribute("data-date", year+"-" + month + "-" + i );
+						    aTag.append(spanWeekOfDay);
+						    aTag.append(spanDay);
+						    dayList.append(aTag);
+						   $(".next-btn").before(dayList);
+// 						    dayClickEvent(aTag);
+						}
 
-				            $('.cal .big-m').text($("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("month"));
-				            $('.cal .small-yyyym').text(
-				                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("year") + " " +
-				                $("ul>li.datelist:eq(" + start + ")", "div.section div.cal").data("montheng")
-				            );
-				        }
-
-				        
-				        
-				        function loadMovie() {
-				            var playDate = selectedDate.replace(/-/gi, '');
-				            if (selectedListType == "time") {
-				                $.post("/cinemaDetail", { TheaterCode: cinemaCode, PlayDate: playDate }, function (data) {
-				                    $("div.theater-movie", "div.section-theater-body").html(data);
-				                });
-				            } else {
-				                $.post("/cinemaDetail", { TheaterCode: theaterCode, PlayDate: playDate }, function (data) {
-				                    $("div.theater-movie", "div.section-theater-body").html(data);
-				                });
-				            }
-				        }
-
-				        $("li>a.next", "div.cal").click(function (e) {
-				            e.preventDefault();
-				            index++;
-				            if (index > 4) {
-				                index = 4;
-				                return false;
-				            }
-				            dateView();
-				            return false;
-				        });
-
-				        $("li>a.prev", "div.cal").click(function (e) {
-				            e.preventDefault();
-				            index--;
-				            if (index < 0) {
-				                index = 0;
-				                return false;
-				            }
-
-				            dateView();
-				            return false;
-				        });
-
-				        $("li.datelist>a", "div.cal").click(function (e) {
-				            e.preventDefault();
-				            var $li = $(this).closest("li");
-
-				            if ($(this).hasClass("disabled") == true) {
-				                return false;
-				            }
-
-				            $("ul>li.datelist>a.selected", "div.cal").removeClass("selected");
-				            $("ul>li.datelist>a._sat", "div.cal").addClass("sat").removeClass("_sat");
-				            $("ul>li.datelist>a._sun", "div.cal").addClass("sun").removeClass("_sun");
-
-				            $(this).addClass("selected");
-
-				            if ($(this).hasClass("sun")) {
-				                $(this).addClass("_sun").removeClass("sun");
-				            }
-				            if ($(this).hasClass("sat")) {
-				                $(this).addClass("_sat").removeClass("sat");
-				            }
-
-				            $("span.big-m", "div.cal").text($li.data("month"));
-				            $("small-yyyym", "div.cal").text(
-				                $li.data("year") + " " +
-				                $li.data("montheng")
-				            );
-				            selectedDate = $(this).closest("li").data("date");
-				            loadMovie();
-				            return false;
-				        });
-
-				        $("a", "div.selector-sub").click(function (e) {
-				            e.preventDefault();
-				            $("a", "div.selector-sub").parent().find("a").removeClass("selected");
-				            $(this).addClass("selected");
-				            selectedListType = $(this).data("listtype");
-				            loadMovie();
-				            return false;
-				        });
-
-
-				        loadMovie();
-				    });
-					
-					</script>
-
+						
+					   const selectDateList = document.querySelectorAll('.selectDate');
+					   selectDateList.forEach(selectDate => {
+					     selectDate.addEventListener('click', function() {
+					       const previousSelectedDate = document.querySelector('.selectDate.selected');
+					       if (previousSelectedDate) {
+					         previousSelectedDate.classList.remove('selected');
+					       
+					       }
+					       selectDate.classList.add('selected');
+					       const selDateElement = this.querySelector('.selDate');
+					       //선택한 날짜
+						   const selDateData = selDateElement.dataset.date;
+					       
+					       alert(selDateData);
+					       
+					       
+					       $.ajax({
+					           type: "GET",
+					           url: "cinemaDetail",
+					           data: {
+					        	   play_date: selDateData
+					           },
+					           success: function(result){
+					        	   
+					           },
+					           error:function(request,status,error){
+					               alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					           }
+					       });
+					       
+					     });
+					   });
+					   
+						
+// 					   const selDateElement = document.querySelector('.selDate');
+// 					   const selDateData = selDateElement.dataset.date;
+// 					   console.log(selDateData); 
+						
+						</script>					
 
 
 						<!-- 날짜 -->

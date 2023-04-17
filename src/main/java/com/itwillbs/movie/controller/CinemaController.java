@@ -1,8 +1,6 @@
 package com.itwillbs.movie.controller;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.TextFormat.ParseException;
-import com.itwillbs.movie.service.BoardService;
 import com.itwillbs.movie.service.CinemaService;
 import com.itwillbs.movie.service.MovieRegisterService;
 
@@ -62,12 +59,15 @@ public class CinemaController {
 		return locationCinema;
 	}
 	//예매
-	@GetMapping("/cinemaDetail")
+	@GetMapping("cinemaDetail")
 	public String cinemaDetail(
 			  @RequestParam("cinema_code") String cinema_code
-//			, @RequestParam("play_date") String play_date
+			, @RequestParam(value= "play_date",required=false) String play_date
 			, Model model
 			) throws JsonProcessingException, ParseException {
+		System.out.println("=제에발=================================================");
+		System.out.println(play_date);
+		System.out.println("=제에발=================================================");
 		
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
 //		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code,play_date);
@@ -96,9 +96,9 @@ public class CinemaController {
 		
 		
 		
-		System.out.println("=======================================");
-		System.out.println(schList);
-		System.out.println("=======================================");
+//		System.out.println("=======================================");
+//		System.out.println(schList);
+//		System.out.println("=======================================");
 		
 		return "cinema/cinema_detail";
 	}
