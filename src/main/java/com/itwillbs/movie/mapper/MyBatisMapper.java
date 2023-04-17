@@ -68,6 +68,11 @@ public interface MyBatisMapper {
 
 	HashMap<String, String> selectKakao(String email);
 	
+	// 아이디 조회
+	HashMap<String, String> findId(HashMap<String, String> member);
+
+	int renewPw(HashMap<String, String> member);
+	
 	// ------------------------------------------------------------------------------------------
 	
 

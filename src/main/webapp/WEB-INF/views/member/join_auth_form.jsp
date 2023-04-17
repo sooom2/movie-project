@@ -67,18 +67,18 @@ $(function() {
 	//인증번호 비교 
 	$('.mail-check-input').blur(function () {
 		const inputCode = $(this).val();
-		const $resultMsg = $('#mail-check-warn');
+		const resultMsg = $('#mail-check-warn');
 		
 		if(inputCode == code){
-			$resultMsg.html('인증번호가 일치합니다.');
-			$resultMsg.css('color','green');
+			resultMsg.html('인증번호가 일치합니다.');
+			resultMsg.css('color','green');
 			$('#mail-Check-Btn').attr('disabled',true);
 			$('#join-id').attr('readonly',true);
 			$('#join-id').attr('onFocus', 'this.initialSelect = this.selectedIndex');
 	        $('#join-id').attr('onChange', 'this.selectedIndex = this.initialSelect');
 		}else{
-			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!');
-			$resultMsg.css('color','red');
+			resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!');
+			resultMsg.css('color','red');
 		}
 	});
 	

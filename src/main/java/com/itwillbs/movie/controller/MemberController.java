@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -175,7 +177,53 @@ public class MemberController {
 		return mailService.joinEmail(email);
 	}
 	
+	// 아이디 찾기
+	@GetMapping(value = "findId")
+	public String findId() {
+		return "member/mem_find_id";
+	}
 	
+	// 아이디 찾기pro
+	@PostMapping(value = "findIdPro")
+	public String findIdPro(@RequestParam HashMap<String, String> member, Model model) {
+		HashMap<String, String> success = service.findId(member);
+		
+		if(success == null) {
+			model.addAttribute("msg", "회원정보가 일치하지 않습니다");
+			return "member/fail_back";
+		} else {
+			model.addAttribute("member_id", success.get("member_id"));
+			return "member/mem_find_idSuccess";
+		}
+	}
+	
+	
+	// 비밀번호 찾기
+	@GetMapping(value = "findPw")
+	public String findPw() {
+		return "member/mem_find_pw";
+	}
+	
+	// 비밀번호 재설정
+	@RequestMapping(value = "renewPw", method = {RequestMethod.GET, RequestMethod.POST})
+	public String renewPw(@RequestParam HashMap<String, String> member, Model model) {
+		model.addAttribute("member_id", member.get("member_id"));
+		return "member/mem_find_renewPw";
+	}
+	
+	// 비밀번호 재설정pro
+	@RequestMapping(value = "renewPwPro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String renewPwPro(@RequestParam HashMap<String, String> member, Model model) {
+		// 해싱 -> success 페이지 -> memLogin
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String securePasswd = passwordEncoder.encode(member.get("member_pw"));
+		member.put("member_pw", securePasswd);
+		int updateCount = service.renewPw(member);
+		
+		model.addAttribute("msg", "비밀번호 재설정이 완료되었습니다.");
+		model.addAttribute("target", "memLogin");
+		return "member/success";
+	}
 	
 	
 	// 회원가입폼

@@ -54,17 +54,6 @@
 									 <span></span>
 								</label>
 							</div>
-							
-							
-							<div class="join-detail">
-								<label class="label-input" for="username"> <span>성별</span>
-									<div class="gender-select">
-										<input type="radio" class="gender" name="member_gender" value="남" id="female" onclick=""><label for="member_gender">남 </label>
-										<input type="radio" class="gender" name="member_gender" value="여" id="male" onclick=""><label for="member_gender">여 </label>
-									</div>
-								</label>
-							</div>
-							
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:320px;display:inline-block;">
 			                        <span>우편번호</span>
@@ -162,8 +151,7 @@
 							 <input type="hidden" id="isPayment" name="isPayment" value="0">
 							<input type="hidden" id="smsRequest" name="smsRequest" value="">
 							<input type="hidden" id="token" name="token" value="">
-							
-							
+						</div>	
 						<input type="submit" value="회원가입" id="btn-join2" class="btn-join">
 					</form>
 				</div>

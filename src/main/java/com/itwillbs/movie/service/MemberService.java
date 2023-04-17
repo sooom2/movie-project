@@ -42,6 +42,16 @@ public class MemberService {
 	public HashMap<String, String> kakaoMember(String email) {
 		return mapper.selectKakao(email);
 	}
+	
+	// 아이디 조회
+	public HashMap<String, String> findId(HashMap<String, String> member) {
+		return mapper.findId(member);
+	}
+	
+	// 비밀번호 재설정
+	public int renewPw(HashMap<String, String> member) {
+		return mapper.renewPw(member);
+	}
 
 	
 }

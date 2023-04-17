@@ -52,7 +52,7 @@
 				WHERE member_id = #{member_id} 
 	</select>
 	
-	<!-- 카카오 회원 확 -->
+	<!-- 카카오 회원 확인 -->
 	<select id="selectKakao" resultType="hashmap">
 		SELECT * FROM member
 			WHERE member_email = #{email}
@@ -89,6 +89,7 @@
 			WHERE item_type = 'ticket'
 	</select>
 	
+	<!-- 상품 조회(아이템코드) -->
 	<select id="selectCode" resultType="hashmap">
 		SELECT * FROM item
 			WHERE item_code = #{item_code}
@@ -187,6 +188,23 @@
 		  FROM item
 		 WHERE item_status = 'hot'
 	</select>
+	
+	<!-- 아이디 조회 -->
+	<select id="findId" resultType="hashmap">
+		SELECT * FROM member
+			WHERE member_name = #{member_name}
+				AND member_bday = #{member_bday}
+				AND member_tel = #{member_tel}
+	</select>
+	
+	<!-- 비밀번호 재설정 -->
+	<update id="renewPw">
+		UPDATE member
+			SET member_pw = #{member_pw}
+				WHERE member_id = #{member_id}
+	</update>
+	
+	
 </mapper>
 
 
