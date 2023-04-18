@@ -18,8 +18,6 @@ public interface ReservationMapper {
 	List<HashMap<String, String>> selectMovieTimeList(@Param("CnItemCd") String CnItemCd, @Param("MvItemCd") String MvItemCd, @Param("dateCd") String dateCd);
 
 
-//	List<HashMap<String, String>> selectReservationList(String schCd);
-	
 	List<HashMap<String, String>> selectReservationList(String schCd);
 	
 }

@@ -81,11 +81,7 @@ public class ReservationController {
 	
 	
 	@PostMapping("seat")
-	public String seat(Model model, String schCd) {
-		
-		// 예매 테이블 조회 => 데이터가 존재하면 jsp에서 좌석 사용불가처리 (매개변수 : 일정코드)
-//		List<HashMap<String, String>> reservationList = service.selectReservationList(schCd);
-//		model.addAttribute("reservationList", reservationList);
+	public String seat(Model model) {
 		
 		return "reservation/seat";
 	}
@@ -95,9 +91,10 @@ public class ReservationController {
 	public String reservationList(Model model, String schCd) {
 		// 예매 테이블 조회 => 데이터가 존재하면 jsp에서 좌석 사용불가처리 (매개변수 : 일정코드)
 		List<HashMap<String, String>> reservationList = service.selectReservationList(schCd);
-		model.addAttribute("rereservation/seatservationList", reservationList);
-		System.out.println(reservationList);
-		return "reservation/seat";
+		JSONArray ja = new JSONArray(reservationList);
+		System.out.println(ja);
+		
+		return ja.toString();
 	}
 	
 	
