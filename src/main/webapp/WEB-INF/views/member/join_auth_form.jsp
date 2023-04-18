@@ -87,7 +87,7 @@ $(function() {
 	
 	$("#btn-join").on("click", function() {
 		if(!mailStatus) {
-			alert("휴대폰 인증을 확인해주시기 바랍니다.");
+			alert("이메일 인증을 확인해주시기 바랍니다.");
 			return false;
 		} else {
 			location.href="joinform?email=" + $('#join-id').val();

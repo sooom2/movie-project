@@ -291,11 +291,13 @@ public class MemberController {
 //		}
 //		
 //	}
+	
+	// 회원가입
 	@PostMapping(value = "joinPro")
 	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String securePasswd = passwordEncoder.encode(member.get("member_pw"));
-		String member_address = member.get("member_address1") + " " + member.get("member_address2");
+		String member_address = member.get("member_address1") + "/" + member.get("member_address2");
 		member.put("member_pw", securePasswd);
 		member.put("member_address", member_address);
 		
