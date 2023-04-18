@@ -66,6 +66,10 @@ public class MypageController {
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
 		
+		List<HashMap<String,String>> payList = service.payList(id);
+		model.addAttribute("payList", payList);
+		
+		
 		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);

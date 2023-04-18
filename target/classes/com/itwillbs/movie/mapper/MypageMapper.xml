@@ -117,5 +117,18 @@
   		ORDER BY point_code DESC;
   	</select>
   	
+  	<select id = "payList" resultType = "hashmap" >
+	  	 SELECT 
+	  	 	p.pay_date
+	  	 	,i.item_type
+	  	 	,i.item_name
+	  	 	,p.pay_price
+	  	 FROM pay p JOIN item i
+	  	 ON p.item_code = i.item_code
+	  	WHERE p.member_id = #{id};
+  	</select>
+  	
+  	
+  	
   	
 </mapper>

@@ -29,6 +29,8 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> pointList(String id);
 
+	List<HashMap<String, String>> payList(String id);
+
 
 
 

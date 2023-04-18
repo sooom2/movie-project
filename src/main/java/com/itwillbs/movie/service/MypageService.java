@@ -60,6 +60,10 @@ public class MypageService {
 		return mapper.pointList(id);
 	}
 
+	public List<HashMap<String, String>> payList(String id) {
+		return mapper.payList(id);
+	}
+
 
 
 

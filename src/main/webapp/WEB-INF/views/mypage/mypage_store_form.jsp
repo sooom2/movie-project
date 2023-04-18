@@ -95,24 +95,23 @@
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"id="">나의스토어</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
-						<tbody>
+						<thead>
 							<tr>
 								<th>구매일자</th>
-								<th>구매한상품</th>
-								<th>상품구성</th>
-								<th>수량</th>
+								<th>상품종류</th>
+								<th>상품이름</th>
 								<th>금액</th>
-								<th>구매취소</th>
 							</tr>
+							</thead>
+							<tbody>	
+							<c:forEach var="payList" items="${payList}">
 							<tr>
-								<td>20230101</td>
-								<td>더블콤보</td>
-								<td>팝콘 (R) 2 + 탄산음료 (R) 2</td>
-								<td>1개</td>
-								<td>13,000원</td>
-								<td>취소버튼</td>
+								<td>${payList.get("pay_date") }</td>
+								<td>${payList.get("item_type") }</td>
+								<td>${payList.get("item_name") }</td>
+								<td>${payList.get("pay_price") }</td>
 							</tr>
-							
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
