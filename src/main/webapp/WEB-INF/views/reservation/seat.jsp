@@ -314,6 +314,49 @@
 // 	let resSeatNum = "";	// 예약한 열
 // 	let resSeat = "";
 	let schCd = $("#schCd").val();
+
+	
+// reservationList에서 res_seat_line, res_seat_num 값 select 후
+// 데이터 존재시 버튼 컬러 변경 , disabled 속성 추가
+function reservationList() {
+	$.ajax({
+			type: "GET",
+			url: "reservationList",
+			data: { 
+				schCd : schCd
+			},
+			dataType: "json",
+			success: function(response) { 
+				console.log("reservationList : 요청처리성공");
+				
+				for(movie of response) {
+					let resSeatLine = movie.res_seat_line;
+					let resSeatNum = movie.res_seat_num;
+				
+					// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
+					var seatList = $('.seat');
+	 				$.each(seatList, function(index, el){
+	 					
+	 					// el == element , attr('data-line') : 속성 선택, attr('data-line', '2') : 속성 값을 2로 변경
+	 					if($(el).attr('data-line') == resSeatLine && $(el).attr('data-num') == resSeatNum){
+	 						
+	 						$(el).css({"background-color" : "#3D3F51", "disabled" : ""});
+	 					}
+	 				});
+					
+					console.log("resSeatLine: " + resSeatLine);
+					console.log("resSeatNum: " + resSeatNum);
+					
+				}
+				
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				console.log("reservationList : 요청처리실패");
+			}
+		});
+}	
+	
+	
 	
 	
 	$(function() {
@@ -330,21 +373,20 @@
 			
 			for(let j = 1; j < seatNum; j++) {
 				let alp = String.fromCharCode(asc);								// 좌석 행 출력  
-// 				debugger;
 				
 				
-				// 버튼 생성 전 
-				// reservationList에서 res_seat_line, res_seat_num 값 select 후
-				// 데이터 존재시 버튼 컬러 변경 , disabled 속성 추가
 				// 
 				
 				
-// 				eeee();
-				reservationList();
+// 				debugger;
 				
 				var str = "";
 				str += "<button type='button' data-id='";
 				str += num;
+				str += "' data-line='";
+				str += i;
+				str += "' data-num='";
+				str += j;
 				str += "' class='seat available' style='top:";
 				str += y;
 				str += "px; left:";
@@ -358,48 +400,14 @@
 			} //j
 			left = 36;
 			asc++;
+			
 		}
 		
 		// 판매완료 좌석
+		reservationList();
 		
+		 
 		
-		 // get(i) 왜 증가 x??
-// 		function eeee() {
-// 			for(i = 0; i < ${reservationList.size()}; i++) {
-// 				debugger;
-				
-// 				console.log(${reservationList.get(i).get('res_seat_line')} + "," + ${reservationList.get(i).get('res_seat_num')} );
-				
-// 			}
-// 		}
-		
-		
-		function reservationList() {
-			$.ajax({
-	 			type: "GET",
-	 			url: "reservationList",
-	 			data: { 
-	 				schCd: schCd
-	 			},
-	 			dataType: "String",
-	 			success: function(response) { 
-	 				console.log("btnCnItem : 요청처리성공");
-	 				
-	 				for(movie of response) {
-	 					let resSeatLine = reservationList.res_seat_line;
-	 					let resSeatNum = reservationList.res_seat_num;
-	 					
-	 					console.log(resSeatLine + ", " + resSeatNum);
-	 					
-	 					
-	 				}
-	 				
-	 			},
-	 			error: function(xhr, textStatus, errorThrown) {
-	 				console.log("btnCnItem : 요청처리실패");
-	 			}
-	 		});
-		}
 		
 		
 		
