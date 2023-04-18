@@ -88,31 +88,33 @@ $likeBtn.click(function() {
 		
 	if ($likeBtn.hasClass('active')) {
 		// ajax -> likeInsert(@controller)
-		
+		// ajax : context : this를 써줘야 success에서 this 사용 가능
 		$.ajax({
 			url : 'likeInsert',
 			type : 'GET',
-			dataType : 'String',
+			dataType : 'text',
+			context : this,
 			data : {
 				info_movie_code : info_movie_code
 			},
-			success : function(data){
+			success : function(result){
 				// 두가지 실행해야함
 				// member_like : insert
 				// movie_like_count : update
 				// 성공했을때 찜하기 완료 표시
-				
+		
+				$(this).find('img').attr({
+				'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+				alt : '찜하기 완료'}),
+				$(this).find('span').html(result)
 			}
 		}) 
-		$(this).find('img').attr({
-				'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-				alt : '찜하기 완료'})
+		
 								
 	} else {
 		// 좋아요 버튼을 클릭했을때 active가 아니면~ 부분
 		
 		//fas 
-		$(this).find('i').removeClass('fas').addClass('far')
 		
 		$(this).find('img').attr({
 			'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',

@@ -80,23 +80,28 @@ public class MovieController {
 	
 	@GetMapping(value = "likeInsert")
 	@ResponseBody
-	public String likeCount(@RequestParam HashMap<String, String> like, HttpSession session) { 
+	public String likeCount(@RequestParam("info_movie_code") String info_movie_code, HttpSession session) {
+		// id와 movie_code를 xml에 넣기 위해서 map 객체에 넣어준 것
 		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> like = new HashMap<String, String>();
 		like.put("member_id", id);
+		like.put("info_movie_code", info_movie_code);
 		
-		String result = "컨트롤러";
+		
+		//유효성 검사
 		if(id == null) {
-			result = "로그인 후 좋아요 할 수 있습니다.";
+			
 		}
 		// id 있는지 검사하는 작업 필요함
 		int insertCount = mypageService.likeInsert(like);
 		
 		if(insertCount > 0) {
 			service.likeUpdate(like);
-			result = "좋아요 성공!";
 		}else {
-			result = "다시 시도해주세요";
+			
 		}
+		info_movie_code = like.get("info_movie_code"); 
+		String result = service.selectMovie(info_movie_code).get("like_count");
 		return result; 
 	}
 	
