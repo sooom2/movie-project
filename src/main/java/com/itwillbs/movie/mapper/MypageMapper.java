@@ -27,6 +27,8 @@ public interface MypageMapper {
 
 	int insertPoint(String id);
 
+	List<HashMap<String, String>> pointList(String id);
+
 
 
 

@@ -48,6 +48,7 @@
 				<div class="summary summary-3">
 					<h3>추천영화</h3>
 					<c:forEach var="movieList" items="${movieList}">
+						&nbsp;&nbsp; <?xml version="1.0" ?><svg class="feather feather-video" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polygon points="23 7 16 12 23 17 23 7"/><rect height="14" rx="2" ry="2" width="15" x="1" y="5"/></svg>
 						${movieList.get("info_movie_title")}<br>
 					</c:forEach>
 				</div>
@@ -97,19 +98,23 @@
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
 							<tr>
+								<th>작성일자</th>
 								<th>문의지점</th>
 								<th>문의유형</th>
 								<th>제목</th>
-								<th>작성일자</th>
+								<th>답변현황</th>
+								
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach var="qnaList" items="${qnaList}">
 							<tr>
+								<td>${qnaList.get("one_write_date")}</td>
 								<td>${qnaList.get("cinema_name")}</td>
 								<td>${qnaList.get("one_question_type")}</td>
 								<td><a href="">${qnaList.get("one_subject")}</a></td>
-								<td>${qnaList.get("one_write_date")}</td>
+								<td>${qnaList.get("one_rep_board")}</td>
+								
 							</tr>
 						</c:forEach>
 						</tbody>

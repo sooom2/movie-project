@@ -48,6 +48,8 @@ public class MypageController {
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
 		
+		List<HashMap<String, String>> pointList = service.pointList(id);
+		model.addAttribute("pointList", pointList);
 		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);

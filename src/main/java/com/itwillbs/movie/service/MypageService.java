@@ -56,6 +56,10 @@ public class MypageService {
 		return mapper.insertPoint(id);
 	}
 
+	public List<HashMap<String, String>> pointList(String id) {
+		return mapper.pointList(id);
+	}
+
 
 
 
