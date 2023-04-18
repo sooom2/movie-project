@@ -243,6 +243,22 @@ public class MemberController {
 		return "member/mem_join_form";
 	}
 	
+	// 아이디 사용 조회
+	@GetMapping(value = "MemberCheckId")
+	@ResponseBody
+	public boolean memberCheckId(@RequestParam String id) {
+		boolean result = false;
+		
+		HashMap<String, String> member = service.checkId(id);
+		if(member == null) {
+			result = false;
+		} else {
+			result = true;
+		}
+		
+		return result;
+	}
+	
 	
 	// 회원가입 저장
 //	@PostMapping(value = "joinPro")
@@ -279,7 +295,10 @@ public class MemberController {
 	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String securePasswd = passwordEncoder.encode(member.get("member_pw"));
+		String member_address = member.get("member_address1") + " " + member.get("member_address2");
 		member.put("member_pw", securePasswd);
+		member.put("member_address", member_address);
+		
 		int insertCount = service.registMember(member);
 		if(insertCount > 0) { // 가입 성공
 			service.insertPoint(member.get("member_id"));

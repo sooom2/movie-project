@@ -73,6 +73,9 @@ public interface MyBatisMapper {
 	int renewPw(HashMap<String, String> member);
 
 	int insertPoint(String id);
+	
+	// 회원가입 아이디 조회
+	HashMap<String, String> checkId(String id);
 
 
 	

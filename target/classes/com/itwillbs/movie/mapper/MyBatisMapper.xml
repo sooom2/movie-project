@@ -27,6 +27,7 @@
 				   #{member_id}
 				   , #{member_name}
 				   , #{member_pw}
+				   , #{member_address}
 				   , #{member_bday}
 				   , #{member_email}
 <!-- 					CONCAT(#{email1}, '@', #{email2}),  -->
@@ -37,6 +38,13 @@
 				   , now()
 			)
 	</insert>
+	
+	<select id="checkId" resultType="hashmap">
+		SELECT * FROM member
+			WHERE member_id = #{id}
+	</select>
+	
+	
 	<insert id= "insertPoint" >
 		INSERT 
   			INTO point

@@ -87,6 +87,10 @@ public class MemberService {
 		
 	}
 
+	public HashMap<String, String> checkId(String id) {
+		return mapper.checkId(id);
+	}
+
 
 	
 }

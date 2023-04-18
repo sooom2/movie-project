@@ -18,12 +18,57 @@ window.onload = function(){
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("join-post").value = data.address; // 주소 넣기
-                document.querySelector("#join-add").focus(); //상세입력 포커싱
+                document.getElementById("member_address1").value = data.address; // 주소 넣기
+                document.querySelector("#member_address2").focus(); //상세입력 포커싱
             }
         }).open();
     });
 }
+
+$(function() {
+	let idStatus = false;
+	
+	$("#member_id").on("blur", function() {
+		let id = $("#member_id").val();
+		
+		// 입력된 아이디가 널스트링이면 "checkIdResult" 영역에
+		// "아이디는 필수 입력 항목입니다"(빨간색) 출력 후 함수 처리 종료(return)
+		if(id == "") {
+			idStatus = false;
+			$("#checkIdResult").html("아이디는 필수 입력 항목입니다").css("color", "red");
+			return; 
+		} else {
+			// 영문자, 숫자, 특수문자 조합 4 ~ 8글자
+			let regex = /^[A-Za-z0-9!@#$%]{4,8}$/;
+			
+			if(!regex.exec(id)) { 
+				$("#checkIdResult").html("영문자, 숫자, 특수문자 조합 4 ~ 8글자").css("color", "red");
+				idStatus = false;
+			} else { 
+				$.ajax({
+					url: "MemberCheckId", 
+					data: {
+						id: $("#member_id").val()
+					},
+					success: function(result) { 
+						if(result) {
+							$("#checkIdResult").html("이미 사용중인 아이디").css("color", "red");
+							idStatus = false;
+						} else {
+							$("#checkIdResult").html("사용 가능한 아이디").css("color", "blue");
+							idStatus = true;
+						}
+					}
+				}); // ajax 끝
+			}
+		}
+	});
+	
+	
+	
+});
+
+
 </script>
 </head>
 <body>
@@ -45,59 +90,59 @@ window.onload = function(){
 
 							<div class="join-detail">
 								<label class="label-input" for="id"> <span>아이디</span>
-								<input type="text" id="join-id" name="member_id" class="input" placeholder="아이디 입력해주세요">
-							    <span></span>
+								<input type="text" id="member_id" name="member_id" class="input" placeholder="아이디 입력해주세요">
 								</label>
+							    <span id="checkIdResult"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>비밀번호</span>
-									<input type="password" id="join-pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
+									<input type="password" id="member_pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass2"> 
 								<span>비밀번호 확인</span> 
-								<input type="password" id="join-pw2" name="password2" class="input" placeholder="위에 입력한 비밀번호를 다시 입력해주세요">
+								<input type="password" id="password2" name="password2" class="input" placeholder="위에 입력한 비밀번호를 다시 입력해주세요">
 								<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="username"> <span>이름</span>
-									<input type="text" id="join-name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
+									<input type="text" id="member_name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
 									 <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
 			                        <span>주소</span>
-			                        <input type="text" style="width:200px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
+			                        <input type="text" style="width:200px;display:inline-block;" id="member_address1" name="member_address1" class="input" placeholder="주소입력">
 			                        <span></span>
 			                    </label>
 			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
 							<div class="join-detail" style="margin-top:-10px">
 								<label class="label-input" for="address"> <span>상세주소</span>
-									<input type="text" id="join-add" name="member_address2" class="input" value="" placeholder="상세주소입력">
+									<input type="text" id="member_address2" name="member_address2" class="input" value="" placeholder="상세주소입력">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="join-id2" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력">
+									<input type="text" id="member_email" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력" readonly="readonly">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
-									<input type="text" id="join-bday" name="member_bday"
+									<input type="text" id="member_bday" name="member_bday"
 									class="input input-numeric" placeholder="예) 20170101">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="phone"> <span>휴대폰번호</span>
-									<input type="text" id="join-phone" name="member_tel"
+									<input type="text" id="member_tel" name="member_tel"
 									class="input input-numeric" placeholder="휴대폰번호 입력"> <span></span>
 								</label>
 							</div>

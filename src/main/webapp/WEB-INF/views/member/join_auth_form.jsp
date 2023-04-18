@@ -46,6 +46,9 @@ function kakaoLogin() {
   
   
 $(function() {
+	// 인증번호 확인.
+	let mailStatus = false;
+	
 	// 이메일 인증
 	$('#mail-Check-Btn').click(function() {
 		const email = $('#join-id').val() // 이메일 주소값 얻어오기
@@ -63,7 +66,6 @@ $(function() {
 		})
 	});
 	
-	
 	//인증번호 비교 
 	$('.mail-check-input').blur(function () {
 		const inputCode = $(this).val();
@@ -76,18 +78,27 @@ $(function() {
 			$('#join-id').attr('readonly',true);
 			$('#join-id').attr('onFocus', 'this.initialSelect = this.selectedIndex');
 	        $('#join-id').attr('onChange', 'this.selectedIndex = this.initialSelect');
+	        mailStatus = true;
 		}else{
 			resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!');
 			resultMsg.css('color','red');
 		}
 	});
 	
+	$("#btn-join").on("click", function() {
+		if(!mailStatus) {
+			alert("휴대폰 인증을 확인해주시기 바랍니다.");
+			return false;
+		} else {
+			location.href="joinform?email=" + $('#join-id').val();
+			return true;
+		}
+		
+	});
+	
 	
 });
 
-function joinForm(){
-	location.href="joinform?email=" + $('#join-id').val();
-};
 
 </script>
 </head>
@@ -133,22 +144,19 @@ function joinForm(){
 								<div>
 									<label class="form-control mail-check-input">
 									<button type="button" class="btn-rsv" id="mail-Check-Btn" style="margin-right: 24px;">본인인증</button>
-									<input class="" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
+									<input class="mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
 									<span id="mail-check-warn"></span>
 									</label>
 								</div>
 							</div>
-							
-							
-							
 						</div>
 						<br>
-						<a href="#" onclick="joinForm()" id="btn-join" class="btn-join">가입하기</a> <input
-							type="hidden" id="userFrom" name="userFrom" value="4"> <input
-							type="hidden" id="socialId" name="socialId" value=""> <input
-							type="hidden" id="name" name="name" value=""> <input
-							type="hidden" id="token" name="token" value=""> <input
-							type="hidden" id="isPayment" name="isPayment" value="0">
+						<a href="#" id="btn-join" class="btn-join">가입하기</a> 
+						<input type="hidden" id="userFrom" name="userFrom" value="4">
+						<input type="hidden" id="socialId" name="socialId" value="">
+						<input type="hidden" id="name" name="name" value="">
+						<input type="hidden" id="token" name="token" value=""> 
+						<input type="hidden" id="isPayment" name="isPayment" value="0">
 					</form>
 				</div>
 			</div>
