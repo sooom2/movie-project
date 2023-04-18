@@ -11,6 +11,20 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("postSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("join-post").value = data.address; // 주소 넣기
+                document.querySelector("#join-add").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -56,16 +70,15 @@
 							</div>
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:320px;display:inline-block;">
-			                        <span>우편번호</span>
-			                        <input type="text" style="width:140px;display:inline-block;" id="join-post" name="postSearch" class="input" placeholder="우편번호입력">
+			                        <span>주소</span>
+			                        <input type="text" style="width:140px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
 			                        <span></span>
 			                    </label>
-			                    <a href="#" class="btnsub btnsms" id="postSearch">우변번호 검색</a>
+			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
 							<div class="join-detail">
-								<label class="label-input" for="address"> <span>주소</span>
-									<input type="text" id="join-add" name="member_address" class="input" value="" placeholder="주소입력">
-									
+								<label class="label-input" for="address"> <span>상세주소</span>
+									<input type="text" id="join-add" name="member_address2" class="input" value="" placeholder="상세주소입력">
 									<span></span>
 								</label>
 							</div>
