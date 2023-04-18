@@ -186,18 +186,27 @@
 					        	    }
 					        	   
 					        	    for (var i = 0; i < data.length; i++) {
+					        	    	var screenNames = [];
 					        	        html += '';
 					        	        html += '<div class="movie-title">';
 					        	        html += '<span class="' + data[i].rate + '">15</span>' + data[i].info_movie_title;
 					        	        html += '</div>';
+					        	        
+					        	        
+					        	        // 스크린명마다 타임블록 for 문돌리기
+					        	        // ===================== 스크린명
+					        	        	
 					        	        html += '<div class="screen">';
 					        	        html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
 					        	        html += '<br>' + data[i].screen_name;
 					        	        html += '</div>';
+					        	        // ===================== 스크린명
+
+					        	        // ====================== 타임블록
 					        	        html += '<div class="time-block">';
 					        	        html += '<div class="time" data-playdate="' + data[i].sch_movie_date + '" data-theatercode="' + data[i].sch_screen_code + '" data-moviecode="' + data[i].info_movie_code + '">';
-					        	        html += '<a href="reservation">' + data[i].sch_start_time + '<span class="to"> ~ ' + data[i].sch_last_time + '</span> <span class="seats-status">45 / ' + data[i].seat_count + '</span></a></div>';
-					        	        
+					        	        html += '<a href="reservation">' + data[i].sch_start_time + '<span class="to"> ~ ' + data[i].sch_last_time + '</span> <span class="seats-status">45 / ' + data[i].seat_sum + '</span></a></div>';
+					        	        // ====================== 타임블록
 					        	        
 					        	        html += '</div>';
 					        	        html += '</div>';

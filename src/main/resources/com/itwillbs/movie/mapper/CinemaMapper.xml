@@ -39,42 +39,84 @@
 	
 	<!--  날짜 선택하면 그날에 맞는 상영일정 보일수 있게  -->
 	<select id="schList" resultType="hashmap">
-		SELECT 
-			    schedule.sch_movie_date
-			  , DATE_FORMAT(schedule.sch_start_time, '%H:%i') AS sch_start_time
-  			  , DATE_FORMAT(schedule.sch_last_time, '%H:%i') AS sch_last_time
-			  , cinema.cinema_name
-			  , cinema.cinema_code
-			  , CASE movieInfo.info_rating													
-		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
-		WHEN '15세관람가' 					THEN 'rate-15'
-		WHEN '12세관람가' 					THEN 'rate-12'
-		WHEN '전체관람가' 					THEN 'rate-all' 
-		ELSE ''
-		END AS 'rate'
-			  , movieInfo.info_movie_code
-			  , movieInfo.info_movie_title
-			  , screen.screen_name
-			  , schedule.sch_screen_code
-		 FROM schedule 
-	LEFT JOIN cinema 
-		   ON cinema.cinema_code = schedule.sch_cinema_code
-	LEFT JOIN movieInfo
-		   ON movieInfo.info_movie_code = schedule.sch_movie_code
-	LEFT JOIN screen
-	       on screen.screen_code = schedule.sch_screen_code
-	       where 1=1
-	       and sch_cinema_code = #{cinema_code}
-	       and sch_movie_date=#{date}
-	  ORDER BY schedule.sch_screen_code;
+<!-- 		SELECT  -->
+<!-- 			    schedule.sch_movie_date -->
+<!-- 			  , DATE_FORMAT(schedule.sch_start_time, '%H:%i') AS sch_start_time -->
+<!--   			  , DATE_FORMAT(schedule.sch_last_time, '%H:%i') AS sch_last_time -->
+<!-- 			  , cinema.cinema_name -->
+<!-- 			  , cinema.cinema_code -->
+<!-- 			  , CASE movieInfo.info_rating													 -->
+<!-- 		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x' -->
+<!-- 		WHEN '15세관람가' 					THEN 'rate-15' -->
+<!-- 		WHEN '12세관람가' 					THEN 'rate-12' -->
+<!-- 		WHEN '전체관람가' 					THEN 'rate-all'  -->
+<!-- 		ELSE '' -->
+<!-- 		END AS 'rate' -->
+<!-- 			  , movieInfo.info_movie_code -->
+<!-- 			  , movieInfo.info_movie_title -->
+<!-- 			  , screen.seat_sum -->
+<!-- 			  , screen.screen_name -->
+<!-- 			  , schedule.sch_screen_code -->
+<!-- 		 FROM schedule  -->
+<!-- 	LEFT JOIN cinema  -->
+<!-- 		   ON cinema.cinema_code = schedule.sch_cinema_code -->
+<!-- 	LEFT JOIN movieInfo -->
+<!-- 		   ON movieInfo.info_movie_code = schedule.sch_movie_code -->
+<!-- 	LEFT JOIN screen -->
+<!-- 	       on screen.screen_code = schedule.sch_screen_code -->
+<!-- 	       where 1=1 -->
+<!-- 	       and sch_cinema_code = #{cinema_code} -->
+<!-- 	       and sch_movie_date=#{date} -->
+<!-- 	  ORDER BY schedule.sch_screen_code; -->
+
+
+		SELECT A.*
+    
+	 , group_concat(concat(sch_start_time, ' ~ ', sch_last_time) SEPARATOR '/') AS times 
+	  , group_concat(concat(screen_name) SEPARATOR '/') AS names
 	
+  FROM (
+		SELECT 
+					    schedule.sch_movie_date
+					  , DATE_FORMAT(schedule.sch_start_time, '%H:%i') AS sch_start_time
+		  			  , DATE_FORMAT(schedule.sch_last_time, '%H:%i') AS sch_last_time
+					  , cinema.cinema_name -- 극장이름
+					  , cinema.cinema_code -- 극장번호
+					  , CASE movieInfo.info_rating	 -- 등급												
+				WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+				WHEN '15세관람가' 					THEN 'rate-15'
+				WHEN '12세관람가' 					THEN 'rate-12'
+				WHEN '전체관람가' 					THEN 'rate-all' 
+				ELSE ''
+				END AS 'rate'
+					  , movieInfo.info_movie_code  -- 영화 코드
+					  , movieInfo.info_movie_title -- 영화이름
+					  , screen.seat_sum   -- 좌석 총수
+					  , screen.screen_name -- 상영관명
+					  , schedule.sch_screen_code -- 상영관코드
+					  
+				 FROM schedule 
+			LEFT JOIN cinema 
+				   ON cinema.cinema_code = schedule.sch_cinema_code
+			LEFT JOIN movieInfo
+				   ON movieInfo.info_movie_code = schedule.sch_movie_code
+			LEFT JOIN screen
+			       on screen.screen_code = schedule.sch_screen_code
+			       where 1=1
+			       and sch_cinema_code = #{cinema_code}
+			       and sch_movie_date=#{date}
+			       ORDER BY info_movie_title
+		) A 
+ 			GROUP BY info_movie_title, sch_screen_code;
 	</select>
 	
 	<!-- 선호영화관 찾기 -->
 	<select id="preferCinema" resultType="hashmap">
-	SELECT *
-	  FROM member
-	 WHERE member_id =#{id};
+	 SELECT member_prefer_branch,cinema_code
+	   FROM MEMBER 
+       JOIN cinema
+         ON MEMBER.member_prefer_branch = cinema.cinema_name 
+      WHERE member_id=#{id};
 	</select>
 
 </mapper>

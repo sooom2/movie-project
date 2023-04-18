@@ -1,0 +1,98 @@
+@charset "EUC-KR";
+
+/*============================================================
+/*
+/* [m]: event list
+/*
+============================================================== */
+.section-event-list {
+	width: 100%;
+	margin: 0 auto 0 auto;
+	background-color: #f9f9f9;
+	padding: 153px 0 120px;
+}
+
+.section-event-list ul {
+	display: block;
+	width: 940px;
+	margin: 0 auto;
+}
+
+.section-event-list ul li {
+	display: inline-block;
+	margin: 12px 8px 95px 9px;
+	width: 220px;
+	height: 319px;
+	position: relative;
+}
+
+.section-event-list ul li:nth-child(4n-3) {
+	margin-left: -9px;
+}
+
+.section-event-list ul li:nth-child(4n) {
+	margin-right: -8px;
+}
+
+.section-event-list ul li .desc-box {
+	display: block;
+	border: 1px solid #d8d8d8;
+	position: relative;
+	width: 220px;
+	height: 95px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.section-event-list ul li .desc-box .desc {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	color: #494949;
+	padding: 10px 10px 8px;
+	line-height: 1.2em;
+	height: 40px;
+}
+
+.section-event-list ul li .desc-box .desc.finished {
+	color: #ccc;
+}
+
+.section-event-list ul li .desc-box .desc.finished:after {
+	content: "Á¾·á";
+	display: block;
+	position: absolute;
+	width: 26px;
+	height: 14px;
+	overflow: hidden;
+	text-indent: -10000em;
+	background: url("/images/event/icon-finished.png") center center
+		no-repeat;
+	bottom: 15px;
+	right: 9px;
+}
+
+.section-event-list ul li .desc-box .date {
+	display: block;
+	font-size: 16px;
+	color: #7d7d7d;
+	padding: 5px 10px;
+}
+
+.section-event-list .btn-more {
+	display: block;
+	width: 720px;
+	height: 41px;
+	margin: 35px auto 0 auto;
+	background-color: #fff;
+	border: 1px solid #d8d8d8;
+	color: #7d7d7d;
+	font-size: 16px;
+	line-height: 41px;
+	text-align: center;
+}
+
+.section-event-list .btn-more:hover {
+	color: #000;
+	border: 1px solid #000;
+}

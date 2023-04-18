@@ -6,10 +6,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${path }/resources/css/event.css" rel="stylesheet">
 <link href="${path }/resources/css/common.css" rel="stylesheet">
 <link href="${path }/resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/js/main.js"></script>
+<script type="text/javascript">
+    var eventId = 0;
+
+    $(window).ready(function() {
+        load_event_list();
+        $(".section-event-list .btn-more").click(function () {
+            load_event_list();
+            return false;
+        });
+    });
+
+    function load_event_list() {
+	    $.ajax({
+	        url: "eventMoreList",
+	        dataType: "json",
+	        data: { eventId: eventId, eventSort: -1},
+	        method: "POST",
+		    success: function (data) {
+		        var events = data;
+		        if (events.length == 0) {
+		            $(".section-event-list .btn-more").hide();
+			    } else {
+		            $("#template-event-list").tmpl(events).appendTo(".section-event-list ul");
+			        eventId = events[events.length - 1].EventId;
+			    }
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) {
+            }
+	    });
+    }
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
