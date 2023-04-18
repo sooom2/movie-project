@@ -51,6 +51,7 @@
   			,one_question_type
   			,one_subject
   			,one_write_date
+  			,one_rep_board
   		FROM one_board 
   		WHERE member_id = #{id}
   		ORDER BY one_write_date DESC
@@ -104,5 +105,30 @@
 			,now()
   			);
   	</insert>
+  	
+  	<select id = "pointList" resultType = "hashmap" >
+  		SELECT 
+ 			 point_date
+ 			,point_content
+ 			,point_amount
+ 			,ROUND(sum(point_amount) OVER (ORDER BY point_code),0) AS point_sum
+  		FROM point
+  		WHERE point_id = #{id}
+  		ORDER BY point_code DESC
+  	</select>
+  	
+  	<select id = "payList" resultType = "hashmap" >
+	  	 SELECT 
+	  	 	p.pay_date
+	  	 	,i.item_type
+	  	 	,i.item_name
+	  	 	,p.pay_price
+	  	 FROM pay p JOIN item i
+	  	 ON p.item_code = i.item_code
+	  	WHERE p.member_id = #{id}
+  	</select>
+  	
+  	
+  	
   	
 </mapper>

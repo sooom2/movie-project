@@ -48,7 +48,8 @@
 				<div class="summary summary-3">
 					<h3>추천영화</h3>
 					<c:forEach var="movieList" items="${movieList}">
-						${movieList.get("info_movie_title")}<br>
+					&nbsp;&nbsp; <?xml version="1.0" ?><svg class="feather feather-video" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polygon points="23 7 16 12 23 17 23 7"/><rect height="14" rx="2" ry="2" width="15" x="1" y="5"/></svg>
+					${movieList.get("info_movie_title")}<br>
 					</c:forEach>
 				</div>
 			</div>
@@ -94,24 +95,23 @@
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;"id="">나의스토어</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
-						<tbody>
+						<thead>
 							<tr>
 								<th>구매일자</th>
-								<th>구매한상품</th>
-								<th>상품구성</th>
-								<th>수량</th>
+								<th>상품종류</th>
+								<th>상품이름</th>
 								<th>금액</th>
-								<th>구매취소</th>
 							</tr>
+							</thead>
+							<tbody>	
+							<c:forEach var="payList" items="${payList}">
 							<tr>
-								<td>20230101</td>
-								<td>더블콤보</td>
-								<td>팝콘 (R) 2 + 탄산음료 (R) 2</td>
-								<td>1개</td>
-								<td>13,000원</td>
-								<td>취소버튼</td>
+								<td>${payList.get("pay_date") }</td>
+								<td>${payList.get("item_type") }</td>
+								<td>${payList.get("item_name") }</td>
+								<td>${payList.get("pay_price") }</td>
 							</tr>
-							
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
