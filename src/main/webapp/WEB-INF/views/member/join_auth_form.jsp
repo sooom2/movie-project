@@ -121,18 +121,26 @@ function joinForm(){
 								</span>
 							</div>
 							<br>
-							<div class="join-email-desc">
+							<div class="join-email-desc" style="margin-top: 60px;">
 								<span>이메일 주소로 가입</span>
 							</div>
-							<div class="join-email">
-								<label class="label-email" for="email"> 아이디(이메일) <input
-									type="email" id="join-id" name="memberId"
-									placeholder="이메일 주소를 입력해주세요.">
-									<button type="button" class="btn-rsv" id="mail-Check-Btn">본인인증</button>
-									<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
+							<div class="join-email" >
+								<div>
+									<label class="label-email" for="email" style="margin-bottom: 10px;"> 아이디(이메일)
+									<input	type="email" id="join-id" name="memberId" placeholder="이메일 주소를 입력해주세요.">
+									</label>
+								</div>
+								<div>
+									<label class="form-control mail-check-input">
+									<button type="button" class="btn-rsv" id="mail-Check-Btn" style="margin-right: 24px;">본인인증</button>
+									<input class="" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
 									<span id="mail-check-warn"></span>
-								</label>
+									</label>
+								</div>
 							</div>
+							
+							
+							
 						</div>
 						<br>
 						<a href="#" onclick="joinForm()" id="btn-join" class="btn-join">가입하기</a> <input
@@ -148,8 +156,6 @@ function joinForm(){
    			<input type="hidden" name="email"/>
    			<input type="hidden" name="accessToken"/>
    		</form>
-
-
 		</div>
 	</div>
 <jsp:include page="../footer.jsp" />
