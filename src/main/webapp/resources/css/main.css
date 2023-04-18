@@ -1131,6 +1131,7 @@ header {
 	margin: 40px 0 20px 0;
 	border: 1px solid #ececec;
 	border-width: 1px 0;
+	padding-top: 20px;
 }
 
 .section-member .wrap-member-box .wrap-inside p {
@@ -1276,7 +1277,7 @@ header {
 
 .join-detail {
 	display: inline-block;
-	margin: 20px 0;
+	margin: 18px 0 8px 0;
 	/* height: 40px; */
 	vertical-align: top;
 }
@@ -1871,8 +1872,6 @@ header {
 }
 
 /* Layout helpers
-
-
 /* 메인팝업 */
 .pop-main {
 	display: block;
@@ -4245,4 +4244,6 @@ header {
     line-height: 22px;
 }
 
-
+.joinCheck{
+	margin-left: 130px;
+}

@@ -178,58 +178,58 @@ $(function() {
 								<label class="label-input" for="id"> <span>아이디</span>
 								<input type="text" id="member_id" name="member_id" class="input" placeholder="아이디 입력해주세요">
 								</label>
-							    <span id="checkIdResult"></span>
+							    <span id="checkIdResult" class="joinCheck"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>비밀번호</span>
 									<input type="password" id="member_pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
 								</label>
-									<span id="checkPasswdResult"></span>
+									<span id="checkPasswdResult" class="joinCheck"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass2"> 
 								<span>비밀번호 확인</span> 
 								<input type="password" id="member_pw2" name="member_pw2" class="input" placeholder="위에 입력한 비밀번호를 다시 입력해주세요">
 								</label>
-								<span id="checkPasswd2Result"></span>
+								<span id="checkPasswd2Result" class="joinCheck"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="username"> <span>이름</span>
 									<input type="text" id="member_name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
 								</label>
-									 <span id="checkNameResult"></span>
+									 <span id="checkNameResult" class="joinCheck"></span>
 							</div>
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
 			                        <span>주소</span>
 			                        <input type="text" style="width:200px;display:inline-block;" id="member_address1" name="member_address1" class="input" placeholder="주소입력">
-			                        <span></span>
+			                        <span class="joinCheck"></span>
 			                    </label>
 			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
-							<div class="join-detail" style="margin-top:-10px">
+							<div class="join-detail" style="margin-top:4px">
 								<label class="label-input" for="address"> <span>상세주소</span>
 									<input type="text" id="member_address2" name="member_address2" class="input" value="" placeholder="상세주소입력">
-									<span></span>
+									<span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
 									<input type="text" id="member_email" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력" readonly="readonly">
-									<span></span>
+									<span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
 									<input type="text" id="member_bday" name="member_bday"
 									class="input input-numeric" placeholder="예) 20170101">
-									<span></span>
+									<span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="phone"> <span>휴대폰번호</span>
 									<input type="text" id="member_tel" name="member_tel"
-									class="input input-numeric" placeholder="휴대폰번호 입력"> <span></span>
+									class="input input-numeric" placeholder="휴대폰번호 입력"> <span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
@@ -253,7 +253,7 @@ $(function() {
 											<option value="울산신천점">울산신천점</option>
 											<option value="울산동구점">울산동구점</option>
 										</select>
-									</div> <span></span>
+									</div> <span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">

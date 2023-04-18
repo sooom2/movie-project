@@ -117,17 +117,20 @@
 													<div id="priceList">
 														<div class="t1">성인</div>
 														<div class="list">
-															<label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001260" value="0"
-																data-no="0" checked=""> <span>0</span></label><label
-																class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001260" value="1"
-																data-no="0"> <span>1</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001260" value="2" data-no="0"> <span>2</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001260" value="3"
-																data-no="0"> <span>3</span></label><label class="">
+															<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span></label>
+															
+															<label class=""> 
+															<input type="radio"class="c-radio rdoTicket" name="T001260" value="1" data-no="0"> <span>1</span>
+															</label>
+															
+															<label class="">
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="2" data-no="0"> <span>2</span>
+															
+															</label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="3" data-no="0"> <span>3</span></label>
+																
+																<label class="">
 																<input type="radio" class="c-radio rdoTicket"
 																name="T001260" value="4" data-no="0"> <span>4</span>
 															</label><label class=""> <input type="radio"
@@ -339,7 +342,7 @@ function reservationList() {
 	 					
 	 					// el == element , attr('data-line') : 속성 선택, attr('data-line', '2') : 속성 값을 2로 변경
 	 					if($(el).attr('data-line') == resSeatLine && $(el).attr('data-num') == resSeatNum){
-	 						
+	 						$(el).attr("class", "seat soldout");
 	 						$(el).css({"background-color" : "#3D3F51", "disabled" : ""});
 	 					}
 	 				});
@@ -391,7 +394,10 @@ function reservationList() {
 				str += y;
 				str += "px; left:";
 				str += j * left;
-				str += "px; background-color: #C8C8C8'>";
+				str += "px; background-color: #C8C8C8'"
+				str += " data-nm='";
+				str += alp + j;
+				str += "'>";
 				str += alp + j;
 				str += "</button>";
 				
@@ -406,7 +412,36 @@ function reservationList() {
 		// 판매완료 좌석
 		reservationList();
 		
-		 
+		
+		
+		// 좌석 선택 시 선택 좌석에 표시
+		$(".seat").on("click", function(e) {
+			var str = "";
+			str += "<li>";
+			str += "<button type='button' data-id='";
+			str += $(this).data("id");
+			str += "' data-line='";
+			str += $(this).data("line");
+			str += "' data-num='";
+			str += $(this).data("num");
+			str += "' class='seat available'";
+			str += " background-color: #C8C8C8'";
+			str += " data-nm='";
+			str += $(this).data("nm");
+			str += "'>";
+			str += $(this).data("nm");
+			str += "</button>";
+			str += "</li>";
+			
+			
+			$("#choiceList").append(str);
+			
+		});
+		
+		
+		
+		
+		
 		
 		
 		
