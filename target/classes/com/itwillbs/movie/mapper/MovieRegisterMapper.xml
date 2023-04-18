@@ -75,6 +75,13 @@ SELECT *
   	 FROM review
 	 WHERE rev_movie_code = #{info_movie_code}
 </select>
+<!-- 영화 좋아요 카운트 업데이트 -->
+<update id="likeUpdate">
+	UPDATE movieinfo
+		SET like_count = like_count + 1
+	 WHERE info_movie_code = #{info_movie_code}
+</update>
+
 <select id="selectSchMovie" resultType="hashmap">
 	 SELECT sch_code,sch_movie_code,info_movie_title,info_time
 	   FROM schedule 

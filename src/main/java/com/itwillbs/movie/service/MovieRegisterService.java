@@ -25,6 +25,9 @@ public class MovieRegisterService {
 	public List<HashMap<String, String>> selectAscendingMovies() {
 		return mapper.selectAscendingMovies();
 	}
+	public int likeUpdate(HashMap<String, String> like) {
+		return mapper.likeUpdate(like);
+	}
 	
 	
 	//영화 상세정보

@@ -49,7 +49,7 @@
 		</div>
 	</div>
 <script type="text/javascript">
-    $(document).ready(function () {
+  $(document).ready(function () {
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
             $(this).parent().addClass("on");
             if ($(this).hasClass("info")) {
@@ -61,10 +61,11 @@
                 $(this).parent().addClass("down");
             }
         });
+        
         $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
             $(this).closest("ul").find("span.over").removeClass("on");
         });
-
+ });
 //         $("ul>li a.rsv", "div.comming").click(function (e) {
 //             e.preventDefault();
 //             var movieCode = $(this).closest("li").data("moviecode");
@@ -73,30 +74,44 @@
 //                 movieCode: movieCode
 //             });
 //             return false;
-//         });
+  
 		//heart 좋아요 클릭시! 하트 뿅
-		$(function() {
-			var $likeBtn = $('.icon.heart');
-	
-			$likeBtn.click(function() {
-				$likeBtn.toggleClass('active');
-	
-				if ($likeBtn.hasClass('active')) {
-					$(this).find('img').attr({
-						'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-						alt : '찜하기 완료'
-					});
-	
-				} else {
-					$(this).find('i').removeClass('fas').addClass('far')
-					$(this).find('img').attr({
-						'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-						alt : "찜하기"
-					})
-				}
-			})
-	    });
-	});
+			
+var $likeBtn = $('.icon.heart');
+
+$likeBtn.click(function() {
+
+	var info_movie_code = $(this).closest("li").data("moviecode")+"";
+	$likeBtn.toggleClass('active');
+		
+	if ($likeBtn.hasClass('active')) {
+		// 예상 설계
+		// 좋아요 버튼 클릭 -> active일때
+		// ajax를 통해 controller 갔다온 다음에
+		// 실행되고 나서 바로 반영안됨
+		$.ajax({
+			url : 'likeInsert',
+			type : 'GET',
+			dataType : 'String',
+			data : {
+				info_movie_code : info_movie_code
+			},
+			success : function(data){
+				
+			}
+		}) 
+		$(this).find('img').attr({
+				'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+				alt : '찜하기 완료'})
+								
+	} else {
+		$(this).find('i').removeClass('fas').addClass('far')
+		$(this).find('img').attr({
+			'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+			alt : "찜하기"
+		})
+	}
+});
 </script>
 	<jsp:include page="../footer.jsp"/>
 </body>

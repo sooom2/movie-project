@@ -76,7 +76,6 @@
 //             });
 //             return false;
 //         });
-    });
 	$(function() {
 		var $likeBtn = $('.icon.heart');
 

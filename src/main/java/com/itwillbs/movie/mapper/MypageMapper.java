@@ -24,11 +24,8 @@ public interface MypageMapper {
 	HashMap<String, String> selectMemberId(String id);
 
 	List<HashMap<String, String>> movieList(String id);
-
-
-
 	
-
-
+	//좋아요 기능
+	int likeInsert(HashMap<String, String> like);
 
 }

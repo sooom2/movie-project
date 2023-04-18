@@ -3,21 +3,27 @@ package com.itwillbs.movie.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.MypageService;
 
 @Controller
 public class MovieController {
 	
 	@Autowired
 	private MovieRegisterService service;
-	
+	@Autowired
+	private MypageService mypageService;
 	
 	// 영화목록페이지
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
@@ -69,4 +75,29 @@ public class MovieController {
 		model.addAttribute("movieInfoReview", movieInfoReview);
 		return "movieBoard/movieInfo2";
 	}
+	
+	//좋아요 버튼 기능
+	
+	@GetMapping(value = "likeInsert")
+	@ResponseBody
+	public String likeCount(@RequestParam HashMap<String, String> like, HttpSession session) { 
+		String id = (String)session.getAttribute("sId");
+		like.put("member_id", id);
+		
+		String result = "컨트롤러";
+		if(id == null) {
+			result = "로그인 후 좋아요 할 수 있습니다.";
+		}
+		
+		int insertCount = mypageService.likeInsert(like);
+		
+		if(insertCount > 0) {
+			service.likeUpdate(like);
+			result = "좋아요 성공!";
+		}else {
+			result = "다시 시도해주세요";
+		}
+		return result; 
+	}
+	
 }
