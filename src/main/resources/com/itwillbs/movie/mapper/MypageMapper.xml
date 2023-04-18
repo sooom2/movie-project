@@ -114,7 +114,7 @@
  			,ROUND(sum(point_amount) OVER (ORDER BY point_code),0) AS point_sum
   		FROM point
   		WHERE point_id = #{id}
-  		ORDER BY point_code DESC;
+  		ORDER BY point_code DESC
   	</select>
   	
   	<select id = "payList" resultType = "hashmap" >
@@ -125,7 +125,7 @@
 	  	 	,p.pay_price
 	  	 FROM pay p JOIN item i
 	  	 ON p.item_code = i.item_code
-	  	WHERE p.member_id = #{id};
+	  	WHERE p.member_id = #{id}
   	</select>
   	
   	
