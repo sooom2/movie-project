@@ -78,17 +78,17 @@
 		//heart 좋아요 클릭시! 하트 뿅
 			
 var $likeBtn = $('.icon.heart');
-
 $likeBtn.click(function() {
 
 	var info_movie_code = $(this).closest("li").data("moviecode")+"";
+	
+	//hasclass랑 중첩
+	//
 	$likeBtn.toggleClass('active');
 		
 	if ($likeBtn.hasClass('active')) {
-		// 예상 설계
-		// 좋아요 버튼 클릭 -> active일때
-		// ajax를 통해 controller 갔다온 다음에
-		// 실행되고 나서 바로 반영안됨
+		// ajax -> likeInsert(@controller)
+		
 		$.ajax({
 			url : 'likeInsert',
 			type : 'GET',
@@ -97,6 +97,10 @@ $likeBtn.click(function() {
 				info_movie_code : info_movie_code
 			},
 			success : function(data){
+				// 두가지 실행해야함
+				// member_like : insert
+				// movie_like_count : update
+				// 성공했을때 찜하기 완료 표시
 				
 			}
 		}) 
@@ -105,7 +109,11 @@ $likeBtn.click(function() {
 				alt : '찜하기 완료'})
 								
 	} else {
+		// 좋아요 버튼을 클릭했을때 active가 아니면~ 부분
+		
+		//fas 
 		$(this).find('i').removeClass('fas').addClass('far')
+		
 		$(this).find('img').attr({
 			'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
 			alt : "찜하기"

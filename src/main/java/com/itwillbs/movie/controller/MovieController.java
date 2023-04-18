@@ -88,7 +88,7 @@ public class MovieController {
 		if(id == null) {
 			result = "로그인 후 좋아요 할 수 있습니다.";
 		}
-		
+		// id 있는지 검사하는 작업 필요함
 		int insertCount = mypageService.likeInsert(like);
 		
 		if(insertCount > 0) {
