@@ -69,14 +69,14 @@ window.onload = function(){
 								</label>
 							</div>
 							<div class="join-detail">
-			                    <label class="label-input" for="phone" style="width:320px;display:inline-block;">
+			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
 			                        <span>주소</span>
-			                        <input type="text" style="width:140px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
+			                        <input type="text" style="width:200px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
 			                        <span></span>
 			                    </label>
 			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
-							<div class="join-detail">
+							<div class="join-detail" style="margin-top:-10px">
 								<label class="label-input" for="address"> <span>상세주소</span>
 									<input type="text" id="join-add" name="member_address2" class="input" value="" placeholder="상세주소입력">
 									<span></span>
@@ -103,7 +103,7 @@ window.onload = function(){
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
-									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+									<div class="" style="margin-left: 100px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="member_prefer_branch" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(resources/images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<option value="부산점">부산점</option>
