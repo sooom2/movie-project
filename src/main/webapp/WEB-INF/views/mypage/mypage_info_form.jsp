@@ -11,6 +11,20 @@
 <link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("postSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("join-post").value = data.address; // 주소 넣기
+                document.querySelector("#join-add").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
 </head>
 <body>
 
@@ -30,16 +44,10 @@
 									value="${member.member_id}"> <span></span>
 								</label>
 							</div>
-							<div class="join-detail">
-								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="member_email" name="member_email" class="input"
-									value="${member.member_email }"> <span></span>
-								</label>
-							</div>
+
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>기존 비밀번호</span>
 									<input type="password" id="member_pw" name="member_pw" class="input" placeholder="정보수정시 비밀번호 입력 필수!!">
-									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
@@ -53,6 +61,27 @@
 								<label class="label-input" for="username"> <span>이름</span>
 									<input type="text" id="member_name" name="member_name" class="input" value="${member.member_name }" >
 									 <span></span>
+								</label>
+							</div>
+
+							<div class="join-detail">
+			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
+			                        <span>주소</span>
+			                        <input type="text" style="width:200px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
+			                        <span></span>
+			                    </label>
+			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
+			                </div>
+							<div class="join-detail" style="margin-top:-10px">
+								<label class="label-input" for="address"> <span>상세주소</span>
+									<input type="text" id="join-add" name="member_address2" class="input" value="" placeholder="상세주소입력">
+									<span></span>
+								</label>
+							</div>
+							<div class="join-detail">
+								<label class="label-input" for="email"> <span>이메일</span>
+									<input type="text" id="member_email" name="member_email" class="input"
+									value="${member.member_email }"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
@@ -104,9 +133,10 @@
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<option value="액션"<c:if test="${member.member_prefer_genre eq '액션'}">selected</c:if>>액션</option>
 											<option value="드라마"<c:if test="${member.member_prefer_genre eq '드라마'}">selected</c:if>>드라마</option>
-											<option value="코미디"<c:if test="${member.member_prefer_genre eq '코미디' }">selected</c:if>>코미디</option>
+											<option value="코메디"<c:if test="${member.member_prefer_genre eq '코메디' }">selected</c:if>>코메디</option>
 											<option value="애니메이션"<c:if test="${member.member_prefer_genre eq '애니메이션' }">selected</c:if>>애니메이션</option>
 											<option value="스릴러"<c:if test="${member.member_prefer_genre eq '스릴러' }">selected</c:if>>스릴러</option>
+											<option value="로맨스"<c:if test="${member.member_prefer_genre eq '로맨스' }">selected</c:if>>로맨스</option>
 											<option value="범죄"<c:if test="${member.member_prefer_genre eq '범죄' }">selected</c:if>>범죄</option>
 										</select>
 									</div> <span></span>

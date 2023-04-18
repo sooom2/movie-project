@@ -48,6 +48,7 @@
 				<div class="summary summary-3">
 					<h3>추천영화</h3>
 					<c:forEach var="movieList" items="${movieList}">
+						&nbsp;&nbsp; <?xml version="1.0" ?><svg class="feather feather-video" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polygon points="23 7 16 12 23 17 23 7"/><rect height="14" rx="2" ry="2" width="15" x="1" y="5"/></svg>
 						${movieList.get("info_movie_title")}<br>
 					</c:forEach>
 				</div>
@@ -153,7 +154,7 @@
 							<label for="rate5">★</label>
 						</fieldset>
 						<div>
-							<textarea id="reviewContents" name="rev_content" placeholder="아이무비 리뷰이벤트 !!! 리뷰작성시 100포인트를 지급합니다."></textarea>
+							<textarea id="reviewContents" name="rev_content" placeholder="아이무비 리뷰이벤트 !!! 리뷰작성시 500포인트를 지급합니다."></textarea>
 						</div>
 					<section id="reviewbtnArea">
 						<div ><input type="submit" value="리뷰등록">&nbsp;&nbsp;</div>

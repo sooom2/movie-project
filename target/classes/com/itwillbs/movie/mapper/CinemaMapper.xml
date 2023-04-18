@@ -41,8 +41,8 @@
 	<select id="schList" resultType="hashmap">
 		SELECT 
 			    schedule.sch_movie_date
-			  , schedule.sch_start_time
-			  , schedule.sch_last_time
+			  , DATE_FORMAT(schedule.sch_start_time, '%H:%i') AS sch_start_time
+  			  , DATE_FORMAT(schedule.sch_last_time, '%H:%i') AS sch_last_time
 			  , cinema.cinema_name
 			  , cinema.cinema_code
 			  , CASE movieInfo.info_rating													
@@ -65,8 +65,16 @@
 	       on screen.screen_code = schedule.sch_screen_code
 	       where 1=1
 	       and sch_cinema_code = #{cinema_code}
-	<!--        and schedule.sch_movie_date=#{play_date} -->
+	       and sch_movie_date=#{date}
+	  ORDER BY schedule.sch_screen_code;
 	
+	</select>
+	
+	<!-- 선호영화관 찾기 -->
+	<select id="preferCinema" resultType="hashmap">
+	SELECT *
+	  FROM member
+	 WHERE member_id =#{id};
 	</select>
 
 </mapper>

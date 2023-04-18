@@ -16,6 +16,8 @@ public interface ReservationMapper {
 
 	// 상영 시간 조회
 	List<HashMap<String, String>> selectMovieTimeList(@Param("CnItemCd") String CnItemCd, @Param("MvItemCd") String MvItemCd, @Param("dateCd") String dateCd);
-	
+
+
+	List<HashMap<String, String>> selectReservationList(String schCd);
 	
 }

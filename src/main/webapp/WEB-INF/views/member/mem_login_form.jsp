@@ -129,7 +129,7 @@ function kakaoLogin() {
 			<div class="cont">
 				<form id="loginForm"  action ="loginPro" method="post">
 					<div class="find">
-					<a href="javascript:doDisplay();">아이디/비밀번호 찾기</a>
+					<a href="findId">아이디/비밀번호 찾기</a>
 					<a href="memAuth">회원가입</a>
 					</div>
 <!-- 					<input type="hidden" name="cgid" value=""> -->

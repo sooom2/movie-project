@@ -59,6 +59,19 @@ public class MypageService {
 		return mapper.likeInsert(like);
 	}
 
+	public int insertPoint(String id) {
+		return mapper.insertPoint(id);
+	}
+
+	public List<HashMap<String, String>> pointList(String id) {
+		return mapper.pointList(id);
+	}
+
+	public List<HashMap<String, String>> payList(String id) {
+		return mapper.payList(id);
+	}
+
+
 
 
 	

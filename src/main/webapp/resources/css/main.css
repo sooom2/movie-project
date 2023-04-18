@@ -1153,7 +1153,7 @@ header {
 .join-social-desc, .section-member .wrap-member-box .join-email-desc {
 	display: inline-block;
 	width: 194px;
-	height: 40px;
+	height: 53px;
 	box-sizing: border-box;
 	border-right: 2px solid #ececec;
 	margin-left: 61px;
@@ -1343,8 +1343,8 @@ header {
 	display: inline-block;
 	vertical-align: middle;
 	margin-top: -4px;
-	line-height: 36px;
-	width: 100px;
+	line-height: 37px;
+	width: 80px;
 }
 
 .join-detail .descsms {
@@ -1364,7 +1364,7 @@ header {
 	background-color: #f9f9f9;
 	border: 0;
 	border-left: 1px solid #b7b7b7;
-	margin-left: 122px;
+	margin-left: 100px;
 	padding-left: 14px;
 	font-size: 14px;
 	color: #3a3a3a;

@@ -139,7 +139,6 @@ public class CustomerController {
 		model.addAttribute("oneBoardList", oneBoardList);
 //		System.out.println("Controller: " + model);
 		return "customer_center/one_board";
-		
 	}
 	
 //	// 비회원문의내역
@@ -242,6 +241,43 @@ public class CustomerController {
 		}
 	}
 	
+	// 관리자 자주묻는 질문 수정창
+	@RequestMapping(value = "admin_faq_update", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminFaqUpdate(@RequestParam String faq_code, Model model) {
+		
+		HashMap<String, String> faqBoard = boardService.getFaqBoard(faq_code);
+		System.out.println(faqBoard);
+		model.addAttribute("faqBoard", faqBoard);
+		System.out.println(model);
+		return "admin/admin_faq_update";
+	}
+	
+	// 관리자 자주묻는 질문 수정
+	@RequestMapping(value = "faq_update_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String faqUpdatePro(@RequestParam HashMap<String, String> map, Model model) {
+		int updateCount = boardService.registFaqUpdate(map);
+		System.out.println(updateCount);
+		if(updateCount > 0) {
+			return "redirect:/admin_faq";
+		} else {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+	}
+	
+	// 관리자 자주묻는 질문 삭제
+	@RequestMapping(value = "faq_delete_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String faqDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getFaqDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/admin_faq";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+	}
+	
 	// 관리자 분실물 문의 페이지
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLostBoard(Model model) {
@@ -251,6 +287,44 @@ public class CustomerController {
 //		System.out.println("Controller: " + model);
 		return "admin/admin_lost_board";
 	}
+	
+	// 분실물 답변 등록창
+	@RequestMapping(value = "admin_lost_rep", method = {RequestMethod.GET, RequestMethod.POST})
+	public String admin_lost_rep(@RequestParam String lost_code, Model model) {
+		
+		HashMap<String, String> lostBoard = boardService.getLostBoard(lost_code);
+		System.out.println(lostBoard);
+		model.addAttribute("lostBoard", lostBoard);
+		System.out.println(model);
+		return "admin/admin_lost_rep";
+	}
+	
+	// 관리자 분실물 답변 등록
+	@RequestMapping(value = "lost_update_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String lost_update_pro(@RequestParam HashMap<String, String> map, Model model) {
+		int updateCount = boardService.registLostUpdate(map);
+		System.out.println(updateCount);
+		if(updateCount > 0) {
+			return "redirect:/admin_lost_board";
+		} else {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+	}
+	
+	// 관리자 분실물 삭제
+	@RequestMapping(value = "lost_delete_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String lostAdminDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getLostDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/admin_lost_board";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+	}	
+	
 //	//분실물 문의
 //	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 //	public String adminLostBoard() {
@@ -262,7 +336,7 @@ public class CustomerController {
 //	public String adminOneOnOne() {
 //		return "admin/admin_oneOnOne";
 //	}
-	// 관리자 1대1 문의 내역 페이지
+	// 관리자 1:1 문의 내역 페이지
 	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminOneOnOne(Model model) {
 		
@@ -271,8 +345,44 @@ public class CustomerController {
 		model.addAttribute("oneBoardList", oneBoardList);
 //			System.out.println("Controller: " + model);
 		return "admin/admin_oneOnOne";
-		
 	}
+	
+	// 관리자 1:1 답변 등록창
+	@RequestMapping(value = "admin_one_rep", method = {RequestMethod.GET, RequestMethod.POST})
+	public String adminOneRep(@RequestParam String one_code, Model model) {
+		
+		HashMap<String, String> oneBoard = boardService.getOneBoard(one_code);
+		System.out.println(oneBoard);
+		model.addAttribute("oneBoard", oneBoard);
+		System.out.println(model);
+		return "admin/admin_one_rep";
+	}
+	
+	// 관리자 1:1 답변 등록
+	@RequestMapping(value = "one_update_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String oneUpdatePro(@RequestParam HashMap<String, String> map, Model model) {
+		int updateCount = boardService.registOneUpdate(map);
+		System.out.println(updateCount);
+		if(updateCount > 0) {
+			return "redirect:/admin_oneOnOne";
+		} else {
+			model.addAttribute("msg", "수정 실패!");
+			return "fail_back";
+		}
+	}
+	
+	// 관리자 1:1 삭제
+	@RequestMapping(value = "one_delete_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String oneDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getOneDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/admin_oneOnOne";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
+	}	
 	
 	// 관리자 비회원 문의내역
 	@RequestMapping(value = "admin_guest_board", method = {RequestMethod.GET, RequestMethod.POST})

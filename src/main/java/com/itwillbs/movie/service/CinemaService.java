@@ -31,11 +31,27 @@ public class CinemaService {
 		return mapper.cinemaDetail(cinema_code);
 	}
 
-	public List<HashMap<String, Object>> schList(String cinema_code) {
-//	public List<HashMap<String, String>> schList(String cinema_code,String play_date) {
-//		return mapper.schList(cinema_code,play_date);
-		return mapper.schList(cinema_code);
+//	public List<HashMap<String, Object>> schList(String cinema_code) {
+////	public List<HashMap<String, String>> schList(String cinema_code,String play_date) {
+////		return mapper.schList(cinema_code,play_date);
+//		return mapper.schList(cinema_code);
+//	}
+
+	public List<HashMap<String, String>> schList(String cinema_code, String date) {
+		// TODO Auto-generated method stub
+		return mapper.schList(cinema_code,date);
 	}
+
+
+	public HashMap<String, String> preferCinema(String id) {
+		return mapper.preferCinema(id);
+	}
+
+//	public List<HashMap<String, Object>> schList(String cinema_code, String date) {
+//		System.out.println(date);
+//		return mapper.schList(cinema_code,date);
+//		return mapper.schList(cinema_code,date);
+//	}
 
 	
 	

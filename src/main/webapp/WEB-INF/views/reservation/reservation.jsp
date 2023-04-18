@@ -35,38 +35,21 @@
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
-				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E">
-				<input type="hidden" id="ssid" name="ssid" value="">
-				<input type="hidden" id="tokn" name="tokn" value="">
-				<input type="hidden" id="hold" name="hold" value="">
 
-				<input type="hidden" id="BrandCd" name="BrandCd" value="dtryx">
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="all">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="all">
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="all">
-				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="">
 				
-				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx">
-				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all">
-				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all">
-				
-				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="">
 				<input type="hidden" id="MovieNm" name="MovieNm" value="">
 				<input type="hidden" id="CinemaNm" name="CinemaNm" value="">
-				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="">
-				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="">
-				<input type="hidden" id="StartTime" name="StartTime" value="">
-				<input type="hidden" id="EndTime" name="EndTime" value="">
-				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
-				<input type="hidden" id="ScreenType" name="ScreenType" value="">
-				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="">
-				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="">
 
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="">
 				<input type="hidden" id="HidRating" name="HidRating" value="">
 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="">
 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="">
+				
+				<input type="hidden" id="schCd" name="schCd" value="">
 
 				
 				<!-- PC 전용 -->
@@ -78,8 +61,7 @@
 									<h4 class="r-h4">영화예매</h4>
 									<div class="right">
 										<!-- 예매다시하기 클릭시 현재페이지 새로고침 -->
-										<a href="javascript:location.reload(true);" 
-											class="btn-refresh">예매다시하기</a>
+										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
 								</div>
 								<!-- // head -->
@@ -245,7 +227,7 @@
 														</div>
 													</div>
 													<div class="next">
-														<button type="button" id="btnNext">인원/좌석 선택</button>
+														<button type="submit" id="btnNext">인원/좌석 선택</button>
 													</div>
 												</div>
 											</div>
@@ -339,28 +321,15 @@
 	
 	
 <script type="text/javascript" >
-// 	var movieList = [];
-// 	var cinemaList = [];
-// 	var areaList = [];
-// 	var timeList = [];
-// 	var favoriteCinema = [];
-// 	var timer = null;
 var CnItemCd = ""; 	// 극장코드
 var MvItemCd = ""; 	// 영화코드
 var dateCd = ""; 	// 날짜 일 코드
 
-var schCd = "";
+var schCd = "";		// 영화일정코드
 var screenCd = ""; 	// 상영관코드
 var screenName = ""; // 상영관명
 var mvTime = "";	// 상영시간
 var mvDay = "";		// 상영일
-
-
-
-	//---
-// 	영화일정 : 시작시간 종료시간
-// 	상영관: 상영관코드 상영관명
-// 	on 상영관코드
 
 	// 상영시간
 	function getTimeList() {
@@ -407,7 +376,7 @@ var mvDay = "";		// 상영일
 		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
 		 			
 		 			// 좌석 정보 추후 수정
-		 			str += "<p class='num'>86/<span>89석</span></p>";
+		 			str += "<p class='num'>45/<span>45석</span></p>";
 		 			
 		 			str += "</div>";
 		 			str += "</button>";
@@ -611,14 +580,10 @@ var mvDay = "";		// 상영일
 	 			success: function(response) { 
 	 				console.log("btnCnItem : 요청처리성공");
 	 				for(let movie of response) {
-// 	 					console.log(movie.info_movie_title);
 	 					let movieTitle = movie.info_movie_title;
 	 					let movieCode = movie.info_movie_code;
 	 					let movieImg = movie.info_movie_poster;
 	 					let movieRating = movie.info_rating;
-// 	 					console.log("movieRating: " + movieRating);
-// 	 					console.log("movieTitle: " + movieTitle);
-// 	 					console.log("movieCode: " + movieCode);
 	 					var str = "";
 	 					str += "<li>";
 	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
@@ -661,21 +626,20 @@ var mvDay = "";		// 상영일
 
 		
 // 영화리스트 클릭
-	$(document).on("click", ".btnMvItem", function(e) {
-		MvItemCd = $(this).data("cd");
-// 		console.log(typeof MvItemCd);
-		console.log("MvItem 클릭 MvItemCd : " + MvItemCd);
-		e.preventDefault();
-		$("#movieList li").removeClass("check");
-		if ($("#MovieCd").val() == $(this).data("cd")) {
-			$("#MovieCd").val("all");
-		} else {
-			$("#MovieCd").val($(this).data("cd"));
-			$(this).parent().addClass("check");
-		}
-		setMovie();
-		setTime();
-	});
+		$(document).on("click", ".btnMvItem", function(e) {
+			MvItemCd = $(this).data("cd");
+			console.log("MvItem 클릭 MvItemCd : " + MvItemCd);
+			e.preventDefault();
+			$("#movieList li").removeClass("check");
+			if ($("#MovieCd").val() == $(this).data("cd")) {
+				$("#MovieCd").val("all");
+			} else {
+				$("#MovieCd").val($(this).data("cd"));
+				$(this).parent().addClass("check");
+			}
+			setMovie();
+			setTime();
+		});
 	
 
 
@@ -688,10 +652,6 @@ var mvDay = "";		// 상영일
 			
 			$(".btnTime").hide();
 			getTimeList();
-			
-			
-			
-
 
 		});
 		
@@ -703,40 +663,27 @@ var mvDay = "";		// 상영일
 			var lastTime = $(this).data("lt");
 			mvTime = startTime + "~" + lastTime;
 			screenName = $(this).data("sn");
-// 			console.log("screenCd: " + screenCd);
-// 			console.log("mvTime:" + mvTime);
-// 			console.log("schCd:" + schCd);
-
 
 			$(".btnTime").removeClass("check");
 			
 			$("#ScreenTime").val(mvTime);
-			$("#ScreenCd").val($(this).data("cd"));
+			$("#schCd").val($(this).data("cd"));
 			$('.btnTime[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 클릭시 테두리
 			
 			console.log("#ScreenTime:" + $("#ScreenTime").val());
-			console.log("#ScreenCd:" + $("#ScreenCd").val());
-			
-			
-			
+			console.log("영화일정코드 #schCd:" + $("#schCd").val());
 			
 			setTime();
 			
 		});
 		
 		
-		
-		
-		// 인원/좌석 선택 클릭
-// 		$(".btnNext").on("click", function(e) {
-// 			$("#dataForm").submit();
-// 		});
 }); //function end	
 
 		
 </script> 
-		<!-- // footer -->
-		<jsp:include page="../footer.jsp"></jsp:include>
+<!-- // footer -->
+<jsp:include page="../footer.jsp"></jsp:include>
 		
 <!-- 	<div class="modal" id="mAlert"> -->
 <!-- 		<div class="modal-dialog" style="max-width:340px"> -->

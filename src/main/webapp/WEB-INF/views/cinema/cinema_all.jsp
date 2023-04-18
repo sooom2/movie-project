@@ -45,6 +45,7 @@ function cinemaNameClick(){
             location_name: cityName
         },
         success: function(result){
+//         	alert(result);
             $('.theater-list ul li').empty();
             $('.theater-place .loc.on').removeClass('on'); // 모든 loc 태그에서 on 클래스 제거
             $clickedButton.parent().addClass('on'); // 선택한 버튼의 부모 태그에 on 클래스 추가
@@ -187,7 +188,9 @@ function modalClose(){
 								<span class="font-gblue">${sessionScope.sId }</span>님의 선호영화관
 								<ul class="theater-circle">
 									<li>
-										<a href="/theater?areaCd=55&amp;brchNo=0046" title="부산점 상세보기">부산점</a>
+<%-- 									<c:forEach var="mem" items="${myPreferCinema }"> --%>
+										<a href="cinemaDetail" title="부산점 상세보기">부산점</a>
+<%-- 									</c:forEach> --%>
 									</li>
 								</ul>
 <!-- 								<a href="" class="button small" title="선호영화관 관리"> <i class="iconset ico-edit"></i> 선호영화관 관리</a> -->

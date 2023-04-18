@@ -32,10 +32,10 @@
 		return confirm("수정하시겠습니까?");
 	}
 	
-	function faq_delete(){
+	function one_delete(){
 		let delConfirm = confirm("삭제하시겠습니까?");
 		if (delConfirm) {
-			location.href='faq_delete_pro?faq_code=${faqBoard.faq_code }';
+			location.href='one_delete_pro?one_code=${oneBoard.one_code }';
 		}
 	}
 	
@@ -106,51 +106,52 @@
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
 							<div class="card-header">
-								<h3 class="text-center font-weight-light my-4">자주묻는 질문 수정</h3>
+								<h3 class="text-center font-weight-light my-4">1:1 답변</h3>
 							</div>
 							<div class="card-body">
-								<form action="faq_update_pro" onsubmit="return confirmUpdate()">
-								<input type="hidden" name="faq_code" value="${faqBoard.faq_code }">
+								<form action="one_update_pro" onsubmit="return confirmUpdate()">
+								<input type="hidden" name="one_code" value="${oneBoard.one_code }">
 									<div class="row mb-3">
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 ">
-												<input class="form-control" id="faq_question"
-													name="faq_question" type="text" value="${faqBoard.faq_question }"/> <label
-													for="faq_question">제목</label>
+												<input class="form-control" id="one_subject"
+													name="one_subject" type="text" value="${oneBoard.one_subject }"/> <label
+													for="one_subject">제목</label>
 											</div>
 										</div>
 										<div class="col-md-6 ">
-											<div class="form-floating mb-3 mb-md-0 ">
-												<input class="form-control" id="faq_group"
-													name="faq_group" type="text" value="${faqBoard.faq_group }"/> <label
-													for="faq_group">문의유형</label>
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="cinema_name">
+													<label for="cinema_name">문의지점 : </label> <select
+														name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을
+															선택하세요</option>
+														<option value="none" disabled>=======================</option>
+														<c:forEach var="cinema" items="${cinemaList }">
+															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+														</c:forEach>
+													</select>
+													<c:forEach var="cinema" items="${cinemaList }">
+														<input type="hidden" name="location_code"
+															value="${cinema.get('location_code') }">
+													</c:forEach>
+												</div>
 											</div>
 										</div>
-<!-- 										<div class="col-md-6 "> -->
-<!-- 											<div class="form-floating mb-3 mb-md-0 selectbox"> -->
-<!-- 												<div class="cinema_name"> -->
-<!-- 													<label for="cinema_name">영화관명 : </label> <select -->
-<!-- 														name="sch_cinema_code" onchange="selectCinema()"> -->
-<!-- 														<option value="none" selected="selected" disabled>영화관을 -->
-<!-- 															선택하세요</option> -->
-<!-- 														<option value="none" disabled>=======================</option> -->
-<%-- 														<c:forEach var="cinema" items="${cinemaList }"> --%>
-<%-- 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option> --%>
-<%-- 														</c:forEach> --%>
-<!-- 													</select> -->
-<%-- 													<c:forEach var="cinema" items="${cinemaList }"> --%>
-<!-- 														<input type="hidden" name="location_code" -->
-<%-- 															value="${cinema.get('location_code') }"> --%>
-<%-- 													</c:forEach> --%>
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
 									</div>
 									<div class="row mb-3">
 										<div class="form-floating mb-3 mb-md-0 text">
 											<div>
-												<textarea name="faq_answer" class="form-control"
-													id="faq_answer" placeholder="내용" rows="10" >${faqBoard.faq_answer }</textarea>
+												<textarea name="one_content" class="form-control"
+													id="one_content" placeholder="내용" rows="10" >${oneBoard.one_content }</textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="form-floating mb-3 mb-md-0 text">
+											<div>
+												<textarea name="one_rep_board_content" class="form-control"
+													id="one_rep_board_content" placeholder="답변내용" rows="10" >${oneBoard.one_rep_board_content }</textarea>
 											</div>
 										</div>
 									</div>
@@ -163,7 +164,7 @@
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
 <!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
-													<input class="btn btn-primary btn-block btn-del" type="button" onclick="faq_delete()" value="삭제">
+													<input class="btn btn-primary btn-block btn-del" type="button" onclick="one_delete()" value="삭제">
 												</div>															
 											</div>
 										</div>

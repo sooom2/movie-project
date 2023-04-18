@@ -243,7 +243,7 @@
 										class="input-text w150px" value="" maxlength="30"></td>
 									<th scope="row"><label for="name">문의지점</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" id="name" name="one_location"
+									<td><input type="text" id="name" name="cinema_name"
 										class="input-text w150px" value="" maxlength="30"></td>
 								</tr>
 								<tr>

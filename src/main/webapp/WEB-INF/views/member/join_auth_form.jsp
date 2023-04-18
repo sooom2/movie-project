@@ -46,6 +46,9 @@ function kakaoLogin() {
   
   
 $(function() {
+	// 인증번호 확인.
+	let mailStatus = false;
+	
 	// 이메일 인증
 	$('#mail-Check-Btn').click(function() {
 		const email = $('#join-id').val() // 이메일 주소값 얻어오기
@@ -63,31 +66,39 @@ $(function() {
 		})
 	});
 	
-	
 	//인증번호 비교 
 	$('.mail-check-input').blur(function () {
 		const inputCode = $(this).val();
-		const $resultMsg = $('#mail-check-warn');
+		const resultMsg = $('#mail-check-warn');
 		
 		if(inputCode == code){
-			$resultMsg.html('인증번호가 일치합니다.');
-			$resultMsg.css('color','green');
+			resultMsg.html('인증번호가 일치합니다.');
+			resultMsg.css('color','green');
 			$('#mail-Check-Btn').attr('disabled',true);
 			$('#join-id').attr('readonly',true);
 			$('#join-id').attr('onFocus', 'this.initialSelect = this.selectedIndex');
 	        $('#join-id').attr('onChange', 'this.selectedIndex = this.initialSelect');
+	        mailStatus = true;
 		}else{
-			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!');
-			$resultMsg.css('color','red');
+			resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!');
+			resultMsg.css('color','red');
 		}
+	});
+	
+	$("#btn-join").on("click", function() {
+		if(!mailStatus) {
+			alert("이메일 인증을 확인해주시기 바랍니다.");
+			return false;
+		} else {
+			location.href="joinform?email=" + $('#join-id').val();
+			return true;
+		}
+		
 	});
 	
 	
 });
 
-function joinForm(){
-	location.href="joinform?email=" + $('#join-id').val();
-};
 
 </script>
 </head>
@@ -121,26 +132,31 @@ function joinForm(){
 								</span>
 							</div>
 							<br>
-							<div class="join-email-desc">
+							<div class="join-email-desc" style="margin-top: 60px;">
 								<span>이메일 주소로 가입</span>
 							</div>
-							<div class="join-email">
-								<label class="label-email" for="email"> 아이디(이메일) <input
-									type="email" id="join-id" name="memberId"
-									placeholder="이메일 주소를 입력해주세요.">
-									<button type="button" class="btn-rsv" id="mail-Check-Btn">본인인증</button>
-									<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
+							<div class="join-email" >
+								<div>
+									<label class="label-email" for="email" style="margin-bottom: 10px;"> 아이디(이메일)
+									<input	type="email" id="join-id" name="memberId" placeholder="이메일 주소를 입력해주세요.">
+									</label>
+								</div>
+								<div>
+									<label class="form-control mail-check-input">
+									<button type="button" class="btn-rsv" id="mail-Check-Btn" style="margin-right: 24px;">본인인증</button>
+									<input class="mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6"><br>
 									<span id="mail-check-warn"></span>
-								</label>
+									</label>
+								</div>
 							</div>
 						</div>
 						<br>
-						<a href="#" onclick="joinForm()" id="btn-join" class="btn-join">가입하기</a> <input
-							type="hidden" id="userFrom" name="userFrom" value="4"> <input
-							type="hidden" id="socialId" name="socialId" value=""> <input
-							type="hidden" id="name" name="name" value=""> <input
-							type="hidden" id="token" name="token" value=""> <input
-							type="hidden" id="isPayment" name="isPayment" value="0">
+						<a href="#" id="btn-join" class="btn-join">가입하기</a> 
+						<input type="hidden" id="userFrom" name="userFrom" value="4">
+						<input type="hidden" id="socialId" name="socialId" value="">
+						<input type="hidden" id="name" name="name" value="">
+						<input type="hidden" id="token" name="token" value=""> 
+						<input type="hidden" id="isPayment" name="isPayment" value="0">
 					</form>
 				</div>
 			</div>
@@ -148,8 +164,6 @@ function joinForm(){
    			<input type="hidden" name="email"/>
    			<input type="hidden" name="accessToken"/>
    		</form>
-
-
 		</div>
 	</div>
 <jsp:include page="../footer.jsp" />

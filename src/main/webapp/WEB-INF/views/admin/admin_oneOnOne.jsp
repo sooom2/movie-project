@@ -77,17 +77,17 @@
 			<!-- 들어갈내용 -->
 			<main>
 				<!-- 모달 -->
-				<div class="container modal admin-modal" style="display: none">
-					<div class="row justify-content-center">
-						<div class="col-lg-7">
-							<div class="card border-1 mt-5">
-								<div class="card-header">
-									<button type="button" class="close-modal"
-										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">1:1문의</h3>
-								</div>
-								<div class="card-body">
-									<form>
+<!-- 				<div class="container modal admin-modal" style="display: none"> -->
+<!-- 					<div class="row justify-content-center"> -->
+<!-- 						<div class="col-lg-7"> -->
+<!-- 							<div class="card border-1 mt-5"> -->
+<!-- 								<div class="card-header"> -->
+<!-- 									<button type="button" class="close-modal" -->
+<!-- 										onclick="modalClose()" style="border: none;">닫기</button> -->
+<!-- 									<h3 class="text-center font-weight-light my-4">1:1문의</h3> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-body"> -->
+<!-- 									<form> -->
 <!-- 										<div class="row mb-4"> -->
 <!-- 											<h5 style="text-align: left">이미지수정</h5> -->
 <!-- 											<div class="col-md-3 moviePoster"> -->
@@ -104,87 +104,87 @@
 <!-- 												</div> -->
 <!-- 											</div> -->
 <!-- 										</div> -->
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputFirstName" type="text"
-														placeholder="Enter your first name" /> <label
-														for="inputFirstName">작성자명</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input class="form-control" id="inputLastName" type="text"
-														placeholder="Enter your last name" /> <label
-														for="inputLastName">문의지점</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating">
-													<input class="form-control" id="inputLastName" type="text"
-														placeholder="Enter your last name" /> <label
-														for="inputLastName">연락처</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">이메일</label>
-												</div>
-											</div>
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputFirstName" type="text" -->
+<!-- 														placeholder="Enter your first name" /> <label -->
+<!-- 														for="inputFirstName">작성자명</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating"> -->
+<!-- 													<input class="form-control" id="inputLastName" type="text" -->
+<!-- 														placeholder="Enter your last name" /> <label -->
+<!-- 														for="inputLastName">문의지점</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating"> -->
+<!-- 													<input class="form-control" id="inputLastName" type="text" -->
+<!-- 														placeholder="Enter your last name" /> <label -->
+<!-- 														for="inputLastName">연락처</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">이메일</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
 
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">제목</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPasswordConfirm"
-														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">내용</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">첨부파일</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPasswordConfirm"
-														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">답글유무</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPassword"
-														type="password" placeholder="Create a password" /> <label
-														for="inputPassword">답글내용</label>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<input class="form-control" id="inputPasswordConfirm"
-														type="password" placeholder="Confirm password" /> <label
-														for="inputPasswordConfirm">작성일</label>
-												</div>
-											</div>
-										</div>
+<!-- 										</div> -->
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">제목</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
+<!-- 														type="password" placeholder="Confirm password" /> <label -->
+<!-- 														for="inputPasswordConfirm">내용</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">첨부파일</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
+<!-- 														type="password" placeholder="Confirm password" /> <label -->
+<!-- 														for="inputPasswordConfirm">답글유무</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="row mb-3"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPassword" -->
+<!-- 														type="password" placeholder="Create a password" /> <label -->
+<!-- 														for="inputPassword">답글내용</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 													<input class="form-control" id="inputPasswordConfirm" -->
+<!-- 														type="password" placeholder="Confirm password" /> <label -->
+<!-- 														for="inputPasswordConfirm">작성일</label> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 <!-- 										<div class="row mb-3"> -->
 <!-- 											<div class="col-md-6"> -->
 <!-- 												<div class="form-floating mb-3 mb-md-0"> -->
@@ -210,24 +210,24 @@
 <!-- 												</div> -->
 <!-- 											</div> -->
 <!-- 										</div> -->
-										<div class="row">
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">답글등록</a>
-												</div>
-											</div>
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<a class="btn btn-primary btn-block" href="">삭제</a>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+<!-- 										<div class="row"> -->
+<!-- 											<div class="mt-4 mb-0 col-md-6"> -->
+<!-- 												<div class="d-grid"> -->
+<!-- 													<a class="btn btn-primary btn-block" href="">답글등록</a> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="mt-4 mb-0 col-md-6"> -->
+<!-- 												<div class="d-grid"> -->
+<!-- 													<a class="btn btn-primary btn-block" href="">삭제</a> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</form> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
@@ -263,13 +263,12 @@
 								<tr>
 									<td>${oneBoard.one_code }</td>
 									<td>${oneBoard.one_name }</td>
-									<td>${oneBoard.one_location }</td>
-									<td id="lost_subject"><a href="lostBoardDetail?lost_code=${oneBoard.one_subject }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
-									</td>
+									<td>${oneBoard.cinema_name }</td>
+									<td>${oneBoard.one_subject }</td>
 									<td>${oneBoard.one_rep_board }</td>
 									<td>${oneBoard.one_write_date }</td>
 									<td class="modi"><input class="btn btn-block btn-more"
-										type="button" value="M O R E" onclick="doDisplay()"></td>
+										type="button" value="M O R E" onclick="location.href='admin_one_rep?one_code=${oneBoard.one_code }'"></td>
 								</tr>
 							</c:forEach>
 <!-- 							<tr data-index="0"> -->

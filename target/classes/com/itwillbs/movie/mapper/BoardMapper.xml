@@ -21,7 +21,7 @@
 				,#{lost_date}
 				,now()
 				,#{lost_passwd}
-				,'N'
+				,"미답변"
 				,#{lost_board_rep_content}
 			)
 	</insert>
@@ -49,7 +49,22 @@
 			WHERE lost_code = #{lost_code}
 	</delete>
 	
-	<!-- 1대1 등록 -->
+	<!-- 분실물 등록창 -->
+	<select id="selectLostBoard" resultType="hashmap">
+		SELECT *
+			FROM lost_board
+			WHERE lost_code = #{lost_code}
+	</select>
+	
+	<!-- 분실물 답변 -->
+	<update id="updatLostBoard">
+		UPDATE lost_board
+			SET lost_board_rep_content = #{lost_board_rep_content}
+			, lost_board_rep = "답변완료"
+			WHERE lost_code = #{lost_code}
+	</update>
+	
+	<!-- 1:1 등록 -->
 	<insert id="insertOneBoard">
 		INSERT 
 			INTO one_board
@@ -59,19 +74,19 @@
 				,#{one_name}
 				,#{one_tel}
 				,#{one_email}
-				,#{one_location}
+				,#{cinema_name}
 				,#{one_question_type}
 				,#{one_subject}
 				,#{one_content}
 				,#{one_fileimg}
 				,now()
 				,#{one_passwd}
-				,'N'
+				,"미답변"
 				,#{one_rep_board_content}
 			)
 	</insert>
 	
-	<!-- 1대1 목록 -->
+	<!-- 1:1 목록 -->
 	<select id="selectOneBoardList" resultType="hashmap">
 		SELECT * 
 			FROM one_board
@@ -79,6 +94,28 @@
 				one_code DESC
 			LIMIT 10
 	</select>
+	
+	<!-- 1:1 답변창 -->
+	<select id="selectOneBoard" resultType="hashmap">
+		SELECT *
+			FROM one_board
+			WHERE one_code = #{one_code}
+	</select>
+	
+	<!-- 1:1 답변 -->
+	<update id="updatOneBoard">
+		UPDATE one_board
+			SET one_rep_board_content = #{one_rep_board_content}
+			, one_rep_board = "답변완료"
+			WHERE one_code = #{one_code}
+	</update>
+	
+	<!-- 분실물 삭제 -->
+	<delete id="deleteOnBoard">
+		DELETE 
+			FROM one_board
+			WHERE one_code = #{one_code}
+	</delete>
 	
 	<!-- 공지사항 등록 -->
 	<insert id="insertNoticeBoard">
@@ -135,17 +172,17 @@
 	
 	<!-- 자주묻는 질문 등록 -->
 	<insert id="insertFaqBoard">
-		<selectKey keyProperty="faq_num" resultType="int" order="BEFORE">
-			SELECT IFNULL(MAX(faq_num), 0) FROM faq_board
+		<selectKey keyProperty="faq_code" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(faq_code), 0) FROM faq_board
 		</selectKey>
 		INSERT
 			INTO faq_board
 			VALUES(
-				#{faq_num} + 1
+				#{faq_code} + 1
 				, #{faq_group}
 				, #{faq_question}
 				, #{faq_answer}
-				, #{faq_count}
+				, now()
 			)
 	</insert>
 	
@@ -153,7 +190,30 @@
 	<select id="selectFaqBoardList" resultType="hashmap">
 		SELECT * 
 			FROM faq_board 
-			ORDER BY faq_num DESC
+			ORDER BY faq_code DESC
 	</select>
+	
+	<!-- 자주묻는 질문 수정창 -->
+	<select id="selectFaqBoard" resultType="hashmap">
+		SELECT *
+			FROM faq_board
+			WHERE faq_code = #{faq_code}
+	</select>
+	
+	<!-- 자주묻는 질문 수정 -->
+	<update id="updatFaqBoard">
+		UPDATE faq_board
+			SET faq_group = #{faq_group}
+			, faq_question = #{faq_question}
+			, faq_answer = #{faq_answer}
+			WHERE faq_code = #{faq_code}
+	</update>
+	
+	<!-- 자주묻는 질문 삭제 -->
+	<delete id="deleteFaqBoard">
+		DELETE 
+			FROM faq_board
+			WHERE faq_code = #{faq_code}
+	</delete>
 	
 </mapper>

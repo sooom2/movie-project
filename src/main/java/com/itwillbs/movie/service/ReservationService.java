@@ -32,6 +32,10 @@ public class ReservationService {
 	}
 
 
+	public List<HashMap<String, String>> selectReservationList(String schCd) {
+		return mapper.selectReservationList(schCd);
+	}
+
 	
 
 }

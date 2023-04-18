@@ -38,7 +38,7 @@
 		}
 	}
 
-	function doNoticeRegister() {
+	function doFaqRegister() {
 
 		let dis = document.querySelector(".admin-modal-register");
 
@@ -149,21 +149,6 @@
 														</div>
 													</div>
 												</div>
-<!-- 												<div class="row mb-3"> -->
-<!-- 													<div> -->
-<!-- 														<div class="col-md-6 "> -->
-<!-- 															<div class="form-floating mb-3 mb-md-0 selectbox"> -->
-<!-- 																<div class="cinema_name"> -->
-<!-- 																	<label for="cinema_name">영화관명 : </label> <select -->
-<!-- 																		name="sch_cinema_code" onchange="selectCinema()" -->
-<!-- 																		style="width: 300px"> -->
-<%-- 																		<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option> --%>
-<!-- 																	</select> -->
-<!-- 																</div> -->
-<!-- 															</div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-
 												<hr>
 												<div class="row mb-3">
 													<div class="form-floating mb-3 mb-md-0 text">
@@ -194,22 +179,22 @@
 				
 				<!-- 테이블 -->
 				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">공지사항</h3>
-					<input class="btn btn-block btn-more" type="button" value="공지등록" onclick="doNoticeRegister()">
+					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
+					<input class="btn btn-block btn-more" type="button" value="자주묻는 질문 등록" onclick="doFaqRegister()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 7%;"><a href="#"
-									class="datatable-sorter">공지번호</a></th>
+								<th data-sortable="true" style="width: 5%;"><a href="#"
+									class="datatable-sorter">질문번호</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">영화관명</a></th>
+									class="datatable-sorter">문의유형</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">내용</a></th> -->
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">작성일</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#"
+								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">수정/삭제</a></th>
 								<!-- 								<th data-sortable="true" style="width: 20%;"><a href="#" -->
 								<!-- 									class="datatable-sorter">줄거리</a></th> -->
@@ -217,18 +202,16 @@
 								<!-- 									class="datatable-sorter">수정</a></th> -->
 							</tr>
 						</thead>
-						<!-- 회원목록 -->
+						<!-- 목록 -->
 						<tbody>
-							<c:forEach var="noticeBoard" items="${noticeBoardList }">
+							<c:forEach var="faqBoard" items="${faqBoardList }">
 								<tr data-index="0">
-									<td>${noticeBoard.notice_code }</td>
-									<td>${noticeBoard.cinema_name }</td>
-									<td id="notice_subject"><a
-										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
-									</td>
-									<td>${noticeBoard.notice_write_date }</td>
+									<td>${faqBoard.faq_code }</td>
+									<td>${faqBoard.faq_group }</td>
+									<td>${faqBoard.faq_question }</td>
+									<td>${faqBoard.faq_write_date }</td>
 									<td class="modi"><input class="btn btn-block btn-more"
-										type="button" value="M O R E" onclick="location.href='admin_notice_update?notice_code=${noticeBoard.notice_code }'"></td>
+										type="button" value="M O R E" onclick="location.href='admin_faq_update?faq_code=${faqBoard.faq_code }'"></td>
 								</tr>
 							</c:forEach>
 							<!-- 							<tr data-index="0"> -->
@@ -245,45 +228,6 @@
 						</tbody>
 					</table>
 				</div>
-				
-				<!-- 테이블 -->
-				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
-					<input class="btn btn-block btn-more" type="button" value="자주묻는 질문"
-						onclick="doNoticeRegister()">
-					<table id="datatablesSimple" class="datatable-table">
-						<thead>
-							<tr>
-								<th data-sortable="true" style="width: 7%;"><a href="#"
-									class="datatable-sorter">질문번호</a></th>
-								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">문의유형</a></th>
-								<th data-sortable="true" style="width: 13%;"><a href="#"
-									class="datatable-sorter">질문</a></th>
-<!-- 								<th data-sortable="true" style="width: 7%;"><a href="#" -->
-<!-- 									class="datatable-sorter">작성일</a></th> -->
-								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">수정/삭제</a></th>
-							</tr>
-						</thead>
-						<!-- 회원목록 -->
-						<tbody>
-							<c:forEach var="faqBoard" items="${faqBoardList }">
-								<tr data-index="0">
-									<td>${faqBoard.faq_num }</td>
-									<td>${faqBoard.faq_group }</td>
-									<td id="notice_subject"><a
-										href="notice_detail?notice_code=${faqBoard.faq_question }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
-									</td>
-<%-- 									<td>${faqBoard.notice_write_date }</td> --%>
-									<td class="modi"><input class="btn btn-block btn-more"
-										type="button" value="M O R E" onclick="doDisplay()"></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-				
 			<!-- 테이블 -->
 			</main>
 			

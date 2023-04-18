@@ -48,6 +48,8 @@ public class MypageController {
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
 		
+		List<HashMap<String, String>> pointList = service.pointList(id);
+		model.addAttribute("pointList", pointList);
 		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
@@ -63,6 +65,10 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
+		List<HashMap<String,String>> payList = service.payList(id);
+		model.addAttribute("payList", payList);
+		
 		
 		
 		member= service.getMemberInfo(id);
@@ -203,8 +209,10 @@ public class MypageController {
 		int insertCount = service.insertReview(review);
 		
 		if(insertCount > 0 ) {
+			
 			model.addAttribute("msg", "리뷰가 등록 되었습니다.");
 			model.addAttribute("target", "mypageRv");
+			service.insertPoint(id);
 
 			return "success";
 		

@@ -11,6 +11,151 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("postSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("member_address1").value = data.address; // 주소 넣기
+                document.querySelector("#member_address2").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+
+$(function() {
+	let idStatus = false;
+	
+	
+	// 아이디 검증.
+	$("#member_id").on("blur", function() {
+		let id = $("#member_id").val();
+		
+		if(id == "") {
+			idStatus = false;
+			$("#checkIdResult").html("아이디는 필수 입력 항목입니다").css("color", "red");
+			return; 
+		} else {
+			// 영문자, 숫자, 특수문자 조합 4 ~ 8글자
+			let regex = /^[A-Za-z0-9!@#$%]{4,8}$/;
+			
+			if(!regex.exec(id)) { 
+				$("#checkIdResult").html("영문자, 숫자, 특수문자 조합 4 ~ 8글자").css("color", "red");
+				idStatus = false;
+			} else { 
+				$.ajax({
+					url: "MemberCheckId", 
+					data: {
+						id: $("#member_id").val()
+					},
+					success: function(result) { 
+						if(result) {
+							$("#checkIdResult").html("이미 사용중인 아이디입니다.").css("color", "red");
+							idStatus = false;
+						} else {
+							$("#checkIdResult").html("사용 가능한 아이디입니다.").css("color", "green");
+							idStatus = true;
+						}
+					}
+				}); // ajax
+			}
+		}
+	});
+	
+	// 비밀번호 검증
+	$("#member_pw").on("change", function() {
+		let passwd = $("#member_pw").val(); 
+		let lengthRegex = /^[A-Za-z0-9!@#$%]{8,16}$/;
+		
+		if(!lengthRegex.exec(passwd)) {
+			$("#checkPasswdResult").html("영문자, 숫자, 특수문자 8 ~ 16자 필수").css("color", "red");
+			$("#member_pw").select();
+			passwdStatus = false;
+		} else {
+			$("#checkPasswdResult").html("사용가능한 비밀번호 입니다.").css("color", "green");
+			passwdStatus = true;
+		}
+		
+	});
+	
+	
+	// 비밀번호확인 검증
+	$("#member_pw2").on("change", function() {
+		if($("#member_pw").val() == $("#member_pw2").val()) {
+			$("#checkPasswd2Result").html("비밀번호 일치").css("color", "green");
+			passwd2Status = true;
+		} else {
+			$("#checkPasswd2Result").html("비밀번호 불일치").css("color", "red");
+			passwd2Status = false;
+		}
+	});
+	
+	// 이름 검증
+	$("#member_name").on("change", function() {
+		let name = $("#member_name").val(); 
+		// 한글 2 ~ 5글자
+		let regex = /^[가-힣]{2,5}$/;
+		
+		if(!regex.exec(name)) {
+			$("#checkNameResult").html("한글 2 ~ 5자를 입력하세요.").css("color", "red");
+			$("#member_name").select(); 
+			nameStatus = false;
+		} else {
+			$("#checkNameResult").html("사용 가능한 이름 입니다.").css("color", "green");
+			nameStatus = true;
+		}
+	});
+	
+	
+	
+	$("form").submit(function() {
+		if(!nameStatus) {
+			alert("이름을 확인하세요");
+			$("#member_name").focus();
+			return false;
+		} else if(!idStatus) {
+			alert("아이디를 확인하세요");
+			$("#member_id").focus();
+			return false;
+		} else if(!passwdStatus) {
+			alert("비밀번호를 확인하세요");
+			$("#memeber_pw").focus();
+			return false;
+		} else if(!passwd2Status) {
+			alert("비밀번호확인을 확인하세요");
+			$("#member_pw2").focus();
+			return false;
+		} else if($("#member_address1").val() == "") {
+			alert("주소를 입력하세요");
+			$("#member_address1").focus();
+			return false;
+		} else if($("#member_address2").val() == "") {
+			alert("상세주소를 입력하세요");
+			$("#member_address2").focus();
+			return false;
+		} else if($("#member_bday").val() == "") {
+			alert("주소를 입력하세요");
+			$("#member_bday").focus();
+			return false;
+		} else if($("#member_tel").val() == "") {
+			alert("주소를 입력하세요");
+			$("#member_tel").focus();
+			return false;
+		}
+		
+		return true;
+		
+	});
+	
+	
+	
+	
+});
+
+
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -31,77 +176,65 @@
 
 							<div class="join-detail">
 								<label class="label-input" for="id"> <span>아이디</span>
-								<input type="text" id="join-id" name="member_id" class="input" placeholder="아이디 입력해주세요">
-							    <span></span>
+								<input type="text" id="member_id" name="member_id" class="input" placeholder="아이디 입력해주세요">
 								</label>
+							    <span id="checkIdResult"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass"> <span>비밀번호</span>
-									<input type="password" id="join-pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
-									<span></span>
+									<input type="password" id="member_pw" name="member_pw" class="input" placeholder="영문, 숫자, 특수문자 중 2개 조합 8자 이상">
 								</label>
+									<span id="checkPasswdResult"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="pass2"> 
 								<span>비밀번호 확인</span> 
-								<input type="password" id="join-pw2" name="password2" class="input" placeholder="위에 입력한 비밀번호를 다시 입력해주세요">
-								<span></span>
+								<input type="password" id="member_pw2" name="member_pw2" class="input" placeholder="위에 입력한 비밀번호를 다시 입력해주세요">
 								</label>
+								<span id="checkPasswd2Result"></span>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="username"> <span>이름</span>
-									<input type="text" id="join-name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
-									 <span></span>
+									<input type="text" id="member_name" name="member_name" class="input" value="" placeholder="실명을 입력해주세요">
 								</label>
+									 <span id="checkNameResult"></span>
 							</div>
-							
-							
 							<div class="join-detail">
-								<label class="label-input" for="username"> <span>성별</span>
-									<div class="gender-select">
-										<input type="radio" class="gender" name="member_gender" value="남" id="female" onclick=""><label for="member_gender">남 </label>
-										<input type="radio" class="gender" name="member_gender" value="여" id="male" onclick=""><label for="member_gender">여 </label>
-									</div>
-								</label>
-							</div>
-							
-							<div class="join-detail">
-			                    <label class="label-input" for="phone" style="width:320px;display:inline-block;">
-			                        <span>우편번호</span>
-			                        <input type="text" style="width:140px;display:inline-block;" id="join-post" name="postSearch" class="input" placeholder="우편번호입력">
+			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
+			                        <span>주소</span>
+			                        <input type="text" style="width:200px;display:inline-block;" id="member_address1" name="member_address1" class="input" placeholder="주소입력">
 			                        <span></span>
 			                    </label>
-			                    <a href="#" class="btnsub btnsms" id="postSearch">우변번호 검색</a>
+			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
-							<div class="join-detail">
-								<label class="label-input" for="address"> <span>주소</span>
-									<input type="text" id="join-add" name="member_address" class="input" value="" placeholder="주소입력">
-									
+							<div class="join-detail" style="margin-top:-10px">
+								<label class="label-input" for="address"> <span>상세주소</span>
+									<input type="text" id="member_address2" name="member_address2" class="input" value="" placeholder="상세주소입력">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="join-id2" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력">
+									<input type="text" id="member_email" name="member_email" class="input" value="${email }" placeholder="인증받은 이메일자동입력" readonly="readonly">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="bday"> <span>생년월일</span>
-									<input type="text" id="join-bday" name="member_bday"
+									<input type="text" id="member_bday" name="member_bday"
 									class="input input-numeric" placeholder="예) 20170101">
 									<span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="phone"> <span>휴대폰번호</span>
-									<input type="text" id="join-phone" name="member_tel"
+									<input type="text" id="member_tel" name="member_tel"
 									class="input input-numeric" placeholder="휴대폰번호 입력"> <span></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
-									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+									<div class="" style="margin-left: 100px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="member_prefer_branch" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(resources/images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<option value="부산점">부산점</option>
@@ -162,8 +295,7 @@
 							 <input type="hidden" id="isPayment" name="isPayment" value="0">
 							<input type="hidden" id="smsRequest" name="smsRequest" value="">
 							<input type="hidden" id="token" name="token" value="">
-							
-							
+						</div>	
 						<input type="submit" value="회원가입" id="btn-join2" class="btn-join">
 					</form>
 				</div>
