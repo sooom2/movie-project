@@ -39,30 +39,6 @@
 		}
 	}
 	
-	function selectCinema(){
-		$.ajax({
-			type: "POST",
-			url: "screenSelect",
-			data: {
-				cinema_code: $(".cinema_name option:selected").val(),
-			  	cinema_name: $(".cinema_name option:selected").text()
-			},
-			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-				
-				$('.selectScreen_name option').remove();
-				$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
-				$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
-				for(var i=0; i<result.length; i++){
-					$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
-				}
-				
-			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		     
-			}
-		});//ajax
-	}
 
 </script>
 </head>
@@ -125,8 +101,7 @@
 														<label for="cinema_name"></label> <select
 															name="sch_cinema_code" onchange="selectCinema()"
 															style="margin-top: 0px; !important">
-															<option value="none" selected="selected" disabled>극장
-																선택</option>
+															<option value="none" selected="selected" disabled>극장 선택</option>
 															<option value="none" disabled>=======================</option>
 															<c:forEach var="cinema" items="${cinemaList }">
 																<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
