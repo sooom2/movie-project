@@ -23,12 +23,6 @@ public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
 	
-	//영화예매관리
-	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String admin_movie_comming_register() {
-		return "admin/admin_movie_comming_register";
-	}
-	
 	
 	
 	//영화관리페이지
@@ -39,6 +33,19 @@ public class MovieRegisterController {
 		model.addAttribute("movieList", movieList);
 		return "admin/admin_movie_register";
 	}
+	
+	//영화상영예정작관리
+	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String admin_movie_comming_register(Model model) {
+		List<HashMap<String, String>> movieList = movieRegisterService.selectCommingMovies();
+		model.addAttribute("movieList", movieList);
+		
+		return "admin/admin_movie_comming_register";
+	}
+	
+	
+	
+	
 	
 	//영화(1개)조회
 	@RequestMapping(value = "selectMovie", method = {RequestMethod.GET, RequestMethod.POST})
