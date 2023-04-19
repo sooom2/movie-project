@@ -70,7 +70,8 @@
 				<input type="hidden" id="TicketNm" name="TicketNm" value="성인">
 				<input type="hidden" id="TicketAmt" name="TicketAmt" value="7000.0000">
 				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="1">
-				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="7000">
+<!-- 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="7000"> -->
+				<input type="hidden" id="totalAmt" name="totalAmt" value="1000">
 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 1명">
 				
 				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
@@ -119,43 +120,38 @@
 														<div class="list">
 															<label class=""> 
 															<input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span></label>
-															
 															<label class=""> 
 															<input type="radio"class="c-radio rdoTicket" name="T001260" value="1" data-no="0"> <span>1</span>
 															</label>
-															
 															<label class="">
 															<input type="radio" class="c-radio rdoTicket" name="T001260" value="2" data-no="0"> <span>2</span>
-															
 															</label>
-															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="3" data-no="0"> <span>3</span></label>
-																
-																<label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001260" value="4" data-no="0"> <span>4</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001260" value="5"
-																data-no="0"> <span>5</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001260" value="6" data-no="0"> <span>6</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001260" value="7"
-																data-no="0"> <span>7</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001260" value="8" data-no="0"> <span>8</span>
+															<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="3" data-no="0"> <span>3</span>
 															</label>
+															<label class="">
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="4" data-no="0"> <span>4</span>
+															</label>
+															<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="5" data-no="0"> <span>5</span></label>
+															<label class="">
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="6" data-no="0"> <span>6</span>
+														</label>
+														<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="7" data-no="0"> <span>7</span></label>
+															<label class="">
+															<input type="radio" class="c-radio rdoTicket" name="T001260" value="8" data-no="0"> <span>8</span>
+														</label>
 														</div>
 														<div class="t1">경로(만65세이상)</div>
 														<div class="list">
 															<label class=""> 
 															<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span>
 															</label>
-																<label
-																class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001261" value="1"
-																data-no="1"> <span>1</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001261" value="2" data-no="1"> <span>2</span>
+																<label class=""> 
+																<input type="radio" class="c-radio rdoTicket" name="T001261" value="1" data-no="1"> <span>1</span></label>
+																<label class="">
+																<input type="radio" class="c-radio rdoTicket" name="T001261" value="2" data-no="1"> <span>2</span>
 															</label><label class=""> <input type="radio"
 																class="c-radio rdoTicket" name="T001261" value="3"
 																data-no="1"> <span>3</span></label><label class="">
@@ -316,8 +312,13 @@
 	let y = 36; 			// 좌석 y축
 	let asc = 65;			// 아스키코드 65 == 'A'
 	let schCd = $("#schCd").val();
-
 	
+	var totalAmt = 0;
+	var nAmt = 0;
+	var oAmt = 0;
+	var yAmt = 0;
+
+
 // reservationList에서 res_seat_line, res_seat_num 값 select 후
 // 데이터 존재시 버튼 컬러 변경 , disabled 속성 추가
 function reservationList() {
@@ -432,29 +433,59 @@ function reservationList() {
 			str += "</button>";
 			str += "</li>";
 			
-			
 			$("#choiceList").append(str);
 			
 		});
 		
 		
-		// 인원선택 별 티켓 금액
-		$("#priceList").on("click", function(e){
-			var pCheck = $('input:radio[name=T001260]').is(':checked');
-			if(pCheck) {
-				
+		
+		
+		// 성인 요금
+		$("input:radio[name=T001260]").on("change", function(e){
+			var price = 10000;
+			var Check = $(this).is(":checked");
+			if(Check) {
+				totalAmt -= nAmt;
+				nAmt = $(this).val() * price;
+				console.log("nCheck amt: " + nAmt);
+				totalAmt += nAmt;
+				$("#totalAmt").val(totalAmt);
+				$(".totalAmt").hide();
+				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
+			}
+		});
+		// 경로 요금
+		$("input:radio[name=T001261]").on("change", function(e){
+			var price = 10000;
+			var Check = $(this).is(":checked");
+			if(Check) {
+				totalAmt -= oAmt;
+				oAmt = $(this).val() * price;
+				console.log("oCheck amt: " + oAmt);
+				totalAmt += oAmt;
+				$("#totalAmt").val(totalAmt);
+				$(".totalAmt").hide();
+				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
+			}
+		});
+		
+		// 청소년 요금
+		$("input:radio[name=T001262]").on("change", function(e){
+			var price = 10000;
+			var Check = $(this).is(":checked");
+			if(Check) {
+				totalAmt -= yAmt;
+				yAmt = $(this).val() * price;
+				console.log("yCheck amt: " + yAmt);
+				totalAmt += yAmt;
+				$("#totalAmt").val(totalAmt);
+				$(".totalAmt").hide();
+				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
 		
 		
-		
-// 		성인 경로 청소년
-// 		<input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span>
-// 		<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span>
-// 		<input type="radio" class="c-radio rdoTicket" name="T001262" value="0" data-no="2" checked=""> <span>0</span>
-		
 	});
-
 
 
 
