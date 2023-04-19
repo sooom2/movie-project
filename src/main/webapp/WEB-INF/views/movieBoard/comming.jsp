@@ -49,6 +49,7 @@
 		</div>
 	</div>
 <script type="text/javascript">
+// 클릭시 on up에 따른 class add/remove
   $(document).ready(function () {
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
             $(this).parent().addClass("on");
@@ -69,7 +70,6 @@
 //         $("ul>li a.rsv", "div.comming").click(function (e) {
 //             e.preventDefault();
 //             var movieCode = $(this).closest("li").data("moviecode");
-
 //             $.desktop.reserve.openMovie({
 //                 movieCode: movieCode
 //             });
@@ -79,48 +79,36 @@
 			
 var $likeBtn = $('.icon.heart');
 $likeBtn.click(function() {
-
+	// ajax -> likeInsert(@controller)
+	// ajax : context : this를 써줘야 success에서 this 사용 가능
 	var info_movie_code = $(this).closest("li").data("moviecode")+"";
 	
-	//hasclass랑 중첩
-	//
 	$likeBtn.toggleClass('active');
-		
-	if ($likeBtn.hasClass('active')) {
-		// ajax -> likeInsert(@controller)
-		// ajax : context : this를 써줘야 success에서 this 사용 가능
-		$.ajax({
-			url : 'likeInsert',
-			type : 'GET',
-			dataType : 'text',
-			context : this,
-			data : {
-				info_movie_code : info_movie_code
-			},
-			success : function(result){
-				// 두가지 실행해야함
-				// member_like : insert
-				// movie_like_count : update
-				// 성공했을때 찜하기 완료 표시
-		
+	
+	$.ajax({
+		url : 'likeInsert',
+		type : 'GET',
+		context : this,
+		data : {
+			info_movie_code : info_movie_code
+		},
+		success : function(result){
+			alert(result.msg)
+			
+			if(result.resultType == "insert"){
 				$(this).find('img').attr({
-				'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-				alt : '찜하기 완료'}),
-				$(this).find('span').html(result)
+					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+					alt : '찜하기 완료'
+				})
+			}else{
+				$(this).find('img').attr({
+					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+					alt : "찜하기"
+				})
 			}
-		}) 
-		
-								
-	} else {
-		// 좋아요 버튼을 클릭했을때 active가 아니면~ 부분
-		
-		//fas 
-		
-		$(this).find('img').attr({
-			'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-			alt : "찜하기"
-		})
-	}
+			$(this).find('span').html(result.like_count)
+		}
+	}) 
 });
 </script>
 	<jsp:include page="../footer.jsp"/>

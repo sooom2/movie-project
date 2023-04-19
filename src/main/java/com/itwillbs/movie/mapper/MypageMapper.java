@@ -32,11 +32,4 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> payList(String id);
 
-
-
-
-	
-	//좋아요 기능
-	int likeInsert(HashMap<String, String> like);
-
 }

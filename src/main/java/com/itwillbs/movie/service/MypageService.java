@@ -51,13 +51,6 @@ public class MypageService {
 	public List<HashMap<String, String>> movieList(String id) {
 		return mapper.movieList(id);
 	}
-	
-	// 좋아요 카운트 기능
-	// comming에서 작업중
-	// MovieController 담당
-	public int likeInsert(HashMap<String, String> like) {
-		return mapper.likeInsert(like);
-	}
 
 	public int insertPoint(String id) {
 		return mapper.insertPoint(id);

@@ -90,23 +90,7 @@
 					(SELECT member_prefer_genre 
                         FROM member 
                         WHERE member_id = #{id}),"%"));
-  			 
   	</select>
-  	
-  	<!-- 좋아요 버튼 기능 -->
-	<insert id="likeInsert">
-		INSERT INTO like_movie
-			VALUES(
-				 CONCAT(
-				 	#{info_movie_code}
-				 	,"_"
-				 	,#{member_id}
-			 		)
-				, #{info_movie_code}
-				, #{member_id}
-				, now()			
-			)
-	</insert>
   	<insert id= "insertPoint" >
 		INSERT 
   			INTO point

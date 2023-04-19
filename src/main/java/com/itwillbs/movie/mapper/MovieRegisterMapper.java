@@ -21,9 +21,6 @@ public interface MovieRegisterMapper {
 	HashMap<String, String> selectMovie(String info_movie_code);
 	//영화 상세정보 - 리뷰
 	HashMap<String, String> selectMovieReview(String info_movie_code);
-	//영화 좋아요 카운트
-	int likeUpdate(HashMap<String, String> like);
-	
 	
 	//스케쥴상세
 	HashMap<String, String> selectSchMovie(String sch_code);
