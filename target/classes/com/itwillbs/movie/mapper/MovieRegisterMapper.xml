@@ -25,6 +25,8 @@ SELECT *
 		now()
 			BETWEEN info_showdate
 			AND	info_enddate
+	ORDER BY
+			info_showdate DESC
 </select>
 
 <!-- 상영 예정영화 조회 -->

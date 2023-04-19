@@ -542,6 +542,7 @@ a:link {
 }
 
 .like-btn .icon {
+	width : 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
