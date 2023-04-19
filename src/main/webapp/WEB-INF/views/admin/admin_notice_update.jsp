@@ -40,7 +40,6 @@
 	}
 	
 	function selectCinema(){
-		alert("change");
 		$.ajax({
 			type: "POST",
 			url: "screenSelect",
@@ -120,21 +119,24 @@
 											</div>
 										</div>
 										<div class="col-md-6 ">
-											<div class="form-floating mb-3 mb-md-0 selectbox">
-												<div class="cinema_name">
-													<label for="cinema_name">영화관명 : </label> <select
-														name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을
-															선택하세요</option>
-														<option value="none" disabled>=======================</option>
+											<div class="dropdown bootstrap-select">
+												<div class="form-floating mb-3 mb-md-0 selectbox">
+													<div class="cinema_name">
+														<label for="cinema_name"></label> <select
+															name="sch_cinema_code" onchange="selectCinema()"
+															style="margin-top: 0px; !important">
+															<option value="none" selected="selected" disabled>극장
+																선택</option>
+															<option value="none" disabled>=======================</option>
+															<c:forEach var="cinema" items="${cinemaList }">
+																<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+															</c:forEach>
+														</select>
 														<c:forEach var="cinema" items="${cinemaList }">
-															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+															<input type="hidden" name="location_code"
+																value="${cinema.get('location_code') }">
 														</c:forEach>
-													</select>
-													<c:forEach var="cinema" items="${cinemaList }">
-														<input type="hidden" name="location_code"
-															value="${cinema.get('location_code') }">
-													</c:forEach>
+													</div>
 												</div>
 											</div>
 										</div>

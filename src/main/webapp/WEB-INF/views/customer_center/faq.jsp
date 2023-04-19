@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,39 @@
 						</div>
 						<!-- 					<span class="arrow"></span> -->
 					</div>
+					======================================================
+					<div class="table-wrap">
+					<table class="board-list">
+						<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
+						<colgroup>
+							<col style="width: 72px;">
+							<col style="width: 133px;">
+							<col style="width: 95px;">
+							<col>
+							<col style="width: 116px;">
+						</colgroup>
+						<thead>
+							<tr style="line-height: 38px">
+								<th scope="col">번호</th>
+								<th scope="col">구분</th>
+								<th scope="col">제목</th>
+								<th scope="col">등록일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="faqBoard" items="${faqBoardList }">
+								<tr data-index="0">
+									<td>${faqBoard.faq_code }</td>
+									<td>${faqBoard.faq_group }</td>
+									<td id="faq_question"><a
+										href="faq_detail?faq_code=${faqBoard.faq_code }&pageNum=${pageNum }">${faqBoard.faq_question }</a>
+									</td>
+									<td>${faqBoard.faq_write_date }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 					======================================================
 					<div class="table-wrap">
 						<table class="board-list">

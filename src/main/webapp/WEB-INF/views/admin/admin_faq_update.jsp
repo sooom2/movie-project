@@ -39,30 +39,40 @@
 		}
 	}
 	
-	function selectCinema(){
-		alert("change");
-		$.ajax({
-			type: "POST",
-			url: "screenSelect",
-			data: {
-				cinema_code: $(".cinema_name option:selected").val(),
-			  	cinema_name: $(".cinema_name option:selected").text()
-			},
-			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-				
-				$('.selectScreen_name option').remove();
-				$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
-				$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
-				for(var i=0; i<result.length; i++){
-					$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
+	function selectCinema() {
+
+		$
+			.ajax({
+				type : "POST",
+				url : "screenSelect",
+				data : {
+					cinema_code : $(".cinema_name option:selected").val(),
+					cinema_name : $(".cinema_name option:selected").text()
+				},
+				success : function(result) { // 요청 처리 성공시 자동으로 호출되는 콜백함수
+	
+					$(".selectScreen_name option").remove();
+					$(".selectScreen_name")
+							.append(
+									'<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+					$(".selectScreen_name")
+							.append(
+									'<option value="none" disabled>=======================</option>');
+					for (var i = 0; i < result.length; i++) {
+						$(".selectScreen_name").append(
+								'<option value="' +result[i].screen_code + '">'
+										+ result[i].screen_name
+										+ '</option');
+					}
+	
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:"
+							+ error);
+	
 				}
-				
-			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		     
-			}
-		});//ajax
+			});//ajax
 	}
 
 </script>
