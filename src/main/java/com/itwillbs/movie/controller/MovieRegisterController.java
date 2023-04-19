@@ -6,8 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itwillbs.movie.service.MovieRegisterService;
 
 @Controller
 public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
+	
 	
 	
 	
@@ -160,6 +165,8 @@ public class MovieRegisterController {
 	//영화일정목록 
  	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleRegister(Model model) {
+ 		
+ 		
 		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule();
 		model.addAttribute("scheduleList", scheduleList);
 		System.out.println(scheduleList);
@@ -167,15 +174,37 @@ public class MovieRegisterController {
 		return "admin/admin_movie_schedule";
 	}
  	
- 	@GetMapping("schDeletePro")
-	public String schDelete() {
- 		
- 		
+ 	
+	//상영스케쥴 삭제
+	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteSchedule(@RequestParam String sch_code,Model model) {
+		
+		
+		int deleteCount = movieRegisterService.deleteSchedule(sch_code);	
+		
+		
+		
 		
 		return "redirect:/admin_schedule_register";
 	}
- 	
- 	
+ 	 	
+	
+	//상영스케쥴 삭제
+	@ResponseBody
+	@GetMapping("deleteDateSch")
+	public Map<String, Object> deleteDateSch(@RequestParam String date,Model model) throws JsonProcessingException {
+		
+		
+		int deleteCount = movieRegisterService.deleteDateSch(date);	
+		Map<String, Object> response = new HashMap<>();
+	    
+		   
+		response.put("deleteCount", deleteCount);
+		   
+		return response;
+			
+	}
+	
  	
  	
  	
@@ -197,7 +226,7 @@ public class MovieRegisterController {
  		return "admin/admin_movie_schedule";
  	}
  	
- 	//상영관정렬
+ 	//영화이름정렬
  	@RequestMapping(value = "movieNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String movieNameSort(Model model) {
  		List<HashMap<String, String>> scheduleList = movieRegisterService.movieNameSort();
@@ -206,7 +235,7 @@ public class MovieRegisterController {
  	}
  	
  	
- 	//상영관정렬
+ 	//상영일자정렬
  	@RequestMapping(value = "schDateSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String schDateSort(Model model) {
  		List<HashMap<String, String>> scheduleList = movieRegisterService.schDateSort();
@@ -241,16 +270,7 @@ public class MovieRegisterController {
 	}
 	
 	
-	//영화삭제
-	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteSchedule(@RequestParam String sch_code,Model model) {
-		
-		
-		int deleteCount = movieRegisterService.deleteSchedule(sch_code);	
-		
-		return "redirect:/admin_schedule_register";
-	}
- 	 	
+
 	// 영화 정보 수정
 	@RequestMapping(value = "updateSchedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateSchedule(@RequestParam HashMap<String, String> schedule, Model model) throws ParseException {
@@ -294,11 +314,7 @@ public class MovieRegisterController {
 
 
 	// 영화 페이지 정렬=============================================================================
-	//지점명정렬
-	
-//	     
-	
-	
+	// 토글은 안됨..
 	// 영화코드정렬
  	@GetMapping(value = "infoMovieCodeSort")
  	public String infoMovieCodeSort(Model model) {
@@ -306,7 +322,7 @@ public class MovieRegisterController {
  		model.addAttribute("movieList", movieList);
  		return "admin/admin_movie_register";
  	}
- // 영화코드정렬
+ 	// 영화코드정렬
   	@GetMapping(value = "infoMovieNameSort")
   	public String infoMovieNameSort(Model model) {
   		List<HashMap<String, String>> movieList = movieRegisterService.infoMovieNameSort();
@@ -348,9 +364,53 @@ public class MovieRegisterController {
  	}
  	
  	
+ 	//상영종료된 목록movieEndSchedule
+ 	@GetMapping("movieEndSchedule")
+ 	public String movieEndSchedule(Model model) {
+ 		
+// 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
+ 		int insertCount = movieRegisterService.insertSchedule_end();
+ 		if(insertCount > 0) {
+ 			int delCount = movieRegisterService.endSchedule_del();
+ 		}
+ 		//상영종료테이블에서LIST
+ 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
+ 		
+ 		model.addAttribute("endSchList", endSchList);
+ 		System.out.println(endSchList);
+ 		return "admin/admin_movie_schedule_endList";
+ 	}
  	
-	
+ 	
+// 	//상영종료된 값 스케쥴링	
+// 	@Component
+// 	public class ScheduledTask {
+// 	    @Scheduled(fixedRate = 10000 * 6 *60 *24) // 하루마다 실행
+// 	    public void executeTask() {
+// 	    	//1. 상영종료된 정보들을 조회 (schedule 테이블)
+// 	    	//2. 상영종료된 정보들을 schedule_end 테이블로이동
+// 	    	//3. schedule 테이블에서 삭제
+// 	    	
+// 	    	List<HashMap<String, String>> endSch = movieRegisterService.selectEndSch();
+// 	    	System.out.println(endSch);
+// 	    	for (HashMap<String, String> sch : endSch) {
+// 	    		
+//	 	    	sch.put("sch_screen_code", endSch.get("sch_screen_code"));
+//	 	    	sch.put("sch_cinema_code", "상영관");
+//	 	    	sch.put("sch_movie_code", "상영관 번호");
+//	 	    	sch.put("sch_movie_date", "상영 시작 시간");
+//	 	    	sch.put("sch_last_time", "상영 시작 시간");
+//	
+//	 	    	endSch.add(sch);
+//	 	    	
+// 	    	}
+// 	    }
+// 	}
+ 	
 }
+
+
+
 
 
 

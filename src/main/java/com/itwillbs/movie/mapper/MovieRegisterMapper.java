@@ -57,6 +57,7 @@ public interface MovieRegisterMapper {
 	
 	//영화 상영일정 삭제
 	int deleteSchedule(String sch_code);
+	int deleteDateSch(String date);
 
 	int movieScheduleUpdate(HashMap<String, String> schedule);
 
@@ -73,6 +74,15 @@ public interface MovieRegisterMapper {
 	List<HashMap<String, String>> infoShowDateSort();
 	List<HashMap<String, String>> infoEndDateSort();
 	List<HashMap<String, String>> infoStorySort();
+
+	List<HashMap<String, String>> endSchList();
+
+	int insertSchedule_end();
+
+	int endSchedule_del();
+
+//	List<HashMap<String, String>> selectEndSch();
+
 
 
 }
