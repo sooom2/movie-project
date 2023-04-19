@@ -23,9 +23,9 @@
 		  ,notice_write_date 
 		FROM notice_board
 		LEFT JOIN cinema
-		ON cinema.cinema_name = notice_board.cinema_name
+			   ON cinema.cinema_name = notice_board.cinema_name
 		LEFT JOIN location 
-		ON location.location_code = cinema.location_code
+		       ON location.location_code = cinema.location_code
 		ORDER BY notice_write_date desc
 		LIMIT 5
 	</select>
@@ -39,40 +39,11 @@
 	
 	<!--  날짜 선택하면 그날에 맞는 상영일정 보일수 있게  -->
 	<select id="schList" resultType="hashmap">
-<!-- 		SELECT  -->
-<!-- 			    schedule.sch_movie_date -->
-<!-- 			  , DATE_FORMAT(schedule.sch_start_time, '%H:%i') AS sch_start_time -->
-<!--   			  , DATE_FORMAT(schedule.sch_last_time, '%H:%i') AS sch_last_time -->
-<!-- 			  , cinema.cinema_name -->
-<!-- 			  , cinema.cinema_code -->
-<!-- 			  , CASE movieInfo.info_rating													 -->
-<!-- 		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x' -->
-<!-- 		WHEN '15세관람가' 					THEN 'rate-15' -->
-<!-- 		WHEN '12세관람가' 					THEN 'rate-12' -->
-<!-- 		WHEN '전체관람가' 					THEN 'rate-all'  -->
-<!-- 		ELSE '' -->
-<!-- 		END AS 'rate' -->
-<!-- 			  , movieInfo.info_movie_code -->
-<!-- 			  , movieInfo.info_movie_title -->
-<!-- 			  , screen.seat_sum -->
-<!-- 			  , screen.screen_name -->
-<!-- 			  , schedule.sch_screen_code -->
-<!-- 		 FROM schedule  -->
-<!-- 	LEFT JOIN cinema  -->
-<!-- 		   ON cinema.cinema_code = schedule.sch_cinema_code -->
-<!-- 	LEFT JOIN movieInfo -->
-<!-- 		   ON movieInfo.info_movie_code = schedule.sch_movie_code -->
-<!-- 	LEFT JOIN screen -->
-<!-- 	       on screen.screen_code = schedule.sch_screen_code -->
-<!-- 	       where 1=1 -->
-<!-- 	       and sch_cinema_code = #{cinema_code} -->
-<!-- 	       and sch_movie_date=#{date} -->
-<!-- 	  ORDER BY schedule.sch_screen_code; -->
 
 
-		SELECT A.*
-    
-	 , group_concat(concat(sch_start_time, ' ~ ', sch_last_time) SEPARATOR '/') AS times 
+ SELECT A.*
+      , group_concat(concat(sch_start_time) SEPARATOR '/') AS starttimes
+	  , group_concat(concat(sch_last_time) SEPARATOR '/') AS lasttimes
 	  , group_concat(concat(screen_name) SEPARATOR '/') AS names
 	
   FROM (
@@ -108,6 +79,8 @@
 			       ORDER BY info_movie_title
 		) A 
  			GROUP BY info_movie_title, sch_screen_code;
+ 			
+ 			
 	</select>
 	
 	<!-- 선호영화관 찾기 -->

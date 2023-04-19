@@ -176,22 +176,21 @@
 					           datatype: "json",
 					           success: function(data) {
 					        	   
-					        	   console.log(data);
-					        	    
+					        	   
+					        	   
 					        	    var html = '';
 					        	    
-					        	    if (data.length === 0) {
+					        	    console.log(data.length);
+					        	    if (data.length == 0) {
 					        	        $('.each-movie-time').html('<span style="font-size: 23px;text-align:center">상영 일정이 존재하지 않습니다.</span>');
-					        	        return;
+					        	    	return;
 					        	    }
 					        	   
 					        	    for (var i = 0; i < data.length; i++) {
-					        	    	var screenNames = [];
 					        	        html += '';
 					        	        html += '<div class="movie-title">';
 					        	        html += '<span class="' + data[i].rate + '">15</span>' + data[i].info_movie_title;
 					        	        html += '</div>';
-					        	        
 					        	        
 					        	        // 스크린명마다 타임블록 for 문돌리기
 					        	        // ===================== 스크린명
@@ -203,9 +202,20 @@
 					        	        // ===================== 스크린명
 
 					        	        // ====================== 타임블록
+					        	        
+					        	        
+										let starttime = data[i].starttimes.split("/");
+										let lasttime = data[i].lasttimes.split("/");
+										
+										
 					        	        html += '<div class="time-block">';
-					        	        html += '<div class="time" data-playdate="' + data[i].sch_movie_date + '" data-theatercode="' + data[i].sch_screen_code + '" data-moviecode="' + data[i].info_movie_code + '">';
-					        	        html += '<a href="reservation">' + data[i].sch_start_time + '<span class="to"> ~ ' + data[i].sch_last_time + '</span> <span class="seats-status">45 / ' + data[i].seat_sum + '</span></a></div>';
+// 					        	        html += '<div class="time" data-playdate="' + data[i].sch_movie_date + '" data-theatercode="' + data[i].sch_screen_code + '" data-moviecode="' + data[i].info_movie_code + '">';
+										for(var j=0; j < starttime.length;j++){
+					        	        html += '<div class="time">';
+					        	        html += '<a href="reservation">' + starttime[j] + '<span class="to"> ~ ' + lasttime[j] + '</span> <span class="seats-status">45 / ' + data[0].seat_sum + '</span></a></div>';
+										}
+					        	       
+					        	        
 					        	        // ====================== 타임블록
 					        	        
 					        	        html += '</div>';
@@ -213,7 +223,8 @@
 					        	        html += '</div>';
 					        	        
 					        	    }
-					               $('.each-movie-time').empty();
+					        	    $('.each-movie-time').empty();
+					        	    
 					               // 생성한 HTML을 해당 요소에 삽입
 					               $('.each-movie-time').append(html);
 					        	},

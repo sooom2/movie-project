@@ -111,6 +111,8 @@ public class CinemaController {
 	public String schList(String cinema_code, String date,Model model) throws JsonProcessingException{
 		ObjectMapper objectMapper = new ObjectMapper();
 		SimpleModule module = new SimpleModule();
+		
+		
 		module.addSerializer(Time.class, new JsonSerializer<Time>() {
 		    @Override
 		    public void serialize(Time value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
@@ -126,6 +128,9 @@ public class CinemaController {
 		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code, date);
 
 		String schListJson = objectMapper.writeValueAsString(schList);
+		
+
+		
 		System.out.println(schListJson);
 		
 //		schListJson.
