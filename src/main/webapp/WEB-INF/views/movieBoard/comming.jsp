@@ -86,7 +86,7 @@ $likeBtn.click(function() {
 	$likeBtn.toggleClass('active');
 	
 	$.ajax({
-		url : 'likeInsert',
+		url : 'likeClick',
 		type : 'GET',
 		context : this,
 		data : {
@@ -100,7 +100,7 @@ $likeBtn.click(function() {
 					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
 					alt : '찜하기 완료'
 				})
-			}else{
+			}else if(result.resultType = "delete"){
 				$(this).find('img').attr({
 					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
 					alt : "찜하기"
