@@ -147,9 +147,10 @@
 														</div>
 														<div class="t1">경로(만65세이상)</div>
 														<div class="list">
-															<label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001261" value="0"
-																data-no="1" checked=""> <span>0</span></label><label
+															<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span>
+															</label>
+																<label
 																class=""> <input type="radio"
 																class="c-radio rdoTicket" name="T001261" value="1"
 																data-no="1"> <span>1</span></label><label class="">
@@ -174,9 +175,10 @@
 														</div>
 														<div class="t1">청소년</div>
 														<div class="list">
-															<label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001262" value="0"
-																data-no="2" checked=""> <span>0</span></label><label
+															<label class=""> 
+															<input type="radio" class="c-radio rdoTicket" name="T001262" value="0" data-no="2" checked=""> <span>0</span>
+															</label>
+																<label
 																class=""> <input type="radio"
 																class="c-radio rdoTicket" name="T001262" value="1"
 																data-no="2"> <span>1</span></label><label class="">
@@ -313,9 +315,6 @@
 	let left = 36;			// 좌석 x축
 	let y = 36; 			// 좌석 y축
 	let asc = 65;			// 아스키코드 65 == 'A'
-// 	let resSeatLine = "";	// 예약한 행
-// 	let resSeatNum = "";	// 예약한 열
-// 	let resSeat = "";
 	let schCd = $("#schCd").val();
 
 	
@@ -439,14 +438,20 @@ function reservationList() {
 		});
 		
 		
+		// 인원선택 별 티켓 금액
+		$("#priceList").on("click", function(e){
+			var pCheck = $('input:radio[name=T001260]').is(':checked');
+			if(pCheck) {
+				
+			}
+		});
 		
 		
 		
-		
-		
-		
-		
-		
+// 		성인 경로 청소년
+// 		<input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span>
+// 		<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span>
+// 		<input type="radio" class="c-radio rdoTicket" name="T001262" value="0" data-no="2" checked=""> <span>0</span>
 		
 	});
 
