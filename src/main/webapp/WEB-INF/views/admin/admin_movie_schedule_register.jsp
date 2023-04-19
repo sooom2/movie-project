@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,17 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"rel="stylesheet"  />
 <link href="resources/css/styles.css" rel="stylesheet" />
+
+
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <script type="text/javascript">
 
 function selectCinema(){
@@ -186,27 +193,6 @@ $(function() {
                                                    </div>
                                              </div>
                                        </div>
-<!--                                        <div class="col-md-6"> -->
-<!--                                       	  <div class="form-floating mb-3 mb-md-0 selectbox"> -->
-<!--                                                    <div class="sch_last_time"> -->
-<!--                                                    	<label for="sch_last_time">상영종료시간 : </label> -->
-<!-- 														<select name="sch_last_time"> -->
-<!-- 														    <option value="11:00">오전 11:00</option> -->
-<!-- 														    <option value="12:00">오후 12:00</option> -->
-<!-- 														    <option value="13:00">오후 1:00</option> -->
-<!-- 														    <option value="14:00">오후 2:00</option> -->
-<!-- 														    <option value="15:00">오후 3:00</option> -->
-<!-- 														    <option value="16:00">오후 4:00</option> -->
-<!-- 														    <option value="17:00">오후 5:00</option> -->
-<!-- 														    <option value="18:00">오후 6:00</option> -->
-<!-- 														    <option value="19:00">오후 7:00</option> -->
-<!-- 														    <option value="20:00">오후 8:00</option> -->
-<!-- 														    <option value="21:00">오후 9:00</option> -->
-<!-- 														    <option value="22:00">오후 10:00</option> -->
-<!-- 														</select> -->
-<!--                                                    </div> -->
-<!--                                              </div> -->
-<!--                                        </div> -->
                                 </div>     
                                       
                                 		<div class="row">
@@ -215,11 +201,6 @@ $(function() {
 													<input class="btn btn-primary btn-block" type="submit" value="등록">
 												</div>
 											</div>
-<!-- 											<div class="mt-4 mb-0 col-md-6"> -->
-<!-- 												<div class="d-grid"> -->
-<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">취소</a> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
 										</div>
                                    </form>
                                 </div>

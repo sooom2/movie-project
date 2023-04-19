@@ -107,10 +107,6 @@
 						    aTag.setAttribute("href", "#");
 						    aTag.classList.add("selectDate");
 						    
-// 						    if (i === date.getDate()) {
-// 						        aTag.classList.add("selected");
-// 						    }
-						
 						    const spanWeekOfDay = document.createElement("span"); // 요일
 						    const spanDay = document.createElement("span");
 						    

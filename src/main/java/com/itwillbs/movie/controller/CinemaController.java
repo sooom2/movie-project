@@ -182,32 +182,30 @@ public class CinemaController {
 	
 	
 	//회원 로그인 확인 - 
-		@PostMapping(value = "cinemaLoginPro")
-		public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
-		    String memberId = login.get("member_id");
-		    String password = login.get("member_pw");
+	@PostMapping(value = "cinemaLoginPro")
+	public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
+	    String memberId = login.get("member_id");
+	    String password = login.get("member_pw");
 
-		    HashMap<String, String> member = service.checkUser(login);
+	    HashMap<String, String> member = service.checkUser(login);
 
-		    if (member == null) {
-		        model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
-		        return "fail_back";
-		    }
+	    if (member == null) {
+	        model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
+	        return "fail_back";
+	    }
 
-		    String hashedPassword = member.get("member_pw");
-		    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    String hashedPassword = member.get("member_pw");
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-		    if (passwordEncoder.matches(password, hashedPassword)) {
-		        session.setAttribute("sId", memberId);
-		        session.setAttribute("token", "true");
-		        return "redirect:/cinemaList";
-		    }
+	    if (passwordEncoder.matches(password, hashedPassword)) {
+	        session.setAttribute("sId", memberId);
+	        session.setAttribute("token", "true");
+	        return "redirect:/cinemaList";
+	    }
 
-		    model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
-		    return "fail_back";
-		}
-	
-	
+	    model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
+	    return "fail_back";
+	}
 	
 	
 }

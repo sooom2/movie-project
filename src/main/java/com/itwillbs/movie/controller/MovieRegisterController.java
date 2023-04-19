@@ -166,6 +166,19 @@ public class MovieRegisterController {
 		
 		return "admin/admin_movie_schedule";
 	}
+ 	
+ 	@GetMapping("schDeletePro")
+	public String schDelete() {
+ 		
+ 		
+		
+		return "redirect:/admin_schedule_register";
+	}
+ 	
+ 	
+ 	
+ 	
+ 	
  	// 영화일정 페이지 정렬 ======================================================
  	//지점명정렬
  	@RequestMapping(value = "cinemaNameSort", method = {RequestMethod.GET, RequestMethod.POST})
