@@ -23,29 +23,29 @@
 
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<!-- 페이지 들어왔을 때 select 하고 값이 존재하면 '좌석아이디 == 판매완료' -->
-<!-- => css 사용불가 처리 -->
-
+<!-- 추후 수정 -->
+<!-- 선택좌석 취소했을 때 btnCnt값 처리 -->
+<!-- 총인원수랑 선택한 인원수가 같아야 결제하기로 넘어갈 수 있게 하기 -->
 
 	<div class="content">
 			<div class="inner2">
-	<form id="dataForm" method="post" action="/reserve/payment.do">
-				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E">
-				<input type="hidden" id="ssid" name="ssid" value="1DA7259F-E035-43CE-97EB-F590450F2818">
-				<input type="hidden" id="tokn" name="tokn" value="88093167">
-				<input type="hidden" id="hold" name="hold" value="">
+	<form id="dataForm" method="post" action="reservationPay">
+<!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
+<!-- 				<input type="hidden" id="ssid" name="ssid" value="1DA7259F-E035-43CE-97EB-F590450F2818"> -->
+<!-- 				<input type="hidden" id="tokn" name="tokn" value="88093167"> -->
+<!-- 				<input type="hidden" id="hold" name="hold" value=""> -->
 
-				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema">
+<!-- 				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema"> -->
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.movieCd }">
-				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-07">
-				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
+<!-- 				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-07"> -->
+<!-- 				<input type="hidden" id="Sort" name="Sort" value="boxoffice"> -->
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="${param.ScreenCd }">
-				<input type="hidden" id="ShowSeq" name="ShowSeq" value="4">
+				<input type="hidden" id="ShowSeq" name="ShowSeq" value="">
 				
-				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx">
-				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all">
-				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all">
+<!-- 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx"> -->
+<!-- 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all"> -->
+<!-- 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all"> -->
 				
 				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001">
 				<input type="hidden" id="MovieNm" name="MovieNm" value="스즈메의 문단속">
@@ -62,6 +62,7 @@
 				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)">
 					
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg">
+				
 				<input type="hidden" id="HidRating" name="HidRating" value="12">
 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="24.79">
 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08">
@@ -99,6 +100,7 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
+									<h4 class="r-h4">ScreenCd ${param.ScreenCd}</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -275,19 +277,11 @@
 										<div class="choice-list">
 											<strong>선택 좌석</strong>
 											<ul id="choiceList">
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
 											</ul>
 										</div>
 										<div class="bottom">
 											<strong class="totalAmt">총 0원</strong>
-											<button type="button" class="btn-pay btnNext">결제하기</button>
+											<button type="submit" class="btn-pay btnNext">결제하기</button>
 										</div>
 
 										<div class="before" style="display: none;">
@@ -379,6 +373,7 @@ function choiceEvent (e) {
 	var removeData = $(this).data("nm");
 	console.log(removeData);
 	$(this).remove();
+	
 
 	// 선택취소한 좌석 원래대로 돌려놓기
 	$.each($('.sel'), function(index, el){
@@ -552,9 +547,18 @@ function choiceEvent (e) {
 		});
 		
 		
+// 		$(".btn-pay").on("click", function(e) {
+// 			var totalCnt = $("#totalCnt").val
+// 			console.log(btnCnt);
+// 			console.log(totalCnt);
+// 		});
+		
+		
+		
 	});
 
 
+	
 
 
 

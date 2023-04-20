@@ -21,8 +21,9 @@
 
 	<!-- 영화관 - 영화리스트 -->
 	<!-- 각 영화관에 상영하는 영화리스트 출력 -->
+	<!-- 영화제목, 영화코드, 포스터, 관람등급, 개봉일, 장르 -->
 	<select id="selectmoviesList" resultType="hashmap">
-		select distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating
+		select distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating, m.info_showdate, m.info_genre
 			from 
 				cinema c
 			join 
