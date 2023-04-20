@@ -28,9 +28,9 @@ public class MemberService {
 	}
 	
 	//회원목록조회
-	public List<HashMap<String, String>> selectMember() {
-		return mapper.selectMember();
-	}
+//	public List<HashMap<String, String>> selectMember() {
+//		return mapper.selectMember();
+//	}
 
 	//회원추가수정
 //	public int registMember(MemberVO member) {
@@ -89,6 +89,14 @@ public class MemberService {
 
 	public HashMap<String, String> checkId(String id) {
 		return mapper.checkId(id);
+	}
+
+	public List<HashMap<String, String>> selectMember(int startRow, int listLimit,String searchKeyword) {
+		return mapper.selectMember(startRow,listLimit,searchKeyword);
+	}
+
+	public int getMemberListCount(String searchKeyword) {
+		return mapper.selectMemberListCount(searchKeyword);
 	}
 
 
