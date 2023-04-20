@@ -54,14 +54,8 @@
 								<th scope="row"><label for="nonMbTelno">휴대폰 번호<!--휴대폰 번호--></label><em
 									class="font-orange">*</em></th>
 								<td><input type="text" id="nonMbTelno" name="nonMbTelno"
-									maxlength="3" class="input-text w60px numType userData"
-									title="핸드폰번호 첫자리 입력"> <span>-</span> <input type="text"
-									id="nonMbTelno2" name="nonMbTelno2" maxlength="4"
-									class="input-text w70px numType userData" title="핸드폰번호 중간자리 입력">
-									<span>-</span> <input type="text" id="nonMbTelno3"
-									name="nonMbTelno3" maxlength="4"
-									class="input-text w70px numType userData"
-									title="핸드폰번호 마지막자리 입력">
+									maxlength="3" class="input-text w200px numType userData"
+									title="핸드폰번호 입력"><label>숫자만 입력해주세요</label>
 									<div id="nonMbTelnoAlert" class="fc_r mt05 display-none">휴대폰
 										번호를 정확히 입력해주세요.</div></td>
 							</tr>
