@@ -25,6 +25,8 @@ SELECT *
 		now()
 			BETWEEN info_showdate
 			AND	info_enddate
+	ORDER BY
+			info_showdate DESC
 </select>
 
 <!-- 상영 예정영화 조회 -->
@@ -75,6 +77,8 @@ SELECT *
   	 FROM review
 	 WHERE rev_movie_code = #{info_movie_code}
 </select>
+
+
 <select id="selectSchMovie" resultType="hashmap">
 	 SELECT sch_code,sch_movie_code,info_movie_title,info_time
 	   FROM schedule 
@@ -148,8 +152,15 @@ INSERT INTO schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
   LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+  ORDER BY
+		 	sch_code DESC
+		LIMIT 
+		 	#{startRow}
+		  , #{listLimit}
 </select>
-
+<select id="selectBoardListCount" resultType="int">
+		SELECT count(*) FROM schedule
+</select>
 <select id="cinemaNameSort" resultType="hashmap">
 	SELECT 
 		  sch_code
@@ -318,13 +329,70 @@ SELECT
 </select>
 
 
+<delete id="deleteDateSch" >
+   DELETE 
+     FROM schedule
+    WHERE sch_movie_date = #{date}
+</delete>
 
+<!-- 상영종료된 내역 조회 -->
+<!-- <select id="selectEndSch" resultType="hashmap"> -->
+<!-- 	SELECT *  -->
+<!-- 	  FROM schedule -->
+<!-- 	 WHERE sch_movie_date &lt; DATE_SUB(NOW(), INTERVAL 1 DAY) -->
+<!--   ORDER BY sch_movie_date; -->
+<!-- </select> -->
 
+<!-- <select id="endSchList" resultType="hashmap"> -->
+<!-- 	SELECT  -->
+<!-- 		  sch_code -->
+<!-- 		, screen.screen_name -->
+<!-- 		, cinema.cinema_name  -->
+<!-- 		, movieinfo.info_movie_title -->
+<!-- 		, sch_movie_date -->
+<!-- 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time -->
+<!-- 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time  -->
+<!-- 	 FROM schedule -->
+<!-- LEFT JOIN screen ON screen.screen_code = sch_screen_code  -->
+<!-- LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code -->
+<!-- LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code	   -->
+<!-- 	 WHERE sch_movie_date &lt; DATE_SUB(NOW(), INTERVAL 1 DAY) -->
+<!--   ORDER BY sch_movie_date; -->
+<!-- </select> -->
 
-
-
-
-
+<insert id="insertSchedule_end">
+    INSERT INTO schedule_end 
+    SELECT 
+		  sch_code
+		, screen.screen_name
+		, cinema.cinema_name 
+		, movieinfo.info_movie_title
+		, sch_movie_date
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time 
+	 FROM schedule
+LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code	  
+	 WHERE sch_movie_date &lt; DATE_SUB(NOW(), INTERVAL 1 DAY)
+  ORDER BY sch_movie_date;
+</insert>
+<delete id="endSchedule_del">
+	DELETE FROM schedule
+    WHERE sch_movie_date &lt; DATE_SUB(NOW(), INTERVAL 1 DAY);
+</delete>
+ <select id="endSchList" resultType="hashmap">
+    SELECT 
+		  end_sch_code
+		, sch_screen_code
+		, sch_cinema_code
+		, sch_movie_code
+		, sch_movie_date
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time 
+ 	 FROM schedule_end
+ </select>
+		
 
 
 

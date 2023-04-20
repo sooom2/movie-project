@@ -90,9 +90,7 @@
 					(SELECT member_prefer_genre 
                         FROM member 
                         WHERE member_id = #{id}),"%"));
-  			 
   	</select>
-  	
   	<insert id= "insertPoint" >
 		INSERT 
   			INTO point

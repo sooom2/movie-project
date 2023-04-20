@@ -25,17 +25,11 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> movieList(String id);
 
+
 	int insertPoint(String id);
 
 	List<HashMap<String, String>> pointList(String id);
 
 	List<HashMap<String, String>> payList(String id);
-
-
-
-
-	
-
-
 
 }

@@ -128,11 +128,12 @@ $(function() {
           
                     <!-- 테이블 -->
                    <div class="datatable-container">
-                   <h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
+                   <h3 class="text-center font-weight-light my-4">상영종료목록</h3>
                     <input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
                     <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
                     <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
                     <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
+               
                <table id="datatablesSimple" class="datatable-table">
                   <thead>
                      <tr>
@@ -146,14 +147,15 @@ $(function() {
                      </tr>
                   </thead>
                   <!-- 회원목록 -->
-                  <c:forEach var="schedule" items="${scheduleList }">
+                  <!--   sch_screen_code 는 상영관이름(screen_name)으로 바꿔야하고-->
+                  <!--   sch_cinema_code 는 영화관이름(cinema_name)으로 바꿔야하고-->
+                  <c:forEach var="schedule" items="${endSchList }">
                   <tbody>
                      <tr data-index="0">
-                        <td>${schedule.get("cinema_name") }</td>
-                        <td>${schedule.get("screen_name") }</td>
-                        <td>${schedule.get("info_movie_title") }</td>
+                        <td>${schedule.get("sch_screen_code") }</td>
+                        <td>${schedule.get("sch_cinema_code") }</td>
+                        <td>${schedule.get("sch_movie_code") }</td>
                         <td>${schedule.get('sch_movie_date')}</td>
-<%--                         <td> <fmt:formatDate value="${schedule.get('sch_movie_date')}" pattern="HH시간mm분"  /> </td> --%>
                         <td>${schedule.get("sch_start_time") }</td>
                         <td>${schedule.get("sch_last_time") }</td>
                         <td class="modi">
@@ -166,64 +168,6 @@ $(function() {
                </table>
                </div>
                      <!-- 테이블 --> 
-                     
-                     <!-- 페이징처리 -->
-                   <div class="datatable-bottom">
-						<nav class="datatable-pagination">
-							<ul class="datatable-pagination-list">
-								<c:choose>
-									<c:when test="${empty param.pageNum }">
-										<c:set var="pageNum" value="1"/>			
-									</c:when>
-									<c:otherwise>
-										<c:set var="pageNum" value="${param.pageNum }"></c:set>
-									</c:otherwise>
-								</c:choose>		
-							
-<!-- 							 datatable-disabled -->
-								<c:choose>
-									<c:when test="${pageNum > 1 }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="datatable-pagination-list-item datatable-hidden">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-									<c:choose>
-										<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
-											<li class="datatable-pagination-list-item ">
-											<a class="datatable-pagination-list-item-link" style="font-weight: 800;background-color: #ececec">${num }</a>
-										</c:when>
-										
-										<%--페이지번호 --%>
-										<c:otherwise>
-											<li class="datatable-pagination-list-item ">
-											<a class="datatable-pagination-list-item-link" href="admin_schedule_register?pageNum=${num }" >${num }</a>
-											</li>
-											
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pageNum < pageInfo.maxPage }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="datatable-pagination-list-item datatable-hidden">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
-					</div>
                     
                 </main>
          <!-- 날짜선택해서 지울수있게 -->
@@ -238,8 +182,8 @@ $(function() {
                         </div>
                         <div class="card-body">
                            <form>
-                                         <h6>♥ 삭제할 날짜를 선택해주세요 ♥</h6>
-                               <input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" value=""/>
+                              <h6>♥ 삭제할 날짜를 선택해주세요 ♥</h6>
+                              <input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" value=""/>
                               <div class="row">
                                  <div class="d-grid" style="margin-top: 20px">
                                     <input class="btn btn-primary btn-block" type="button" value="삭제" onclick="dateDelete()"> 

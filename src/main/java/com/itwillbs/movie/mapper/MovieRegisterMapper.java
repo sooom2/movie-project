@@ -3,6 +3,7 @@ package com.itwillbs.movie.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +22,6 @@ public interface MovieRegisterMapper {
 	HashMap<String, String> selectMovie(String info_movie_code);
 	//영화 상세정보 - 리뷰
 	HashMap<String, String> selectMovieReview(String info_movie_code);
-	
 	
 	//스케쥴상세
 	HashMap<String, String> selectSchMovie(String sch_code);
@@ -44,7 +44,7 @@ public interface MovieRegisterMapper {
 	int scheduleRegister(@RequestParam("movieSchedule") HashMap<String, String> movieSchedule);
 	
 	//영화상영일정목록
-	List<HashMap<String, String>> selectScheduleList();
+	List<HashMap<String, String>> selectScheduleList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
 
 	List<HashMap<String, String>> cinemaNameSort();
 	List<HashMap<String, String>> screenNameSort();
@@ -58,6 +58,7 @@ public interface MovieRegisterMapper {
 	
 	//영화 상영일정 삭제
 	int deleteSchedule(String sch_code);
+	int deleteDateSch(String date);
 
 	int movieScheduleUpdate(HashMap<String, String> schedule);
 
@@ -74,6 +75,17 @@ public interface MovieRegisterMapper {
 	List<HashMap<String, String>> infoShowDateSort();
 	List<HashMap<String, String>> infoEndDateSort();
 	List<HashMap<String, String>> infoStorySort();
+
+	List<HashMap<String, String>> endSchList();
+
+	int insertSchedule_end();
+
+	int endSchedule_del();
+
+	int selectBoardListCount();
+
+//	List<HashMap<String, String>> selectEndSch();
+
 
 
 }

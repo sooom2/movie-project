@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.vo.BoardVO;
+import com.itwillbs.movie.vo.PageInfo;
 
 @Controller
 public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
 	
-	//영화예매관리
-	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String admin_movie_comming_register() {
-		return "admin/admin_movie_comming_register";
-	}
 	
 	
 	
@@ -39,6 +38,19 @@ public class MovieRegisterController {
 		model.addAttribute("movieList", movieList);
 		return "admin/admin_movie_register";
 	}
+	
+	//영화상영예정작관리
+	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
+	public String admin_movie_comming_register(Model model) {
+		List<HashMap<String, String>> movieList = movieRegisterService.selectCommingMovies();
+		model.addAttribute("movieList", movieList);
+		
+		return "admin/admin_movie_comming_register";
+	}
+	
+	
+	
+	
 	
 	//영화(1개)조회
 	@RequestMapping(value = "selectMovie", method = {RequestMethod.GET, RequestMethod.POST})
@@ -152,13 +164,102 @@ public class MovieRegisterController {
 	
 	//영화일정목록 
  	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String scheduleRegister(Model model) {
-		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule();
+	public String scheduleRegister(Model model,@RequestParam(defaultValue = "1") int pageNum) {
+ 		
+//		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule();
+//		model.addAttribute("scheduleList", scheduleList);
+		
+		// -----------------------------------------------------------------------
+		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
+		int listLimit = 15; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
+		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
+		// -----------------------------------------------------------------------
+		// BoardService - getBoardList() 메서드를 호출하여 게시물 목록 조회
+		// => 파라미터 : 검색타입, 검색어, 시작행번호, 목록갯수
+		// => 리턴타입 : List<BoardVO>(boardList)
+		List<HashMap<String, String>> scheduleList = 
+				movieRegisterService.selectSchedule(startRow, listLimit);
+		// -----------------------------------------------------------------------
+		// 페이징 처리를 위한 계산 작업
+		// 한 페이지에서 표시할 페이지 목록(번호) 갯수 계산
+		// 1. BoardListService - getBoardListCount() 메서드를 호출하여
+		//    전체 게시물 수 조회(페이지 목록 갯수 계산에 사용)
+		//    => 파라미터 : 검색타입, 검색어   리턴타입 : int(listCount)
+		int listCount = movieRegisterService.getBoardListCount();
+//				System.out.println("총 게시물 수 : " + listCount);
+		
+		// 2. 한 페이지에서 표시할 페이지 목록 갯수 설정
+		int pageListLimit = 10; // 페이지 목록 갯수를 3개로 제한
+		
+		// 3. 전체 페이지 목록 수 계산
+		// => 전체 게시물 수를 목록 갯수로 나누고, 남은 나머지가 0보다 클 경우 페이지 수 + 1
+		//    (페이지수 + 1 계산하기 위해 삼항연산자 활용)
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+		
+		// 4. 시작 페이지 번호 계산
+		// => 페이지 목록 갯수가 3일 때
+		//    1 ~ 3 페이지 사이일 경우 시작 페이지 번호 : 1
+		//    4 ~ 6 페이지 사이일 경우 시작 페이지 번호 : 4
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+		
+		// 5. 끝 페이지 번호 계산
+		// => 시작 페이지 번호에 페이지 목록 갯수를 더한 후 - 1
+		int endPage = startPage + pageListLimit - 1;
+		
+		// 만약, 끝 페이지 번호(endPage) 가 최대 페이지 번호(maxPage) 보다 클 경우
+		// 끝 페이지 번호를 최대 페이지 번호로 교체
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+	
+		// 페이징 처리 정보를 저장하는 PageInfo 클래스 인스턴스 생성 및 데이터 저장
+		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+		System.out.println(pageInfo);
+		// ------------------------------------------------------------------------------------
+		// 조회된 게시물 목록 객체(boardList) 와 페이징 정보 객체(pageInfo)를 Model 객체에 저장
 		model.addAttribute("scheduleList", scheduleList);
+		model.addAttribute("pageInfo", pageInfo);
+		// -----------------------------------------------------------------------
+		
 		System.out.println(scheduleList);
 		
 		return "admin/admin_movie_schedule";
 	}
+ 	
+ 	
+	//상영스케쥴 삭제
+	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteSchedule(@RequestParam String sch_code,Model model) {
+		
+		
+		int deleteCount = movieRegisterService.deleteSchedule(sch_code);	
+		
+		
+		
+		
+		return "redirect:/admin_schedule_register";
+	}
+ 	 	
+	
+	//상영스케쥴 삭제
+	@ResponseBody
+	@GetMapping("deleteDateSch")
+	public Map<String, Object> deleteDateSch(@RequestParam String date,Model model) throws JsonProcessingException {
+		
+		
+		int deleteCount = movieRegisterService.deleteDateSch(date);	
+		Map<String, Object> response = new HashMap<>();
+	    
+		   
+		response.put("deleteCount", deleteCount);
+		   
+		return response;
+			
+	}
+	
+ 	
+ 	
+ 	
  	// 영화일정 페이지 정렬 ======================================================
  	//지점명정렬
  	@RequestMapping(value = "cinemaNameSort", method = {RequestMethod.GET, RequestMethod.POST})
@@ -177,7 +278,7 @@ public class MovieRegisterController {
  		return "admin/admin_movie_schedule";
  	}
  	
- 	//상영관정렬
+ 	//영화이름정렬
  	@RequestMapping(value = "movieNameSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String movieNameSort(Model model) {
  		List<HashMap<String, String>> scheduleList = movieRegisterService.movieNameSort();
@@ -186,7 +287,7 @@ public class MovieRegisterController {
  	}
  	
  	
- 	//상영관정렬
+ 	//상영일자정렬
  	@RequestMapping(value = "schDateSort", method = {RequestMethod.GET, RequestMethod.POST})
  	public String schDateSort(Model model) {
  		List<HashMap<String, String>> scheduleList = movieRegisterService.schDateSort();
@@ -221,16 +322,7 @@ public class MovieRegisterController {
 	}
 	
 	
-	//영화삭제
-	@RequestMapping(value = "deleteSchedule", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteSchedule(@RequestParam String sch_code,Model model) {
-		
-		
-		int deleteCount = movieRegisterService.deleteSchedule(sch_code);	
-		
-		return "redirect:/admin_schedule_register";
-	}
- 	 	
+
 	// 영화 정보 수정
 	@RequestMapping(value = "updateSchedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateSchedule(@RequestParam HashMap<String, String> schedule, Model model) throws ParseException {
@@ -274,11 +366,7 @@ public class MovieRegisterController {
 
 
 	// 영화 페이지 정렬=============================================================================
-	//지점명정렬
-	
-//	     
-	
-	
+	// 토글은 안됨..
 	// 영화코드정렬
  	@GetMapping(value = "infoMovieCodeSort")
  	public String infoMovieCodeSort(Model model) {
@@ -286,7 +374,7 @@ public class MovieRegisterController {
  		model.addAttribute("movieList", movieList);
  		return "admin/admin_movie_register";
  	}
- // 영화코드정렬
+ 	// 영화코드정렬
   	@GetMapping(value = "infoMovieNameSort")
   	public String infoMovieNameSort(Model model) {
   		List<HashMap<String, String>> movieList = movieRegisterService.infoMovieNameSort();
@@ -328,9 +416,56 @@ public class MovieRegisterController {
  	}
  	
  	
+ 	//상영종료된 목록movieEndSchedule
+ 	@GetMapping("movieEndSchedule")
+ 	public String movieEndSchedule(Model model) {
+ 		
+// 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
+ 		int insertCount = movieRegisterService.insertSchedule_end();
+ 		if(insertCount > 0) {
+ 			int delCount = movieRegisterService.endSchedule_del();
+ 		}
+ 		//상영종료테이블에서LIST
+ 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
+ 		
+ 		model.addAttribute("endSchList", endSchList);
+ 		System.out.println(endSchList);
+ 		return "admin/admin_movie_schedule_endList";
+ 	}
  	
-	
+ 	
+ 	
+ 	
+ 	
+// 	//상영종료된 값 스케쥴링	
+// 	@Component
+// 	public class ScheduledTask {
+// 	    @Scheduled(fixedRate = 10000 * 6 *60 *24) // 하루마다 실행
+// 	    public void executeTask() {
+// 	    	//1. 상영종료된 정보들을 조회 (schedule 테이블)
+// 	    	//2. 상영종료된 정보들을 schedule_end 테이블로이동
+// 	    	//3. schedule 테이블에서 삭제
+// 	    	
+// 	    	List<HashMap<String, String>> endSch = movieRegisterService.selectEndSch();
+// 	    	System.out.println(endSch);
+// 	    	for (HashMap<String, String> sch : endSch) {
+// 	    		
+//	 	    	sch.put("sch_screen_code", endSch.get("sch_screen_code"));
+//	 	    	sch.put("sch_cinema_code", "상영관");
+//	 	    	sch.put("sch_movie_code", "상영관 번호");
+//	 	    	sch.put("sch_movie_date", "상영 시작 시간");
+//	 	    	sch.put("sch_last_time", "상영 시작 시간");
+//	
+//	 	    	endSch.add(sch);
+//	 	    	
+// 	    	}
+// 	    }
+// 	}
+ 	
 }
+
+
+
 
 
 

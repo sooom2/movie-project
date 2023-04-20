@@ -27,6 +27,7 @@ public class MovieRegisterService {
 	}
 	
 	
+	
 	//영화 상세정보
 	public HashMap<String, String> selectMovie(String info_movie_code) {
 		return mapper.selectMovie(info_movie_code);
@@ -73,8 +74,13 @@ public class MovieRegisterService {
 	}
 
 	//영화 일정 목록	
-	public List<HashMap<String, String>> selectSchedule() {
-		return mapper.selectScheduleList();
+//	public List<HashMap<String, String>> selectSchedule() {
+//		return mapper.selectScheduleList();
+//	}
+	
+	//페이징처리한 영화일정목록
+	public List<HashMap<String, String>> selectSchedule(int startRow, int listLimit) {
+		return mapper.selectScheduleList(startRow,listLimit);
 	}
 
 	public List<HashMap<String, String>> cinemaNameSort() {
@@ -110,19 +116,27 @@ public class MovieRegisterService {
 		return mapper.deleteSchedule(sch_code);
 	}
 
+ 	// 날짜별 영화일정 삭제
+	public int deleteDateSch(String date) {
+		return mapper.deleteDateSch(date);
+	}
+	
+	//일정 수정
 	public int movieScheduleUpdatePro(HashMap<String, String> schedule) {
 		return mapper.movieScheduleUpdate(schedule);
 	}
 
-
+	//
 	public HashMap<String, String> infoMovieCode(String info_movie_title) {
 		return mapper.infoMovieCode(info_movie_title);
 	}
 
+	//종료시간수정
 	public int lastTimeUpdate(HashMap<String, String> schedule) {
 		return mapper.lastTimeUpdate(schedule);
 	}
 
+	//정렬
 	public List<HashMap<String, String>> infoMovieCodeSort() {
 		return mapper.infoMovieCodeSort();
 	}
@@ -130,28 +144,37 @@ public class MovieRegisterService {
 	public List<HashMap<String, String>> infoMovieNameSort() {
 		return mapper.infoMovieNameSort();
 	}
-
 	public List<HashMap<String, String>> infoYearSort() {
 		return mapper.infoYearSort();
 	}
-
 	public List<HashMap<String, String>> infoTimeSort() {
 		return mapper.infoTimeSort();
 	}
-
 	public List<HashMap<String, String>> infoShowDateSort() {
 		return mapper.infoShowDateSort();
 	}
-
 	public List<HashMap<String, String>> infoEndDateSort() {
 		return mapper.infoEndDateSort();
 	}
-
 	public List<HashMap<String, String>> infoStorySort() {
 		return mapper.infoStorySort();
 	}
-
-
+	//상영종료된 값 조회
+//	public List<HashMap<String, String>> selectEndSch() {
+//		return mapper.selectEndSch();
+//	}
+	public List<HashMap<String, String>> endSchList() {
+		return mapper.endSchList();
+	}
+	public int insertSchedule_end() {
+		return mapper.insertSchedule_end();
+	}
+	public int endSchedule_del() {
+		return mapper.endSchedule_del();
+	}
+	public int getBoardListCount() {
+		return mapper.selectBoardListCount();
+	}
 	
 
 

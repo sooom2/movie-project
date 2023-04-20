@@ -21,6 +21,42 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
+<script type="text/javascript">
+// 	function selectCinema() {
+
+// 		$.ajax({
+// 			type : "POST",
+// 			url : "screenSelect",
+// 			data : {
+// 				cinema_code : $(".cinema_name option:selected").val(),
+// 				cinema_name : $(".cinema_name option:selected").text()
+// 			},
+// 			success : function(result) { // 요청 처리 성공시 자동으로 호출되는 콜백함수
+
+// 				$(".selectScreen_name option").remove();
+// 				$(".selectScreen_name")
+// 						.append(
+// 								'<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+// 				$(".selectScreen_name")
+// 						.append(
+// 								'<option value="none" disabled>=======================</option>');
+// 				for (var i = 0; i < result.length; i++) {
+// 					$(".selectScreen_name").append(
+// 							'<option value="' +result[i].screen_code + '">'
+// 									+ result[i].screen_name
+// 									+ '</option');
+// 				}
+
+// 			},
+// 			error : function(request, status, error) {
+// 				alert("code:" + request.status + "\n" + "message:"
+// 						+ request.responseText + "\n" + "error:"
+// 						+ error);
+
+// 			}
+// 		});//ajax
+// 	}
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -36,69 +72,21 @@
 						</strong>
 					</p>
 
-					<div class="dropdown bootstrap-select mr07 bs3">
-						<select id="theater" title="지역 선택" class="mr07" tabindex="-98"><option
-								class="bs-title-option" value=""></option>
-							<option value="">지역 선택</option>
-
-							<option value="10">서울</option>
-
-							<option value="30">경기</option>
-
-							<option value="35">인천</option>
-
-							<option value="45">대전/충청/세종</option>
-
-							<option value="55">부산/대구/경상</option>
-
-							<option value="65">광주/전라</option>
-
-							<option value="70">강원</option>
-
-							<option value="80">제주</option>
-
-						</select>
-						<button type="button"
-							class="btn dropdown-toggle btn-default bs-placeholder"
-							data-toggle="dropdown" role="button" data-id="theater"
-							title="지역 선택">
-							<div class="filter-option">
-								<div class="filter-option-inner">
-									<div class="filter-option-inner-inner">지역 선택</div>
-								</div>
-							</div>
-							<span class="bs-caret"><span class="caret"></span></span>
-						</button>
-						<div class="dropdown-menu open" role="combobox">
-							<div class="inner open" role="listbox" aria-expanded="false"
-								tabindex="-1">
-								<ul class="dropdown-menu inner "></ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="dropdown bootstrap-select disabled mr07 bs3">
-						<select id="theater02" title="극장 선택" disabled="disabled"
-							class="mr07" tabindex="-98"><option
-								class="bs-title-option" value=""></option>
-							<option value="">극장 선택</option>
-
-						</select>
-						<button type="button"
-							class="btn dropdown-toggle disabled btn-default bs-placeholder"
-							data-toggle="dropdown" role="button" data-id="theater02"
-							tabindex="-1" aria-disabled="true" title="극장 선택">
-							<div class="filter-option">
-								<div class="filter-option-inner">
-									<div class="filter-option-inner-inner">극장 선택</div>
-								</div>
-							</div>
-							<span class="bs-caret"><span class="caret"></span></span>
-						</button>
-						<div class="dropdown-menu open" role="combobox">
-							<div class="inner open" role="listbox" aria-expanded="false"
-								tabindex="-1">
-								<ul class="dropdown-menu inner "></ul>
+					<div class="dropdown bootstrap-select" >
+						<div class="form-floating mb-3 mb-md-0 selectbox" >
+							<div class="cinema_name">
+								<label for="cinema_name"></label> <select
+									name="sch_cinema_code" onchange="selectCinema()" style="margin-top: 0px; !important"> 
+									<option value="none" selected="selected" disabled>극장 선택</option>
+									<option value="none" disabled>=======================</option>
+									<c:forEach var="cinema" items="${cinemaList }">
+										<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+									</c:forEach>
+								</select>
+								<c:forEach var="cinema" items="${cinemaList }">
+									<input type="hidden" name="location_code"
+										value="${cinema.get('location_code') }">
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -135,7 +123,7 @@
 								<tr data-index="0">
 									<td>${noticeBoard.notice_code }</td>
 									<td>${noticeBoard.cinema_name }</td>
-									<td>공지</td>
+									<td>문의유형 DB에도 넣어야 함</td>
 									<td id="notice_subject"><a
 										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
 									</td>

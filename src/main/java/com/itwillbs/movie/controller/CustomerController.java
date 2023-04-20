@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.BoardService;
+import com.itwillbs.movie.service.MovieRegisterService;
 import com.itwillbs.movie.vo.BoardVO;
 
 @Controller
@@ -19,6 +20,8 @@ public class CustomerController {
 	
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private MovieRegisterService movieRegisterService;
 	
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
@@ -33,7 +36,9 @@ public class CustomerController {
 		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
 //		System.out.println(noticeBoardList);
 		model.addAttribute("noticeBoardList", noticeBoardList);
-//		System.out.println(model);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		System.out.println(model);
 		return "customer_center/notice_board";
 	}
 	
@@ -52,7 +57,11 @@ public class CustomerController {
 
 	// 자주묻는 질문
 	@RequestMapping(value = "faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String faq() {
+	public String faq(Model model) {
+		
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList();
+		System.out.println(faqBoardList);
+		model.addAttribute("faqBoardList", faqBoardList);
 		return "customer_center/faq";
 	}
 	
@@ -123,13 +132,25 @@ public class CustomerController {
 		int insertCount = boardService.registOneBoard(map);
 		if(insertCount > 0) {
 			
-			return "redirect:/one_board";
+			return "redirect:/one_list";
 		} 
 		else {
 			model.addAttribute("msg", "등록 실패");
 			return "fail_back";
 		}
 	}
+	
+//	// 분실물 문의 페이지 목록
+//	@RequestMapping(value = "one_detail_list", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String one_list(Model model) {
+//		// 하다만거===================================================================================================================
+//		List<BoardVO> oneBoardList = boardService.getOneBoardList();
+//		model.addAttribute("oneBoardList", oneBoardList);
+////			System.out.println("Controller: " + model);
+//		return "customer_center/one_list";
+//	}
+	
+	
 	// 1대1 문의 내역 페이지
 	@RequestMapping(value = "one_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneBoard(Model model) {
@@ -162,7 +183,10 @@ public class CustomerController {
 		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
 //		System.out.println(noticeBoardList);
 		model.addAttribute("noticeBoardList", noticeBoardList);
-//		System.out.println(model);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		System.out.println(model);
+		
 		return "admin/admin_notice_board";
 	}
 
@@ -171,6 +195,7 @@ public class CustomerController {
 	public String noticeRegisterPro(@RequestParam HashMap<String, String> map, Model model) {
 		
 		int insertCount = boardService.registNoticeBoard(map);
+		System.out.println("여기" + map);
 		if(insertCount > 0) {
 			return "redirect:/admin_notice_board";
 		} else {
@@ -186,6 +211,8 @@ public class CustomerController {
 		HashMap<String, String> noticeBoard = boardService.getNoticeBoard(notice_code);
 		System.out.println(noticeBoard);
 		model.addAttribute("noticeBoard", noticeBoard);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		System.out.println(model);
 		return "admin/admin_notice_update";
 	}

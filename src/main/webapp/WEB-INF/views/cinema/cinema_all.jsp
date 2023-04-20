@@ -80,9 +80,9 @@ function modalClose(){
 <!-- 		탭 -->
 		<div class="tabs-cont">
 			<div class="cont">
-				<form id="loginForm"  action ="loginPro" method="post">
+				<form id="loginForm"  action ="cinemaLoginPro" method="post">
 					<div class="find">
-					<a href="javascript:doDisplay();">아이디/비밀번호 찾기</a>
+					<a href="findId">아이디/비밀번호 찾기</a>
 					<a href="memAuth">회원가입</a>
 					</div>
 <!-- 					<input type="hidden" name="cgid" value=""> -->
@@ -90,7 +90,7 @@ function modalClose(){
                       <label class="label-input" for="memberid"><span>아이디</span><input type="text" id="memberid" class="input" name="member_id" value="" placeholder="아이디를 입력해주세요"><span></span></label>
                     </div>
 					<div class="member-detail">
-                      <label class="label-input" for="memberpasswd"><span>패스워드</span><input type="text" id="memberpw" class="input" name="member_pw" value="" placeholder="비밀번호를 입력해주세요"><span></span></label>
+                      <label class="label-input" for="memberpasswd"><span style="margin-right: -13px;">패스워드</span><input type="text" id="memberpw" class="input" name="member_pw" value="" placeholder="비밀번호를 입력해주세요"><span></span></label>
                     </div>
 					<div class="etc">
 						<label><input type="checkbox" id="SaveID" class="checkbox"><em></em><span>아이디 저장</span></label>
@@ -185,12 +185,10 @@ function modalClose(){
 							<!-- 로그인후 -->
 							<div style="padding:0 15px">
 								<img src="resources/images/ico/after-like.png" alt="찜하기" style="width: 22px;  display: inline-block; margin-bottom: -3px;" >
-								<span class="font-gblue">${sessionScope.sId }</span>님의 선호영화관
+								<span class="font-gblue"><a href="mypageR">${sessionScope.sId }</a></span>님의 선호영화관
 								<ul class="theater-circle">
 									<li>
-<%-- 									<c:forEach var="mem" items="${myPreferCinema }"> --%>
-										<a href="cinemaDetail" title="부산점 상세보기">부산점</a>
-<%-- 									</c:forEach> --%>
+										<a href="cinemaDetail?cinema_code=<c:out value="${myPreferCinema.get('cinema_code') }"/>" title="<c:out value="${myPreferCinema.get('member_prefer_branch') }"/>상세보기"><c:out value="${myPreferCinema.get('member_prefer_branch') }"/></a>
 									</li>
 								</ul>
 <!-- 								<a href="" class="button small" title="선호영화관 관리"> <i class="iconset ico-edit"></i> 선호영화관 관리</a> -->

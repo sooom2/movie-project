@@ -232,40 +232,41 @@
 		$(".wrap-slider").on("mouseleave", "ul > li > span.over", function() {
 			$(this).removeClass("on");
 		});
-
-// 		$("ul>li a.rsv", "div.wrap-slider").click(function(e) {
-// 			e.preventDefault();
-// 			var movieCode = $(this).closest("li").data("moviecode");
-
-// 			$.desktop.reserve.openMovie({
-// 				movieCode : movieCode
-// 			});
-// 			return false;
-// 		});
-
-		//heart 좋아요 클릭시! 하트 뿅
-		$(function() {
-			var $likeBtn = $('.icon.heart');
-
-			$likeBtn.click(function() {
-				$likeBtn.toggleClass('active');
-
-				if ($likeBtn.hasClass('active')) {
-					$(this).find('img').attr({
-						'src' : 'resources/images/ico/after-like.png',
-						alt : '찜하기 완료'
-					});
-
-				} else {
-					$(this).find('i').removeClass('fas').addClass('far')
-					$(this).find('img').attr({
-						'src' : 'resources/images/ico/before-like.png',
-						alt : "찜하기"
-					})
-				}
-			})
-		})
-	});
+		// 좋아요 버튼 기능
+		var $likeBtn = $('.icon.heart');
+	   	$likeBtn.click(function() {
+	   	// ajax -> likeInsert(@controller)
+	   	// ajax : context : this를 써줘야 success에서 this 사용 가능
+	   	var info_movie_code = $(this).closest("li").data("moviecode")+"";
+	   	
+	   	$likeBtn.toggleClass('active');
+	   	
+	   	$.ajax({
+	   		url : 'likeClick',
+	   		type : 'GET',
+	   		context : this,
+	   		data : {
+	   			info_movie_code : info_movie_code
+	   		},
+	   		success : function(result){
+	   			alert(result.msg)
+	   			
+	   			if(result.resultType == "insert"){
+	   				$(this).find('img').attr({
+	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+	   					alt : '찜하기 완료'
+	   				})
+	   			}else if(result.resultType = "delete"){
+	   				$(this).find('img').attr({
+	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+	   					alt : "찜하기"
+	   				})
+	   			}
+	   			$(this).find('span').html(result.like_count)
+	   		}
+	   	})
+   	}) 
+});
 </script>
 
 </head>
@@ -407,7 +408,8 @@
 						    		${movie.info_movie_title }
 						    	</div>
 						 	  	<div class="like-btn">
-									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
+									<a href="javascript:;" class="icon heart">
+									<img src="resources/images/ico/before-like.png" alt="찜하기">
 									<span class="likeNum">${movie.like_count }</span></a>
 							</div>
 				   		 </li>

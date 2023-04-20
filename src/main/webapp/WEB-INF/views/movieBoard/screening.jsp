@@ -76,28 +76,39 @@
 //             });
 //             return false;
 //         });
+       var $likeBtn = $('.icon.heart');
+       $likeBtn.click(function() {
+       	// ajax -> likeInsert(@controller)
+       	// ajax : context : this를 써줘야 success에서 this 사용 가능
+       	var info_movie_code = $(this).closest("li").data("moviecode")+"";
+       	
+       	$likeBtn.toggleClass('active');
+       	
+       	$.ajax({
+       		url : 'likeClick',
+       		type : 'GET',
+       		context : this,
+       		data : {
+       			info_movie_code : info_movie_code
+       		},
+       		success : function(result){
+       			alert(result.msg)
+       			
+       			if(result.resultType == "insert"){
+       				$(this).find('img').attr({
+       					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+       					alt : '찜하기 완료'
+       				})
+       			}else if(result.resultType = "delete"){
+       				$(this).find('img').attr({
+       					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+       					alt : "찜하기"
+       				})
+       			}
+       			$(this).find('span').html(result.like_count)
+       		}
+       	}) 
     });
-	$(function() {
-		var $likeBtn = $('.icon.heart');
-
-		$likeBtn.click(function() {
-			$likeBtn.toggleClass('active');
-
-			if ($likeBtn.hasClass('active')) {
-				$(this).find('img').attr({
-					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-					alt : '찜하기 완료'
-				});
-
-			} else {
-				$(this).find('i').removeClass('fas').addClass('far')
-				$(this).find('img').attr({
-					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-					alt : "찜하기"
-				})
-			}
-		})
-	})
 });
    </script>
 	<jsp:include page="../footer.jsp"/>

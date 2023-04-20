@@ -41,7 +41,6 @@ h2.tit {
 	/* border-radius: 10px; */
 }
 
-/* 占쎌쥙�⒴뜝�밸쇀�좎뜴�앾옙�녹삕占썩뫜�쇿뜝�뀀쐻占쎈뜉�쇿뜝�숈삕�좎뜴�앾옙�녹삕�좎룞�� */
 .wrap-sitemap-title h2.sitemap-title {
 	display: inline-block;
 	margin: 0 auto;
@@ -222,7 +221,7 @@ h2.tit {
 	margin-top: 12px
 }
 
-/* 占쎌쥙�⒴뜝�숈삕�띠룊�쇿뜝�숈삕�좎룞�쇿뜝�숈삕�좎룞�숋옙醫묒삕 �좎룞�쇿뜝�⑸쳳�좎뜾逾볠�⑤벨�숋옙�쇱삕�좎뜴�앾옙�녹삕�좎룞�쇿뜝�숈삕�좎룞�숋옙�뚯삕�좎룞�쇿뜝�뀀쐻�좑옙 */
+/* �좎럩伊숋옙�대쐻占쎌늿�뺧옙�좊즸占쎌눨�앾옙�덉굲占쎌쥙猷욑옙�용쐻占쎌늿�뺧옙醫롫짗占쎌닂�숅넫臾믪굲 占쎌쥙猷욑옙�용쐻占썩뫖爾놂옙醫롫쑟�얜퀬占썩뫀踰⑨옙�뗭삕占쎌눘�뺧옙醫롫쑕占쎌빢�숋옙�뱀굲占쎌쥙猷욑옙�용쐻占쎌늿�뺧옙醫롫짗占쎌닂�숋옙��굲占쎌쥙猷욑옙�용쐻占쎈���삼옙醫묒삕 */
 .table-wrap {
 	position: relative;
 	border-top: 1px solid #555
@@ -446,7 +445,7 @@ button {
 	cursor: pointer;
 	letter-spacing: -.5px;
 	font-weight: 400;
-	font-family: NanumBarunGothic, Dotum, '占쎌쥙�⒴뜝�숈삕營먨뜝�숈삕占쎌쥙�ε뜝�숈삕�좎룞�숋옙醫묒삕', sans-serif;
+	font-family: NanumBarunGothic, Dotum, '�좎럩伊숋옙�대쐻占쎌늿�뺟뇾癒⑤쐻占쎌늿�뺝뜝�뚯쪠占싸듬쐻占쎌늿�뺧옙醫롫짗占쎌닂�숅넫臾믪굲', sans-serif;
 	width: 100%;
 	text-align: center !important;
 }
@@ -495,9 +494,10 @@ button:focus {
 	padding: 0px 6px;
 	line-height: 30px;
 	font-size: .9333em;
+	border-radius: 15px;
 }
+/* 모달 */
 
-/*占쎄퓭爰귛뜝�숈삕�좎룞�숋쫲�귥삕占쎌쥙�닷뜝�숈삕�좎룞�쇿뜝�숈삕*/
 .modal {
 	display: none;
 	position: fixed;
@@ -533,9 +533,9 @@ button:focus {
 }
 
 /****************************************************************************************************************************************
-	占쎌쥙�⒴뜝�숈삕�앾옙�귨옙�좎룞�쇿뜝�숈삕�좎뜴�앭뜝占�
+	�좎럩伊숋옙�대쐻占쎌늿�뺧옙�얠삕占쎄랬�숋옙醫롫짗占쎌눨�앾옙�덉굲占쎌쥙�댐옙��쐻�좑옙
 ****************************************************************************************************************************************/
-/*占쎌쥙�ο옙占썲뜝�숈삕占쎈��숂넭怨롫뵃�쇿뜝�뀀쐻占쎈슪�쇿뜝�숈삕�좎뜴�앾옙�녹삕�좎룞��*/
+/*�좎럩伊숋옙恝�쇿뜝�뀀쐻占쎌늿�뺝뜝�덌옙占쎌늹���⑤∥逾껓옙�용쐻占쎈���삣뜝�덉뒱占쎌눨�앾옙�덉굲占쎌쥙�댐옙�얠삕占쎈끃�뺧옙醫롫짗占쏙옙*/
 .login-tit {
 	font-size: 28px;
 }
@@ -710,7 +710,7 @@ button:focus {
 .member .check-desc p+p {
 	margin-top: 3px;
 }
-/*占쎌쥙�ο옙占썲뜝�숈삕占쎈��숂넭怨롫뵃�쇿뜝�뀀쐻占쎈슪�쇿뜝�숈삕�좎뜴�앾옙�녹삕�좎룞��*/
+/*�좎럩伊숋옙恝�쇿뜝�뀀쐻占쎌늿�뺝뜝�덌옙占쎌늹���⑤∥逾껓옙�용쐻占쎈���삣뜝�덉뒱占쎌눨�앾옙�덉굲占쎌쥙�댐옙�얠삕占쎈끃�뺧옙醫롫짗占쏙옙*/
 .member .end {
 	padding: 40px 0 90px;
 	text-align: center;
@@ -2127,7 +2127,7 @@ table.bbs-view tr td.share ul {
 }
 
 table.bbs-view tr td.share ul:before {
-	content: "占쎌쥙��뜝�щ걞�좎뜴�앾옙�덉굲";
+	content: "�좎럩伊숋옙占쎈쐻占싼됯콪占쎌쥙�댐옙�얠삕占쎈뜆援�";
 	border-right: 1px solid #ccc;
 	display: inline-block;
 	padding-right: 18px;
@@ -2250,7 +2250,7 @@ table.bbs-list.bbs-list-theater-price td.kind2 {
 	display: block;
 	margin: 0 auto;
 }
-/*嶺뚯쉻�쇿뜝�숈삕*/
+/*癲ル슣�삼옙�용쐻占쎌늿��*/
 .section-theater-body .wrap .addr {
 	height: 48px;
 	background-color: rgba(0, 0, 0, 0.66);
@@ -2425,3 +2425,4 @@ table.bbs-list.bbs-list-theater-price td.kind2 {
     overflow: hidden;
     border: 6px solid #fff;
 }
+

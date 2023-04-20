@@ -2,22 +2,33 @@ package com.itwillbs.movie.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.movie.service.LikeService;
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.MypageService;
 
 @Controller
 public class MovieController {
 	
 	@Autowired
 	private MovieRegisterService service;
+	@Autowired
+	private MypageService mypageService;
 	
+	@Autowired
+	private LikeService likeService;
 	
 	// 영화목록페이지
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
@@ -69,4 +80,56 @@ public class MovieController {
 		model.addAttribute("movieInfoReview", movieInfoReview);
 		return "movieBoard/movieInfo2";
 	}
+	
+	//좋아요 버튼 기능
+	
+	@GetMapping(value = "likeClick")
+	@ResponseBody
+	public HashMap<String, String> likeCount(@RequestParam("info_movie_code") String info_movie_code, HttpSession session, Model model) {
+		// id와 movie_code를 xml에 넣기 위해서 map 객체에 넣어준 것
+		String id = (String)session.getAttribute("sId");
+		
+		// service에 보낼 map
+		HashMap<String, String> like = new HashMap<String, String>();
+		
+		// view 에 보낼 map
+		HashMap<String, String> result = new HashMap<String, String>();
+		
+		
+		like.put("member_id", id);
+		like.put("info_movie_code", info_movie_code);
+		boolean isLike = likeService.findLike(like);
+		String resultType = "delete";
+		
+		// id 유효성 검사
+		if(id != null) {
+			// 좋아요 한 적 없을 때
+			if(!isLike) {	
+				//좋아요 추가
+				int insertCount = likeService.insertLike(like);
+				//좋아요 추가 성공했을 때 
+				if(insertCount > 0) {
+					result.put("msg", "좋아요 성공");
+					resultType= "insert";
+				}
+			}else {	//	좋아요 한 적 있을 때	
+				int deleteCount = likeService.deleteLike(like);
+				
+				if(deleteCount > 0) {
+					result.put("msg", "좋아요를 취소했습니다.");
+				}
+			}
+			likeService.updateLike(like);
+			
+		}else {
+			result.put("msg", "로그인 후 시도해주세요.");
+		}
+		
+		String like_count = service.selectMovie(info_movie_code).get("like_count");
+		result.put("resultType", resultType);
+		result.put("like_count", like_count); 
+		return result; 
+		
+	}
+	
 }
