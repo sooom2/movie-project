@@ -5,9 +5,21 @@
   
   <!-- 회원 정보 조회 -->
 	<select id="selectMemberInfo" resultType="com.itwillbs.movie.vo.MemberVO">
-		SELECT *
-			FROM member
-			WHERE member_id = #{id}
+		SELECT member_id
+			, member_name
+			, member_pw
+			, SUBSTRING_INDEX(member_address, '/', 1) AS member_address1
+			, SUBSTRING_INDEX(member_address, '/', -1) AS member_address2
+			, member_address
+			, member_bday
+			, member_email
+			, member_tel
+			, member_point
+			, member_prefer_branch
+			, member_prefer_genre
+			, member_date
+			    FROM member
+		WHERE member_id  = #{id}
 	</select>
 	
 	<select id="selectMemberId" resultType="hashmap">
@@ -30,6 +42,7 @@
 	 	<if test = "member_pw2 neq ''">
 	 	,member_pw = #{member_pw2}
 	 	</if>
+	 	,member_address = #{member_address}
 	 	,member_name = #{member_name}
 	 	,member_bday = #{member_bday}
 	 	,member_tel = #{member_tel}
@@ -125,6 +138,7 @@
 	  	 FROM pay p JOIN item i
 	  	 ON p.item_code = i.item_code
 	  	WHERE p.member_id = #{id}
+	  	ORDER BY p.pay_date DESC
   	</select>
   	
   	<select id = "cinemaList" resultType="hashmap">
