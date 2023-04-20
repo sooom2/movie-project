@@ -3,6 +3,7 @@ package com.itwillbs.movie.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,7 +44,7 @@ public interface MovieRegisterMapper {
 	int scheduleRegister(@RequestParam("movieSchedule") HashMap<String, String> movieSchedule);
 	
 	//영화상영일정목록
-	List<HashMap<String, String>> selectScheduleList();
+	List<HashMap<String, String>> selectScheduleList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
 
 	List<HashMap<String, String>> cinemaNameSort();
 	List<HashMap<String, String>> screenNameSort();
@@ -80,6 +81,8 @@ public interface MovieRegisterMapper {
 	int insertSchedule_end();
 
 	int endSchedule_del();
+
+	int selectBoardListCount();
 
 //	List<HashMap<String, String>> selectEndSch();
 

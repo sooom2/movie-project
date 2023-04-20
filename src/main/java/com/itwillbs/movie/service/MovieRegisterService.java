@@ -74,8 +74,13 @@ public class MovieRegisterService {
 	}
 
 	//영화 일정 목록	
-	public List<HashMap<String, String>> selectSchedule() {
-		return mapper.selectScheduleList();
+//	public List<HashMap<String, String>> selectSchedule() {
+//		return mapper.selectScheduleList();
+//	}
+	
+	//페이징처리한 영화일정목록
+	public List<HashMap<String, String>> selectSchedule(int startRow, int listLimit) {
+		return mapper.selectScheduleList(startRow,listLimit);
 	}
 
 	public List<HashMap<String, String>> cinemaNameSort() {
@@ -167,9 +172,9 @@ public class MovieRegisterService {
 	public int endSchedule_del() {
 		return mapper.endSchedule_del();
 	}
-	
-
-
+	public int getBoardListCount() {
+		return mapper.selectBoardListCount();
+	}
 	
 
 

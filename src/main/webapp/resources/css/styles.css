@@ -4550,6 +4550,10 @@ textarea.form-control-lg {
   list-style: none;
 }
 
+.datatable-pagination-list-item li b{
+	font-size: 20px;
+}
+
 .page-link, .datatable-pagination a {
   position: relative;
   display: block;

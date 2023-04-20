@@ -166,6 +166,64 @@ $(function() {
                </table>
                </div>
                      <!-- 테이블 --> 
+                     
+                     <!-- 페이징처리 -->
+                   <div class="datatable-bottom">
+						<nav class="datatable-pagination">
+							<ul class="datatable-pagination-list">
+								<c:choose>
+									<c:when test="${empty param.pageNum }">
+										<c:set var="pageNum" value="1"/>			
+									</c:when>
+									<c:otherwise>
+										<c:set var="pageNum" value="${param.pageNum }"></c:set>
+									</c:otherwise>
+								</c:choose>		
+							
+<!-- 							 datatable-disabled -->
+								<c:choose>
+									<c:when test="${pageNum > 1 }">
+										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="datatable-pagination-list-item datatable-hidden">
+											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+									<c:choose>
+										<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+											<li class="datatable-pagination-list-item ">
+											<a class="datatable-pagination-list-item-link" style="font-weight: 800;background-color: #ececec">${num }</a>
+										</c:when>
+										
+										<%--페이지번호 --%>
+										<c:otherwise>
+											<li class="datatable-pagination-list-item ">
+											<a class="datatable-pagination-list-item-link" href="admin_schedule_register?pageNum=${num }" >${num }</a>
+											</li>
+											
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${pageNum < pageInfo.maxPage }">
+										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="datatable-pagination-list-item datatable-hidden">
+											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</nav>
+					</div>
                     
                 </main>
          <!-- 날짜선택해서 지울수있게 -->
