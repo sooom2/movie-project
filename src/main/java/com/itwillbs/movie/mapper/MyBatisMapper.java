@@ -3,6 +3,8 @@ package com.itwillbs.movie.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface MyBatisMapper {
 
 //	int insertMember(HashMap<String, String> member);
@@ -76,6 +78,13 @@ public interface MyBatisMapper {
 	
 	// 회원가입 아이디 조회
 	HashMap<String, String> checkId(String id);
+
+	HashMap<String, String> phoneCheck(HashMap<String, String> member);
+
+	String selectPoint(String id);
+	// 페이징처리한 회원목록
+	List<HashMap<String, String>> selectMember(@Param("startRow") int startRow,@Param("listLimit") int listLimit,@Param("searchKeyword") String searchKeyword);
+	int selectMemberListCount(@Param("searchKeyword") String searchKeyword);
 
 
 	

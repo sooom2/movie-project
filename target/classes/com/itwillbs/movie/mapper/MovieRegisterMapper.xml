@@ -391,6 +391,11 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time 
  	 FROM schedule_end
+ ORDER BY
+	 	end_sch_code DESC
+	LIMIT 
+	 	#{startRow}
+	  , #{listLimit}
  </select>
 		
 

@@ -167,7 +167,7 @@ $(function() {
                </div>
                      <!-- 테이블 --> 
                      
-                     <!-- 페이징처리 -->
+                   <!-- 페이징처리 -->
                    <div class="datatable-bottom">
 						<nav class="datatable-pagination">
 							<ul class="datatable-pagination-list">

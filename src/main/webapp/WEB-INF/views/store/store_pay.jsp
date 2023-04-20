@@ -12,6 +12,9 @@
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script type="text/javascript">
+	function point() {
+		location.href="store_point?item_code=" + ${item.get('item_code')} + "&item_price=" + + ${item.get('item_price')};
+	}
 	
 
 	var IMP = window.IMP; 
@@ -176,10 +179,9 @@
 		                    <i class="iconset ico-circle-minus">빼기</i>
 
 		                    <div class="cell sale">
-		                        <p class="txt">할인금액</p>
 		                        <p class="price">
-		                            <em id="totDcAmtView">0</em>
-		                            <span>원</span>
+		                        <p class="txt"><a onclick="point()" href="#" class="txt">포인트 사용하기</a></p>
+		                            <em id="totDcAmtView">${param.point }</em>
 		                        </p>
 		                    </div>
 		                    <i class="iconset ico-circle-equal">등호</i>
@@ -684,6 +686,9 @@
 </section>
 	<script>
 		$(function() {
+			
+			// 최종 결제 금액
+// 			$('#lstPayAmtView').val($('#totDcAmtView').text() - $('#lstPayAmtView').text());
 			
 			// 모달창 목록
 			$('ul.modalTab li').click(function() {

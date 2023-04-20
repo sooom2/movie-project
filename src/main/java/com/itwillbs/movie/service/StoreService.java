@@ -47,6 +47,9 @@ public class StoreService {
 	public int updatePoint(HashMap<String, String> point) {
 		return mapper.updatePoint(point);
 	}
+	public String selectPoint(String id) {
+		return mapper.selectPoint(id);
+	}
 	
 	
 

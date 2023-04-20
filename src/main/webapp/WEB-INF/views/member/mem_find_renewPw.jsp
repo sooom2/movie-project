@@ -71,9 +71,9 @@ $(function() {
 			<form action="renewPwPro" id="findIdPro" name="findForm" method="post" autocomplete="off">
 				<input type="hidden" name="member_id" value="${member_id }">
 				<h3 class="h3-member">새 비밀번호</h3>
-				<div class="mb30"><input type="text" id="member_pw" name="member_pw" class="inp-member" placeholder="영문자, 숫자, 특수문자 8자 이상"><span id="pw-check"></span></div>
+				<div class="mb30"><input type="password" id="member_pw" name="member_pw" class="inp-member" placeholder="영문자, 숫자, 특수문자 8자 이상"><span id="pw-check"></span></div>
 				<h3 class="h3-member">새 비밀번호 확인</h3>
-				<div class="mb30 member_pw2"><input type="text" id="member_pw2" name="member_pw2" class="inp-member onlyNumber" placeholder="위에 입력한 비밀번호를 다시 입력해주세요" ><span id="pw-check2"></span></div>
+				<div class="mb30 member_pw2"><input type="password" id="member_pw2" name="member_pw2" class="inp-member onlyNumber" placeholder="위에 입력한 비밀번호를 다시 입력해주세요" ><span id="pw-check2"></span></div>
 				
 				<button type="submit" class="btn-type0 mb50">비밀번호 설정</button>
 			</form>

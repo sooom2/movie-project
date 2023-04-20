@@ -86,9 +86,15 @@ public class MemberService {
 	      }
 		
 	}
-
+	
+	// 아이디 검증.
 	public HashMap<String, String> checkId(String id) {
 		return mapper.checkId(id);
+	}
+	
+	// 비밀번호 찾기 회원 인증.
+	public HashMap<String, String> phoneCheck(HashMap<String, String> member) {
+		return mapper.phoneCheck(member);
 	}
 
 

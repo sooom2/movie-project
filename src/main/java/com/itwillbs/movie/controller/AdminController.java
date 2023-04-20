@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.AdminService;
 import com.itwillbs.movie.service.MemberService;
+import com.itwillbs.movie.service.MovieRegisterService;
 import com.itwillbs.movie.service.StoreService;
+import com.itwillbs.movie.vo.PageInfo;
 
 @Controller
 public class AdminController {
@@ -23,13 +25,39 @@ public class AdminController {
 	private StoreService storeService;
 	@Autowired
 	private MemberService memberService;
+	
 
 	// 관리자 페이지
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminMain(Model model) {
+	public String adminMain(Model model,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "") String searchKeyword) {
 		
-		List<HashMap<String, String>> memberList = memberService.selectMember();
-		model.addAttribute("memberList", memberList);
+	
+		
+		// -----------------------------------------------------------------------
+				// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
+				int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
+				int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
+				// -----------------------------------------------------------------------
+				List<HashMap<String, String>> memberList = memberService.selectMember(startRow, listLimit,searchKeyword);
+				// -----------------------------------------------------------------------
+				int listCount = memberService.getMemberListCount(searchKeyword);
+				
+				int pageListLimit = 10; // 페이지 목록 갯수를 3개로 제한
+				int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+				int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+				int endPage = startPage + pageListLimit - 1;
+				
+				if(endPage > maxPage) {
+					endPage = maxPage;
+				}
+			
+				PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+				System.out.println(pageInfo);
+				// ------------------------------------------------------------------------------------
+				model.addAttribute("memberList",memberList);
+				model.addAttribute("pageInfo", pageInfo);
+				// -----------------------------------------------------------------------
+		
 		return "admin/admin_main";
 	}
 	

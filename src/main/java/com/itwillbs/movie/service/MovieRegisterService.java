@@ -163,9 +163,7 @@ public class MovieRegisterService {
 //	public List<HashMap<String, String>> selectEndSch() {
 //		return mapper.selectEndSch();
 //	}
-	public List<HashMap<String, String>> endSchList() {
-		return mapper.endSchList();
-	}
+
 	public int insertSchedule_end() {
 		return mapper.insertSchedule_end();
 	}
@@ -176,6 +174,16 @@ public class MovieRegisterService {
 		return mapper.selectBoardListCount();
 	}
 	
+	
+	//상영종료 list
+//	public List<HashMap<String, String>> endSchList() {
+//	return mapper.endSchList();
+//}
+	//페이징처리한 상영종료 list
+	public List<HashMap<String, String>> endSchList(int startRow, int listLimit) {
+		return mapper.endSchList(startRow,listLimit);
+	}
+
 
 
 }
