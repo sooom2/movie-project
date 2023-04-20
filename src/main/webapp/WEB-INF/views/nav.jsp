@@ -55,7 +55,7 @@
 		<nav class="primary">
 			
 			<ul class="nav_left">
-				<li><a href="" class="" onmouseover="">예매</a>
+				<li><a href="reservation" class="" onmouseover="">예매</a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="reservation" class="" onmouseover="">빠른예매</a></li>
