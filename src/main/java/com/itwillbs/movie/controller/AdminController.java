@@ -32,7 +32,7 @@ public class AdminController {
 	public String adminMain(Model model,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "") String searchKeyword) {
 		
 	
-		
+	
 		// -----------------------------------------------------------------------
 				// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
 				int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)

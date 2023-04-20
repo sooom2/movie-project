@@ -31,6 +31,10 @@ public class MemberService {
 	public List<HashMap<String, String>> selectMember() {
 		return mapper.selectMember();
 	}
+	//페이징
+	public List<HashMap<String, String>> selectMember(int startRow,int listLimit,String searchKeyword) {
+		return mapper.selectMember(startRow, listLimit,searchKeyword);
+	}
 
 	//회원추가수정
 //	public int registMember(MemberVO member) {
@@ -95,6 +99,11 @@ public class MemberService {
 	// 비밀번호 찾기 회원 인증.
 	public HashMap<String, String> phoneCheck(HashMap<String, String> member) {
 		return mapper.phoneCheck(member);
+	}
+
+	
+	public int getMemberListCount(String searchKeyword) {
+		return mapper.selectMemberListCount(searchKeyword);
 	}
 
 
