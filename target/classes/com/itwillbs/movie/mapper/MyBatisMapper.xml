@@ -197,6 +197,13 @@
 				WHERE member_id = #{id}
 	</update>
 	
+	<!-- 포인트 조회 -->
+	<select id="selectPoint" resultType="string">
+		SELECT member_point
+			FROM member
+				WHERE member_id = #{id}
+	</select>
+	
 	<!-- 멤버리스트 -->
 	<select id="selectMember" resultType="hashmap">
 		SELECT * FROM member
@@ -223,6 +230,17 @@
 			SET member_pw = #{member_pw}
 				WHERE member_id = #{member_id}
 	</update>
+	
+	<!-- 비밀번호 찾기 회원 인증 -->
+	<select id="phoneCheck" resultType="hashmap">
+		SELECT *
+			FROM member
+				WHERE 
+					member_id = #{member_id}
+					AND member_name = #{member_name}
+					AND member_bday = #{member_bday}
+					AND member_tel = #{member_tel}
+	</select>
 	
 	
 </mapper>

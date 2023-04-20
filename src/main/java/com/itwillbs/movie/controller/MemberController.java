@@ -217,8 +217,16 @@ public class MemberController {
 	// 비밀번호 재설정
 	@RequestMapping(value = "renewPw", method = {RequestMethod.GET, RequestMethod.POST})
 	public String renewPw(@RequestParam HashMap<String, String> member, Model model) {
-		model.addAttribute("member_id", member.get("member_id"));
-		return "member/mem_find_renewPw";
+		HashMap<String, String> result = service.phoneCheck(member);
+		
+		if(result == null) {
+			model.addAttribute("msg", "회원정보가 일치하지 않습니다");
+			return "member/fail_back";
+		} else {
+			model.addAttribute("member_id", member.get("member_id"));
+			return "member/mem_find_renewPw";
+		}
+		
 	}
 	
 	// 비밀번호 재설정pro

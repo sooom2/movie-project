@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,9 +65,21 @@ public class StoreController {
 		} else {
 			return "store/store_pay";
 		}
-		
-		
 	}
+	
+	// 스토어 포인트
+	@GetMapping("store_point")
+	public String store_point(@RequestParam String item_code, @RequestParam String item_price ,HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		
+		String point = service.selectPoint(id);
+		model.addAttribute("point", point);
+		model.addAttribute("item_code", item_code);
+		model.addAttribute("item_price", item_price);
+		
+		return "store/store_point";
+	}
+	
 	
 	// 결제 성공
 	@RequestMapping(value = "store_paySuccess", method = {RequestMethod.GET, RequestMethod.POST})

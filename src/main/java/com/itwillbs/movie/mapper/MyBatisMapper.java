@@ -77,6 +77,10 @@ public interface MyBatisMapper {
 	// 회원가입 아이디 조회
 	HashMap<String, String> checkId(String id);
 
+	HashMap<String, String> phoneCheck(HashMap<String, String> member);
+
+	String selectPoint(String id);
+
 
 	
 	// ------------------------------------------------------------------------------------------

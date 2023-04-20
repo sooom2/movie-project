@@ -55,7 +55,7 @@ $(function() {
 	// 입력 확인.
 	$("form").submit(function() {
 		if($("#member_id").val() == "") {
-			alert("이름을 입력하세요.");
+			alert("아이디를 입력하세요.");
 			$("#member_id").focus();
 			return false;
 		} else if($("#member_name").val() == "") {
