@@ -86,7 +86,8 @@ public class MemberService {
 	      }
 		
 	}
-
+	
+	// 아이디 검증.
 	public HashMap<String, String> checkId(String id) {
 		return mapper.checkId(id);
 	}

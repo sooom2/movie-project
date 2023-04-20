@@ -14,10 +14,10 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
-    document.getElementById("postSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
-        //카카오 지도 발생
+    document.getElementById("postSearch").addEventListener("click", function(){
+       
         new daum.Postcode({
-            oncomplete: function(data) { //선택시 입력값 세팅
+            oncomplete: function(data) { 
                 document.getElementById("member_address1").value = data.address; // 주소 넣기
                 document.querySelector("#member_address2").focus(); //상세입력 포커싱
             }
