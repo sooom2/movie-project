@@ -1994,13 +1994,13 @@ progress {
 }
 
 .form-control, .datatable-input {
-  display: block;
-  width: 100%;
+  /* display: block; */
+  /* width: 100%; */
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
-  color: #212529;
+  /* color: #212529; */
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -11088,7 +11088,7 @@ body {
 .datatable-top > div:last-child,
 .datatable-bottom > nav:last-child,
 .datatable-bottom > div:last-child {
-  float: right;
+  /* float: right; */
 }
 
 .datatable-selector {
@@ -11340,6 +11340,35 @@ body {
 	margin: 0 3px;
 }
 
+.modal-bottom {
+	margin: 0 -3px;
+	text-align: center;
+}
+
+.modal-bottom button {
+	width: 115px;
+	height: 38px;
+	border: 0;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #000;
+	font-weight: 600;
+	background: #e4e9f2;
+	margin: 0 3px;
+}
+
+.modal-bottom button.btn-modal2 {
+	background: #673bd4;
+}
+
+.modal-bottom.flex {
+	display: flex;
+}
+
+.modal-bottom.flex button {
+	width: 49%;
+}
 .modal-bottom .btn-modal2 {
 	background: #673bd4;
 }
@@ -11434,8 +11463,9 @@ main{
 }
 
 .modal-bottom.flex {
-	width: 49%;
+	width: 60%;
 	height: 50px;
+	margin: 0 auto;
 }
 .selectbox{
 	text-align: left;

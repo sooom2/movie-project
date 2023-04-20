@@ -32,4 +32,7 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> payList(String id);
 
+	List<HashMap<String, String>> cinemaList(String id);
+
+
 }
