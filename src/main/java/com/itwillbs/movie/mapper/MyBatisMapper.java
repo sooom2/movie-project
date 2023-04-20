@@ -79,15 +79,12 @@ public interface MyBatisMapper {
 	// 회원가입 아이디 조회
 	HashMap<String, String> checkId(String id);
 
-<<<<<<< HEAD
 	HashMap<String, String> phoneCheck(HashMap<String, String> member);
 
 	String selectPoint(String id);
-=======
 	// 페이징처리한 회원목록
 	List<HashMap<String, String>> selectMember(@Param("startRow") int startRow,@Param("listLimit") int listLimit,@Param("searchKeyword") String searchKeyword);
 	int selectMemberListCount(@Param("searchKeyword") String searchKeyword);
->>>>>>> branch 'member_file' of https://github.com/sooom2/movie-project.git
 
 
 	
