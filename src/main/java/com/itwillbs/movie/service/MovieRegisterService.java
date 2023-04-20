@@ -33,7 +33,7 @@ public class MovieRegisterService {
 		return mapper.selectMovie(info_movie_code);
 	}
 	//영화 상세정보 - 리뷰
-	public HashMap<String, String> selectMovieReview(String info_movie_code) {
+	public List<HashMap<String, String>> selectMovieReview(String info_movie_code) {
 		return mapper.selectMovieReview(info_movie_code);
 	}
 	

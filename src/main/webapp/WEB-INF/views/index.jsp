@@ -339,7 +339,6 @@
 			<div class="main-movie-list">
 				<ul class="selector">
 					<li class="selected" data-panel="bo">박스오피스</li>
-					<li class="" data-panel="lr">최신개봉작</li>
 					<li class="" data-panel="cs">상영예정작</li>
 				</ul>
 
@@ -368,30 +367,6 @@
 					</ul>
 				</div>
 <%-- 			</c:forEach> --%>
-
-				<!--  최신개봉작 -->
-				<div class="wrap-slider wrap-lr">
-					<ul class="bxslider-lr">
-					
-						<c:forEach var="movie" items="${ascendigMovieList}" end = "9" >
-						    <li data-moviecode="${movie.info_movie_code }">
-						    	<span class="over over-a">
-						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
-						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
-						    	</span>
-						    <img src="${movie.info_movie_poster }" class="posterlist">
-						    <div class="movie-desc">
-						    	<span class="${movie.rate }">${movie.info_rating }</span>
-						    		${movie.info_movie_title }
-						    	</div>
-						 	  	<div class="like-btn">
-									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
-									<span class="likeNum">${movie.like_count }</span></a>
-							</div>
-				   		 </li>
-						</c:forEach>	
-					</ul>
-				</div>
 
 				<!--  상영예정작 -->
 				<div class="wrap-slider wrap-cs">
