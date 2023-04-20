@@ -29,7 +29,7 @@
 	// 	});
 	
 	function confirmUpdate() {
-		return confirm("수정하시겠습니까?");
+		return confirm("등록 하시겠습니까?");
 	}
 	
 	function one_delete(){
@@ -39,31 +39,6 @@
 		}
 	}
 	
-	function selectCinema(){
-		alert("change");
-		$.ajax({
-			type: "POST",
-			url: "screenSelect",
-			data: {
-				cinema_code: $(".cinema_name option:selected").val(),
-			  	cinema_name: $(".cinema_name option:selected").text()
-			},
-			success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-				
-				$('.selectScreen_name option').remove();
-				$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
-				$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
-				for(var i=0; i<result.length; i++){
-					$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
-				}
-				
-			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		     
-			}
-		});//ajax
-	}
 
 </script>
 </head>
@@ -115,26 +90,20 @@
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 ">
 												<input class="form-control" id="one_subject"
-													name="one_subject" type="text" value="${oneBoard.one_subject }"/> <label
+													name="one_subject" type="text" value="${oneBoard.one_subject }" readonly="readonly"/> <label
 													for="one_subject">제목</label>
 											</div>
 										</div>
 										<div class="col-md-6 ">
-											<div class="form-floating mb-3 mb-md-0 selectbox">
-												<div class="cinema_name">
-													<label for="cinema_name">문의지점 : </label> <select
-														name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을
-															선택하세요</option>
-														<option value="none" disabled>=======================</option>
-														<c:forEach var="cinema" items="${cinemaList }">
-															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
-														</c:forEach>
-													</select>
-													<c:forEach var="cinema" items="${cinemaList }">
-														<input type="hidden" name="location_code"
-															value="${cinema.get('location_code') }">
-													</c:forEach>
+											<div class="dropdown bootstrap-select">
+												<div class="form-floating mb-3 mb-md-0 selectbox">
+													<div class="cinema_name">
+														<label for="cinema_name">문의지점 : </label> <select
+															name="cinema_name" 
+															style="margin-top: 0px; !important">
+															<option value="${oneBoard.cinema_name }" selected="selected" >${oneBoard.cinema_name }</option>
+														</select>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -143,7 +112,7 @@
 										<div class="form-floating mb-3 mb-md-0 text">
 											<div>
 												<textarea name="one_content" class="form-control"
-													id="one_content" placeholder="내용" rows="10" >${oneBoard.one_content }</textarea>
+													id="one_content" placeholder="내용" rows="10" readonly="readonly">${oneBoard.one_content }</textarea>
 											</div>
 										</div>
 									</div>
@@ -158,7 +127,7 @@
 									<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<input class="btn btn-primary btn-block btn-update" type="submit" value="수정" >
+													<input class="btn btn-primary btn-block btn-update" type="submit" value="답변등록" >
 												</div>
 											</div>
 											<div class="mt-4 mb-0 col-md-6">

@@ -7,11 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function deleteLost() {
+	function deleteOne() {
 		let result = confirm("삭제 하시겠습니까?");
-		if(result) {
-			location.href="lost_deletePro?lost_code=" + ${map.lost_code };
-		} 
+		if (result) {
+			location.href = "one_deletePro?one_code=" + ${map.one_code };
+			{
+				map.one_code
+			}
+			;
+		}
 	}
 </script>
 </head>
@@ -35,65 +39,51 @@
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 
-			<div id="contents" class="">
-				<h2 class="tit">분실물 문의</h2>
-
-				<ul class="dot-list mb30">
-					<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li>
-					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
-				</ul>
+			<div id="contents">
+				<h2 class="tit">내가 문의한 내용</h2>
 
 				<div class="table-wrap">
 					<div class="board-view">
 						<div class="tit-area">
-							<p class="tit">${map.lost_subject }</p>
+							<p class="tit">${map.one_subject }</p>
 						</div>
 
 						<div class="info">
-							<p>
-								<span class="txt">문의사항</span>
-							</p>
-							<p>
-								<strong class="txt">${map.cinema_name }</strong>
-							</p>
-							<p>
-								<span class="txt">${map.lost_tel }</span>
-							</p>
-							<p>
-								<span class="txt">${map.lost_email }</span>
-							</p>
-							<p>
-								<span class="txt">${map.lost_write_date }</span>
-							</p>
-							<p>
 
 
-								<span class="txt">미답변</span>
+							<p>
+								<span class="tit">영화관</span> <span class="txt">${map.cinema_name }</span>
+							</p>
+							<p>
+								<span class="tit">구분</span> <span class="txt">${map.one_question_type }</span>
+							</p>
 
+
+
+							<p>
+								<span class="tit">등록일</span> <span class="txt">${map.one_write_date }</span>
 							</p>
 						</div>
 
 						<div class="cont">
 							<textarea rows="5" cols="30" readonly=""
-								class="input-textarea view" style="border: none;">${map.lost_content }</textarea>
+								class="input-textarea view" style="border: none;">${map.one_content }</textarea>
 						</div>
 						<!-- 답변영역 -->
-						<c:if test="${not empty map.lost_board_rep_content }">
+						<c:if test="${not empty map.one_rep_board_content }">
 							<div class="cont">
 								<div>
-									<label for="lost_board_rep_content">답변내용</label>
+									<label for="one_rep_board_content">답변내용</label>
 								</div>
 							<textarea rows="5" cols="30" readonly=""
-								class="input-textarea view" style="border: none;">${map.lost_board_rep_content }</textarea>
+								class="input-textarea view" style="border: none;">${map.one_rep_board_content }</textarea>
 						</div>
 						</c:if>
-
 					</div>
 				</div>
-
 				<div class="btn-group pt40">
-					<a href="lost_board" id="listBtn" class="button large" title="목록">목록</a>
-					<a class="button large deleteBtn inq-delete" title="삭제" onclick="deleteLost()">삭제</a>
+					<a href="one_list" class="button large listBtn" title="목록">목록</a>
+					<a class="button large deleteBtn inq-delete" title="삭제" onclick="deleteOne()">삭제</a>
 				</div>
 			</div>
 

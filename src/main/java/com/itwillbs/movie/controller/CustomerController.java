@@ -116,16 +116,15 @@ public class CustomerController {
 			model.addAttribute("msg", "삭제 실패!");
 			return "fail_back";
 		}
-		
 	}
 	
-	// 1대1 문의
+	// 1:1 문의
 	@RequestMapping(value = "oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneOnOne() {
 		return "customer_center/oneOnOne";
 	}
 	
-	// 1대1 문의 등록
+	// 1:1 문의 등록
 	@RequestMapping(value = "oneWritePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneWritePro(@RequestParam HashMap<String, String> map, Model model) {
 		System.out.println("controller: " + map);
@@ -140,26 +139,42 @@ public class CustomerController {
 		}
 	}
 	
-//	// 분실물 문의 페이지 목록
-//	@RequestMapping(value = "one_detail_list", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String one_list(Model model) {
-//		// 하다만거===================================================================================================================
-//		List<BoardVO> oneBoardList = boardService.getOneBoardList();
-//		model.addAttribute("oneBoardList", oneBoardList);
-////			System.out.println("Controller: " + model);
-//		return "customer_center/one_list";
-//	}
-	
-	
-	// 1대1 문의 내역 페이지
-	@RequestMapping(value = "one_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String oneBoard(Model model) {
+	// 내가 문의한 내용 목록
+	@RequestMapping(value = "one_list", method = {RequestMethod.GET, RequestMethod.POST})
+	public String oneList(Model model) {
 		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
-		System.out.println(oneBoardList);
 		model.addAttribute("oneBoardList", oneBoardList);
-//		System.out.println("Controller: " + model);
-		return "customer_center/one_board";
+		System.out.println("oneList 컨트롤러" + model);
+		
+		
+		return "customer_center/one_list";
+	}
+	
+	// 내가 문의한 내역 상세
+	@RequestMapping(value = "one_detail", method = {RequestMethod.GET, RequestMethod.POST})
+	public String oneDetail(@RequestParam HashMap<String, String> map, Model model) {
+		
+		map = boardService.getOneDetail(map);
+		model.addAttribute("map", map);
+		System.out.println("내가 문의 상세 컨트롤러" + model);
+		
+		return "customer_center/one_detail";
+	}
+	
+	// 내가 문의한 내역 삭제
+	@RequestMapping(value = "one_deletePro", method = {RequestMethod.GET, RequestMethod.POST})
+	public String oneDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		int deleteCount = boardService.getOneDelete(map);
+		System.out.println(deleteCount);
+		if(deleteCount > 0) {
+			return "redirect:/one_list";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			return "fail_back";
+		}
 	}
 	
 //	// 비회원문의내역
@@ -196,6 +211,9 @@ public class CustomerController {
 		
 		int insertCount = boardService.registNoticeBoard(map);
 		System.out.println("여기" + map);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		System.out.println(model);
 		if(insertCount > 0) {
 			return "redirect:/admin_notice_board";
 		} else {
@@ -370,6 +388,8 @@ public class CustomerController {
 		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
 		System.out.println(oneBoardList);
 		model.addAttribute("oneBoardList", oneBoardList);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 //			System.out.println("Controller: " + model);
 		return "admin/admin_oneOnOne";
 	}
@@ -381,6 +401,8 @@ public class CustomerController {
 		HashMap<String, String> oneBoard = boardService.getOneBoard(one_code);
 		System.out.println(oneBoard);
 		model.addAttribute("oneBoard", oneBoard);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		System.out.println(model);
 		return "admin/admin_one_rep";
 	}
@@ -400,7 +422,7 @@ public class CustomerController {
 	
 	// 관리자 1:1 삭제
 	@RequestMapping(value = "one_delete_pro", method = {RequestMethod.GET, RequestMethod.POST})
-	public String oneDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+	public String oneAdminDeletePro(@RequestParam HashMap<String, String> map, Model model) {
 		int deleteCount = boardService.getOneDelete(map);
 		System.out.println(deleteCount);
 		if(deleteCount > 0) {

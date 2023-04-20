@@ -32,7 +32,6 @@
 			FROM lost_board
 			ORDER BY 
 				lost_code DESC
-			LIMIT 10
 	</select>
 	
 	<!-- 분실물 상세 -->
@@ -92,7 +91,6 @@
 			FROM one_board
 			ORDER BY 
 				one_code DESC
-			LIMIT 10
 	</select>
 	
 	<!-- 1:1 답변창 -->
@@ -109,6 +107,13 @@
 			, one_rep_board = "답변완료"
 			WHERE one_code = #{one_code}
 	</update>
+	
+	<!-- 내가 문의한 내역 상세 --> 
+	<select id="selectOneDetail" resultType="hashmap">
+		SELECT *
+			FROM one_board
+			WHERE one_code = ${one_code}
+	</select>
 	
 	<!-- 분실물 삭제 -->
 	<delete id="deleteOnBoard">
