@@ -89,8 +89,9 @@
 		LIKE	(concat ("%",
 					(SELECT member_prefer_genre 
                         FROM member 
-                        WHERE member_id = #{id}),"%"));
+                        WHERE member_id = #{id}),"%"))
   	</select>
+  	
   	<insert id= "insertPoint" >
 		INSERT 
   			INTO point
@@ -126,7 +127,15 @@
 	  	WHERE p.member_id = #{id}
   	</select>
   	
-  	
+  	<select id = "cinemaList" resultType="hashmap">
+  		SELECT cinema_name
+   	  	  , CASE WHEN A.member_prefer_branch IS NOT NULL THEN 'selected' END AS selected
+   		 FROM cinema c
+   		LEFT JOIN (SELECT member_prefer_branch
+			FROM member
+			WHERE member_id  =  #{id}) A
+	 		ON c.cinema_name = A.member_prefer_branch
+  	</select>
   	
   	
 </mapper>

@@ -100,7 +100,9 @@ public class MypageController {
 		
 
 		String id = (String)session.getAttribute("sId");
-
+		List<HashMap<String, String>> cinemaList = service.cinemaList(id);
+		model.addAttribute("cinemaList", cinemaList);
+		
 		if(id ==null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "fail_back";

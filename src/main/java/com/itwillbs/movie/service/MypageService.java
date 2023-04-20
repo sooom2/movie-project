@@ -64,6 +64,12 @@ public class MypageService {
 		return mapper.payList(id);
 	}
 
+	public List<HashMap<String, String>> cinemaList(String id) {
+		// TODO Auto-generated method stub
+		return mapper.cinemaList(id);
+	}
+
+
 
 
 

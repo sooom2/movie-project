@@ -63,19 +63,18 @@ window.onload = function(){
 									 <span></span>
 								</label>
 							</div>
-
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
 			                        <span>주소</span>
-			                        <input type="text" style="width:200px;display:inline-block;" id="join-post" name="member_address1" class="input" placeholder="주소입력">
-			                        <span></span>
+			                        <input type="text" style="width:180px;display:inline-block;" id="member_address1" name="member_address1" class="input" placeholder="주소입력">
+			                        <span class="joinCheck"></span>
 			                    </label>
 			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
-							<div class="join-detail" style="margin-top:-10px">
+							<div class="join-detail" style="margin-top:4px">
 								<label class="label-input" for="address"> <span>상세주소</span>
-									<input type="text" id="join-add" name="member_address2" class="input" value="" placeholder="상세주소입력">
-									<span></span>
+									<input type="text" id="member_address2" name="member_address2" class="input" value="" placeholder="상세주소입력">
+									<span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
@@ -104,23 +103,13 @@ window.onload = function(){
 						<div class="join-detail">
 								<label class="label-input" for=""> <span>선호지점</span>
 									<div class="" style="margin-left: 120px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
+										<!-- selectMemberInfo  -->
 										<select name="member_prefer_branch" id="member_prefer_branch"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(/images/customer/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="부산점" <c:if test="${member.member_prefer_branch eq '부산점'}">selected</c:if>>부산점</option>
-											<option value="부산대연점" <c:if test="${member.member_prefer_branch eq '부산대연점'}">selected</c:if>>부산대연점</option>
-											<option value="강남점" <c:if test="${member.member_prefer_branch eq '강남점'}">selected</c:if>>강남점</option>
-											<option value="울산삼산점" <c:if test="${member.member_prefer_branch eq '울산삼산점'}">selected</c:if>>울산삼산점</option>
-											<option value="경남김해점" <c:if test="${member.member_prefer_branch eq '경남김해점'}">selected</c:if>>경남김해점</option>
-											<option value="서울건대점" <c:if test="${member.member_prefer_branch eq '서울건대점'}">selected</c:if>>서울건대점</option>
-											<option value="서울명동점" <c:if test="${member.member_prefer_branch eq '서울명동점'}">selected</c:if>>서울명동점</option>
-											<option value="부산동래점" <c:if test="${member.member_prefer_branch eq '부산동래점'}">selected</c:if>>부산동래점</option>
-											<option value="부산센텀점" <c:if test="${member.member_prefer_branch eq '부산센텀점'}">selected</c:if>>부산센텀점</option>
-											<option value="경기구리점" <c:if test="${member.member_prefer_branch eq '경기구리점'}">selected</c:if>>경기구리점</option>
-											<option value="경기김포점" <c:if test="${member.member_prefer_branch eq '경기김포점'}">selected</c:if>>경기김포점</option>
-											<option value="경남마산점" <c:if test="${member.member_prefer_branch eq '경남마산점'}">selected</c:if>>경남마산점</option>
-											<option value="경남진주점" <c:if test="${member.member_prefer_branch eq '경남진주점'}">selected</c:if>>경남진주점</option>
-											<option value="울산신천점" <c:if test="${member.member_prefer_branch eq '울산신천점'}">selected</c:if>>울산신천점</option>
-											<option value="울산동구점" <c:if test="${member.member_prefer_branch eq '울산동구점'}">selected</c:if>>울산동구점</option>
+										
+											<c:forEach var="cinema" items="${cinemaList }">
+											<option value="${cinema.cinema_name }" ${cinema.selected }>${cinema.cinema_name }</option>
+											</c:forEach>
 										</select>
 
 									</div> <span></span>
