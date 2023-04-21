@@ -37,7 +37,7 @@
 <!-- 					<li><span>배 &nbsp; &nbsp; &nbsp;우 : </span> 배우</li> -->
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
-				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
+				 <a href="reservation" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
 				<!-- !!상영예정작인 영화는 예매하기가 아닌 상영예정이라고 표시해야함!! -->
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
@@ -64,6 +64,7 @@
 							        <td>${Review.rev_content}</td>
 							        <td>
 							            <c:if test="${not empty Review.rev_rating}">
+							            	
 							                <c:choose>
 							                    <c:when test="${Review.rev_rating == 1}">
 							                        ★
