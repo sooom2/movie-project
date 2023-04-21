@@ -69,6 +69,11 @@ public class MypageService {
 		return mapper.cinemaList(id);
 	}
 
+	public int updatePoint(String id) {
+		return mapper.updatePoint(id);
+		
+	}
+
 
 
 

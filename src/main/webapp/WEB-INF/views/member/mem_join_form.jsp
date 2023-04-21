@@ -258,8 +258,8 @@ $(function() {
 												<label for="genre_drama">드라마 </label>
 											</td>
 											<td>
-												<input type="radio" name="member_prefer_genre" value="코미디" id="genre_comedy" onclick="check();">
-												<label for="genre_comedy">코미디 </label>
+												<input type="radio" name="member_prefer_genre" value="코메디" id="genre_comedy" onclick="check();">
+												<label for="genre_comedy">코메디 </label>
 											</td>
 											<td><input type="radio" name="member_prefer_genre"
 												value="애니메이션" id="genre_ani" onclick="check();"><label

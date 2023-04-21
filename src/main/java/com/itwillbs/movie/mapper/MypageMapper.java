@@ -34,5 +34,7 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> cinemaList(String id);
 
+	int updatePoint(String id);
+
 
 }

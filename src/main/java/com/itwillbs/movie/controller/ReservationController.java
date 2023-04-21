@@ -79,13 +79,20 @@ public class ReservationController {
 	}
 	
 	
-	
+	// 좌석 선택
 	@PostMapping("seat")
 	public String seat(Model model) {
 		
 		return "reservation/seat";
 	}
 	
+	
+	// 좌석 정보
+	
+	
+	
+	
+	// 예매 리스트 조회
 	@ResponseBody
 	@GetMapping("reservationList")
 	public String reservationList(Model model, String schCd) {
@@ -97,6 +104,10 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
+	
+	
+	
+	// 결제
 	@PostMapping("reservationPay")
 	public String reservationPay() {
 		return "reservation/reservation_pay";
