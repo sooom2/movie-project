@@ -27,6 +27,7 @@ public class MypageController {
 	public String mypageR(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		
+		
 		if(id ==null) {
 			return "redirect:/memLogin";
 		}
@@ -212,11 +213,14 @@ public class MypageController {
 
 		int insertCount = service.insertReview(review);
 		
+		
 		if(insertCount > 0 ) {
 			
 			model.addAttribute("msg", "리뷰가 등록 되었습니다.");
 			model.addAttribute("target", "mypageRv");
 			service.insertPoint(id);
+			service.updatePoint(id);
+			
 
 			return "success";
 		

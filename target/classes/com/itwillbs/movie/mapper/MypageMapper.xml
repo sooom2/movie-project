@@ -152,4 +152,17 @@
   	</select>
   	
   	
+<!--   	update [테이블명1] X  -->
+<!-- inner join [테이블명2] Y on X.[조인된컬럼] = Y.[조인된컬럼] -->
+<!-- set X.[컬럼A] = 변경할값 -->
+<!-- ( WHERE 절 ) -->
+  	
+  	<update id="updatePoint" >
+	  UPDATE member
+	  SET member_point = (SELECT sum(point_amount) FROM point 
+	 	 WHERE point_id = #{id})
+	 	WHERE member_id = #{id};
+  	</update>
+  	
+  	
 </mapper>
