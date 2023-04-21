@@ -27,6 +27,7 @@ public class MypageController {
 	public String mypageR(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		
+
 		
 		if(id ==null) {
 			return "redirect:/memLogin";
@@ -34,7 +35,8 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
-		
+		List<HashMap<String,String>> resList = service.resList(id);
+		model.addAttribute("resList", resList);
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		return "mypage/mypage_rsv_form";

@@ -36,5 +36,7 @@ public interface MypageMapper {
 
 	int updatePoint(String id);
 
+	List<HashMap<String, String>> resList(String id);
+
 
 }
