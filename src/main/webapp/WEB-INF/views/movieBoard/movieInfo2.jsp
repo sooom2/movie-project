@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/resources/css/inc.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
@@ -44,22 +45,61 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="movie_review_form.jsp"/>
+		<div class="section group section-mypage">
+				<div class="wrap-list">
+					<div style="margin-top: -40px; margin-bottom: 10px;">리뷰 보기</div>
+					<table class="bbs-list bbs-list-mypage-coupon">
+						<thead>
+							<tr>
+								<th>작성자</th>
+								<th>한줄평</th>
+								<th>별 점</th>
+								<th>작성일자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="Review" items="${movieInfoReview}">
+							    <tr>
+							        <td>${Review.rev_id}</td>
+							        <td>${Review.rev_content}</td>
+							        <td>
+							            <c:if test="${not empty Review.rev_rating}">
+							                <c:choose>
+							                    <c:when test="${Review.rev_rating == 1}">
+							                        ★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 2}">
+							                        ★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 3}">
+							                        ★★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 4}">
+							                        ★★★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 5}">
+							                        ★★★★★
+							                    </c:when>
+							                    <c:otherwise>
+							                        No rating
+							                    </c:otherwise>
+							                </c:choose>
+							            </c:if>
+							        </td>
+							        <td>${Review.rev_date}</td>
+							    </tr>
+							</c:forEach>
+							<c:if test="${empty movieInfoReview}">
+								<tr>
+									<td colspan="4">작성된 리뷰가 없습니다</td>
+								</tr>
+							</c:if>
+						</tbody>
+					</table>
+				</div>
+			</div>
 	</div>
 </div>
-<script type="text/javascript">
-//     $(function () {
-    	
-//         $("a.btn-rsv", "div.section-movie-info").click(function (e) {
-//             e.preventDefault();
-//             $.desktop.reserve.open({
-//                 playDate: '20230404',
-//                 movieCode: '20226270'
-//             });
-//             return false;
-//         });
-//     })
-</script>
 <jsp:include page="../footer.jsp"/>
 </body>
 </html>

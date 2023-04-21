@@ -28,8 +28,7 @@ public class MypageController {
 		String id = (String)session.getAttribute("sId");
 		
 		if(id ==null) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			return "fail_back";
+			return "redirect:/memLogin";
 		}
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
@@ -94,14 +93,16 @@ public class MypageController {
 		
 		return "mypage/mypage_qna_form";
 	}
+	
 	//회원정보수정
 	@GetMapping(value = "mypageI")
 	public String mypageI(HttpSession session, Model model) {
 		
-
 		String id = (String)session.getAttribute("sId");
 		List<HashMap<String, String>> cinemaList = service.cinemaList(id);
 		model.addAttribute("cinemaList", cinemaList);
+		
+		
 		
 		if(id ==null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
@@ -112,11 +113,12 @@ public class MypageController {
 		model.addAttribute("member", member);
 		return "mypage/mypage_info_form";
 	}
-	
+	//회원정보수정
 	@PostMapping(value = "updatePro")
 	public String updatePro(@RequestParam HashMap<String, String> update, Model model, HttpSession session ) {
 		String id = (String)session.getAttribute("sId");
-		
+		String member_address = update.get("member_address1") + "/" + update.get("member_address2");
+		update.put("member_address", member_address);
 		if(id == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "fail_back";

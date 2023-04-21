@@ -73,6 +73,9 @@ public interface BoardMapper {
 	// 1:1 삭제
 	int deleteOnBoard(HashMap<String, String> map);
 
+	// 내가 문의한 내역 상세
+	HashMap<String, String> selectOneDetail(HashMap<String, String> map);
+
 	
 
 	

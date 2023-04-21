@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/mypage.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+<link href="resources/css/common.css" rel="stylesheet">
+<link href="resources/css/mypage.css" rel="stylesheet">
+<link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -18,8 +19,8 @@ window.onload = function(){
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("join-post").value = data.address; // 주소 넣기
-                document.querySelector("#join-add").focus(); //상세입력 포커싱
+                document.getElementById("member_address1").value = data.address; // 주소 넣기
+                document.querySelector("#member_address2").focus(); //상세입력 포커싱
             }
         }).open();
     });
@@ -66,20 +67,20 @@ window.onload = function(){
 							<div class="join-detail">
 			                    <label class="label-input" for="phone" style="width:342px;display:inline-block;">
 			                        <span>주소</span>
-			                        <input type="text" style="width:180px;display:inline-block;" id="member_address1" name="member_address1" class="input" placeholder="주소입력">
+			                        <input type="text" style="width:180px;display:inline-block;"  id="member_address1" name="member_address1"class="input" value="${member.member_address1 }">
 			                        <span class="joinCheck"></span>
 			                    </label>
 			                    <a href="#" class="btnsub btnsms" id="postSearch">주소 검색</a>
 			                </div>
 							<div class="join-detail" style="margin-top:4px">
 								<label class="label-input" for="address"> <span>상세주소</span>
-									<input type="text" id="member_address2" name="member_address2" class="input" value="" placeholder="상세주소입력">
+									<input type="text" id="member_address2" name="member_address2" class="input" value="${member.member_address2 }">
 									<span class="joinCheck"></span>
 								</label>
 							</div>
 							<div class="join-detail">
 								<label class="label-input" for="email"> <span>이메일</span>
-									<input type="text" id="member_email" name="member_email" class="input"
+									<input type="text" id="member_email" name="member_email" class="input" readonly="readonly"
 									value="${member.member_email }"> <span></span>
 								</label>
 							</div>

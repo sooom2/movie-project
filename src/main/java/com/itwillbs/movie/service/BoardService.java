@@ -147,6 +147,12 @@ public class BoardService {
 		return mapper.deleteOnBoard(map);
 	}
 
+	// 내가 문의한 내역 상세
+	public HashMap<String, String> getOneDetail(HashMap<String, String> map) {
+		
+		return mapper.selectOneDetail(map);
+	}
+
 	
 
 	

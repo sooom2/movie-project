@@ -97,6 +97,11 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
+	@PostMapping("reservationPay")
+	public String reservationPay() {
+		return "reservation/reservation_pay";
+	}
+	
 	
 	
 }

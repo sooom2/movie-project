@@ -161,6 +161,40 @@
 			<!-- 결제수단 포인트 끝 -->
             
 			<!-- 포인트 영역 -->
+			<div class="c_order_point">
+			<div class="c_order_title">
+				<h3 class="tit"><span class="icon icon_point"></span><span class="txt">포인트</span></h3>
+			</div>
+			<div class="order_point_type">
+			 <dl>
+				<dl class="box_point_switch">
+						<div class="point_type input_type" >
+							<dt>
+								<span class="imoviePoint">IMOVIE POINT</span>
+							</dt>
+							<dd>
+								<div class="input_wrap">
+									<p class="input_payment">
+										<input type="text" class="number" id="" name="" >
+										<span class="unit">원</span>
+									</p>
+									<p class="input_payment">
+										<button type="button" class="btn_payment" id="">전액사용</button>
+									</p>
+									<p class="info">사용가능 <span id="" class="number">0</span><span>P</span></p>
+									<p class="input_payment">
+										<label class="c_order_checkbox">
+											<input type="checkbox" name="all_pay" style="display: none"><span>항상 전액사용</span>
+										</label>
+									</p>
+								</div>
+							</dd>
+						</div>
+					</dl>
+				</dl>
+			</div>
+		</div>
+			
 			
 			<!-- 포인트 영역 끝 -->
 

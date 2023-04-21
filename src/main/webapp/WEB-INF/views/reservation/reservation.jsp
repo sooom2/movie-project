@@ -46,10 +46,13 @@
 
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="">
 				<input type="hidden" id="HidRating" name="HidRating" value="">
-				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="">
-				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="">
 				
 				<input type="hidden" id="schCd" name="schCd" value="">
+				<input type="hidden" id="showDate" name="showDate" value="">
+				<input type="hidden" id="genre" name="genre" value="">
+				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
+				
+				
 
 				
 				<!-- PC 전용 -->
@@ -354,6 +357,9 @@ var mvDay = "";		// 상영일
 		 			let lastTime = movie.sch_last_time;
 		 			mvDay = movie.sch_movie_date;
 		 			
+		 			$("#ScreenCd").val(screenCode);
+		 			$("#ScreenNm").val(screenName);
+		 			
 		 			console.log("schCode : " + schCode);
 		 			console.log("screenCode : " + screenCode);
 		 			console.log("screenName : " + screenName);
@@ -413,8 +419,7 @@ var mvDay = "";		// 상영일
 			
 			$("#HidRating").val("");
 			$("#HidMovieUrl").val("");
-// 			$("#HidTicketRate").val("");
-// 			$("#HidReleaseDT").val("");
+			
 		} else {
 			var obj = $('.btnMvItem[data-cd="' + cd + '"]');
 			console.log(obj);
@@ -425,8 +430,7 @@ var mvDay = "";		// 상영일
 
 			$("#HidRating").val(obj.data("rat"));
 			$("#HidMovieUrl").val(obj.data('url'));
-// 			$("#HidTicketRate").val(obj.data('trt'));
-// 			$("#HidReleaseDT").val(obj.data('rdt'));
+			$("#MovieNm").val(obj.attr("title"));
 		}
 	}
 	
@@ -566,8 +570,10 @@ var mvDay = "";		// 상영일
 		$(".btnCnItem").on("click", function(e){
 // 			var cd = $(this).data("cd");
 			CnItemCd = $(this).data("cd");
-			console.log("CnItemCd type:" + typeof CnItemCd);
-			console.log("CnItemCd : " + CnItemCd);
+			var cinemaNm = $(this).attr("title");
+			$("#CinemaNm").val(cinemaNm);
+// 			console.log("CnItemCd type:" + typeof CnItemCd);
+// 			console.log("CnItemCd : " + CnItemCd);
 // 				console.log("cd:" + cd);
 			$(".btnMvItem").hide();
 			$.ajax({													// 함수로 따로 뺄까?
@@ -584,6 +590,14 @@ var mvDay = "";		// 상영일
 	 					let movieCode = movie.info_movie_code;
 	 					let movieImg = movie.info_movie_poster;
 	 					let movieRating = movie.info_rating;
+	 					let showDate = movie.info_showdate;
+	 					let genre = movie.info_genre;
+	 					
+	 					
+	 					$("#showDate").val(showDate);
+	 					$("#genre").val(genre);
+	 					
+	 					
 	 					var str = "";
 	 					str += "<li>";
 	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;

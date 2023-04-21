@@ -166,11 +166,8 @@
 <!-- 									</div> -->
 									<div class="datatable-search" style="width: 348px;float: left;display: inline-block;">
 										<form action="admin">
-											<input class="datatable-input" placeholder="회원정보를 입력하세요"
-												value="${param.searchKeyword }" name="searchKeyword"
-												type="search" title="Search within table"
-												aria-controls="datatablesSimple"> <input
-												type="submit" value="검색" />
+											<input class="datatable-input" placeholder="회원정보를 입력하세요" value="${param.searchKeyword }" name="searchKeyword" type="search" title="Search within table" aria-controls="datatablesSimple" style="width: 210px;">
+											 <input type="submit" value="검색" />
 											<input type="button" value="전체보기" onclick="location.href='admin'">
 										</form>
 									</div>
@@ -192,16 +189,21 @@
 													href="#" class="datatable-sorter">이름</a></th>
 												<th data-sortable="true" style="width: 10%;"><a
 													href="#" class="datatable-sorter">이메일</a></th>
-												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">휴대폰번호</a></th>
-												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">포인트</a></th>
-												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">선호지점</a></th>
-												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">선호장르</a></th>
-												<th data-sortable="true" style="width: 10%;"><a
-													href="#" class="datatable-sorter">가입일자</a></th>
+												<th data-sortable="true" style="width: 10%;">
+													<a href="#" class="datatable-sorter">휴대폰번호</a>
+												</th>
+												<th data-sortable="true" style="width: 10%;">
+													<a href="#" class="datatable-sorter">포인트</a>
+												</th>
+												<th data-sortable="true" style="width: 10%;">
+													<a href="#" class="datatable-sorter">선호지점</a>
+												</th>
+												<th data-sortable="true" style="width: 10%;">
+													<a href="#" class="datatable-sorter">선호장르</a>
+												</th>
+												<th data-sortable="true" style="width: 10%;">
+													<a href="#" class="datatable-sorter">가입일자</a>
+												</th>
 											</tr>
 										</thead>
 										<!-- 회원목록 -->

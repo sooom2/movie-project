@@ -87,12 +87,8 @@
 		<!-- 고정  -->
 		<jsp:include page="admin_nav.jsp" />
 		<!-- 고정 -->
-
-
-
 		<div id="layoutSidenav_content">
 
-			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			<main>
 				<!-- 등록 모달 -->
@@ -123,20 +119,17 @@
 													<div class="dropdown bootstrap-select">
 														<div class="form-floating mb-3 mb-md-0 selectbox">
 															<div class="cinema_name">
-																<label for="cinema_name">영화관명 : </label> <select
+																<label for="cinema_name">문의지점 : </label> <select
 																	name="cinema_name" onchange="selectCinema()"
 																	style="margin-top: 0px; !important">
 																	<option value="none" selected="selected" disabled>극장
 																		선택</option>
-																	<option value="none" disabled >=======================</option>
+																	<option value="none" disabled>=======================</option>
+																	<option value="전체공지">전체공지</option>
 																	<c:forEach var="cinema" items="${cinemaList }">
-																		<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+																		<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
 																	</c:forEach>
 																</select>
-																<c:forEach var="cinema" items="${cinemaList }">
-																	<input type="hidden" name="location_code"
-																		value="${cinema.get('location_code') }">
-																</c:forEach>
 															</div>
 														</div>
 													</div>
@@ -169,92 +162,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- ================================================================= -->
-				<!-- 수정 모달 -->
-				<!-- 				<div class="container modal admin-modal-update" -->
-				<!-- 					style="display: none"> -->
-				<!-- 					<div class="row justify-content-center"> -->
-				<!-- 						<div class="col-lg-7"> -->
-				<!-- 							<div class="card border-1 mt-5"> -->
-				<!-- 								<div class="card-header"> -->
-				<!-- 									<button type="button" class="close-modal" -->
-				<!-- 										onclick="modalClose()" style="border: none;">닫기</button> -->
-				<!-- 									<h3 class="text-center font-weight-light my-4">공지사항 수정</h3> -->
-				<!-- 								</div> -->
-				<!-- 								<div class="row justify-content-center"> -->
-				<!-- 									<div class="col-lg-7" style="width: 700px"> -->
-				<!-- 										<div class="card-body"> -->
-				<!-- 											<form action="notice_update_pro"> -->
-				<!-- 											<input type="hidden" name = "notice_code" value=""> -->
-				<!-- 												<div class="row mb-3"> -->
-				<!-- 													<div> -->
-				<!-- 														<div class="form-floating mb-3 mb-md-0 "> -->
-				<!-- 															<input class="form-control" id="notice_subject" -->
-				<!-- 																name="notice_subject" type="text" value="" /> <label -->
-				<!-- 																for="notice_subject">제목</label> -->
-				<!-- 														</div> -->
-				<!-- 													</div> -->
-				<!-- 												</div> -->
-				<!-- 												<div class="row mb-3"> -->
-				<!-- 													<div class="col-md-6 "> -->
-				<!-- 			                                             <div class="form-floating mb-3 mb-md-0 selectbox"> -->
-				<!-- 			                                                 <div class="cinema_name"> -->
-				<!-- 			                                                 	<label for="cinema_name">지점명 : </label> -->
-				<!-- 																<select name="sch_cinema_code" onchange="selectCinema()"  style="width: 300px"> -->
-				<%-- 																	<option value="${selectSchedule.get('cinema_name')}">${selectSchedule.get("cinema_name")}</option> --%>
-				<!-- 																</select> -->
-				<!-- 			                                                 </div> -->
-				<!-- 			                                             </div> -->
-				<!-- 			                                           </div> -->
-				<!-- 													<div> -->
-				<!-- 														<div class="form-floating mb-3 mb-md-0 selectbox"> -->
-				<!-- 															<div class="screen_name"> -->
-				<!-- 																<label for="screen_name">상영관 : </label> <select -->
-				<!-- 																	name="sch_screen_code" class="selectScreen_name" -->
-				<!-- 																	style="width: 300px"> -->
-				<!-- 																	<option value="none" selected="selected" disabled>상영관을 -->
-				<!-- 																		선택하세요</option> -->
-				<!-- 																	<option value="none" disabled>=======================</option> -->
-				<!-- 																</select> -->
-				<!-- 															</div> -->
-				<!-- 														</div> -->
-				<!-- 													</div> -->
-				<!-- 												</div> -->
-
-				<!-- 												<hr> -->
-				<!-- 												<div class="row mb-3"> -->
-
-				<!-- 													<div class="form-floating mb-3 mb-md-0 text"> -->
-				<!-- 														<div> -->
-				<!-- 															<textarea name="notice_content" class="form-control" -->
-				<!-- 																id="notice_content" placeholder="내용" rows="10"></textarea> -->
-
-				<!-- 														</div> -->
-				<!-- 													</div> -->
-				<!-- 												</div> -->
-
-				<!-- 												<div class="row"> -->
-				<!-- 													<div class="mt-4 mb-0 col-md-6"> -->
-				<!-- 														<div class="d-grid"> -->
-				<!-- 															<input class="btn btn-primary btn-block" type="submit" -->
-				<!-- 																value="수정"> -->
-				<!-- 														</div> -->
-				<!-- 													</div> -->
-				<!-- 													<div class="mt-4 mb-0 col-md-6"> -->
-				<!-- 														<div class="d-grid"> -->
-				<!-- 															<input class="btn btn-primary btn-block" type="submit" -->
-				<!-- 																value="삭제"> -->
-				<!-- 														</div> -->
-				<!-- 													</div> -->
-				<!-- 												</div> -->
-				<!-- 											</form> -->
-				<!-- 										</div> -->
-				<!-- 									</div> -->
-				<!-- 								</div> -->
-				<!-- 							</div> -->
-				<!-- 						</div> -->
-				<!-- 					</div> -->
-				<!-- 				</div> -->
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
@@ -267,7 +174,7 @@
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">공지번호</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
-									class="datatable-sorter">영화관명</a></th>
+									class="datatable-sorter">문의지점</a></th>
 								<th data-sortable="true" style="width: 13%;"><a href="#"
 									class="datatable-sorter">제목</a></th>
 								<!-- 								<th data-sortable="true" style="width: 10%;"><a href="#" -->
@@ -295,17 +202,6 @@
 										onclick="location.href='admin_notice_update?notice_code=${noticeBoard.notice_code }'"></td>
 								</tr>
 							</c:forEach>
-							<!-- 							<tr data-index="0"> -->
-							<!-- 								<td>공지번호</td> -->
-							<!-- 								<td>영화관명</td> -->
-							<!-- 								<td>제목</td> -->
-							<!-- 								<td>120분</td> -->
-							<!-- 								<td>2023-04-05</td> -->
-							<!-- 								<td>2099-04-05</td> -->
-							<!-- 								<td>작성일</td> -->
-							<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
-							<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
-							<!-- 							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -343,5 +239,82 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/datatables-simple-demo.js"></script>
+	
+<!-- 	페이징 처리   밑에 다시 컨트롤러 갔다와야 함 -->
+	<c:choose>
+		<c:when test="${empty param.pageNum }">
+			<c:set var="pageNum" value="1" />
+		</c:when>
+		<c:otherwise>
+			<c:set var="pageNum" value="${param.pageNum }" />
+		</c:otherwise>
+	</c:choose>
+	<section id="listForm">
+		<table>
+			<%-- JSTL 과 EL 활용하여 글목록 표시를 위한 반복문 작성 - <c:forEach> --%>
+			<c:forEach var="board" items="${boardList }">
+				<tr>
+					<%-- 제목에 하이퍼링크 추가(BoardDetail.bo) => 글번호(board_num), 페이지번호(pageNum) 전달 --%>
+					<td id="subject">
+						<a href="BoardDetail.bo?board_num=${board.board_num }&pageNum=${pageNum}">${board.board_subject }</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</section>
+	<section id="pageList">
+		
+	
+	
+		<%--
+		현재 페이지번호(pageNum) 가 1보다 클 경우에만 [이전] 링크 동작
+		=> 클릭 시 BoardList.bo 서블릿 주소에 pageNum - 1 값을 파라미터로 전달 
+		--%>
+		<c:choose>
+			<c:when test="${pageNum > 1 and empty param.searchKeyword }">
+				<input type="button" value="이전" onclick="location.href='BoardList.bo?pageNum=${pageNum - 1}'">
+			</c:when>
+			<c:when test="${pageNum > 1 and not empty param.searchKeyword}">
+				<input type="button" value="이전" onclick="location.href='BoardList.bo?pageNum=${pageNum - 1}&searchType=${param.searchType }&searchKeyword=${param.searchKeyword }'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="이전">
+			</c:otherwise>
+		</c:choose>
+		
+		<%-- 페이지번호 목록은 시작페이지(startPage) 부터 끝 페이지(endPage) 까지 표시 --%>
+		<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+			<%-- 페이지번호 하이퍼링크 설정 => 페이지번호를 pageNum 파라미터로 전달 --%>
+			<%-- 단, 현재 페이지번호는 하이퍼링크 없이 표시 --%>
+			<c:choose>
+				<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
+					<b>${num }</b>
+				</c:when>
+				<c:when test="${pageNum ne num and empty param.searchKeyword}">
+					<a href="BoardList.bo?pageNum=${num }">${num }</a>
+				</c:when>
+				<c:when test="${pageNum ne num and not empty param.searchKeyword}">
+					<a href="BoardList.bo?pageNum=${num }&searchType=${param.searchType }&searchKeyword=${param.searchKeyword }">${num }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		
+		<%--
+		현재 페이지번호(pageNum) 가 최대 페이지 번호(maxPage) 보다 작을 경우에만 [다음] 링크 동작
+		=> 클릭 시 BoardList.bo 서블릿 주소에 pageNum + 1 값을 파라미터로 전달 
+		--%>
+		<c:choose>
+			<c:when test="${pageNum < pageInfo.maxPage and empty param.searchKeyword}">
+				<input type="button" value="다음" onclick="location.href='BoardList.bo?pageNum=${pageNum + 1}'">
+			</c:when>
+			<c:when test="${pageNum < pageInfo.maxPage and not empty param.searchKeyword}">
+				<input type="button" value="다음" onclick="location.href='BoardList.bo?pageNum=${pageNum + 1}&searchType=${param.searchType }&searchKeyword=${param.searchKeyword }'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="다음">
+			</c:otherwise>
+		</c:choose>
+		
+	</section>
 </body>
 </html>

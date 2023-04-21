@@ -1995,7 +1995,7 @@ progress {
 
 .form-control, .datatable-input {
   /* display: block; */
-  /* width: 100%; */
+  width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -2426,7 +2426,7 @@ textarea.form-control-lg {
 .form-floating > .form-select,
 .form-floating > .datatable-selector {
   height: calc(3.5rem + 2px);
-  line-height: 1.25;
+  /* line-height: 1.25; */
 }
 .form-floating > label {
   position: absolute;
@@ -2466,7 +2466,7 @@ textarea.form-control-lg {
 .form-floating > .form-control:focus, .form-floating > .datatable-input:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .datatable-input:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
 .form-floating > .form-control-plaintext:not(:placeholder-shown) {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   padding-bottom: -1.375rem;
 }
 .form-floating > .form-control:-webkit-autofill, .form-floating > .datatable-input:-webkit-autofill,
@@ -11566,7 +11566,6 @@ background : url(../images/movies/poster/imgRegister.png) no-repeat ;
     line-height: 40px;
     padding-left: 9px;
 }
-
 
 .board_content {
 	max-width: 100% ;

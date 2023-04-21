@@ -27,19 +27,17 @@
 	// 	    }
 	// 	  }
 	// 	});
-	
+
 	function confirmUpdate() {
 		return confirm("수정하시겠습니까?");
 	}
-	
-	function notice_delete(){
+
+	function notice_delete() {
 		let delConfirm = confirm("삭제하시겠습니까?");
 		if (delConfirm) {
-			location.href='notice_delete_pro?notice_code=${noticeBoard.notice_code }';
+			location.href = 'notice_delete_pro?notice_code=${noticeBoard.notice_code }';
 		}
 	}
-	
-
 </script>
 </head>
 <body class="sb-nav-fixed">
@@ -84,13 +82,16 @@
 								<h3 class="text-center font-weight-light my-4">공지사항 수정</h3>
 							</div>
 							<div class="card-body">
-								<form action="notice_update_pro" onsubmit="return confirmUpdate()">
-								<input type="hidden" name="notice_code" value="${noticeBoard.notice_code }">
+								<form action="notice_update_pro"
+									onsubmit="return confirmUpdate()">
+									<input type="hidden" name="notice_code"
+										value="${noticeBoard.notice_code }">
 									<div class="row mb-3">
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 ">
 												<input class="form-control" id="notice_subject"
-													name="notice_subject" type="text" value="${noticeBoard.notice_subject }"/> <label
+													name="notice_subject" type="text"
+													value="${noticeBoard.notice_subject }" /> <label
 													for="notice_subject">제목</label>
 											</div>
 										</div>
@@ -98,19 +99,18 @@
 											<div class="dropdown bootstrap-select">
 												<div class="form-floating mb-3 mb-md-0 selectbox">
 													<div class="cinema_name">
-														<label for="cinema_name"></label> <select
-															name="sch_cinema_code" onchange="selectCinema()"
+														<label for="cinema_name">문의지점 : </label> <select
+															name="cinema_name" onchange="selectCinema()"
 															style="margin-top: 0px; !important">
-															<option value="none" selected="selected" disabled>극장 선택</option>
+															<option value="${noticeBoard.cinema_name }" selected="selected" >${noticeBoard.cinema_name }</option>
+															<option value="none" disabled>극장
+																선택</option>
 															<option value="none" disabled>=======================</option>
+															<option value="전체공지">전체공지</option>
 															<c:forEach var="cinema" items="${cinemaList }">
-																<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+																<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
 															</c:forEach>
 														</select>
-														<c:forEach var="cinema" items="${cinemaList }">
-															<input type="hidden" name="location_code"
-																value="${cinema.get('location_code') }">
-														</c:forEach>
 													</div>
 												</div>
 											</div>
@@ -120,23 +120,25 @@
 										<div class="form-floating mb-3 mb-md-0 text">
 											<div>
 												<textarea name="notice_content" class="form-control"
-													id="notice_content" placeholder="내용" rows="10" >${noticeBoard.notice_content }</textarea>
+													id="notice_content" placeholder="내용" rows="10">${noticeBoard.notice_content }</textarea>
 											</div>
 										</div>
 									</div>
 									<div class="row">
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<input class="btn btn-primary btn-block btn-update" type="submit" value="수정" >
-												</div>
-											</div>
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
-													<input class="btn btn-primary btn-block btn-del" type="button" onclick="notice_delete()" value="삭제">
-												</div>															
+										<div class="mt-4 mb-0 col-md-6">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block btn-update"
+													type="submit" value="수정">
 											</div>
 										</div>
+										<div class="mt-4 mb-0 col-md-6">
+											<div class="d-grid">
+												<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
+												<input class="btn btn-primary btn-block btn-del"
+													type="button" onclick="notice_delete()" value="삭제">
+											</div>
+										</div>
+									</div>
 								</form>
 							</div>
 						</div>

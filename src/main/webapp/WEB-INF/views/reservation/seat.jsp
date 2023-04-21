@@ -23,29 +23,29 @@
 
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<!-- 페이지 들어왔을 때 select 하고 값이 존재하면 '좌석아이디 == 판매완료' -->
-<!-- => css 사용불가 처리 -->
-
+<!-- 추후 수정 -->
+<!-- 선택좌석 취소했을 때 btnCnt값 처리 -->
+<!-- 총인원수랑 선택한 인원수가 같아야 결제하기로 넘어갈 수 있게 하기 -->
 
 	<div class="content">
 			<div class="inner2">
-	<form id="dataForm" method="post" action="/reserve/payment.do">
-				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E">
-				<input type="hidden" id="ssid" name="ssid" value="1DA7259F-E035-43CE-97EB-F590450F2818">
-				<input type="hidden" id="tokn" name="tokn" value="88093167">
-				<input type="hidden" id="hold" name="hold" value="">
+	<form id="dataForm" method="post" action="reservationPay">
+<!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
+<!-- 				<input type="hidden" id="ssid" name="ssid" value="1DA7259F-E035-43CE-97EB-F590450F2818"> -->
+<!-- 				<input type="hidden" id="tokn" name="tokn" value="88093167"> -->
+<!-- 				<input type="hidden" id="hold" name="hold" value=""> -->
 
-				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema">
+<!-- 				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema"> -->
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.movieCd }">
-				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-07">
-				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
+<!-- 				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-07"> -->
+<!-- 				<input type="hidden" id="Sort" name="Sort" value="boxoffice"> -->
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="${param.ScreenCd }">
-				<input type="hidden" id="ShowSeq" name="ShowSeq" value="4">
+				<input type="hidden" id="ShowSeq" name="ShowSeq" value="">
 				
-				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx">
-				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all">
-				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all">
+<!-- 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx"> -->
+<!-- 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all"> -->
+<!-- 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all"> -->
 				
 				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001">
 				<input type="hidden" id="MovieNm" name="MovieNm" value="스즈메의 문단속">
@@ -62,6 +62,7 @@
 				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)">
 					
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg">
+				
 				<input type="hidden" id="HidRating" name="HidRating" value="12">
 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="24.79">
 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08">
@@ -72,6 +73,7 @@
 				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="1">
 <!-- 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="7000"> -->
 				<input type="hidden" id="totalAmt" name="totalAmt" value="1000">
+				<input type="hidden" id="totalCnt" name="totalCnt" value="0">
 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 1명">
 				
 				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
@@ -98,6 +100,7 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
+									<h4 class="r-h4">ScreenCd ${param.ScreenCd}</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -108,7 +111,6 @@
 									<div class="r-choice">
 										<dl>
 											<dt>인원선택</dt>
-											<dd>최대 8까지 선택 가능</dd>
 										</dl>
 										<div class="scroll-choice">
 											<div class="scroll-wrapper scrollbar-inner"
@@ -267,7 +269,7 @@
 											<div id="seatLegendList" class="labels">
 <!-- 												<span><em class="available" style="background: #C4A46A; outline-color: #"></em>장애인석</span> -->
 												<span><em class="available" style="background: #C8C8C8; outline-color: #"></em>일반석</span>
-												<span><em class="nowselecting" style="background: #CC73E1; outline-color: #"></em>현재선택</span>
+												<span><em class="nowselecting" style="background: #C40900; outline-color: #"></em>현재선택</span>
 <!-- 												<span><em class="selected" style="background: #605DA0; outline-color: #"></em>판매중</span> -->
 												<span><em class="soldout" style="background: #3D3F51; outline-color: #"></em>판매완료</span>
 											</div>
@@ -275,19 +277,11 @@
 										<div class="choice-list">
 											<strong>선택 좌석</strong>
 											<ul id="choiceList">
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
-												<li>-</li>
 											</ul>
 										</div>
 										<div class="bottom">
 											<strong class="totalAmt">총 0원</strong>
-											<button type="button" class="btn-pay btnNext">결제하기</button>
+											<button type="submit" class="btn-pay btnNext">결제하기</button>
 										</div>
 
 										<div class="before" style="display: none;">
@@ -313,14 +307,26 @@
 	let asc = 65;			// 아스키코드 65 == 'A'
 	let schCd = $("#schCd").val();
 	
-	var totalAmt = 0;
-	var nAmt = 0;
-	var oAmt = 0;
-	var yAmt = 0;
+	var totalAmt = 0;		// 최종 금액
+	var nAmt = 0;			// 성인 요금
+	var oAmt = 0;			// 경로 요금
+	var yAmt = 0;			// 청소년 요금
+	var nCount = 0;
+	var oCount = 0;
+	var yCount = 0;
+	var totalCount = 0;		// 총 인원 수
+	var btnCnt = 0;
+	
+	var seatList = [];
 
 
+	
+	// 
+	
+	
+	
 // reservationList에서 res_seat_line, res_seat_num 값 select 후
-// 데이터 존재시 버튼 컬러 변경 , disabled 속성 추가
+// 데이터 존재시 버튼 컬러 변경 , 클릭 비활성화
 function reservationList() {
 	$.ajax({
 			type: "GET",
@@ -343,7 +349,8 @@ function reservationList() {
 	 					// el == element , attr('data-line') : 속성 선택, attr('data-line', '2') : 속성 값을 2로 변경
 	 					if($(el).attr('data-line') == resSeatLine && $(el).attr('data-num') == resSeatNum){
 	 						$(el).attr("class", "seat soldout");
-	 						$(el).css({"background-color" : "#3D3F51", "disabled" : ""});
+	 						$(el).attr("disabled", "true");
+	 						$(el).css({"background-color" : "#3D3F51"});
 	 					}
 	 				});
 					
@@ -357,7 +364,24 @@ function reservationList() {
 				console.log("reservationList : 요청처리실패");
 			}
 		});
-}	
+}
+
+function choiceEvent (e) {
+// 	debugger;
+	console.log("선택좌석임");
+	$(this).css({"background-color" : "#C8C8C8"});
+	var removeData = $(this).data("nm");
+	console.log(removeData);
+	$(this).remove();
+	
+
+	// 선택취소한 좌석 원래대로 돌려놓기
+	$.each($('.sel'), function(index, el){
+		if($(el).attr('data-nm') == removeData) {
+			$(el).css({"background-color" : "#C8C8C8"});
+		}
+	});
+}
 	
 	
 	
@@ -376,11 +400,6 @@ function reservationList() {
 			
 			for(let j = 1; j < seatNum; j++) {
 				let alp = String.fromCharCode(asc);								// 좌석 행 출력  
-				
-				
-				// 
-				
-				
 // 				debugger;
 				
 				var str = "";
@@ -416,26 +435,54 @@ function reservationList() {
 		
 		// 좌석 선택 시 선택 좌석에 표시
 		$(".seat").on("click", function(e) {
-			var str = "";
-			str += "<li>";
-			str += "<button type='button' data-id='";
-			str += $(this).data("id");
-			str += "' data-line='";
-			str += $(this).data("line");
-			str += "' data-num='";
-			str += $(this).data("num");
-			str += "' class='seat available'";
-			str += " background-color: #C8C8C8'";
-			str += " data-nm='";
-			str += $(this).data("nm");
-			str += "'>";
-			str += $(this).data("nm");
-			str += "</button>";
-			str += "</li>";
+			btnCnt++;
+			var totalCnt = $("#totalCnt").val();
 			
-			$("#choiceList").append(str);
+			if(btnCnt <= totalCnt) {
+				var str = "";
+				str += "<li class='choice'>";
+				str += "<button type='button' data-id='";
+				str += $(this).data("id");
+				str += "' data-line='";
+				str += $(this).data("line");
+				str += "' data-num='";
+				str += $(this).data("num");
+				str += "' class='choice'";
+				str += " background-color: #C8C8C8'";
+				str += " data-nm='";
+				str += $(this).data("nm");
+				str += "'>";
+				str += $(this).data("nm");
+				str += "</button>";
+				str += "</li>";
+				
+				$("#choiceList").append(str);
+		
+				// 클릭이벤트 연결
+				$(".choice").on("click", choiceEvent);
+				
+				$(this).css({"background-color" : "#C40900"});
+				$(this).addClass("sel");
+			} else {
+				btnCnt--;
+				alert("인원수보다 선택 좌석 수가 더 많음");
+			}
+			
+			// 선택한 좌석 재선택 할 수 없게 처리
+			//
+			//
+			//
+			
+			// 선택한 값 저장
+			
+			
+			
+			console.log("btnCnt: " + btnCnt);
+			console.log("totalCnt " + totalCnt);
 			
 		});
+		
+		
 		
 		
 		
@@ -446,24 +493,34 @@ function reservationList() {
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= nAmt;
-				nAmt = $(this).val() * price;
+				totalCount -= nCount;
+				nCount = $(this).val();
+				nAmt = nCount * price;
 				console.log("nCheck amt: " + nAmt);
 				totalAmt += nAmt;
+				totalCount += parseInt(nCount);
+				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
+				$("#totalCnt").val(totalCount);
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
 		// 경로 요금
 		$("input:radio[name=T001261]").on("change", function(e){
-			var price = 10000;
+			var price = 5000;
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= oAmt;
-				oAmt = $(this).val() * price;
+				totalCount -= oCount;
+				oCount = $(this).val();
+				oAmt = oCount * price;
 				console.log("oCheck amt: " + oAmt);
 				totalAmt += oAmt;
+				totalCount += parseInt(oCount);
+				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
+				$("#totalCnt").val(totalCount);
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
@@ -471,23 +528,37 @@ function reservationList() {
 		
 		// 청소년 요금
 		$("input:radio[name=T001262]").on("change", function(e){
-			var price = 10000;
+			var price = 7000;
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= yAmt;
-				yAmt = $(this).val() * price;
+				totalCount -= yCount;
+				yCount = $(this).val();
+				yAmt = yCount * price;
 				console.log("yCheck amt: " + yAmt);
 				totalAmt += yAmt;
+				totalCount += parseInt(yCount);
+				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
+				$("#totalCnt").val(totalCount);
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
 		
 		
+// 		$(".btn-pay").on("click", function(e) {
+// 			var totalCnt = $("#totalCnt").val
+// 			console.log(btnCnt);
+// 			console.log(totalCnt);
+// 		});
+		
+		
+		
 	});
 
 
+	
 
 
 
