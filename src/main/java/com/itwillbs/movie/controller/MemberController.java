@@ -72,7 +72,10 @@ public class MemberController {
 	
 	//회원가입폼
 	@GetMapping(value = "memJoin")
-	public String memJoin() {
+	public String memJoin(Model model) {
+		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		return "member/mem_join_form";
 	}
 	//예매확인폼
