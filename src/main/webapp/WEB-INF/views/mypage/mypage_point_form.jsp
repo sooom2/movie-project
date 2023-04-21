@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -111,14 +111,8 @@
 							<tr>
 								<td>${pointList.get("point_date") }</td>
 								<td>${pointList.get("point_content") }</td>
-								<td>${pointList.get("point_amount") }</td>
-								<td>${pointList.get("point_sum") }</td>
-<!-- 							<tr> -->
-<!-- 								<td>20230404</td> -->
-<!-- 								<td>회원가입축하이벤트</td> -->
-<!-- 								<td>1000</td> -->
-<!-- 								<td>1000</td> -->
-<!-- 							</tr> -->
+								<td><fmt:formatNumber value="${pointList.get('point_amount') }" pattern="#,###"/></td>
+								<td><fmt:formatNumber value="${pointList.get('point_sum') }" pattern="#,###"/></td>
 							</tr>
 						</c:forEach>	
 						</tbody>

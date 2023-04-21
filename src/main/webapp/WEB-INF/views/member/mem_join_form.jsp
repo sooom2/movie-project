@@ -237,21 +237,9 @@ $(function() {
 									<div class="" style="margin-left: 100px; display: block; margin-top: 3px; width: 200px;; height: 30px; overflow: hidden; border: 1px solid #ccc;">
 										<select name="member_prefer_branch" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(resources/images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
-											<option value="부산점">부산점</option>
-											<option value="부산대연점">부산대연점</option>
-											<option value="강남점">강남점</option>
-											<option value="울산삼산점">울산삼산점</option>
-											<option value="경남김해점">경남김해점</option>
-											<option value="서울건대점">서울건대점</option>
-											<option value="서울명동점">서울명동점</option>
-											<option value="부산동래점">부산동래점</option>
-											<option value="부산센텀점">부산센텀점</option>
-											<option value="경기구리점">경기구리점</option>
-											<option value="경기김포점">경기김포점</option>
-											<option value="경남마산점">경남마산점</option>
-											<option value="경남진주점">경남진주점</option>
-											<option value="울산신천점">울산신천점</option>
-											<option value="울산동구점">울산동구점</option>
+											<c:forEach var="cinema" items="${cinemaList }">
+											   <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+											</c:forEach>
 										</select>
 									</div> <span class="joinCheck"></span>
 								</label>
@@ -261,21 +249,23 @@ $(function() {
 									<span style="margin: 5px 0">선호장르</span>
 									<table>
 										<tr>
+											<td>
+												<input type="radio" name="member_prefer_genre" value="액션" id="genre_action" onclick="check();">
+												<label for="genre_action">액션 </label>
+											</td>
+											<td>
+												<input type="radio" name="member_prefer_genre" value="드라마" id="genre_drama" onclick="check();">
+												<label for="genre_drama">드라마 </label>
+											</td>
+											<td>
+												<input type="radio" name="member_prefer_genre" value="코메디" id="genre_comedy" onclick="check();">
+												<label for="genre_comedy">코메디 </label>
+											</td>
 											<td><input type="radio" name="member_prefer_genre"
-												value="액션" id="genre_action" onclick="check();"><label
-												for="genre_action">액션 </label></td>
-											<td><input type="radio" name="member_prefer_genre"
-												value="드라마" id="genre_drama" onclick="check();"><label
-												for="genre_drama">드라마 </label></td>
-											<td><input type="radio" name="member_prefer_genre"
-												value="코미디" id="genre_comedy" onclick="check();"><label
-												for="genre_comedy">코미디 </label></td>
-											<td><input type="radio" name="member_prefer_genre"
-												value="애니메이" id="genre_ani" onclick="check();"><label
+												value="애니메이션" id="genre_ani" onclick="check();"><label
 												for="genre_ani">애니메이션 </label></td>
 										</tr>
 										<tr>
-
 											<td><input type="radio" name="member_prefer_genre"
 												value="스릴러" id="genre_thriller"
 												onclick="check();"><label for="genre_thriller">스릴러

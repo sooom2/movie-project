@@ -30,50 +30,38 @@
 	<div class="content">
 			<div class="inner2">
 	<form id="dataForm" method="post" action="reservationPay">
-<!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
-<!-- 				<input type="hidden" id="ssid" name="ssid" value="1DA7259F-E035-43CE-97EB-F590450F2818"> -->
-<!-- 				<input type="hidden" id="tokn" name="tokn" value="88093167"> -->
-<!-- 				<input type="hidden" id="hold" name="hold" value=""> -->
-
-<!-- 				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema"> -->
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
-				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.movieCd }">
-<!-- 				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-07"> -->
-<!-- 				<input type="hidden" id="Sort" name="Sort" value="boxoffice"> -->
-				<input type="hidden" id="ScreenCd" name="ScreenCd" value="${param.ScreenCd }">
-				<input type="hidden" id="ShowSeq" name="ShowSeq" value="">
-				
-<!-- 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx"> -->
-<!-- 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all"> -->
-<!-- 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all"> -->
-				
-				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001">
-				<input type="hidden" id="MovieNm" name="MovieNm" value="스즈메의 문단속">
-				<input type="hidden" id="CinemaNm" name="CinemaNm" value="고성 달홀영화관">
-				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="normal">
-				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="일반">
+				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="${param.ScreenTime }">
+				<input type="hidden" id="ScreenCd" name="ScreenCd" value="${param.ScreenCd }">
+				<input type="hidden" id="MovieNm" name="MovieNm" value="${param.MovieNm }">
+				<input type="hidden" id="CinemaNm" name="CinemaNm" value="${param.CinemaNm }">
+				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
+				<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
+				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
+				<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
+				<input type="hidden" id="genre" name="genre" value="${param.genre }">
+				<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
+				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
+	
+	
+				<input type="hidden" id="totalAmt" name="totalAmt" value="0">
+				<input type="hidden" id="totalCnt" name="totalCnt" value="0">
+				<input type="hidden" id="NormalCnt" name="NormalCnt" value="0">
+				<input type="hidden" id="OldCnt" name="OldCnt" value="0">
+				<input type="hidden" id="YoungCnt" name="YoungCnt" value="0">
+	
+				<input type="hidden" id="TicketAmt" name="TicketAmt" value="10000">
+				<input type="hidden" id="NormalPrice" name="NormalPrice" value="0">
+				<input type="hidden" id="OldPrice" name="OldPrice" value="0">
+				<input type="hidden" id="YoungPrice" name="YoungPrice" value="0">
 				
-				<input type="hidden" id="StartTime" name="StartTime" value="19:00">
-				<input type="hidden" id="EndTime" name="EndTime" value="21:02">
-				<input type="hidden" id="ScreenNm" name="ScreenNm" value="2관">
-				<input type="hidden" id="ScreenType" name="ScreenType" value="normal">
-				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="일반">
-				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)">
-					
-				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg">
+<!-- 				<input type="hidden" id="좌석정보?" name="좌석정보?" value="좌석nm,좌석line,좌석num"> ?????-->
 				
-				<input type="hidden" id="HidRating" name="HidRating" value="12">
-				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="24.79">
-				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08">
 				
 				<input type="hidden" id="TicketCd" name="TicketCd" value="001260">
 				<input type="hidden" id="TicketNm" name="TicketNm" value="성인">
-				<input type="hidden" id="TicketAmt" name="TicketAmt" value="7000.0000">
-				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="1">
-<!-- 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="7000"> -->
-				<input type="hidden" id="totalAmt" name="totalAmt" value="1000">
-				<input type="hidden" id="totalCnt" name="totalCnt" value="0">
+
 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 1명">
 				
 				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
@@ -91,7 +79,6 @@
 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="">
 				<input type="hidden" id="HoldGuID" name="HoldGuID" value="">
 								
-				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
 				
 				<div class="reservation-pc single page-type">
 					<div class="in-wrap">
@@ -100,7 +87,7 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">ScreenCd ${param.ScreenCd}</h4>
+									<h4 class="r-h4">MovieDate ${param.MovieDate}</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -317,7 +304,6 @@
 	var totalCount = 0;		// 총 인원 수
 	var btnCnt = 0;
 	
-	var seatList = [];
 
 
 	
@@ -476,7 +462,6 @@ function choiceEvent (e) {
 			// 선택한 값 저장
 			
 			
-			
 			console.log("btnCnt: " + btnCnt);
 			console.log("totalCnt " + totalCnt);
 			
@@ -489,7 +474,7 @@ function choiceEvent (e) {
 		
 		// 성인 요금
 		$("input:radio[name=T001260]").on("change", function(e){
-			var price = 10000;
+			var price = $("#TicketAmt").val();
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= nAmt;
@@ -502,13 +487,16 @@ function choiceEvent (e) {
 				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
 				$("#totalCnt").val(totalCount);
+				$("#NormalCnt").val(nCount);
+				$("#NormalPrice").val(nAmt);
+				console.log("아이디:" + $("#NormalPrice").val());
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
 		// 경로 요금
 		$("input:radio[name=T001261]").on("change", function(e){
-			var price = 5000;
+			var price = $("#TicketAmt").val() * 0.5;
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= oAmt;
@@ -521,6 +509,8 @@ function choiceEvent (e) {
 				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
 				$("#totalCnt").val(totalCount);
+				$("#OldCnt").val(oCount);
+				$("#OldPrice").val(oAmt);
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
@@ -528,7 +518,7 @@ function choiceEvent (e) {
 		
 		// 청소년 요금
 		$("input:radio[name=T001262]").on("change", function(e){
-			var price = 7000;
+			var price = $("#TicketAmt").val() * 0.7;
 			var Check = $(this).is(":checked");
 			if(Check) {
 				totalAmt -= yAmt;
@@ -541,17 +531,19 @@ function choiceEvent (e) {
 				console.log(totalCount);
 				$("#totalAmt").val(totalAmt);
 				$("#totalCnt").val(totalCount);
+				$("#YoungCnt").val(yCount);
+				$("#YoungPrice").val(yAmt);
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
 		
 		
-// 		$(".btn-pay").on("click", function(e) {
-// 			var totalCnt = $("#totalCnt").val
-// 			console.log(btnCnt);
-// 			console.log(totalCnt);
-// 		});
+		$(".btn-pay").on("click", function(e) {
+			var totalCnt = $("#totalCnt").val
+			console.log(btnCnt);
+			console.log(totalCnt);
+		});
 		
 		
 		

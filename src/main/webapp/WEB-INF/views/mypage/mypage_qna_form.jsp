@@ -112,7 +112,9 @@
 								<td>${qnaList.get("one_write_date")}</td>
 								<td>${qnaList.get("cinema_name")}</td>
 								<td>${qnaList.get("one_question_type")}</td>
-								<td><a href="">${qnaList.get("one_subject")}</a></td>
+<%-- 								<td><a href="">${qnaList.get("one_subject")}</a></td> --%>
+								<td id="one_subject">
+								<a href="one_detail?one_code=${oneBoard.one_code }">${qnaList.get("one_subject")}</a></td>
 								<td>${qnaList.get("one_rep_board")}</td>
 								
 							</tr>

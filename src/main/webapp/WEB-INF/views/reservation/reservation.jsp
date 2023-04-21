@@ -32,6 +32,25 @@
 <!-- 선호장르 영화리스트 -->
 <!-- 선택후 좌석 넘어가기 전 관람등급 확인창 -->
 
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<!-- CinemaCd 2 -->
+<!-- MovieCd 20226489 -->
+<!-- ScreenTime 09:00:00~11:02:00 -->
+<!-- ScreenCd 5 -->
+<!-- MovieNm 리바운드 -->
+<!-- HidMovieUrl http://file.koreafilm.or.kr/thm/02/99/17/99/tn_DPK020329.jpg -->
+<!-- HidRating 12세관람가 -->
+<!-- schCd 9 -->
+<!-- CinemaNm 부산대연점 -->
+<!-- showDate 2023-03-01    //개봉일 -->
+<!-- genre 드라마 -->
+<!-- ScreenNm 2관 -->
+<!-- MovieDate  2023-04-22-->
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+
+
 	<div class="content">
 		<div class="inner2">
 			<form id="dataForm" method="post" action="seat">
@@ -51,6 +70,8 @@
 				<input type="hidden" id="showDate" name="showDate" value="">
 				<input type="hidden" id="genre" name="genre" value="">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
+				
+				<input type="hidden" id="MovieDate" name="MovieDate" value="">
 				
 				
 
@@ -355,10 +376,12 @@ var mvDay = "";		// 상영일
 		 			let screenName = movie.screen_name;
 		 			let startTime = movie.sch_start_time;
 		 			let lastTime = movie.sch_last_time;
+		 			let movieDate = movie.sch_movie_date;
 		 			mvDay = movie.sch_movie_date;
 		 			
 		 			$("#ScreenCd").val(screenCode);
 		 			$("#ScreenNm").val(screenName);
+		 			$("#MovieDate").val(movieDate);
 		 			
 		 			console.log("schCode : " + schCode);
 		 			console.log("screenCode : " + screenCode);
