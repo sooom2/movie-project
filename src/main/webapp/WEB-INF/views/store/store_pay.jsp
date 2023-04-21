@@ -12,9 +12,6 @@
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script type="text/javascript">
-	function point() {
-		location.href="store_point?item_code=" + ${item.get('item_code')} + "&item_price=" + + ${item.get('item_price')};
-	}
 	
 
 	var IMP = window.IMP; 
@@ -34,7 +31,7 @@
 		        pay_method : 'card',
 		        merchant_uid: "code" + new Date().getTime(), 
 		        name : '${item.get('item_name') }',
-		        amount : ${item_price },
+		        amount : $("#lstPayAmtView").text(),
 		        buyer_email : '${member.get('member_email')}',
 		        buyer_name : '${member.get('member_name')}',
 		        buyer_tel : '${member.get('member_tel')}',
@@ -42,8 +39,10 @@
 		    }, function (rsp) { // callback
 		        if (rsp.success) {
 				    alert("결제가 완료되었습니다.");
-				    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" + rsp.pay_method + "&pay_price=" + rsp.paid_amount
-				    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')};
+				    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" 
+				    				+ rsp.pay_method + "&pay_price=" + rsp.paid_amount
+				    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')} 
+				    				+ "&point=" + $("#totDcAmtView").text();
 		        } else {
 		            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
 		            	  + rsp.error_msg + ")");
@@ -166,7 +165,6 @@
 				<h3 class="tit"><span class="icon icon_point"></span><span class="txt">포인트</span></h3>
 			</div>
 			<div class="order_point_type">
-			 <dl>
 				<dl class="box_point_switch">
 						<div class="point_type input_type" >
 							<dt>
@@ -175,13 +173,13 @@
 							<dd>
 								<div class="input_wrap">
 									<p class="input_payment">
-										<input type="text" class="number" id="" name="" >
+										<input type="text" class="number" id="pointNumber" name="pointNumber" >
 										<span class="unit">원</span>
 									</p>
 									<p class="input_payment">
-										<button type="button" class="btn_payment" id="">전액사용</button>
+										<button type="button" class="btn_payment" id="pointAll">전액사용</button>
 									</p>
-									<p class="info">사용가능 <span id="" class="number">0</span><span>P</span></p>
+									<p class="info">사용가능 <span id="" class="number">${point }</span><span>P</span></p>
 									<p class="input_payment">
 										<label class="c_order_checkbox">
 											<input type="checkbox" name="all_pay" style="display: none"><span>항상 전액사용</span>
@@ -191,7 +189,6 @@
 							</dd>
 						</div>
 					</dl>
-				</dl>
 			</div>
 		</div>
 			
@@ -214,8 +211,8 @@
 
 		                    <div class="cell sale">
 		                        <p class="price">
-		                        <p class="txt"><a onclick="point()" href="#" class="txt">포인트 사용하기</a></p>
-		                            <em id="totDcAmtView">${param.point }</em>
+		                        <p class="txt">포인트 사용하기</p>
+		                            <em id="totDcAmtView"></em>
 		                        </p>
 		                    </div>
 		                    <i class="iconset ico-circle-equal">등호</i>
@@ -721,14 +718,34 @@
 	<script>
 		$(function() {
 			
-			// 최종 결제 금액
-// 			$('#lstPayAmtView').val($('#totDcAmtView').text() - $('#lstPayAmtView').text());
+			// 전액사용
+			$("#pointAll").on("click", function() {
+				if(${item_price} < ${point}) {
+					$("#pointNumber").val(${item_price});
+					$("#totDcAmtView").text($("#pointNumber").val());
+					$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+				} else {
+					$("#pointNumber").val(${point});
+					$("#totDcAmtView").text($("#pointNumber").val());
+					$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+				}
+			});
+			
+			// 포인트 입력
+			$("#pointNumber").on("change", function() {
+				if($(this).val() <= ${point}) {
+					$("#totDcAmtView").text($(this).val());
+					$("#lstPayAmtView").text(${item_price } - $(this).val());
+				} else {
+					alert("사용가능 포인트를 확인하세요.");
+				}
+			});
 			
 			// 모달창 목록
 			$('ul.modalTab li').click(function() {
 				$('ul.modalTab li').removeClass('on');
 				$(this).addClass('on');
-			})
+			});
 			
 			// 모달창 취소
 			$('.btn-modal-close').on("click", function() {
@@ -760,7 +777,7 @@
 					  $("#chk01").prop("checked", false);
 					  $("#chk02").prop("checked", false);
 				  }
-			})
+			});
 			
 		});
 	</script>

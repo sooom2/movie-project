@@ -197,12 +197,32 @@
 				WHERE member_id = #{id}
 	</update>
 	
+	<!-- 포인트 적립(point 테이블) -->
+	<insert id="insertPointTable">
+		INSERT INTO point
+			VALUES (
+  					(SELECT *
+  			 		 FROM (SELECT IFNULL(MAX(point_code),0) FROM point) A) + 1
+  				   , #{id}
+  				   , '스토어 결제'
+				   , #{payPoint}
+				   , now()
+  			)
+	</insert>
+	
 	<!-- 포인트 조회 -->
 	<select id="selectPoint" resultType="string">
 		SELECT member_point
 			FROM member
 				WHERE member_id = #{id}
 	</select>
+	
+	<!-- 포인트 차감 -->
+	<update id="minusPoint">
+		UPDATE member
+			SET member_point = #{point}
+				WHERE member_id = #{id}
+	</update>
 	
 	<!-- 멤버리스트 -->
 	<select id="selectMember" resultType="hashmap">

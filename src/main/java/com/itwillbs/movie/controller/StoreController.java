@@ -59,6 +59,11 @@ public class StoreController {
 		model.addAttribute("item_price", item_price);
 		model.addAttribute("member", member);
 		
+		// 포인트 조회
+		String point = service.selectPoint(id);
+		model.addAttribute("point", point);
+		
+		
 		if(id == null) {
 			model.addAttribute("msg", "로그인 후 이용가능합니다.");
 			return "member/fail_back";
@@ -67,18 +72,6 @@ public class StoreController {
 		}
 	}
 	
-	// 스토어 포인트
-	@GetMapping("store_point")
-	public String store_point(@RequestParam String item_code, @RequestParam String item_price ,HttpSession session, Model model) {
-		String id = (String)session.getAttribute("sId");
-		
-		String point = service.selectPoint(id);
-		model.addAttribute("point", point);
-		model.addAttribute("item_code", item_code);
-		model.addAttribute("item_price", item_price);
-		
-		return "store/store_point";
-	}
 	
 	
 	// 결제 성공
@@ -89,14 +82,34 @@ public class StoreController {
 		pay.put("id", id);
 		int insertPay = service.insertPay(pay);
 		
+		// 포인트 차감
+		if(pay.get("point") != "") {
+			
+			// 중복 결제 방지
+			if(Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point")) < 0) {
+				model.addAttribute("msg", "상품 결제가 이미 완료되었습니다.");
+				return "fail_back";
+			} else {
+				String point = (Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point"))) + "";
+				int minusPoint = service.minusPoint(id, point);
+			}
+		}
 		// 포인트 적립
+		HashMap<String, String> member2 = service.selectMemberId(id);
 		HashMap<String, String> point = new HashMap<String, String>();
-		String pointResult = (Integer.parseInt(member.get("member_point")) + Integer.parseInt(pay.get("pay_price")) / 10) + "";
+		
+		// member 테이블 저장.
+		String pointResult = (Integer.parseInt(member2.get("member_point")) + Integer.parseInt(pay.get("pay_price")) / 10) + "";
 		point.put("id", id);
 		point.put("point", pointResult);
 		int updatePoint = service.updatePoint(point);
+		
+		// point 테이블 저장.
+		String payPoint = (Integer.parseInt(pay.get("pay_price")) / 10) + "";
+		int insertPointTable = service.insertPointTable(id, payPoint);
+		
+		// 포인트 추가 금액
 		pay.put("point", (Integer.parseInt(pay.get("pay_price")) / 10) + "");
-
 		model.addAttribute("member", member);
 		model.addAttribute("pay", pay);
 		

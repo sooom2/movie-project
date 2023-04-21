@@ -55,7 +55,7 @@
 									class="font-orange">*</em></th>
 								<td><input type="text" id="nonMbTelno" name="nonMbTelno"
 									maxlength="3" class="input-text w200px numType userData"
-									title="핸드폰번호 입력"><label>숫자만 입력해주세요</label>
+									title="핸드폰번호 입력" placeholder="숫자만 입력해 주세요">
 									<div id="nonMbTelnoAlert" class="fc_r mt05 display-none">휴대폰
 										번호를 정확히 입력해주세요.</div></td>
 							</tr>

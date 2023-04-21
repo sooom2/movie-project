@@ -50,6 +50,12 @@ public class StoreService {
 	public String selectPoint(String id) {
 		return mapper.selectPoint(id);
 	}
+	public int minusPoint(String id, String point) {
+		return mapper.minusPoint(id, point);
+	}
+	public int insertPointTable(String id, String payPoint) {
+		return mapper.insertPointTable(id, payPoint);
+	}
 	
 	
 
