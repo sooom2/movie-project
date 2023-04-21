@@ -150,7 +150,7 @@ $(function() {
 									<option value="none" selected="selected" disabled >상영관별</option>
 									<option value="none" disabled>=======================</option>
 									<c:forEach var="cinema" items="${ciemaList }">
-							  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
 									</c:forEach>
 								</select>
 								
