@@ -141,7 +141,7 @@
 					
 					<form class="mystar" name="rev_rating" id="myform" action="mypageRvPro" method="post">
 						<fieldset>
-							<span class="text-bold" >별점을 선택하고 최근에 본 영화의 리뷰를 작성해주세요</span> 
+							<span class="text-bold" >별점을 선택하고 예매하신 영화의 리뷰를 작성해주세요</span> 
 							<input type="radio" name="rev_rating" value="5" id="rate1">
 							<label for="rate1">★</label> 
 							<input type="radio" name="rev_rating" value="4" id="rate2">
