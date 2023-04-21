@@ -3,6 +3,8 @@ package com.itwillbs.movie.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.service.BoardService;
+import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.MypageService;
+import com.itwillbs.movie.service.StoreService;
 import com.itwillbs.movie.vo.BoardVO;
 
 @Controller
@@ -22,6 +27,9 @@ public class CustomerController {
 	private BoardService boardService;
 	@Autowired
 	private MovieRegisterService movieRegisterService;
+	@Autowired
+	private StoreService storeService;
+	
 	
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
@@ -71,13 +79,24 @@ public class CustomerController {
 		
 		List<BoardVO> lostBoardList = boardService.getLostBoardList();
 		model.addAttribute("lostBoardList", lostBoardList);
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 //		System.out.println("Controller: " + model);
 		return "customer_center/lost_board";
 	}
 	
 	// 분실물 문의 등록페이지
 	@RequestMapping(value = "lost_form", method = {RequestMethod.GET, RequestMethod.POST})
-	public String lostForm() {
+	public String lostForm(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		if(id != null) {
+			HashMap<String, String> member = storeService.selectMemberId(id);
+			model.addAttribute("member", member);
+		}
+		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		
 		return "customer_center/lost_form";
 	}
 	
@@ -120,7 +139,15 @@ public class CustomerController {
 	
 	// 1:1 문의
 	@RequestMapping(value = "oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public String oneOnOne() {
+	public String oneOnOne(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		if(id != null) {
+			HashMap<String, String> member = storeService.selectMemberId(id);
+			model.addAttribute("member", member);
+		}
+		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		return "customer_center/oneOnOne";
 	}
 	

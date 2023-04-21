@@ -72,7 +72,7 @@
 							<tr style="line-height: 38px">
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
-								<th scope="col">구분</th>
+								<th scope="col">문의유형</th>
 								<th scope="col">제목</th>
 								<th scope="col">답변상태</th>
 								<th scope="col">등록일</th>

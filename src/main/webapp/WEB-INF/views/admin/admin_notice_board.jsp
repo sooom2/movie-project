@@ -119,8 +119,8 @@
 													<div class="dropdown bootstrap-select">
 														<div class="form-floating mb-3 mb-md-0 selectbox">
 															<div class="cinema_name">
-																<label for="cinema_name">문의지점 : </label> <select
-																	name="cinema_name" onchange="selectCinema()"
+																<label for="cinema_name">문의지점 : </label> 
+																<select name="cinema_name" onchange="selectCinema()"
 																	style="margin-top: 0px; !important">
 																	<option value="none" selected="selected" disabled>극장
 																		선택</option>
@@ -133,7 +133,6 @@
 															</div>
 														</div>
 													</div>
-
 												</div>
 
 												<hr>

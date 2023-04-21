@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,26 +87,40 @@
 										class="input-text w150px" value="" maxlength="30"></td>
 									<th scope="row"><label for="name">문의지점</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" id="name" name="cinema_name"
-										class="input-text w150px" value="" maxlength="30"></td>
+									<td>
+<!-- 										<input type="text" id="name" name="cinema_name" -->
+<!-- 										class="input-text w150px" value="" maxlength="30"> -->
+										<select name="cinema_name" onchange="selectCinema()"
+											style="margin-top: 0px; !important">
+											<option value="none" selected="selected" disabled>극장
+												선택</option>
+											<option value="none" disabled>=======================</option>
+											<c:forEach var="cinema" items="${cinemaList }">
+												<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
+											</c:forEach>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="name">이름</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" id="name" name="one_name"
-										class="input-text w150px" value="" maxlength="30"></td>
+									<td><input type="text" name="member_id" id="name"
+										class="input-text" value="${member.get('member_name') }"
+										maxlength="50"
+										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
 									<th scope="row"><label for="qnaRpstEmail">이메일</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="rpstEmail" id="qnaRpstEmail"
-										class="input-text" value="" maxlength="50"></td>
+									<td><input type="text" name="one_email" id="qnaRpstEmail"
+										class="input-text" value="${member.get('member_email') }" maxlength="50"
+										${not empty member.get('member_email') ? 'readonly="readonly"' : ''}></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="hpNum1">휴대전화</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="one_tel" id="hpNum1"
-										class="input-text" value="" maxlength="50"></td>
+									<td colspan="3"><input type="text" name="one_tel"
+										id="hpNum1" class="input-text w200px" value="${member.get('member_tel') }" maxlength="50"
+										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
 								</tr>
-
 								<tr>
 									<th scope="row"><label for="qnaCustInqTitle">제목</label> <em
 										class="font-orange">*</em></th>

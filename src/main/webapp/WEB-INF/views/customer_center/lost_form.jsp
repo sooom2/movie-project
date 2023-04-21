@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,26 +133,48 @@
 								<tr>
 									<th scope="row"><label for="name">이름</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="member_id" id="name"
-										class="input-text" value="" autocomplete="new-password"
-										maxlength="50"></td>
+<!-- 									<td> -->
+<!-- 									<input type="text" name="member_id" id="name" -->
+<%--  										class="input-text" value="${member.get('member_name') }"  --%>
+<!-- 											autocomplete="new-password"  -->
+<%--  										maxlength="50"  <c:if test="${not empty member.get('member_name') } "> 
+ 											readonly="readonly"</c:if>>  --%>
+<!-- 										</td> -->
+										<td>
+										  <input type="text" name="member_id" id="name" 
+										  class="input-text" value="${member.get('member_name')}" 
+										  autocomplete="new-password" 
+										  maxlength="50" ${not empty member.get('member_name') ? 'readonly="readonly"' : ''}>
+										</td>
+
 									<th scope="row"><label for="name">영화관명</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="cinema_name" id="cinema"
-										class="input-text" value="" autocomplete="new-password"
-										maxlength="50"></td>
+									<td>
+<!-- 									<input type="text" name="cinema_name" id="cinema" -->
+<!-- 										class="input-text" value="" autocomplete="new-password" -->
+<!-- 										maxlength="50"> -->
+										<select name="cinema_name" onchange="selectCinema()"
+											style="margin-top: 0px; !important">
+											<option value="none" selected="selected" disabled>극장
+												선택</option>
+											<option value="none" disabled>=======================</option>
+											<c:forEach var="cinema" items="${cinemaList }">
+												<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
+											</c:forEach>
+										</select>
+									</td> 
 								</tr>
 								<tr>
 									<th scope="row"><label for="email">연락처</label> <em
 										class="font-orange">*</em></th>
 									<td><input type="text" name="lost_tel" id="hpNum"
-										class="input-text" value="" autocomplete="new-password"
-										maxlength="50"></td>
+										class="input-text" value="${member.get('member_tel') }" autocomplete="new-password"
+										maxlength="50" placeholder="숫자만 입력하세요" ${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
 									<th scope="row"><label for="email">이메일</label> <em
 										class="font-orange">*</em></th>
 									<td><input type="text" name="lost_email" id="email"
-										class="input-text" value="" autocomplete="new-password"
-										maxlength="50"></td>
+										class="input-text" value="${member.get('member_email') }" autocomplete="new-password"
+										maxlength="50" ${not empty member.get('member_email') ? 'readonly="readonly"' : ''}></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="title">제목</label> <em
@@ -167,7 +190,7 @@
 											<textarea id="textarea" name="lost_content" rows="5" cols="30"
 												title="내용입력"
 												placeholder="※ 문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.
-												※ 분실장소와 분실물에 대한 상세 정보를 작성해주시면 분실물을 찾는데 도움이 됩니다.
+												&nbsp;※ 분실장소와 분실물에 대한 상세 정보를 작성해주시면 분실물을 찾는데 도움이 됩니다.
 												- 관람 영화정보(영화제목, 상영 회차, 상영시간 등) :
 												- 극장/좌석/장소 정보 :
 												- 분실물 상세정보"
