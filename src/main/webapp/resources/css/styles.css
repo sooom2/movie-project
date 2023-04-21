@@ -11054,7 +11054,7 @@ body {
   color: #0d6efd;
 }
 .sb-sidenav-light .sb-sidenav-footer {
-  background-color: #e9ecef;
+  background-color: #f0edf5;
 }
 
 .datatable-wrapper .datatable-container {
@@ -11469,13 +11469,12 @@ main{
 }
 .selectbox{
 	text-align: left;
-    border: 1px solid #c6c6c6;
-    height: 56px;
-    border-radius: 5px;
-    margin-top: 1px;
-    padding-top: 13px;
-    padding-left: 8px;
-	
+	border: 1px solid #c6c6c6;
+	height: 56px;
+	border-radius: 5px;
+	margin-top: 1px;
+	padding-top: 13px;
+	padding-left: 8px;
 }
 .selectbox select{
 	width: 100x !important;
@@ -11574,4 +11573,14 @@ background : url(../images/movies/poster/imgRegister.png) no-repeat ;
     height: 6.25em;
     border: none;
     resize: none;
+  }
+  
+  .searchbox{
+      background-color: #eeebf4;
+      margin-top: -20px;
+      /* width: 700px !important; */
+      /* border: 1px solid #c7c4cd; */
+      /* text-align: right; */
+      /* margin-right: 10px; */
+      padding-right: 20px;
   }

@@ -183,6 +183,9 @@ public class MovieRegisterService {
 	public List<HashMap<String, String>> endSchList(int startRow, int listLimit) {
 		return mapper.endSchList(startRow,listLimit);
 	}
+	public int selectTodayCount() {
+		return mapper.todayCount();
+	}
 
 
 

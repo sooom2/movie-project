@@ -14,11 +14,40 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"rel="stylesheet"  />
 
+
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
+
+function selectCinema(){
+	
+	$.ajax({
+		type: "POST",
+		url: "screenSelect",
+		data: {
+			cinema_code: $(".cinema_name option:selected").val(),
+		  	cinema_name: $(".cinema_name option:selected").text()
+		},
+		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
+			
+			
+			$(".selectScreen_name option").remove();
+			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+			$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
+			for(var i=0; i<result.length; i++){
+				$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
+			}
+			
+		},
+		error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	     
+		}
+	});//ajax
+}
 
 
 function dateDelete(){
@@ -48,8 +77,21 @@ function dateDelete(){
    
 }
 
+
+
+function doRegisterSch(){
+ handle: ".modal-header";
+   let dis = document.querySelector(".admin-modal-register");
+   if (dis.style.display = "none") {
+      dis.style.display = "block"
+   } else {
+      dis.style.display = "none";
+   }
+}
+
+
 function doLatest() {
-    handle: ".modal-header";
+   handle: ".modal-header";
    let dis = document.querySelector(".admin-modal-remove");
    if (dis.style.display = "none") {
       dis.style.display = "block"
@@ -59,7 +101,9 @@ function doLatest() {
 }
 function modalClose() {
    let dis = document.querySelector(".admin-modal-remove");
+   let dis2 = document.querySelector(".admin-modal-register");
    dis.style.display = "none";
+   dis2.style.display = "none";
 }
 
 $(function () {
@@ -69,8 +113,26 @@ $(function () {
   });
 
 
+// $(function() {
+//     $().datepicker({
+//        dateFormat: 'yy-mm-dd' //달력 날짜 형태
+//             ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+//             ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+//             ,changeYear: true //option값 년 선택 가능
+//             ,changeMonth: true //option값  월 선택 가능                
+//             ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+//             ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+//             ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+//             ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+//             ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+//             ,minDate: "-30D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+//             ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+//     });                           
+// });
+
+
 $(function() {
-    $("#sch_movie_date").datepicker({
+    $("#sch_remove_date,#sch_research_date").datepicker({
        dateFormat: 'yy-mm-dd' //달력 날짜 형태
             ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
             ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
@@ -82,6 +144,25 @@ $(function() {
             ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
             ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
             ,minDate: "-30D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+    });                           
+});
+
+
+
+$(function() {
+    $(" #sch_register_date").datepicker({
+       dateFormat: 'yy-mm-dd' //달력 날짜 형태
+            ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+            ,changeYear: true //option값 년 선택 가능
+            ,changeMonth: true //option값  월 선택 가능                
+            ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+            ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+            ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+            ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+            ,minDate: "0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
             ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
     });                           
 });
@@ -131,31 +212,37 @@ $(function() {
                     <!-- 테이블 -->
                    <div class="datatable-container">
                    <h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
-                    <input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
-                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
-                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
-                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
-               		 <div class="col-md-4 ">
-	                 <div class="form-floating mb-3 mb-md-0 selectbox">
+                    <h6>오늘의 상영일정 <b style="color:#673bd4">${todayCount }</b>건 / 총 상영일정 <b style="color:#673bd4">${pageInfo.listCount }</b>건</h6>
+               		 <div class="">
+	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="doRegisterSch()">
+<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
+	                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
+	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
+	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
+               		 
+	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px;width: 500px; padding-left: 53px;">
+	                 	<form>
                    			<div class="sch_movie_code">
-                            	<label for="sch_movie_code">검색</label>
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;">
-									<option value="none" selected="selected" disabled >영화별</option>
-									<option value="none" disabled>=======================</option>
-									<c:forEach var="movie" items="${movieList }">
-							  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-									</c:forEach>
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  ">
+								<option value="none" selected="selected" disabled >영화선택</option>
+								<option value="none" disabled>=======================</option>
+								<c:forEach var="movie" items="${movieList }">
+						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+								</c:forEach>
 								</select>
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;">
-									<option value="none" selected="selected" disabled >상영관별</option>
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;">
+									<option value="none" selected="selected" disabled >지점선택</option>
 									<option value="none" disabled>=======================</option>
-									<c:forEach var="cinema" items="${ciemaList }">
+									<c:forEach var="cinema" items="${cinemaList }">
 							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
 									</c:forEach>
 								</select>
-								
+									<input name="sch_research_date" class="sch_research_date" id="sch_research_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/>
+                           			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	
                             </div>
+	                 	</form>
 	                 </div>
+	                
 	         	</div>			
                <table id="datatablesSimple" class="datatable-table">
                   <thead>
@@ -177,7 +264,6 @@ $(function() {
                         <td>${schedule.get("screen_name") }</td>
                         <td>${schedule.get("info_movie_title") }</td>
                         <td>${schedule.get('sch_movie_date')}</td>
-<%--                         <td> <fmt:formatDate value="${schedule.get('sch_movie_date')}" pattern="HH시간mm분"  /> </td> --%>
                         <td>${schedule.get("sch_start_time") }</td>
                         <td>${schedule.get("sch_last_time") }</td>
                         <td class="modi">
@@ -263,7 +349,7 @@ $(function() {
                         <div class="card-body">
                            <form>
                                          <h6>♥ 삭제할 날짜를 선택해주세요 ♥</h6>
-                               <input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" value=""/>
+                               <input name="sch_remove_date" class="sch_remove_date" id="sch_remove_date" type="text" value=""/>
                               <div class="row">
                                  <div class="d-grid" style="margin-top: 20px">
                                     <input class="btn btn-primary btn-block" type="button" value="삭제" onclick="dateDelete()"> 
@@ -275,8 +361,117 @@ $(function() {
                   </div>
                </div>
             </div>
-         
-         
+         	<!-- 삭제모달 -->
+         	
+         	<!--  등록모달 -->
+       	<div class="container modal admin-modal-register" style="display: none ;">
+         	<div class="row justify-content-center">
+                    <div class="col-lg-7" style="width: 1000px">
+                        <div class="card border-1 mt-5">
+                            <div class="card-header">
+                             <button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
+                            <h3 class="text-center font-weight-light my-4">상영일정등록</h3>
+                            </div>
+                            
+                            <div class="card-body">
+                                <form action="movieScheduleRegisterPro"> 
+                                    <div class="row mb-3">
+                                     	<div class="col-md-4">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input name="sch_register_date" class="form-control" id="sch_register_date"/>
+                                                <label for="res_date">날짜선택</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                       
+                                    <div class="row mb-3">
+                                       	<div class="col-md-6 " >
+                                               <div class="form-floating mb-3 mb-md-0 selectbox" >
+                                                   <div class="sch_movie_code">
+                                                   	<label for="sch_movie_code">영화선택 : </label>
+													<select name="sch_movie_code" id="sch_movie_code" style="width: 300px;">
+													<option value="none" selected="selected" disabled >영화를 선택하세요</option>
+													<option value="none" disabled>=======================</option>
+													<c:forEach var="movie" items="${movieList }">
+										   				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+													</c:forEach>
+													</select>
+                                                   </div>
+                                               </div>
+                                          </div>
+                                       </div>
+                                       <hr>
+                                       
+                                       
+                                       <div class="row mb-3">
+                                      	  <div class="col-md-6 ">
+                                             <div class="form-floating mb-3 mb-md-0 selectbox">
+                                                 <div class="cinema_name">
+                                                 	<label for="cinema_name">영화관명 : </label>
+													<select name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을 선택하세요</option>
+														<option value="none" disabled>=======================</option>
+														<c:forEach var="cinema" items="${cinemaList }">
+													    	<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+														</c:forEach>
+													</select>
+														<c:forEach var="cinema" items="${cinemaList }">
+														 <input type="hidden" name="location_code" value="${cinema.get('location_code') }">
+														</c:forEach>
+                                                 </div>
+                                             </div>
+                                           </div>
+                                           
+                                           <div class="col-md-6">
+                                               <div class="form-floating mb-3 mb-md-0 selectbox">
+                                                   <div class="screen_name">
+                                                   	<label for="screen_name">상영관 : </label>
+														<select name="sch_screen_code" class="selectScreen_name" style="width: 300px">
+														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
+														<option value="none" disabled>=======================</option>
+														</select>
+                                                   </div>
+                                               </div>
+                                          	</div>
+                                       </div>
+                                       <div class="row mb-3">
+                                       	
+                                      	  <div class="col-md-6">
+                                      	  <div class="form-floating mb-3 mb-md-0 selectbox">
+                                                   <div class="sch_start_time">
+                                                   	<label for="sch_start_time">상영시작시간 : </label>
+														<select name="sch_start_time">
+														    <option value="09:00">오전 09:00</option>
+														    <option value="10:00">오전 10:00</option>
+														    <option value="11:00">오전 11:00</option>
+														    <option value="12:00">오후 12:00</option>
+														    <option value="13:00">오후 1:00</option>
+														    <option value="14:00">오후 2:00</option>
+														    <option value="15:00">오후 3:00</option>
+														    <option value="16:00">오후 4:00</option>
+														    <option value="17:00">오후 5:00</option>
+														    <option value="18:00">오후 6:00</option>
+														    <option value="19:00">오후 7:00</option>
+														    <option value="20:00">오후 8:00</option>
+														</select>
+                                                   </div>
+                                             </div>
+                                       </div>
+                                </div>     
+                                      
+                                		<div class="row">
+											<div class="mt-4 mb-0 ">
+												<div class="d-grid">
+													<input class="btn btn-primary btn-block" type="submit" value="등록">
+												</div>
+											</div>
+										</div>
+                                   </form>
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+         		</div>
          
          <!--들어갈내용 -->
          

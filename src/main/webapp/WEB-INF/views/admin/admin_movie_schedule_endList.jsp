@@ -129,11 +129,40 @@ $(function() {
                     <!-- 테이블 -->
                    <div class="datatable-container">
                    <h3 class="text-center font-weight-light my-4">상영종료목록</h3>
-                    <input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
-                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
-                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
-                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
-               
+                      <!-- @@@@@@@@@@@추가 -->
+               		 <div class="">
+	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
+	                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
+	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
+	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
+               		 
+	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 30px;">
+	                 	<form>
+                   			<div class="sch_movie_code">
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  ">
+								<option value="none" selected="selected" disabled >영화</option>
+								<option value="none" disabled>=======================</option>
+								<option value="none" >전체보기</option>
+								<c:forEach var="movie" items="${movieList }">
+						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+								</c:forEach>
+								</select>
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;">
+									<option value="none" selected="selected" disabled >지점</option>
+									<option value="none" disabled>=======================</option>
+									<option value="none" >전체보기</option>
+									<c:forEach var="cinema" items="${cinemaList }">
+							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+									</c:forEach>
+								</select>
+									<input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/>
+                           			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	
+                            </div>
+	                 	</form>
+	                 </div>
+	                
+	         	</div>	
+               <!--  @@@@@@@@@@@추가 -->
                <table id="datatablesSimple" class="datatable-table">
                   <thead>
                      <tr>

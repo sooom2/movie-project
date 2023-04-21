@@ -68,18 +68,18 @@ $(function(){
 	                    
 	                </tr>
 	                <tr>
-	                    <td class="price">12,000 원</td>
-	                    <td class="price">9,000 원</td>
-	                    <td class="price">9,000 원</td>
+	                    <td class="price">10,000 원</td>
+	                    <td class="price">5,000 원</td>
+	                    <td class="price">7,000 원</td>
 	                </tr>
 	                <tr>
 	                    <td class="kind1" rowspan="2">3D</td>
 	                    
 	                </tr>
 	                <tr>
-	                    <td class="price">13,000 원</td>
-	                    <td class="price">11,000 원</td>
-	                    <td class="price">11,000 원</td>
+	                    <td class="price">15,000 원</td>
+	                    <td class="price">8,000 원</td>
+	                    <td class="price">10,000 원</td>
 	                </tr>
 	            </tbody></table>
 

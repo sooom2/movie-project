@@ -20,7 +20,6 @@ import com.itwillbs.movie.service.MailSendService;
 import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
 import com.itwillbs.movie.service.StoreService;
-import com.itwillbs.movie.vo.MemberVO;
 
 @Controller
 public class MemberController {

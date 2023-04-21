@@ -238,7 +238,7 @@ $(function() {
 										<select name="member_prefer_branch" id="join-theater"
 											style="width: 220px; height: 30px; padding: 0 0 0 10px; box-sizing: border-box; font-size: 16px; line-height: 30px; border-radius: 0; -webkit-appearance: none; appearance: none; -moz-appearance: none; background: url(resources/images/login/icon-select-off.png) right 31px center no-repeat; border: none; color: #7d7d7d; vertical-align: top;">
 											<c:forEach var="cinema" items="${cinemaList }">
-											   <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+											   <option value="${cinema.get('cinema_name') }">${ cinema.get('cinema_name') }</option>
 											</c:forEach>
 										</select>
 									</div> <span class="joinCheck"></span>

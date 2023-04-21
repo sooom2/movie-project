@@ -128,13 +128,12 @@ INSERT INTO schedule
 			   (SELECT *
 		          FROM (SELECT IFNULL(MAX(CAST(sch_code AS UNSIGNED)), 0) + 1
 						  FROM schedule) A)
-			 , #{sch_screen_code} --
-			 , #{sch_cinema_code} --
-			 , #{sch_movie_code} --
-			 , #{sch_movie_date}	--
-			 , #{sch_start_time} --
+			 , #{sch_screen_code} 
+			 , #{sch_cinema_code} 
+			 , #{sch_movie_code} 
+			 , #{sch_register_date}	
+			 , #{sch_start_time} 
 			 , #{sch_last_time}
-			 , #{location_code} --
 			 ) 
 </insert>
 <!-- 영화상영일정목록 -->
@@ -147,14 +146,11 @@ INSERT INTO schedule
 		,sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		, sch_location
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
   LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
-  ORDER BY
-		 	sch_code DESC
-		LIMIT 
+ 		LIMIT 
 		 	#{startRow}
 		  , #{listLimit}
 </select>
@@ -170,7 +166,7 @@ INSERT INTO schedule
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		, sch_location
+		
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -187,7 +183,7 @@ INSERT INTO schedule
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+	
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -204,7 +200,7 @@ INSERT INTO schedule
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		,sch_location
+		
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -221,7 +217,7 @@ SELECT
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		, sch_location
+		
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -238,7 +234,7 @@ SELECT
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		, sch_location
+		
   FROM schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -255,7 +251,7 @@ SELECT
 			, sch_movie_date
 			, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 			, TIME_FORMAT(sch_last_time, '%H:%i')AS sch_last_time
-			, sch_location
+			
 	FROM schedule
 	LEFT JOIN screen ON screen.screen_code = sch_screen_code 
 	LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -272,7 +268,7 @@ SELECT
 		, sch_movie_date
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-		, sch_location
+		
 	 FROM schedule
 	 LEFT JOIN screen ON screen.screen_code = sch_screen_code 
 	 LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
@@ -397,8 +393,36 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 	 	#{startRow}
 	  , #{listLimit}
  </select>
-		
-
+<!-- <select id="" resultType="hashmap"> -->
+<!-- 		SELECT *  -->
+<!-- 			FROM board  -->
+<!-- 			<if test="!searchType.equals('')"> -->
+<!-- 				WHERE -->
+<!-- 				<choose> -->
+<!-- 					<when test="searchType.equals('subject')"> -->
+<!-- 						board_subject LIKE '%${searchKeyword}%' -->
+<!-- 					</when> -->
+<!-- 					<when test="searchType.equals('content')"> -->
+<!-- 						board_content LIKE '%${searchKeyword}%' -->
+<!-- 					</when> -->
+<!-- 					<when test="searchType.equals('subject_content')"> -->
+<!-- 						board_subject LIKE '%${searchKeyword}%' -->
+<!-- 						OR board_content LIKE '%${searchKeyword}%' -->
+<!-- 					</when> -->
+<!-- 					<when test="searchType.equals('name')"> -->
+<!-- 						board_name LIKE '%${searchKeyword}%' -->
+<!-- 					</when> -->
+<!-- 				</choose>  -->
+<!-- 			</if> -->
+<!-- 			LIMIT  -->
+<!-- 				#{startRow} -->
+<!-- 				, #{listLimit}	 -->
+<!-- 	</select>		 -->
+		<select id="todayCount" resultType="int">
+			SELECT count(*)
+			FROM schedule
+			WHERE sch_movie_date = CURDATE()
+		</select>
 
 
 

@@ -86,6 +86,8 @@ public interface MovieRegisterMapper {
 
 	List<HashMap<String, String>> endSchList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
 
+	int todayCount();
+
 //	List<HashMap<String, String>> selectEndSch();
 
 
