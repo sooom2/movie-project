@@ -2,7 +2,6 @@ package com.itwillbs.movie.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,20 +66,21 @@ public class MovieController {
 	
 	// 영화상세페이지
 	// Post매핑으로 하고 저장되지 않은 movie_code 를 보냈을 때는 메인 페이지로 보내야함
-	@RequestMapping(value = "MovieInfo", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "MovieInfo")
 	public String movieInfo(@RequestParam String info_movie_code, Model model) {
+		// 영화조회
 		HashMap<String, String> movieInfo = service.selectMovie(info_movie_code);
+		// 영화리뷰조회
 		List<HashMap<String, String>> movieInfoReview = service.selectMovieReview(info_movie_code);
-		// DB에 없는 movie_code를 요청 보내지 않으면 메인페이지로 보내기 
+		
+//		 DB에 없는 movie_code를 요청 보내지 않으면 메인페이지로 보내기
 		if(movieInfo == null) {
 			return "redirect:/main";
 		}
 		
-		
 		model.addAttribute("movieInfo", movieInfo);
 		model.addAttribute("movieInfoReview", movieInfoReview);
-		System.out.println("movieInfoReview : " + movieInfoReview);
-		System.out.println(model);
+
 		return "movieBoard/movieInfo2";
 	}
 

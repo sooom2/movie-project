@@ -244,7 +244,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 	    var day = ("0" + date.getDate()).slice(-2);
 
 	    var targetDay = year + month + day;
-	    console.log(targetDay);
+	    console.log("검색 날짜 : " + targetDay);
 		//	    
 	    
 		$.ajax({
@@ -263,12 +263,12 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				$("#api").append( '<option value="none" selected="selected" disabled>상영 예정작 등록</option>');
 				
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
-					if(result.Data[0].Result[i].runtime == ""
-						|| result.Data[0].Result[i].repRlsDate.substring(6,8) == 0
-						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
-						){
-						continue;
-					}
+// 					if(result.Data[0].Result[i].runtime == ""
+// 						|| result.Data[0].Result[i].repRlsDate.substring(6,8) == 0
+// 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
+// 						){
+// 						continue;
+// 					}
 						
 					$("#api").append('<option num ="' + i + '"value="'+ result.Data[0].Result[i].title + '">'   
 										+ result.Data[0].Result[i].title + '</option>'
@@ -326,23 +326,32 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 		let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
 		let runningTime = date.toLocaleTimeString("en-US", options);
 		
-		/*상영일*/
-/* !!!! 상영예정작이 yy-MM-00인 경우에 Date에 들어가지 못해서 안받을게요...
- */
-		let str = data.Data[0].Result[i].repRlsDate;
-		var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
+		
+
 		
 		/*장르*/
 		let info_genre = data.Data[0].Result[i].genre;
 		
+		
+		/*상영일*/
+		/* !!!! 상영예정작이 yy-MM-00인 경우에 Date에 들어가지 못해서 안받을게요...*/
+		// 해결완료
+		let str = data.Data[0].Result[i].repRlsDate;
+		var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-"
+		if(str.substring(6,8) == "00"){
+			info_showdate +=  "01"; 
+		}else{
+			info_showdate +=  str.substring(6,8); 
+		}
 		//상영일 > 종영일 계산하기
 		var info_enddate = new Date(info_showdate);
 		info_enddate.setDate(info_enddate.getDate() + 100);
+		console.log("info_showdate : " + info_showdate); 
 	    var dateObject = new Date(info_enddate);
 	    var isoDateString = dateObject.toISOString();
 	    var formattedDateString = isoDateString.slice(0, 10);
 	   	info_enddate = formattedDateString;
-		   	
+	   	
 	   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
 	    
 	    
