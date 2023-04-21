@@ -27,6 +27,36 @@
 <div class="content">
 			<div class="inner2">
 	<form id="dataForm" method="post">
+				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
+				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
+				<input type="hidden" id="ScreenTime" name="ScreenTime" value="${param.ScreenTime }">
+				<input type="hidden" id="ScreenCd" name="ScreenCd" value="${param.ScreenCd }">
+				<input type="hidden" id="MovieNm" name="MovieNm" value="${param.MovieNm }">
+				<input type="hidden" id="CinemaNm" name="CinemaNm" value="${param.CinemaNm }">
+				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
+				<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
+				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
+				<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
+				<input type="hidden" id="genre" name="genre" value="${param.genre }">
+				<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
+				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
+	
+	
+				<input type="hidden" id="totalAmt" name="totalAmt" value="${param.totalAmt }">
+				<input type="hidden" id="totalCnt" name="totalCnt" value="${param.totalCnt }">
+				<input type="hidden" id="NormalCnt" name="NormalCnt" value="${param.NormalCnt }">
+				<input type="hidden" id="OldCnt" name="OldCnt" value="${param.OldCnt }">
+				<input type="hidden" id="YoungCnt" name="YoungCnt" value="${param.YoungCnt }">
+	
+				<input type="hidden" id="TicketAmt" name="TicketAmt" value="${param.TicketAmt }">
+				<input type="hidden" id="NormalPrice" name="NormalPrice" value="${param.NormalPrice }">
+				<input type="hidden" id="OldPrice" name="OldPrice" value="${param.OldPrice }">
+				<input type="hidden" id="YoungPrice" name="YoungPrice" value="${param.YoungPrice }">
+				
+				
+				<!-- seatInfo nm만 받아서 a로시작하면 1라인 b로시작하면 2라인 판별하고 12345~는 num에 넣을까? -->
+<!-- ------------------------------------------------------------------------------------------------------------------------- -->
+	
 <!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
 <!-- 				<input type="hidden" id="ssid" name="ssid" value="91A730C3-E453-4B5C-9CC4-A08E11451665"> -->
 <!-- 				<input type="hidden" id="tokn" name="tokn" value="41524707"> -->
@@ -127,6 +157,8 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
+									<h4 class="r-h4">성인가격 ${param.NormalPrice }</h4>
+									
 									<div class="right">
 										<!-- <a href="javascript:goLink('/support/guide.do');" class="btn-link">예매가이드</a>
 										<a href="#" class="btn-link">ENG</a> -->
@@ -146,35 +178,35 @@
 												<div class="img"><img src="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"><i class="age age12"></i></div>
 												<h4>스즈메의 문단속</h4>
 												<div class="info">
-													<p>2023-03-08 개봉</p>
+													<p>${param.showDate } 개봉</p>
 												</div>
 												<dl>
 													<dt>장르</dt>
-													<dd>장르장르</dd>
+													<dd>${param.genre }</dd>
 												</dl>
 												<dl>
 													<dt>극장</dt>
-													<dd>강화작은영화관</dd>
+													<dd>${param.CinemaNm }</dd>
 												</dl>
 												<dl>
 													<dt>날짜</dt>
-													<dd>2023-04-23(일)</dd>
+													<dd>${param.MovieDate }</dd>
 												</dl>
 												<dl>
 													<dt>인원</dt>
-													<dd>성인 2명</dd>
+													<dd>${param.totalCnt }명</dd>
 												</dl>
 												<dl>
 													<dt>상영관</dt>
-													<dd>1관</dd>
+													<dd>${param.ScreenNm }</dd>
 												</dl>
 												<dl>
 													<dt>시간</dt>
-													<dd>13:50~15:52</dd>
+													<dd>${param.ScreenTime }</dd>
 												</dl>
 												<dl>
 													<dt>좌석</dt>
-													<dd>C3, C4</dd>
+													<dd></dd>
 												</dl>
 											</div>
 										</div>
@@ -235,14 +267,22 @@
 										<div class="head-pay">
 											<h3>최종결제</h3>
 										</div>
-										<div class="cont">
-											<dl class="price1">
-												<dt>티켓금액(2매)</dt>
-												<dd>12,000원</dd>
-											</dl>
+									<div class="cont">
+<!-- 											<dl class="price1"> -->
+<!-- 												<dt>티켓금액(6매)</dt> -->
+<!-- 												<dd>32,000원</dd> -->
+<!-- 											</dl> -->
 											<dl class="price2">
-															<dt>성인 (6,000원 x 2명)</dt>
-															<dd>12,000원</dd>
+															<dt>성인 (10,000원 x ${param.NormalCnt }명)</dt>
+															<dd>${param.NormalPrice }원</dd>
+														</dl>
+													<dl class="price2">
+															<dt>경로(만65세이상) (5,000원 x ${param.OldCnt }명)</dt>
+															<dd>${param.OldPrice }원</dd>
+														</dl>
+													<dl class="price2">
+															<dt>청소년 (7,000원 x ${param.YoungCnt }명)</dt>
+															<dd>${param.YoungPrice }원</dd>
 														</dl>
 													<div class="discounts" style="display: none;">
 													<hr class="hr3">
@@ -261,10 +301,10 @@
 											
 											<dl class="price3">
 												<dt>총 결제금액</dt>
-												<dd class="totalAmt">12,000원</dd>
+												<dd class="totalAmt">${param.totalAmt }원</dd>
 											</dl>
 											<div class="btn-box">
-												<button type="button" class="prev btn-prev" onclick="history.back();">이전</button>
+												<button type="button" class="prev btn-prev">이전</button>
 												<button type="button" class="next btnPayment">결제</button>
 											</div>
 										</div>
@@ -332,14 +372,9 @@
 				mAlert("결제수단을 선택해주세요.");
 				return;
 			}
-			
-		});
-		
-		
-		
 		
 	});
-	
+});
 	
 
 
