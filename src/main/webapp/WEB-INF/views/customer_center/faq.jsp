@@ -26,6 +26,22 @@
 
 			<div id="contents" class="">
 				<h2 class="tit">자주 묻는 질문</h2>
+				
+				<!-- input-search-area -->
+				<div class="input-search-area mb30">
+					<div class="input-area">
+						<label for="search01" class="label">빠른검색</label>
+
+						<div class="board-search w460px">
+							<input type="search" id="searchTxt" title="검색어를 입력해 주세요."
+								placeholder="검색어를 입력해 주세요." class="input-text" maxlength="15">
+							<button type="button" class="btn-search-input" id="searchBtn">검색</button>
+						</div>
+					</div>
+
+					<div class="btn-area"></div>
+				</div>
+				<!--// input-search-area -->
 
 				<div class="wrap-customer-box wrap-faq-box">
 					<div class="faq-desc">자주 찾는 질문 전체가 기본으로 표시됩니다. 원하는 구분의 목록만
@@ -41,9 +57,7 @@
 								<option value="5">영화관이용</option>
 							</select>
 						</div>
-						<!-- 					<span class="arrow"></span> -->
 					</div>
-					======================================================
 					<div class="table-wrap">
 					<table class="board-list">
 						<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
@@ -77,84 +91,30 @@
 					</table>
 				</div>
 					======================================================
-					<div class="table-wrap">
-						<table class="board-list">
-							<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
-							<colgroup>
-								<col style="width: 72px;">
-								<col style="width: 133px;">
-								<col style="width: 95px;">
-								<col>
-								<col style="width: 116px;">
-							</colgroup>
-							<thead>
-								<tr style="line-height: 38px">
-									<th scope="col">번호</th>
-									<!-- 									<th scope="col">극장</th> -->
-									<th scope="col">구분</th>
-									<th scope="col">제목</th>
-									<th scope="col">등록일</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<!-- 									<td>상암월드컵경기장</td> -->
-									<td>공지</td>
-									<th><a href="#" class="moveBtn" data-no="10821"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>상<span class="font-green"></span>암<span
-											class="font-green"></span>월<span class="font-green"></span>드<span
-											class="font-green"></span>컵<span class="font-green"></span>경<span
-											class="font-green"></span>기<span class="font-green"></span>장<span
-											class="font-green"></span>]<span class="font-green"></span> <span
-											class="font-green"></span>K<span class="font-green"></span>리<span
-											class="font-green"></span>그<span class="font-green"></span> <span
-											class="font-green"></span>축<span class="font-green"></span>구<span
-											class="font-green"></span> <span class="font-green"></span>경<span
-											class="font-green"></span>기<span class="font-green"></span>로<span
-											class="font-green"></span> <span class="font-green"></span>인<span
-											class="font-green"></span>한<span class="font-green"></span> <span
-											class="font-green"></span>주<span class="font-green"></span>차<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>2023.04.03</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					======================================================
 					<table class="bbs-list bbs-list-faq">
 						<thead>
 							<tr>
 								<!--<th>번호</th>-->
-								<th class="faq_group">구분</th>
-								<th class="faq_qus">질문</th>
+<!-- 								<th class="faq_group">번호</th> -->
+<!-- 								<th class="faq_group">구분</th> -->
+								<th class="faq_qus">번호</th>
+								<th class="faq_qus">구분</th>
+								<th class="faq_group">질문</th>
+								<th class="faq_qus">등록일</th>
+<!-- 								<th class="faq_group">등록일</th> -->
 							</tr>
 						</thead>
 						<tbody>
-							<script id="template-faq-list" type="text/x-jquery-tmpl">
-                    <tr>
-                        <!--<td class="no">${FAQNum}</td>-->
-                        <td class="kind">${Cate}</td>
-                        <td class="title"><a href="javascript:load_faq_answer(${FAQId});">${Title}</a></td>
-                    </tr>
-                    <tr id="ans${FAQId}" class="tr-answer">
-                        <td colspan="3" class="answer">
-                           {{html Answer}}
-                        </td>
-                    </tr>
-                </script>
-							<tr>
-								<!--<td _tmplitem="178"  class="no">1</td>-->
-								<td class="kind">멤버십</td>
-								<td class="title"><a href="javascript:load_faq_answer(62);">적립한
-										포인트를 다 써도 VIP가 될 수 있나요?</a></td>
-							</tr>
-							<tr id="ans62" class="tr-answer">
-								<td colspan="3" class="answer">포인트 사용여부와 관계없이 고객님께서 적립하신
-									씨네Q 구매 누적 포인트 기준으로 VIP가 산정됩니다.</td>
-							</tr>
+							<c:forEach var="faqBoard" items="${faqBoardList }">
+								<tr data-index="0">
+									<td>${faqBoard.faq_code }</td>
+									<td>${faqBoard.faq_group }</td>
+									<td id="faq_question"><a
+										href="faq_detail?faq_code=${faqBoard.faq_code }&pageNum=${pageNum }">${faqBoard.faq_question }</a>
+									</td>
+									<td>${faqBoard.faq_write_date }</td>
+								</tr>
+							</c:forEach>
 					</table>
 					페이징 처리
 				</div>
