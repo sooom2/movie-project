@@ -76,6 +76,9 @@ public class MemberController {
 		
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
+		System.out.println("==================================");
+		System.out.println(model);
+		System.out.println("==================================");
 		return "member/mem_join_form";
 	}
 	//예매확인폼
@@ -250,6 +253,12 @@ public class MemberController {
 	// 회원가입폼
 	@GetMapping(value = "joinform")
 	public String loginform(String email, Model model) {
+		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		System.out.println("==================================");
+		System.out.println(model);
+		System.out.println("==================================");
 		model.addAttribute("email", email);
 		return "member/mem_join_form";
 	}
