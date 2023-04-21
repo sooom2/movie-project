@@ -30,6 +30,7 @@
 	<div class="content">
 			<div class="inner2">
 	<form id="dataForm" method="post" action="reservationPay">
+				
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="${param.ScreenTime }">
@@ -56,6 +57,7 @@
 				<input type="hidden" id="OldPrice" name="OldPrice" value="0">
 				<input type="hidden" id="YoungPrice" name="YoungPrice" value="0">
 				
+				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
 <!-- 				<input type="hidden" id="좌석정보?" name="좌석정보?" value="좌석nm,좌석line,좌석num"> ?????-->
 				
 				
@@ -304,7 +306,10 @@
 	var totalCount = 0;		// 총 인원 수
 	var btnCnt = 0;
 	
-
+	var seatNmList = new Array();
+	var seatLineList = new Array();
+	var seatNumList = new Array();
+	
 
 	
 	// 
@@ -443,6 +448,18 @@ function choiceEvent (e) {
 				str += "</li>";
 				
 				$("#choiceList").append(str);
+				
+				
+// 				seatNmList.push($(this).data("nm"));
+// 				seatLineList.push($(this).data("line"));
+// 				seatNumList.push($(this).data("num"));
+
+				
+				// 선택한 값 저장하고 reservationPay.jsp로 넘어감
+				$("#dataForm").append('<input type="hidden" id="seatNm" name="seatNm" value="' + $(this).data("nm") + '">')
+				$("#dataForm").append('<input type="hidden" id="seatLine" name="seatLine" value="' + $(this).data("line") + '">')
+				$("#dataForm").append('<input type="hidden" id="seatNum" name="seatNum" value="' + $(this).data("num") + '">')
+				
 		
 				// 클릭이벤트 연결
 				$(".choice").on("click", choiceEvent);
@@ -459,7 +476,6 @@ function choiceEvent (e) {
 			//
 			//
 			
-			// 선택한 값 저장
 			
 			
 			console.log("btnCnt: " + btnCnt);
@@ -540,9 +556,50 @@ function choiceEvent (e) {
 		
 		
 		$(".btn-pay").on("click", function(e) {
-			var totalCnt = $("#totalCnt").val
+			var totalCnt = $("#totalCnt").val;
 			console.log(btnCnt);
 			console.log(totalCnt);
+			
+// 			var seat = "";
+// 			$.each($('.sel'), function(index, el){
+// 				seat += $(el).attr("data-nm") + " ";
+// 				seat += $(el).attr("data-line") + " ";
+// 				seat += $(el).attr("data-num") + " ";
+				
+// // 				alert(seatNmList);
+// // 				alert(seatLineList);
+// // 				alert(seatNumList);
+				
+// 			});
+			
+// 			console.log(seat);
+// 			$("#SeatInfo").val(seat);
+// 			alert(JSON.stringify(seatNmList) + "\n" + seatLineList + "\n" + seatNumList);
+			
+// 			$.ajax({
+// 				type: "post",
+// 				url: "CheckReservation",
+// 				data: {
+// 					"seatNmList" : JSON.stringify(seatNmList),
+// 					"seatLineList" : JSON.stringify(seatLineList),
+// 					"seatNumList" : JSON.stringify(seatNumList)
+// 				},
+// 				dataType: "text",
+// 				success: function(result) {
+// 					alert(result);
+// 				}
+// 			});
+// 			$.ajax({
+// 				type: "post",
+// 				url: "reservationPay",
+// 				data: $("#dataForm").serialize(),
+// 				dataType: "text",
+// 				success: function(result) {
+// 					alert(result);
+// 				}
+// 			});
+
+			
 		});
 		
 		

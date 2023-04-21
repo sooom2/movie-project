@@ -10,6 +10,7 @@ import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.itwillbs.movie.service.*;
+import com.itwillbs.movie.vo.*;
 
 @Controller
 public class ReservationController {
@@ -88,7 +89,29 @@ public class ReservationController {
 	
 	
 	// 좌석 정보
-	
+//	@PostMapping("CheckReservation")
+//	public String CheckReservation(String seatNmList, String seatLineList, String seatNumList) {
+//		System.out.println("seatNmList: " + seatNmList);
+//		System.out.println("seatLineList: " + seatLineList);
+//		System.out.println("seatNumList: " + seatNumList);
+//		
+//		JSONArray ja1 = new JSONArray(seatNmList);
+//		JSONArray ja2 = new JSONArray(seatLineList);
+//		JSONArray ja3 = new JSONArray(seatNumList);
+//		
+//		for(int i = 0; i < ja1.length(); i++) {
+//			System.out.println(ja1.get(i) + ", " + ja2.get(i) + ", " + ja3.get(i));
+////			
+////			map;
+////			
+////			service.resv(map);
+//		} 
+//		
+//		
+//		
+//		
+//		return "";
+//	}
 	
 	
 	
@@ -109,9 +132,24 @@ public class ReservationController {
 	
 	// 결제
 	@PostMapping("reservationPay")
-	public String reservationPay() {
+	public String reservationPay(ReservationVO vo, Model model) {
+		model.addAttribute("vo", vo);
+		
+		System.out.println("브이오오오옹" + vo);
+		
+		
 		return "reservation/reservation_pay";
 	}
+	
+	
+	
+	
+	
+//	@PostMapping("reservationPay")
+//	public String reservationPay(@RequestParam String[] seatNm) {
+//		System.out.println(seatNm[0] + ", " + seatNm[1]);
+//		return "reservation/reservation_pay";
+//	}
 	
 	
 	

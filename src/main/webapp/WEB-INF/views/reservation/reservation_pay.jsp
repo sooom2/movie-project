@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import = "java.util.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +57,8 @@
 				<input type="hidden" id="YoungPrice" name="YoungPrice" value="${param.YoungPrice }">
 				
 				
-				<!-- seatInfo nm만 받아서 a로시작하면 1라인 b로시작하면 2라인 판별하고 12345~는 num에 넣을까? -->
+				<input type="hidden" id="SeatInfo" name="SeatInfo" value="${param.SeatInfo}">
+				
 <!-- ------------------------------------------------------------------------------------------------------------------------- -->
 	
 <!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
@@ -75,19 +79,14 @@
 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all">
 				
 				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001">
-				<input type="hidden" id="MovieNm" name="MovieNm" value="스즈메의 문단속">
-				<input type="hidden" id="CinemaNm" name="CinemaNm" value="강화작은영화관">
 				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="normal">
 				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="일반">
 				<input type="hidden" id="StartTime" name="StartTime" value="13:50">
 				<input type="hidden" id="EndTime" name="EndTime" value="15:52">
-				<input type="hidden" id="ScreenNm" name="ScreenNm" value="1관">
 				<input type="hidden" id="ScreenType" name="ScreenType" value="normal">
 				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="일반">
 				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)">
 					
-				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg">
-				<input type="hidden" id="HidRating" name="HidRating" value="12">
 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="13.32">
 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08">
 				
@@ -98,7 +97,7 @@
 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="12000">
 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 2명">
 						
-				<input type="hidden" id="SeatInfo" name="SeatInfo" value="C3, C4">
+				
 				<input type="hidden" id="TicketList" name="TicketList" value="normal,normal,,000060,6000,C,3;normal,normal,,000060,6000,C,4;">
 				<input type="hidden" id="SeatType" name="SeatType" value="normal">
 				<input type="hidden" id="SeatZone" name="SeatZone" value="">
@@ -175,8 +174,8 @@
 										</div>
 										<div class="cont">
 											<div class="pay-mv">
-												<div class="img"><img src="https://img.dtryx.com/poster/2023/02/7363A612-6112-4B4A-8150-345A88C2E9FA.small.jpg"><i class="age age12"></i></div>
-												<h4>스즈메의 문단속</h4>
+												<div class="img"><img src="${param.HidMovieUrl }"></div>
+												<h4>${vo.getCinemaCd() }</h4>
 												<div class="info">
 													<p>${param.showDate } 개봉</p>
 												</div>
@@ -334,7 +333,22 @@
 	<script type="text/javascript">
 	var ticketList = [];
 	var ctypeList = [];
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	$(function () {
+		
 		
 		$(".btn-prev").on("click", function(e) {
 			e.preventDefault();
