@@ -1209,7 +1209,7 @@ table.bbs-list.bbs-list-mypage-coupon td {
 }
 
 table.bbs-list.bbs-list-mypage-coupon td:nth-child(5) {
-	text-align: left;
+	text-align: center;
 }
 
 table.bbs-list.bbs-list-mypage-coupon .serial-no {

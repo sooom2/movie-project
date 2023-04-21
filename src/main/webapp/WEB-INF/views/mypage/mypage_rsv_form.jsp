@@ -132,8 +132,8 @@
 								<td>${resList.get("res_paydate")}</td>
 								<td>${resList.get("res_title")}</td>
 								<td>${resList.get("res_cinema")}</td>
-								<td>${resList.get("res_seat_num")}</td>
 								<td>${resList.get("screen_name")}</td>
+								<td>${resList.get("res_seat_num")}</td>
 								<td>${resList.get("sch_movie_date")}</td>
 								<td>${resList.get("movietime")}</td>
 								<td>${resList.get("res_pay")}</td>
