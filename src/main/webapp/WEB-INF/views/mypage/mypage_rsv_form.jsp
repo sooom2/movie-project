@@ -107,31 +107,6 @@
     </table>
 </script>
 
-<!-- 			<div id="content-notice" -->
-<!-- 				style="display: none; position: absolute; width: 400px; height: 220px; z-index: 15; top: 50%; left: 50%; background: white; border: 1px solid black; margin: -200px 0 0 0;"> -->
-<!-- 				<div class="section group"> -->
-<!-- 					<div class="col span_8_of_8" -->
-<!-- 						style="text-align: center; border-bottom: 1px solid gray; background: beige"> -->
-<!-- 						<div id="couponname" style="padding-top: 20px; font-size: 20px"></div> -->
-
-<!-- 						<div id="couponkey" -->
-<!-- 							style="padding-top: 10px; padding-bottom: 15px"></div> -->
-<!-- 					</div> -->
-<!-- 					<div class="col span_8_of_8" -->
-<!-- 						style="text-align: left; padding-top: 10px;"> -->
-<!-- 						<div>사용 방법</div> -->
-<!-- 						<div id="constraint" style="padding-left: 20px;"></div> -->
-<!-- 						<div id="theater" style="padding-left: 20px;"></div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="section group"> -->
-<!-- 					<div class="col span_8_of_8 notice-control"> -->
-<!-- 						<div class="desc" style="text-align: center;"> -->
-<!-- 							<button onclick="javascript:closemodal()">닫기</button> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 
 
 			<div class="section group section-mypage">
@@ -139,28 +114,31 @@
 					<div style="margin-top: -40px; margin-bottom: 10px;"
 						>예매내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
+						<thead>
+							<tr>					<!--  res_sch_code == sch_code-->
+								<th>예매일자</th>	<!-- res_paydate -->
+								<th>영화제목</th>	<!-- res_title -->
+								<th>영화관</th>		<!-- res_cinema -->
+								<th>상영관</th>		<!-- res_screen_code == screen_code  ==> screen_name -->
+								<th>좌석번호</th>	<!-- res_seat_num -->
+								<th>상영일자</th> 	<!-- sch_movie_date -->
+								<th>상영시간</th>	<!--sch_start_time ~ sch_last_time -->
+								<th>결제금액</th>	<!--res_pay -->
+							</tr>
+						</thead>
 						<tbody>
+						<c:forEach var = "resList" items="${resList}">
 							<tr>
-								<th>예매번호</th>
-								<th>영화제목</th>
-								<th>영화관</th>
-								<th>상영관</th>
-								<th>좌석번호</th>
-								<th>상영일자</th>
-								<th>상영시간</th>
-								<th>예매일자</th>
+								<td>${resList.get("res_paydate")}</td>
+								<td>${resList.get("res_title")}</td>
+								<td>${resList.get("res_cinema")}</td>
+								<td>${resList.get("res_seat_num")}</td>
+								<td>${resList.get("screen_name")}</td>
+								<td>${resList.get("sch_movie_date")}</td>
+								<td>${resList.get("movietime")}</td>
+								<td>${resList.get("res_pay")}</td>
 							</tr>
-							<tr>
-								<td>202301011234</td>
-								<td>스파이더맨</td>
-								<td>아이무비부산점</td>
-								<td>2관</td>
-								<td>13,14</td>
-								<td>20230406</td>
-								<td>13:30</td>
-								<td>20230401</td>
-							</tr>
-							
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>

@@ -164,5 +164,23 @@
 	 	WHERE member_id = #{id};
   	</update>
   	
+  	<select id = "resList" resultType = "hashmap">
+  		SELECT 
+	 	r.res_paydate
+	 	,r.res_title
+	 	,r.res_cinema
+	 	,r.res_seat_num
+	 	,sn.screen_name
+	 	,sc.sch_movie_date
+	 	,concat(sc.sch_start_time,'~',sc.sch_last_time) AS movietime
+	 	,r.res_pay
+	 	FROM 
+	 	reservation r, schedule sc, screen sn 
+	 	WHERE r.res_sch_code = sc.sch_code 
+	 	AND r.res_screen_code = sn.screen_code
+	 	AND r.res_id = #{id};
+  	</select>
+  	
+  	
   	
 </mapper>

@@ -74,6 +74,10 @@ public class MypageService {
 		
 	}
 
+	public List<HashMap<String, String>> resList(String id) {
+		return mapper.resList(id);
+	}
+
 
 
 
