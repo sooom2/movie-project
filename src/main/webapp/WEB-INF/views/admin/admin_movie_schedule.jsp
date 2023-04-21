@@ -20,29 +20,6 @@
 
 <script type="text/javascript">
 
-$.ajax({
-	type: "POST",
-	url: "screenSelect",
-	data: {
-		cinema_code: $(".cinema_name option:selected").val(),
-	  	cinema_name: $(".cinema_name option:selected").text()
-	},
-	success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-		
-		
-		$(".selectScreen_name option").remove();
-		$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
-		$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
-		for(var i=0; i<result.length; i++){
-			$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
-		}
-		
-	},
-	error:function(request,status,error){
-        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-     
-	}
-});//ajax
 
 function dateDelete(){
    
@@ -161,14 +138,22 @@ $(function() {
                		 <div class="col-md-4 ">
 	                 <div class="form-floating mb-3 mb-md-0 selectbox">
                    			<div class="sch_movie_code">
-                            	<label for="sch_movie_code">영화선택 : </label>
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 300px;">
-								<option value="none" selected="selected" disabled >영화를 선택하세요</option>
-								<option value="none" disabled>=======================</option>
-								<c:forEach var="movie" items="${movieList }">
-						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-								</c:forEach>
+                            	<label for="sch_movie_code">검색</label>
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;">
+									<option value="none" selected="selected" disabled >영화별</option>
+									<option value="none" disabled>=======================</option>
+									<c:forEach var="movie" items="${movieList }">
+							  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+									</c:forEach>
 								</select>
+								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;">
+									<option value="none" selected="selected" disabled >상영관별</option>
+									<option value="none" disabled>=======================</option>
+									<c:forEach var="cinema" items="${ciemaList }">
+							  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+									</c:forEach>
+								</select>
+								
                             </div>
 	                 </div>
 	         	</div>			
