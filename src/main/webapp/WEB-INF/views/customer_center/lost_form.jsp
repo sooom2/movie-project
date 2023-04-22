@@ -53,9 +53,10 @@
 
 <!-- 				<form name="regFrm" method="post"> -->
 				<form action="lostWritePro" name="regFrm" method="post">
-					<input type="hidden" name="inqLclCd" value="INQD02"> <input
-						type="hidden" name="custInqStatCd" value="INQST1"> <input
-						type="hidden" name="cdLvl" value="1">
+					<input type="hidden" name="inqLclCd" value="INQD02"> 
+					<input type="hidden" name="custInqStatCd" value="INQST1"> 
+					<input type="hidden" name="cdLvl" value="1">
+					<input type="hidden" name="member_id" value="${member.get('member_id') }">
 
 					<p class="reset mt30 a-r font-orange">* 필수</p>
 
@@ -141,7 +142,7 @@
  											readonly="readonly"</c:if>>  --%>
 <!-- 										</td> -->
 										<td>
-										  <input type="text" name="member_id" id="name" 
+										  <input type="text" name="lost_name" id="name" 
 										  class="input-text" value="${member.get('member_name')}" 
 										  autocomplete="new-password" 
 										  maxlength="50" ${not empty member.get('member_name') ? 'readonly="readonly"' : ''}>
@@ -187,6 +188,14 @@
 										class="font-orange">*</em></th>
 									<td colspan="3">
 										<div class="textarea">
+											<div id="textarea-notice"
+												style="color: #999999; margin-left: 10px;">
+												※ 문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.<br>
+												※ 분실장소와 분실물에 대한 상세 정보를 작성해주시면 분실물을 찾는데 도움이 됩니다.<br>
+												- 관람 영화정보(영화제목, 상영 회차, 상영시간 등) :<br>
+												- 극장/좌석/장소 정보 :<br>
+												- 분실물 상세정보<br>
+											</div>
 											<textarea id="textarea" name="lost_content" rows="5" cols="30"
 												title="내용입력"
 												placeholder="※ 문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.
@@ -203,13 +212,22 @@
 										</div>
 									</td>
 								</tr>
+<!-- 								<tr> -->
+<!-- 									<th scope="row"><label for="pw">비밀번호</label> <em -->
+<!-- 										class="font-orange">*</em></th> -->
+<!-- 									<td colspan="3"><input type="number" maxlength="4" -->
+<!-- 										name="lost_passwd" id="pw" class="input-text w150px pwnew" -->
+<!-- 										placeholder="숫자 4자리" oninput="gfn_numberMaxLength(this);"> -->
+<!-- 										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를 -->
+<!-- 											설정해주세요.</em></td> -->
+<!-- 								</tr> -->
 								<tr>
-									<th scope="row"><label for="pw">비밀번호</label> <em
+									<th scope="row"><label for="name">비밀번호</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="number" maxlength="4"
-										name="lost_passwd" id="pw" class="input-text w150px pwnew"
-										placeholder="숫자 4자리" oninput="gfn_numberMaxLength(this);">
-										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
+									<td colspan="3"><input type="text" id="nonMbInqPw"
+										name="nonMbInqPwd" class="input-text w150px pwnew"
+										maxlength="4" oninput="gfn_numberMaxLength(this);"> <em
+										class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
 											설정해주세요.</em></td>
 								</tr>
 							</tbody>

@@ -65,9 +65,11 @@ public class CustomerController {
 
 	// 자주묻는 질문
 	@RequestMapping(value = "faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String faq(Model model) {
+	public String faq(@RequestParam(defaultValue = "") String searchKeyword, Model model) {
 		
-		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList();
+//		System.out.println("검색어" + searchKeyword);
+		
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(searchKeyword);
 		System.out.println(faqBoardList);
 		model.addAttribute("faqBoardList", faqBoardList);
 		return "customer_center/faq";
@@ -291,9 +293,9 @@ public class CustomerController {
 	
 	// 관리자 자주묻는 질문 목록
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminFaq(Model model) {
+	public String adminFaq(@RequestParam(defaultValue = "") String searchKeyword, Model model) {
 		
-		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList();
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(searchKeyword);
 //		System.out.println(noticeBoardList);
 		model.addAttribute("faqBoardList", faqBoardList);
 //		System.out.println(model);

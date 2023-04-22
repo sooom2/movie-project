@@ -115,8 +115,8 @@
 			WHERE one_code = ${one_code}
 	</select>
 	
-	<!-- 분실물 삭제 -->
-	<delete id="deleteOnBoard">
+	<!-- 1:1 삭제 -->
+	<delete id="deleteOneBoard">
 		DELETE 
 			FROM one_board
 			WHERE one_code = #{one_code}
@@ -194,7 +194,11 @@
 	<!-- 자주묻는 질문 목록 -->
 	<select id="selectFaqBoardList" resultType="hashmap">
 		SELECT * 
-			FROM faq_board 
+			FROM faq_board
+			<if test="!searchKeyword.equals('')">
+				WHERE
+				faq_question LIKE '%${searchKeyword}%'
+			</if>
 			ORDER BY faq_code DESC
 	</select>
 	

@@ -66,11 +66,11 @@
 				<p class="reset mt30 a-r font-orange">* 필수</p>
 
 				<form action="oneWritePro" name="regFrm" method="post">
-					<input type="hidden" name="inqLclCd" value="INQD01"> <input
-						type="hidden" name="custInqStatCd" value="INQST1"> <input
-						type="hidden" name="cdLvl" value="3"> <input type="hidden"
-						name="fileNo" value="">
-
+					<input type="hidden" name="inqLclCd" value="INQD01"> 
+					<input type="hidden" name="custInqStatCd" value="INQST1"> 
+					<input type="hidden" name="cdLvl" value="3"> 
+					<input type="hidden" name="fileNo" value="">
+					<input type="hidden" name="member_id" value="${member.get('member_id') }">
 					<div class="table-wrap mt10">
 						<table class="board-form va-m">
 							<colgroup>
@@ -104,7 +104,7 @@
 								<tr>
 									<th scope="row"><label for="name">이름</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="member_id" id="name"
+									<td><input type="text" name="one_name" id="name"
 										class="input-text" value="${member.get('member_name') }"
 										maxlength="50"
 										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>

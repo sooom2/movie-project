@@ -100,9 +100,9 @@ public class BoardService {
 	}
 
 	// 자주묻는 질문 목록
-	public List<HashMap<String, String>> getFaqBoardList() {
+	public List<HashMap<String, String>> getFaqBoardList(String searchKeyword) {
 		
-		return mapper.selectFaqBoardList();
+		return mapper.selectFaqBoardList(searchKeyword);
 	}
 
 	// 자주묻는 질문 등록
@@ -144,7 +144,7 @@ public class BoardService {
 	// 1:1 삭제
 	public int getOneDelete(HashMap<String, String> map) {
 		
-		return mapper.deleteOnBoard(map);
+		return mapper.deleteOneBoard(map);
 	}
 
 	// 내가 문의한 내역 상세

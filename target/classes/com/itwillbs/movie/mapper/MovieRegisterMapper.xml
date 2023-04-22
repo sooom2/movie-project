@@ -150,7 +150,9 @@ INSERT INTO schedule
   LEFT JOIN screen ON screen.screen_code = sch_screen_code 
   LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
   LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
- 		LIMIT 
+  ORDER BY
+		 	sch_code
+		LIMIT 
 		 	#{startRow}
 		  , #{listLimit}
 </select>

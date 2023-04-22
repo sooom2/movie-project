@@ -33,9 +33,13 @@
 						<label for="search01" class="label">빠른검색</label>
 
 						<div class="board-search w460px">
-							<input type="search" id="searchTxt" title="검색어를 입력해 주세요."
-								placeholder="검색어를 입력해 주세요." class="input-text" maxlength="15">
-							<button type="button" class="btn-search-input" id="searchBtn">검색</button>
+							<%-- 검색타입목록, 검색창 추가 --%>
+							<form action="faq">
+							<input type="search" id="searchTxt" name="searchKeyword" title="검색어를 입력해 주세요."
+								placeholder="검색어를 입력해 주세요." class="input-text" maxlength="15"
+								value="${param.searchKeyword }">
+							<button type="submit" class="btn-search-input" id="searchBtn">검색</button>
+							</form>
 						</div>
 					</div>
 

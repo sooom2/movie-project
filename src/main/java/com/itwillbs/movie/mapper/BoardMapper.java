@@ -50,7 +50,7 @@ public interface BoardMapper {
 	int deleteNoticeBoard(HashMap<String, String> map);
 
 	// 자주묻는 질문 목록
-	List<HashMap<String, String>> selectFaqBoardList();
+	List<HashMap<String, String>> selectFaqBoardList(String searchKeyword);
 
 	// 자주묻는 질문 등록
 	int insertFaqBoard(HashMap<String, String> map);
@@ -71,7 +71,7 @@ public interface BoardMapper {
 	int updatOneBoard(HashMap<String, String> map);
 	
 	// 1:1 삭제
-	int deleteOnBoard(HashMap<String, String> map);
+	int deleteOneBoard(HashMap<String, String> map);
 
 	// 내가 문의한 내역 상세
 	HashMap<String, String> selectOneDetail(HashMap<String, String> map);
