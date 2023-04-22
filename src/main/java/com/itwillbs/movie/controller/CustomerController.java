@@ -37,7 +37,7 @@ public class CustomerController {
 		return "customer_center/cc_home";
 	}
 	
-	// 공지사항
+	// 공지사항 목록
 	@RequestMapping(value = "notice_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String noticeBoard(Model model) {
 		

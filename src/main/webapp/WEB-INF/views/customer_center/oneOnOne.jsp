@@ -7,20 +7,54 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link
-	href="${pageContext.request.contextPath }/resources/css/common.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
 <!-- 상단 -->
-<link href="${pageContext.request.contextPath }/resources/css/sub.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
 <!-- 본문 -->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+<script type="text/javascript">
+$(function() {
+	
+	$("#textarea").keyup(function() {
+		$("#textareaCnt").html($("#textarea").val().length)
+	});
+	
+// 	<textarea id="textarea" name="one_content" rows="5" cols="30"
+// 		title="내용입력" class="input-textarea"></textarea>
+// 	<div class="util">
+// 		<p class="count">
+// 			<span id="textareaCnt">0</span> / 2000
+// 		</p>
+	
+	
+	let regex = /^[가-힣]{2,5}$/; // 이름 제약조건
+	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
+	
+	$("form").submit(function() {
+		if(!$("#chk").prop("checked")) {
+			alert("개인정보 수집 동의 해주세요");
+			$("#chk").focus();
+			return false;
+		}
+		// 이름 검증 한글 2 ~ 5글자
+		if(!regex.exec($("#name").val())) {
+			alert("이름을 확인하세요");
+			$("#name").focus();
+			return false;
+		}
+		// 번호 검증
+		if(!regex2.exec($("#hpNum1").val())) {
+			alert("전화번호를 확인하세요");
+			$("#member_id").focus();
+			return false;
+		}
+		return true;
+	});
+});
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -39,7 +73,8 @@
 					</ul>
 
 				</div>
-
+				
+				<form action="oneWritePro" name="regFrm" method="post">
 				<div class="agree-box">
 					<dl>
 						<dt>
@@ -65,7 +100,7 @@
 
 				<p class="reset mt30 a-r font-orange">* 필수</p>
 
-				<form action="oneWritePro" name="regFrm" method="post">
+<!-- 				<form action="oneWritePro" name="regFrm" method="post"> -->
 					<input type="hidden" name="inqLclCd" value="INQD01"> 
 					<input type="hidden" name="custInqStatCd" value="INQST1"> 
 					<input type="hidden" name="cdLvl" value="3"> 
@@ -81,11 +116,11 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row"><label for="name">문의유형</label> <em
+									<th scope="row"><label for="one_question_type">문의유형</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" id="name" name="one_question_type"
+									<td><input type="text" id="one_question_type" name="one_question_type"
 										class="input-text w150px" value="" maxlength="30"></td>
-									<th scope="row"><label for="name">문의지점</label> <em
+									<th scope="row"><label for="one_question_type">문의지점</label> <em
 										class="font-orange">*</em></th>
 									<td>
 <!-- 										<input type="text" id="name" name="cinema_name" -->
@@ -117,9 +152,10 @@
 								<tr>
 									<th scope="row"><label for="hpNum1">휴대전화</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="text" name="one_tel"
+									<td colspan="3"><input type="number" name="one_tel" placeholder="숫자만 입력하세요"
 										id="hpNum1" class="input-text w200px" value="${member.get('member_tel') }" maxlength="50"
-										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
+										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}>
+										<em>'-' 기호 제외한 10~11 자리 숫자 입력해주세요</em></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="qnaCustInqTitle">제목</label> <em
@@ -132,8 +168,7 @@
 										class="font-orange">*</em></th>
 									<td colspan="3">
 										<div class="textarea">
-											<div id="textarea-notice"
-												style="color: #999999; margin-left: 10px;">
+											<div id="textarea-notice" style="color: #999999; margin-left: 10px;">
 												- 문의내용에 개인정보(이름,연락처,카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.<br>
 												- 비회원 문의시 이메일로 답변내용이 발송되오니 정확하게 작성부탁드립니다.<br>
 												- 회원로그인 후 문의작성시 나의 문의내역을 통해 답변을 확인하실 수 있습니다.<br>

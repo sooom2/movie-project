@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
@@ -16,6 +17,18 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+<script type="text/javascript">
+$(function() {
+	$("form").submit(function() {
+		if(!$("#chk").prop("checked")) {
+			alert("개인정보 수집 동의 해주세요");
+			$("#chk").focus();
+			return false;
+		} 
+		return true;
+	});
+});
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -27,11 +40,13 @@
 					<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li>
 					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
 				</ul>
-
+				
+				<form action="lostWritePro" name="regFrm" method="post">
 				<div class="agree-box">
 					<dl>
 						<dt>
-							<span class="bg-chk mr10"> <input type="checkbox" id="chk">
+							<span class="bg-chk mr10"> 
+							<input type="checkbox" id="chk" >
 								<label for="chk"><strong>개인정보 수집에 대한 동의</strong></label>
 							</span> <span class="font-orange">[필수]</span>
 						</dt>
@@ -52,7 +67,7 @@
 					서비스를 이용하실 수 없습니다</p>
 
 <!-- 				<form name="regFrm" method="post"> -->
-				<form action="lostWritePro" name="regFrm" method="post">
+<!-- 				<form action="lostWritePro" name="regFrm" method="post"> -->
 					<input type="hidden" name="inqLclCd" value="INQD02"> 
 					<input type="hidden" name="custInqStatCd" value="INQST1"> 
 					<input type="hidden" name="cdLvl" value="1">
@@ -69,68 +84,6 @@
 								<col>
 							</colgroup>
 							<tbody>
-<!-- 								<tr> -->
-<!-- 									<th scope="row"><label for="place">분실장소</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td colspan="3"><select id="theater" class="small" -->
-<!-- 										title="지역선택"> -->
-<!-- 											<option value="">지역선택</option> -->
-
-<!-- 											<option value="10">서울</option> -->
-
-<!-- 											<option value="30">경기</option> -->
-
-<!-- 											<option value="35">인천</option> -->
-
-<!-- 											<option value="45">대전/충청/세종</option> -->
-
-<!-- 											<option value="55">부산/대구/경상</option> -->
-
-<!-- 											<option value="65">광주/전라</option> -->
-
-<!-- 											<option value="70">강원</option> -->
-
-<!-- 											<option value="80">제주</option> -->
-
-<!-- 									</select> <select name="brchNo" id="theater02" title="극장선택" -->
-<!-- 										class="small ml07" disabled="disabled"> -->
-<!-- 											<option value="">극장선택</option> -->
-<!-- 									</select></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<th scope="row"><label for="name">지역</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td colspan="3"><input type="text" name="lost_location" -->
-<!-- 										id="location" class="input-text w150px" value="" maxlength="30"></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<th scope="row"><label for="name">영화관명</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td colspan="3"><input type="text" name="cinema_name" -->
-<!-- 										id="cinema" class="input-text w150px" value="" maxlength="30"></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<th scope="row"><label for="name">이름</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td colspan="3"><input type="text" name="lost_name" -->
-<!-- 										id="name" class="input-text w150px" value="" maxlength="30"></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<th scope="row"><label for="hpNum1">연락처</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td><input type="text" name="hpNum1" id="hpNum1" -->
-<!-- 										class="input-text w60px numType" maxlength="3" -->
-<!-- 										title="핸드폰번호 첫자리 입력"> <span>-</span> <input -->
-<!-- 										type="text" name="hpNum2" class="input-text w60px numType" -->
-<!-- 										maxlength="4" title="핸드폰번호 중간자리 입력"> <span>-</span> <input -->
-<!-- 										type="text" name="hpNum3" class="input-text w60px numType" -->
-<!-- 										maxlength="4" title="핸드폰번호 마지막자리 입력"></td> -->
-<!-- 									<th scope="row"><label for="email">이메일</label> <em -->
-<!-- 										class="font-orange">*</em></th> -->
-<!-- 									<td><input type="text" name="rpstEmail" id="email" -->
-<!-- 										class="input-text" value="" autocomplete="new-password" -->
-<!-- 										maxlength="50"></td> -->
-<!-- 								</tr> -->
 								<tr>
 									<th scope="row"><label for="name">이름</label> <em
 										class="font-orange">*</em></th>
@@ -144,7 +97,7 @@
 										<td>
 										  <input type="text" name="lost_name" id="name" 
 										  class="input-text" value="${member.get('member_name')}" 
-										  autocomplete="new-password" 
+										  autocomplete="new-password"  required="required"
 										  maxlength="50" ${not empty member.get('member_name') ? 'readonly="readonly"' : ''}>
 										</td>
 
@@ -155,12 +108,12 @@
 <!-- 										class="input-text" value="" autocomplete="new-password" -->
 <!-- 										maxlength="50"> -->
 										<select name="cinema_name" onchange="selectCinema()"
-											style="margin-top: 0px; !important">
-											<option value="none" selected="selected" disabled>극장
+											style="margin-top: 0px; !important" required="required">
+											<option value="" selected="selected" disabled>극장
 												선택</option>
-											<option value="none" disabled>=======================</option>
+											<option value="" disabled>=======================</option>
 											<c:forEach var="cinema" items="${cinemaList }">
-												<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
+												<option value="${cinema.get('cinema_name') }" >${cinema.get("cinema_name")}</option>
 											</c:forEach>
 										</select>
 									</td> 
@@ -170,18 +123,20 @@
 										class="font-orange">*</em></th>
 									<td><input type="text" name="lost_tel" id="hpNum"
 										class="input-text" value="${member.get('member_tel') }" autocomplete="new-password"
-										maxlength="50" placeholder="숫자만 입력하세요" ${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
+										maxlength="50" placeholder="숫자만 입력하세요" required="required" 
+										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
 									<th scope="row"><label for="email">이메일</label> <em
 										class="font-orange">*</em></th>
 									<td><input type="text" name="lost_email" id="email"
 										class="input-text" value="${member.get('member_email') }" autocomplete="new-password"
-										maxlength="50" ${not empty member.get('member_email') ? 'readonly="readonly"' : ''}></td>
+										maxlength="50" required="required" 
+										${not empty member.get('member_email') ? 'readonly="readonly"' : ''}></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="title">제목</label> <em
 										class="font-orange">*</em></th>
 									<td colspan="3"><input type="text" name="lost_subject"
-										id="title" class="input-text" maxlength="100"></td>
+										id="title" class="input-text" maxlength="100" required="required"></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="textarea">내용</label> <em
@@ -197,7 +152,7 @@
 												- 분실물 상세정보<br>
 											</div>
 											<textarea id="textarea" name="lost_content" rows="5" cols="30"
-												title="내용입력"
+												title="내용입력" required="required"
 												placeholder="※ 문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.
 												&nbsp;※ 분실장소와 분실물에 대한 상세 정보를 작성해주시면 분실물을 찾는데 도움이 됩니다.
 												- 관람 영화정보(영화제목, 상영 회차, 상영시간 등) :
@@ -226,7 +181,7 @@
 										class="font-orange">*</em></th>
 									<td colspan="3"><input type="text" id="nonMbInqPw"
 										name="nonMbInqPwd" class="input-text w150px pwnew"
-										maxlength="4" oninput="gfn_numberMaxLength(this);"> <em
+										maxlength="4" oninput="gfn_numberMaxLength(this);" required="required"> <em
 										class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
 											설정해주세요.</em></td>
 								</tr>
