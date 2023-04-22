@@ -200,8 +200,23 @@ function previewImage(targetObj, View_area) {
 													<label for="info_time">상영시간</label>
 												</div>
 											</div>
-
 										</div>
+										<!-- 04.22 추가 -->
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input class="form-control" id="info_rating" name="info_rating" type="text" value=""/>
+													<label for="info_rating">관람등급</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input class="form-control" id="info_genre" name="info_genre" type="text" value="" />
+													<label for="info_genre">장르</label>
+												</div>
+											</div>
+										</div>
+										<!--  -->
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
@@ -434,8 +449,23 @@ function previewImage(targetObj, View_area) {
 																	<label for="info_time">상영시간</label>
 																</div>
 															</div>
-				
 														</div>
+														<!-- 04.22 추가 -->
+														<div class="row mb-3">
+															<div class="col-md-6">
+																<div class="form-floating">
+																	<input class="form-control" id="info_rating" name="info_rating" type="text" value=""/>
+																	<label for="info_rating">관람등급</label>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_genre" name="info_genre" type="text" value="" />
+																	<label for="info_genre">장르</label>
+																</div>
+															</div>
+														</div>
+														<!--  -->	
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
@@ -461,8 +491,6 @@ function previewImage(targetObj, View_area) {
 														<!-- hidden 영역 -->
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
-														<input type="hidden" name = "info_rating">
-														<input type="hidden" name = "info_genre">
 														<input type="hidden" name = "info_movie_poster">
 														<!-- hidden 영역 -->
 														<div class="row">
