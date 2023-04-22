@@ -262,12 +262,13 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				$("#api").append( '<option value="none" selected="selected" disabled>상영 예정작 등록</option>');
 				
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
-// 					if(result.Data[0].Result[i].runtime == ""
+					if(result.Data[0].Result[i].runtime == ""
 // 						|| result.Data[0].Result[i].repRlsDate.substring(6,8) == 0
-// 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
-// 						){
-// 						continue;
-// 					}
+						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
+						)
+					{
+						continue;
+					}
 						
 					$("#api").append('<option num ="' + i + '"value="'+ result.Data[0].Result[i].title + '">'   
 										+ result.Data[0].Result[i].title + '</option>'
@@ -290,12 +291,13 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 	 	// 4) 포스터가 없는 경우
 	 	// 진짜 ...ㅠㅠ
 	 	
-	 	
 		// 이미 선택되어 있는 이미지 삭제
 		if($(".posterList")){
 			$(".posterlist").remove();
 		}
 		let i = $("#api > option:selected").attr('num')
+		
+		console.log(data.Data[0].Result[i]);
 		let info_movie_code  =data.Data[0].Result[i].CommCodes.CommCode[0].CodeNo ;
 		let info_movie_title =data.Data[0].Result[i].title.trim();																					// kmdbAPI에서 title 앞에 공백이 붙어서 trim 처리
 		/*줄거리*/
