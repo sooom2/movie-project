@@ -52,16 +52,7 @@ public class MovieController {
 		
 		return "movieBoard/comming";
 	}
-	// 상영예정작
-	@RequestMapping(value = "ascending", method = {RequestMethod.GET, RequestMethod.POST})
-	public String ascending(Model model) {
-		
-		List<HashMap<String, String>> movieList = service.selectAscendingMovies();
-		
-		model.addAttribute("movieList",movieList);
-		
-		return "movieBoard/comming";
-	}
+
 	
 	
 	// 영화상세페이지

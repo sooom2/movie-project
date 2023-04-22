@@ -44,11 +44,9 @@ public class MemberController {
 		//영화 뿌리기
 		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
 		List<HashMap<String, String>> commingMovieList = movieRegisterService.selectCommingMovies();
-		List<HashMap<String, String>> ascendigMovieList = movieRegisterService.selectAscendingMovies();
 		
 		model.addAttribute("movie", movieList);
 		model.addAttribute("commingMovieList", commingMovieList);
-		model.addAttribute("ascendigMovieList",ascendigMovieList);
 		model.addAttribute("hotItem", hotItem);
 		
 		return "index";

@@ -34,7 +34,6 @@
 					<li><span>기 &nbsp; &nbsp; &nbsp;본 : </span> ${movieInfo.info_nation} | ${movieInfo.info_time} | ${movieInfo.info_genre }</li>
 					<li><span>개 봉 일 : </span> ${movieInfo.info_showdate }</li>
 					<li><span>감 &nbsp; &nbsp; &nbsp;독 : </span> ${movieInfo.info_director }</li>
-<!-- 					<li><span>배 &nbsp; &nbsp; &nbsp;우 : </span> 배우</li> -->
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
 				 <a href="reservation" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
