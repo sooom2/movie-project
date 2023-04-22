@@ -32,7 +32,7 @@
 				<!-- 포스터 수정  -->
 				<ul class="basic">
 					<li><span>기 &nbsp; &nbsp; &nbsp;본 : </span> ${movieInfo.info_nation} | ${movieInfo.info_time} | ${movieInfo.info_genre }</li>
-					<li><span>개 봉 일 : </span> ${movieInfo.info_showdate }</li>
+					<li><span>개 봉 일 : 				  </span> ${movieInfo.info_showdate }</li>
 					<li><span>감 &nbsp; &nbsp; &nbsp;독 : </span> ${movieInfo.info_director }</li>
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
@@ -76,7 +76,26 @@
 			</div>
 	</div>
 </div>
-
+<!-- 작업중 로직만 쓸것 -->
+<script type="text/javascript">
+  $(document).ready(function () {
+        $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
+            $(this).parent().addClass("on");
+            if ($(this).hasClass("info")) {
+                $(this).parent().removeClass("down");
+                $(this).parent().addClass("up");
+            }
+            if ($(this).hasClass("rsv")) {
+                $(this).parent().removeClass("up");
+                $(this).parent().addClass("down");
+            }
+        });
+        
+        $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
+            $(this).closest("ul").find("span.over").removeClass("on");
+        });
+ });
+ </script>
 <jsp:include page="../footer.jsp"/>
 </body>
 </html>
