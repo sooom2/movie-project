@@ -67,16 +67,6 @@
             $(this).closest("ul").find("span.over").removeClass("on");
         });
  });
-//         $("ul>li a.rsv", "div.comming").click(function (e) {
-//             e.preventDefault();
-//             var movieCode = $(this).closest("li").data("moviecode");
-//             $.desktop.reserve.openMovie({
-//                 movieCode: movieCode
-//             });
-//             return false;
-  
-		//heart 좋아요 클릭시! 하트 뿅
-			
 var $likeBtn = $('.icon.heart');
 $likeBtn.click(function() {
 	// ajax -> likeInsert(@controller)
@@ -93,6 +83,7 @@ $likeBtn.click(function() {
 			info_movie_code : info_movie_code
 		},
 		success : function(result){
+			// 좋아요 결과 출력
 			alert(result.msg)
 			
 			if(result.resultType == "insert"){

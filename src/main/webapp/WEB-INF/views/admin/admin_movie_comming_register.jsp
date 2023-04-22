@@ -248,9 +248,8 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 		//	    
 	    
 		$.ajax({
-			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?',
+			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?&collection=kmdb_new2',
 			data :{
-				collection : 'kmdb_new2',	// 고정값
 				ServiceKey : 'N6BL7Q77SG0M41244297',	// 서비스 키 값을 여기 표시하면 안될 것 같은데.. 어떻게 처리해야할지 모름
 				releaseDts :targetDay,
 				deailt : 'N',
@@ -432,8 +431,23 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 																	<label for="info_time">상영시간</label>
 																</div>
 															</div>
-				
 														</div>
+														<!-- 04.22 추가 -->
+														<div class="row mb-3">
+															<div class="col-md-6">
+																<div class="form-floating">
+																	<input class="form-control" id="info_rating" name="info_rating" type="text" value=""/>
+																	<label for="info_rating">관람등급</label>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_genre" name="info_genre" type="text" value="" />
+																	<label for="info_genre">장르</label>
+																</div>
+															</div>
+														</div>
+														<!--  -->
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
@@ -459,8 +473,6 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<!-- hidden 영역 -->
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
-														<input type="hidden" name = "info_rating">
-														<input type="hidden" name = "info_genre">
 														<input type="hidden" name = "info_movie_poster">
 														<!-- hidden 영역 -->
 														<div class="row">
