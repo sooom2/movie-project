@@ -101,6 +101,12 @@ public interface MovieRegisterMapper {
 
 	//상세 예매정보
 	HashMap<String, String> detailRes(String res_code);
+	
+	//예매내용삭제
+	int delRes(String res_code);
+	
+	//예매내용 수정
+	int updateRes(HashMap<String, String> reservation);
 
 	
 	

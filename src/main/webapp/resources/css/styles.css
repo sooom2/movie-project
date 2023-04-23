@@ -11576,11 +11576,15 @@ background : url(../images/movies/poster/imgRegister.png) no-repeat ;
   }
   
   .searchbox{
-      background-color: #eeebf4;
+      background-color: #fbfbfb;
       margin-top: -20px;
       /* width: 700px !important; */
       /* border: 1px solid #c7c4cd; */
       /* text-align: right; */
       /* margin-right: 10px; */
       padding-right: 20px;
+  }
+  
+  .form-control {
+    background-color: #fafafa
   }

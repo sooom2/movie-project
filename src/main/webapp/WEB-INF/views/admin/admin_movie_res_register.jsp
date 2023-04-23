@@ -109,7 +109,7 @@ function modalClose(){
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
-								<th data-sortable="true" style="width: 8%;"><a href="#"
+								<th data-sortable="true" style="width: 5%;"><a href="#"
 									class="datatable-sorter">결제번호</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">회원ID</a></th>
@@ -117,18 +117,23 @@ function modalClose(){
 									class="datatable-sorter">영화제목</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">영화관명</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#"
-									class="datatable-sorter">상영관명</a></th>
+<!-- 								<th data-sortable="true" style="width: 8%;"><a href="#" -->
+<!-- 									class="datatable-sorter">상영관명</a></th> -->
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">관람날짜</a></th>
 								<th data-sortable="true" style="width: 7%;"><a href="#"
 									class="datatable-sorter">좌석</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">결제금액</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#"
-									class="datatable-sorter">결제일</a></th>
-								<th data-sortable="true" style="width: 8%;"><a href="#"
-									class="datatable-sorter">수정</a></th>
+								<th data-sortable="true" style="width: 8%;">
+									<a href="#" class="datatable-sorter">결제일</a>
+								</th>
+								<th data-sortable="true" style="width: 8%;">
+									<a href="#" class="datatable-sorter">결제유무</a>
+								</th>
+								<th data-sortable="true" style="width: 8%;">
+									<a href="#" class="datatable-sorter">수정</a>
+								</th>
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
@@ -137,13 +142,14 @@ function modalClose(){
 							<tr data-index="0">
 								<td>${resList.get("res_code") }</td>
 								<td>${resList.get("res_id") }</td>
-								<td>${resList.get("res_movie_code") }</td>
+								<td>${resList.get("res_title") }</td>
 								<td>${resList.get("res_cinema") }</td>
-								<td>${resList.get("res_screen_code") }</td>
+<%-- 								<td>${resList.get("screen_name") }</td> --%>
 								<td>${resList.get("res_date") }</td>
-								<td>${resList.get("res_seat_line") }열, ${resList.get("res_seat_num") }번</td>
+								<td>${resList.get("seat_location") }</td>
 								<td>${resList.get("res_pay") }</td>
 								<td>${resList.get("res_paydate") }</td>
+								<td>${resList.get("res_pay_done") }</td>
 								<td class="modi">
 									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="location.href='selectRes?res_code=${resList.get('res_code')}'">
 <!-- 									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()"> -->

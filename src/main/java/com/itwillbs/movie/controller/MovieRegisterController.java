@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -469,9 +470,33 @@ public class MovieRegisterController {
  	public String resUpdate(Model model,@RequestParam String res_code) {
  		System.out.println("====================================");
  		HashMap<String, String> detailRes = movieRegisterService.detailRes(res_code);
- 		model.addAttribute("detailRes",detailRes);
+ 		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
  		
+		model.addAttribute("movieList", movieList);
+ 		model.addAttribute("detailRes",detailRes);
+ 		System.out.println("====================================");
+ 		System.out.println(detailRes);
+ 		System.out.println("====================================");
  		return "admin/admin_movie_res_register_update";
+ 	}
+ 	
+ 	@GetMapping("deleteRes")
+ 	public String deleteRes(@RequestParam String res_code) {
+ 		int delCount = movieRegisterService.delRes(res_code);
+ 		
+ 		return "redirect:/resList";
+ 	}
+ 	
+ 	
+ 	@RequestMapping(value="updateRes", method = {RequestMethod.GET, RequestMethod.POST})
+ 	public String updateRes(@RequestParam HashMap<String, String> reservation) {
+ 		int updateCount = movieRegisterService.updateRes(reservation);
+ 		System.out.println("updateRes ========================================");
+ 		System.out.println(updateCount);
+ 		System.out.println("updateRes ========================================");
+ 		System.out.println(reservation);
+ 		
+ 		return "redirect:/resList";
  	}
  	
  	

@@ -210,7 +210,6 @@ $(function() {
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
 													<input class="btn btn-primary btn-block btn-del" type="button" onclick="deleteSchedule()" value="삭제">
 												</div>															
 											</div>

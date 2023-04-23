@@ -198,6 +198,15 @@ public class MovieRegisterService {
 	public HashMap<String, String> detailRes(String res_code) {
 		return mapper.detailRes(res_code);
 	}
+	public int delRes(String res_code) {
+		return mapper.delRes(res_code);
+	}
+	public int updateRes(HashMap<String, String> reservation) {
+		System.out.println("service===========================================");
+		System.out.println(reservation);
+		System.out.println("service===========================================");
+		return mapper.updateRes(reservation);
+	}
 
 
 
