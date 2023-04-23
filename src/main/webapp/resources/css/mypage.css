@@ -34,15 +34,15 @@
 }
 
 .section-mypage-summary .summary .btn {
-	width: 97px;
-	height: 27px;
-	border-radius: 2px;
-	background-color: #efefef;
+	width: 110px;
+	height: 32px;
+	border-radius: 11px;
+	background-color: #673bd4;
 	border: 1px solid #b7b7b7;
 	box-sizing: border-box;
-	line-height: 25px;
-	font-size: 15px;
-	color: #5d46b5;
+	line-height: 29px;
+	font-size: 14px;
+	color: #f9f9f9;
 	text-align: center;
 }
 

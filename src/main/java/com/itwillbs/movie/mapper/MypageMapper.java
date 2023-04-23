@@ -40,5 +40,7 @@ public interface MypageMapper {
 
 	int checkReview(String id);
 
+	List<HashMap<String, String>> likeList(String id);
+
 
 }

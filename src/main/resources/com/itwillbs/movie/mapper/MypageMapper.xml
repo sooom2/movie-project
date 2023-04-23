@@ -29,7 +29,7 @@
 	</select>
 	
 	<!-- 비밀번호 조회 -->
-	<select id="selectPasswd" resultType="string">
+	<select id="selectPasswd" resultType="String">
 		SELECT member_pw FROM member
 		WHERE member_id = #{member_id}
 	</select>
@@ -75,18 +75,19 @@
 
 		INSERT INTO review VALUES
 		(
-		#{rev_code}+1
+ 		(SELECT *
+  			  FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
 		,(select res_movie_code
-			from reservation where res_id = #{id}
-			order by res_code desc limit 1)
-			,(select res_title
-			from reservation where res_id = #{id} 
-			order by res_code desc limit 1)
-		  	,#{id}
-			,#{rev_rating}
-			,#{rev_content}
-			,now()
-			)
+		from reservation where res_id = #{id}
+		order by res_code desc limit 1)
+		,(select res_title
+		from reservation where res_id = #{id} 
+		order by res_code desc limit 1)
+	  	,#{id}
+		,#{rev_rating}
+		,#{rev_content}
+		,now()
+		)
 
 	
   	</insert>
@@ -194,6 +195,11 @@
 			from reservation where res_id = #{id}
 			order by res_code desc limit 1)
 	</select>
-
+	
+	<select id="likeList" resultType="hashmap">
+	 	SELECT distinct(m.info_movie_title) as movie_title
+	 	FROM movieinfo m JOIN like_movie l on m.info_movie_code = l.like_movie_code
+	 	where l.like_id = #{id} limit 5;
+	</select>
   	
 </mapper>

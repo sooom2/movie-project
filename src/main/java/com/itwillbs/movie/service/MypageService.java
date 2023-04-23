@@ -81,6 +81,10 @@ public class MypageService {
 		    return mapper.checkReview(id);
 	}
 
+	public List<HashMap<String, String>> likeList(String id) {
+		return mapper.likeList(id);
+	}
+
 
 
 

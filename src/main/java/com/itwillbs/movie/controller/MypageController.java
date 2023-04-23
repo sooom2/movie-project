@@ -32,9 +32,10 @@ public class MypageController {
 		if(id ==null) {
 			return "redirect:/memLogin";
 		}
-		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		List<HashMap<String, String>> likeList = service.likeList(id);
+		model.addAttribute("likeList",likeList);
 		List<HashMap<String,String>> resList = service.resList(id);
 		model.addAttribute("resList", resList);
 		member= service.getMemberInfo(id);
@@ -49,7 +50,8 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
-		
+		List<HashMap<String, String>> likeList = service.likeList(id);
+		model.addAttribute("likeList",likeList);
 		List<HashMap<String, String>> pointList = service.pointList(id);
 		model.addAttribute("pointList", pointList);
 		
@@ -67,7 +69,8 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
-		
+		List<HashMap<String, String>> likeList = service.likeList(id);
+		model.addAttribute("likeList",likeList);
 		List<HashMap<String,String>> payList = service.payList(id);
 		model.addAttribute("payList", payList);
 		
@@ -86,7 +89,8 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
-		
+		List<HashMap<String, String>> likeList = service.likeList(id);
+		model.addAttribute("likeList",likeList);
 		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
@@ -198,6 +202,8 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		List<HashMap<String, String>> likeList = service.likeList(id);
+		model.addAttribute("likeList",likeList);
 		
 		List<HashMap<String, String>> revList = service.revList(id);
 		model.addAttribute("revList",revList);
