@@ -23,7 +23,7 @@
 			<jsp:include page="lnb-area.jsp" />
 
 			<div id="contents">
-            <h2 class="tit">비회원 문의내역</h2>
+            <h2 class="tit">문의내역</h2>
             <div class="tab-purple mb20">
                 <ul>
                     <li data-url="/mypage/myinquiry?cd=INQD01" class="on"><a href="#" class="btn" data-cd="INQD01" title="1:1 문의내역 탭으로 이동">1:1 문의내역</a></li>

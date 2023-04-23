@@ -62,6 +62,11 @@ public class BoardService {
 	public List<HashMap<String, String>> getOneBoardList() {
 		return mapper.selectOneBoardList();
 	}
+	
+	// 1대1 문의 목록
+	public List<HashMap<String, String>> getBoardList(HashMap<String, String> map) {
+		return mapper.selectBoardList(map);
+	}
 
 	// 공지사항 등록
 	public int registNoticeBoard(HashMap<String, String> map) {
@@ -103,6 +108,12 @@ public class BoardService {
 	public List<HashMap<String, String>> getFaqBoardList(String searchKeyword) {
 		
 		return mapper.selectFaqBoardList(searchKeyword);
+	}
+	
+	// 자주묻는 질문 상세
+	public HashMap<String, String> getFaqDetail(HashMap<String, String> map) {
+		
+		return mapper.selectFaqDetail(map);
 	}
 
 	// 자주묻는 질문 등록
@@ -152,6 +163,16 @@ public class BoardService {
 		
 		return mapper.selectOneDetail(map);
 	}
+
+	public HashMap<String, String> getDetail(HashMap<String, String> map) {
+		return mapper.selectDetail(map);
+	}
+
+	public int getDelete(HashMap<String, String> map) {
+		return mapper.deleteBoard(map);
+	}
+
+	
 
 	
 

@@ -31,9 +31,11 @@
 
 				<div class="clearfix">
 					<ul class="dot-list">
-						<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. <a
-							href="lost_form" class="button float-r" title="분실물 문의 등록하기">분실물
-								문의</a>
+						<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. 
+							<button onclick='location.href="lost_form"' class="button" style="margin-left: 190px;">
+							분실물 문의
+							</button> 
+<!-- 								<a href="lost_form" class="button float-r" title="분실물 문의 등록하기">분실물 문의</a> -->
 						</li>
 						<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
 					</ul>
@@ -41,7 +43,7 @@
 
 				<div class="board-list-util">
 					<p class="result-count">
-						<strong>전체 <span id="totalCnt" class="font-gblue">8,608</span>건
+						<strong>전체 <span id="totalCnt" class="font-gblue">${listCount }</span>건
 						</strong>
 					</p>
 

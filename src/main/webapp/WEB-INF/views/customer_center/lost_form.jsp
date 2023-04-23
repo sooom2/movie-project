@@ -179,11 +179,20 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="name">비밀번호</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="text" id="nonMbInqPw"
-										name="nonMbInqPwd" class="input-text w150px pwnew"
-										maxlength="4" oninput="gfn_numberMaxLength(this);" required="required"> <em
-										class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
+									<td colspan="3">
+										<input type="number" id="nonMbInqPw"
+										name="nonMbInqPwd" class="input-text w150px pwnew" placeholder="숫자 4자리"
+										maxlength="4" oninput="numberMaxLength(this, 4);" required="required"> 
+										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
 											설정해주세요.</em></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<input type="number" maxlength="4" name="lstrtclInqPwd" 
+										id="pw" class="input-text w150px pwnew" placeholder="숫자 4자리" 
+										oninput="gfn_numberMaxLength(this);">
+										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를 설정해주세요.</em>
+									</td>
 								</tr>
 							</tbody>
 						</table>

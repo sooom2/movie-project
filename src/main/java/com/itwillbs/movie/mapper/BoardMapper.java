@@ -52,6 +52,9 @@ public interface BoardMapper {
 	// 자주묻는 질문 목록
 	List<HashMap<String, String>> selectFaqBoardList(String searchKeyword);
 
+	// 자주묻는 질문 상세
+	HashMap<String, String> selectFaqDetail(HashMap<String, String> map);
+		
 	// 자주묻는 질문 등록
 	int insertFaqBoard(HashMap<String, String> map);
 
@@ -75,6 +78,15 @@ public interface BoardMapper {
 
 	// 내가 문의한 내역 상세
 	HashMap<String, String> selectOneDetail(HashMap<String, String> map);
+
+	// 내가 문의한 목록
+	List<HashMap<String, String>> selectBoardList(HashMap<String, String> map);
+
+	HashMap<String, String> selectDetail(HashMap<String, String> map);
+
+	int deleteBoard(HashMap<String, String> map);
+
+	
 
 	
 

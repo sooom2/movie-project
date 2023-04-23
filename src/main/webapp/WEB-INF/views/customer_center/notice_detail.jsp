@@ -48,49 +48,32 @@
 						</div>
 
 						<div class="info">
-
-
 							<p>
 								<span class="tit">영화관</span> <span class="txt">${map.cinema_name }</span>
 							</p>
 							<p>
 								<span class="tit">구분</span> <span class="txt">공지</span>
 							</p>
-
-
-
 							<p>
 								<span class="tit">등록일</span> <span class="txt">${map.notice_write_date }</span>
 							</p>
 						</div>
-
 						<div class="cont">
 							<textarea rows="5" cols="30" readonly=""
 								class="input-textarea view" style="border: none;">${map.notice_content }</textarea>
 						</div>
 					</div>
 				</div>
-
+				
 				<div class="prev-next">
 					<div class="line prev">
 						<p class="tit">이전</p>
-
-
 						<p class="link">이전글이 없습니다.</p>
-
-
-
 					</div>
-
 					<div class="line next">
 						<p class="tit">다음</p>
-
-
-
 						<a href="#" class="link moveBtn" data-no="10826"
 							title="[L.POINT] 서버 작업 안내(4/9)">[L.POINT] 서버 작업 안내(4/9)</a>
-
-
 					</div>
 				</div>
 
@@ -98,7 +81,6 @@
 					<a href="notice_board" class="button large listBtn" title="목록">목록</a>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />

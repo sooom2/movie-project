@@ -20,6 +20,33 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
+<script type="text/javascript">
+function bntCheck(){
+	let nonMbNm = document.querySelector("#nonMbNm");
+	let nonMbTelno = document.querySelector("#nonMbTelno");
+	let nonMbEmail = document.querySelector("#nonMbEmail");
+	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
+	
+	if(nonMbNm.value.length == 0){
+		alert('이름을 입력해주세요');
+		nonMbNm.focus();
+		return ;
+	}else if(!regex2.exec(nonMbTelno.value)) {	// 번호 검증
+		alert("전화번호를 확인하세요");
+		nonMbTelno.focus();
+		return false;
+	}else if(nonMbEmail.value.length == 0){
+		alert('이메일을 입력해주세요');
+		nonMbEmail.focus();
+		return ;
+	}
+	let form = document.querySelector('#iForm');
+	form.action = 'one_list';
+	form.method = 'post';
+	form.submit();
+
+}
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -27,7 +54,8 @@
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 			<div id="contents">
-				<h2 class="tit">비회원 문의내역 확인</h2>
+			<form id="iForm">
+				<h2 class="tit">문의내역 확인</h2>
 				<div class="table-wrap mt10">
 					<table class="board-form va-m">
 						<caption>
@@ -47,15 +75,18 @@
 								<th scope="row"><label for="nonMbNm">이름</label><em
 									class="font-orange">*</em></th>
 								<td><input type="text" maxlength="20"
-									class="input-text w150px" oninput="maxLengthCheck(this)"
-									name="nonMbNm" id="nonMbNm" title="이름"></td>
+									class="input-text w150px"  value="${member.get('member_name')}" 
+									name="memberName" id="nonMbNm" title="이름"
+									${not empty member.get('member_name') ? 'readonly="readonly"' : ''}></td>
 							</tr>
 							<tr>
 								<th scope="row"><label for="nonMbTelno">휴대폰 번호<!--휴대폰 번호--></label><em
 									class="font-orange">*</em></th>
-								<td><input type="text" id="nonMbTelno" name="nonMbTelno"
-									maxlength="3" class="input-text w200px numType userData"
-									title="핸드폰번호 입력" placeholder="숫자만 입력해 주세요">
+								<td><input type="text" id="nonMbTelno" name="memberTel"
+									maxlength="11" class="input-text w200px numType userData"
+									value="${member.get('member_tel')}" 
+									title="핸드폰번호 입력" placeholder="숫자만 입력해 주세요"
+									${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}>
 									<div id="nonMbTelnoAlert" class="fc_r mt05 display-none">휴대폰
 										번호를 정확히 입력해주세요.</div></td>
 							</tr>
@@ -63,8 +94,9 @@
 								<th scope="row"><label for="nonMbEmail">이메일</label><em
 									class="font-orange">*</em></th>
 								<td><input type="email" maxlength="50"
-									oninput="maxLengthCheck(this)" class="input-text w260px"
-									name="nonMbEmail" id="nonMbEmail" title="이메일">
+									 class="input-text w260px" value="${member.get('member_email')}" 
+									name="memberEmail" id="nonMbEmail" title="이메일"
+									${not empty member.get('member_email') ? 'readonly="readonly"' : ''}>
 									<div id="nonMbEmailAlert" class="fc_r mt05 display-none">이메일을
 										정확히 입력해주세요.</div></td>
 							</tr>
@@ -76,8 +108,9 @@
 
 				<div class="btn-group pt40">
 					<button type="button" class="button large purple"
-						id="nonMbInqCnfmBtn" title="확인">비회원 문의내역 확인</button>
+						id="nonMbInqCnfmBtn" title="확인" onclick="bntCheck();">문의내역 확인</button>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>

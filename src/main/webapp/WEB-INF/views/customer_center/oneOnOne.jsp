@@ -16,19 +16,16 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 <script type="text/javascript">
+function numberMaxLength(el, maxlength) {
+	if(el.value.length > maxlength) {
+		el.value = el.value.substr(0, maxlength);
+	}
+}
 $(function() {
 	
 	$("#textarea").keyup(function() {
 		$("#textareaCnt").html($("#textarea").val().length)
 	});
-	
-// 	<textarea id="textarea" name="one_content" rows="5" cols="30"
-// 		title="내용입력" class="input-textarea"></textarea>
-// 	<div class="util">
-// 		<p class="count">
-// 			<span id="textareaCnt">0</span> / 2000
-// 		</p>
-	
 	
 	let regex = /^[가-힣]{2,5}$/; // 이름 제약조건
 	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
@@ -118,6 +115,54 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="one_question_type">문의유형</label> <em
 										class="font-orange">*</em></th>
+										
+<!-- 										복사 해온거  -->
+<!-- 									<td colspan="3"> -->
+<!-- 										<div class="dropdown bootstrap-select small bs3"> -->
+<!-- 											<select name="inqSclCd" id="ask-type" class="small" tabindex="-98"> -->
+<!-- 											<option value="">문의유형 선택</option> -->
+<!-- 											<option value="QDET01">영화정보문의</option> -->
+<!-- 											<option value="QDET02">회원 및 포인트문의</option> -->
+<!-- 											<option value="QDET03">예매/결제관련문의</option> -->
+<!-- 											<option value="QDET04">이벤트문의</option> -->
+<!-- 											<option value="QDET05">일반문의</option> -->
+<!-- 											<option value="QDET06">제안/건의</option></select> -->
+<!-- 											<button type="button" class="btn dropdown-toggle bs-placeholder btn-default"  -->
+<!-- 											data-toggle="dropdown" role="button" data-id="ask-type" title="문의유형 선택"  -->
+<!-- 											aria-expanded="false"> -->
+<!-- 											<div class="filter-option"> -->
+<!-- 												<div class="filter-option-inner"> -->
+<!-- 													<div class="filter-option-inner-inner">문의유형 선택</div> -->
+<!-- 												</div>  -->
+<!-- 											</div> -->
+<!-- 											<span class="bs-caret"> -->
+<!-- 												<span class="caret"></span> -->
+<!-- 											</span></button> -->
+<!-- 											<div class="dropdown-menu open" role="combobox" style="overflow: hidden;"> -->
+<!-- 												<div class="inner open" role="listbox" aria-expanded="false" tabindex="-1" style="overflow-y: auto;"> -->
+<!-- 													<ul class="dropdown-menu inner "> -->
+<!-- 														<li class="selected active"> -->
+<!-- 															<a role="option" aria-disabled="false" tabindex="0" class="selected active" aria-selected="true"> -->
+<!-- 															<span class="text">문의유형 선택</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 														<span class="text">영화정보문의</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 															<span class="text">회원 및 포인트문의</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 															<span class="text">예매/결제관련문의</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 															<span class="text">이벤트문의</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 															<span class="text">일반문의</span></a></li> -->
+<!-- 														<li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"> -->
+<!-- 															<span class="text">제안/건의</span></a></li> -->
+<!-- 													</ul> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</td> -->
+<!-- 									여기까지 -->
+
 									<td><input type="text" id="one_question_type" name="one_question_type"
 										class="input-text w150px" value="" maxlength="30"></td>
 									<th scope="row"><label for="one_question_type">문의지점</label> <em
@@ -153,7 +198,8 @@ $(function() {
 									<th scope="row"><label for="hpNum1">휴대전화</label> <em
 										class="font-orange">*</em></th>
 									<td colspan="3"><input type="number" name="one_tel" placeholder="숫자만 입력하세요"
-										id="hpNum1" class="input-text w200px" value="${member.get('member_tel') }" maxlength="50"
+										id="hpNum1" class="input-text w200px"
+										oninput="telMaxLength(this, 11);" value="${member.get('member_tel') }" maxlength="11"
 										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}>
 										<em>'-' 기호 제외한 10~11 자리 숫자 입력해주세요</em></td>
 								</tr>
@@ -210,13 +256,13 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="name">비밀번호</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="text" id="nonMbInqPw"
-										name="nonMbInqPwd" class="input-text w150px pwnew"
-										maxlength="4" oninput="gfn_numberMaxLength(this);"> <em
-										class="fc_r ml10">* 1:1 문의에 대한 고객정보 보호를 위해 게시글의 비밀번호를
+									<td colspan="3">
+										<input type="number" id="nonMbInqPw"
+										name="one_passwd" class="input-text w150px pwnew"
+										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리"> 
+										<em class="fc_r ml10">* 1:1 문의에 대한 고객정보 보호를 위해 게시글의 비밀번호를
 											설정해주세요.</em></td>
 								</tr>
-
 							</tbody>
 						</table>
 					</div>

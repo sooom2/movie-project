@@ -16,9 +16,9 @@
 				<li><a href="faq" title="자주 묻는 질문">자주 묻는 질문</a></li>
 				<li><a href="notice_board" title="공지사항">공지사항</a></li>
 				<li><a href="lost_board" title="분실물 문의">분실물 문의</a></li>
-				<li class=""><a href="oneOnOne" title="1:1문의">1:1문의</a></li>
+				<li><a href="oneOnOne" title="1:1문의">1:1문의</a></li>
 <!-- 				<li><a href="" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li> -->
-				<li><a href="guest_confirm" title="비회원 문의내역">비회원 문의내역</a></li>
+				<li><a href="guest_confirm" title="문의내역">문의내역</a></li>
 				<li><a href="" title="이용약관">이용약관</a></li>
 				<li><a href="" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
 				<li><a href="" title="개인정보처리방침">개인정보처리방침</a></li>

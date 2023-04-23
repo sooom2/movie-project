@@ -27,6 +27,8 @@
 			<div id="contents" class="">
 				<h2 class="tit">자주 묻는 질문</h2>
 				
+				
+				
 				<!-- input-search-area -->
 				<div class="input-search-area mb30">
 					<div class="input-area">
@@ -46,6 +48,13 @@
 					<div class="btn-area"></div>
 				</div>
 				<!--// input-search-area -->
+				
+				<div class="board-list-util">
+					<p class="result-count">
+						<strong>전체 <em class="font-gblue">${listCount }</em>건
+						</strong>
+					</p>
+				</div>
 
 				<div class="wrap-customer-box wrap-faq-box">
 					<div class="faq-desc">자주 찾는 질문 전체가 기본으로 표시됩니다. 원하는 구분의 목록만

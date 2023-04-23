@@ -32,7 +32,7 @@
 
 				<div class="board-list-util">
 					<p class="result-count">
-						<strong>전체 <em class="font-gblue">5,852</em>건
+						<strong>전체 <em class="font-gblue">${listCount }</em>건
 						</strong>
 					</p>
 
@@ -43,6 +43,7 @@
 									name="sch_cinema_code" onchange="selectCinema()" style="margin-top: 0px; !important"> 
 									<option value="none" selected="selected" disabled>극장 선택</option>
 									<option value="none" disabled>=======================</option>
+									<option value="전체공지">전체공지</option>
 									<c:forEach var="cinema" items="${cinemaList }">
 										<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
 									</c:forEach>

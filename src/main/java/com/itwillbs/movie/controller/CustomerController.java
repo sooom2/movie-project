@@ -46,7 +46,8 @@ public class CustomerController {
 		model.addAttribute("noticeBoardList", noticeBoardList);
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-		System.out.println(model);
+		model.addAttribute("listCount", noticeBoardList.size()); //size 사용하니깐 limit 갯수 걸면 전체가 아니고 짤린 수가 표시됨
+//		System.out.println("공지 컨트롤 ========================" + model);
 		return "customer_center/notice_board";
 	}
 	
@@ -72,7 +73,17 @@ public class CustomerController {
 		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(searchKeyword);
 		System.out.println(faqBoardList);
 		model.addAttribute("faqBoardList", faqBoardList);
+		model.addAttribute("listCount", faqBoardList.size());
 		return "customer_center/faq";
+	}
+	
+	// 자주묻는 질문 상세
+	@RequestMapping(value = "faq_detail", method = {RequestMethod.GET, RequestMethod.POST})
+	public String faqDetail(@RequestParam HashMap<String, String> map, Model model) {
+		
+		map = boardService.getFaqDetail(map);
+		model.addAttribute("map", map);
+		return "customer_center/faq_detail";
 	}
 	
 	// 분실물 문의 페이지 목록
@@ -83,6 +94,7 @@ public class CustomerController {
 		model.addAttribute("lostBoardList", lostBoardList);
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
+		model.addAttribute("listCount", lostBoardList.size());
 //		System.out.println("Controller: " + model);
 		return "customer_center/lost_board";
 	}
@@ -159,7 +171,9 @@ public class CustomerController {
 		System.out.println("controller: " + map);
 		int insertCount = boardService.registOneBoard(map);
 		if(insertCount > 0) {
-			
+			model.addAttribute("memberName", map.get("one_name"));
+			model.addAttribute("memberEmail", map.get("one_email"));
+			model.addAttribute("memberTel", map.get("one_tel"));
 			return "redirect:/one_list";
 		} 
 		else {
@@ -170,12 +184,20 @@ public class CustomerController {
 	
 	// 내가 문의한 내용 목록
 	@RequestMapping(value = "one_list", method = {RequestMethod.GET, RequestMethod.POST})
-	public String oneList(Model model) {
-		
-		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-		model.addAttribute("cinemaList",cinemaList);
-		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
+	public String oneList(@RequestParam HashMap<String, String> map, Model model) {
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		List<HashMap<String, String>> oneBoardList = boardService.getBoardList(map);
+		if(oneBoardList.size()>0) {
+			HashMap<String, String> countMap = oneBoardList.get(0);
+			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
+		}
+		model.addAttribute("paramMap", map);
 		model.addAttribute("oneBoardList", oneBoardList);
+		model.addAttribute("listCount", oneBoardList.size());
 		System.out.println("oneList 컨트롤러" + model);
 		
 		
@@ -185,8 +207,8 @@ public class CustomerController {
 	// 내가 문의한 내역 상세
 	@RequestMapping(value = "one_detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneDetail(@RequestParam HashMap<String, String> map, Model model) {
-		
-		map = boardService.getOneDetail(map);
+		model.addAttribute("paramMap", map);
+		map = boardService.getDetail(map);
 		model.addAttribute("map", map);
 		System.out.println("내가 문의 상세 컨트롤러" + model);
 		
@@ -196,9 +218,13 @@ public class CustomerController {
 	// 내가 문의한 내역 삭제
 	@RequestMapping(value = "one_deletePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneDeletePro(@RequestParam HashMap<String, String> map, Model model) {
-		int deleteCount = boardService.getOneDelete(map);
+		int deleteCount = boardService.getDelete(map);
 		System.out.println(deleteCount);
 		if(deleteCount > 0) {
+			model.addAttribute("memberName", map.get("memberName"));
+			model.addAttribute("memberEmail", map.get("memberEmail"));
+			model.addAttribute("memberTel", map.get("memberTel"));
+			System.out.println("문의 상세 삭제" + model);
 			return "redirect:/one_list";
 		} else {
 			model.addAttribute("msg", "삭제 실패!");
@@ -213,7 +239,12 @@ public class CustomerController {
 //	}
 	// 비회원문의확인
 	@RequestMapping(value = "guest_confirm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String guestConfirm() {
+	public String guestConfirm(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		if(id != null) {
+			HashMap<String, String> member = storeService.selectMemberId(id);
+			model.addAttribute("member", member);
+		}
 		return "customer_center/guest_confirm";
 	}
 	
