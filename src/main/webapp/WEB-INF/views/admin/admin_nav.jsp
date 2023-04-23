@@ -64,7 +64,7 @@
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 								<a class="nav-link" href="admin_notice_board"> 공지사항</a>
 								<a class="nav-link" href="admin_oneOnOne">1:1문의게시판</a>
-								<a class="nav-link" href="admin_guest_board">비회원문의내역</a>
+<!-- 								<a class="nav-link" href="admin_guest_board">비회원문의내역</a> 겹쳐서 삭제 -->
 								<a class="nav-link" href="admin_lost_board">분실물게시판</a>
 								<a class="nav-link" href="admin_faq">자주하는질문</a>
 							</nav>
