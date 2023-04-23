@@ -490,7 +490,10 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 			FROM schedule
 			WHERE sch_movie_date = CURDATE()
 		</select>
-
+		<select id="resListCount" resultType="int">
+			SELECT count(*)
+			FROM reservation
+		</select> 
 
 		<select id="resList" resultType="hashmap">
 			SELECT 
@@ -509,6 +512,9 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 			FROM reservation
 			LEFT JOIN screen 
 			ON reservation.res_screen_code = screen.screen_code
+			LIMIT 
+			 	#{startRow}
+			  , #{listLimit}
 		</select>
 		
 		<select id="detailRes" resultType="hashmap">

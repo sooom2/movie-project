@@ -144,7 +144,6 @@ function modalClose(){
 								<td>${resList.get("res_id") }</td>
 								<td>${resList.get("res_title") }</td>
 								<td>${resList.get("res_cinema") }</td>
-<%-- 								<td>${resList.get("screen_name") }</td> --%>
 								<td>${resList.get("res_date") }</td>
 								<td>${resList.get("seat_location") }</td>
 								<td>${resList.get("res_pay") }</td>
@@ -178,7 +177,7 @@ function modalClose(){
 							<c:choose>
 								<c:when test="${pageNum > 1 }">
 									<li class="datatable-pagination-list-item datatable-hidden"
-										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										onclick="location.href='resList?pageNum=${pageNum - 1}'">
 										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
 									</li>
 								</c:when>
@@ -202,7 +201,7 @@ function modalClose(){
 									<c:otherwise>
 										<li class="datatable-pagination-list-item "><a
 											class="datatable-pagination-list-item-link"
-											href="admin_schedule_register?pageNum=${num }">${num }</a></li>
+											href="resList?pageNum=${num }">${num }</a></li>
 
 									</c:otherwise>
 								</c:choose>
@@ -210,7 +209,7 @@ function modalClose(){
 							<c:choose>
 								<c:when test="${pageNum < pageInfo.maxPage }">
 									<li class="datatable-pagination-list-item datatable-hidden"
-										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+										onclick="location.href='resList?pageNum=${pageNum + 1}'">
 										<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
 									</li>
 								</c:when>
@@ -399,6 +398,12 @@ function modalClose(){
 						</div>
 					</div>
 				</div>
+				
+				
+				
+				
+				
+				
 
 			</main>
 			<!-- 모달 -->

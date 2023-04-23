@@ -191,8 +191,8 @@ public class MovieRegisterService {
 	}
 	
 	//영화예매내역
-	public List<HashMap<String, String>> resList() {
-		return mapper.resList();
+	public List<HashMap<String, String>> resList(int startRow, int listLimit) {
+		return mapper.resList(startRow,listLimit);
 	}
 	//detail 예매내역
 	public HashMap<String, String> detailRes(String res_code) {
@@ -206,6 +206,9 @@ public class MovieRegisterService {
 		System.out.println(reservation);
 		System.out.println("service===========================================");
 		return mapper.updateRes(reservation);
+	}
+	public int getResListCount() {
+		return mapper.resListCount();
 	}
 
 

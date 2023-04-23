@@ -97,7 +97,7 @@ public interface MovieRegisterMapper {
 	int schEndListCount();
 	
 	//상영예매내역
-	List<HashMap<String, String>> resList();
+	List<HashMap<String, String>> resList(@Param("startRow") int startRow,@Param("listLimit")int listLimit);
 
 	//상세 예매정보
 	HashMap<String, String> detailRes(String res_code);
@@ -107,6 +107,8 @@ public interface MovieRegisterMapper {
 	
 	//예매내용 수정
 	int updateRes(HashMap<String, String> reservation);
+
+	int resListCount();
 
 	
 	
