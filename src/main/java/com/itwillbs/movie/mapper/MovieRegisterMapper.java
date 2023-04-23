@@ -44,7 +44,12 @@ public interface MovieRegisterMapper {
 	int scheduleRegister(@RequestParam("movieSchedule") HashMap<String, String> movieSchedule);
 	
 	//영화상영일정목록
-	List<HashMap<String, String>> selectScheduleList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
+	List<HashMap<String, String>> selectScheduleList(
+			@Param("startRow") int startRow
+		  , @Param("listLimit") int listLimit
+		  , @Param("sch_movie_code") String sch_movie_code
+		  , @Param("sch_cinema_code") String sch_cinema_code
+		  , @Param("sch_research_date") String sch_research_date);
 
 	List<HashMap<String, String>> cinemaNameSort();
 	List<HashMap<String, String>> screenNameSort();
@@ -82,11 +87,17 @@ public interface MovieRegisterMapper {
 
 	int endSchedule_del();
 
-	int selectBoardListCount();
+//	int selectBoardListCount();
 
 	List<HashMap<String, String>> endSchList(@Param("startRow") int startRow, @Param("listLimit") int listLimit);
 
 	int todayCount();
+
+	int selectBoardListCount(@Param("sch_movie_code") String sch_movie_code,@Param("sch_cinema_code") String sch_cinema_code,@Param("sch_research_date") String sch_research_date);
+	int schEndListCount();
+
+	
+	
 
 //	List<HashMap<String, String>> selectEndSch();
 

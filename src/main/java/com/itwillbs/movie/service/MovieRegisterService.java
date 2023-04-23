@@ -79,8 +79,8 @@ public class MovieRegisterService {
 //	}
 	
 	//페이징처리한 영화일정목록
-	public List<HashMap<String, String>> selectSchedule(int startRow, int listLimit) {
-		return mapper.selectScheduleList(startRow,listLimit);
+	public List<HashMap<String, String>> selectSchedule(int startRow, int listLimit, String sch_movie_code, String sch_cinema_code, String sch_research_date) {
+		return mapper.selectScheduleList(startRow,listLimit,sch_movie_code,sch_cinema_code,sch_research_date);
 	}
 
 	public List<HashMap<String, String>> cinemaNameSort() {
@@ -170,8 +170,8 @@ public class MovieRegisterService {
 	public int endSchedule_del() {
 		return mapper.endSchedule_del();
 	}
-	public int getBoardListCount() {
-		return mapper.selectBoardListCount();
+	public int getBoardListCount(String sch_movie_code, String sch_cinema_code, String sch_research_date) {
+		return mapper.selectBoardListCount(sch_movie_code,sch_cinema_code,sch_research_date);
 	}
 	
 	
@@ -185,6 +185,9 @@ public class MovieRegisterService {
 	}
 	public int selectTodayCount() {
 		return mapper.todayCount();
+	}
+	public int getEndListCount() {
+		return mapper.schEndListCount();
 	}
 
 

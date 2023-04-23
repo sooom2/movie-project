@@ -136,29 +136,88 @@ INSERT INTO schedule
 			 , #{sch_last_time}
 			 ) 
 </insert>
+
+	<!-- 검색 결과 총 개수 구하기 -->
+<!-- 	<select id="selectBoardListCount" resultType="int"> -->
+<!-- 		SELECT COUNT(*) AS total_count -->
+<!-- 	    FROM schedule -->
+<!-- 	    LEFT JOIN screen ON screen.screen_code = sch_screen_code  -->
+<!-- 	    LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code -->
+<!-- 	    LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code -->
+<!-- 	    <where> -->
+<!-- 	        <if test="sch_movie_code != null and sch_movie_code != ''"> -->
+<!-- 	            AND info_movie_code = #{sch_movie_code} -->
+<!-- 	        </if> -->
+<!-- 	        <if test="sch_cinema_code != null and sch_cinema_code != ''"> -->
+<!-- 	            AND cinema_code = #{sch_cinema_code} -->
+<!-- 	        </if> -->
+<!-- 	        <if test="sch_research_date != null and sch_research_date != ''"> -->
+<!-- 	            AND sch_movie_date = #{sch_research_date} -->
+<!-- 	        </if> -->
+<!-- 	    </where> -->
+<!-- 	</select> -->
+
 <!-- 영화상영일정목록 -->
-<select id="selectScheduleList" resultType="hashmap">
-	SELECT 
-		  sch_code
-		, screen.screen_name
-		, cinema.cinema_name 
-		,movieinfo.info_movie_title
-		,sch_movie_date
-		, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
-		, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
-  FROM schedule
-  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
-  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
-  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
-  ORDER BY
-		 	sch_code
-		LIMIT 
-		 	#{startRow}
-		  , #{listLimit}
-</select>
+	<select id="selectScheduleList" resultType="hashmap">
+		SELECT 
+			  sch_code
+			, screen.screen_name
+			, cinema.cinema_name 
+			, cinema.cinema_code
+			, movieinfo.info_movie_code
+			, movieinfo.info_movie_title
+			, sch_movie_date
+			, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+			, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
+	  FROM schedule
+	  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+	  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+	  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+	  <where>
+        <if test="sch_movie_code != null and sch_movie_code != ''">
+            AND info_movie_code = #{sch_movie_code}
+        </if>
+        <if test="sch_cinema_code != null and sch_cinema_code != ''">
+            AND cinema_code = #{sch_cinema_code}
+        </if>
+        <if test="sch_research_date != null and sch_research_date != ''">
+            AND sch_movie_date = #{sch_research_date}
+        </if>
+    </where>
+			LIMIT 
+			 	#{startRow}
+			  , #{listLimit}
+	</select>
+
+
 <select id="selectBoardListCount" resultType="int">
-		SELECT count(*) FROM schedule
-</select>
+		SELECT COUNT(*) FROM (
+			    SELECT 
+			        sch_code, screen.screen_name, cinema.cinema_name, cinema.cinema_code, 
+			        movieinfo.info_movie_code, movieinfo.info_movie_title, sch_movie_date,
+			        TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time,
+			        TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
+			    FROM schedule
+			    LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+			    LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+			    LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+			    <where>
+			        <if test="sch_movie_code != null and sch_movie_code != ''">
+			            AND info_movie_code = #{sch_movie_code}
+			        </if>
+			        <if test="sch_cinema_code != null and sch_cinema_code != ''">
+			            AND cinema_code = #{sch_cinema_code}
+			        </if>
+			        <if test="sch_research_date != null and sch_research_date != ''">
+			            AND sch_movie_date = #{sch_research_date}
+			        </if>
+			    </where>
+			) AS total_results
+	</select>
+	
+
+
+
 <select id="cinemaNameSort" resultType="hashmap">
 	SELECT 
 		  sch_code
@@ -379,6 +438,12 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 	DELETE FROM schedule
     WHERE sch_movie_date &lt; DATE_SUB(NOW(), INTERVAL 1 DAY);
 </delete>
+
+<select id="schEndListCount" resultType="int">
+	SELECT COUNT(*)
+      FROM schedule_end
+</select>
+
  <select id="endSchList" resultType="hashmap">
     SELECT 
 		  end_sch_code
@@ -425,7 +490,6 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 			FROM schedule
 			WHERE sch_movie_date = CURDATE()
 		</select>
-
 
 
 </mapper>

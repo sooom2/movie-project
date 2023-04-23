@@ -53,12 +53,12 @@
 						<div class="cal">
 							<span class="big-m"></span> 
 							<span class="small-yyyym"></span>
-							<ul>
-								<li class="prev-btn"><a href="#" class="prev">이전</a></li>
+							<ul style="margin-left: 60px">
+								<li class="prev-btn"><a href="#" class="prev" style="display: none;">이전</a></li>
 								
 								
 								
-								<li class="next-btn"><a href="#" class="next">이전</a></li>
+								<li class="next-btn"><a href="#" class="next" style="display: none">다음</a></li>
 							</ul>
 						</div>
 						
@@ -182,43 +182,37 @@
 					        	    	return;
 					        	    }
 					        	   
-					        	    for (var i = 0; i < data.length; i++) {
-					        	        html += '';
-					        	        html += '<div class="movie-title">';
-					        	        html += '<span class="' + data[i].rate + '">15</span>' + data[i].info_movie_title;
-					        	        html += '</div>';
-					        	        
-					        	        // 스크린명마다 타임블록 for 문돌리기
-					        	        // ===================== 스크린명
-					        	        	
-					        	        html += '<div class="screen">';
-					        	        html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
-					        	        html += '<br>' + data[i].screen_name;
-					        	        html += '</div>';
-					        	        // ===================== 스크린명
+				        	        html += '';
+				        	        for (var i = 0; i < data.length; i++) {
+				        	            if (i > 0 && data[i].info_movie_title === data[i-1].info_movie_title) {
+				        	                // 이전 영화 제목과 같은 경우에는 영화 제목을 출력하지 않음
+				        	                html += '<div class="screen">';
+				        	                html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
+				        	                html += '<br>' + data[i].screen_name;
+				        	                html += '</div>';
+				        	            } else {
+				        	                // 이전 영화 제목과 다른 경우에는 영화 제목도 출력함
+				        	                html += '<div class="movie-title">';
+				        	                html += '<span class="' + data[i].rate + '">15</span>' + data[i].info_movie_title;
+				        	                html += '</div>';
+				        	                html += '<div class="screen">';
+				        	                html += '<div class="screen-name" style="font-size: 15px; line-height: 20px;">';
+				        	                html += '<br>' + data[i].screen_name;
+				        	                html += '</div>';
+				        	            }
+				        	            
+				        	            // 타임블록 추가
+				        	            let starttime = data[i].starttimes.split("/");
+				        	            let lasttime = data[i].lasttimes.split("/");
+				        	            html += '<div class="time-block">';
+				        	            for(var j=0; j < starttime.length;j++){
+				        	                html += '<div class="time">';
+				        	                html += '<a href="reservation">' + starttime[j] + '<span class="to"> ~ ' + lasttime[j] + '</span> <span class="seats-status">45 / ' + data[0].seat_sum + '</span></a></div>';
+				        	            }
+				        	            html += '</div>';
+				        	            html += '</div>';
+				        	        }
 
-					        	        // ====================== 타임블록
-					        	        
-					        	        
-										let starttime = data[i].starttimes.split("/");
-										let lasttime = data[i].lasttimes.split("/");
-										
-										
-					        	        html += '<div class="time-block">';
-// 					        	        html += '<div class="time" data-playdate="' + data[i].sch_movie_date + '" data-theatercode="' + data[i].sch_screen_code + '" data-moviecode="' + data[i].info_movie_code + '">';
-										for(var j=0; j < starttime.length;j++){
-					        	        html += '<div class="time">';
-					        	        html += '<a href="reservation">' + starttime[j] + '<span class="to"> ~ ' + lasttime[j] + '</span> <span class="seats-status">45 / ' + data[0].seat_sum + '</span></a></div>';
-										}
-					        	       
-					        	        
-					        	        // ====================== 타임블록
-					        	        
-					        	        html += '</div>';
-					        	        html += '</div>';
-					        	        html += '</div>';
-					        	        
-					        	    }
 					        	    $('.each-movie-time').empty();
 					        	    
 					               // 생성한 HTML을 해당 요소에 삽입

@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -164,20 +167,32 @@ public class MovieRegisterController {
 	
 	//영화일정목록 
  	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String scheduleRegister(Model model,@RequestParam(defaultValue = "1") int pageNum) {
- 		
- 		
+	public String scheduleRegister(
+			Model model
+			, HttpSession session
+			, HttpServletRequest request
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(defaultValue = "") String sch_movie_code
+			,@RequestParam(defaultValue = "") String sch_cinema_code
+			,@RequestParam(defaultValue = "") String sch_research_date) {
  		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
  		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-		
+ 		session = request.getSession();
+		session.setAttribute("sch_movie_code", sch_movie_code);
+		session.setAttribute("sch_cinema_code", sch_cinema_code);
+		session.setAttribute("sch_research_date", sch_research_date);
 		// -----------------------------------------------------------------------
 		int listLimit = 15; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
 		// -----------------------------------------------------------------------
-		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule(startRow, listLimit);
+		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule(startRow, listLimit,sch_movie_code,sch_cinema_code,sch_research_date);
 		// -----------------------------------------------------------------------
-		int listCount = movieRegisterService.getBoardListCount();
-		int pageListLimit = 10; // 페이지 목록 갯수를 3개로 제한
+		int listCount = movieRegisterService.getBoardListCount(sch_movie_code,sch_cinema_code,sch_research_date);
+		System.out.println("현재상영테이블 =============================");
+		System.out.println(listCount);
+		System.out.println("=============================");
+		
+		int pageListLimit = 10; 
 		
 		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
 		
@@ -202,6 +217,9 @@ public class MovieRegisterController {
 		model.addAttribute("movieList", movieList);
 		// -----------------------------------------------------------------------
 		
+		System.out.println("admin_schedule_register ====================================");
+		System.out.println(pageInfo);
+		System.out.println("admin_schedule_register ====================================");
 		return "admin/admin_movie_schedule";
 	}
  	
@@ -334,9 +352,7 @@ public class MovieRegisterController {
 		sch_last_time = sdf.format(sumDate);
 		schedule.put("sch_last_time", sch_last_time);
 		
-		System.out.println("=================제에발================");
 		System.out.println(schedule);
-		System.out.println("=================제에발================");
 		
 		int modifyCount = movieRegisterService.movieScheduleUpdatePro(schedule);
 		
@@ -413,7 +429,8 @@ public class MovieRegisterController {
 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList(startRow, listLimit);
  		
 		// -----------------------------------------------------------------------
-		int listCount = movieRegisterService.getBoardListCount();
+		int listCount = movieRegisterService.getEndListCount();
+		System.out.println("end테이블 " + listCount);
 		int pageListLimit = 10; // 페이지 목록 갯수를 3개로 제한
 		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
 		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
@@ -429,8 +446,11 @@ public class MovieRegisterController {
 		model.addAttribute("todayCount",todayCount);
 		model.addAttribute("endSchList", endSchList);
 		model.addAttribute("pageInfo", pageInfo);
-		
+		System.out.println("movieEndSchedule ============================");
+		System.out.println(pageInfo);
+		System.out.println("============================");
  		System.out.println(endSchList);
+ 		System.out.println("movieEndSchedule ============================");
  		return "admin/admin_movie_schedule_endList";
  	}
  	

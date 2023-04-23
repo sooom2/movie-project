@@ -129,6 +129,7 @@ $(function() {
                     <!-- 테이블 -->
                    <div class="datatable-container">
                    <h3 class="text-center font-weight-light my-4">상영종료목록</h3>
+                     <h6> 상영종료된 일정 <b style="color:#673bd4">${pageInfo.listCount }</b>건</h6>
                       <!-- @@@@@@@@@@@추가 -->
                		 <div class="">
 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
@@ -136,42 +137,42 @@ $(function() {
 	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
 	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
                		 
-	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 30px;">
-	                 	<form>
-                   			<div class="sch_movie_code">
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  ">
-								<option value="none" selected="selected" disabled >영화</option>
-								<option value="none" disabled>=======================</option>
-								<option value="none" >전체보기</option>
-								<c:forEach var="movie" items="${movieList }">
-						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-								</c:forEach>
-								</select>
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;">
-									<option value="none" selected="selected" disabled >지점</option>
-									<option value="none" disabled>=======================</option>
-									<option value="none" >전체보기</option>
-									<c:forEach var="cinema" items="${cinemaList }">
-							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
-									</c:forEach>
-								</select>
-									<input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/>
-                           			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	
-                            </div>
-	                 	</form>
-	                 </div>
+<!-- 	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 30px;"> -->
+<!-- 	                 	<form> -->
+<!--                    			<div class="sch_movie_code"> -->
+<!-- 								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  "> -->
+<!-- 								<option value="none" selected="selected" disabled >영화</option> -->
+<!-- 								<option value="none" disabled>=======================</option> -->
+<!-- 								<option value="none" >전체보기</option> -->
+<%-- 								<c:forEach var="movie" items="${movieList }"> --%>
+<%-- 						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option> --%>
+<%-- 								</c:forEach> --%>
+<!-- 								</select> -->
+<!-- 								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;"> -->
+<!-- 									<option value="none" selected="selected" disabled >지점</option> -->
+<!-- 									<option value="none" disabled>=======================</option> -->
+<!-- 									<option value="none" >전체보기</option> -->
+<%-- 									<c:forEach var="cinema" items="${cinemaList }"> --%>
+<%-- 							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option> --%>
+<%-- 									</c:forEach> --%>
+<!-- 								</select> -->
+<!-- 									<input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/> -->
+<!--                            			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	 -->
+<!--                             </div> -->
+<!-- 	                 	</form> -->
+<!-- 	                 </div> -->
 	                
 	         	</div>	
                <!--  @@@@@@@@@@@추가 -->
                <table id="datatablesSimple" class="datatable-table">
                   <thead>
                      <tr>
-                        <th data-sortable="true" style="width: 8%;"><a href="cinemaNameSort" class="datatable-sorter">지점명</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="screenNameSort" class="datatable-sorter">상영관명</a></th>
-                        <th data-sortable="true" style="width: 10%;"><a href="movieNameSort" class="datatable-sorter">영화제목</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schDateSort" class="datatable-sorter">상영날짜</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schStartSort" class="datatable-sorter">시작시간</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schLastSort" class="datatable-sorter">종료시간</a></th>
+                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">지점명</a></th>
+                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영관명</a></th>
+                        <th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
+                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영날짜</a></th>
+                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">시작시간</a></th>
+                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">종료시간</a></th>
                         <th data-sortable="true" style="width: 8%;">수정/삭제</th>
                      </tr>
                   </thead>
@@ -215,7 +216,7 @@ $(function() {
 <!-- 							 datatable-disabled -->
 								<c:choose>
 									<c:when test="${pageNum > 1 }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='movieEndSchedule?pageNum=${pageNum - 1}'">
 											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
 										</li>
 									</c:when>
@@ -235,7 +236,7 @@ $(function() {
 										<%--페이지번호 --%>
 										<c:otherwise>
 											<li class="datatable-pagination-list-item ">
-											<a class="datatable-pagination-list-item-link" href="admin_schedule_register?pageNum=${num }" >${num }</a>
+											<a class="datatable-pagination-list-item-link" href="movieEndSchedule?pageNum=${num }" >${num }</a>
 											</li>
 											
 										</c:otherwise>
@@ -243,7 +244,7 @@ $(function() {
 								</c:forEach>
 								<c:choose>
 									<c:when test="${pageNum < pageInfo.maxPage }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='movieEndSchedule?pageNum=${pageNum + 1}'">
 											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
 										</li>
 									</c:when>

@@ -1,25 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"rel="stylesheet"  />
+<link
+	href="${pageContext.request.contextPath }/resources/css/styles.css"
+	rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+	rel="stylesheet" />
+<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	rel="stylesheet" />
 
 
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
 
 
 function selectCinema(){
@@ -113,24 +121,6 @@ $(function () {
   });
 
 
-// $(function() {
-//     $().datepicker({
-//        dateFormat: 'yy-mm-dd' //달력 날짜 형태
-//             ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-//             ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
-//             ,changeYear: true //option값 년 선택 가능
-//             ,changeMonth: true //option값  월 선택 가능                
-//             ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-//             ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
-//             ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
-//             ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
-//             ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-//             ,minDate: "-30D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-//             ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-//     });                           
-// });
-
-
 $(function() {
     $("#sch_remove_date,#sch_research_date").datepicker({
        dateFormat: 'yy-mm-dd' //달력 날짜 형태
@@ -170,330 +160,369 @@ $(function() {
 </script>
 </head>
 <body class="sb-nav-fixed">
-   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-      <!-- Navbar Brand-->
-      <a class="navbar-brand ps-3" href="admin">IMOVIE</a>
-      <!-- Sidebar Toggle-->
-      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-         id="sidebarToggle" href="#!">
-         <i class="fas fa-bars"></i>
-      </button>
-      <!-- Navbar Search-->
-      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      </form>
-      <!-- Navbar-->
-      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               <i class="fas fa-user fa-fw"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end"
-               aria-labelledby="navbarDropdown">
-               <li><a class="dropdown-item" href="main">홈</a></li>
-               <li><hr class="dropdown-divider" /></li>
-               <li><a class="dropdown-item" href="logout">Logout</a></li>
-            </ul>
-         </li>
-      </ul>
-   </nav>
-   <div id="layoutSidenav">
-      <!-- 고정  -->
-      <jsp:include page="admin_nav.jsp"/>
-      <!-- 고정 -->
-         
-   
-      
-      <div id="layoutSidenav_content">
-         <!-- 들어갈내용 -->
-          <main>
-          
-          
-          
-                    <!-- 테이블 -->
-                   <div class="datatable-container">
-                   <h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
-                    <h6>오늘의 상영일정 <b style="color:#673bd4">${todayCount }</b>건 / 총 상영일정 <b style="color:#673bd4">${pageInfo.listCount }</b>건</h6>
-               		 <div class="">
-	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="doRegisterSch()">
-<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
-	                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
-	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
-	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
-               		 
-	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px;width: 500px; padding-left: 53px;">
-	                 	<form>
-                   			<div class="sch_movie_code">
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  ">
-								<option value="none" selected="selected" disabled >영화선택</option>
-								<option value="none" disabled>=======================</option>
-								<c:forEach var="movie" items="${movieList }">
-						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-								</c:forEach>
-								</select>
-								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;">
-									<option value="none" selected="selected" disabled >지점선택</option>
-									<option value="none" disabled>=======================</option>
-									<c:forEach var="cinema" items="${cinemaList }">
-							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
-									</c:forEach>
-								</select>
-									<input name="sch_research_date" class="sch_research_date" id="sch_research_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/>
-                           			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	
-                            </div>
-	                 	</form>
-	                 </div>
-	                
-	         	</div>			
-               <table id="datatablesSimple" class="datatable-table">
-                  <thead>
-                     <tr>
-                        <th data-sortable="true" style="width: 8%;"><a href="cinemaNameSort" class="datatable-sorter">지점명</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="screenNameSort" class="datatable-sorter">상영관명</a></th>
-                        <th data-sortable="true" style="width: 10%;"><a href="movieNameSort" class="datatable-sorter">영화제목</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schDateSort" class="datatable-sorter">상영날짜</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schStartSort" class="datatable-sorter">시작시간</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="schLastSort" class="datatable-sorter">종료시간</a></th>
-                        <th data-sortable="true" style="width: 8%;">수정/삭제</th>
-                     </tr>
-                  </thead>
-                  <!-- 회원목록 -->
-                  <c:forEach var="schedule" items="${scheduleList }">
-                  <tbody>
-                     <tr data-index="0">
-                        <td>${schedule.get("cinema_name") }</td>
-                        <td>${schedule.get("screen_name") }</td>
-                        <td>${schedule.get("info_movie_title") }</td>
-                        <td>${schedule.get('sch_movie_date')}</td>
-                        <td>${schedule.get("sch_start_time") }</td>
-                        <td>${schedule.get("sch_last_time") }</td>
-                        <td class="modi">
-                           <a></a>
-                           <input onclick="location.href='selectSchedule?sch_code=${schedule.get('sch_code')}'" class="btn btn-block btn-more" type="button" value="M O R E">
-                        </td>
-                     </tr>
-                  </tbody>
-                  </c:forEach>
-               </table>
-               </div>
-                     <!-- 테이블 --> 
-                     
-                   <!-- 페이징처리 -->
-                   <div class="datatable-bottom">
-						<nav class="datatable-pagination">
-							<ul class="datatable-pagination-list">
-								<c:choose>
-									<c:when test="${empty param.pageNum }">
-										<c:set var="pageNum" value="1"/>			
-									</c:when>
-									<c:otherwise>
-										<c:set var="pageNum" value="${param.pageNum }"></c:set>
-									</c:otherwise>
-								</c:choose>		
-							
-<!-- 							 datatable-disabled -->
-								<c:choose>
-									<c:when test="${pageNum > 1 }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="datatable-pagination-list-item datatable-hidden">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-									<c:choose>
-										<c:when test="${pageNum eq num }"> <%-- 현재 페이지 번호일 경우 --%>
-											<li class="datatable-pagination-list-item ">
-											<a class="datatable-pagination-list-item-link" style="font-weight: 800;background-color: #ececec">${num }</a>
-										</c:when>
-										
-										<%--페이지번호 --%>
-										<c:otherwise>
-											<li class="datatable-pagination-list-item ">
-											<a class="datatable-pagination-list-item-link" href="admin_schedule_register?pageNum=${num }" >${num }</a>
-											</li>
-											
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pageNum < pageInfo.maxPage }">
-										<li class="datatable-pagination-list-item datatable-hidden"  onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="datatable-pagination-list-item datatable-hidden">
-											<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		<!-- Navbar Brand-->
+		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
+		<!-- Sidebar Toggle-->
+		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+			id="sidebarToggle" href="#!">
+			<i class="fas fa-bars"></i>
+		</button>
+		<!-- Navbar Search-->
+		<form
+			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+		</form>
+		<!-- Navbar-->
+		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-user fa-fw"></i>
+			</a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="main">홈</a></li>
+					<li><hr class="dropdown-divider" /></li>
+					<li><a class="dropdown-item" href="logout">Logout</a></li>
+				</ul></li>
+		</ul>
+	</nav>
+	<div id="layoutSidenav">
+		<!-- 고정  -->
+		<jsp:include page="admin_nav.jsp" />
+		<!-- 고정 -->
+
+
+
+		<div id="layoutSidenav_content">
+			<!-- 들어갈내용 -->
+			<main>
+
+
+
+				<!-- 테이블 -->
+				<div class="datatable-container">
+					<h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
+					<h6>
+						오늘의 상영일정 <b style="color: #673bd4">${todayCount }</b>건 / 총 상영일정 <b
+							style="color: #673bd4">${pageInfo.listCount }</b>건
+					</h6>
+					<div class="">
+						<input class="btn btn-block btn-more" type="button" value="일정등록"
+							onclick="doRegisterSch()">
+						<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
+						<input class="btn btn-block btn-more" type="button" value="지정날짜삭제"
+							onclick="doLatest()"> <input
+							class="btn btn-block btn-more" type="button" value="현재상영목록"
+							onclick="location.href='admin_schedule_register'"> <input
+							class="btn btn-block btn-more" type="button" value="상영종료목록"
+							onclick="location.href='movieEndSchedule'">
+
+						<div class="selectbox searchbox"
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 520px; padding-left: 53px;">
+							<form action="admin_schedule_register">
+								<div class="sch_movie_code">
+									<select name="sch_movie_code" id="sch_movie_code"
+										style="width: 150px; height: 32px; border: 1px solid #aeaeae;">
+										<option value="none" selected="selected" disabled>영화선택</option>
+										<option value="none" disabled>=======================</option>
+										<c:forEach var="movie" items="${movieList }">
+											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+										</c:forEach>
+									</select> <select name="sch_cinema_code" id="sch_movie_code"
+										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
+										<option value="none" selected="selected" disabled>지점선택</option>
+										<option value="none" disabled>=======================</option>
+										<c:forEach var="cinema" items="${cinemaList }">
+											<option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+										</c:forEach>
+									</select> <input name="sch_research_date" class="sch_research_date"
+										id="sch_research_date" type="text" placeholder="날짜검색"
+										style="width: 100px; height: 32px; border: 1px solid #aeaeae;" />
+									<input class="btn btn-block btn-more" type="submit" value="검색"
+										style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
+								</div>
+							</form>
+						</div>
+
 					</div>
-                    
-                </main>
-         <!-- 날짜선택해서 지울수있게 -->
-         <div class="container modal admin-modal-remove" style="display: none ; width:530px;">
-               <div class="row justify-content-center">
-                  <div class="col-lg-7">
-                     <div class="card border-1 mt-5">
-                        <div class="card-header">
-                           <button type="button" class="close-modal"
-                              onclick="modalClose()" style="border: none;">닫기</button>
-                           <h3 class="text-center font-weight-light my-4">삭제</h3>
-                        </div>
-                        <div class="card-body">
-                           <form>
-                                         <h6>♥ 삭제할 날짜를 선택해주세요 ♥</h6>
-                               <input name="sch_remove_date" class="sch_remove_date" id="sch_remove_date" type="text" value=""/>
-                              <div class="row">
-                                 <div class="d-grid" style="margin-top: 20px">
-                                    <input class="btn btn-primary btn-block" type="button" value="삭제" onclick="dateDelete()"> 
-                                 </div>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         	<!-- 삭제모달 -->
-         	
-         	<!--  등록모달 -->
-       	<div class="container modal admin-modal-register" style="display: none ;">
-         	<div class="row justify-content-center">
-                    <div class="col-lg-7" style="width: 1000px">
-                        <div class="card border-1 mt-5">
-                            <div class="card-header">
-                             <button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
-                            <h3 class="text-center font-weight-light my-4">상영일정등록</h3>
-                            </div>
-                            
-                            <div class="card-body">
-                                <form action="movieScheduleRegisterPro"> 
-                                    <div class="row mb-3">
-                                     	<div class="col-md-4">
-                                            <div class="form-floating mb-3 mb-md-0">
-                                                <input name="sch_register_date" class="form-control" id="sch_register_date"/>
-                                                <label for="res_date">날짜선택</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                       
-                                    <div class="row mb-3">
-                                       	<div class="col-md-6 " >
-                                               <div class="form-floating mb-3 mb-md-0 selectbox" >
-                                                   <div class="sch_movie_code">
-                                                   	<label for="sch_movie_code">영화선택 : </label>
-													<select name="sch_movie_code" id="sch_movie_code" style="width: 300px;">
-													<option value="none" selected="selected" disabled >영화를 선택하세요</option>
-													<option value="none" disabled>=======================</option>
-													<c:forEach var="movie" items="${movieList }">
-										   				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-													</c:forEach>
-													</select>
-                                                   </div>
-                                               </div>
-                                          </div>
-                                       </div>
-                                       <hr>
-                                       
-                                       
-                                       <div class="row mb-3">
-                                      	  <div class="col-md-6 ">
-                                             <div class="form-floating mb-3 mb-md-0 selectbox">
-                                                 <div class="cinema_name">
-                                                 	<label for="cinema_name">영화관명 : </label>
-													<select name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을 선택하세요</option>
+					<table id="datatablesSimple" class="datatable-table">
+						<thead>
+							<tr>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">지점명</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영관명</a></th>
+								<th data-sortable="true" style="width: 10%;"><a href="#"
+									class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">상영날짜</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">시작시간</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#"
+									class="datatable-sorter">종료시간</a></th>
+								<th data-sortable="true" style="width: 8%;">수정/삭제</th>
+							</tr>
+						</thead>
+						<!-- 회원목록 -->
+						<c:forEach var="schedule" items="${scheduleList }">
+							<tbody>
+								<tr data-index="0">
+									<td>${schedule.get("cinema_name") }</td>
+									<td>${schedule.get("screen_name") }</td>
+									<td>${schedule.get("info_movie_title") }</td>
+									<td>${schedule.get('sch_movie_date')}</td>
+									<td>${schedule.get("sch_start_time") }</td>
+									<td>${schedule.get("sch_last_time") }</td>
+									<td class="modi"><a></a> <input
+										onclick="location.href='selectSchedule?sch_code=${schedule.get('sch_code')}'"
+										class="btn btn-block btn-more" type="button" value="M O R E">
+									</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+				</div>
+				<!-- 테이블 -->
+
+				<!-- 페이징처리 -->
+				<div class="datatable-bottom">
+					<nav class="datatable-pagination">
+						<ul class="datatable-pagination-list">
+							<c:choose>
+								<c:when test="${empty param.pageNum }">
+									<c:set var="pageNum" value="1" />
+								</c:when>
+								<c:otherwise>
+									<c:set var="pageNum" value="${param.pageNum }"></c:set>
+								</c:otherwise>
+							</c:choose>
+
+							<!-- 							 datatable-disabled -->
+							<c:choose>
+								<c:when test="${pageNum > 1 }">
+									<li class="datatable-pagination-list-item datatable-hidden"
+										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="datatable-pagination-list-item datatable-hidden">
+										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							<c:forEach var="num" begin="${pageInfo.startPage }"
+								end="${pageInfo.endPage }">
+								<c:choose>
+									<c:when test="${pageNum eq num }">
+										<%-- 현재 페이지 번호일 경우 --%>
+										<li class="datatable-pagination-list-item "><a
+											class="datatable-pagination-list-item-link"
+											style="font-weight: 800; background-color: #ececec">${num }</a>
+									</c:when>
+
+									<%--페이지번호 --%>
+									<c:otherwise>
+										<li class="datatable-pagination-list-item "><a
+											class="datatable-pagination-list-item-link"
+											href="admin_schedule_register?pageNum=${num }">${num }</a></li>
+
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${pageNum < pageInfo.maxPage }">
+									<li class="datatable-pagination-list-item datatable-hidden"
+										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+										<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="datatable-pagination-list-item datatable-hidden">
+										<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+					</nav>
+				</div>
+
+			</main>
+			<!-- 날짜선택해서 지울수있게 -->
+			<div class="container modal admin-modal-remove"
+				style="display: none; width: 530px;">
+				<div class="row justify-content-center">
+					<div class="col-lg-7">
+						<div class="card border-1 mt-5">
+							<div class="card-header">
+								<button type="button" class="close-modal" onclick="modalClose()"
+									style="border: none;">닫기</button>
+								<h3 class="text-center font-weight-light my-4">삭제</h3>
+							</div>
+							<div class="card-body">
+								<form>
+									<h6>♥ 삭제할 날짜를 선택해주세요 ♥</h6>
+									<input name="sch_remove_date" class="sch_remove_date"
+										id="sch_remove_date" type="text" value="" />
+									<div class="row">
+										<div class="d-grid" style="margin-top: 20px">
+											<input class="btn btn-primary btn-block" type="button"
+												value="삭제" onclick="dateDelete()">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 삭제모달 -->
+
+			<!--  등록모달 -->
+			<div class="container modal admin-modal-register"
+				style="display: none;">
+				<div class="row justify-content-center">
+					<div class="col-lg-7" style="width: 1000px">
+						<div class="card border-1 mt-5">
+							<div class="card-header">
+								<button type="button" class="close-modal" onclick="modalClose()"
+									style="border: none;">닫기</button>
+								<h3 class="text-center font-weight-light my-4">상영일정등록</h3>
+							</div>
+
+							<div class="card-body">
+								<form action="movieScheduleRegisterPro">
+									<div class="row mb-3">
+										<div class="col-md-4">
+											<div class="form-floating mb-3 mb-md-0">
+												<input name="sch_register_date" class="form-control"
+													id="sch_register_date" /> <label for="res_date">날짜선택</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="row mb-3">
+										<div class="col-md-6 ">
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="sch_movie_code">
+													<label for="sch_movie_code">영화선택 : </label> <select
+														name="sch_movie_code" id="sch_movie_code"
+														style="width: 300px;">
+														<option value="none" selected="selected" disabled>영화를
+															선택하세요</option>
 														<option value="none" disabled>=======================</option>
-														<c:forEach var="cinema" items="${cinemaList }">
-													    	<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+														<c:forEach var="movie" items="${movieList }">
+															<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
 														</c:forEach>
 													</select>
-														<c:forEach var="cinema" items="${cinemaList }">
-														 <input type="hidden" name="location_code" value="${cinema.get('location_code') }">
-														</c:forEach>
-                                                 </div>
-                                             </div>
-                                           </div>
-                                           
-                                           <div class="col-md-6">
-                                               <div class="form-floating mb-3 mb-md-0 selectbox">
-                                                   <div class="screen_name">
-                                                   	<label for="screen_name">상영관 : </label>
-														<select name="sch_screen_code" class="selectScreen_name" style="width: 300px">
-														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
-														<option value="none" disabled>=======================</option>
-														</select>
-                                                   </div>
-                                               </div>
-                                          	</div>
-                                       </div>
-                                       <div class="row mb-3">
-                                       	
-                                      	  <div class="col-md-6">
-                                      	  <div class="form-floating mb-3 mb-md-0 selectbox">
-                                                   <div class="sch_start_time">
-                                                   	<label for="sch_start_time">상영시작시간 : </label>
-														<select name="sch_start_time">
-														    <option value="09:00">오전 09:00</option>
-														    <option value="10:00">오전 10:00</option>
-														    <option value="11:00">오전 11:00</option>
-														    <option value="12:00">오후 12:00</option>
-														    <option value="13:00">오후 1:00</option>
-														    <option value="14:00">오후 2:00</option>
-														    <option value="15:00">오후 3:00</option>
-														    <option value="16:00">오후 4:00</option>
-														    <option value="17:00">오후 5:00</option>
-														    <option value="18:00">오후 6:00</option>
-														    <option value="19:00">오후 7:00</option>
-														    <option value="20:00">오후 8:00</option>
-														</select>
-                                                   </div>
-                                             </div>
-                                       </div>
-                                </div>     
-                                      
-                                		<div class="row">
-											<div class="mt-4 mb-0 ">
-												<div class="d-grid">
-													<input class="btn btn-primary btn-block" type="submit" value="등록">
 												</div>
 											</div>
 										</div>
-                                   </form>
-                                </div>
-                           </div>
-                       </div>
-                   </div>
-         		</div>
-         
-         <!--들어갈내용 -->
-         
-         <!-- 푸터 -->
-         <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-               <div
-                  class="d-flex align-items-center justify-content-between small">
-                  <div class="text-muted">Copyright &copy; IMOVIE 2023</div>
-                  <div>
-                  </div>
-               </div>
-            </div>
-         </footer>
-      </div>
-   </div>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-   <script src="js/scripts.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-   <script src="assets/demo/chart-area-demo.js"></script>
-   <script src="assets/demo/chart-bar-demo.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-   <script src="js/datatables-simple-demo.js"></script>
+									</div>
+									<hr>
+
+
+									<div class="row mb-3">
+										<div class="col-md-6 ">
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="cinema_name">
+													<label for="cinema_name">영화관명 : </label> <select
+														name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을
+															선택하세요</option>
+														<option value="none" disabled>=======================</option>
+														<c:forEach var="cinema" items="${cinemaList }">
+															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+														</c:forEach>
+													</select>
+													<c:forEach var="cinema" items="${cinemaList }">
+														<input type="hidden" name="location_code"
+															value="${cinema.get('location_code') }">
+													</c:forEach>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="screen_name">
+													<label for="screen_name">상영관 : </label> <select
+														name="sch_screen_code" class="selectScreen_name"
+														style="width: 300px">
+														<option value="none" selected="selected" disabled>상영관을
+															선택하세요</option>
+														<option value="none" disabled>=======================</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row mb-3">
+
+										<div class="col-md-6">
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="sch_start_time">
+													<label for="sch_start_time">상영시작시간 : </label> <select
+														name="sch_start_time">
+														<option value="09:00">오전 09:00</option>
+														<option value="10:00">오전 10:00</option>
+														<option value="11:00">오전 11:00</option>
+														<option value="12:00">오후 12:00</option>
+														<option value="13:00">오후 1:00</option>
+														<option value="14:00">오후 2:00</option>
+														<option value="15:00">오후 3:00</option>
+														<option value="16:00">오후 4:00</option>
+														<option value="17:00">오후 5:00</option>
+														<option value="18:00">오후 6:00</option>
+														<option value="19:00">오후 7:00</option>
+														<option value="20:00">오후 8:00</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="mt-4 mb-0 ">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block" type="submit" value="등록" onsubmit="return validateForm()">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--들어갈내용 -->
+
+			<!-- 푸터 -->
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid px-4">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; IMOVIE 2023</div>
+						<div></div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
