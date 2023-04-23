@@ -212,13 +212,24 @@ public class MypageController {
 	public String mypageRvPro(@RequestParam HashMap<String, String> review, HttpSession session,  Model model) {
 		String id = (String)session.getAttribute("sId");
 		review.put("id", id);
-
-		int insertCount = service.insertReview(review);
 		
+		if (review.get("rev_rating") == null || review.get("rev_content") == null) {
+		    model.addAttribute("msg", "리뷰 작성에 실패했습니다. 별점을 선택하고 리뷰를 작성하세요.");
+		    return "fail_back";
+		}
+
+	    int count = service.checkReview(id);
+
+	    if (count > 0) { // 이미 작성한 리뷰가 있다면 중복 등록 방지
+	        model.addAttribute("msg", "이미 작성한 리뷰가 있습니다.");
+	        return "fail_back";
+	    }
+		
+	    int insertCount = service.insertReview(review);
 		
 		if(insertCount > 0 ) {
 			
-			model.addAttribute("msg", "리뷰가 등록되고 포인트가 적립되었습니다.");
+			model.addAttribute("msg", "리뷰가 등록되고 500포인트가 적립되었습니다.");
 			model.addAttribute("target", "mypageRv");
 			service.insertPoint(id);
 			service.updatePoint(id);

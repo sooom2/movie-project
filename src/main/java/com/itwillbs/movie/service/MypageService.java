@@ -65,7 +65,6 @@ public class MypageService {
 	}
 
 	public List<HashMap<String, String>> cinemaList(String id) {
-		// TODO Auto-generated method stub
 		return mapper.cinemaList(id);
 	}
 
@@ -76,6 +75,10 @@ public class MypageService {
 
 	public List<HashMap<String, String>> resList(String id) {
 		return mapper.resList(id);
+	}
+
+	public int checkReview(String id) {
+		    return mapper.checkReview(id);
 	}
 
 

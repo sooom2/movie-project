@@ -38,5 +38,7 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> resList(String id);
 
+	int checkReview(String id);
+
 
 }

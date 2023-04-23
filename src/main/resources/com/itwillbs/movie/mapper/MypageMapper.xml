@@ -178,7 +178,7 @@
 	 	,r.res_seat_num
 	 	,sn.screen_name
 	 	,sc.sch_movie_date
-	 	,concat(sc.sch_start_time,'~',sc.sch_last_time) AS movietime
+	 	,concat(sc.sch_start_time,' ~ ',sc.sch_last_time) AS movietime
 	 	,r.res_pay
 	 	FROM 
 	 	reservation r, schedule sc, screen sn 
@@ -187,6 +187,13 @@
 	 	AND r.res_id = #{id}
   	</select>
   	
-  	
+	<select id="checkReview" resultType="int" >
+	  SELECT COUNT(*) as A
+	  FROM review 
+	  WHERE rev_id = #{id} AND rev_movie_code = (select res_movie_code
+			from reservation where res_id = #{id}
+			order by res_code desc limit 1)
+	</select>
+
   	
 </mapper>
