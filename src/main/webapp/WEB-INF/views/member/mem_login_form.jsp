@@ -16,6 +16,7 @@
 <script type="text/javascript">
 
 
+
 function doDisplay(){
 	let dis = document.querySelector(".modal-type2");
 	
@@ -66,48 +67,67 @@ function kakaoLogin() {
   }
 
 
-// 네이버 로그인
-// function naverLogin() {
 
-// 	var naverLogin = new naver.LoginWithNaverId(
-// 			{
-// 				clientId: "R9808Fi38tLfxNR6b3ym", 
-// 				callbackUrl: "http://localhost:8080/movie-project/memLogin", 
-// 				isPopup: false,
-// 				callbackHandle: true
-// 			}
-// 		);	
 
-// 	naverLogin.init();
-
-// 	window.addEventListener('load', function () {
-// 		naverLogin.getLoginStatus(function (status) {
-			
-// 			if (status) {
-// 				var email = naverLogin.user.getEmail();
-// 				var name = naverLogin.user.getNickName();
-// 	    		console.log(email);
-// 	    		console.log(name);
-// 				console.log(naverLogin.user);
-	    		
-// 	            if( email == undefined || email == null) {
-// 					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-// 					naverLogin.reprompt();
-// 					return;
-// 				}
-	            
-// 	            $('#form-naver-login input[name=email]').val(email);
-// 				$('#form-naver-login input[name=name]').val(name);
-// 				// 사용자 정보가 포함된 폼을 서버로 제출.
-// 				document.querySelector('#form-naver-login').submit();
-	            
-// 			} else {
-// 				console.log("callback 처리에 실패하였습니다.");
-// 			}
-// 		});
-// 	});			   
+// 아이디 저장
+$(function() {
 	
-// };
+	var userInputId = getCookie("userInputId");// 쿠기값 가져오기
+    $("#memberid").val(userInputId); 
+     
+	// 쿠키 있을 시, 저장하기 체크 상태
+    if($("#memberid").val() != ""){ 
+                                           
+        $("#SaveID").attr("checked", true); 
+    }
+     
+    $("#SaveID").change(function(){ 
+        if($("#SaveID").is(":checked")){ 
+            var userInputId = $("#memberid").val();
+            setCookie("userInputId", userInputId, 7); // 7일 보관
+        }else{ 
+            deleteCookie("userInputId");
+        }
+    });
+     
+    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우
+    $("#memberid").keyup(function(){ 
+        if($("#SaveID").is(":checked")){ 
+            var userInputId = $("#memberid").val();
+            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+        }
+    });
+    
+    function setCookie(cookieName, value, exdays){
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+        document.cookie = cookieName + "=" + cookieValue;
+    }
+     
+    function deleteCookie(cookieName){
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() - 1);
+        document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+    }
+     
+    function getCookie(cookieName) {
+        cookieName = cookieName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cookieName);
+        var cookieValue = '';
+        if(start != -1){
+            start += cookieName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+        }
+        return unescape(cookieValue);
+    }
+	
+	
+	
+});
 
 
 
@@ -150,8 +170,8 @@ function kakaoLogin() {
 							<span onclick="kakaoLogin();">
 							<a href="#" class="btn-kakao"><img src="resources/images/member/ico_kakao.png"></a>
 							</span>
-							<span onclick="naverLogin();">
-							<a id="naverIdLogin_loginButton" href="#" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
+							<span>
+							<a id="naverIdLogin_loginButton" href="javascript:void(0)" class="btn-naver"><img src="resources/images/member/ico_naver.png"></a>
 							</span>
 						</div>
 					</div>

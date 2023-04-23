@@ -131,6 +131,14 @@ public class MemberController {
 	    return "member/fail_back";
 	}
 	
+	// 네이버 로그인 확인
+	@RequestMapping(value = "naverLogin", method = {RequestMethod.GET, RequestMethod.POST})
+	public String naver(@RequestParam HashMap<String, String> naver) {
+		System.out.println(naver);
+		return "";
+	}
+	
+	
 	// 카카오 로그인 확인
 	@PostMapping(value = "kakaoLogin")
 	public String kakao(@RequestParam HashMap<String, String> kakao, Model model, HttpSession session) {
