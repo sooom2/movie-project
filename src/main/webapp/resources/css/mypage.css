@@ -1134,7 +1134,8 @@ table.bbs-list tr td.no, table.bbs-list tr td.screen, table.bbs-list tr td.kind,
 }
 
 table.bbs-list tr td a {
-	color: #666;
+	color: #5d46b5;
+	text-decoration-line: revert;
 }
 
 table.bbs-list tr td a:hover {

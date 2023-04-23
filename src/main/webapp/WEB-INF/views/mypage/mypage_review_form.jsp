@@ -107,6 +107,8 @@
 								<th>한줄평</th>
 								<th>별 점</th>
 								<th>작성일자</th>
+								<th>수정</th>
+								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -139,6 +141,8 @@
 							            </c:if>
 							        </td>
 							        <td>${revList.get("rev_date")}</td>
+							        <td><input type="button" value="수정" onclick=""></td>
+									<td><input type="button" value="삭제" onclick=""></td>
 							    </tr>
 							</c:forEach>
 						</tbody>
