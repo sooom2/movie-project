@@ -153,4 +153,11 @@ public class ReservationController {
 	
 	
 	
+	// 결제 완료
+	@GetMapping("reservationResult")
+	public String reservationResult() {
+		return "reservation/resevation_result";
+	}
+	
+	
 }

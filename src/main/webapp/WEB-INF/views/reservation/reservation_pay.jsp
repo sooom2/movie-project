@@ -22,6 +22,12 @@
 <meta charset="UTF-8">
 <title>좌석 선택</title>
 <link rel="shortcut icon" href="resources/images/rsv/res_test.png" type="image/x-icon" />
+<script type="text/javascript">
+
+
+
+
+</script>
 </head>
 
 <body>
@@ -66,85 +72,85 @@
 <!-- 				<input type="hidden" id="tokn" name="tokn" value="41524707"> -->
 <!-- 				<input type="hidden" id="hold" name="hold" value="scinema+000005+4468fe4b-3a89-43a8-a5ef-e76039398f67"> -->
 
-				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema">
-				<input type="hidden" id="CinemaCd" name="CinemaCd" value="000005">
-				<input type="hidden" id="MovieCd" name="MovieCd" value="021864">
-				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-23">
-				<input type="hidden" id="Sort" name="Sort" value="boxoffice">
-				<input type="hidden" id="ScreenCd" name="ScreenCd" value="01">
-				<input type="hidden" id="ShowSeq" name="ShowSeq" value="3">
+<!-- 				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema"> -->
+<!-- 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="000005"> -->
+<!-- 				<input type="hidden" id="MovieCd" name="MovieCd" value="021864"> -->
+<!-- 				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-23"> -->
+<!-- 				<input type="hidden" id="Sort" name="Sort" value="boxoffice"> -->
+<!-- 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="01"> -->
+<!-- 				<input type="hidden" id="ShowSeq" name="ShowSeq" value="3"> -->
 				
-				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx">
-				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all">
-				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all">
+<!-- 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx"> -->
+<!-- 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all"> -->
+<!-- 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all"> -->
 				
-				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001">
-				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="normal">
-				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="일반">
-				<input type="hidden" id="StartTime" name="StartTime" value="13:50">
-				<input type="hidden" id="EndTime" name="EndTime" value="15:52">
-				<input type="hidden" id="ScreenType" name="ScreenType" value="normal">
-				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="일반">
-				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)">
+<!-- 				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001"> -->
+<!-- 				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="normal"> -->
+<!-- 				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="일반"> -->
+<!-- 				<input type="hidden" id="StartTime" name="StartTime" value="13:50"> -->
+<!-- 				<input type="hidden" id="EndTime" name="EndTime" value="15:52"> -->
+<!-- 				<input type="hidden" id="ScreenType" name="ScreenType" value="normal"> -->
+<!-- 				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="일반"> -->
+<!-- 				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)"> -->
 					
-				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="13.32">
-				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08">
+<!-- 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="13.32"> -->
+<!-- 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08"> -->
 				
-				<input type="hidden" id="TicketCd" name="TicketCd" value="000060|000060" data-org="000060|000060">
-				<input type="hidden" id="TicketNm" name="TicketNm" value="성인|성인">
-				<input type="hidden" id="TicketAmt" name="TicketAmt" value="6000.0000|6000.0000" data-org="6000.0000|6000.0000">
-				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="2">
-				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="12000">
-				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 2명">
+<!-- 				<input type="hidden" id="TicketCd" name="TicketCd" value="000060|000060" data-org="000060|000060"> -->
+<!-- 				<input type="hidden" id="TicketNm" name="TicketNm" value="성인|성인"> -->
+<!-- 				<input type="hidden" id="TicketAmt" name="TicketAmt" value="6000.0000|6000.0000" data-org="6000.0000|6000.0000"> -->
+<!-- 				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="2"> -->
+<!-- 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="12000"> -->
+<!-- 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 2명"> -->
 						
 				
-				<input type="hidden" id="TicketList" name="TicketList" value="normal,normal,,000060,6000,C,3;normal,normal,,000060,6000,C,4;">
-				<input type="hidden" id="SeatType" name="SeatType" value="normal">
-				<input type="hidden" id="SeatZone" name="SeatZone" value="">
-				<input type="hidden" id="SeatString" name="SeatString" value="C;3;1;/C;4;1;/">
-				<input type="hidden" id="SelectedSeatList" name="SelectedSeatList" value="26,C,3;27,C,3;">
+<!-- 				<input type="hidden" id="TicketList" name="TicketList" value="normal,normal,,000060,6000,C,3;normal,normal,,000060,6000,C,4;"> -->
+<!-- 				<input type="hidden" id="SeatType" name="SeatType" value="normal"> -->
+<!-- 				<input type="hidden" id="SeatZone" name="SeatZone" value=""> -->
+<!-- 				<input type="hidden" id="SeatString" name="SeatString" value="C;3;1;/C;4;1;/"> -->
+<!-- 				<input type="hidden" id="SelectedSeatList" name="SelectedSeatList" value="26,C,3;27,C,3;"> -->
 				
-				<input type="hidden" id="TicketCategory" name="TicketCategory" value="adult|adult">
-				<input type="hidden" id="AddTicketAmt" name="AddTicketAmt" value="0|0">
-				<input type="hidden" id="TotalTicketAmt" name="TotalTicketAmt" value="6000|6000">
-				<input type="hidden" id="TicketPropertyNo" name="TicketPropertyNo" value="72|72">
+<!-- 				<input type="hidden" id="TicketCategory" name="TicketCategory" value="adult|adult"> -->
+<!-- 				<input type="hidden" id="AddTicketAmt" name="AddTicketAmt" value="0|0"> -->
+<!-- 				<input type="hidden" id="TotalTicketAmt" name="TotalTicketAmt" value="6000|6000"> -->
+<!-- 				<input type="hidden" id="TicketPropertyNo" name="TicketPropertyNo" value="72|72"> -->
 						
-				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원" data-org="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원">
-				<input type="hidden" id="HoldGuID" name="HoldGuID" value="4468fe4b-3a89-43a8-a5ef-e76039398f67">
+<!-- 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원" data-org="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원"> -->
+<!-- 				<input type="hidden" id="HoldGuID" name="HoldGuID" value="4468fe4b-3a89-43a8-a5ef-e76039398f67"> -->
 
-				<input type="hidden" id="TotalAmt" name="TotalAmt" value="12000" data-org="12000">
-				<input type="hidden" id="PaymentCd" name="PaymentCd" value="kakaopay">
+<!-- 				<input type="hidden" id="TotalAmt" name="TotalAmt" value="12000" data-org="12000"> -->
+				<input type="hidden" id="PaymentCd" name="PaymentCd" value="">
 				
-				<input type="hidden" id="CatID" name="CatID" value="">
-				<input type="hidden" id="SimplePayOrdNo" name="SimplePayOrdNo" value="">
-				<input type="hidden" id="SimplePayBizNo" name="SimplePayBizNo" value="">
-				<input type="hidden" id="TaxCd" name="TaxCd" value="">
-				<input type="hidden" id="Installment" name="Installment" value="">
+<!-- 				<input type="hidden" id="CatID" name="CatID" value=""> -->
+<!-- 				<input type="hidden" id="SimplePayOrdNo" name="SimplePayOrdNo" value=""> -->
+<!-- 				<input type="hidden" id="SimplePayBizNo" name="SimplePayBizNo" value=""> -->
+<!-- 				<input type="hidden" id="TaxCd" name="TaxCd" value=""> -->
+<!-- 				<input type="hidden" id="Installment" name="Installment" value=""> -->
 				
-				<input type="hidden" id="NaverPayId" name="NaverPayId" value="">
+<!-- 				<input type="hidden" id="NaverPayId" name="NaverPayId" value=""> -->
 				
-				<input type="hidden" id="KSPayId" name="KSPayId" value="">
+<!-- 				<input type="hidden" id="KSPayId" name="KSPayId" value=""> -->
 				
-				<input type="hidden" id="KakaoPayCID" name="KakaoPayCID" value="">
-				<input type="hidden" id="KakaoPayTID" name="KakaoPayTID" value="">
-				<input type="hidden" id="KakaoPgToken" name="KakaoPgToken" value="">
+<!-- 				<input type="hidden" id="KakaoPayCID" name="KakaoPayCID" value=""> -->
+<!-- 				<input type="hidden" id="KakaoPayTID" name="KakaoPayTID" value=""> -->
+<!-- 				<input type="hidden" id="KakaoPgToken" name="KakaoPgToken" value=""> -->
 				
-				<input type="hidden" id="PaycoPccode" name="PaycoPccode" value="">
-				<input type="hidden" id="PaycoPcnumb" name="PaycoPcnumb" value="">
-				<input type="hidden" id="PaycoReqtr" name="PaycoReqtr" value="">
-				<input type="hidden" id="PaycoRpytr" name="PaycoRpytr" value="">
-				<input type="hidden" id="PaycoSellerKey" name="PaycoSellerKey" value="">
-				<input type="hidden" id="PaycoWtrno" name="PaycoWtrno" value="">
+<!-- 				<input type="hidden" id="PaycoPccode" name="PaycoPccode" value=""> -->
+<!-- 				<input type="hidden" id="PaycoPcnumb" name="PaycoPcnumb" value=""> -->
+<!-- 				<input type="hidden" id="PaycoReqtr" name="PaycoReqtr" value=""> -->
+<!-- 				<input type="hidden" id="PaycoRpytr" name="PaycoRpytr" value=""> -->
+<!-- 				<input type="hidden" id="PaycoSellerKey" name="PaycoSellerKey" value=""> -->
+<!-- 				<input type="hidden" id="PaycoWtrno" name="PaycoWtrno" value=""> -->
 				
-				<input type="hidden" id="KeyinKindCd" name="KeyinKindCd" value="">
-				<input type="hidden" id="KeyinKindSubCd" name="KeyinKindSubCd" value="">
-				<input type="hidden" id="KeyinPaymentCd" name="KeyinPaymentCd" value="">
-				<input type="hidden" id="KeyinPaymentSubCd" name="KeyinPaymentSubCd" value="">
-				<input type="hidden" id="KeyinCardNo" name="KeyinCardNo" value="">
-				<input type="hidden" id="KeyinValidThru" name="KeyinValidThru" value="">
-				<input type="hidden" id="KeyinPassword" name="KeyinPassword" value="">
-				<input type="hidden" id="KeyinIdentityNo" name="KeyinIdentityNo" value="">
-				<input type="hidden" id="KeyinGuId" name="KeyinGuId" value="">
+<!-- 				<input type="hidden" id="KeyinKindCd" name="KeyinKindCd" value=""> -->
+<!-- 				<input type="hidden" id="KeyinKindSubCd" name="KeyinKindSubCd" value=""> -->
+<!-- 				<input type="hidden" id="KeyinPaymentCd" name="KeyinPaymentCd" value=""> -->
+<!-- 				<input type="hidden" id="KeyinPaymentSubCd" name="KeyinPaymentSubCd" value=""> -->
+<!-- 				<input type="hidden" id="KeyinCardNo" name="KeyinCardNo" value=""> -->
+<!-- 				<input type="hidden" id="KeyinValidThru" name="KeyinValidThru" value=""> -->
+<!-- 				<input type="hidden" id="KeyinPassword" name="KeyinPassword" value=""> -->
+<!-- 				<input type="hidden" id="KeyinIdentityNo" name="KeyinIdentityNo" value=""> -->
+<!-- 				<input type="hidden" id="KeyinGuId" name="KeyinGuId" value=""> -->
 		
 				
 			
@@ -156,7 +162,7 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">성인가격 ${param.NormalPrice }</h4>
+									<h4 class="r-h4">${vo.getCinemaCd() }</h4>
 									
 									<div class="right">
 										<!-- <a href="javascript:goLink('/support/guide.do');" class="btn-link">예매가이드</a>
@@ -175,7 +181,7 @@
 										<div class="cont">
 											<div class="pay-mv">
 												<div class="img"><img src="${param.HidMovieUrl }"></div>
-												<h4>${vo.getCinemaCd() }</h4>
+												<h4>${param.MovieNm }</h4>
 												<div class="info">
 													<p>${param.showDate } 개봉</p>
 												</div>
@@ -205,7 +211,7 @@
 												</dl>
 												<dl>
 													<dt>좌석</dt>
-													<dd></dd>
+													<dd>${vo.getSeatNm() }</dd>
 												</dl>
 											</div>
 										</div>
@@ -222,23 +228,36 @@
 											<div class="cont">
 												<div class="pay-kinds">
 													<ul>
-														<li><button type="button" class="btn-payks active" data-cd="card" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/cardkeyin.small.png">카드(번호입력)</button></li>
-														<li><button type="button" class="btn-payks" data-cd="cardlink" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/cardlink1.small.png">카드(간편결제)</button></li>
-														<li><button type="button" class="btn-payks" data-cd="naverpay" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/npay1.small.png">네이버페이</button></li>
-														<li><button type="button" class="btn-payks" data-cd="kakaopay" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/kakaopay.small.png">카카오페이</button></li>
-														<li><button type="button" class="btn-payks" data-cd="payco" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/payco.small.png">페이코</button></li>
-														</ul>
+														<li><button type="button" name="payChoice" class="btn-payks active" data-cd="card" data-msg="" value="html5_inicis.INIBillTst"><img src="https://img.dtryx.com/payment/2022/01/cardkeyin.small.png" >신용/체크카드</button></li>
+<!-- 														<li><button type="button" class="btn-payks" data-cd="cardlink" data-msg="" value="kakaopay.TC0ONETIME"><img src="https://img.dtryx.com/payment/2022/01/cardlink1.small.png">카드(간편결제)</button></li> -->
+<!-- 														<li><button type="button" class="btn-payks" data-cd="naverpay" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/npay1.small.png">네이버페이</button></li> -->
+														<li><button type="button" name="payChoice" class="btn-payks" data-cd="kakaopay" data-msg="" value="kakaopay.TC0ONETIME"><img src="https://img.dtryx.com/payment/2022/01/kakaopay.small.png">카카오페이</button></li>
+														<li><button type="button" name="payChoice" class="btn-payks" data-cd="toss" data-msg="" value="tosspay.tosstest"><img src="resources/images/rsv/toss.jpg">토스페이</button></li>
+													</ul>
 												</div>
+<!-- 										   <div class="choice"> -->
+<!-- 					                            <div class="inbox"> -->
+<!-- 					                                <p class="txt">결제수단 선택</p> -->
+<!-- 					                                    <div class="cell"> -->
+<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="html5_inicis.INIBillTst"> -->
+<!-- 					                                        <label for="radio_choice01">신용/체크카드</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="kakaopay.TC0ONETIME"> -->
+<!-- 					                                        <label for="radio_choice01">카카오페이</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="tosspay.tosstest"> -->
+<!-- 					                                        <label for="radio_choice01">토스페이</label> -->
+<!-- 					                                    </div> -->
+<!-- 					                            </div> -->
+<!-- 							                </div> -->
 												<div class="desc1">
 													<ul>
 <!-- 														<li>디트릭스 영화예매의 신용카드 결제서비스는 ㈜케이에스넷에서 제공합니다.</li> -->
 														<li>네이버페이 이용시 안내 사항
 															<ol>
 																<li>주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수 있습니다.</li>
-																<li>네이버페이는 네이버ID로 별도 앱 설치 없이 신용카드 또는 은행계좌 정보를 등록하여 네이버페이 비밀번호로 결제할 수 있는 간편결제 서비스입니다.</li>
+<!-- 																<li>네이버페이는 네이버ID로 별도 앱 설치 없이 신용카드 또는 은행계좌 정보를 등록하여 네이버페이 비밀번호로 결제할 수 있는 간편결제 서비스입니다.</li> -->
 																<li>결제 가능한 신용카드:신한,삼성,현대, BC,국민,하나,롯데,NH농협,씨티,카카오뱅크</li>
 																<li>결제 가능한은행<br>KB국민,IBK기업,NH농협,신한,씨티,SC제일,우리,카카오뱅크,케이뱅크,토스뱅크,하나,경남,광주,대구,부산,KDB산업,수협,우체국,전북,제주,새마을금고,신협,SBI저축,저축,미래에셋,삼성,신한금융투자,SK,유안타,유진투자,한국투자</li>
-																<li>네이버페이 카드 간편결제는 네이버페이에서 제공하는 카드사 별 무이자,청구할인 혜택을 받을 수 있습니다.</li>
+<!-- 																<li>네이버페이 카드 간편결제는 네이버페이에서 제공하는 카드사 별 무이자,청구할인 혜택을 받을 수 있습니다.</li> -->
 															</ol>
 														</li>
 													</ul>
@@ -336,13 +355,39 @@
 	
 	
 	
+	var IMP = window.IMP; 
+	IMP.init("imp61826822"); 
 	
-	
-	
-	
-	
-	
-	
+	function requestPay() {
+		console.log($('#PaymentCd').val());
+			IMP.request_pay({
+		        pg : $('#PaymentCd').val(),
+		        pay_method : 'card',
+		        merchant_uid: "code" + new Date().getTime(), 
+		        name : '결제 테스트',
+		        amount : $(".totalAmt").text(),
+		        buyer_email : 'buyer_email',
+		        buyer_name : 'buyer_name',
+		        buyer_tel : 'buyer_tel',
+// 		        buyer_email : '${member.get('member_email')}',
+// 		        buyer_name : '${member.get('member_name')}',
+// 		        buyer_tel : '${member.get('member_tel')}',
+		        
+		    }, function (rsp) { // callback
+		        if (rsp.success) {
+				    alert("결제가 완료되었습니다.");
+				    location.href = "reservationResult" ;
+// 				    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" 
+// 				    				+ rsp.pay_method + "&pay_price=" + rsp.paid_amount
+// 				    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')} 
+// 				    				+ "&point=" + $("#totDcAmtView").text();
+		        } else {
+		            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
+		            	  + rsp.error_msg + ")");
+		        }
+		    });
+	    
+	}
 	
 	
 	
@@ -365,34 +410,39 @@
 		// 결제수단 css
 		$(".btn-payks").on("click", function(e) {
 			if ($(this).data("msg") != "") {
-				mAlert($(this).data("msg"));
+				Alert($(this).data("msg"));
 			}
 			
 			$(".btn-payks").removeClass("active");
 			$(this).addClass("active");
-			$("#PaymentCd").val($(this).data("cd"));
+			$("#PaymentCd").val($(this).val());
+// 			console.log($("#PaymentCd").val());
 		});
 		
 		//결제하기
 		$(".btnPayment").on("click", function() {
-			if ($("#TotalAmt").val() == 0) {
-				$(".fav-wrap").show();
-				payResult();
-				return;
-			}
+// 			if ($("#TotalAmt").val() == 0) {
+// 				$(".fav-wrap").show();
+// 				payResult();
+// 				return;
+// 			}
 			
-			var cd = $("#PaymentCd").val();
-			if (cd == "") {
-				mAlert("결제수단을 선택해주세요.");
-				return;
-			}
+// 			var cd = $("#PaymentCd").val();
+// 			if (cd == "") {
+// 				mAlert("결제수단을 선택해주세요.");
+// 				return;
+// 			}
 		
+		requestPay();
+
 	});
 });
 	
-
-
 </script>
+
+
+
+
 <jsp:include page="../footer.jsp"></jsp:include>	
 </body>
 </html>
