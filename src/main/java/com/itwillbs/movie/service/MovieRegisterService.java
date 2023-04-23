@@ -189,6 +189,15 @@ public class MovieRegisterService {
 	public int getEndListCount() {
 		return mapper.schEndListCount();
 	}
+	
+	//영화예매내역
+	public List<HashMap<String, String>> resList() {
+		return mapper.resList();
+	}
+	//detail 예매내역
+	public HashMap<String, String> detailRes(String res_code) {
+		return mapper.detailRes(res_code);
+	}
 
 
 

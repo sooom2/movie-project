@@ -95,6 +95,12 @@ public interface MovieRegisterMapper {
 
 	int selectBoardListCount(@Param("sch_movie_code") String sch_movie_code,@Param("sch_cinema_code") String sch_cinema_code,@Param("sch_research_date") String sch_research_date);
 	int schEndListCount();
+	
+	//상영예매내역
+	List<HashMap<String, String>> resList();
+
+	//상세 예매정보
+	HashMap<String, String> detailRes(String res_code);
 
 	
 	

@@ -12,5 +12,10 @@ public class EventContoller {
 		return "event/event_list";
 	}
 	
+	@GetMapping("eventDetail")
+	public String eventDetail() {
+		
+		return "event/event_detail";
+	}
 
 }

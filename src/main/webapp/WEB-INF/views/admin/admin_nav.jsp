@@ -44,7 +44,7 @@
 								<i class="fas fa-chart-area"></i>
 							</div> 상영일정관리
 						</a>
-						<a class="nav-link" href="admin_movie_res_register">
+						<a class="nav-link" href="resList">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 영화예매 관리

@@ -90,6 +90,8 @@ public interface MyBatisMapper {
 
 	int insertPointTable(@Param("id") String id,@Param("payPoint") String payPoint);
 
+	int memberCount();
+
 
 	
 	// ------------------------------------------------------------------------------------------

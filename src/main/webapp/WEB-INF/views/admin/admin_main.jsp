@@ -81,7 +81,8 @@
 							<div class="card bg-warning text-black mb-4">
 								<div class="card-body font20">
 									TODAY 상영 영화<br>
-									<span class="fontB">6</span> 건
+									<span class="fontB">${todayCount }</span> 건
+									
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
@@ -121,7 +122,7 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-danger text-black mb-4">
 								<div class="card-body font20">
-									회원수<br> <span class="fontB">593</span>명
+									회원수<br> <span class="fontB">${memCount }</span>명
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">

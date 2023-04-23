@@ -113,6 +113,10 @@ public class MemberService {
 		return mapper.selectMemberListCount(searchKeyword);
 	}
 
+	public int selectMemCount() {
+		return mapper.memberCount();
+	}
+
 
 	
 }

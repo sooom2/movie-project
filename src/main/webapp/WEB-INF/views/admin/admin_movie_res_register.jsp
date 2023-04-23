@@ -5,28 +5,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-<link
-	href="${pageContext.request.contextPath }/resources/css/styles.css"
-	rel="stylesheet" />
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
-<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-	rel="stylesheet" />
-
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script type="text/javascript">
-
+function doDisplay(){
+	alert("dddd");
+	let dis = document.querySelector(".admin-modal");
+	if(dis.style.display="none"){
+		dis.style.display="block"
+	} else{
+		dis.style.display="none";
+	}
+}
 
 
 function selectCinema(){
@@ -63,17 +58,7 @@ $(function () {
     });
   });
 
-function doDisplay(){
-	let dis = document.querySelector(".admin-modal");
-	
-	if(dis.style.display="none"){
-		dis.style.display="block"
-		
-		
-	} else{
-		dis.style.display="none";
-	}
-}
+
 function modalClose(){
 	let dis = document.querySelector(".admin-modal");
 	dis.style.display="none";
@@ -147,21 +132,25 @@ function modalClose(){
 							</tr>
 						</thead>
 						<!-- 회원목록 -->
+						<c:forEach var="resList" items="${resList }">
 						<tbody>
 							<tr data-index="0">
-								<td>15611889</td>
-								<td>admin1</td>
-								<td>리바운드</td>
-								<td>서면점</td>
-								<td>1관</td>
-								<td>2023-04-05</td>
-								<td>A1,A2</td>
-								<td>\20,000원</td>
-								<td>2023-04-05</td>
-								<td class="modi"><input class="btn btn-block btn-more"
-									type="button" value="M O R E" onclick="doDisplay()"></td>
+								<td>${resList.get("res_code") }</td>
+								<td>${resList.get("res_id") }</td>
+								<td>${resList.get("res_movie_code") }</td>
+								<td>${resList.get("res_cinema") }</td>
+								<td>${resList.get("res_screen_code") }</td>
+								<td>${resList.get("res_date") }</td>
+								<td>${resList.get("res_seat_line") }열, ${resList.get("res_seat_num") }번</td>
+								<td>${resList.get("res_pay") }</td>
+								<td>${resList.get("res_paydate") }</td>
+								<td class="modi">
+									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="location.href='selectRes?res_code=${resList.get('res_code')}'">
+<!-- 									<input class="btn btn-block btn-more" type="button" value="M O R E" onclick="doDisplay()"> -->
+								</td>
 							</tr>
 						</tbody>
+						</c:forEach>
 					</table>
 				</div>
 				<!-- 테이블 -->

@@ -455,7 +455,24 @@ public class MovieRegisterController {
  	}
  	
  	
- 	
+ 	@GetMapping("resList")
+ 	public String resList(Model model) {
+ 		System.out.println("====================================");
+ 		List<HashMap<String, String>> resList = movieRegisterService.resList();
+ 		System.out.println(resList);
+ 		
+ 		model.addAttribute("resList",resList);
+ 		
+ 		return "admin/admin_movie_res_register";
+ 	}
+ 	@GetMapping("selectRes")
+ 	public String resUpdate(Model model,@RequestParam String res_code) {
+ 		System.out.println("====================================");
+ 		HashMap<String, String> detailRes = movieRegisterService.detailRes(res_code);
+ 		model.addAttribute("detailRes",detailRes);
+ 		
+ 		return "admin/admin_movie_res_register_update";
+ 	}
  	
  	
 // 	//상영종료된 값 스케쥴링	

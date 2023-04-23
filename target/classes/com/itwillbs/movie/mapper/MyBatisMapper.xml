@@ -243,7 +243,9 @@
 		SELECT count(*) FROM member
 	</select>
 	
-	
+	<select id="memberCount" resultType="int">
+		SELECT count(*) FROM member
+	</select>
 	
 
 	<!-- 메인페이지 핫상품3개 -->

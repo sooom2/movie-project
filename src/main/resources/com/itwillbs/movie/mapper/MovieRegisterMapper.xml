@@ -492,4 +492,14 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 		</select>
 
 
+		<select id="resList" resultType="hashmap">
+			SELECT * FROM reservation
+		</select>
+		
+		<select id="detailRes" resultType="hashmap">
+			SELECT * 
+			  FROM reservation
+			 WHERE res_code=#{res_code}
+		</select>
+
 </mapper>

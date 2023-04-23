@@ -91,14 +91,14 @@
 				<a href="main"><h1 id="logo">로고</h1></a>		
 				<ul class="nav_right">
 				<li><a href="event" class="" onmouseover="">이벤트</a>
-					<div class="tertiary">
-						<ul>
+<!-- 					<div class="tertiary"> -->
+<!-- 						<ul> -->
 <!-- 							<li><a href="" class="" onmouseover="hideTheater()">시사회</a></li> -->
 <!-- 							<li><a href="" class="" onmouseover="hideTheater()">무대인사</a></li> -->
-							<li><a href="" class="" onmouseover="">진행중인 이벤트</a></li>
-						</ul>
-					</div>
-					</li>
+<!-- 							<li><a href="" class="" onmouseover="">진행중인 이벤트</a></li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 					</li> -->
 				</li>
 				<li id="cs"><a href="cc_home" class="" onmouseover=")">고객센터</a>
 					<div class="tertiary">
