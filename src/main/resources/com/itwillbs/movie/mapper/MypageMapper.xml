@@ -72,17 +72,23 @@
   	</select>
   	
   	<insert id= "insertReview" >
-  		INSERT 
-  			INTO review
-  			VALUES (
-  			#{rev_code}
-  			,#{rev_movie_code} 
-  			,#{rev_movie_title}
-  			,#{id}
+
+		INSERT INTO review VALUES
+		(
+		#{rev_code}+1
+		,(select res_movie_code
+			from reservation where res_id = #{id}
+			order by res_code desc limit 1)
+			,(select res_title
+			from reservation where res_id = #{id} 
+			order by res_code desc limit 1)
+		  	,#{id}
 			,#{rev_rating}
 			,#{rev_content}
 			,now()
-  			)
+			)
+
+	
   	</insert>
 
   	<select id = "revList" resultType = "hashmap" >
@@ -161,7 +167,7 @@
 	  UPDATE member
 	  SET member_point = (SELECT sum(point_amount) FROM point 
 	 	 WHERE point_id = #{id})
-	 	WHERE member_id = #{id};
+	 	WHERE member_id = #{id}
   	</update>
   	
   	<select id = "resList" resultType = "hashmap">
@@ -178,7 +184,7 @@
 	 	reservation r, schedule sc, screen sn 
 	 	WHERE r.res_sch_code = sc.sch_code 
 	 	AND r.res_screen_code = sn.screen_code
-	 	AND r.res_id = #{id};
+	 	AND r.res_id = #{id}
   	</select>
   	
   	

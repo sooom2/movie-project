@@ -218,7 +218,7 @@ public class MypageController {
 		
 		if(insertCount > 0 ) {
 			
-			model.addAttribute("msg", "리뷰가 등록 되었습니다.");
+			model.addAttribute("msg", "리뷰가 등록되고 포인트가 적립되었습니다.");
 			model.addAttribute("target", "mypageRv");
 			service.insertPoint(id);
 			service.updatePoint(id);
