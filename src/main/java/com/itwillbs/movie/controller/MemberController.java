@@ -77,17 +77,6 @@ public class MemberController {
 		return "member/join_auth_form";
 	}
 	
-	//회원가입폼
-//	@GetMapping(value = "memJoin")
-//	public String memJoin(Model model) {
-//		
-//		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-//		model.addAttribute("cinemaList",cinemaList);
-//		System.out.println("==================================");
-//		System.out.println(model);
-//		System.out.println("==================================");
-//		return "member/mem_join_form";
-//	}
 	
 	//예매확인폼
 	@GetMapping(value = "guestRsv")
@@ -101,22 +90,7 @@ public class MemberController {
 		return "member/guest_join_form";
 	}
 	
-//	//회원 로그인 확인
-//	@PostMapping(value = "loginPro")
-//	public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
-//		
-//		HashMap<String, String> member = service.checkUser(login);
-//		
-//		if(member == null) {
-//			model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다.");
-//			return "member/fail_back";
-//		} else {
-//			session.setAttribute("sId", member.get("member_id"));
-//			return "redirect:/main";
-//		}
-//		
-//	}
-	//회원 로그인 확인 - 해싱작업 수정
+	//회원 로그인 확인 
 	@PostMapping(value = "loginPro")
 	public String loginPro(@RequestParam HashMap<String, String> login, Model model, HttpSession session) {
 	    String memberId = login.get("member_id");
@@ -271,6 +245,26 @@ public class MemberController {
 		return "member/mem_join_form";
 	}
 	
+	// 회원가입
+		@PostMapping(value = "joinPro")
+		public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String securePasswd = passwordEncoder.encode(member.get("member_pw"));
+			String member_address = member.get("member_address1") + "/" + member.get("member_address2");
+			member.put("member_pw", securePasswd);
+			member.put("member_address", member_address);
+			
+			int insertCount = service.registMember(member);
+			if(insertCount > 0) { // 가입 성공
+				service.insertPoint(member.get("member_id"));
+				return "member/mem_join_success";
+			} else { // 가입 실패
+				model.addAttribute("msg", "회원 가입 실패!");
+				return "member/fail_back";
+			}
+			
+		}
+	
 	// 아이디 사용 조회
 	@GetMapping(value = "MemberCheckId")
 	@ResponseBody
@@ -287,58 +281,6 @@ public class MemberController {
 		return result;
 	}
 	
-	
-	// 회원가입 저장
-//	@PostMapping(value = "joinPro")
-//	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
-//		System.out.println(member);
-//		
-//		int insertCount = service.insertMember(member);
-//		
-//		model.addAttribute("member", member);
-//		
-//		
-//		return "member/mem_join_success";
-//	}
-	
-	
-	//회원가입저장(해싱작업추가)
-//	@PostMapping(value = "joinPro")
-//	public String joinPro(MemberVO member, Model model, HttpSession session) {
-//		String id = (String)session.getAttribute("sId");
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		String securePasswd = passwordEncoder.encode(member.getMember_pw());
-//		member.setMember_pw(securePasswd);
-//		int insertCount = service.registMember(member);
-//		if(insertCount > 0) { // 가입 성공
-//			service.insertPoint(id);
-//			return "member/mem_join_success";
-//		} else { // 가입 실패
-//			model.addAttribute("msg", "회원 가입 실패!");
-//			return "member/fail_back";
-//		}
-//		
-//	}
-	
-	// 회원가입
-	@PostMapping(value = "joinPro")
-	public String joinPro(@RequestParam HashMap<String, String> member, Model model) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String securePasswd = passwordEncoder.encode(member.get("member_pw"));
-		String member_address = member.get("member_address1") + "/" + member.get("member_address2");
-		member.put("member_pw", securePasswd);
-		member.put("member_address", member_address);
-		
-		int insertCount = service.registMember(member);
-		if(insertCount > 0) { // 가입 성공
-			service.insertPoint(member.get("member_id"));
-			return "member/mem_join_success";
-		} else { // 가입 실패
-			model.addAttribute("msg", "회원 가입 실패!");
-			return "member/fail_back";
-		}
-		
-	}
 	
 	
 	// 로그아웃
