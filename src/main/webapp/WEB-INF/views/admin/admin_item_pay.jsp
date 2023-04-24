@@ -63,9 +63,15 @@
                                     <div class="tabs-cont">
 										<div class="mb30">
 											<div class="inp-box1">
-												<input type="tel" id="member_tel" name="member_tel" class="inp-member onlyNumber" maxlength="11">
-												<button type="button" id="btnSend" class="btn-type1">검색</button>
-												<span id="phoneCheck"></span>
+												<form action="admin_item_pay">
+													<select name="searchType">
+														<option value="pay_code" <c:if test="${param.searchType eq 'pay_code'}">selected</c:if>>결제코드</option>
+														<option value="member_id" <c:if test="${param.searchType eq 'member_id'}">selected</c:if>>아이디</option>
+														<option value="pay_date" <c:if test="${param.searchType eq 'pay_date'}">selected</c:if>>결제날짜</option>
+													</select>
+													<input type="text" name="searchKeyword" value="${param.searchKeyword }">
+													<input type="submit" value="검색" />
+												</form>
 											</div>
 										</div>
                                     </div>

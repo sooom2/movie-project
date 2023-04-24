@@ -71,8 +71,12 @@ public class AdminController {
 	
 	// 상품 조회
 	@RequestMapping(value = "admin_item_register", method = {RequestMethod.GET, RequestMethod.POST})
-	public String itemRegister(Model model) {
-		List<HashMap<String, String>> itemList = itemService.selectItem();
+	public String itemRegister(
+								@RequestParam(defaultValue = "") String searchType,
+								@RequestParam(defaultValue = "") String searchKeyword,
+								Model model) {
+		
+		List<HashMap<String, String>> itemList = itemService.selectItem(searchType, searchKeyword);
 		model.addAttribute("itemList", itemList);
 		
 		return "admin/admin_item_register";
@@ -117,9 +121,12 @@ public class AdminController {
 	
 	// 결제 내역
 	@RequestMapping(value = "admin_item_pay", method = {RequestMethod.GET, RequestMethod.POST})
-	public String itemPay(Model model) {
+	public String itemPay(
+							@RequestParam(defaultValue = "") String searchType,
+							@RequestParam(defaultValue = "") String searchKeyword, 
+							Model model) {
 		
-		List<HashMap<String, String>> pay = itemService.selectPay();
+		List<HashMap<String, String>> pay = itemService.selectPay(searchType, searchKeyword);
 		model.addAttribute("pay", pay);
 		
 		return "admin/admin_item_pay";
