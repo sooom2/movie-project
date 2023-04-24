@@ -115,7 +115,7 @@ $(function() {
 						<li>가입 완료</li>
 						<li>가입 완료</li>
 					</ul>
-					<form name="form-join" id="form-join" method="post" action="memberJoin.me">
+					<form name="form-join" id="form-join" method="post" action="#">
 						<div class="wrap-inside">
 							<div class="join-social-desc">
 								<span>소셜 계정으로 가입</span>
