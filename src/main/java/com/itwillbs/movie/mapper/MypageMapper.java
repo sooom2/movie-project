@@ -49,4 +49,5 @@ public interface MypageMapper {
 	HashMap<String, String> resMovie(String id);
 
 
+
 }

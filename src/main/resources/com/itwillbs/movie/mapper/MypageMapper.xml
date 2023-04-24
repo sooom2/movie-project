@@ -232,6 +232,7 @@
 		sch_movie_date,
 		movie,
 		r.res_pay
+		ORDER BY r.res_paydate DESC
 
 
 
@@ -267,6 +268,8 @@
 		ORDER BY res_code DESC
 		LIMIT 1
 	</select>
+	
+
 	
 	
   	
