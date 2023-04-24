@@ -89,7 +89,6 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">MovieDate ${param.MovieDate}</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -456,9 +455,9 @@ function choiceEvent (e) {
 
 				
 				// 선택한 값 저장하고 reservationPay.jsp로 넘어감
-				$("#dataForm").append('<input type="hidden" id="seatNm" name="seatNm" value="' + $(this).data("nm") + '">')
-				$("#dataForm").append('<input type="hidden" id="seatLine" name="seatLine" value="' + $(this).data("line") + '">')
-				$("#dataForm").append('<input type="hidden" id="seatNum" name="seatNum" value="' + $(this).data("num") + '">')
+				$("#dataForm").append('<input type="hidden" id="seatNm" name="seatNm" value="' + $(this).data("nm") + '">');
+				$("#dataForm").append('<input type="hidden" id="seatLine" name="seatLine" value="' + $(this).data("line") + '">');
+				$("#dataForm").append('<input type="hidden" id="seatNum" name="seatNum" value="' + $(this).data("num") + '">');
 				
 		
 				// 클릭이벤트 연결

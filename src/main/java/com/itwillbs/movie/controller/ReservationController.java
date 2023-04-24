@@ -2,6 +2,8 @@ package com.itwillbs.movie.controller;
 
 import java.util.*;
 
+import javax.servlet.http.*;
+
 import org.apache.ibatis.annotations.*;
 import org.json.*;
 import org.springframework.beans.factory.annotation.*;
@@ -132,10 +134,13 @@ public class ReservationController {
 	
 	// 결제
 	@PostMapping("reservationPay")
-	public String reservationPay(ReservationVO vo, Model model) {
+	public String reservationPay(ReservationVO vo, Model model, HttpSession session) {
 		model.addAttribute("vo", vo);
+//		System.out.println("vo" + vo);
 		
-		System.out.println("브이오오오옹" + vo);
+		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> member = service.selectMemberId(id);
+		model.addAttribute("member", member);
 		
 		
 		return "reservation/reservation_pay";
@@ -153,10 +158,19 @@ public class ReservationController {
 	
 	
 	
-	// 결제 완료
-	@GetMapping("reservationResult")
-	public String reservationResult() {
-		return "reservation/resevation_result";
+	// 예매 결제 완료
+	@RequestMapping(value = "reservationSuccess", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reservationResult(ReservationVO vo, Model model, HttpSession session) {
+		model.addAttribute("vo", vo);
+		String id = (String)session.getAttribute("sId");
+		HashMap<String, String> member = service.selectMemberId(id);
+		model.addAttribute("member", member);
+		
+		int insertReservation = service.insertReservation(vo, id);
+		
+		
+		
+		return "reservation/reservation_success";
 	}
 	
 	

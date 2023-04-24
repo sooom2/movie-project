@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import = "java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +34,7 @@
 
 <div class="content">
 			<div class="inner2">
-	<form id="dataForm" method="post">
+	<form id="dataForm" method="post" action="reservationSuccess">
 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 				<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="${param.ScreenTime }">
@@ -51,7 +50,7 @@
 				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
 	
 	
-				<input type="hidden" id="totalAmt" name="totalAmt" value="${param.totalAmt }">
+				<input type="hidden" id="totalAmt" name="totalAmt" value="${vo.getTotalAmt() }">
 				<input type="hidden" id="totalCnt" name="totalCnt" value="${param.totalCnt }">
 				<input type="hidden" id="NormalCnt" name="NormalCnt" value="${param.NormalCnt }">
 				<input type="hidden" id="OldCnt" name="OldCnt" value="${param.OldCnt }">
@@ -63,8 +62,11 @@
 				<input type="hidden" id="YoungPrice" name="YoungPrice" value="${param.YoungPrice }">
 				
 				
-				<input type="hidden" id="SeatInfo" name="SeatInfo" value="${param.SeatInfo}">
+				<input type="hidden" id="SeatNm" name="SeatNm" value="${vo.getSeatNm() }">
+				<input type="hidden" id="SeatLine" name="SeatLine" value="${vo.getSeatLine() }">
+				<input type="hidden" id="SeatNum" name="SeatNum" value="${vo.getSeatNum() }">
 				
+				<input type="hidden" id="PaymentCd" name="PaymentCd" value="html5_inicis.INIBillTst">
 <!-- ------------------------------------------------------------------------------------------------------------------------- -->
 	
 <!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
@@ -118,39 +120,9 @@
 <!-- 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원" data-org="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원"> -->
 <!-- 				<input type="hidden" id="HoldGuID" name="HoldGuID" value="4468fe4b-3a89-43a8-a5ef-e76039398f67"> -->
 
-<!-- 				<input type="hidden" id="TotalAmt" name="TotalAmt" value="12000" data-org="12000"> -->
-				<input type="hidden" id="PaymentCd" name="PaymentCd" value="">
 				
-<!-- 				<input type="hidden" id="CatID" name="CatID" value=""> -->
-<!-- 				<input type="hidden" id="SimplePayOrdNo" name="SimplePayOrdNo" value=""> -->
-<!-- 				<input type="hidden" id="SimplePayBizNo" name="SimplePayBizNo" value=""> -->
-<!-- 				<input type="hidden" id="TaxCd" name="TaxCd" value=""> -->
-<!-- 				<input type="hidden" id="Installment" name="Installment" value=""> -->
 				
-<!-- 				<input type="hidden" id="NaverPayId" name="NaverPayId" value=""> -->
 				
-<!-- 				<input type="hidden" id="KSPayId" name="KSPayId" value=""> -->
-				
-<!-- 				<input type="hidden" id="KakaoPayCID" name="KakaoPayCID" value=""> -->
-<!-- 				<input type="hidden" id="KakaoPayTID" name="KakaoPayTID" value=""> -->
-<!-- 				<input type="hidden" id="KakaoPgToken" name="KakaoPgToken" value=""> -->
-				
-<!-- 				<input type="hidden" id="PaycoPccode" name="PaycoPccode" value=""> -->
-<!-- 				<input type="hidden" id="PaycoPcnumb" name="PaycoPcnumb" value=""> -->
-<!-- 				<input type="hidden" id="PaycoReqtr" name="PaycoReqtr" value=""> -->
-<!-- 				<input type="hidden" id="PaycoRpytr" name="PaycoRpytr" value=""> -->
-<!-- 				<input type="hidden" id="PaycoSellerKey" name="PaycoSellerKey" value=""> -->
-<!-- 				<input type="hidden" id="PaycoWtrno" name="PaycoWtrno" value=""> -->
-				
-<!-- 				<input type="hidden" id="KeyinKindCd" name="KeyinKindCd" value=""> -->
-<!-- 				<input type="hidden" id="KeyinKindSubCd" name="KeyinKindSubCd" value=""> -->
-<!-- 				<input type="hidden" id="KeyinPaymentCd" name="KeyinPaymentCd" value=""> -->
-<!-- 				<input type="hidden" id="KeyinPaymentSubCd" name="KeyinPaymentSubCd" value=""> -->
-<!-- 				<input type="hidden" id="KeyinCardNo" name="KeyinCardNo" value=""> -->
-<!-- 				<input type="hidden" id="KeyinValidThru" name="KeyinValidThru" value=""> -->
-<!-- 				<input type="hidden" id="KeyinPassword" name="KeyinPassword" value=""> -->
-<!-- 				<input type="hidden" id="KeyinIdentityNo" name="KeyinIdentityNo" value=""> -->
-<!-- 				<input type="hidden" id="KeyinGuId" name="KeyinGuId" value=""> -->
 		
 				
 			
@@ -162,11 +134,8 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">${vo.getCinemaCd() }</h4>
 									
 									<div class="right">
-										<!-- <a href="javascript:goLink('/support/guide.do');" class="btn-link">예매가이드</a>
-										<a href="#" class="btn-link">ENG</a> -->
 										<a href="reservation" class="btn-refresh">예매다시하기</a>
 									</div>
 								</div>
@@ -180,34 +149,34 @@
 										</div>
 										<div class="cont">
 											<div class="pay-mv">
-												<div class="img"><img src="${param.HidMovieUrl }"></div>
-												<h4>${param.MovieNm }</h4>
+												<div class="img"><img src="${vo.getHidMovieUrl() }"></div>
+												<h4>${vo.getMovieNm() }</h4>
 												<div class="info">
-													<p>${param.showDate } 개봉</p>
+													<p>${vo.getShowDate() } 개봉</p>
 												</div>
 												<dl>
 													<dt>장르</dt>
-													<dd>${param.genre }</dd>
+													<dd>${vo.getGenre() }</dd>
 												</dl>
 												<dl>
 													<dt>극장</dt>
-													<dd>${param.CinemaNm }</dd>
+													<dd>${vo.getCinemaNm() }</dd>
 												</dl>
 												<dl>
 													<dt>날짜</dt>
-													<dd>${param.MovieDate }</dd>
+													<dd>${vo.getMovieDate() }</dd>
 												</dl>
 												<dl>
 													<dt>인원</dt>
-													<dd>${param.totalCnt }명</dd>
+													<dd>${vo.getTotalCnt() }명</dd>
 												</dl>
 												<dl>
 													<dt>상영관</dt>
-													<dd>${param.ScreenNm }</dd>
+													<dd>${vo.getScreenNm() }</dd>
 												</dl>
 												<dl>
 													<dt>시간</dt>
-													<dd>${param.ScreenTime }</dd>
+													<dd>${vo.getScreenTime() }</dd>
 												</dl>
 												<dl>
 													<dt>좌석</dt>
@@ -229,25 +198,10 @@
 												<div class="pay-kinds">
 													<ul>
 														<li><button type="button" name="payChoice" class="btn-payks active" data-cd="card" data-msg="" value="html5_inicis.INIBillTst"><img src="https://img.dtryx.com/payment/2022/01/cardkeyin.small.png" >신용/체크카드</button></li>
-<!-- 														<li><button type="button" class="btn-payks" data-cd="cardlink" data-msg="" value="kakaopay.TC0ONETIME"><img src="https://img.dtryx.com/payment/2022/01/cardlink1.small.png">카드(간편결제)</button></li> -->
-<!-- 														<li><button type="button" class="btn-payks" data-cd="naverpay" data-msg=""><img src="https://img.dtryx.com/payment/2022/01/npay1.small.png">네이버페이</button></li> -->
 														<li><button type="button" name="payChoice" class="btn-payks" data-cd="kakaopay" data-msg="" value="kakaopay.TC0ONETIME"><img src="https://img.dtryx.com/payment/2022/01/kakaopay.small.png">카카오페이</button></li>
 														<li><button type="button" name="payChoice" class="btn-payks" data-cd="toss" data-msg="" value="tosspay.tosstest"><img src="resources/images/rsv/toss.jpg">토스페이</button></li>
 													</ul>
 												</div>
-<!-- 										   <div class="choice"> -->
-<!-- 					                            <div class="inbox"> -->
-<!-- 					                                <p class="txt">결제수단 선택</p> -->
-<!-- 					                                    <div class="cell"> -->
-<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="html5_inicis.INIBillTst"> -->
-<!-- 					                                        <label for="radio_choice01">신용/체크카드</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="kakaopay.TC0ONETIME"> -->
-<!-- 					                                        <label for="radio_choice01">카카오페이</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 					                                        <input type="radio" id="radio_choice01" name="radio_choice" value="tosspay.tosstest"> -->
-<!-- 					                                        <label for="radio_choice01">토스페이</label> -->
-<!-- 					                                    </div> -->
-<!-- 					                            </div> -->
-<!-- 							                </div> -->
 												<div class="desc1">
 													<ul>
 <!-- 														<li>디트릭스 영화예매의 신용카드 결제서비스는 ㈜케이에스넷에서 제공합니다.</li> -->
@@ -286,10 +240,6 @@
 											<h3>최종결제</h3>
 										</div>
 									<div class="cont">
-<!-- 											<dl class="price1"> -->
-<!-- 												<dt>티켓금액(6매)</dt> -->
-<!-- 												<dd>32,000원</dd> -->
-<!-- 											</dl> -->
 											<dl class="price2">
 															<dt>성인 (10,000원 x ${param.NormalCnt }명)</dt>
 															<dd>${param.NormalPrice }원</dd>
@@ -350,10 +300,6 @@
 		</div>
 
 	<script type="text/javascript">
-	var ticketList = [];
-	var ctypeList = [];
-	
-	
 	
 	var IMP = window.IMP; 
 	IMP.init("imp61826822"); 
@@ -363,31 +309,30 @@
 			IMP.request_pay({
 		        pg : $('#PaymentCd').val(),
 		        pay_method : 'card',
-		        merchant_uid: "code" + new Date().getTime(), 
-		        name : '결제 테스트',
-		        amount : $(".totalAmt").text(),
-		        buyer_email : 'buyer_email',
-		        buyer_name : 'buyer_name',
-		        buyer_tel : 'buyer_tel',
-// 		        buyer_email : '${member.get('member_email')}',
-// 		        buyer_name : '${member.get('member_name')}',
-// 		        buyer_tel : '${member.get('member_tel')}',
+		        merchant_uid: "res" + new Date().getTime(), 
+		        name : '영화 결제',
+		        amount : ${param.totalAmt },
+		        buyer_email : '${member.get('member_email')}',
+		        buyer_name : '${member.get('member_name')}',
+		        buyer_tel : '${member.get('member_tel')}',
 		        
 		    }, function (rsp) { // callback
 		        if (rsp.success) {
 				    alert("결제가 완료되었습니다.");
-				    location.href = "reservationResult" ;
-// 				    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" 
-// 				    				+ rsp.pay_method + "&pay_price=" + rsp.paid_amount
-// 				    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')} 
-// 				    				+ "&point=" + $("#totDcAmtView").text();
+					$("#dataForm").append('<input type="hidden" id="resCode" name="resCode" value="' + rsp.merchant_uid + '">');
+					$("#dataForm").append('<input type="hidden" id="resPayment" name="resPayment" value="' + rsp.pay_method + '">');
+					$("#dataForm").append('<input type="hidden" id="resPay" name="resPay" value="' + rsp.paid_amount + '">');
+					$("#dataForm").append('<input type="hidden" id="resPayDone" name="resPayDone" value="' + rsp.status + '">');
+					$("#dataForm").submit();
+					
 		        } else {
-		            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
+		            alert("실패 : 코드" + rsp.error_code + ") / 메세지()"
 		            	  + rsp.error_msg + ")");
 		        }
 		    });
 	    
 	}
+	
 	
 	
 	
@@ -407,7 +352,7 @@
 
 		
 		
-		// 결제수단 css
+		// 결제수단
 		$(".btn-payks").on("click", function(e) {
 			if ($(this).data("msg") != "") {
 				Alert($(this).data("msg"));
@@ -416,24 +361,12 @@
 			$(".btn-payks").removeClass("active");
 			$(this).addClass("active");
 			$("#PaymentCd").val($(this).val());
-// 			console.log($("#PaymentCd").val());
 		});
 		
-		//결제하기
+// 		결제하기
 		$(".btnPayment").on("click", function() {
-// 			if ($("#TotalAmt").val() == 0) {
-// 				$(".fav-wrap").show();
-// 				payResult();
-// 				return;
-// 			}
-			
-// 			var cd = $("#PaymentCd").val();
-// 			if (cd == "") {
-// 				mAlert("결제수단을 선택해주세요.");
-// 				return;
-// 			}
 		
-		requestPay();
+			requestPay();
 
 	});
 });

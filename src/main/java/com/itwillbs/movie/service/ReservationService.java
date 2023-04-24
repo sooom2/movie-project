@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.itwillbs.movie.mapper.*;
+import com.itwillbs.movie.vo.*;
 
 
 @Service
@@ -34,6 +35,14 @@ public class ReservationService {
 
 	public List<HashMap<String, String>> selectReservationList(String schCd) {
 		return mapper.selectReservationList(schCd);
+	}
+
+	public HashMap<String, String> selectMemberId(String id) {
+		return mapper.selectMemberId(id);
+	}
+
+	public int insertReservation(ReservationVO vo, String id) {
+		return mapper.insertReservation(vo, id);
 	}
 
 	

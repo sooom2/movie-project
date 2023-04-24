@@ -26,14 +26,20 @@ public class ReservationVO {
 	private String seatNm;
 	private String seatLine;
 	private String seatNum;
+	private String resCode;
+	private String resPayment;
+	private String resPay;
+	private String resPayDone;
+	
 	public ReservationVO() {
 	}
 	
+
 	public ReservationVO(String cinemaCd, String movieCd, String screenTime, String screenCd, String movieNm,
 			String cinemaNm, String hidMovieUrl, String hidRating, String schCd, String showDate, String genre,
 			String screenNm, String movieDate, String totalAmt, String totalCnt, String normalCnt, String oldCnt,
 			String youngCnt, String ticketAmt, String normalPrice, String oldPrice, String youngPrice, String seatNm,
-			String seatLine, String seatNum) {
+			String seatLine, String seatNum, String resCode, String resPayment, String resPay, String resPayDone) {
 		super();
 		CinemaCd = cinemaCd;
 		MovieCd = movieCd;
@@ -60,7 +66,12 @@ public class ReservationVO {
 		this.seatNm = seatNm;
 		this.seatLine = seatLine;
 		this.seatNum = seatNum;
+		this.resCode = resCode;
+		this.resPayment = resPayment;
+		this.resPay = resPay;
+		this.resPayDone = resPayDone;
 	}
+
 
 	public String getCinemaCd() {
 		return CinemaCd;
@@ -212,6 +223,48 @@ public class ReservationVO {
 	public void setSeatNum(String seatNum) {
 		this.seatNum = seatNum;
 	}
+
+
+	public String getResCode() {
+		return resCode;
+	}
+
+
+	public void setResCode(String resCode) {
+		this.resCode = resCode;
+	}
+
+
+	public String getResPayment() {
+		return resPayment;
+	}
+
+
+	public void setResPayment(String resPayment) {
+		this.resPayment = resPayment;
+	}
+
+
+	public String getResPay() {
+		return resPay;
+	}
+
+
+	public void setResPay(String resPay) {
+		this.resPay = resPay;
+	}
+
+
+	public String getResPayDone() {
+		return resPayDone;
+	}
+
+
+	public void setResPayDone(String resPayDone) {
+		this.resPayDone = resPayDone;
+	}
+
+
 	@Override
 	public String toString() {
 		return "ReservationVO [CinemaCd=" + CinemaCd + ", MovieCd=" + MovieCd + ", ScreenTime=" + ScreenTime
@@ -221,7 +274,8 @@ public class ReservationVO {
 				+ ", totalCnt=" + totalCnt + ", NormalCnt=" + NormalCnt + ", OldCnt=" + OldCnt + ", YoungCnt="
 				+ YoungCnt + ", TicketAmt=" + TicketAmt + ", NormalPrice=" + NormalPrice + ", OldPrice=" + OldPrice
 				+ ", YoungPrice=" + YoungPrice + ", seatNm=" + seatNm + ", seatLine=" + seatLine + ", seatNum="
-				+ seatNum + "]";
+				+ seatNum + ", resCode=" + resCode + ", resPayment=" + resPayment + ", resPay=" + resPay
+				+ ", resPayDone=" + resPayDone + "]";
 	}
 	
 	

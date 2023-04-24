@@ -4,6 +4,8 @@ import java.util.*;
 
 import org.apache.ibatis.annotations.*;
 
+import com.itwillbs.movie.vo.*;
+
 public interface ReservationMapper {
 	// 영화관 조회
 	List<HashMap<String, String>> selectCinema();
@@ -19,5 +21,9 @@ public interface ReservationMapper {
 
 
 	List<HashMap<String, String>> selectReservationList(String schCd);
+
+	HashMap<String, String> selectMemberId(String id);
+
+	int insertReservation(ReservationVO vo, String id);
 	
 }
