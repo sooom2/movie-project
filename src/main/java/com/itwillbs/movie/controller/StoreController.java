@@ -51,7 +51,7 @@ public class StoreController {
 	
 	// 스토어 결제
 	@RequestMapping(value = "store_pay", method = {RequestMethod.GET, RequestMethod.POST})
-	public String store_pay(@RequestParam String item_code, @RequestParam String item_price, HttpSession session, Model model) {
+	public String store_pay(@RequestParam String item_code, @RequestParam String item_price, @RequestParam String item_count, HttpSession session, Model model) {
 		HashMap<String, String> item = service.selectCode(item_code);
 		String id = (String)session.getAttribute("sId");
 		HashMap<String, String> member = service.selectMemberId(id);
@@ -62,11 +62,12 @@ public class StoreController {
 		// 포인트 조회
 		String point = service.selectPoint(id);
 		model.addAttribute("point", point);
-		
+		model.addAttribute("item_count", item_count);
 		
 		if(id == null) {
 			model.addAttribute("msg", "로그인 후 이용가능합니다.");
-			return "member/fail_back";
+			model.addAttribute("target", "memLogin");
+			return "success";
 		} else {
 			return "store/store_pay";
 		}

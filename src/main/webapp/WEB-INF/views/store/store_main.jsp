@@ -12,7 +12,15 @@
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+$(function() {
+	$('ul.tab li').click(function() {
+		var activeTab = $(this).attr('data-tab');
+		$('ul.tab li').removeClass('current');
+		$('.tabcontent').removeClass('current');
+		$(this).addClass('current');
+		$('#' + activeTab).addClass('current');
+	})
+});
 </script>
 
 </head>
@@ -48,9 +56,7 @@
 								</div>
 								<div class="info">
 									<div class="tit">
-										<!-- 제품명 최대 2줄 -->
 										<p class="name">${gift.get('item_name') }</p>
-										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">${gift.get('item_detail') }</p>
 									</div>
 									<div class="price">
@@ -66,8 +72,8 @@
 					</ul>
 				</div>
 			</div>
+			<!-- store-list -->
 			<div id="tab2" class="tabcontent">
-				<!-- store-list -->
 				<div class="store-list mt30">
 					<ul class="list">
 						<c:forEach var="food" items="${food }">
@@ -82,9 +88,7 @@
 								</div>
 								<div class="info">
 									<div class="tit">
-										<!-- 제품명 최대 2줄 -->
 										<p class="name">${food.get('item_name') }</p>
-										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">${food.get('item_detail') }</p>
 									</div>
 									<div class="price">
@@ -116,9 +120,7 @@
 								</div>
 								<div class="info">
 									<div class="tit">
-										<!-- 제품명 최대 2줄 -->
 										<p class="name">${ticket.get('item_name') }</p>
-										<!-- 제품구성 최대 2줄 -->
 										<p class="bundle">${ticket.get('item_detail') }</p>
 									</div>
 									<div class="price">
@@ -137,19 +139,6 @@
 		</div>
 		</div>
 	</div>
-	<!-- 탭 스크립트 -->
-	<script>
-		$(function() {
-			$('ul.tab li').click(function() {
-				var activeTab = $(this).attr('data-tab');
-				$('ul.tab li').removeClass('current');
-				$('.tabcontent').removeClass('current');
-				$(this).addClass('current');
-				$('#' + activeTab).addClass('current');
-			})
-		});
-	</script>
-	
 	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

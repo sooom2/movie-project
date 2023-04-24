@@ -60,6 +60,15 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">스토어 결제 관리</h3></div>
                                     <div class="card-body">
+                                    <div class="tabs-cont">
+										<div class="mb30">
+											<div class="inp-box1">
+												<input type="tel" id="member_tel" name="member_tel" class="inp-member onlyNumber" maxlength="11">
+												<button type="button" id="btnSend" class="btn-type1">검색</button>
+												<span id="phoneCheck"></span>
+											</div>
+										</div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

@@ -72,24 +72,14 @@
                                 </div>
                         </div>
                     </div>
-                    <!--// goods-info -->
-
-                    <!--
-                        판매종료일때는 각 select, button 에 disabled 처리
-                    -->
-                    <!-- type -->
                     <div class="type">
-                        <!-- 수량 금액 일 때 -->
-
-                        <!--// 수량 금액 일 때 -->
-<!-- 기프트카드  -->
                         <div class="receipt">
                             <div class="line">
                                 <p class="tit"><span class="line32">수량/금액</span></p>
                                 <div class="cont">
                                     <button type="button" class="btn minus" title="수량감소">
                                     <i class="iconset ico-minus"></i></button>
-                                    <input type="text" title="수량 입력" class="input-text" readonly="readonly" value="1" min="1" max="100">
+                                    <input type="text" id="itemCount" title="수량 입력" class="input-text" readonly="readonly" value="1" min="1" max="100">
                                     <button type="button" class="btn plus" title="수량증가">
                                     <i class="iconset ico-plus"></i></button>
                                     <div class="money">
@@ -553,7 +543,7 @@
 		});
 		
 		function buy() {
-			location.href = "store_pay?item_code=${item.get('item_code') }&item_price=" + $('#prdtSumAmt').text();
+			location.href = "store_pay?item_code=${item.get('item_code') }&item_price=" + $('#prdtSumAmt').text() + "&item_count=" + $('#itemCount').val();
 		}
 	</script>
 </body>

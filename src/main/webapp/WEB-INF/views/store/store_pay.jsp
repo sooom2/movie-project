@@ -178,7 +178,7 @@ $(function() {
                             <td>
                                                         <a href="#" class="a-link" name="brchList" title="사용가능극장 확인">사용가능극장 확인</a>
                             </td>
-                            <td><em id="purcQtyView">1</em></td>
+                            <td><em id="purcQtyView">${item_count }</em></td>
                             <td>
                                 <div class="goods-info">
 	                                    	<em id="prdtSumAmtView" class="price">${item_price }</em>원

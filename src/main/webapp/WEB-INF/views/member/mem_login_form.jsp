@@ -15,23 +15,6 @@
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript">
 
-
-
-function doDisplay(){
-	let dis = document.querySelector(".modal-type2");
-	
-	if(dis.style.display="none"){
-		dis.style.display="block"
-		
-	} else{
-		dis.style.display="none";
-	}
-}
-
-function modalClose(){
-	 $('.modal-type2').hide();
-}
-
 // 카카오 로그인
 Kakao.init('bf0c05681627cc5d65f40192f843de1b'); 
 Kakao.isInitialized(); 
@@ -125,14 +108,10 @@ $(function() {
         return unescape(cookieValue);
     }
 	
-	
-	
+    
+    
+    
 });
-
-
-
-
-
 </script>
 </head>
 <body>
@@ -140,11 +119,9 @@ $(function() {
 	<div class="member mem-login">
 		<div class="list-tabs">
 			<a href="memLogin" class="active">회원 로그인</a>
-<!-- 			<a href="javascript:goSubmit('/guest/join.do', 'dataForm');">비회원 예매 및 확인</a> -->
 			<a href="guestRsv">비회원 예매 및 확인</a>
 		</div>
 
-<!-- 		탭 -->
 		<div class="tabs-cont">
 			<div class="cont">
 				<form id="loginForm"  action ="loginPro" method="post">
@@ -152,7 +129,6 @@ $(function() {
 					<a href="findId">아이디/비밀번호 찾기</a>
 					<a href="memAuth">회원가입</a>
 					</div>
-<!-- 					<input type="hidden" name="cgid" value=""> -->
 					<div class="member-detail">
                       <label class="label-input" for="memberid"><span>아이디</span><input type="text" id="memberid" class="input" name="member_id" value="" placeholder="아이디를 입력해주세요"><span></span></label>
                     </div>
@@ -176,42 +152,16 @@ $(function() {
 						</div>
 					</div>
 				</div>
-				<!-- 회원 비밀번호 찾기 모달창 -->
-		<div class="modal modal-type2" id="findPwd" tabindex="-1" style="display: none;">
-			<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4>회원 비밀번호 찾기</h4>
-						<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
-					</div>
-					<div class="modal-body">
-						<h3 class="h3-member">아이디</h3>
-						<div class="mb20"><input type="text" id="memberId" class="inp-member onlyNumber" placeholder="아이디를 입력해주세요" maxlength="8"></div>
-						<h3 class="h3-member">이메일주소</h3>
-						<div class="inp-box1 mb20">
-							<input type="tel" id="memberEmail" class="inp-member onlyNumber" placeholder="이메일주소를 입력해주세요">
-						</div>
-					</div>
-					<div class="modal-bottom flex">
-						<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
-						<button type="button" class="btn-modal2" id="btnFind">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<form id="form-kakao-login" method="post" action="kakaoLogin">
    			<input type="hidden" name="email"/>
    			<input type="hidden" name="name"/>
    			<input type="hidden" name="gender"/>
    			<input type="hidden" name="accessToken"/>
    		</form>
-   		
    		<form id="form-naver-login" method="post" action="naver">
    			<input type="hidden" name="email"/>
    			<input type="hidden" name="name"/>
    		</form>
-	
-	
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />

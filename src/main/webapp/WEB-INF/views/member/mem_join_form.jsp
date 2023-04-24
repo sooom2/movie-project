@@ -13,6 +13,8 @@
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+// 다음 주소 API
 window.onload = function(){
     document.getElementById("postSearch").addEventListener("click", function(){
        
@@ -25,6 +27,8 @@ window.onload = function(){
     });
 }
 
+
+// 입력 검증.
 $(function() {
 	let idStatus = false;
 	
@@ -153,8 +157,6 @@ $(function() {
 	
 	
 });
-
-
 </script>
 </head>
 <body>
@@ -289,14 +291,8 @@ $(function() {
 						<input type="submit" value="회원가입" id="btn-join2" class="btn-join">
 					</form>
 				</div>
-						
-<!-- 				<a href="joinPro" id="btn-join2" class="btn-join">회원가입</a> -->
 			</div>
-
 		</div>
 	</div>
-
-
-
 </body>
 </html>
