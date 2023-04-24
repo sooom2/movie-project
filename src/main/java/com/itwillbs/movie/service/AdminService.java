@@ -17,8 +17,8 @@ public class AdminService {
 		return mapper.registItem(item);
 	}
 
-	public List<HashMap<String, String>> selectItem() {
-		return mapper.selectItem();
+	public List<HashMap<String, String>> selectItem(String searchType, String searchKeyword) {
+		return mapper.selectItem(searchType, searchKeyword);
 	}
 
 	public int deleteItem(String item_code) {
@@ -30,8 +30,8 @@ public class AdminService {
 	}
 	
 	// 결제 내역 조회
-	public List<HashMap<String, String>> selectPay() {
-		return mapper.selectPay();
+	public List<HashMap<String, String>> selectPay(String searchType, String searchKeyword) {
+		return mapper.selectPay(searchType, searchKeyword);
 	}
 	
 	// 결제 내역 삭제

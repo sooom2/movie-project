@@ -29,7 +29,7 @@ public interface MyBatisMapper {
 	int registItem(HashMap<String, String> item);
 	
 	// 관리자 상품 목록
-	List<HashMap<String, String>> selectItem();
+	List<HashMap<String, String>> selectItem(@Param("searchType") String searchType,@Param("searchKeyword") String searchKeyword);
 	
 	// 관리자 상품 삭제
 	int deleteItem(String item_code);
@@ -38,7 +38,7 @@ public interface MyBatisMapper {
 	int updateItem(HashMap<String, String> item);
 	
 	// 관리자 결제 조회
-	List<HashMap<String, String>> selectPay();
+	List<HashMap<String, String>> selectPay(@Param("searchType") String searchType,@Param("searchKeyword") String searchKeyword);
 	
 	// ----------------------------------------------------------------------------------------
 	

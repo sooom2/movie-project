@@ -122,6 +122,17 @@
                 </main><br><br>
                 <hr><br><br>
                 <div class="datatable-container">
+	                <form action="admin_item_register">
+	                	<div align="center">
+						<select name="searchType">
+							<option value="item_type" <c:if test="${param.searchType eq 'item_type'}">selected</c:if>>상품타입</option>
+							<option value="item_name" <c:if test="${param.searchType eq 'item_name'}">selected</c:if>>상품이름</option>
+							<option value="item_status" <c:if test="${param.searchType eq 'item_status'}">selected</c:if>>상품상태</option>
+						</select>
+						<input type="text" name="searchKeyword" value="${param.searchKeyword }">
+						<input type="submit" value="검색" />
+						</div>
+					</form><br><br>
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>

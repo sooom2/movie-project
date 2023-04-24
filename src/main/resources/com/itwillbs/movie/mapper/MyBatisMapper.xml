@@ -85,8 +85,21 @@
 	</select>
 	
 	<select id="selectItem" resultType="hashmap">
-		SELECT * 
-			FROM item
+		SELECT * FROM item
+			<if test="!searchKeyword.equals('')">
+			WHERE
+			<choose>
+				<when test="searchType.equals('item_type')">
+					item_type LIKE '%${searchKeyword}%'
+				</when>
+				<when test="searchType.equals('item_name')">
+					item_name LIKE '%${searchKeyword}%'
+				</when>
+				<when test="searchType.equals('item_status')">
+					item_status LIKE '%${searchKeyword}%'
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<delete id="deleteItem">
@@ -161,6 +174,20 @@
 	<!-- 결제 조회 -->
 	<select id="selectPay" resultType="hashmap">
 		SELECT * FROM pay
+		<if test="!searchKeyword.equals('')">
+			WHERE
+			<choose>
+				<when test="searchType.equals('pay_code')">
+					pay_code LIKE '%${searchKeyword}%'
+				</when>
+				<when test="searchType.equals('member_id')">
+					member_id LIKE '%${searchKeyword}%'
+				</when>
+				<when test="searchType.equals('pay_date')">
+					pay_date LIKE '%${searchKeyword}%'
+				</when>
+			</choose>
+		</if>
 	</select>
 	
 	<!-- 결제 내역 삭제 -->
