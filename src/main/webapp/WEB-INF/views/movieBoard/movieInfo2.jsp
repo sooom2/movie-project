@@ -36,7 +36,7 @@
 					<li><span>감 &nbsp; &nbsp; &nbsp;독 : </span> ${movieInfo.info_director }</li>
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
-				 <a href="reservation" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">예매하기</a>
+				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">${movieInfo.status }</a>
 				<!-- !!상영예정작인 영화는 예매하기가 아닌 상영예정이라고 표시해야함!! -->
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
@@ -94,6 +94,11 @@
         $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
             $(this).closest("ul").find("span.over").removeClass("on");
         });
+        if($(".btn-rsv").html()==("예매하기")){
+        	$(".btn-rsv").attr('href', 'reservation')
+        	
+        }
+        
  });
  </script>
 <jsp:include page="../footer.jsp"/>
