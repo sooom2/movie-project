@@ -8,10 +8,10 @@ import com.itwillbs.movie.vo.BoardVO;
 public interface BoardMapper {
 
 	// 분실물 등록
-	int insertLostBoard(BoardVO board);
+	int insertLostBoard(HashMap<String, String> map);
 	
 	// 분실물 목록
-	List<BoardVO> selectLostBoardList();
+	List<HashMap<String, String>> selectLostBoardList(HashMap<String, String> map);
 
 	// 분실물 상세
 	HashMap<String, String> selectLostDetail(HashMap<String, String> map);

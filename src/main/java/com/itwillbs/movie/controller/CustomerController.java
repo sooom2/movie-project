@@ -1,8 +1,10 @@
 package com.itwillbs.movie.controller;
 
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,14 +90,26 @@ public class CustomerController {
 	
 	// 분실물 문의 페이지 목록
 	@RequestMapping(value = "lost_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String lostBoard(Model model) {
+	public String lostBoard(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
 		
-		List<BoardVO> lostBoardList = boardService.getLostBoardList();
-		model.addAttribute("lostBoardList", lostBoardList);
+		response.setCharacterEncoding("UTF-8");
+		
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		List<HashMap<String, String>> lostBoardList = boardService.getLostBoardList(map);
+		if(lostBoardList.size() > 0) {
+			HashMap<String, String> countMap = lostBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-		model.addAttribute("listCount", lostBoardList.size());
-//		System.out.println("Controller: " + model);
+		model.addAttribute("paramMap", map);
+		model.addAttribute("lostBoardList", lostBoardList);
+		System.out.println("lostBoard 컨트롤러" + model);
+		
 		return "customer_center/lost_board";
 	}
 	
@@ -116,8 +130,9 @@ public class CustomerController {
 	
 	// 분실물 문의 등록
 	@PostMapping(value = "/lostWritePro")
-	public String lostWritePro(BoardVO board, Model model) {
-		int insertCount = boardService.registLostBoard(board);
+	public String lostWritePro(@RequestParam HashMap<String, String> map, Model model) {
+		int insertCount = boardService.registLostBoard(map);
+		model.addAttribute("map", map);
 		if(insertCount > 0) {
 			
 			return "redirect:/lost_board";
@@ -174,6 +189,7 @@ public class CustomerController {
 			model.addAttribute("memberName", map.get("one_name"));
 			model.addAttribute("memberEmail", map.get("one_email"));
 			model.addAttribute("memberTel", map.get("one_tel"));
+			System.out.println("1:1 문의 등록 모델" + model);
 			return "redirect:/one_list";
 		} 
 		else {
@@ -197,7 +213,6 @@ public class CustomerController {
 		}
 		model.addAttribute("paramMap", map);
 		model.addAttribute("oneBoardList", oneBoardList);
-		model.addAttribute("listCount", oneBoardList.size());
 		System.out.println("oneList 컨트롤러" + model);
 		
 		
@@ -385,9 +400,9 @@ public class CustomerController {
 	
 	// 관리자 분실물 문의 페이지
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminLostBoard(Model model) {
+	public String adminLostBoard(@RequestParam HashMap<String, String> map, Model model) {
 		
-		List<BoardVO> lostBoardList = boardService.getLostBoardList();
+		List<HashMap<String, String>> lostBoardList = boardService.getLostBoardList(map);
 		model.addAttribute("lostBoardList", lostBoardList);
 //		System.out.println("Controller: " + model);
 		return "admin/admin_lost_board";

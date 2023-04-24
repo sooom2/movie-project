@@ -13,6 +13,17 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
+<script type="text/javascript">
+function NotReload(){
+    if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+        event.keyCode = 0;
+        event.cancelBubble = true;
+        event.returnValue = false;
+       	alert("이미 회원가입이 완료되었습니다.");
+    } 
+}
+document.onkeydown = NotReload;
+</script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -39,7 +50,7 @@
 							</div>
 							<div class="btns">
 								<a href="main" class="btn-type-main">메인화면</a>
-								<a href="javascript:goLink('/member/login.do');" class="btn-typep-login">로그인</a>
+								<a href="memLogin" class="btn-typep-login">로그인</a>
 							</div>
 						</div>
 					</div>

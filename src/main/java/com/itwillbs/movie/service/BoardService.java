@@ -15,17 +15,17 @@ public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 	
-	// 분실물 저장
-	public int registLostBoard(BoardVO board) {
+	// 분실물 글 등록
+	public int registLostBoard(HashMap<String, String> map) {
 		
 //		System.out.println("BoardService" + board);
-		return mapper.insertLostBoard(board);
+		return mapper.insertLostBoard(map);
 	}
 	
 	// 고객센터 홈 분실물 목록과 관리자 분실물 목록
-	public List<BoardVO> getLostBoardList() {
+	public List<HashMap<String, String>> getLostBoardList(HashMap<String, String> map) {
 //		System.out.println("service: " + mapper.selectLostBoardList());
-		return mapper.selectLostBoardList();
+		return mapper.selectLostBoardList(map);
 	}
 
 	// 분실물 상세
