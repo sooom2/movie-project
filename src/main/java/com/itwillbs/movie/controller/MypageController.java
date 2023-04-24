@@ -27,19 +27,22 @@ public class MypageController {
 	public String mypageR(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		
-
-		
 		if(id ==null) {
 			return "redirect:/memLogin";
 		}
+		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
+		
 		List<HashMap<String,String>> resList = service.resList(id);
 		model.addAttribute("resList", resList);
+		
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
+		
 		return "mypage/mypage_rsv_form";
 	} 
 	
@@ -69,8 +72,10 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
+		
 		List<HashMap<String,String>> payList = service.payList(id);
 		model.addAttribute("payList", payList);
 		
@@ -88,9 +93,9 @@ public class MypageController {
 		String id = (String)session.getAttribute("sId");
 		
 		
-		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
 		
@@ -106,11 +111,10 @@ public class MypageController {
 	//회원정보수정
 	@GetMapping(value = "mypageI")
 	public String mypageI(HttpSession session, Model model) {
-		
 		String id = (String)session.getAttribute("sId");
+		
 		List<HashMap<String, String>> cinemaList = service.cinemaList(id);
 		model.addAttribute("cinemaList", cinemaList);
-		
 		
 		
 		if(id ==null) {
@@ -120,14 +124,20 @@ public class MypageController {
 		
 		MemberVO member = service.getMemberInfo(id);
 		model.addAttribute("member", member);
+		
 		return "mypage/mypage_info_form";
 	}
+	
 	//회원정보수정
 	@PostMapping(value = "updatePro")
 	public String updatePro(@RequestParam HashMap<String, String> update, Model model, HttpSession session ) {
 		String id = (String)session.getAttribute("sId");
+		
+		// 주소 저장시 '/' 으로 구분해서 저장
 		String member_address = update.get("member_address1") + "/" + update.get("member_address2");
+		
 		update.put("member_address", member_address);
+		
 		if(id == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "fail_back";
@@ -163,9 +173,11 @@ public class MypageController {
 	//회원탈퇴
 	@PostMapping(value = "quitPro")
 	public String quitPro(@RequestParam HashMap<String, String> quit, HttpSession session, Model model ) {
+		
 		//세션아이디 저장
 		String id = (String)session.getAttribute("sId");
 		String password = quit.get("member_pw");
+		
 		//아이디와 일치하는 레코드의 패스워드 조회
 		String dbPasswd = service.getPasswd(id);
 		
@@ -204,6 +216,7 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
 		
@@ -225,15 +238,22 @@ public class MypageController {
 		String id = (String)session.getAttribute("sId");
 		review.put("id", id);
 		
+		// 리뷰 작성시 별점이나 후기글을 작성 하지 않으면 작성 실패!! 
 		if (review.get("rev_rating") == null || review.get("rev_content") == null) {
+			
 		    model.addAttribute("msg", "리뷰 작성에 실패했습니다. 별점을 선택하고 리뷰를 작성하세요.");
+		  
 		    return "fail_back";
+		    
 		}
 
 	    int count = service.checkReview(id);
-
-	    if (count > 0) { // 이미 작성한 리뷰가 있다면 중복 등록 방지
+	    
+	    // 이미 작성한 리뷰가 있다면 중복 등록 방지
+	    if (count > 0) { 
+	    	
 	        model.addAttribute("msg", "이미 작성한 리뷰가 있습니다.");
+	        
 	        return "fail_back";
 	    }
 		
@@ -243,16 +263,19 @@ public class MypageController {
 			
 			model.addAttribute("msg", "리뷰가 등록되고 500포인트가 적립되었습니다.");
 			model.addAttribute("target", "mypageRv");
+			
+			//리뷰 등록시 포인트 등록 및 회원정보 포인트 업데이트
 			service.insertPoint(id);
 			service.updatePoint(id);
-			
 
 			return "success";
 		
 		} else {
 			
 			model.addAttribute("msg", "리뷰 등록 실패!");
+			
 			return "fail_back";
+			
 		}
 		
 		
@@ -265,13 +288,22 @@ public class MypageController {
 	    int deleteCount = service.deleteReview(rev_code);
  
 	    if (deleteCount > 0) {
+	    	
 	        model.addAttribute("msg", "리뷰가 삭제되었습니다.");
 	        model.addAttribute("target", "mypageRv");
+	        
+	        //리뷰 삭제시 포인트 차감 및 회원정보 포인트 업데이트
 	        service.removePoint(id); 
+	        service.updatePoint(id);
+	        
 	        return "success";
+	        
 	    } else {
+	    	
 	        model.addAttribute("msg", "리뷰 삭제 실패!");
+	        
 	        return "fail_back";
+	        
 	    }
 	    
 	}

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,13 +84,21 @@ public class MovieRegisterController {
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String registMovie(@RequestParam HashMap<String, String> movie,Model model) {
 		System.out.println(movie);
-		int registCount = movieRegisterService.registMovie(movie);
 		
-		if(registCount > 0) {
-			return "redirect:/admin_movie_register";
+		try {
+			int registCount = movieRegisterService.registMovie(movie);
+			if(registCount > 0) {
+				return "redirect:/admin_movie_register";
+			}
+			
+		}catch (DuplicateKeyException e) {
+			model.addAttribute("msg", "이미 등록된 영화가 있습니다."); 
 		}
-			model.addAttribute("msg", "영화 등록에 실패하였습니다.");
-			return "fail_back";
+		return "fail_back";
+		
+		
+		
+		
 		
 	}
 	
