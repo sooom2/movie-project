@@ -48,13 +48,18 @@ function modalClose() {
 }
 $(function(){
 	$("form").submit(function(){
-		console.log($("#info_movie_code").val());
-		if($("#info_movie_code").val() == null){
+		if($("#info_movie_poster").val() == null || $("#info_movie_code").val() == ""){
+			alert("영화 포스터를 확인해주세요.")
+			return false;
+		}
+		
+		if($("#info_movie_code").val() == null || $("#info_movie_code").val() == ""){
 			alert("영화 코드를 확인해주세요.")
 			return false;
 		}
-		if($("#info_rating").val() == null){
-			alert("관람등급을 확인해주세요.")
+		
+		if($("#info_rating").val() == null || $("#info_rating").val() == ""){
+			console.log("관람등급을 확인해주세요.")
 			return false;
 		}
 		
