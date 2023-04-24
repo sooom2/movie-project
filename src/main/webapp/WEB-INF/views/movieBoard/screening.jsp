@@ -67,15 +67,7 @@
             $(this).closest("ul").find("span.over").removeClass("on");
         });
 		
-//         $("ul>li a.rsv", "div.screening").click(function (e) {
-//             e.preventDefault();
-//             var info_movie_code = $(this).closest("li").data("moviecode");
 
-//             $.desktop.reserve.openMovie({
-//                 movieCode: movieCode
-//             });
-//             return false;
-//         });
        var $likeBtn = $('.icon.heart');
        $likeBtn.click(function() {
        	// ajax -> likeInsert(@controller)
@@ -86,7 +78,7 @@
        	
        	$.ajax({
        		url : 'likeClick',
-       		type : 'GET',
+       		type : 'POST',
        		context : this,
        		data : {
        			info_movie_code : info_movie_code

@@ -281,7 +281,13 @@
 					AND member_tel = #{member_tel}
 	</select>
 	
-	
+	<!-- 메인페이지 공지 1개 -->
+	<select id="mainNotice" resultType="hashmap">
+		SELECT * 
+			FROM notice_board 
+			ORDER BY notice_code desc
+			LIMIT 1
+	</select>
 </mapper>
 
 

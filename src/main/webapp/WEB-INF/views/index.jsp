@@ -243,7 +243,7 @@
 	   	
 	   	$.ajax({
 	   		url : 'likeClick',
-	   		type : 'GET',
+	   		type : 'POST',
 	   		context : this,
 	   		data : {
 	   			info_movie_code : info_movie_code
@@ -283,46 +283,43 @@
 				class="left" id="slider_left"></span>
 			<div class="slider-main">
 				<ul class="bxslider-main">
-					<li data-kind="Movie" data-title_ko="리바운드" data-title_fo="Rebound"
-						data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다."><a href=""
-						style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;">
-					</a></li>
-					<li data-kind="개봉 예정작" data-title_ko="던전 앤 드래곤: 도적들의 명예"
-						data-title_fo="Dungeons &amp; Dragons: Honor Among Thieves"
-						data-desc="매력만점 롤플레잉 액션 어드벤처 무비!"><a href=""
-						style="background: url('resources/images/main/movie/mv2.png') center center no-repeat;">
-					</a></li>
-					<li data-kind="개봉 예정작" data-title_ko="오토라는 남자"
-						data-title_fo="A Man Called Otto"
-						data-desc="혼자 사는 까칠한 이웃, &#39;오토&#39;가 전하는 코믹하고 감동적인 이야기"><a
-						href=""
-						style="background: url('resources/images/main/movie/mv3.png') center center no-repeat;">
-					</a></li>
-					<li data-kind="현재 상영작" data-title_ko="모나리자와 블러드 문"
-						data-title_fo="MONA LISA and THE BLOOD MOON"
-						data-desc="붉은 달이 뜨던 밤, 새로운 세상으로 향하는 &#39;모나&#39;의 모험"><a
-						href=""
-						style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;">
-					</a></li>
-					<li data-kind="현재 상영작" data-title_ko="파벨만스"
-						data-title_fo="The Fablemans" data-desc="영화의 모든 순간과 사랑에 빠지다">
-						<a href=""
-						style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;">
-					</a>
+					<li data-kind="현재상영작" data-title_ko="리바운드" data-title_fo="Rebound"
+						data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다.">
+						<a href="" style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;"></a>
 					</li>
-					<li data-kind="현재 상영작" data-title_ko="소울메이트"
-						data-title_fo="Soulmate"
-						data-desc="3월 15일, 당신의 &#39;소울메이트&#39;가 찾아옵니다."><a href=""
-						style="background: url('resources/images/main/movie/mv6.png') center center no-repeat;"></a>
+				<!-- 고정,, -->
+					<li data-kind="개봉 예정작" data-title_ko="분노의 질주: 라이드 오어 다이 "
+						data-title_fo="Fast X"
+						data-desc="아무리 빨리 달려도 과거를 앞지를 순 없다 ">
+						<a href="" style="background: url('resources/images/main/movie/mv2.png') center center no-repeat;"></a>
 					</li>
-					<li data-kind="현재 상영작" data-title_ko="스즈메의 문단속"
-						data-title_fo="Suzume" data-desc="2023년, ‘문단속을 위한 여행’이 시작된다!">
-						<a href=""
-						style="background: url('resources/images/main/movie/mv7.png') center center no-repeat;"></a>
+					<li data-kind="개봉 예정작" data-title_ko="인어공주"
+						data-title_fo="The Little Mermaid"
+						data-desc="“내 안의 목소리를 따라자유롭게 꿈꾸고 사랑할 거야”">
+						<a href="" style="background: url('resources/images/main/movie/mv3.png') center center no-repeat;"></a>
+					</li>
+					<li data-kind="개봉 예정작" data-title_ko="범죄도시3"
+						data-title_fo="THE ROUNDUP : NO WAY OUT"
+						data-desc="나쁜 놈들 잡는 데 이유 없고 제한 없다 커진 판도 시원하게 싹 쓸어버린다!">
+						<a href="" style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;"></a>
+					</li>
+						<li data-kind="현재 상영작" data-title_ko="슈퍼 마리오 브라더스"
+						data-title_fo="The Super Mario Bros"
+						data-desc="전 세계를 열광시킬 올 타임 슈퍼 어드벤처의 등장! ">
+						<a href="" style="background: url('resources/images/main/movie/mv6.png') center center no-repeat;"></a>
+					</li>
+					<li data-kind="현재 상영작" data-title_ko="드림"
+						data-title_fo="DREAM" data-desc="쏘울리스 감독, 열정리스 PD, 그리고 홈리스 국대 부족한 것 투성인 드림팀의 생애 단 한 번의 기회!">
+						<a href="" style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;"></a>
+					</li>
+					<li data-kind="현재 상영작" data-title_ko="존 윅 4"
+						data-title_fo="John Wick: Chapter 4" data-desc="레전드 액션 블록버스터 존 윅의 새로운 챕터가 열린다!">
+						<a href="" style="background: url('resources/images/main/movie/mv7.png') center center no-repeat;"></a>
 					</li>
 				</ul>
 			</div>
 		</div>
+		
 
 		<!-- 팝업 -->
 		<!-- 			<div class="pop-main" style=""> -->
@@ -334,6 +331,9 @@
 		<!-- 	            </div> -->
 		<!--        		</div> -->
 		<!-- 팝업 -->
+		
+		
+		<!-- 영화목록 -->
 		<div class="section group section-main-movie-list">
 			<div class="title">MOVIE</div>
 			<div class="main-movie-list">
@@ -343,7 +343,6 @@
 				</ul>
 
 
-<%-- 				<c:forEach var="movie" items="${movieList }"> --%>
 				<div class="wrap-slider wrap-bo">
 					<ul class="bxslider-bo">
 					
@@ -366,7 +365,6 @@
 						</c:forEach>	
 					</ul>
 				</div>
-<%-- 			</c:forEach> --%>
 
 				<!--  상영예정작 -->
 				<div class="wrap-slider wrap-cs">
@@ -393,6 +391,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 스토어 / 리뷰 -->
 		<div class="section group main-board">
 
 			<ul class="giftcon_list_wrap">
@@ -472,8 +472,8 @@
 						<div class="noticeClient_content">
 							<div id="ctl00_PlaceHolderContent_notice_wrap"
 								class="notice_wrap">
-								<strong>공지사항</strong> <a href="" class="btn_link">[00][000]
-									휴점일 공지 (4월 3일)</a>
+								<strong>공지사항</strong> <a href="notice_detail?notice_code=${notice.notice_code }" class="btn_link">[${notice.cinema_name}]
+									${notice.notice_subject }</a>
 								<a href="cc_home" id="notice_more" class="btn_more">더보기</a>
 							</div>
 							<div class="client_wrap">
@@ -482,8 +482,7 @@
 										<strong>고객센터</strong>
 									</dt>
 									<dd>
-										<strong>1544-1122</strong> <span>고객센터 운영시간 (평일
-											09:00~18:00)
+										<strong>1555-0909</strong> <span>고객센터 운영시간 (평일 09:00~18:00)
 											<p>업무시간 외 자동응답 안내 가능합니다.</p>
 										</span>
 									</dd>

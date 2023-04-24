@@ -520,6 +520,7 @@ public class MovieRegisterController {
  	}
  	
  	
+ 	
 // 	//상영종료된 값 스케쥴링	
 // 	@Component
 // 	public class ScheduledTask {

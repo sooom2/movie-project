@@ -140,7 +140,7 @@
 								<td>${resList.get("screen_name")}</td>
 								<td>${resList.get("res_seat_num")}</td>
 								<td>${resList.get("sch_movie_date")}</td>
-								<td>${resList.get("movietime")}</td>
+								<td>${resList.get("movie")}</td>
 								<td><fmt:formatNumber value="${resList.get('res_pay') }" pattern="#,###"/></td>
 							</tr>
 						</c:forEach>
