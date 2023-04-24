@@ -259,5 +259,15 @@
   			WHERE rev_code = #{rev_code}
   			
 	</delete>
+	
+	<select id = "resMovie" resultType="hashmap">
+		SELECT res_title
+		FROM reservation 
+		WHERE res_id = #{id}
+		ORDER BY res_code DESC
+		LIMIT 1
+	</select>
+	
+	
   	
 </mapper>

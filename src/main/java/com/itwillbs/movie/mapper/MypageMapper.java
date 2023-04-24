@@ -46,5 +46,7 @@ public interface MypageMapper {
 
 	int removePoint(String id);
 
+	HashMap<String, String> resMovie(String id);
+
 
 }

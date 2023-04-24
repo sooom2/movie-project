@@ -94,6 +94,10 @@ public class MypageService {
 		
 	}
 
+	public HashMap<String, String> resMovie(String id) {
+		return mapper.resMovie(id);
+	}
+
 
 
 

@@ -210,6 +210,9 @@ public class MypageController {
 		List<HashMap<String, String>> revList = service.revList(id);
 		model.addAttribute("revList",revList);
 		
+		HashMap<String, String> resMovie = service.resMovie(id);
+		model.addAttribute("resMovie",resMovie);
+		
 		model.addAttribute("member", member);
 		
 		return "mypage/mypage_review_form";
