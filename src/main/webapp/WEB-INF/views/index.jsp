@@ -243,7 +243,7 @@
 	   	
 	   	$.ajax({
 	   		url : 'likeClick',
-	   		type : 'GET',
+	   		type : 'POST',
 	   		context : this,
 	   		data : {
 	   			info_movie_code : info_movie_code
