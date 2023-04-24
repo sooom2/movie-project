@@ -443,7 +443,7 @@
 									</c:choose>
 								 	</span>
 									<div class="top_info">
-										<span class="name">${review.member_name }</span>
+										<span class="name">${review.mem_name }</span>
 										<span class="txt_ic_score">
 											<span class="stargradebg">
 												<span class="blindbg grade${review.rev_rating }"> <!-- 별 -->

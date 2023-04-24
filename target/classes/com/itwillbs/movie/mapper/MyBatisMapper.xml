@@ -289,12 +289,16 @@
 			LIMIT 1
 	</select>
 	<select id="selectReview" resultType="hashmap">
-		SELECT *,
-		   member_name
+		 SELECT 
+		    rev_movie_code
+		  , rev_movie_title
+		  , rev_id,rev_rating
+		  , rev_content,rev_date
+		  , concat(SUBSTRING(member_name, 1, 1),'*',SUBSTRING(member_name, 3, 1)) AS mem_name
 		   FROM review
 		   LEFT JOIN member
 		   ON review.rev_id = member.member_id
-		  ORDER BY rev_date DESC
+		  ORDER BY rev_date desc
 		  LIMIT 3
 	</select>
 </mapper>
