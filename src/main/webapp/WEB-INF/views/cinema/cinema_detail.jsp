@@ -70,7 +70,6 @@
 							  todayEl.click();
 
 							  const selDateData = todayEl.getAttribute('data-date');
-							  console.log(selDateData)
 							  
 						});
 						
@@ -81,7 +80,6 @@
 						const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0); //마지막날
 						const reserveDate = document.querySelector(".cal ul li"); // 예매날
 						
-						alert(date.getDate())
 						
 					    // 숫자
 						const month = String(date.getMonth() + 1).padStart(2, '0'); // ex) 01월
@@ -95,15 +93,27 @@
 			                  "July", "August", "September", "October", "November", "December"];
 						
 					    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
-					    const year = date.getFullYear(); //년 
+					    const year = date.getFullYear(); //년
 					    
 					    
-// 					    monthNames[nextMonthName]
 					    // i = 일
-					   for (i = date.getDate(); i <= lastDay.getDate(); i++) {
-					    
-					    	$('.cal span.big-m').text(monthNames[monthName]);
-					    	$('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
+					   for (i = date.getDate(); i <= lastDay.getDate(); i++) { //이달의 마지막날까지 표시
+						   
+						   $('.cal span.big-m').text(monthNames[monthName]);
+					       $('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
+							
+// 					       if(date.getDate()>lastDay.getDate()){
+// 					    	   alert("ddd");
+// 					    	   for(j = 1;j<=date.getDate()+10-lastDay.getDate();j++){
+									  
+// 									$('.cal span.big-m').text(monthNames[nextMonthName]);
+// 								    $('.cal span.small-yyyym').text(year + " " + monthNames[nextMonthName]);
+								    
+// 								  }
+// 					       }
+						 
+					    	
+					    	
 						    const dayList = document.createElement("li");
 						    dayList.classList.add("date-list");
 						
@@ -118,8 +128,6 @@
 						
 						    //weekOfDay[new Date(2023-04-00)]
 						    const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
-							
-// 						    alert(dayOfWeek); //월화수목~~~ 
 							
 						    //요일 넣기
 						    if (dayOfWeek == "토") {
@@ -144,17 +152,19 @@
 						    aTag.append(spanDay);
 						    dayList.append(aTag);
 						   $(".next-btn").before(dayList);
-// 						    dayClickEvent(aTag);
-						}
+						}//날짜(day) 표시
 
 						
+						
+						
+						
+						//날짜 클릭했을때 이벤트
 					   const selectDateList = document.querySelectorAll('.selectDate');
 					   selectDateList.forEach(selectDate => {
 					     selectDate.addEventListener('click', function() {
 					       const previousSelectedDate = document.querySelector('.selectDate.selected');
 					       if (previousSelectedDate) {
 					         previousSelectedDate.classList.remove('selected');
-					       
 					       }
 					       
 					       

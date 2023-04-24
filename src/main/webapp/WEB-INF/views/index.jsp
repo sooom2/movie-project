@@ -424,38 +424,71 @@
 
 						<dd>
 							<ul class="review_con_list" id="review_con_list2">
-								<li><span class="img_info"><img
-										src="resources/images/main/ic_survey_01.png" alt=""></span>
+							<c:forEach var="review" items="${review }">
+								<li>
+									<span class="img_info">
+									<c:choose>
+										<c:when test="${review.rev_rating eq '5' }">
+								 			<img src="resources/images/main/ic_survey_01.png" alt="">
+										</c:when>									
+										<c:when test="${review.rev_rating eq '4' }">
+											<img src="resources/images/main/ic_survey_02.png" alt="">
+										</c:when>									
+										<c:when test="${review.rev_rating eq '3' }">
+												<img src="resources/images/main/ic_survey_03.png" alt="">
+										</c:when>
+										<c:otherwise>
+											<img src="resources/images/main/ic_survey_05.png" alt="">
+										</c:otherwise>
+									
+									
+									
+									
+									
+								
+										
+								
+									</c:choose>
+								 	</span>
 									<div class="top_info">
-										<span class="name">조*준</span><span class="txt_ic_score"><span
-											class="stargradebg"><span class="blindbg grade8"><span
-													class="stargradecolor "></span></span></span><span class="gradenum">8</span></span><span
-											class="date_info">2023.04.04</span>
+										<span class="name">${review.rev_id }</span>
+										<span class="txt_ic_score">
+											<span class="stargradebg">
+												<span class="blindbg grade${review.rev_rating }"> <!-- 별 -->
+													<span class="stargradecolor "></span>
+												</span>
+											</span>
+												<span class="gradenum">${review.rev_rating }</span> <!-- 숫자 -->
+										</span>
+										<span class="date_info">${review.rev_date }</span>
 									</div>
-									<div class="review_info">음악이 압도적. 나오면서 귓가에서 계속 재생됨</div>
+									<div class="review_info">${review.rev_content }</div>
 									</li>
-								<li><span class="img_info"><img
-										src="resources/images/main//ic_survey_02.png" alt=""></span>
-									<div class="top_info">
-										<span class="name">조*영</span><span class="txt_ic_score"><span
-											class="stargradebg"><span class="blindbg grade7"><span
-													class="stargradecolor "></span></span></span><span class="gradenum">7</span></span><span
-											class="date_info">2023.04.04</span>
-									</div>
-									<div class="review_info">개연성이 좀 부족하고 스토리는 호불호 갈릴 것 같은데,
-										일본인들의 지진에 대한 정서를 드러내는 표현방법이 신선했습니다. OST가 좋아요.</div>
-									</li>
-								<li><span class="img_info"><img
-										src="resources/images/main/ic_survey_05.png" alt=""></span>
-									<div class="top_info">
-										<span class="name">이*이</span><span class="txt_ic_score"><span
-											class="stargradebg"><span class="blindbg grade5"><span
-													class="stargradecolor "></span></span></span><span class="gradenum">5</span></span><span
-											class="date_info">2023.04.04</span>
-									</div>
-									<div class="review_info">그냥 노잼 보는 내내 시간이 아까웠음 호불호 많이 갈리는데
-										스토리는 불호가 더 많은듯</div>
-									</li>
+							</c:forEach>
+									
+									
+<!-- 								<li><span class="img_info"><img -->
+<!-- 										src="resources/images/main//ic_survey_02.png" alt=""></span> -->
+<!-- 									<div class="top_info"> -->
+<!-- 										<span class="name">조*영</span><span class="txt_ic_score"><span -->
+<!-- 											class="stargradebg"><span class="blindbg grade7"><span -->
+<!-- 													class="stargradecolor "></span></span></span><span class="gradenum">7</span></span><span -->
+<!-- 											class="date_info">2023.04.04</span> -->
+<!-- 									</div> -->
+<!-- 									<div class="review_info">개연성이 좀 부족하고 스토리는 호불호 갈릴 것 같은데, -->
+<!-- 										일본인들의 지진에 대한 정서를 드러내는 표현방법이 신선했습니다. OST가 좋아요.</div> -->
+<!-- 									</li> -->
+<!-- 								<li><span class="img_info"><img -->
+<!-- 										src="resources/images/main/ic_survey_05.png" alt=""></span> -->
+<!-- 									<div class="top_info"> -->
+<!-- 										<span class="name">이*이</span><span class="txt_ic_score"><span -->
+<!-- 											class="stargradebg"><span class="blindbg grade5"><span -->
+<!-- 													class="stargradecolor "></span></span></span><span class="gradenum">5</span></span><span -->
+<!-- 											class="date_info">2023.04.04</span> -->
+<!-- 									</div> -->
+<!-- 									<div class="review_info">그냥 노잼 보는 내내 시간이 아까웠음 호불호 많이 갈리는데 -->
+<!-- 										스토리는 불호가 더 많은듯</div> -->
+<!-- 									</li> -->
 							</ul>
 						</dd>
 

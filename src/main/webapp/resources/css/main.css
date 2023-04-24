@@ -4055,44 +4055,60 @@ header {
     display: inline-block;
 }
 
-.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade10 {
-    width: 78px
+/* .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade10 { */
+/*     width: 78px */
+/* } */
+
+/* .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade9 { */
+/*     width: 71px */
+/* } */
+
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade5{
+	 width: 78px
+}
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade4{
+	 width: 63px
+}
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade3{
+	 width: 47px
+}
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade2{
+	 width: 31px
+}
+.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade1{
+	 width: 15px
 }
 
-.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade9 {
-    width: 71px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade8 { */
+/*     width: 63px */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade8 {
-    width: 63px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade7 { */
+/*     width: 55px; */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade7 {
-    width: 55px;
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade6 { */
+/*     width: 47px */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade6 {
-    width: 47px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade5 { */
+/*     width: 39px */
+/* } */
+/* .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade4 { */
+/*     width: 31px */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade5 {
-    width: 39px
-}
-.review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade4 {
-    width: 31px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade3 { */
+/*     width: 23px */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade3 {
-    width: 23px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade2 { */
+/*     width: 15px */
+/* } */
 
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade2 {
-    width: 15px
-}
-
- .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade1 {
-    width: 7px
-}
+/*  .review_con_list .top_info .txt_ic_score .stargradebg .blindbg.grade1 { */
+/*     width: 7px */
+/* } */
 
  .review_con_list .btm_info {
     display: flex;

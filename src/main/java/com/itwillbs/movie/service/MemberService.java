@@ -122,6 +122,12 @@ public class MemberService {
 		return mapper.mainNotice();
 	}
 
+	//리뷰가져오기
+	public List<HashMap<String, String>> selectReview() {
+		System.out.println("==================selectReviewselectReviewselectReview=========================");
+		return mapper.selectReview();
+	}
+
 
 	
 }

@@ -288,6 +288,12 @@
 			ORDER BY notice_code desc
 			LIMIT 1
 	</select>
+	<select id="selectReview" resultType="hashmap">
+		SELECT *
+		   FROM review
+		  ORDER BY rev_date DESC
+		  LIMIT 3
+	</select>
 </mapper>
 
 

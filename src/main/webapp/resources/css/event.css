@@ -6,15 +6,15 @@
 /*
 ============================================================== */
 .section-event-list {
-	width: 100%;
+	width: 1100px;
 	margin: 0 auto 0 auto;
 	background-color: #f9f9f9;
-	padding: 153px 0 120px;
+	padding: 80px 0 121px;
 }
 
 .section-event-list ul {
 	display: block;
-	width: 940px;
+	width: 1100px;
 	margin: 0 auto;
 }
 
@@ -295,4 +295,13 @@ table.bbs-view tr td.share ul li a {
 table.bbs-view tr td.share ul li {
     display: inline-block;
     margin-right: 12px;
+}
+h2.tit {
+	font-size: 1.8666em;
+	font-weight: 400;
+	letter-spacing: -1px;
+	line-height: 1.1;
+	color: #222;
+	margin-bottom: 50px;
+/* 	text-align: center; */
 }

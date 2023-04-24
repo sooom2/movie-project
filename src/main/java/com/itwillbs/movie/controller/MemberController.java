@@ -41,6 +41,9 @@ public class MemberController {
 		//메인스토어 뿌리기
 		List<HashMap<String, String>> hotItem = service.selectHotItem();
 		
+		//리뷰
+		List<HashMap<String, String>> review = service.selectReview();
+		
 		//공지사항
 		HashMap<String, String> notice = service.selectNotice();
 		
@@ -52,7 +55,10 @@ public class MemberController {
 		model.addAttribute("commingMovieList", commingMovieList);
 		model.addAttribute("hotItem", hotItem);
 		model.addAttribute("notice",notice);
-		
+		model.addAttribute("review",review);
+		System.out.println("==========================================");
+		System.out.println(review);
+		System.out.println("==========================================");
 		return "index";
 	}
 	

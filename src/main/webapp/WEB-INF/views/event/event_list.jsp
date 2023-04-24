@@ -52,10 +52,11 @@
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div id="container">
-		<div id="content">
+		<div id="content" style="background-color: #f9f9f9">
 
-
+			
 			<div class="section group section-event-list">
+				<h2 class="tit">EVENT</h2>  
 				<ul>
 					<li>
 						<a href="eventDetail">

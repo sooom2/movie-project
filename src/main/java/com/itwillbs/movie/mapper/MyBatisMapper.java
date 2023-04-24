@@ -98,6 +98,9 @@ public interface MyBatisMapper {
 	//메인 공지사항1개
 	HashMap<String, String> mainNotice();
 
+	//리뷰가져오기
+	List<HashMap<String, String>> selectReview();
+
 
 	
 	// ------------------------------------------------------------------------------------------
