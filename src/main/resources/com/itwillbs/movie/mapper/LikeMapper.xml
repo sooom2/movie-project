@@ -11,6 +11,7 @@
 				 	LIMIT 1
 				)
 	</select>
+	
 	<insert id="insertLike">
 		INSERT INTO like_movie
 			VALUES(

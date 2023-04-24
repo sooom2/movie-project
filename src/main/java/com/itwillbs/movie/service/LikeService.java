@@ -1,6 +1,7 @@
 package com.itwillbs.movie.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,6 @@ public class LikeService {
 	public int updateLike(HashMap<String, String> like) {
 		return mapper.updateLike(like);
 	}
+	
 	
 }

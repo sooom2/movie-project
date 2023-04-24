@@ -53,10 +53,6 @@ function modalClose() {
 
 $(function(){
 	$("form").submit(function(){
-		if($("#info_movie_poster").val() == null || $("#info_movie_code").val() == ""){
-			alert("영화 포스터를 확인해주세요.")
-			return false;
-		}
 		
 		if($("#info_movie_code").val() == null || $("#info_movie_code").val() == ""){
 			alert("영화 코드를 확인해주세요.")
@@ -331,7 +327,7 @@ function previewImage(targetObj, View_area) {
 				/*줄거리*/
 				let info_story = Data.Data[0].Result[0].plots.plot[0].plotText;
 				/*스틸컷*/
-				let info_still = Data.Data[0].Result[0].stlls.split('|')[0];
+				let info_still = Data.Data[0].Result[0].stlls;
 				/*국가*/
 				let info_nation = Data.Data[0].Result[0].nation;
 				/*포스터*/
@@ -392,7 +388,7 @@ function previewImage(targetObj, View_area) {
 			    
 			    // 지금 무비 포스터가 input hidden으로 넣어둔 상태 
 			    $('input[name=info_movie_poster]').attr('value',info_movie_poster);	//포스터		
-				$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
+				$('input[name=info_movie_code]').prop('value',info_movie_code);		//영화코드
 				$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
 				$('input[name=info_year]').attr('value',info_year);		//제작년도
 				$('input[name=info_time]').attr('value',runningTime);		//상영시간
@@ -403,6 +399,7 @@ function previewImage(targetObj, View_area) {
 				$('input[name=info_nation]').attr('value',info_nation);			//제작국가
 				$('input[name=info_rating]').attr('value',info_rating);			//관람등급
 				$('input[name=info_genre]').attr('value',info_genre);			//장르
+				$('input[name=info_still]').attr('value',info_still);			//스틸컷
 			}
 
 		});
@@ -513,6 +510,7 @@ function previewImage(targetObj, View_area) {
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
 														<input type="hidden" name = "info_movie_poster">
+														<input type="hidden" name = "info_still">
 														<!-- hidden 영역 -->
 														<div class="row">
 															<div class="d-grid">

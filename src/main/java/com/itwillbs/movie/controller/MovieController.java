@@ -31,12 +31,10 @@ public class MovieController {
 	
 	// 영화목록페이지
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
-	public String screening(Model model) {
+	public String screening(Model model, HttpSession session) {
 		
 		List<HashMap<String, String>> movieList = service.selectMovies();
-		
 		model.addAttribute("movieList",movieList);
-		
 		
 		return "movieBoard/screening";
 	}

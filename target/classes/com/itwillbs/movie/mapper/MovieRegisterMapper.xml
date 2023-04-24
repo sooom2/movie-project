@@ -62,6 +62,7 @@ SELECT *
 				   , #{info_nation}
 				   , #{info_rating}
 				   , #{info_genre}
+				   , #{info_still}
 			)
 </insert>
 

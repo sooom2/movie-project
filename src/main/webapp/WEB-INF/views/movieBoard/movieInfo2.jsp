@@ -63,6 +63,28 @@
 							        <td>${Review.rev_content}</td>
 							        <td>${Review.rev_rating}</td>
 							        <td>${Review.rev_date}</td>
+							         <c:if test="${not empty Review.rev_rating}">
+							                <c:choose>
+							                    <c:when test="${Review.rev_rating == 1}">
+							                        ★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 2}">
+							                        ★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 3}">
+							                        ★★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 4}">
+							                        ★★★★
+							                    </c:when>
+							                    <c:when test="${Review.rev_rating == 5}">
+							                        ★★★★★
+							                    </c:when>
+							                    <c:otherwise>
+							                        No rating
+							                    </c:otherwise>
+							                </c:choose>
+							            </c:if>
 							    </tr>
 							</c:forEach>
 							<c:if test="${empty movieInfoReview}">

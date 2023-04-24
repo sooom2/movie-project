@@ -12,6 +12,8 @@ public interface LikeMapper {
 	int deleteLike(HashMap<String, String> like);
 	
 	int updateLike(HashMap<String, String> like);
+	
+	
 }
 
 

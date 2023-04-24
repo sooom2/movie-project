@@ -22,7 +22,7 @@
 					<c:forEach var="movie" items="${movieList }">
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
-						    	<a href="reservation" class="rsv">
+						    	<a href="#" class="rsv">
 						    		<span class="over-btn-rsv">${movie.status }</span></a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
@@ -36,6 +36,7 @@
 					    <div class="btn-util">
 							 <div class="like-btn">
 								<a href="javascript:;" class="icon heart">
+									
 									<img src="resources/images/ico/before-like.png" alt="찜하기">
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
@@ -66,7 +67,9 @@
         $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
             $(this).closest("ul").find("span.over").removeClass("on");
         });
+        
  });
+ 
 var $likeBtn = $('.icon.heart');
 $likeBtn.click(function() {
 	// ajax -> likeInsert(@controller)
