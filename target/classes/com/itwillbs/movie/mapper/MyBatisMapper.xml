@@ -289,8 +289,11 @@
 			LIMIT 1
 	</select>
 	<select id="selectReview" resultType="hashmap">
-		SELECT *
+		SELECT *,
+		   member_name
 		   FROM review
+		   LEFT JOIN member
+		   ON review.rev_id = member.member_id
 		  ORDER BY rev_date DESC
 		  LIMIT 3
 	</select>

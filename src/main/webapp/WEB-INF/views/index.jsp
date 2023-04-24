@@ -440,18 +440,10 @@
 										<c:otherwise>
 											<img src="resources/images/main/ic_survey_05.png" alt="">
 										</c:otherwise>
-									
-									
-									
-									
-									
-								
-										
-								
 									</c:choose>
 								 	</span>
 									<div class="top_info">
-										<span class="name">${review.rev_id }</span>
+										<span class="name">${review.member_name }</span>
 										<span class="txt_ic_score">
 											<span class="stargradebg">
 												<span class="blindbg grade${review.rev_rating }"> <!-- 별 -->
