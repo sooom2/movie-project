@@ -14,6 +14,27 @@
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <body>
+<script type="text/javascript">
+function editReview(revId) {
+  window.location.href = "/editReview.jsp?revId=" + revId;
+}
+
+function deleteReview(revId) {
+	  if (confirm("정말 삭제하시겠습니까?")) {
+	    $.ajax({
+	      url: "/deleteReview",
+	      type: "POST",
+	      data: { revId: revId },
+	      success: function(data) {
+	        window.location.href = "/movieDetail.jsp?movieId=" + data.movieId;
+	      },
+	      error: function() {
+	        alert("삭제 실패");
+	      }
+	    });
+	  }
+	}
+</script>
 
 	<jsp:include page="../nav.jsp" />
 	<div id="container">
@@ -107,11 +128,12 @@
 								<th>한줄평</th>
 								<th>별 점</th>
 								<th>작성일자</th>
-								<th>수정</th>
+<!-- 								<th>수정</th> -->
 								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
+		
 							<c:forEach var="revList" items="${revList}">
 							    <tr>
 							        <td>${revList.get("rev_movie_title")}</td>
@@ -141,8 +163,11 @@
 							            </c:if>
 							        </td>
 							        <td>${revList.get("rev_date")}</td>
-							        <td><input type="button" value="수정" onclick=""></td>
-									<td><input type="button" value="삭제" onclick=""></td>
+<%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})"></td> --%>
+<%-- 									<td><input type="button" value="삭제" onclick="deleteReview(${revList.get('rev_id')})"></td> --%>
+<%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})" ></td> --%>
+<%-- 									 <td><input onclick="location.href='admin_item_payUpdate?pay_code=${pay.get('pay_code') }'"class="btn btn-primary btn-block" type="button" value="수정"></td> --%>
+									 <td><input onclick="location.href='deleteReview?rev_code=${revList.get('rev_code') }'"  type="button" value="삭제"></td>
 							    </tr>
 							</c:forEach>
 						</tbody>

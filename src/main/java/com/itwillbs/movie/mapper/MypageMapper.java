@@ -42,5 +42,9 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> likeList(String id);
 
+	int deleteReview(String rev_code);
+
+	int removePoint(String id);
+
 
 }

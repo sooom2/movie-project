@@ -85,6 +85,15 @@ public class MypageService {
 		return mapper.likeList(id);
 	}
 
+	public int deleteReview(String rev_code) {
+		return mapper.deleteReview(rev_code);
+	}
+
+	public int removePoint(String id) {
+		return mapper.removePoint(id);
+		
+	}
+
 
 
 

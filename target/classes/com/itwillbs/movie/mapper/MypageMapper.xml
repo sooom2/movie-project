@@ -94,7 +94,8 @@
 
   	<select id = "revList" resultType = "hashmap" >
   		SELECT 
-  			 rev_movie_title
+  			rev_code
+  			,rev_movie_title
   			,rev_content
   			,rev_rating
   			,rev_date
@@ -110,6 +111,7 @@
 					(SELECT member_prefer_genre 
                         FROM member 
                         WHERE member_id = #{id}),"%"))
+       limit 5                 
   	</select>
   	
   	<insert id= "insertPoint" >
@@ -121,6 +123,19 @@
   			, #{id}
   			,'리뷰작성 이벤트'
 			,'500'
+			,now()
+  			);
+  	</insert>
+  	
+  	  	<insert id= "removePoint" >
+		INSERT 
+  			INTO point
+  			VALUES (
+  			(SELECT *
+  			  FROM (SELECT IFNULL(MAX(point_code),0) FROM point) A)+1
+  			, #{id}
+  			,'리뷰작성 이벤트 취소'
+			,'-500'
 			,now()
   			);
   	</insert>
@@ -236,5 +251,13 @@
 	 	FROM movieinfo m JOIN like_movie l on m.info_movie_code = l.like_movie_code
 	 	where l.like_id = #{id} limit 5;
 	</select>
+	
+	<!-- 리뷰삭제  -->
+	<delete id="deleteReview"  >
+			DELETE 
+  			FROM review
+  			WHERE rev_code = #{rev_code}
+  			
+	</delete>
   	
 </mapper>

@@ -87,6 +87,8 @@ public class MypageController {
 	public String mypageQ(HttpSession session, MemberVO member, Model model) {
 		String id = (String)session.getAttribute("sId");
 		
+		
+		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
 		List<HashMap<String, String>> likeList = service.likeList(id);
@@ -213,6 +215,7 @@ public class MypageController {
 		return "mypage/mypage_review_form";
 		
 	}
+
 	
 	@PostMapping(value="mypageRvPro")
 	public String mypageRvPro(@RequestParam HashMap<String, String> review, HttpSession session,  Model model) {
@@ -250,6 +253,24 @@ public class MypageController {
 		}
 		
 		
+	}
+	
+	@GetMapping(value="deleteReview")
+	public String deleteReview(String rev_code, HttpSession session, Model model) {
+	    String id = (String)session.getAttribute("sId");
+
+	    int deleteCount = service.deleteReview(rev_code);
+ 
+	    if (deleteCount > 0) {
+	        model.addAttribute("msg", "리뷰가 삭제되었습니다.");
+	        model.addAttribute("target", "mypageRv");
+	        service.removePoint(id); 
+	        return "success";
+	    } else {
+	        model.addAttribute("msg", "리뷰 삭제 실패!");
+	        return "fail_back";
+	    }
+	    
 	}
 	
 	
