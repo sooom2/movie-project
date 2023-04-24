@@ -21,13 +21,11 @@
 	rel="stylesheet" />
 
 
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-
 
 function selectCinema(){
 	
@@ -59,11 +57,9 @@ function selectCinema(){
 	});// 지점 > 상영관 ajax
 }// selectCinema()
 
+
 function selectSch(){
 	
-	alert($("#sch_register_date").val());
-	alert($(".cinema_name option:selected").text());
-	alert($(".screen_name option:selected").text());
 	$.ajax({
 		 type: "POST",
 		 url: "schCheckTime",
@@ -73,9 +69,27 @@ function selectSch(){
 	  	  screen_name: $(".screen_name option:selected").text()
 		 },
 		 success: function(result){
-			 
-			 alert(result.sch_start_time);
-			 
+// 			 alert(result);
+// 			 let schCheck = JSON.parse('${schCheckTimeJson}');
+// 			 console.log(result);
+			let disabledValues = [];
+
+			$(".sch_start_time option").remove();
+			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">상영시작시간을 선택하세요</option>');
+			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
+			
+			for (var i = 0; i < result.length; i++) {
+			  let value = result[i].sch_start_time.slice(0, 5); // "시:분" 형식으로 변환
+			  disabledValues.push(value);
+			}
+			console.log(disabledValues);
+			
+			for (var i = 9; i <= 20; i++) {
+			  let value = i < 10 ? '0' + i + ':00' : i + ':00'; // '09:00', '10:00' 로가져오기
+			  let disabled = disabledValues.includes(value) ? 'disabled' : ''; // 있으면 disabled 없으면 '''
+			  $("select.sch_start_time").append('<option value="' + value + '"' + disabled + '>' + value + '</option>');
+			  
+			}
 		 },
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -84,7 +98,6 @@ function selectSch(){
 	});//ajax
 		 
 }
-
 
 
 function dateDelete(){
@@ -162,7 +175,7 @@ $(function() {
             ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
             ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
             ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-            ,minDate: "-30D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            ,minDate: "0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
             ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
     });                           
 });
@@ -419,9 +432,9 @@ $(function() {
 								<h3 class="text-center font-weight-light my-4">상영일정등록</h3>
 							</div>
 
+						<form action="movieScheduleRegisterPro">
 							<div class="card-body">
-								<form action="movieScheduleRegisterPro">
-									<div class="row mb-3">
+								<div class="row mb-3">
 										<div class="col-md-4">
 											<div class="form-floating mb-3 mb-md-0">
 												<input name="sch_register_date" class="form-control"
@@ -462,11 +475,11 @@ $(function() {
 														<c:forEach var="cinema" items="${cinemaList }">
 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
 														</c:forEach>
-													</select>
-													<c:forEach var="cinema" items="${cinemaList }">
-														<input type="hidden" name="location_code"
-															value="${cinema.get('location_code') }">
-													</c:forEach>
+														</select>
+														<c:forEach var="cinema" items="${cinemaList }">
+															<input type="hidden" name="location_code"
+																value="${cinema.get('location_code') }">
+														</c:forEach>
 												</div>
 											</div>
 										</div>
@@ -478,6 +491,9 @@ $(function() {
 													 <select name="sch_screen_code" class="selectScreen_name" onchange="selectSch()" style="width: 300px">
 														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
 														<option value="none" disabled>=======================</option>
+														<c:forEach var="sch" items="${schList }">
+															<option value="${sch.get('sch_start_time') }">${ movie.get("sch_start_time") }</option>
+														</c:forEach>
 													</select>
 												</div>
 											</div>
@@ -489,34 +505,23 @@ $(function() {
 										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="sch_start_time">
-													<label for="sch_start_time">상영시작시간 : </label> <select
-														name="sch_start_time">
-														<option value="09:00">09:00</option>
-														<option value="10:00">10:00</option>
-														<option value="11:00">11:00</option>
-														<option value="12:00">12:00</option>
-														<option value="13:00">13:00</option>
-														<option value="14:00">14:00</option>
-														<option value="15:00">15:00</option>
-														<option value="16:00">16:00</option>
-														<option value="17:00">17:00</option>
-														<option value="18:00">18:00</option>
-														<option value="19:00">19:00</option>
-														<option value="20:00">20:00</option>
-													</select>
-												</div>
+													<label for="sch_start_time">상영시작시간 : </label> 
+													<select name="sch_start_time" class="sch_start_time">
+														<option value="none" selected="selected" disabled="disabled" >시작시간을 선택하세요</option>
+														<option value="none" disabled >=======================</option>
+													</select> 
+ 												</div>
 											</div>
 										</div>
 									</div>
-
 									<div class="row">
 										<div class="mt-4 mb-0 ">
 											<div class="d-grid">
-												<input class="btn btn-primary btn-block" type="submit" value="등록" onsubmit="return validateForm()">
+												<input class="btn btn-primary btn-block" type="submit" value="등록" >
 											</div>
 										</div>
 									</div>
-								</form>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -535,8 +540,7 @@ $(function() {
 			</footer>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script

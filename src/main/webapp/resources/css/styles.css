@@ -11588,3 +11588,6 @@ background : url(../images/movies/poster/imgRegister.png) no-repeat ;
   .form-control {
     background-color: #fafafa
   }
+ .sch_start_time option:disabled {
+  background-color: #eee;
+}

@@ -59,7 +59,7 @@ public interface MovieRegisterMapper {
 	List<HashMap<String, String>> schLastSort();
 
 	//영화상영 상세정보
-	HashMap<String, String> selectSchedule(String sch_code);
+	HashMap<String, String> selectScheduleDetail(String sch_code);
 	
 	//영화 상영일정 삭제
 	int deleteSchedule(String sch_code);
@@ -111,7 +111,7 @@ public interface MovieRegisterMapper {
 	int resListCount();
 
 	//상영시간체크
-	HashMap<String, String> schCheckTime(@Param("sch_date") String sch_date,@Param("cinema_name") String cinema_name,@Param("screen_name") String screen_name);
+	List<HashMap<String, String>> schCheckTime(@Param("sch_date") String sch_date,@Param("cinema_name") String cinema_name,@Param("screen_name") String screen_name);
 
 
 //	List<HashMap<String, String>> selectEndSch();

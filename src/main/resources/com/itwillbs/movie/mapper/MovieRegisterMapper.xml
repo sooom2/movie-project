@@ -124,7 +124,6 @@ SELECT *
 
 <!-- 영화상영일정 -->
 <insert id="scheduleRegister">
-<if test=""></if>
 INSERT INTO schedule
 		VALUES (
 			   (SELECT *
@@ -141,7 +140,9 @@ INSERT INTO schedule
 <!-- 상영시간 체크 -->
 <select id="schCheckTime" resultType="hashmap">
 <!-- 	String sch_date, String cinema_name, String screen_name -->
-	SELECT * 
+	SELECT *
+		, TIME_FORMAT(sch_start_time,'%H:%i')AS start_time
+		, TIME_FORMAT(sch_last_time,'%H:%i')AS last_time
 	FROM schedule
 	LEFT JOIN cinema
 	ON schedule.sch_cinema_code= cinema.cinema_code
@@ -172,6 +173,28 @@ INSERT INTO schedule
 <!-- 	        </if> -->
 <!-- 	    </where> -->
 <!-- 	</select> -->
+<!-- 영화상영일정목록 -->
+	<select id="selectScheduleDetail" resultType="hashmap">
+		SELECT 
+			  sch_code
+			, screen.screen_name
+			, cinema.cinema_name 
+			, cinema.cinema_code
+			, movieinfo.info_movie_code
+			, movieinfo.info_movie_title
+			, sch_movie_date
+			, TIME_FORMAT(sch_start_time,'%H:%i')AS sch_start_time
+			, TIME_FORMAT(sch_last_time,'%H:%i')AS sch_last_time
+	  FROM schedule
+	  LEFT JOIN screen ON screen.screen_code = sch_screen_code 
+	  LEFT JOIN cinema ON cinema.cinema_code = sch_cinema_code
+	  LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
+	  WHERE sch_code = #{sch_code}
+	</select>
+
+
+
+
 
 <!-- 영화상영일정목록 -->
 	<select id="selectScheduleList" resultType="hashmap">
