@@ -175,7 +175,8 @@ public class MemberController {
 	@PostMapping(value = "kakaoJoin")
 	public String kakaoJoin(@RequestParam HashMap<String, String> kakao, Model model) {
 		model.addAttribute("email", kakao.get("email"));
-		
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
 		return "member/mem_join_form";
 	}
 	
@@ -271,6 +272,7 @@ public class MemberController {
 		
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
+		
 		System.out.println("==================================");
 		System.out.println(model);
 		System.out.println("==================================");
