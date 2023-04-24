@@ -46,6 +46,21 @@ function modalClose() {
 	
 	
 }
+$(function(){
+	$("form").submit(function(){
+		console.log($("#info_movie_code").val());
+		if($("#info_movie_code").val() == null){
+			alert("영화 코드를 확인해주세요.")
+			return false;
+		}
+		if($("#info_rating").val() == null){
+			alert("관람등급을 확인해주세요.")
+			return false;
+		}
+		
+	});	
+})
+
 
 //이미지올리기
 function previewImage(targetObj, View_area) {
@@ -174,7 +189,7 @@ function previewImage(targetObj, View_area) {
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_movie_code"class="form-control" id="info_movie_code" type="text" value="" />
+													<input name="info_movie_code"class="form-control" id="info_movie_code" type="text" />
 													<label for="info_movie_code">영화코드</label>
 												</div>
 											</div>
@@ -262,17 +277,15 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 				$("#api").append( '<option value="none" selected="selected" disabled>상영 예정작 등록</option>');
 				
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
-					if(result.Data[0].Result[i].runtime == ""
-// 						|| result.Data[0].Result[i].repRlsDate.substring(6,8) == 0
-						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
-						)
-					{
-						continue;
-					}
+// 					if(result.Data[0].Result[i].runtime == ""
+// 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
+// 						)
+// 					{
+// 						continue;
+// 					}
 						
-					$("#api").append('<option num ="' + i + '"value="'+ result.Data[0].Result[i].title + '">'   
-										+ result.Data[0].Result[i].title + '</option>'
-													   												
+					$("#api").append('<option num ="' + i + '"value="'+ result.Data[0].Result[i].title + '">' + result.Data[0].Result[i].title + '</option>'
+							
 					);
 				}
 				data = result;
@@ -409,13 +422,13 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_movie_code" name="info_movie_code" type="text" value="" />
+																	<input class="form-control" id="info_movie_code" name="info_movie_code" type="text"  />
 																	<label for="info_movie_code">영화코드</label>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating">
-																	<input class="form-control" id="info_movie_title" name="info_movie_title" type="text" value="" /> 
+																	<input class="form-control" id="info_movie_title" name="info_movie_title" type="text"/> 
 																	<label for="info_movie_title">영화제목</label>
 																</div>
 															</div>
@@ -423,13 +436,13 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating">
-																	<input class="form-control" id="info_year" name="info_year" type="text" value=""/>
+																	<input class="form-control" id="info_year" name="info_year" type="text" />
 																	<label for="info_year">제작년도</label>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_time" name="info_time" type="text" value="" />
+																	<input class="form-control" id="info_time" name="info_time" type="text"  />
 																	<label for="info_time">상영시간</label>
 																</div>
 															</div>
@@ -438,13 +451,13 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating">
-																	<input class="form-control" id="info_rating" name="info_rating" type="text" value=""/>
+																	<input class="form-control" id="info_rating" name="info_rating" type="text"/>
 																	<label for="info_rating">관람등급</label>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_genre" name="info_genre" type="text" value="" />
+																	<input class="form-control" id="info_genre" name="info_genre" type="text"  />
 																	<label for="info_genre">장르</label>
 																</div>
 															</div>

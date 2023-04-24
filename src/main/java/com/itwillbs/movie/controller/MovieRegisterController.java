@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itwillbs.movie.service.MovieRegisterService;
-import com.itwillbs.movie.vo.BoardVO;
 import com.itwillbs.movie.vo.PageInfo;
 
 @Controller
@@ -83,10 +81,16 @@ public class MovieRegisterController {
 	
 	//영화등록
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
-	public String registMovie(@RequestParam HashMap<String, String> movie) {
+	public String registMovie(@RequestParam HashMap<String, String> movie,Model model) {
 		System.out.println(movie);
 		int registCount = movieRegisterService.registMovie(movie);
-		return "redirect:/admin_movie_register";
+		
+		if(registCount > 0) {
+			return "redirect:/admin_movie_register";
+		}
+			model.addAttribute("msg", "영화 등록에 실패하였습니다.");
+			return "fail_back";
+		
 	}
 	
 	//영화삭제
