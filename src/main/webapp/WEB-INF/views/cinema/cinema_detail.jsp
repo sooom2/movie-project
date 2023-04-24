@@ -81,25 +81,29 @@
 						const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0); //마지막날
 						const reserveDate = document.querySelector(".cal ul li"); // 예매날
 						
-						
+						alert(date.getDate())
 						
 					    // 숫자
-						const month = String(date.getMonth() + 1).padStart(2, '0'); //월
+						const month = String(date.getMonth() + 1).padStart(2, '0'); // ex) 01월
+						const nextMonth =  String((date.getMonth()+1)+1); //다음달
+						
 						
 						// 영어로 표기하기위한
 					    const monthName = date.getMonth() ; //월
+					    const nextMonthName = date.getMonth()+1;
 						const monthNames = ["January", "February", "March", "April", "May", "June",
 			                  "July", "August", "September", "October", "November", "December"];
 						
 					    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
 					    const year = date.getFullYear(); //년 
 					    
-					    $('.cal span.big-m').text(monthNames[monthName]);
-					    $('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
 					    
-					    
+// 					    monthNames[nextMonthName]
 					    // i = 일
 					   for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+					    
+					    	$('.cal span.big-m').text(monthNames[monthName]);
+					    	$('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
 						    const dayList = document.createElement("li");
 						    dayList.classList.add("date-list");
 						

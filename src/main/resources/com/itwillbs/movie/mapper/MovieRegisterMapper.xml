@@ -546,4 +546,16 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 				SET res_date = #{res_date}
 		  WHERE res_code = #{res_code}
 		</update>
+		
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
 </mapper>

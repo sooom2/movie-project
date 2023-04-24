@@ -149,7 +149,7 @@ header {
 .section-main-slider>span {
 	color: #fff;
 	z-index: 50;
-	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+	text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
 .section-main-slider>span.kind {
@@ -157,7 +157,7 @@ header {
 	top: 34px;
 	left: 160px;
 	font-size: 50px;
-	font-weight: 300;
+	/* font-weight: 300; */
 }
 
 .section-main-slider>span.title-ko {

@@ -108,13 +108,18 @@ public class MemberService {
 //		return mapper.selectMember(startRow,listLimit,searchKeyword);
 //	}
 
-	
+	//회원 이름검색
 	public int getMemberListCount(String searchKeyword) {
 		return mapper.selectMemberListCount(searchKeyword);
 	}
 
+	//회원수
 	public int selectMemCount() {
 		return mapper.memberCount();
+	}
+	//메인 공지사항 1개
+	public HashMap<String, String> selectNotice() {
+		return mapper.mainNotice();
 	}
 
 

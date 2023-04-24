@@ -86,11 +86,17 @@ public interface MyBatisMapper {
 	List<HashMap<String, String>> selectMember(@Param("startRow") int startRow,@Param("listLimit") int listLimit,@Param("searchKeyword") String searchKeyword);
 	int selectMemberListCount(@Param("searchKeyword") String searchKeyword);
 
+	//
 	int minusPoint(@Param("id") String id, @Param("point") String point);
 
+	//
 	int insertPointTable(@Param("id") String id,@Param("payPoint") String payPoint);
 
+	//회원수
 	int memberCount();
+	
+	//메인 공지사항1개
+	HashMap<String, String> mainNotice();
 
 
 	
