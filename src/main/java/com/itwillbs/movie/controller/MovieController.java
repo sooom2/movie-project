@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -77,7 +76,7 @@ public class MovieController {
 
 	//좋아요 버튼 기능
 	
-	@GetMapping(value = "likeClick")
+	@PostMapping(value = "likeClick")
 	@ResponseBody
 	public HashMap<String, String> likeCount(@RequestParam("info_movie_code") String info_movie_code, HttpSession session, Model model) {
 		// id와 movie_code를 xml에 넣기 위해서 map 객체에 넣어준 것
