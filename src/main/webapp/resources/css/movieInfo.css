@@ -581,3 +581,40 @@ a:link {
     height: 36px;
     padding-top: 8px;
 }
+
+/* 스틸컷 위치 */
+.section-movie-info  .bx-pager {
+	display: none;
+}
+
+.section-movie-info .bx-wrapper .bx-controls-direction a
+	{
+	position: absolute;
+	top: 105px;
+}
+
+.section-movie-info .bx-prev,
+	.section-movie-info .bx-prev:hover {
+	display: block;
+	background: url("../images/main/btn-slider-movie-list-prev.png") center
+		center no-repeat;
+	width: 25px;
+	height: 67px;
+	left: -50px;
+}
+
+.section-movie-info .bx-next,
+	.section-movie-info .bx-next:hover {
+	display: block;
+	background: url("../images/main/btn-slider-movie-list-next.png") center
+		center no-repeat;
+	width: 25px;
+	height: 67px;
+	right: -50px;
+}
+
+.section-movie-info .bx-prev.disabled,
+	.section-movie-info .bx-next.disabled
+	{
+	opacity: 0.2;
+}

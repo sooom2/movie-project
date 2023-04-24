@@ -12,6 +12,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
 </head>
 <body id="top">
 <jsp:include page="../nav.jsp" />   
@@ -37,11 +38,18 @@
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
 				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">${movieInfo.status }</a>
-				<!-- !!상영예정작인 영화는 예매하기가 아닌 상영예정이라고 표시해야함!! -->
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
 					${movieInfo.info_story }
 				</div>
+				<!-- 안되면 생략 -->
+				<h4 class = "trailer-title">스틸컷</h4>
+				<div class="still">
+					<c:forEach var = "stillCut" items='${movieInfo.info_still.split("[|]") }'>
+						<img src="${stillCut }" alt = "스틸컷" class = "stillCut">
+					</c:forEach>
+				</div>
+				<!--   -->
 			</div>
 		</div>
 		<div class="section group section-mypage">
@@ -98,28 +106,33 @@
 			</div>
 	</div>
 </div>
-<!-- 작업중 로직만 쓸것 -->
 <script type="text/javascript">
   $(document).ready(function () {
-        $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
-            $(this).parent().addClass("on");
-            if ($(this).hasClass("info")) {
-                $(this).parent().removeClass("down");
-                $(this).parent().addClass("up");
-            }
-            if ($(this).hasClass("rsv")) {
-                $(this).parent().removeClass("up");
-                $(this).parent().addClass("down");
-            }
-        });
-        
-        $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
-            $(this).closest("ul").find("span.over").removeClass("on");
-        });
+
         if($(".btn-rsv").html()==("예매하기")){
         	$(".btn-rsv").attr('href', 'reservation')
         	
         }
+        
+        if ($(".still").length) {
+			slider_bo = $('.still').bxSlider({
+				auto : false,
+				speed : 500,
+				minSlides : 5,
+				maxSlides : 5,
+				slideWidth : 170,
+				slideMargin : 10,
+				infiniteLoop : true,
+				adaptiveHeight : true,
+				adaptiveHeightSpeed : 1,
+				hideControlOnEnd : true,
+				preloadImages : 'visible',
+				controls : false
+			});
+			setTimeout(function() {
+				slider_bo.redrawSlider();
+			}, 1000);
+		}
         
  });
  </script>
