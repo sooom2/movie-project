@@ -13,7 +13,7 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script type="text/javascript">
 	
-
+	// 아임포트 결제
 	var IMP = window.IMP; 
 	IMP.init("imp03276613"); 
 	
@@ -51,6 +51,82 @@
 		}
 	    
 	}
+
+// 항상 전액 사용하기
+$(function() {
+	
+	var userInputPoint = getCookie("userInputPoint");// 쿠기값 가져오기
+    
+	// 쿠키 있을 시, 저장하기 체크 상태
+    if(userInputPoint != ""){ 
+        $("#savePoint").attr("checked", true);
+        if(${item_price} < ${point}) {
+    		$("#pointNumber").val(${item_price});
+    		$("#totDcAmtView").text($("#pointNumber").val());
+    		$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+    	} else {
+    		$("#pointNumber").val(${point});
+    		$("#totDcAmtView").text($("#pointNumber").val());
+    		$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+    	}
+    }
+	
+	// 항상 저장하기 클릭 시.
+	$("#savePoint").on("click", function() {
+		if($(this).is(":checked")) {
+			var userInputPoint = ${point};
+            setCookie("userInputPoint", userInputPoint, 7); // 7일 보관
+            if(${item_price} < ${point}) {
+				$("#pointNumber").val(${item_price});
+				$("#totDcAmtView").text($("#pointNumber").val());
+				$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+			} else {
+				$("#pointNumber").val(${point});
+				$("#totDcAmtView").text($("#pointNumber").val());
+				$("#lstPayAmtView").text(${item_price } - $("#pointNumber").val());
+			}
+		} else {
+			$("#pointNumber").val("");
+			$("#totDcAmtView").text("");
+			$("#lstPayAmtView").text(${item_price });
+			var userInputPoint = "";
+            setCookie("userInputPoint", userInputPoint, 7); // 7일 보관
+		}
+		
+	});
+	
+    
+    
+    function setCookie(cookieName, value, exdays){
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+        document.cookie = cookieName + "=" + cookieValue;
+    }
+     
+    function deleteCookie(cookieName){
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() - 1);
+        document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+    }
+     
+    function getCookie(cookieName) {
+        cookieName = cookieName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cookieName);
+        var cookieValue = '';
+        if(start != -1){
+            start += cookieName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+        }
+        return unescape(cookieValue);
+    }
+	
+	
+	
+});
 </script>
 </head>
 <body>
@@ -182,7 +258,7 @@
 									<p class="info">사용가능 <span id="" class="number">${point }</span><span>P</span></p>
 									<p class="input_payment">
 										<label class="c_order_checkbox">
-											<input type="checkbox" name="all_pay" style="display: none"><span>항상 전액사용</span>
+											<input type="checkbox" id="savePoint" name="all_pay" style="display: none"><span>항상 전액사용</span>
 										</label>
 									</p>
 								</div>
