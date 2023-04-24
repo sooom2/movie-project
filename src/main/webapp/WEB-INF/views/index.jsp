@@ -283,6 +283,16 @@
 				class="left" id="slider_left"></span>
 			<div class="slider-main">
 				<ul class="bxslider-main">
+					<li data-kind="개봉 예정작" data-title_ko="범죄도시3"
+						data-title_fo="THE ROUNDUP : NO WAY OUT"
+						data-desc="나쁜 놈들 잡는 데 이유 없고 제한 없다 커진 판도 시원하게 싹 쓸어버린다!">
+						<a href="" style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;"></a>
+					</li>
+				
+					<li data-kind="현재 상영작" data-title_ko="드림"
+						data-title_fo="DREAM" data-desc="쏘울리스 감독, 열정리스 PD, 그리고 홈리스 국대 부족한 것 투성인 드림팀의 생애 단 한 번의 기회!">
+						<a href="" style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;"></a>
+					</li>
 					<li data-kind="현재상영작" data-title_ko="리바운드" data-title_fo="Rebound"
 						data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다.">
 						<a href="" style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;"></a>
@@ -298,19 +308,11 @@
 						data-desc="“내 안의 목소리를 따라자유롭게 꿈꾸고 사랑할 거야”">
 						<a href="" style="background: url('resources/images/main/movie/mv3.png') center center no-repeat;"></a>
 					</li>
-					<li data-kind="개봉 예정작" data-title_ko="범죄도시3"
-						data-title_fo="THE ROUNDUP : NO WAY OUT"
-						data-desc="나쁜 놈들 잡는 데 이유 없고 제한 없다 커진 판도 시원하게 싹 쓸어버린다!">
-						<a href="" style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;"></a>
-					</li>
-						<li data-kind="현재 상영작" data-title_ko="슈퍼 마리오 브라더스"
+					
+					<li data-kind="현재 상영작" data-title_ko="슈퍼 마리오 브라더스"
 						data-title_fo="The Super Mario Bros"
 						data-desc="전 세계를 열광시킬 올 타임 슈퍼 어드벤처의 등장! ">
 						<a href="" style="background: url('resources/images/main/movie/mv6.png') center center no-repeat;"></a>
-					</li>
-					<li data-kind="현재 상영작" data-title_ko="드림"
-						data-title_fo="DREAM" data-desc="쏘울리스 감독, 열정리스 PD, 그리고 홈리스 국대 부족한 것 투성인 드림팀의 생애 단 한 번의 기회!">
-						<a href="" style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;"></a>
 					</li>
 					<li data-kind="현재 상영작" data-title_ko="존 윅 4"
 						data-title_fo="John Wick: Chapter 4" data-desc="레전드 액션 블록버스터 존 윅의 새로운 챕터가 열린다!">
