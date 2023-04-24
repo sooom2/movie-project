@@ -132,8 +132,8 @@ $(function() {
                      <h6> 상영종료된 일정 <b style="color:#673bd4">${pageInfo.listCount }</b>건</h6>
                       <!-- @@@@@@@@@@@추가 -->
                		 <div class="">
-	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'">
-	                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
+<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
+<!-- 	                    <input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()"> -->
 	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
 	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
                		 
@@ -173,7 +173,7 @@ $(function() {
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영날짜</a></th>
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">시작시간</a></th>
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">종료시간</a></th>
-                        <th data-sortable="true" style="width: 8%;">수정/삭제</th>
+<!--                         <th data-sortable="true" style="width: 8%;">수정/삭제</th> -->
                      </tr>
                   </thead>
                   <!-- 회원목록 -->
@@ -188,10 +188,10 @@ $(function() {
                         <td>${schedule.get('sch_movie_date')}</td>
                         <td>${schedule.get("sch_start_time") }</td>
                         <td>${schedule.get("sch_last_time") }</td>
-                        <td class="modi">
-                           <a></a>
-                           <input onclick="location.href='selectSchedule?sch_code=${schedule.get('sch_code')}'" class="btn btn-block btn-more" type="button" value="M O R E">
-                        </td>
+<!--                         <td class="modi"> -->
+<!--                            <a></a> -->
+<%--                            <input onclick="location.href='selectSchedule?sch_code=${schedule.get('end_sch_code')}'" class="btn btn-block btn-more" type="button" value="M O R E"> --%>
+<!--                         </td> -->
                      </tr>
                   </tbody>
                   </c:forEach>

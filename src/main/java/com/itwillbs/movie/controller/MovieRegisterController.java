@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.movie.service.MovieRegisterService;
 import com.itwillbs.movie.vo.PageInfo;
 
@@ -159,22 +160,32 @@ public class MovieRegisterController {
 	  	  cinema_name: $(".cinema_name option:selected").text(),
 	  	  screen_name: $(".screen_name option:selected").text()
 	 * */
+	
+	
 	@ResponseBody
-	@PostMapping("schCheckTime")
-	public HashMap<String, String> schCheckTime(
+	@PostMapping(value="schCheckTime",produces = "application/json; charset=utf8")
+	public String schCheckTime(
 			Model model
 			,@RequestParam("sch_date") String sch_date
 			,@RequestParam("cinema_name") String cinema_name
 			,@RequestParam("screen_name") String screen_name
-			){
+			) throws JsonProcessingException{
 		System.out.println("sch_date =======================================================");
 		System.out.println(sch_date);
-		HashMap<String, String> schCheckTime = movieRegisterService.schCheckTime(sch_date,cinema_name,screen_name);
-		System.out.println("schCheckTime =======================================================");
-		System.out.println(schCheckTime);
-		System.out.println("=======================================================");
-		model.addAttribute(schCheckTime);
-		return schCheckTime;
+		List<HashMap<String, String>> schCheckTime = movieRegisterService.schCheckTime(sch_date,cinema_name,screen_name);
+
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String schCheckTimeJson = objectMapper.writeValueAsString(schCheckTime);
+		model.addAttribute("schCheckTimeJson", schCheckTimeJson);
+		
+		
+		System.out.println("===============================================");
+		System.out.println(schCheckTimeJson);
+		System.out.println("===============================================");
+		
+		
+		return schCheckTimeJson;
 	}
 	
 	
@@ -182,6 +193,8 @@ public class MovieRegisterController {
 	//영화일정등록
 	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule,Model model) throws ParseException {
+		System.out.println("여기로 오니..");
+		System.out.println(movieSchedule);
 		HashMap<String, String> selectInfoTime = movieRegisterService.selectMovie(movieSchedule.get("sch_movie_code"));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); //변환형식
@@ -189,6 +202,8 @@ public class MovieRegisterController {
 		Calendar cal = Calendar.getInstance();
 		String runningTime = selectInfoTime.get("info_time");
 		String strTime2 = movieSchedule.get("sch_start_time");
+		
+		
 		Date runTime = sdf.parse(runningTime); //date 변환
 		Date startTime = sdf.parse(strTime2); ////date 변환
 		
@@ -199,14 +214,13 @@ public class MovieRegisterController {
 //		cal.add(Calendar.SECOND, runTime.getSeconds());
 		Date sumDate = cal.getTime();
 		
-		
 		String sch_last_time = movieSchedule.get("sch_last_time");
 		sch_last_time = sdf.format(sumDate);
 		movieSchedule.put("sch_last_time", sch_last_time);
-		
+		System.out.println(movieSchedule);
 		
 		int scheduleRegisterCount = movieRegisterService.scheduleRegister(movieSchedule);
-		
+		System.out.println(scheduleRegisterCount);
 		if(scheduleRegisterCount > 0){
 			System.out.println("예매등록성공");
 		}
@@ -360,8 +374,12 @@ public class MovieRegisterController {
 	@RequestMapping(value = "selectSchedule", method = {RequestMethod.GET, RequestMethod.POST})
 	public String selectSchedule(@RequestParam String sch_code,Model model) {
 		System.out.println("selectSchedule");
+		System.out.println(sch_code);
 		HashMap<String, String> selectSchedule = movieRegisterService.detailSchedule(sch_code);
 		model.addAttribute("selectSchedule",selectSchedule);
+		System.out.println("selectSchedule ==================================");
+		System.out.println(selectSchedule);
+		System.out.println("==================================");
 		System.out.println(model);
 		return "admin/admin_movie_schedule_update";
 	}
@@ -462,7 +480,7 @@ public class MovieRegisterController {
  	//상영종료된 목록movieEndSchedule
  	@GetMapping("movieEndSchedule")
  	public String movieEndSchedule(Model model,@RequestParam(defaultValue = "1") int pageNum) {
- 		
+ 		System.out.println("movieEndSchedule =======================================================");
 // 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
  		int insertCount = movieRegisterService.insertSchedule_end();
  		if(insertCount > 0) {

@@ -75,8 +75,9 @@ public class MovieRegisterService {
 
 	//영화 일정 목록	
 //	public List<HashMap<String, String>> selectSchedule() {
-//		return mapper.selectScheduleList();
+//		return mapper.selectScheduleDetail();
 //	}
+	
 	
 	//페이징처리한 영화일정목록
 	public List<HashMap<String, String>> selectSchedule(int startRow, int listLimit, String sch_movie_code, String sch_cinema_code, String sch_research_date) {
@@ -109,7 +110,7 @@ public class MovieRegisterService {
 	
 	//영화일정 상세정보
 	public HashMap<String, String> detailSchedule(String sch_code) {
-		return mapper.selectSchedule(sch_code);
+		return mapper.selectScheduleDetail(sch_code);
 	}
 	//영화일정 삭제
 	public int deleteSchedule(String sch_code) {
@@ -212,7 +213,7 @@ public class MovieRegisterService {
 	}
 	
 	//상영관 중복 시간 체크
-	public HashMap<String, String> schCheckTime(String sch_date, String cinema_name, String screen_name) {
+	public List<HashMap<String, String>> schCheckTime(String sch_date, String cinema_name, String screen_name) {
 		return mapper.schCheckTime(sch_date,cinema_name,screen_name);
 	}
 

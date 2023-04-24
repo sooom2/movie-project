@@ -5,7 +5,7 @@
 	<select id="selectCinema" resultType="hashmap">
 		SELECT *
 			FROM
-				cinema;
+				cinema
 	</select>
 
 	<!-- 영화정보 : 가나다순	 -->
@@ -14,7 +14,7 @@
 			FROM 
 				movieinfo
 			ORDER by 
-				info_movie_title ASC;
+				info_movie_title ASC
 	</select>
 
 
@@ -35,7 +35,7 @@
 			on 
 				m.info_movie_code = s.sch_movie_code 
 			where 
-				c.cinema_code = #{CnItemCd};
+				c.cinema_code = #{CnItemCd}
 	</select>
 	
 	
@@ -57,7 +57,7 @@
 		    and 
 		    	sd.sch_movie_code = #{MvItemCd}
 		    and 
-		    	sd.sch_movie_date like CONCAT('%',#{dateCd});
+		    	sd.sch_movie_date like CONCAT('%',#{dateCd})
 	</select>
 	
 	<!-- 예매 좌석 조회 -->
@@ -66,8 +66,19 @@
 			from 
 				reservation
 			where 
-				res_sch_code = #{schCd};
+				res_sch_code = #{schCd}
 	</select>
 	
+	<select id="selectMemberId" resultType="hashmap">
+		select * 
+			from 
+				member
+			where 
+				member_id = #{id}
+	</select>
+	
+	<insert id="insertReservation">
+		
+	</insert>
 	
 </mapper>
