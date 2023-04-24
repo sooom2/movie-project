@@ -210,6 +210,11 @@ public class MovieRegisterService {
 	public int getResListCount() {
 		return mapper.resListCount();
 	}
+	
+	//상영관 중복 시간 체크
+	public HashMap<String, String> schCheckTime(String sch_date, String cinema_name, String screen_name) {
+		return mapper.schCheckTime(sch_date,cinema_name,screen_name);
+	}
 
 
 

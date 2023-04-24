@@ -16,6 +16,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -145,6 +146,34 @@ public class MovieRegisterController {
 		
 		return selectScreen;
 	}
+	//
+	
+	/*
+	 * 
+	 * 	 sch_date: $(".sch_register_date").text(),
+	  	  cinema_name: $(".cinema_name option:selected").text(),
+	  	  screen_name: $(".screen_name option:selected").text()
+	 * */
+	@ResponseBody
+	@PostMapping("schCheckTime")
+	public HashMap<String, String> schCheckTime(
+			Model model
+			,@RequestParam("sch_date") String sch_date
+			,@RequestParam("cinema_name") String cinema_name
+			,@RequestParam("screen_name") String screen_name
+			){
+		System.out.println("sch_date =======================================================");
+		System.out.println(sch_date);
+		HashMap<String, String> schCheckTime = movieRegisterService.schCheckTime(sch_date,cinema_name,screen_name);
+		System.out.println("schCheckTime =======================================================");
+		System.out.println(schCheckTime);
+		System.out.println("=======================================================");
+		model.addAttribute(schCheckTime);
+		return schCheckTime;
+	}
+	
+	
+	
 	//영화일정등록
 	@RequestMapping(value = "movieScheduleRegisterPro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String movieSchedulePro(@RequestParam HashMap<String, String> movieSchedule,Model model) throws ParseException {

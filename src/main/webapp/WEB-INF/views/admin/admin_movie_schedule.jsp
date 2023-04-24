@@ -29,9 +29,9 @@
 <script type="text/javascript">
 
 
-
 function selectCinema(){
 	
+	//지점 > 상영관
 	$.ajax({
 		type: "POST",
 		url: "screenSelect",
@@ -46,16 +46,45 @@ function selectCinema(){
 			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
 			$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
 			for(var i=0; i<result.length; i++){
-				$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option');
+				$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option>');
 			}
+			
+			
 			
 		},
 		error:function(request,status,error){
 	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	     
 		}
+	});// 지점 > 상영관 ajax
+}// selectCinema()
+
+function selectSch(){
+	
+	alert($("#sch_register_date").val());
+	alert($(".cinema_name option:selected").text());
+	alert($(".screen_name option:selected").text());
+	$.ajax({
+		 type: "POST",
+		 url: "schCheckTime",
+		 data: {
+			 sch_date: $("#sch_register_date").val(),
+	  	  cinema_name: $(".cinema_name option:selected").text(),
+	  	  screen_name: $(".screen_name option:selected").text()
+		 },
+		 success: function(result){
+			 
+			 alert(result.sch_start_time);
+			 
+		 },
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		     
+		}
 	});//ajax
+		 
 }
+
 
 
 function dateDelete(){
@@ -229,8 +258,8 @@ $(function() {
 										<c:forEach var="movie" items="${movieList }">
 											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
 										</c:forEach>
-									</select> <select name="sch_cinema_code" id="sch_movie_code"
-										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
+									</select> 
+									<select name="sch_cinema_code" id="sch_movie_code"   style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
 										<option value="none" selected="selected" disabled>지점선택</option>
 										<option value="none" disabled>=======================</option>
 										<c:forEach var="cinema" items="${cinemaList }">
@@ -380,8 +409,7 @@ $(function() {
 			<!-- 삭제모달 -->
 
 			<!--  등록모달 -->
-			<div class="container modal admin-modal-register"
-				style="display: none;">
+			<div class="container modal admin-modal-register" style="display: none;">
 				<div class="row justify-content-center">
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
@@ -427,10 +455,9 @@ $(function() {
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="cinema_name">
-													<label for="cinema_name">영화관명 : </label> <select
-														name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을
-															선택하세요</option>
+													<label for="cinema_name">영화관명 : </label>
+													 <select name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을 선택하세요</option>
 														<option value="none" disabled>=======================</option>
 														<c:forEach var="cinema" items="${cinemaList }">
 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
@@ -447,17 +474,16 @@ $(function() {
 										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="screen_name">
-													<label for="screen_name">상영관 : </label> <select
-														name="sch_screen_code" class="selectScreen_name"
-														style="width: 300px">
-														<option value="none" selected="selected" disabled>상영관을
-															선택하세요</option>
+													<label for="screen_name">상영관 : </label>
+													 <select name="sch_screen_code" class="selectScreen_name" onchange="selectSch()" style="width: 300px">
+														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
 														<option value="none" disabled>=======================</option>
 													</select>
 												</div>
 											</div>
 										</div>
 									</div>
+								</div>
 									<div class="row mb-3">
 
 										<div class="col-md-6">
@@ -465,18 +491,18 @@ $(function() {
 												<div class="sch_start_time">
 													<label for="sch_start_time">상영시작시간 : </label> <select
 														name="sch_start_time">
-														<option value="09:00">오전 09:00</option>
-														<option value="10:00">오전 10:00</option>
-														<option value="11:00">오전 11:00</option>
-														<option value="12:00">오후 12:00</option>
-														<option value="13:00">오후 1:00</option>
-														<option value="14:00">오후 2:00</option>
-														<option value="15:00">오후 3:00</option>
-														<option value="16:00">오후 4:00</option>
-														<option value="17:00">오후 5:00</option>
-														<option value="18:00">오후 6:00</option>
-														<option value="19:00">오후 7:00</option>
-														<option value="20:00">오후 8:00</option>
+														<option value="09:00">09:00</option>
+														<option value="10:00">10:00</option>
+														<option value="11:00">11:00</option>
+														<option value="12:00">12:00</option>
+														<option value="13:00">13:00</option>
+														<option value="14:00">14:00</option>
+														<option value="15:00">15:00</option>
+														<option value="16:00">16:00</option>
+														<option value="17:00">17:00</option>
+														<option value="18:00">18:00</option>
+														<option value="19:00">19:00</option>
+														<option value="20:00">20:00</option>
 													</select>
 												</div>
 											</div>
@@ -491,12 +517,10 @@ $(function() {
 										</div>
 									</div>
 								</form>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<!--들어갈내용 -->
 
 			<!-- 푸터 -->

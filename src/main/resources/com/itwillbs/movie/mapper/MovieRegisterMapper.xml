@@ -123,6 +123,7 @@ SELECT *
 
 <!-- 영화상영일정 -->
 <insert id="scheduleRegister">
+<if test=""></if>
 INSERT INTO schedule
 		VALUES (
 			   (SELECT *
@@ -134,8 +135,22 @@ INSERT INTO schedule
 			 , #{sch_register_date}	
 			 , #{sch_start_time} 
 			 , #{sch_last_time}
-			 ) 
+			 )
 </insert>
+<!-- 상영시간 체크 -->
+<select id="schCheckTime" resultType="hashmap">
+<!-- 	String sch_date, String cinema_name, String screen_name -->
+	SELECT * 
+	FROM schedule
+	LEFT JOIN cinema
+	ON schedule.sch_cinema_code= cinema.cinema_code
+	LEFT JOIN screen
+	ON schedule.sch_screen_code=screen.screen_code
+	WHERE 1=1
+	AND sch_movie_date =#{sch_date}
+	AND cinema_name  =#{cinema_name}
+	AND screen_name = #{screen_name} 
+</select>
 
 	<!-- 검색 결과 총 개수 구하기 -->
 <!-- 	<select id="selectBoardListCount" resultType="int"> -->
