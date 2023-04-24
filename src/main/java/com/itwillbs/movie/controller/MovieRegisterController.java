@@ -85,6 +85,11 @@ public class MovieRegisterController {
 	@RequestMapping(value = "registMoviePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String registMovie(@RequestParam HashMap<String, String> movie,Model model) {
 		System.out.println(movie);
+		/*	예외처리 현황
+		 * 	Controller - 중복코드 제외
+		 *  admin_movie_register page - 포스터 누락 제외, 영화 코드 누락 제외, 상영일 이상 제외, 관람등급 누락 제외 
+		 * */
+		
 		
 		try {
 			int registCount = movieRegisterService.registMovie(movie);

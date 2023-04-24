@@ -51,6 +51,27 @@ function modalClose() {
 	dis3.style.display = "none";
 }
 
+$(function(){
+	$("form").submit(function(){
+		if($("#info_movie_poster").val() == null || $("#info_movie_code").val() == ""){
+			alert("영화 포스터를 확인해주세요.")
+			return false;
+		}
+		
+		if($("#info_movie_code").val() == null || $("#info_movie_code").val() == ""){
+			alert("영화 코드를 확인해주세요.")
+			return false;
+		}
+		
+		if($("#info_rating").val() == null || $("#info_rating").val() == ""){
+			console.log("관람등급을 확인해주세요.")
+			return false;
+		}
+		
+	});	
+})
+
+
 //이미지올리기
 function previewImage(targetObj, View_area) {
 	var preview = document.getElementById(View_area); //div id
