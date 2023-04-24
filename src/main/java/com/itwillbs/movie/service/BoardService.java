@@ -58,7 +58,7 @@ public class BoardService {
 		return mapper.insertOneBoard(map);
 	}
 
-	// 1대1 문의 목록
+	// 관리자 1대1 문의 목록
 	public List<HashMap<String, String>> getOneBoardList() {
 		return mapper.selectOneBoardList();
 	}
@@ -68,7 +68,7 @@ public class BoardService {
 		return mapper.selectBoardList(map);
 	}
 
-	// 공지사항 등록
+	// 관리자 공지사항 등록
 	public int registNoticeBoard(HashMap<String, String> map) {
 		
 		return mapper.insertNoticeBoard(map);
@@ -158,16 +158,18 @@ public class BoardService {
 		return mapper.deleteOneBoard(map);
 	}
 
-	// 내가 문의한 내역 상세
+	// 내가 문의한 내역 상세 지금 사용 x
 	public HashMap<String, String> getOneDetail(HashMap<String, String> map) {
 		
 		return mapper.selectOneDetail(map);
 	}
 
+	// 내가 문의한 내역 상세
 	public HashMap<String, String> getDetail(HashMap<String, String> map) {
 		return mapper.selectDetail(map);
 	}
 
+	// 내가 문의한 내역 삭제
 	public int getDelete(HashMap<String, String> map) {
 		return mapper.deleteBoard(map);
 	}

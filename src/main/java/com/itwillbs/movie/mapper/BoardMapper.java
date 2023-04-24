@@ -82,8 +82,10 @@ public interface BoardMapper {
 	// 내가 문의한 목록
 	List<HashMap<String, String>> selectBoardList(HashMap<String, String> map);
 
+	// 내가 문의한 내역 상세
 	HashMap<String, String> selectDetail(HashMap<String, String> map);
 
+	// 내가 문의한 내역 삭제
 	int deleteBoard(HashMap<String, String> map);
 
 	

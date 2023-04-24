@@ -38,9 +38,14 @@
 			<if test="rep_board != null and !rep_board.equals('') and !rep_board.equals('전체')">
 				AND lost_board_rep = #{rep_board}
 			</if>
+			<if test="cinema_name != null and !cinema_name.equals('') and !cinema_name.equals('전체')">
+				AND cinema_name = #{cinema_name}
+			</if>
 			ORDER BY 
 				lost_code DESC
-			LIMIT ${startNum}, ${endNum}
+			<if test="startNum != null and !startNum.equals('')">
+				LIMIT ${startNum}, ${endNum}
+			</if>
 	</select>
 	
 	<!-- 분실물 상세 -->
@@ -148,8 +153,9 @@
 				AND lost_board_rep = #{rep_board}
 			</if>
 		) T1
-		ORDER BY write_date DESC, table_name DESC, code DESC
-		 <if test="startNum != null and !startNum.equals('')">
+		ORDER BY write_date DESC 
+		, table_name DESC, code DESC
+		<if test="startNum != null and !startNum.equals('')">
             LIMIT ${startNum}, ${endNum}
         </if>
 	</select>

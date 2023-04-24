@@ -24,11 +24,10 @@
 <script type="text/javascript">
 
 function search(idx) {
-	debugger;
 	idx = parseInt(idx);
 	document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
 	document.querySelector("input[name=startNum]").value = Number(idx)*10;
-	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10;
+	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
 	let form = document.querySelector('#iForm');
 	form.action = 'one_list';
 	form.method = 'post';
@@ -109,7 +108,7 @@ function goDetail(table_name, code) {
 							<input type="hidden" name="pageNum" value="${paramMap.pageNum}">
 							<input type="hidden" name="table_name" value="">
 							<input type="hidden" name="code" value="">
-							<c:forEach var="oneBoard" items="${oneBoardList }">
+							<c:forEach var="oneBoard" items="${oneBoardList }" >
 								<tr data-index="0">
 									<td>${oneBoard.rownum }</td>
 									<td>${oneBoard.cinema_name }</td>
@@ -129,7 +128,7 @@ function goDetail(table_name, code) {
 				<nav class="pagination">
 					<c:if test="${1 < paramMap.pageNum }">
 						<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
-						<a title="이전 10페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+						<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
 					</c:if>
 					<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
 						<c:choose>
@@ -142,7 +141,7 @@ function goDetail(table_name, code) {
 						</c:choose>
 					</c:forEach>
 					<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
-						<a title="이후 10페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
+						<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
 						<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
 					</c:if>
 				</nav>

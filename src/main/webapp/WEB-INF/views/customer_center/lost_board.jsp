@@ -25,8 +25,8 @@
 function search(idx) {
 	idx = parseInt(idx);
 	document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
-	document.querySelector("input[name=startNum]").value = Number(idx);
-	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10;
+	document.querySelector("input[name=startNum]").value = Number(idx)*10;
+	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
 	let form = document.querySelector('#iForm');
 	form.action = 'lost_board';
 	form.method = 'post';
@@ -82,11 +82,12 @@ function goDetail(table_name, code) {
 						<div class="">
 							<div>
 								<div>
-									<select name="cinema_name" onchange="selectCinema()">
-										<option value="none" selected="selected" disabled>극장 선택</option>
-										<option value="none" disabled>=======================</option>
+									<select name="cinema_name" onchange="search('0');">
+										<option value="전체" selected="selected" >전체</option>
+<!-- 										<option value="none" disabled>=======================</option> -->
 										<c:forEach var="cinema" items="${cinemaList }">
-											<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
+<%-- 											<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option> --%>
+											<option value="${cinema.cinema_name}" ${paramMap.cinema_name == cinema.cinema_name ? 'selected' : ''}>${cinema.cinema_name}</option>
 										</c:forEach>
 									</select>
 									<select name="rep_board" onchange="search('0');" >
@@ -137,7 +138,7 @@ function goDetail(table_name, code) {
 										<td>${lostBoard.rownum }</td>
 										<td>${lostBoard.cinema_name }</td>
 										<td id="lost_subject"><a
-											href="lost_detail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+											href="lost_detail?lost_code=${lostBoard.lost_code }">${lostBoard.lost_subject }</a>
 <%-- 											href="javascript:goDetail('${lostBoard.lost_code}')">${lostBoard.lost_subject }</a> --%>
 										</td>
 										<td>${lostBoard.lost_board_rep }</td>
@@ -177,7 +178,7 @@ function goDetail(table_name, code) {
 					<nav class="pagination">
 						<c:if test="${1 < paramMap.pageNum }">
 							<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
-							<a title="이전 10페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+							<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
 						</c:if>
 						<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
 							<c:choose>
@@ -185,12 +186,12 @@ function goDetail(table_name, code) {
 									<strong class="active">${status.index+1}</strong>
 								</c:when>
 								<c:otherwise>
-									<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pagenum="${status.index+1}">${status.index+1}</a>
+									<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
-							<a title="이후 10페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
+							<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
 							<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
 						</c:if>
 					</nav>
