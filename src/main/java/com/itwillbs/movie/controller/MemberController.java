@@ -78,16 +78,17 @@ public class MemberController {
 	}
 	
 	//회원가입폼
-	@GetMapping(value = "memJoin")
-	public String memJoin(Model model) {
-		
-		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-		model.addAttribute("cinemaList",cinemaList);
-		System.out.println("==================================");
-		System.out.println(model);
-		System.out.println("==================================");
-		return "member/mem_join_form";
-	}
+//	@GetMapping(value = "memJoin")
+//	public String memJoin(Model model) {
+//		
+//		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+//		model.addAttribute("cinemaList",cinemaList);
+//		System.out.println("==================================");
+//		System.out.println(model);
+//		System.out.println("==================================");
+//		return "member/mem_join_form";
+//	}
+	
 	//예매확인폼
 	@GetMapping(value = "guestRsv")
 	public String guestRsv() {
@@ -142,11 +143,11 @@ public class MemberController {
 	}
 	
 	// 네이버 로그인 확인
-	@RequestMapping(value = "naverLogin", method = {RequestMethod.GET, RequestMethod.POST})
-	public String naver(@RequestParam HashMap<String, String> naver) {
-		System.out.println(naver);
-		return "";
-	}
+//	@RequestMapping(value = "naverLogin", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String naver(@RequestParam HashMap<String, String> naver) {
+//		System.out.println(naver);
+//		return "";
+//	}
 	
 	
 	// 카카오 로그인 확인
@@ -159,7 +160,7 @@ public class MemberController {
 		// 회원 판별
 		if(member == null) {
 			model.addAttribute("msg", "회원이 아닙니다. 회원가입 페이지로 이동합니다.");
-			model.addAttribute("target", "joinform");
+			model.addAttribute("target", "joinform?email=" + kakao.get("email"));
 			
 			return "member/success";
 			
@@ -179,16 +180,6 @@ public class MemberController {
 		model.addAttribute("cinemaList",cinemaList);
 		return "member/mem_join_form";
 	}
-	
-	
-//	// 네이버 로그인
-//	@PostMapping(value = "naver")
-//	public String naver(@RequestParam HashMap<String, String> naver, Model model, HttpSession session) {
-//		
-//		System.out.println(naver);
-//		
-//		return "";
-//	}
 	
 	
 	// 이메일 인증
@@ -269,7 +260,7 @@ public class MemberController {
 	// 회원가입폼
 	@GetMapping(value = "joinform")
 	public String loginform(String email, Model model) {
-		
+		System.out.println(email);
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
 		
