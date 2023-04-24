@@ -71,14 +71,14 @@
 								class="input-textarea view" style="border: none;">${map.content }</textarea>
 						</div>
 						<!-- 답변영역 -->
-						<c:if test="${not empty map.rep_content }">
+						<c:if test="${not empty map.rep_content}">
 							<div class="cont">
 								<div>
-									<label for="one_rep_board_content">답변내용</label>
+									<label for="rep_content">답변내용</label>
 								</div>
 							<textarea rows="5" cols="30" readonly=""
 								class="input-textarea view" style="border: none;">${map.rep_content }</textarea>
-						</div>
+							</div>
 						</c:if>
 					</div>
 				</div>

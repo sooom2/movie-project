@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,78 +12,93 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/inc.css"
 	rel="stylesheet">
-<!-- »ó´Ü -->
+<!-- ìƒë‹¨ -->
 <link href="${pageContext.request.contextPath }/resources/css/sub.css"
 	rel="stylesheet">
-<!-- º»¹® -->
+<!-- ë³¸ë¬¸ -->
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
+<script type="text/javascript">
+function search(idx) {
+	idx = parseInt(idx);
+	document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
+	document.querySelector("input[name=startNum]").value = Number(idx);
+	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10;
+	let form = document.querySelector('#iForm');
+	form.action = 'lost_board';
+	form.method = 'post';
+	form.submit();
+}
+
+function lost_form() {
+	let form = document.querySelector('#iForm');
+	form.action = 'lost_form';
+	form.method = 'post';
+	form.submit();
+}
+
+function goDetail(table_name, code) {
+	document.querySelector("input[name=table_name]").value = table_name;
+	document.querySelector("input[name=code]").value = code;
+	let form = document.querySelector('#iForm');
+	form.action = 'lost_detail';
+	form.method = 'post';
+	form.submit();
+}
+
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 			<div id="contents">
-				<h2 class="tit">ºĞ½Ç¹° ¹®ÀÇ</h2>
+			<form id="iForm">
+				<h2 class="tit">ë¶„ì‹¤ë¬¼ ë¬¸ì˜</h2>
 
 				<div class="clearfix">
 					<ul class="dot-list">
-						<li>¸Ş°¡¹Ú½º¿¡¼­ ÀÒ¾î¹ö¸° ¹°°ÇÀÌ ÀÖ´Ù¸é ¡®ºĞ½Ç¹° ¹®ÀÇ/Á¢¼ö¡¯¸¦ ÅëÇØ Á¢¼öÇØÁÖ¼¼¿ä. 
-							<button onclick='location.href="lost_form"' class="button" style="margin-left: 190px;">
-							ºĞ½Ç¹° ¹®ÀÇ
+						<li>ë©”ê°€ë°•ìŠ¤ì—ì„œ ìƒì–´ë²„ë¦° ë¬¼ê±´ì´ ìˆë‹¤ë©´ â€˜ë¶„ì‹¤ë¬¼ ë¬¸ì˜/ì ‘ìˆ˜â€™ë¥¼ í†µí•´ ì ‘ìˆ˜í•´ì£¼ì„¸ìš”. 
+							<button onclick="javascript:lost_form()" class="button" style="margin-left: 190px;">
+							ë¶„ì‹¤ë¬¼ ë¬¸ì˜
 							</button> 
-<!-- 								<a href="lost_form" class="button float-r" title="ºĞ½Ç¹° ¹®ÀÇ µî·ÏÇÏ±â">ºĞ½Ç¹° ¹®ÀÇ</a> -->
+<!-- 								<a href="lost_form" class="button float-r" title="ë¶„ì‹¤ë¬¼ ë¬¸ì˜ ë“±ë¡í•˜ê¸°">ë¶„ì‹¤ë¬¼ ë¬¸ì˜</a> -->
 						</li>
-						<li>Á¢¼öÇÏ½Å ±ÛÀº ºñ¹Ğ±Û·Î µî·ÏµÇ¾î ÀÛ¼ºÀÚ¿Í °ü¸®ÀÚ¸¸ È®ÀÎ °¡´ÉÇÕ´Ï´Ù.</li>
+						<li>ì ‘ìˆ˜í•˜ì‹  ê¸€ì€ ë¹„ë°€ê¸€ë¡œ ë“±ë¡ë˜ì–´ ì‘ì„±ìì™€ ê´€ë¦¬ìë§Œ í™•ì¸ ê°€ëŠ¥í•©ë‹ˆë‹¤.</li>
 					</ul>
 				</div>
 
 				<div class="board-list-util">
 					<p class="result-count">
-						<strong>ÀüÃ¼ <span id="totalCnt" class="font-gblue">${listCount }</span>°Ç
+						<strong>ì „ì²´ <span id="totalCnt" class="font-gblue">${paramMap.totalCnt == null ? 0 : paramMap.totalCnt}</span>ê±´
 						</strong>
 					</p>
 
-					<!-- ===================================================================================== -->
-					<!-- 					<script type="text/javascript"> -->
-					<!--  							$("#selectBox").on("change", function() { -->
-					<!--  					 			alert($("#selectBox").val() + " ¼±ÅÃµÊ!"); -->
-					<!--  								location.href = "MemberList.me?level=" + $("#selectBox").val(); -->
-					<!--  							}); -->
-					<!-- 					</script> -->
-					<!-- 					<td colspan="3"> -->
-					<!-- 						<select id="selectBox" name="level"> -->
-					<!-- 							<option value="ÀüÃ¼">ÀüÃ¼</option> -->
-					<!-- 							<option value="VIP">VIP</option> -->
-					<!-- 							<option value="ÀÏ¹İ">ÀÏ¹İ</option> -->
-					<!-- 						</select> -->
-					<!-- 					</td> -->
-					<!-- ===================================================================================== -->
+					
 					<div class="board-list-util">
-
 						<div class="">
 							<div>
 								<div>
 									<select name="cinema_name" onchange="selectCinema()">
-										<option value="none" selected="selected" disabled>±ØÀå
-											¼±ÅÃ</option>
+										<option value="none" selected="selected" disabled>ê·¹ì¥ ì„ íƒ</option>
 										<option value="none" disabled>=======================</option>
 										<c:forEach var="cinema" items="${cinemaList }">
 											<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
 										</c:forEach>
-									</select> <select id="selectBox">
-										<option class="bs-title-option" value="Á¢¼ö»óÅÂ ¼±ÅÃ">Á¢¼ö»óÅÂ
-											¼±ÅÃ</option>
-										<option value="¹Ì´äº¯">¹Ì´äº¯</option>
-										<option value="´äº¯¿Ï·á">´äº¯¿Ï·á</option>
+									</select>
+									<select name="rep_board" onchange="search('0');" >
+										<option value="ì „ì²´" <c:if test="${paramMap.rep_board eq 'ì „ì²´'}">selected</c:if>>ì „ì²´</option>
+										<option value="ë‹µë³€ì™„ë£Œ" <c:if test="${paramMap.rep_board eq 'ë‹µë³€ì™„ë£Œ'}">selected</c:if>>ë‹µë³€ì™„ë£Œ</option>
+										<option value="ë¯¸ë‹µë³€" <c:if test="${paramMap.rep_board eq 'ë¯¸ë‹µë³€'}">selected</c:if>>ë¯¸ë‹µë³€</option>
 									</select>
 									<div class="board-search">
-										<input type="text" id="searchTxt" title="°Ë»ö¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä."
-											placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä." class="input-text" value="">
-										<button type="button" id="searchBtn" class="btn-search-input">°Ë»ö</button>
+										<input type="text" id="searchTxt" name="searchKeyword" title="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”."
+											placeholder="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”." class="input-text" value="${paramMap.searchKeyword}"
+											maxlength="15">
+										<button type="button" id="searchBtn" class="btn-search-input" onclick="search('0');">ê²€ìƒ‰</button>
 									</div>
 								</div>
 							</div>
@@ -91,7 +106,7 @@
 					</div>
 					<div class="table-wrap">
 						<table class="board-list">
-							<caption>¹øÈ£, ±ØÀå, ±¸ºĞ, Á¦¸ñ, µî·ÏÀÏÀÌ µé¾î°£ °øÁö»çÇ× ÀüÃ¼ ¸®½ºÆ®</caption>
+							<caption>ë²ˆí˜¸, ê·¹ì¥, êµ¬ë¶„, ì œëª©, ë“±ë¡ì¼ì´ ë“¤ì–´ê°„ ê³µì§€ì‚¬í•­ ì „ì²´ ë¦¬ìŠ¤íŠ¸</caption>
 							<colgroup>
 								<col style="width: 72px;">
 								<col style="width: 133px;">
@@ -101,20 +116,29 @@
 							</colgroup>
 							<thead>
 								<tr style="line-height: 38px; text-align: center;">
-									<th scope="col">¹øÈ£</th>
-									<th scope="col">±ØÀå</th>
-									<th scope="col">Á¦¸ñ</th>
-									<th scope="col">´äº¯»óÅÂ</th>
-									<th scope="col">µî·ÏÀÏ</th>
+									<th scope="col">ë²ˆí˜¸</th>
+									<th scope="col">ê·¹ì¥</th>
+									<th scope="col">ì œëª©</th>
+									<th scope="col">ë‹µë³€ìƒíƒœ</th>
+									<th scope="col">ë“±ë¡ì¼</th>
 								</tr>
 							</thead>
 							<tbody>
+								<input type="hidden" name="memberName" value="${paramMap.memberName}">
+								<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
+								<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
+								<input type="hidden" name="startNum" value="${paramMap.startNum}">
+								<input type="hidden" name="endNum" value="${paramMap.endNum}">
+								<input type="hidden" name="pageNum" value="${paramMap.pageNum}">
+								<input type="hidden" name="lost_board" value="">
+								<input type="hidden" name="lost_code" value="">
 								<c:forEach var="lostBoard" items="${lostBoardList }">
 									<tr>
-										<td>${lostBoard.lost_code }</td>
+										<td>${lostBoard.rownum }</td>
 										<td>${lostBoard.cinema_name }</td>
 										<td id="lost_subject"><a
 											href="lost_detail?lost_code=${lostBoard.lost_code }&pageNum=${pageNum }">${lostBoard.lost_subject }</a>
+<%-- 											href="javascript:goDetail('${lostBoard.lost_code}')">${lostBoard.lost_subject }</a> --%>
 										</td>
 										<td>${lostBoard.lost_board_rep }</td>
 										<td>${lostBoard.lost_write_date }</td>
@@ -128,65 +152,51 @@
 						style="top: 31px; left: 304.5px; width: 500px; height: 300px; opacity: 1; display: none;">
 						<div class="wrap">
 							<header class="layer-header">
-								<h3 class="tit">ºñ¹Ğ¹øÈ£ ÀÔ·Â</h3>
+								<h3 class="tit">ë¹„ë°€ë²ˆí˜¸ ì…ë ¥</h3>
 							</header>
 
 							<div class="layer-con">
-								<p>±Û ÀÛ¼º½Ã ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>
+								<p>ê¸€ ì‘ì„±ì‹œ ì…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>
 								<div class="box-gray a-c">
-									<input type="password" id="password" title="ºñ¹Ğ¹øÈ£ ÀÔ·Â"
+									<input type="password" id="password" title="ë¹„ë°€ë²ˆí˜¸ ì…ë ¥"
 										class="input-text w250px">
-									<p class="font-red mt10 mb0">ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>
+									<p class="font-red mt10 mb0">ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>
 								</div>
 								<div class="btn-group">
 									<a href="#" class="button small lyclose" id="cancelBtn"
-										title="Ãë¼Ò">Ãë¼Ò</a> <a href="#" class="button small purple"
-										id="chkBtn" title="È®ÀÎ">È®ÀÎ</a>
+										title="ì·¨ì†Œ">ì·¨ì†Œ</a> <a href="#" class="button small purple"
+										id="chkBtn" title="í™•ì¸">í™•ì¸</a>
 								</div>
 							</div>
 
-							<button type="button" class="btn-layer-close">·¹ÀÌ¾î ´İ±â</button>
+							<button type="button" class="btn-layer-close">ë ˆì´ì–´ ë‹«ê¸°</button>
 						</div>
 					</section>
 
 					<!-- pagination -->
 					<nav class="pagination">
-						<section id="pageList">
+						<c:if test="${1 < paramMap.pageNum }">
+							<a title="ì²˜ìŒ í˜ì´ì§€ ë³´ê¸°" href="javascript:search('0')" class="control first" pagenum="1">first</a>
+							<a title="ì´ì „ 10í˜ì´ì§€ ë³´ê¸°" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+						</c:if>
+						<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
 							<c:choose>
-								<c:when test="${pageNum > 1 }">
-									<input type="button" value="ÀÌÀü"
-										onclick="location.href='lost_board?pageNum=${pageNum - 1}'">
+								<c:when test="${paramMap.pageNum eq status.index+1}">
+									<strong class="active">${status.index+1}</strong>
 								</c:when>
 								<c:otherwise>
-									<input type="button" value="ÀÌÀü">
+									<a title="${status.index+1}í˜ì´ì§€ë³´ê¸°" href="javascript:search('${status.index}')" pagenum="${status.index+1}">${status.index+1}</a>
 								</c:otherwise>
 							</c:choose>
-
-							<c:forEach var="num" begin="${pageInfo.startPage }"
-								end="${pageInfo.endPage }">
-								<c:choose>
-									<c:when test="${pageNum eq num }">
-										<b>${num }</b>
-									</c:when>
-									<c:otherwise>
-										<a href="lost_board?pageNum=${num }">${num }</a>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-
-							<c:choose>
-								<c:when test="${pageNum < pageInfo.maxPage }">
-									<input type="button" value="´ÙÀ½"
-										onclick="location.href='lost_board?pageNum=${pageNum + 1}'">
-								</c:when>
-								<c:otherwise>
-									<input type="button" value="´ÙÀ½">
-								</c:otherwise>
-							</c:choose>
-						</section>
+						</c:forEach>
+						<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
+							<a title="ì´í›„ 10í˜ì´ì§€ ë³´ê¸°" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
+							<a title="ë§ˆì§€ë§‰ í˜ì´ì§€ ë³´ê¸°" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
+						</c:if>
 					</nav>
 					<!--// pagination -->
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -51,24 +51,18 @@
 
 						<div class="info">
 							<p>
-								<span class="txt">문의사항</span>
+								<span class="txt">문의유형 : ${map.lost_question_type }</span>
 							</p>
 							<p>
-								<strong class="txt">${map.cinema_name }</strong>
+								<strong class="txt">극장명 : ${map.cinema_name }</strong>
 							</p>
 							<p>
-								<span class="txt">${map.lost_tel }</span>
-							</p>
-							<p>
-								<span class="txt">${map.lost_email }</span>
-							</p>
-							<p>
-								<span class="txt">${map.lost_write_date }</span>
+								<span class="txt">작성일 : ${map.lost_write_date }</span>
 							</p>
 							<p>
 
 
-								<span class="txt">미답변</span>
+								<span class="txt">답변상태 : ${map.lost_board_rep }</span>
 
 							</p>
 						</div>
@@ -85,7 +79,7 @@
 								</div>
 							<textarea rows="5" cols="30" readonly=""
 								class="input-textarea view" style="border: none;">${map.lost_board_rep_content }</textarea>
-						</div>
+							</div>
 						</c:if>
 
 					</div>

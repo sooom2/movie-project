@@ -16,7 +16,7 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 <script type="text/javascript">
-function numberMaxLength(el, maxlength) {
+function numberMaxLength(el, maxlength) { // 비밀번호 4자리
 	if(el.value.length > maxlength) {
 		el.value = el.value.substr(0, maxlength);
 	}

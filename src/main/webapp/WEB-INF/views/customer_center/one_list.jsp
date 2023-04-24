@@ -22,7 +22,9 @@
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
 <script type="text/javascript">
+
 function search(idx) {
+	debugger;
 	idx = parseInt(idx);
 	document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
 	document.querySelector("input[name=startNum]").value = Number(idx)*10;
@@ -32,6 +34,7 @@ function search(idx) {
 	form.method = 'post';
 	form.submit();
 }
+
 function goDetail(table_name, code) {
 	document.querySelector("input[name=table_name]").value = table_name;
 	document.querySelector("input[name=code]").value = code;
@@ -134,7 +137,7 @@ function goDetail(table_name, code) {
 								<strong class="active">${status.index+1}</strong>
 							</c:when>
 							<c:otherwise>
-								<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pagenum="${status.index+1}">${status.index+1}</a>
+								<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
