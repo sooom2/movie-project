@@ -25,7 +25,7 @@
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
 						    	<a href="reservation" class="rsv">
-						    		<span class="over-btn-rsv">${movie.status }</span></a>
+						    		<span class="over-btn-rsv" data-moviestatus="${movie.info_status }"></span></a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
 					    	</span>
@@ -52,6 +52,8 @@
 	</div>
 <script type="text/javascript">
     $(document).ready(function () {
+    	console.log($("data-moviestatus").val());
+    	
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
             $(this).parent().addClass("on");
             if ($(this).hasClass("info")) {

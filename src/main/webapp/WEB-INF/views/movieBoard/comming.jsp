@@ -23,7 +23,7 @@
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
 						    	<a href="#" class="rsv">
-						    		<span class="over-btn-rsv">${movie.status }</span></a>
+						    		<span class="over-btn-rsv">${movie.infO_status }</span></a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
 					    	</span>

@@ -43,7 +43,7 @@ public class MovieController {
 	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
 	public String comming(Model model) {
 		
-		List<HashMap<String, String>> movieList = service.selectCommingMovies();
+		List<HashMap<String, String>> movieList = service.selectCommingMovieList();
 		
 		model.addAttribute("movieList",movieList);
 		
