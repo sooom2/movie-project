@@ -76,7 +76,7 @@ function selectSch(){
 			let disabledValues = [];
 
 			$(".sch_start_time option").remove();
-			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요 선택하세요</option>');
+			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요</option>');
 			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
 			
 			for (var i = 0; i < result.length; i++) {
