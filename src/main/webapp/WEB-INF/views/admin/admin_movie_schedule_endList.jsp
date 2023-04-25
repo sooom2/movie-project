@@ -19,6 +19,37 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
+function selectCinema(){
+	
+	//지점 > 상영관
+	$.ajax({
+		type: "POST",
+		url: "screenSelect",
+		data: {
+			cinema_code: $(".cinema_name option:selected").val(),
+		  	cinema_name: $(".cinema_name option:selected").text()
+		},
+		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
+			
+			
+			$(".selectScreen_name option").remove();
+			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+			$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
+			for(var i=0; i<result.length; i++){
+				$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option>');
+			}
+			
+			
+			
+		},
+		error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	     
+		}
+	});// 지점 > 상영관 ajax
+}// selectCinema()
+
 function dateDelete(){
    
    //dateDelete
@@ -68,7 +99,7 @@ $(function () {
 
 
 $(function() {
-    $("#sch_movie_date").datepicker({
+    $("#sch_research_date").datepicker({
        dateFormat: 'yy-mm-dd' //달력 날짜 형태
             ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
             ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
@@ -123,7 +154,14 @@ $(function() {
       <div id="layoutSidenav_content">
          <!-- 들어갈내용 -->
           <main>
-          
+          <c:choose>
+				<c:when test="${empty param.pageNum }">
+					<c:set var="pageNum" value="1"/>			
+				</c:when>
+				<c:otherwise>
+					<c:set var="pageNum" value="${param.pageNum }"></c:set>
+				</c:otherwise>
+		</c:choose>	
           
           
                     <!-- 테이블 -->
@@ -137,30 +175,32 @@ $(function() {
 	                    <input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
 	                    <input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
                		 
-<!-- 	                 <div class="selectbox searchbox" style="display: inline-block; float: right; margin-bottom: 30px;"> -->
-<!-- 	                 	<form> -->
-<!--                    			<div class="sch_movie_code"> -->
-<!-- 								<select name="sch_movie_code" id="sch_movie_code" style="width: 150px;  height: 32px;border: 1px solid #aeaeae;  "> -->
-<!-- 								<option value="none" selected="selected" disabled >영화</option> -->
-<!-- 								<option value="none" disabled>=======================</option> -->
-<!-- 								<option value="none" >전체보기</option> -->
-<%-- 								<c:forEach var="movie" items="${movieList }"> --%>
-<%-- 						  				 <option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option> --%>
-<%-- 								</c:forEach> --%>
-<!-- 								</select> -->
-<!-- 								<select name="sch_movie_code" id="sch_movie_code" style="width: 110px; height: 32px;border: 1px solid #aeaeae;"> -->
-<!-- 									<option value="none" selected="selected" disabled >지점</option> -->
-<!-- 									<option value="none" disabled>=======================</option> -->
-<!-- 									<option value="none" >전체보기</option> -->
-<%-- 									<c:forEach var="cinema" items="${cinemaList }"> --%>
-<%-- 							  				 <option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option> --%>
-<%-- 									</c:forEach> --%>
-<!-- 								</select> -->
-<!-- 									<input name="sch_movie_date" class="sch_movie_date" id="sch_movie_date" type="text" placeholder="날짜검색" style="width: 100px;height: 32px; border: 1px solid #aeaeae;"/> -->
-<!--                            			<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px;line-height: 16px;margin-bottom: 5px; background-color: #ffffff;">	 -->
-<!--                             </div> -->
-<!-- 	                 	</form> -->
-<!-- 	                 </div> -->
+	                <div class="selectbox searchbox"
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 520px; padding-left: 53px;">
+							<form action="admin_schedule_register">
+								<div class="sch_movie_code">
+									<select name="sch_movie_code" id="sch_movie_code"
+										style="width: 150px; height: 32px; border: 1px solid #aeaeae;">
+										<option value="none" selected="selected" disabled>영화선택</option>
+										<option value="none" disabled>=======================</option>
+										<c:forEach var="movie" items="${movieList }">
+											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+										</c:forEach>
+									</select> 
+									<select name="sch_cinema_code" id="sch_movie_code"   style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
+										<option value="none" selected="selected" disabled>지점선택</option>
+										<option value="none" disabled>=======================</option>
+										<c:forEach var="cinema" items="${cinemaList }">
+											<option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+										</c:forEach>
+									</select> <input name="sch_research_date" class="sch_research_date"
+										id="sch_research_date" type="text" placeholder="날짜검색"
+										style="width: 100px; height: 32px; border: 1px solid #aeaeae;" />
+									<input class="btn btn-block btn-more" type="submit" value="검색"
+										style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
+								</div>
+							</form>
+						</div>
 	                
 	         	</div>	
                <!--  @@@@@@@@@@@추가 -->
@@ -204,15 +244,6 @@ $(function() {
                    <div class="datatable-bottom">
 						<nav class="datatable-pagination">
 							<ul class="datatable-pagination-list">
-								<c:choose>
-									<c:when test="${empty param.pageNum }">
-										<c:set var="pageNum" value="1"/>			
-									</c:when>
-									<c:otherwise>
-										<c:set var="pageNum" value="${param.pageNum }"></c:set>
-									</c:otherwise>
-								</c:choose>		
-							
 <!-- 							 datatable-disabled -->
 								<c:choose>
 									<c:when test="${pageNum > 1 }">
