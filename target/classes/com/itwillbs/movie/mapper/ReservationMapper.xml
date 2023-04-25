@@ -78,7 +78,28 @@
 	</select>
 	
 	<insert id="insertReservation">
-		
+		insert 
+			into 
+				reservation
+			values (
+				#{vo.resCode}
+				, #{id}
+				, #{vo.schCd}
+				, #{vo.MovieCd}
+				, #{vo.ScreenCd}
+				, #{vo.MovieDate}
+				, #{vo.MovieNm}
+				, #{vo.CinemaNm}
+				, #{vo.totalCnt}
+				, #{vo.totalAmt}
+				, #{vo.resPayment}
+				, #{vo.buyerTel}
+				, #{vo.resPayDone}
+				, now()
+				, #{vo.seatLine}
+				, #{vo.seatNum}
+			
+			)
 	</insert>
 	
 </mapper>

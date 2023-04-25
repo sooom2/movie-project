@@ -1,3 +1,4 @@
+
 package com.itwillbs.movie.mapper;
 
 import java.util.*;
@@ -24,6 +25,6 @@ public interface ReservationMapper {
 
 	HashMap<String, String> selectMemberId(String id);
 
-	int insertReservation(ReservationVO vo, String id);
+	int insertReservation(@Param("vo") ReservationVO vo, @Param("id") String id);
 	
 }

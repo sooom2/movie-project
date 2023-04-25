@@ -319,10 +319,14 @@
 		    }, function (rsp) { // callback
 		        if (rsp.success) {
 				    alert("결제가 완료되었습니다.");
+				    
 					$("#dataForm").append('<input type="hidden" id="resCode" name="resCode" value="' + rsp.merchant_uid + '">');
 					$("#dataForm").append('<input type="hidden" id="resPayment" name="resPayment" value="' + rsp.pay_method + '">');
 					$("#dataForm").append('<input type="hidden" id="resPay" name="resPay" value="' + rsp.paid_amount + '">');
 					$("#dataForm").append('<input type="hidden" id="resPayDone" name="resPayDone" value="' + rsp.status + '">');
+					$("#dataForm").append('<input type="hidden" id="buyerEmail" name="buyerEmail" value="' + rsp.buyer_email + '">');
+					$("#dataForm").append('<input type="hidden" id="buyerName" name="buyerName" value="' + rsp.buyer_name + '">');
+					$("#dataForm").append('<input type="hidden" id="buyerTel" name="buyerTel" value="' + rsp.buyer_tel + '">');
 					$("#dataForm").submit();
 					
 		        } else {

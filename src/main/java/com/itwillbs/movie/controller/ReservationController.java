@@ -136,7 +136,7 @@ public class ReservationController {
 	@PostMapping("reservationPay")
 	public String reservationPay(ReservationVO vo, Model model, HttpSession session) {
 		model.addAttribute("vo", vo);
-//		System.out.println("vo" + vo);
+		
 		
 		String id = (String)session.getAttribute("sId");
 		HashMap<String, String> member = service.selectMemberId(id);
@@ -162,6 +162,7 @@ public class ReservationController {
 	@RequestMapping(value = "reservationSuccess", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reservationResult(ReservationVO vo, Model model, HttpSession session) {
 		model.addAttribute("vo", vo);
+		System.out.println("vo!!!!! :::" + vo);
 		String id = (String)session.getAttribute("sId");
 		HashMap<String, String> member = service.selectMemberId(id);
 		model.addAttribute("member", member);

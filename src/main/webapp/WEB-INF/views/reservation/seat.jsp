@@ -328,6 +328,41 @@ function reservationList() {
 			success: function(response) { 
 				console.log("reservationList : 요청처리성공");
 				
+				var obj = {};
+				response.forEach(function(el, index){
+					var lines = el.res_seat_line.split(',');
+					var seats = el.res_seat_num.split(',');
+					debugger;
+					lines.forEach((el, index) => {
+						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
+						if(!obj[el]) obj[el] = [];
+						seats[index].split(',').forEach((seat) => {
+							obj[el].push(seat)
+						});
+						obj[el].sort();
+							
+					});
+					
+				});
+
+				// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
+				var seatList = $('.seat');
+ 				$.each(seatList, function(index, el){
+ 					var line = $(el).attr('data-line');
+ 					var seatNum = $(el).attr('data-num');
+ 					
+ 					// 예약된 자리면
+ 					if(obj[line]){
+ 						if(obj[line].includes(seatNum)){ 
+ 	 						$(el).attr("class", "seat soldout");
+ 	 						$(el).attr("disabled", "true");
+ 	 						$(el).css({"background-color" : "#3D3F51"});		
+ 	 					}
+ 					}
+ 				});
+				
+				
+				/* 
 				for(movie of response) {
 					let resSeatLine = movie.res_seat_line;
 					let resSeatNum = movie.res_seat_num;
@@ -337,6 +372,7 @@ function reservationList() {
 	 				$.each(seatList, function(index, el){
 	 					
 	 					// el == element , attr('data-line') : 속성 선택, attr('data-line', '2') : 속성 값을 2로 변경
+	 					
 	 					if($(el).attr('data-line') == resSeatLine && $(el).attr('data-num') == resSeatNum){
 	 						$(el).attr("class", "seat soldout");
 	 						$(el).attr("disabled", "true");
@@ -347,7 +383,8 @@ function reservationList() {
 					console.log("resSeatLine: " + resSeatLine);
 					console.log("resSeatNum: " + resSeatNum);
 					
-				}
+				} 
+				*/
 				
 			},
 			error: function(xhr, textStatus, errorThrown) {
@@ -377,10 +414,6 @@ function choiceEvent (e) {
 	
 	
 	$(function() {
-// 		console.log(${reservationList.get(0).res_seat_num});
-// 		console.log("${reservationList.size()}:" + ${reservationList.size()});
-		
-// 		resSeat = {${reservationList.get(0).res_seat_line},${reservationList.get(0).res_seat_num}};
 		
 		// 좌석 생성
 		for(let i = 1; i < seatLine; i++) {
