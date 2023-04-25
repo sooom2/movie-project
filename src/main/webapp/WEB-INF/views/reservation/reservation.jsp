@@ -76,7 +76,6 @@
 				
 
 				
-				<!-- PC 전용 -->
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
 						<div class="in-box">
@@ -266,7 +265,6 @@
 				</div>
 			</form>
 		</div>
-		<!-- // PC 전용 -->
 	</div>
 	<div class="modal" id="viewGrade">
 		<div class="modal-dialog" style="max-width:470px">

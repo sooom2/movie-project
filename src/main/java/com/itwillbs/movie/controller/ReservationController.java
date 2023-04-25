@@ -147,17 +147,6 @@ public class ReservationController {
 	}
 	
 	
-	
-	
-	
-//	@PostMapping("reservationPay")
-//	public String reservationPay(@RequestParam String[] seatNm) {
-//		System.out.println(seatNm[0] + ", " + seatNm[1]);
-//		return "reservation/reservation_pay";
-//	}
-	
-	
-	
 	// 예매 결제 완료
 	@RequestMapping(value = "reservationSuccess", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reservationResult(ReservationVO vo, Model model, HttpSession session) {
