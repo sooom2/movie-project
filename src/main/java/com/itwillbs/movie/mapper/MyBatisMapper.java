@@ -101,6 +101,8 @@ public interface MyBatisMapper {
 	//리뷰가져오기
 	List<HashMap<String, String>> selectReview();
 
+	HashMap<String, String> selectPayCode(String payCode);
+
 
 	
 	// ------------------------------------------------------------------------------------------

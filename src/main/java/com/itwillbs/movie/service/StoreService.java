@@ -56,6 +56,9 @@ public class StoreService {
 	public int insertPointTable(String id, String payPoint) {
 		return mapper.insertPointTable(id, payPoint);
 	}
+	public HashMap<String, String> selectPayCode(String payCode) {
+		return mapper.selectPayCode(payCode);
+	}
 	
 	
 

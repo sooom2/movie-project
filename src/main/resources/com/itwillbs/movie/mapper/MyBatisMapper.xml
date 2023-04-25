@@ -216,6 +216,12 @@
 			 	WHERE pay_code = #{pay_code}
 	</update>
 	
+	<!-- 결제 코드 조회 -->
+	<select id="selectPayCode" resultType="hashmap">
+		SELECT * FROM pay
+			WHERE pay_code = #{payCode}
+	</select>
+	
 	
 	<!-- 포인트 적립 -->
 	<update id="updatePoint">

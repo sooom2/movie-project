@@ -81,38 +81,47 @@ public class StoreController {
 		String id = (String)session.getAttribute("sId");
 		HashMap<String, String> member = service.selectMemberId(id);
 		pay.put("id", id);
-		int insertPay = service.insertPay(pay);
+		
 		
 		// 포인트 차감
 		if(pay.get("point") != "") {
-			
 			// 중복 결제 방지
-			if(Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point")) < 0) {
+			HashMap<String, String> payCode = service.selectPayCode(pay.get("pay_code"));
+			if(payCode != null) {
 				model.addAttribute("msg", "상품 결제가 이미 완료되었습니다.");
 				return "fail_back";
 			} else {
 				String point = (Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point"))) + "";
 				int minusPoint = service.minusPoint(id, point);
 			}
+			
 		}
-		// 포인트 적립
-		HashMap<String, String> member2 = service.selectMemberId(id);
-		HashMap<String, String> point = new HashMap<String, String>();
 		
-		// member 테이블 저장.
-		String pointResult = (Integer.parseInt(member2.get("member_point")) + Integer.parseInt(pay.get("pay_price")) / 10) + "";
-		point.put("id", id);
-		point.put("point", pointResult);
-		int updatePoint = service.updatePoint(point);
+		int insertPay = service.insertPay(pay);
+		if(insertPay > 0) {
+			// 포인트 적립
+			HashMap<String, String> member2 = service.selectMemberId(id);
+			HashMap<String, String> point = new HashMap<String, String>();
+			
+			// member 테이블 저장.
+			String pointResult = (Integer.parseInt(member2.get("member_point")) + Integer.parseInt(pay.get("pay_price")) / 10) + "";
+			point.put("id", id);
+			point.put("point", pointResult);
+			int updatePoint = service.updatePoint(point);
+			
+			// point 테이블 저장.
+			String payPoint = (Integer.parseInt(pay.get("pay_price")) / 10) + "";
+			int insertPointTable = service.insertPointTable(id, payPoint);
+			
+			// 포인트 추가 금액
+			pay.put("point", (Integer.parseInt(pay.get("pay_price")) / 10) + "");
+			model.addAttribute("member", member);
+			model.addAttribute("pay", pay);
+		} else {
+			model.addAttribute("msg", "상품 결제가 실패하였습니다.");
+			return "fail_back";
+		}
 		
-		// point 테이블 저장.
-		String payPoint = (Integer.parseInt(pay.get("pay_price")) / 10) + "";
-		int insertPointTable = service.insertPointTable(id, payPoint);
-		
-		// 포인트 추가 금액
-		pay.put("point", (Integer.parseInt(pay.get("pay_price")) / 10) + "");
-		model.addAttribute("member", member);
-		model.addAttribute("pay", pay);
 		
 		return "store/store_paySuccess";
 	}
