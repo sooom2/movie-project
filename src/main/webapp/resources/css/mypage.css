@@ -266,7 +266,7 @@
 
 .section-mypage-select .selector-summary {
 	display: block;
-	width: 1014px;
+	width: 700px;
 	height: 52px;
 	margin: 0 auto;
 }
@@ -298,9 +298,10 @@
 }
 
 .section-mypage-select .selector-summary li a.selected {
-	color: #c39c71;
-	border-bottom: 4px solid #c39c71;
-	box-sizing: border-box;
+	color: #673bd4;
+    border-bottom: 4px solid #673bd4;
+    box-sizing: border-box;
+
 }
 
 .section-mypage-select .selector-summary li a:hover {
