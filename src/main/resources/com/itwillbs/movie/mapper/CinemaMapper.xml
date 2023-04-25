@@ -74,7 +74,9 @@
 			       where 1=1
 			       AND sch_cinema_code = #{cinema_code}
 			       AND sch_movie_date=#{date}
-			       AND sch_start_time > SUBDATE(NOW(), INTERVAL 1 MINUTE)
+				   AND sch_movie_date >= CURRENT_DATE() -- 현재 날짜 이후
+				   AND ((sch_movie_date = CURRENT_DATE() AND sch_start_time >= CURRENT_TIME())
+				   OR sch_movie_date > CURRENT_DATE()) -- 현재 시간 이후
 			       ORDER BY info_movie_title
 		) A 
  			GROUP BY info_movie_title, sch_screen_code;

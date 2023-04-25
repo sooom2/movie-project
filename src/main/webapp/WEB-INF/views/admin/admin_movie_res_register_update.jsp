@@ -167,7 +167,7 @@ function delRes(){
 										<div class="col-md-4">
 											<div class="form-floating mb-3 mb-md-0">
 												<input class="form-control" id="res_seat" type="text"
-													value="${detailRes.get('seat_location') }" /> <label
+													value="${detailRes.get('res_seat_name') }" /> <label
 													for="res_seat">예매좌석</label>
 											</div>
 										</div>
@@ -182,20 +182,20 @@ function delRes(){
 									</div>
 									<hr>
 									<div class="row mb-3">
-										<div class="col-md-4">
-											<div class="form-floating mb-3 mb-md-0">
-												<input class="form-control" id="res_card" type="text"
-													value="${detailRes.get('res_card') }" /> <label
-													for="res_card">결제카드사</label>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-floating mb-3 mb-md-0">
-												<input class="form-control" id="res_cardnum" type="text"
-													value="${detailRes.get('res_cardnum') }" /> <label
-													for="res_cardnum">카드번호</label>
-											</div>
-										</div>
+<!-- 										<div class="col-md-4"> -->
+<!-- 											<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 												<input class="form-control" id="res_card" type="text" -->
+<%-- 													value="${detailRes.get('res_card') }" /> <label --%>
+<!-- 													for="res_card">결제카드사</label> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="col-md-4"> -->
+<!-- 											<div class="form-floating mb-3 mb-md-0"> -->
+<!-- 												<input class="form-control" id="res_cardnum" type="text" -->
+<%-- 													value="${detailRes.get('res_cardnum') }" /> <label --%>
+<!-- 													for="res_cardnum">카드번호</label> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 
 									</div>
 									<div class="row mb-3">
@@ -220,8 +220,6 @@ function delRes(){
 													<label for="res_pay_done">결제유무 : </label> 
 													<select name="res_pay_done">
 														<option value="${detailRes.get('res_pay_done') }">${detailRes.get('res_pay_done') }</option>
-														<%-- 														<option value="${detailRes.get('res_pay_done') }">결제진행중</option> --%>
-														<%-- 														<option value="${detailRes.get('res_pay_done') }">결제미완료</option> --%>
 													</select>
 												</div>
 											</div>

@@ -145,7 +145,7 @@ function modalClose(){
 								<td>${resList.get("res_title") }</td>
 								<td>${resList.get("res_cinema") }</td>
 								<td>${resList.get("res_date") }</td>
-								<td>${resList.get("seat_location") }</td>
+								<td>${resList.get("res_seat_name") }</td>
 								<td>${resList.get("res_pay") }</td>
 								<td>${resList.get("res_paydate") }</td>
 								<td>${resList.get("res_pay_done") }</td>
