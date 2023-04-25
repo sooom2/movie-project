@@ -7,20 +7,15 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<link
-	href="${pageContext.request.contextPath }/resources/css/common.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/inc.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
 <!-- 상단 -->
-<link href="${pageContext.request.contextPath }/resources/css/sub.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
 <!-- 본문 -->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
-<link href="${pageContext.request.contextPath }/resources/css/main.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 <script type="text/javascript">
 function search(idx) {
 	idx = parseInt(idx);
@@ -49,6 +44,7 @@ function goDetail(table_name, code) {
 	form.submit();
 }
 
+// 비밀번호 입력 모달창
 function doDisplay(){
 	let dis = document.querySelector(".modal-type2");
 	
@@ -58,10 +54,27 @@ function doDisplay(){
 		dis.style.display="none";
 	}
 }
-
+// 비밀번호 입력 모달창 닫기
 function modalClose(){
 	 $('.modal-type2').hide();	
 }
+
+function chkPasswd(){
+// 	alert("클릭");
+	var passwd = $("#passwd").val();
+	alert(passwd);
+	$.ajax({
+		url: 'lost_board',
+		type: 'POST',
+		data: {lost_passwd, passwd},
+		success : function(result) {
+			alert(result);
+		}		
+	})
+
+}
+
+
 
 </script>
 <body>
@@ -251,12 +264,12 @@ function modalClose(){
 <!-- 									<p class="font-red mt10 mb0" style="display: none;">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p> -->
 									<h3 class="h3-member">글 작성시 입력한 비밀번호를 입력해주세요.</h3>
 									<div class="inp-box1 mb20">
-										<input type="tel" id="passwd" class="inp-member onlyNumber" placeholder="비밀번호를 입력해주세요">
+										<input type="password" id="passwd" name="passwd" class="inp-member onlyNumber" placeholder="비밀번호를 입력해주세요">
 									</div>
 								</div>
 								<div class="modal-bottom flex">
 									<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
-									<button type="button" class="btn-modal2" id="chkPasswd">확인</button>
+									<button type="button" class="btn-modal2" onclick="chkPasswd()">확인</button>
 								</div>
 							</div>
 						</div>

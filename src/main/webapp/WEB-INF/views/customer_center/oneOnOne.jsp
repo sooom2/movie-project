@@ -22,7 +22,9 @@ function numberMaxLength(el, maxlength) { // 비밀번호 4자리
 	}
 }
 $(function() {
-	
+// 	if(${member.get('member_tel') } == null && ${member.get('member_tel') } == '') {
+		
+// 	}
 	$("#textarea").keyup(function() {
 		$("#textareaCnt").html($("#textarea").val().length)
 	});
@@ -48,6 +50,7 @@ $(function() {
 			$("#member_id").focus();
 			return false;
 		}
+		
 		return true;
 	});
 });
@@ -115,7 +118,16 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="one_question_type">문의유형</label> <em
 										class="font-orange">*</em></th>
-										
+										<td>
+												<select class="one_question_type" name="one_question_type" style="margin-top: 0px; !important">
+													<option value="전체" >전체</option>
+													<option value="예매" >예매</option>
+													<option value="관람권" >관람권</option>
+													<option value="멤버십" >멤버십</option>
+													<option value="할인혜택" >할인혜택</option>
+													<option value="영화관이용" >영화관이용</option>
+												</select>
+										</td>
 <!-- 										복사 해온거  -->
 <!-- 									<td colspan="3"> -->
 <!-- 										<div class="dropdown bootstrap-select small bs3"> -->
@@ -163,8 +175,8 @@ $(function() {
 <!-- 									</td> -->
 <!-- 									여기까지 -->
 
-									<td><input type="text" id="one_question_type" name="one_question_type"
-										class="input-text w150px" value="" maxlength="30"></td>
+<!-- 									<td><input type="text" id="one_question_type" name="one_question_type" -->
+<!-- 										class="input-text w150px" value="" maxlength="30"></td> -->
 									<th scope="row"><label for="one_question_type">문의지점</label> <em
 										class="font-orange">*</em></th>
 									<td>
@@ -187,7 +199,7 @@ $(function() {
 									<td><input type="text" name="one_name" id="name"
 										class="input-text" value="${member.get('member_name') }"
 										maxlength="50"
-										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
+										${not empty member.get('member_name') ? 'readonly="readonly"' : ''}></td>
 									<th scope="row"><label for="qnaRpstEmail">이메일</label> <em
 										class="font-orange">*</em></th>
 									<td><input type="text" name="one_email" id="qnaRpstEmail"

@@ -153,11 +153,6 @@ $(function() {
 											</div>
 											<textarea id="textarea" name="lost_content" rows="5" cols="30"
 												title="내용입력" required="required"
-												placeholder="※ 문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.
-												&nbsp;※ 분실장소와 분실물에 대한 상세 정보를 작성해주시면 분실물을 찾는데 도움이 됩니다.
-												- 관람 영화정보(영화제목, 상영 회차, 상영시간 등) :
-												- 극장/좌석/장소 정보 :
-												- 분실물 상세정보"
 												class="input-textarea"></textarea>
 											<div class="util">
 												<p class="count">
@@ -185,14 +180,6 @@ $(function() {
 										maxlength="4" oninput="numberMaxLength(this, 4);" required="required"> 
 										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를
 											설정해주세요.</em></td>
-								</tr>
-								<tr>
-									<td colspan="3">
-										<input type="number" maxlength="4" name="lstrtclInqPwd" 
-										id="pw" class="input-text w150px pwnew" placeholder="숫자 4자리" 
-										oninput="gfn_numberMaxLength(this);">
-										<em class="fc_r ml10">* 분실물에 대한 고객정보 보호를 위하여 게시글의 비밀번호를 설정해주세요.</em>
-									</td>
 								</tr>
 							</tbody>
 						</table>
