@@ -335,6 +335,22 @@
 		  ORDER BY rev_date desc
 		  LIMIT 3
 	</select>
+	
+	<!-- 포인트 테이블 차감 -->
+	<insert id="minusPointTable">
+		INSERT INTO point
+			VALUES(
+					(SELECT *
+  			 		 FROM (SELECT IFNULL(MAX(point_code),0) FROM point) A) + 1
+  				   , #{id}
+  				   , '스토어 결제 차감'
+				   , -#{point}
+				   , now()
+			)
+	</insert>
+	
+	
+	
 </mapper>
 
 

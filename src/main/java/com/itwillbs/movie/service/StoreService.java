@@ -59,6 +59,9 @@ public class StoreService {
 	public HashMap<String, String> selectPayCode(String payCode) {
 		return mapper.selectPayCode(payCode);
 	}
+	public int minusPointTable(String id, String point) {
+		return mapper.minusPointTable(id, point);
+	}
 	
 	
 

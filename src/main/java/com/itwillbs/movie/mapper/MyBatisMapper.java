@@ -102,6 +102,9 @@ public interface MyBatisMapper {
 	List<HashMap<String, String>> selectReview();
 
 	HashMap<String, String> selectPayCode(String payCode);
+	
+	// 포인트 테이블 차감
+	int minusPointTable(@Param("id") String id,@Param("point") String point);
 
 
 	

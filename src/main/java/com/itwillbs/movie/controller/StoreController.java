@@ -92,8 +92,12 @@ public class StoreController {
 				model.addAttribute("target", "main");
 				return "success";
 			} else {
+				// 멤버 테이블 차감
 				String point = (Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point"))) + "";
-				int minusPoint = service.minusPoint(id, point);
+				int minusMember = service.minusPoint(id, point);
+				// 포인트 테이블 차감
+				int minusPoint = service.minusPointTable(id, pay.get("point"));
+				
 			}
 			
 		}
