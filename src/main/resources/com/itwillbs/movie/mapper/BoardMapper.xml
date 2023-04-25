@@ -286,13 +286,16 @@
 	
 	<!-- 자주묻는 질문 목록 -->
 	<select id="selectFaqBoardList" resultType="hashmap">
-		SELECT * 
-			FROM faq_board
-			<if test="!searchKeyword.equals('')">
+		SELECT ROW_NUMBER() OVER(ORDER BY faq_code ) AS rownum, fb.*, count(*) over() AS totalCnt 
+			FROM faq_board fb
+			<if test="searchKeyword != null and !searchKeyword.equals('')">
 				WHERE
 				faq_question LIKE '%${searchKeyword}%'
 			</if>
 			ORDER BY faq_code DESC
+			<if test="startNum != null and !startNum.equals('')">
+	            LIMIT ${startNum}, ${endNum}
+	        </if>
 	</select>
 	
 	<!-- 자주묻는 질문 상세 -->

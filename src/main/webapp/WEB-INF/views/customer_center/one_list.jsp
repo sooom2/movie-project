@@ -62,7 +62,7 @@ function goDetail(table_name, code) {
 					<div class="dropdown bootstrap-select">
 						<div class="form-floating mb-3 mb-md-0 selectbox">
 							<div class="cinema_name">
-								<select name="rep_board" onchange="search('0');" style="margin-top: 0px; !important">
+								<select name="rep_board" onchange="" style="margin-top: 0px; !important">
 									<option value="전체" <c:if test="${paramMap.rep_board eq '전체'}">selected</c:if>>전체</option>
 									<option value="답변완료" <c:if test="${paramMap.rep_board eq '답변완료'}">selected</c:if>>답변완료</option>
 									<option value="미답변" <c:if test="${paramMap.rep_board eq '미답변'}">selected</c:if>>미답변</option>

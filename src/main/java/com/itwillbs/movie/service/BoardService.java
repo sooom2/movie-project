@@ -105,9 +105,9 @@ public class BoardService {
 	}
 
 	// 자주묻는 질문 목록
-	public List<HashMap<String, String>> getFaqBoardList(String searchKeyword) {
+	public List<HashMap<String, String>> getFaqBoardList(HashMap<String, String> map) {
 		
-		return mapper.selectFaqBoardList(searchKeyword);
+		return mapper.selectFaqBoardList(map);
 	}
 	
 	// 자주묻는 질문 상세

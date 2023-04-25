@@ -68,17 +68,16 @@
 					<table class="board-list">
 						<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
 						<colgroup>
-							<col style="width: 72px;">
-							<col style="width: 133px;">
-							<col style="width: 95px;">
+							<col style="width: 57px;">
+							<col style="width: 129px;">
+							<col style="width: 523px;">
 							<col>
-							<col style="width: 116px;">
+							<col style="width: 1px;">
 						</colgroup>
 						<thead>
 							<tr style="line-height: 38px">
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
-								<th scope="col">구분</th>
 								<th scope="col">제목</th>
 								<th scope="col">등록일</th>
 							</tr>
@@ -88,7 +87,6 @@
 								<tr data-index="0">
 									<td>${noticeBoard.notice_code }</td>
 									<td>${noticeBoard.cinema_name }</td>
-									<td>문의유형 DB에도 넣어야 함</td>
 									<td id="notice_subject"><a
 										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
 									</td>

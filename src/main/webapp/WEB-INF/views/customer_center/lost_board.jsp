@@ -82,7 +82,7 @@ function goDetail(table_name, code) {
 						<div class="">
 							<div>
 								<div>
-									<select name="cinema_name" onchange="search('0');">
+									<select name="cinema_name" onchange="">
 										<option value="전체" selected="selected" >전체</option>
 <!-- 										<option value="none" disabled>=======================</option> -->
 										<c:forEach var="cinema" items="${cinemaList }">
@@ -90,7 +90,7 @@ function goDetail(table_name, code) {
 											<option value="${cinema.cinema_name}" ${paramMap.cinema_name == cinema.cinema_name ? 'selected' : ''}>${cinema.cinema_name}</option>
 										</c:forEach>
 									</select>
-									<select name="rep_board" onchange="search('0');" >
+									<select name="rep_board" onchange="" >
 										<option value="전체" <c:if test="${paramMap.rep_board eq '전체'}">selected</c:if>>전체</option>
 										<option value="답변완료" <c:if test="${paramMap.rep_board eq '답변완료'}">selected</c:if>>답변완료</option>
 										<option value="미답변" <c:if test="${paramMap.rep_board eq '미답변'}">selected</c:if>>미답변</option>

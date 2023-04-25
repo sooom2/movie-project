@@ -68,14 +68,24 @@ public class CustomerController {
 
 	// 자주묻는 질문
 	@RequestMapping(value = "faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String faq(@RequestParam(defaultValue = "") String searchKeyword, Model model) {
-		
-//		System.out.println("검색어" + searchKeyword);
-		
-		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(searchKeyword);
-		System.out.println(faqBoardList);
+	public String faq(@RequestParam HashMap<String, String> map, Model model) {
+		System.out.println(map);
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		System.out.println(map);
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
+		if(faqBoardList.size()>0) {
+			HashMap<String, String> countMap = faqBoardList.get(0);
+			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
+		}
+		model.addAttribute("paramMap", map);
 		model.addAttribute("faqBoardList", faqBoardList);
-		model.addAttribute("listCount", faqBoardList.size());
+		
+		System.out.println("faq 컨트롤러" + model);
+		
 		return "customer_center/faq";
 	}
 	
@@ -339,9 +349,9 @@ public class CustomerController {
 	
 	// 관리자 자주묻는 질문 목록
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminFaq(@RequestParam(defaultValue = "") String searchKeyword, Model model) {
+	public String adminFaq(@RequestParam HashMap<String, String> map, Model model) {
 		
-		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(searchKeyword);
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
 //		System.out.println(noticeBoardList);
 		model.addAttribute("faqBoardList", faqBoardList);
 //		System.out.println(model);
