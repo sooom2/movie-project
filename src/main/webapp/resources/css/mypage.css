@@ -2860,3 +2860,11 @@ table.bbs-write.bbs-write-mypage-point td {
 
 }
 
+/* CSS */
+.yellow-star {
+  color: #FFD700;
+  text-shadow: 1px 1px 2px black; 
+  
+  
+  
+}

@@ -133,49 +133,72 @@ function deleteReview(revId) {
 							</tr>
 						</thead>
 						<tbody>
-		
-							<c:forEach var="revList" items="${revList}">
-							    <tr>
-							        <td>${revList.get("rev_movie_title")}</td>
-							        <td>${revList.get("rev_content")}</td>
-							        <td>
-							            <c:if test="${not empty revList.get('rev_rating')}">
-							                <c:choose>
-							                    <c:when test="${revList.get('rev_rating') == 1}">
-							                        ★
-							                    </c:when>
-							                    <c:when test="${revList.get('rev_rating') == 2}">
-							                        ★★
-							                    </c:when>
-							                    <c:when test="${revList.get('rev_rating') == 3}">
-							                        ★★★
-							                    </c:when>
-							                    <c:when test="${revList.get('rev_rating') == 4}">
-							                        ★★★★
-							                    </c:when>
-							                    <c:when test="${revList.get('rev_rating') == 5}">
-							                        ★★★★★
-							                    </c:when>
-							                    <c:otherwise>
-							                        No rating
-							                    </c:otherwise>
-							                </c:choose>
-							            </c:if>
-							        </td>
-							        <td>${revList.get("rev_date")}</td>
-<%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})"></td> --%>
-<%-- 									<td><input type="button" value="삭제" onclick="deleteReview(${revList.get('rev_id')})"></td> --%>
-<%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})" ></td> --%>
-<%-- 									 <td><input onclick="location.href='admin_item_payUpdate?pay_code=${pay.get('pay_code') }'"class="btn btn-primary btn-block" type="button" value="수정"></td> --%>
-									 <td><input onclick="location.href='deleteReview?rev_code=${revList.get('rev_code') }'"  type="button" value="삭제"></td>
-							    </tr>
-							</c:forEach>
+<%-- 							<c:forEach var="revList" items="${revList}"> --%>
+<!-- 							    <tr> -->
+<%-- 							        <td>${revList.get("rev_movie_title")}</td> --%>
+<%-- 							        <td>${revList.get("rev_content")}</td> --%>
+<!-- 							        <td> -->
+<%-- 							            <c:if test="${not empty revList.get('rev_rating')}"> --%>
+<%-- 							                <c:choose> --%>
+<%-- 							                    <c:when test="${revList.get('rev_rating') == 1}"> --%>
+<!-- 							                        ★ -->
+<%-- 							                    </c:when> --%>
+<%-- 							                    <c:when test="${revList.get('rev_rating') == 2}"> --%>
+<!-- 							                        ★★ -->
+<%-- 							                    </c:when> --%>
+<%-- 							                    <c:when test="${revList.get('rev_rating') == 3}"> --%>
+<!-- 							                        ★★★ -->
+<%-- 							                    </c:when> --%>
+<%-- 							                    <c:when test="${revList.get('rev_rating') == 4}"> --%>
+<!-- 							                        ★★★★ -->
+<%-- 							                    </c:when> --%>
+<%-- 							                    <c:when test="${revList.get('rev_rating') == 5}"> --%>
+<!-- 							                        ★★★★★ -->
+<%-- 							                    </c:when> --%>
+<%-- 							                    <c:otherwise> --%>
+<!-- 							                        No rating -->
+<%-- 							                    </c:otherwise> --%>
+<%-- 							                </c:choose> --%>
+<%-- 							            </c:if> --%>
+<!-- 							        </td> -->
+<%-- 							        <td>${revList.get("rev_date")}</td> --%>
+<%-- <%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})"></td>  --%>
+<%-- <%-- 									<td><input type="button" value="삭제" onclick="deleteReview(${revList.get('rev_id')})"></td>  --%>
+<%-- <%-- 							        <td><input type="button" value="수정" onclick="editReview(${revList.get('rev_id')})" ></td>  --%>
+<%-- <%-- 									 <td><input onclick="location.href='admin_item_payUpdate?pay_code=${pay.get('pay_code') }'"class="btn btn-primary btn-block" type="button" value="수정"></td>  --%>
+<%-- 									 <td><input onclick="location.href='deleteReview?rev_code=${revList.get('rev_code') }'"  type="button" value="삭제"></td> --%>
+<%-- <!-- 							    </tr> --> --%>
+<%-- 							</c:forEach> --%>
+								<c:forEach var="revList" items="${revList}">
+								    <tr>
+								        <td>${revList.rev_movie_title}</td>
+								        <td>${revList.rev_content}</td>
+								        <td>
+								            <c:if test="${not empty revList.rev_rating}">
+								                <c:forEach begin="1" end="5" step="1">
+								                    <c:choose>
+								                        <c:when test="${revList.rev_rating >= loop.index}">
+								                          <<span class="yellow-star">★</span>
+								                        </c:when>
+								                        <c:otherwise>
+								                            <span class="yellow-star">★</span>
+								                        </c:otherwise>
+								                    </c:choose>
+								                </c:forEach>
+								            </c:if>
+								        </td>
+								        <td>${revList.rev_date}</td>
+								        <td><input type="button" value="삭제" onclick="location.href='deleteReview?rev_code=${revList.rev_code}'"></td>
+								    </tr>
+								</c:forEach>
+
+
 						</tbody>
 					</table>
 					
 					<form class="mystar" name="rev_rating" id="myform" action="mypageRvPro" method="post">
 						<fieldset>
-							<span class="text-bold" >별점을 선택하고 최근 예매하신 <span style="color: purple; font-weight: bold;" > ${resMovie.get("res_title")} </span>영화의 리뷰를 작성해주세요</span>
+							<span class="text-bold" >별점을 선택하고 최근 예매하신 <span style="color: purple; text-shadow: 1px 1px 2px grey; " > ${resMovie.get("res_title")} </span>영화의 리뷰를 작성해주세요</span>
 							<input type="radio" name="rev_rating" value="5" id="rate1">
 							<label for="rate1">★</label> 
 							<input type="radio" name="rev_rating" value="4" id="rate2">

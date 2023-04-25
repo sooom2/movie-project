@@ -113,10 +113,11 @@ function goDetail(table_name, code) {
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;">나의문의내역</div> 
-					<div style="text-align: right;"><a href="one_list" ><button>더보기</button></div></a>
-
-					<table class="bbs-list bbs-list-mypage-coupon">
+					<div style="text-align: right;"><a href="one_list"><button style="color: purple;">더보기</button></a></div>
 					<form id="iForm">
+					<input type="hidden" name="table_name" value="">
+					<input type="hidden" name="code" value="">
+					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
 							<tr>
 								<th scope="col">번호</th>
@@ -129,20 +130,8 @@ function goDetail(table_name, code) {
 						</thead>
 						
 						<tbody>
-							<input type="hidden" name="table_name" value="">
-							<input type="hidden" name="code" value="">
-<%-- 							<c:forEach var="oneBoard" items="${oneBoardList }"> --%>
-<!-- 								<tr data-index="0"> -->
-<%-- 									<td>${oneBoard.rownum }</td> --%>
-<%-- 									<td>${oneBoard.cinema_name }</td> --%>
-<%-- 									<td>${oneBoard.question_type }</td> --%>
-<!-- 									<td id="one_subject"><a -->
-<%-- 										href="javascript:goDetail('${oneBoard.table_name}','${oneBoard.code}')">${oneBoard.subject }</a> --%>
-<!-- 									</td> -->
-<%-- 									<td>${oneBoard.rep_board }</td> --%>
-<%-- 									<td>${oneBoard.write_date }</td> --%>
-<!-- 								</tr> -->
-<%-- 							</c:forEach> --%>
+
+
 								<c:forEach var="oneBoard" items="${oneBoardList}" begin="0" end="9">
 								    <tr data-index="0">
 								        <td>${oneBoard.rownum}</td>
@@ -156,8 +145,8 @@ function goDetail(table_name, code) {
 								    </tr>
 								</c:forEach>
 						</tbody>
-					</form>
 					</table>
+					</form>
 				</div>
 			</div>
 
