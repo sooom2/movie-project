@@ -222,8 +222,8 @@ $(function() {
                   <c:forEach var="schedule" items="${endSchList }">
                   <tbody>
                      <tr data-index="0">
-                        <td>${schedule.get("sch_screen_code") }</td>
                         <td>${schedule.get("sch_cinema_code") }</td>
+                        <td>${schedule.get("sch_screen_code") }</td>
                         <td>${schedule.get("sch_movie_code") }</td>
                         <td>${schedule.get('sch_movie_date')}</td>
                         <td>${schedule.get("sch_start_time") }</td>

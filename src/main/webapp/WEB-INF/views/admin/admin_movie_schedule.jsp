@@ -60,14 +60,14 @@ function selectCinema(){
 
 
 function selectSch(){
-	
 	$.ajax({
 		 type: "POST",
 		 url: "schCheckTime",
 		 data: {
 			 sch_date: $("#sch_register_date").val(),
 	  	  cinema_name: $(".cinema_name option:selected").text(),
-	  	  screen_name: $(".screen_name option:selected").text()
+	  	  screen_name: $(".screen_name option:selected").text(),
+	  	  movie_name: $(".sch_movie_code option:selected").text()
 		 },
 		 success: function(result){
 // 			 alert(result);
@@ -142,6 +142,8 @@ function doRegisterSch(){
 
 
 function doLatest() {
+	
+	
    handle: ".modal-header";
    let dis = document.querySelector(".admin-modal-remove");
    if (dis.style.display = "none") {
@@ -272,7 +274,7 @@ $(function() {
 										<c:forEach var="movie" items="${movieList }">
 											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
 										</c:forEach>
-									</select> <select name="sch_cinema_code" id="sch_movie_code"
+									</select> <select name="sch_cinema_code" id="sch_cinema_code"
 										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
 										<option value="none" selected="selected" disabled>지점선택</option>
 										<option value="none" disabled>=======================</option>
@@ -289,6 +291,7 @@ $(function() {
 						</div>
 
 					</div>
+				
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -309,6 +312,12 @@ $(function() {
 						</thead>
 						<!-- 회원목록 -->
 						<c:forEach var="schedule" items="${scheduleList }">
+						
+						<c:if test="${empty scheduleList  }">
+						<h1>상영일정이존재하지않습니다.</h1>
+						</c:if>
+						
+						
 							<tbody>
 								<tr data-index="0">
 									<td>${schedule.get("cinema_name") }</td>
