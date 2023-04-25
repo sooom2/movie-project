@@ -70,6 +70,13 @@
 <!--  영화 상세 정보 -->
 <select id="selectMovie" resultType="hashmap">
 	SELECT *
+			, CASE info_rating													
+					WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+					WHEN '15세관람가' 					THEN 'rate-15'
+					WHEN '12세관람가' 					THEN 'rate-12'
+					WHEN '전체관람가' 					THEN 'rate-all' 
+					ELSE ''
+					END AS 'rate'	
 	FROM movieinfo
 	 WHERE info_movie_code = #{info_movie_code}
 </select>

@@ -26,7 +26,7 @@
 		<div class="section group section-movie-info">
 			<div class="wrap">
 				<h3>
-					<span class="${movieInfo.rate }">${movieInfo.info_rating }</span>
+					<span class="${movieInfo.rate }"></span>
 					${movieInfo.info_movie_title }
 				</h3>
 				<img src="${movieInfo.info_movie_poster }" alt="포스터" class="poster posterlist" />
@@ -50,6 +50,8 @@
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="section group section-mypage">
 				<div class="wrap-list">
 					<div style="margin-top: -40px; margin-bottom: 10px;">리뷰 보기</div>
@@ -63,34 +65,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="Review" items="${movieInfoReview}">
+						<c:forEach var="Review" items="${movieInfoReview}">
 							    <tr>
 							        <td>${Review.rev_id}</td>
 							        <td>${Review.rev_content}</td>
-							        <td>${Review.rev_rating}</td>
-							        <td>${Review.rev_date}</td>
+							        <td>
 							         <c:if test="${not empty Review.rev_rating}">
-							                <c:choose>
-							                    <c:when test="${Review.rev_rating == 1}">
-							                        ★
-							                    </c:when>
-							                    <c:when test="${Review.rev_rating == 2}">
-							                        ★★
-							                    </c:when>
-							                    <c:when test="${Review.rev_rating == 3}">
-							                        ★★★
-							                    </c:when>
-							                    <c:when test="${Review.rev_rating == 4}">
-							                        ★★★★
-							                    </c:when>
-							                    <c:when test="${Review.rev_rating == 5}">
-							                        ★★★★★
-							                    </c:when>
-							                    <c:otherwise>
-							                        No rating
-							                    </c:otherwise>
-							                </c:choose>
-							            </c:if>
+						                <c:forEach begin="1" end="5" step="1">
+						                    <c:choose>
+						                        <c:when test="${Review.rev_rating >= loop.index}">
+						                          <span class="yellow-star">★</span>
+						                        </c:when>
+						                        <c:otherwise>
+						                            <span class="yellow-star">★</span>
+						                        </c:otherwise>
+						                    </c:choose>
+						                </c:forEach>
+						            </c:if>
+						            </td>
+							        <td>${Review.rev_date}</td>
 							    </tr>
 							</c:forEach>
 							<c:if test="${empty movieInfoReview}">
