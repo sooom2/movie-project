@@ -20,9 +20,9 @@
 }
 
 .section-mypage-summary .summary h3 {
-	font-size: 18px;
-	font-weight: normal;
-	color: #000;
+	font-size: 19px;
+	font-weight: 400px;
+	color: #5d46b5;
 	border-bottom: 1px solid #f3f3f3;
 	padding: 0 0 18px 19px;
 	margin: 0 15px 21px 15px;
@@ -79,7 +79,7 @@
 .section-mypage-summary .summary-1 .username .point {
 	font-weight: bold;
 	color: #673bd4;
-	padding-left: 150px;
+	padding-left: 137px;
 }
 
 .section-mypage-summary .summary-1 .btn-exchange {
@@ -119,7 +119,7 @@
 }
 
 .section-mypage-summary .summary-2 h3 {
-	padding-left: 9px;
+	padding-left: 118px;
 }
 
 .section-mypage-summary .summary-2 .poster {
@@ -174,7 +174,7 @@
 }
 
 .section-mypage-summary .summary-3 h3 {
-	padding-left: 9px;
+	padding-left: 120px;
 }
 
 .section-mypage-summary .summary-3 .list-cp {
@@ -2591,6 +2591,7 @@ table.bbs-write.bbs-write-mypage-point td {
 	font-size: 17px;
 	text-align: center;
 	color: #fff;
+	border-radius: 18px;
 }
 
 .section-member .wrap-member-box .agreement {
@@ -2799,6 +2800,7 @@ table.bbs-write.bbs-write-mypage-point td {
 	color: #fff;
 	margin: 50px auto 60px;
 	text-align: center;
+	border-radius: 18px;
 }
 
 /* 리뷰별점작성 */
