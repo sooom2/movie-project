@@ -531,7 +531,7 @@ function previewImage(targetObj, View_area) {
 
 				<!-- 테이블 -->
 				<div class="datatable-container">
-					<h3 class="text-center font-weight-light my-4">최신영화등록</h3>
+					<h3 class="text-center font-weight-light my-4">상영중인 영화 목록</h3>
 					<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()"> 
 					<input class="btn btn-block btn-more" type="button" value="최신영화불러오기" onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
