@@ -88,8 +88,9 @@ public class StoreController {
 			// 중복 결제 방지
 			HashMap<String, String> payCode = service.selectPayCode(pay.get("pay_code"));
 			if(payCode != null) {
-				model.addAttribute("msg", "상품 결제가 이미 완료되었습니다.");
-				return "fail_back";
+				model.addAttribute("msg", "상품 결제가 이미 완료되었습니다. 메인화면으로 이동합니다.");
+				model.addAttribute("target", "main");
+				return "success";
 			} else {
 				String point = (Integer.parseInt(member.get("member_point")) - Integer.parseInt(pay.get("point"))) + "";
 				int minusPoint = service.minusPoint(id, point);
