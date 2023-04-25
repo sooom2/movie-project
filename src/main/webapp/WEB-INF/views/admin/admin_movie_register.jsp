@@ -506,6 +506,19 @@ function previewImage(targetObj, View_area) {
 																</div>
 															</div>
 														</div>
+														<div class="row mb-3">
+															<div class="col-md">
+																<div class="form-floating mb-3 mb-md-0">
+																	<select class="form-control" id="info_status" name="info_status"  style="max-width: 100%">
+																		<option value="screening">현재상영중</option>
+																		<option value="comming">상영예정</option>
+																		<option value="end">상영종료</option>
+																		<option value="reScreening">재상영</option>
+																	</select>
+																	<label for="info_status">상영상태</label>
+																</div>
+															</div>
+														</div>
 														<!-- hidden 영역 -->
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
@@ -553,11 +566,11 @@ function previewImage(targetObj, View_area) {
 							<tr style="text-align: center;" data-index="0">
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
+								<td>${movie.get("info_enddate") }</td>
+								<td id="info_story">${movie.get("info_story") }</td>
 								<td>${movie.get("info_year") }</td>
 								<td>${movie.get("info_time") }</td>
 								<td>${movie.get("info_showdate") }</td>
-								<td>${movie.get("info_enddate") }</td>
-								<td id="info_story">${movie.get("info_story") }</td>
 <%-- 								<td><img alt="" src="${movie.get('info_movie_poster') }"></td> --%>
 								<td class="modi">
 										 			 
