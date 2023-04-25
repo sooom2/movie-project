@@ -384,6 +384,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 		$('input[name=info_rating]').attr('value',info_rating);			//관람등급
 		$('input[name=info_genre]').attr('value',info_genre);			//장르
 		$('input[name=info_still]').attr('value',info_still);			//스틸컷
+		<!-- status DB 작업 -->
 		console.log(info_still);
 	}
 
@@ -477,6 +478,14 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 																<div class="form-floating mb-3 mb-md-0">
 																	<input class="form-control" id="info_enddate" name="info_enddate" type="date" value="" />
 																	 <label for="info_enddate">종영일</label>
+																</div>
+															</div>
+														</div>
+														<div class="row mb-3">
+															<div class="col-md">
+																<div class="form-floating mb-3 mb-md-0">
+																	<input class="form-control" id="info_status" name="info_status" type="text" style="max-width: 100%"/>
+																	<label for="info_status">상영상태</label>
 																</div>
 															</div>
 														</div>
