@@ -39,8 +39,6 @@
 	
 	<!--  날짜 선택하면 그날에 맞는 상영일정 보일수 있게  -->
 	<select id="schList" resultType="hashmap">
-
-
  SELECT A.*
       , group_concat(concat(sch_start_time) SEPARATOR '/') AS starttimes
 	  , group_concat(concat(sch_last_time) SEPARATOR '/') AS lasttimes
@@ -74,8 +72,9 @@
 			LEFT JOIN screen
 			       on screen.screen_code = schedule.sch_screen_code
 			       where 1=1
-			       and sch_cinema_code = #{cinema_code}
-			       and sch_movie_date=#{date}
+			       AND sch_cinema_code = #{cinema_code}
+			       AND sch_movie_date=#{date}
+			       AND sch_start_time > SUBDATE(NOW(), INTERVAL 1 MINUTE)
 			       ORDER BY info_movie_title
 		) A 
  			GROUP BY info_movie_title, sch_screen_code;
