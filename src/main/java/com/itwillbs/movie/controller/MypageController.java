@@ -105,20 +105,23 @@ public class MypageController {
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
-//		List<HashMap<String, String>> qnaList = service.qnaList(id);
-//		model.addAttribute("qnaList",qnaList);
-		
-		System.out.println(member);
-		System.out.println(member.getMember_name());
+
 		map.put("memberName", member.getMember_name());
+		
 		map.put("memberEmail", member.getMember_email());
+		
 		map.put("memberTel", member.getMember_tel());
-		System.out.println("서비스 위에 모델" + map);
+		
+		
 		List<HashMap<String, String>> oneBoardList = boardService.getBoardList(map);
+		
 		if(oneBoardList.size()>0) {
+			
 			HashMap<String, String> countMap = oneBoardList.get(0);
 			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
+			
 		}
+		
 		model.addAttribute("paramMap", map);
 		model.addAttribute("oneBoardList", oneBoardList);
 		model.addAttribute("listCount", oneBoardList.size());
@@ -339,6 +342,7 @@ public class MypageController {
 //	            
 //	        } else {
 //	            model.addAttribute("msg", "포인트가 500 이하이므로 리뷰 삭제 실패!");
+//	            
 //	            return "fail_back";
 //	        }
 //	        

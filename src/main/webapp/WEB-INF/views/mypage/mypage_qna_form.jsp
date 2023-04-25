@@ -14,6 +14,7 @@
 <script type="text/javascript" src="resources//js/main.js"></script>
 </head>
 <script type="text/javascript">
+
 function goDetail(table_name, code) {
 	document.querySelector("input[name=table_name]").value = table_name;
 	document.querySelector("input[name=code]").value = code;
@@ -22,14 +23,16 @@ function goDetail(table_name, code) {
 	form.method = 'post';
 	form.submit();
 }
+
 </script>
+
 <body>
 
 	<jsp:include page="../nav.jsp" />
 	<div id="container">
 		<div id="content">
 			<div class="wrap-sitemap-title">
-			<form id="iForm">
+
 				<h2 class="sitemap-title">마이페이지</h2>
 			</div>
 						<div class="section group section-mypage-summary">
@@ -109,16 +112,13 @@ function goDetail(table_name, code) {
 			<div class="section group section-mypage">
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
-					<div style="margin-top: -40px; margin-bottom: 10px;"
-						>나의문의내역</div>
+					<div style="margin-top: -40px; margin-bottom: 10px;">나의문의내역</div> 
+					<div style="text-align: right;"><a href="one_list" ><button>더보기</button></div></a>
+
 					<table class="bbs-list bbs-list-mypage-coupon">
+					<form id="iForm">
 						<thead>
 							<tr>
-<!-- 								<th>작성일자</th> -->
-<!-- 								<th>문의지점</th> -->
-<!-- 								<th>문의유형</th> -->
-<!-- 								<th>제목</th> -->
-<!-- 								<th>답변현황</th> -->
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
 								<th scope="col">문의유형</th>
@@ -127,41 +127,42 @@ function goDetail(table_name, code) {
 								<th scope="col">등록일</th>
 							</tr>
 						</thead>
+						
 						<tbody>
 							<input type="hidden" name="table_name" value="">
 							<input type="hidden" name="code" value="">
-							<c:forEach var="oneBoard" items="${oneBoardList }">
-								<tr data-index="0">
-									<td>${oneBoard.rownum }</td>
-									<td>${oneBoard.cinema_name }</td>
-									<td>${oneBoard.question_type }</td>
-									<td id="one_subject"><a
-										href="javascript:goDetail('${oneBoard.table_name}','${oneBoard.code}')">${oneBoard.subject }</a>
-									</td>
-									<td>${oneBoard.rep_board }</td>
-									<td>${oneBoard.write_date }</td>
-								</tr>
-							</c:forEach>
-<%-- 						<c:forEach var="qnaList" items="${qnaList}"> --%>
-<!-- 							<tr> -->
-<%-- 								<td>${qnaList.get("one_write_date")}</td> --%>
-<%-- 								<td>${qnaList.get("cinema_name")}</td> --%>
-<%-- 								<td>${qnaList.get("one_question_type")}</td> --%>
-<%-- 								<td><a href="">${qnaList.get("one_subject")}</a></td> --%>
-<!-- 								<td id="one_subject"> -->
-<%-- 								<a href="one_detail?one_code=${qnaList.get('one_code')}">${qnaList.get("one_subject")}</a></td> --%>
-<%-- 								<td><a href="one_list">${qnaList.get("one_subject")}</a></td> --%>
-<%-- 								<td>${qnaList.get("one_rep_board")}</td> --%>
-<!-- 							</tr> -->
-<%-- 						</c:forEach> --%>
+<%-- 							<c:forEach var="oneBoard" items="${oneBoardList }"> --%>
+<!-- 								<tr data-index="0"> -->
+<%-- 									<td>${oneBoard.rownum }</td> --%>
+<%-- 									<td>${oneBoard.cinema_name }</td> --%>
+<%-- 									<td>${oneBoard.question_type }</td> --%>
+<!-- 									<td id="one_subject"><a -->
+<%-- 										href="javascript:goDetail('${oneBoard.table_name}','${oneBoard.code}')">${oneBoard.subject }</a> --%>
+<!-- 									</td> -->
+<%-- 									<td>${oneBoard.rep_board }</td> --%>
+<%-- 									<td>${oneBoard.write_date }</td> --%>
+<!-- 								</tr> -->
+<%-- 							</c:forEach> --%>
+								<c:forEach var="oneBoard" items="${oneBoardList}" begin="0" end="9">
+								    <tr data-index="0">
+								        <td>${oneBoard.rownum}</td>
+								        <td>${oneBoard.cinema_name}</td>
+								        <td>${oneBoard.question_type}</td>
+								        <td id="one_subject">
+								            <a href="javascript:goDetail('${oneBoard.table_name}', '${oneBoard.code}')">${oneBoard.subject}</a>
+								        </td>
+								        <td>${oneBoard.rep_board}</td>
+								        <td>${oneBoard.write_date}</td>
+								    </tr>
+								</c:forEach>
 						</tbody>
+					</form>
 					</table>
 				</div>
 			</div>
 
 
 
-		</form>
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />

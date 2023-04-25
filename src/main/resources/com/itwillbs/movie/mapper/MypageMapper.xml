@@ -269,6 +269,11 @@
 		LIMIT 1
 	</select>
 	
+	<select id="getPoint" resultType="int">
+		SELECT ROUND(sum(point_amount) OVER (ORDER BY point_code),0) AS point_sum
+		FROM point
+		WHERE point_id = #{id}
+	</select>
 
 	
 	

@@ -48,6 +48,8 @@ public interface MypageMapper {
 
 	HashMap<String, String> resMovie(String id);
 
+	int getPoint(String id);
+
 
 
 }

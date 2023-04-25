@@ -98,6 +98,10 @@ public class MypageService {
 		return mapper.resMovie(id);
 	}
 
+	public int getPoint(String id) {
+		return mapper.getPoint(id);
+	}
+
 
 
 
