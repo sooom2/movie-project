@@ -99,7 +99,7 @@
 					item_status LIKE '%${searchKeyword}%'
 				</when>
 			</choose>
-		</if>
+			</if>
 	</select>
 	
 	<delete id="deleteItem">
@@ -165,7 +165,7 @@
 				 , #{item_code}
 				 , #{pay_type}
 				 , #{pay_price}
-				 , DATE_FORMAT('20200405','%Y-%m-%d')
+				 , DATE_FORMAT(now(),'%Y-%m-%d')
 				 , 'N'
 				 , #{pay_status}
 			)
@@ -188,6 +188,7 @@
 				</when>
 			</choose>
 		</if>
+		ORDER BY pay_date DESC
 	</select>
 	
 	<!-- 결제 내역 삭제 -->

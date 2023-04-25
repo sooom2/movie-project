@@ -99,6 +99,7 @@ public class StoreController {
 		}
 		
 		int insertPay = service.insertPay(pay);
+		System.out.println("insertPay" + insertPay);
 		if(insertPay > 0) {
 			// 포인트 적립
 			HashMap<String, String> member2 = service.selectMemberId(id);

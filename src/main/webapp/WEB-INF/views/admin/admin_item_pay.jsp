@@ -11,7 +11,7 @@
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="resources/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -64,13 +64,13 @@
 										<div class="mb30">
 											<div class="inp-box1">
 												<form action="admin_item_pay">
-													<select name="searchType">
+													<select class="selectBoxCSS" name="searchType">
 														<option value="pay_code" <c:if test="${param.searchType eq 'pay_code'}">selected</c:if>>결제코드</option>
 														<option value="member_id" <c:if test="${param.searchType eq 'member_id'}">selected</c:if>>아이디</option>
 														<option value="pay_date" <c:if test="${param.searchType eq 'pay_date'}">selected</c:if>>결제날짜</option>
 													</select>
 													<input type="text" name="searchKeyword" value="${param.searchKeyword }">
-													<input type="submit" value="검색" />
+													<input type="submit" class="btn btn-primary btn-block" value="검색" />
 												</form>
 											</div>
 										</div>

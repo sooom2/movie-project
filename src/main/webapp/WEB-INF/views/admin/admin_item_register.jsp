@@ -11,9 +11,8 @@
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="resources/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -124,13 +123,13 @@
                 <div class="datatable-container">
 	                <form action="admin_item_register">
 	                	<div align="center">
-						<select name="searchType">
+						<select class="selectBoxCSS" name="searchType">
 							<option value="item_type" <c:if test="${param.searchType eq 'item_type'}">selected</c:if>>상품타입</option>
 							<option value="item_name" <c:if test="${param.searchType eq 'item_name'}">selected</c:if>>상품이름</option>
 							<option value="item_status" <c:if test="${param.searchType eq 'item_status'}">selected</c:if>>상품상태</option>
 						</select>
 						<input type="text" name="searchKeyword" value="${param.searchKeyword }">
-						<input type="submit" value="검색" />
+						<input type="submit" class="btn btn-primary btn-block" value="검색" />
 						</div>
 					</form><br><br>
 					<table id="datatablesSimple" class="datatable-table">
