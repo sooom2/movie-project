@@ -1112,8 +1112,8 @@ table.bbs-list {
 }
 
 table.bbs-list th {
-	font-weight: normal;
-	font-size: 14px;
+	font-weight: 500;
+	font-size: 15px;
 	color: #4a4a4a;
 	background-color: #f3f3f3;
 	height: 46px;

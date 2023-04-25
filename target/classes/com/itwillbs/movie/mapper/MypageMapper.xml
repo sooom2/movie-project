@@ -208,13 +208,15 @@
 <!-- 		코드수정  -->
 
 		SELECT 
-			r.res_paydate,
+			r.res_code ,
+			DATE(r.res_paydate) as res_paydate,
 			r.res_title,
 			r.res_cinema,
 			r.res_seat_num,
 			sn.screen_name,
 			COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date,
-			concat(COALESCE(sc.sch_start_time, se.sch_start_time),' ~ ',COALESCE(sc.sch_last_time, se.sch_last_time)) AS movie,
+			CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', 
+  			TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
 			r.res_pay
 		FROM 
 			reservation r

@@ -178,7 +178,7 @@ function deleteReview(revId) {
 								                <c:forEach begin="1" end="5" step="1">
 								                    <c:choose>
 								                        <c:when test="${revList.rev_rating >= loop.index}">
-								                          <<span class="yellow-star">★</span>
+								                          <span class="yellow-star">★</span>
 								                        </c:when>
 								                        <c:otherwise>
 								                            <span class="yellow-star">★</span>

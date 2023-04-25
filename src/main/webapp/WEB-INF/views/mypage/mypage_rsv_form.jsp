@@ -120,7 +120,8 @@
 						>예매내역</div>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
-							<tr>					<!--  res_sch_code == sch_code-->
+							<tr>			
+								<th>예매번호</th>		<!--  res_sch_code == sch_code-->
 								<th>예매일자</th>	<!-- res_paydate -->
 								<th>영화제목</th>	<!-- res_title -->
 								<th>영화관</th>		<!-- res_cinema -->
@@ -134,6 +135,7 @@
 						<tbody>
 						<c:forEach var = "resList" items="${resList}">
 							<tr>
+								<td>${resList.get("res_code")}</td>
 								<td>${resList.get("res_paydate")}</td>
 								<td>${resList.get("res_title")}</td>
 								<td>${resList.get("res_cinema")}</td>
