@@ -23,7 +23,14 @@
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
 						    	<a href="#" class="rsv">
-						    		<span class="over-btn-rsv">${movie.infO_status }</span></a>
+						    		<span class="over-btn-rsv">
+						    		<c:choose>
+										<c:when test="${movie.info_status eq 'screening' }">예매하기</c:when>						    		
+						    			<c:when test="${movie.info_status eq 'comming' }">상영예정</c:when>
+						    			<c:when test="${movie.info_status eq 'end' }">상영종료</c:when>
+						    		</c:choose>
+						    		</span>
+						    		</a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
 					    	</span>
@@ -41,7 +48,7 @@
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>
-			                <a href="#" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">${movie.status }</a>
+			                <p class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">상영예정</p>
 			           		 </div>
 			  			</li>
 					</c:forEach>		    

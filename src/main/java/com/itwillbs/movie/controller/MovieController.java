@@ -33,7 +33,7 @@ public class MovieController {
 	@RequestMapping(value = "screening", method = {RequestMethod.GET, RequestMethod.POST})
 	public String screening(Model model, HttpSession session) {
 		
-		List<HashMap<String, String>> movieList = service.selectMovies();
+		List<HashMap<String, String>> movieList = service.selectScreeningMovieList();
 		model.addAttribute("movieList",movieList);
 		
 		return "movieBoard/screening";

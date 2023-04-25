@@ -552,6 +552,7 @@ function previewImage(targetObj, View_area) {
 							<tr>
 								<th data-sortable="true" style="width: 8%;"><a href="infoMovieCodeSort" class="datatable-sorter">영화코드</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="infoMovieNameSort" class="datatable-sorter">영화제목</a></th>
+								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영상태</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoYearSort"	class="datatable-sorter">제작년도</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoTimeSort"	class="datatable-sorter">상영시간</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoShowDateSort"	class="datatable-sorter">상영일</a></th>
@@ -560,12 +561,13 @@ function previewImage(targetObj, View_area) {
 								<th data-sortable="true" style="width: 10%;"><a href="#" class="">수정/삭제</a></th>
 							</tr>
 						</thead>
-						<!-- 회원목록 -->
+						<!-- 영화목록 -->
 						<c:forEach var="movie" items="${movieList }">
 						<tbody>
 							<tr style="text-align: center;" data-index="0">
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
+								<td>${movie.get("info_status") }</td>
 								<td>${movie.get("info_enddate") }</td>
 								<td id="info_story">${movie.get("info_story") }</td>
 								<td>${movie.get("info_year") }</td>

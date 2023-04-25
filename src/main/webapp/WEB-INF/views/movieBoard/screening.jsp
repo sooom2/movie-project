@@ -25,7 +25,13 @@
 					    <li data-moviecode="${movie.info_movie_code }">
 						    <span class="over over-a">
 						    	<a href="reservation" class="rsv">
-						    		<span class="over-btn-rsv" data-moviestatus="${movie.info_status }"></span></a>
+						    		<span class="over-btn-rsv" >
+						    		<c:choose>
+										<c:when test="${movie.info_status eq 'screening' }">예매하기</c:when>						    		
+						    			<c:when test="${movie.info_status eq 'comming' }">상영예정</c:when>
+						    			<c:when test="${movie.info_status eq 'end' }">상영종료</c:when>
+						    		</c:choose>
+						    		</span></a>
 						    	<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info">
 						    		<span class="over-btn-info">상세정보</span></a>
 					    	</span>
@@ -42,7 +48,7 @@
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>
-			                <a href="reservation" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">${movie.status }</a>
+			                <a href="reservation" class="button" data-no="${movie.info_movie_code }" title="영화 예매하기">예매하기</a>
 			           		 </div>
 			  			</li>
 					</c:forEach>		    
@@ -52,7 +58,8 @@
 	</div>
 <script type="text/javascript">
     $(document).ready(function () {
-    	console.log($("data-moviestatus").val());
+    	${movie.info_status } 
+    	console.log($(".rsv").data("movieStatus"));
     	
         $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
             $(this).parent().addClass("on");

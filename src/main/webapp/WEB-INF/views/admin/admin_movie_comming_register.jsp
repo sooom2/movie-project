@@ -536,6 +536,8 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 									class="datatable-sorter">영화코드</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#"
 									class="datatable-sorter">영화제목</a></th>
+									<th data-sortable="true" style="width: 8%;"><a href="#"
+									 class="datatable-sorter">상영상태</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">제작년도</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
@@ -556,6 +558,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 							<tr style="text-align: center;" data-index="0">
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
+								<td>${movie.get("info_status") }</td>
 								<td>${movie.get("info_year") }</td>
 								<td>${movie.get("info_time") }</td>
 								<td>${movie.get("info_showdate") }</td>

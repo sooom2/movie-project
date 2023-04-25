@@ -37,7 +37,13 @@
 					<li><span>감 &nbsp; &nbsp; &nbsp;독 : </span> ${movieInfo.info_director }</li>
 					<li><span>등 &nbsp; &nbsp; &nbsp;급 : </span> ${movieInfo.info_rating }</li>
 				</ul>
-				 <a href="#" class="btn-rsv" data-no="${movieInfo.info_movie_code }" title="영화 예매하기">${movieInfo.status }</a>
+				 <a href="#" class="btn-rsv" data-status="${movieInfo.info_status}" title="영화 예매하기">
+				 	<c:choose>
+						<c:when test="${movieInfo.info_status eq 'screening' }">예매하기</c:when>						    		
+		    			<c:when test="${movieInfo.info_status eq 'comming' }">상영예정</c:when>
+		    			<c:when test="${movieInfo.info_status eq 'end' }">상영종료</c:when>
+		    		</c:choose>
+				 </a>
 				<h4 class="synopsis-title">줄거리</h4>
 				<div class="synopsis">
 					${movieInfo.info_story }
@@ -100,12 +106,11 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function () {
-
-        if($(".btn-rsv").html()==("예매하기")){
-        	$(".btn-rsv").attr('href', 'reservation').css("background-color","#534cbf");
-        	
-        }
-        
+// 	  ${movieInfo.info_status}
+	console.log($(".btn-rsv").data("status"))
+	if($(".btn-rsv").data("status")=="screening"){
+		$(".btn-rsv").attr('href', 'reservation').css("background-color","#534cbf");
+	}
  });
  </script>
 <jsp:include page="../footer.jsp"/>
