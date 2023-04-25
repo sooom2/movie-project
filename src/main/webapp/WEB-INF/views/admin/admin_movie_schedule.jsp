@@ -21,7 +21,8 @@
 	rel="stylesheet" />
 
 
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -75,7 +76,7 @@ function selectSch(){
 			let disabledValues = [];
 
 			$(".sch_start_time option").remove();
-			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">상영시작시간을 선택하세요</option>');
+			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요</option>');
 			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
 			
 			for (var i = 0; i < result.length; i++) {
@@ -271,15 +272,15 @@ $(function() {
 										<c:forEach var="movie" items="${movieList }">
 											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
 										</c:forEach>
-									</select> 
-									<select name="sch_cinema_code" id="sch_movie_code"   style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
+									</select> <select name="sch_cinema_code" id="sch_movie_code"
+										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
 										<option value="none" selected="selected" disabled>지점선택</option>
 										<option value="none" disabled>=======================</option>
 										<c:forEach var="cinema" items="${cinemaList }">
 											<option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
 										</c:forEach>
 									</select> <input name="sch_research_date" class="sch_research_date"
-										id="sch_research_date" type="text" placeholder="날짜검색"
+										id="sch_research_date" type="text" placeholder="날짜검색" autocomplete='off'
 										style="width: 100px; height: 32px; border: 1px solid #aeaeae;" />
 									<input class="btn btn-block btn-more" type="submit" value="검색"
 										style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
@@ -342,9 +343,14 @@ $(function() {
 
 							<!-- 							 datatable-disabled -->
 							<c:choose>
-								<c:when test="${pageNum > 1 }">
+								<c:when test="${pageNum > 1 and empty param.sch_research_date and empty param.sch_cinema_code and empty param.sch_movie_code}">
 									<li class="datatable-pagination-list-item datatable-hidden"
 										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+									</li>
+								</c:when>
+								<c:when test="${pageNum > 1 and not empty param.sch_research_date and not empty param.sch_cinema_code and not empty param.sch_movie_code}">
+									<li class="datatable-pagination-list-item datatable-hidden" onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }'">
 										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
 									</li>
 								</c:when>
@@ -354,8 +360,7 @@ $(function() {
 									</li>
 								</c:otherwise>
 							</c:choose>
-							<c:forEach var="num" begin="${pageInfo.startPage }"
-								end="${pageInfo.endPage }">
+							<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 								<c:choose>
 									<c:when test="${pageNum eq num }">
 										<%-- 현재 페이지 번호일 경우 --%>
@@ -363,21 +368,28 @@ $(function() {
 											class="datatable-pagination-list-item-link"
 											style="font-weight: 800; background-color: #ececec">${num }</a>
 									</c:when>
-
-									<%--페이지번호 --%>
-									<c:otherwise>
-										<li class="datatable-pagination-list-item "><a
-											class="datatable-pagination-list-item-link"
-											href="admin_schedule_register?pageNum=${num }">${num }</a></li>
-
-									</c:otherwise>
+									<c:when test="${pageNum ne num and empty param.sch_research_date}">
+										<a href="admin_schedule_register?pageNum=${num }">${num }</a>
+									</c:when>
+									<c:when test="${pageNum ne num and not empty param.sch_research_date}">
+										<a href="admin_schedule_register?pageNum=${num }&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }">${num }</a>
+									</c:when>
+									
 								</c:choose>
 							</c:forEach>
+							
+							
 							<c:choose>
-								<c:when test="${pageNum < pageInfo.maxPage }">
+								<c:when test="${pageNum < pageInfo.maxPage and empty param.sch_research_date and empty param.sch_cinema_code and empty param.sch_movie_code}">
 									<li class="datatable-pagination-list-item datatable-hidden"
 										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
-										<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+										<a data-page="${pageNum} class="datatable-pagination-list-item-link">›</a>
+									</li>
+								</c:when>
+								<c:when test="${pageNum < pageInfo.maxPage and not empty param.sch_research_date and not empty param.sch_cinema_code and not empty param.sch_movie_code }">
+									<li class="datatable-pagination-list-item datatable-hidden"
+										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }">
+										<a data-page="${pageNum} class="datatable-pagination-list-item-link">›</a>
 									</li>
 								</c:when>
 								<c:otherwise>
@@ -422,7 +434,8 @@ $(function() {
 			<!-- 삭제모달 -->
 
 			<!--  등록모달 -->
-			<div class="container modal admin-modal-register" style="display: none;">
+			<div class="container modal admin-modal-register"
+				style="display: none;">
 				<div class="row justify-content-center">
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
@@ -432,54 +445,34 @@ $(function() {
 								<h3 class="text-center font-weight-light my-4">상영일정등록</h3>
 							</div>
 
-						<form action="movieScheduleRegisterPro">
-							<div class="card-body">
-								<div class="row mb-3">
-										<div class="col-md-4">
+							<form action="movieScheduleRegisterPro">
+								<div class="card-body">
+									<div class="row mb-3">
+										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0">
 												<input name="sch_register_date" class="form-control"
-													id="sch_register_date" /> <label for="res_date">날짜선택</label>
+													id="sch_register_date" autocomplete='off' /> <label for="res_date">날짜선택</label>
 											</div>
 										</div>
 									</div>
-
-									<div class="row mb-3">
-										<div class="col-md-6 ">
-											<div class="form-floating mb-3 mb-md-0 selectbox">
-												<div class="sch_movie_code">
-													<label for="sch_movie_code">영화선택 : </label> <select
-														name="sch_movie_code" id="sch_movie_code"
-														style="width: 300px;">
-														<option value="none" selected="selected" disabled>영화를
-															선택하세요</option>
-														<option value="none" disabled>=======================</option>
-														<c:forEach var="movie" items="${movieList }">
-															<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
-														</c:forEach>
-													</select>
-												</div>
-											</div>
-										</div>
-									</div>
-									<hr>
-
 
 									<div class="row mb-3">
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="cinema_name">
-													<label for="cinema_name">영화관명 : </label>
-													 <select name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을 선택하세요</option>
+													<label for="cinema_name">영화관명 : </label> <select
+														name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을
+															선택하세요</option>
 														<option value="none" disabled>=======================</option>
 														<c:forEach var="cinema" items="${cinemaList }">
 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
 														</c:forEach>
-														</select>
-														<c:forEach var="cinema" items="${cinemaList }">
-															<input type="hidden" name="location_code"
-																value="${cinema.get('location_code') }">
-														</c:forEach>
+													</select>
+													<c:forEach var="cinema" items="${cinemaList }">
+														<input type="hidden" name="location_code"
+															value="${cinema.get('location_code') }">
+													</c:forEach>
 												</div>
 											</div>
 										</div>
@@ -487,9 +480,11 @@ $(function() {
 										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="screen_name">
-													<label for="screen_name">상영관 : </label>
-													 <select name="sch_screen_code" class="selectScreen_name" onchange="selectSch()" style="width: 300px">
-														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
+													<label for="screen_name">상영관 : </label> <select
+														name="sch_screen_code" class="selectScreen_name"
+														onchange="selectSch()" style="width: 300px">
+														<option value="none" selected="selected" disabled>상영관을
+															선택하세요</option>
 														<option value="none" disabled>=======================</option>
 														<c:forEach var="sch" items="${schList }">
 															<option value="${sch.get('sch_start_time') }">${ movie.get("sch_start_time") }</option>
@@ -499,28 +494,48 @@ $(function() {
 											</div>
 										</div>
 									</div>
-								</div>
+									<hr>
 									<div class="row mb-3">
-
-										<div class="col-md-6">
-											<div class="form-floating mb-3 mb-md-0 selectbox">
-												<div class="sch_start_time">
-													<label for="sch_start_time">상영시작시간 : </label> 
-													<select name="sch_start_time" class="sch_start_time">
-														<option value="none" selected="selected" disabled="disabled" >시작시간을 선택하세요</option>
-														<option value="none" disabled >=======================</option>
-													</select> 
- 												</div>
+											<div class="col-md-6 ">
+												<div class="form-floating mb-3 mb-md-0 selectbox">
+													<div class="sch_movie_code">
+														<label for="sch_movie_code">영화선택 : </label> <select
+															name="sch_movie_code" id="sch_movie_code"
+															style="width: 300px;">
+															<option value="none" selected="selected" disabled>영화를
+																선택하세요</option>
+															<option value="none" disabled>=======================</option>
+															<c:forEach var="movie" items="${movieList }">
+																<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+															</c:forEach>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0 selectbox">
+													<div class="sch_start_time">
+														<label for="sch_start_time">시작시간 : </label> <select
+															name="sch_start_time" class="sch_start_time">
+															<option value="none" selected="selected"
+																disabled="disabled">영화시작시간을 선택하세요</option>
+															<option value="none" disabled>=======================</option>
+														</select>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="mt-4 mb-0 ">
-											<div class="d-grid">
-												<input class="btn btn-primary btn-block" type="submit" value="등록" >
-											</div>
+								</div>
+								
+									
+								<div class="row">
+									<div class="mt-4 mb-0 ">
+										<div class="d-grid">
+											<input class="btn btn-primary btn-block" type="submit"
+												value="등록" style="margin: 25px">
 										</div>
 									</div>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -540,7 +555,8 @@ $(function() {
 			</footer>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script

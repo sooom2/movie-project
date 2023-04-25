@@ -231,20 +231,14 @@ public class MovieRegisterController {
  	@RequestMapping(value = "admin_schedule_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String scheduleRegister(
 			Model model
-			, HttpSession session
-			, HttpServletRequest request
 			,@RequestParam(defaultValue = "1") int pageNum
 			,@RequestParam(defaultValue = "") String sch_movie_code
 			,@RequestParam(defaultValue = "") String sch_cinema_code
 			,@RequestParam(defaultValue = "") String sch_research_date) {
  		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
  		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
- 		session = request.getSession();
-		session.setAttribute("sch_movie_code", sch_movie_code);
-		session.setAttribute("sch_cinema_code", sch_cinema_code);
-		session.setAttribute("sch_research_date", sch_research_date);
 		// -----------------------------------------------------------------------
-		int listLimit = 15; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
+		int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
 		// -----------------------------------------------------------------------
 		List<HashMap<String, String>> scheduleList = movieRegisterService.selectSchedule(startRow, listLimit,sch_movie_code,sch_cinema_code,sch_research_date);
@@ -269,19 +263,18 @@ public class MovieRegisterController {
 		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 		// ------------------------------------------------------------------------------------
 		
-		
 		int todayCount = movieRegisterService.selectTodayCount();
-		System.out.println(todayCount);
 		model.addAttribute("todayCount",todayCount);
 		model.addAttribute("cinemaList",cinemaList);
 		model.addAttribute("scheduleList", scheduleList);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("movieList", movieList);
 		// -----------------------------------------------------------------------
-		
-		System.out.println("admin_schedule_register ====================================");
+		System.out.println("=========================================");
+		System.out.println(listCount);
+		System.out.println("=========================================");
 		System.out.println(pageInfo);
-		System.out.println("admin_schedule_register ====================================");
+		System.out.println("=========================================");
 		return "admin/admin_movie_schedule";
 	}
  	
@@ -482,6 +475,10 @@ public class MovieRegisterController {
  	public String movieEndSchedule(Model model,@RequestParam(defaultValue = "1") int pageNum) {
  		System.out.println("movieEndSchedule =======================================================");
 // 		List<HashMap<String, String>> endSchList = movieRegisterService.endSchList();
+ 		
+ 		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
+ 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+ 		
  		int insertCount = movieRegisterService.insertSchedule_end();
  		if(insertCount > 0) {
  			int delCount = movieRegisterService.endSchedule_del();
@@ -508,15 +505,13 @@ public class MovieRegisterController {
 		
 		
 		int todayCount = movieRegisterService.selectTodayCount();
-		System.out.println(todayCount);
+		model.addAttribute("movieList",movieList);
+		model.addAttribute("cinemaList",cinemaList);
 		model.addAttribute("todayCount",todayCount);
 		model.addAttribute("endSchList", endSchList);
 		model.addAttribute("pageInfo", pageInfo);
-		System.out.println("movieEndSchedule ============================");
 		System.out.println(pageInfo);
-		System.out.println("============================");
  		System.out.println(endSchList);
- 		System.out.println("movieEndSchedule ============================");
  		return "admin/admin_movie_schedule_endList";
  	}
  	
