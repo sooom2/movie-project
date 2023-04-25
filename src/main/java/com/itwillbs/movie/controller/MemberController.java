@@ -48,11 +48,11 @@ public class MemberController {
 		HashMap<String, String> notice = service.selectNotice();
 		
 		//영화 뿌리기
-		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
-		List<HashMap<String, String>> commingMovieList = movieRegisterService.selectCommingMovies();
+//		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
+//		List<HashMap<String, String>> commingMovieList = movieRegisterService.selectCommingMovies();
 		
-		model.addAttribute("movie", movieList);
-		model.addAttribute("commingMovieList", commingMovieList);
+//		model.addAttribute("movie", movieList);
+//		model.addAttribute("commingMovieList", commingMovieList);
 		model.addAttribute("hotItem", hotItem);
 		model.addAttribute("notice",notice);
 		model.addAttribute("review",review);
