@@ -484,7 +484,12 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<div class="row mb-3">
 															<div class="col-md">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_status" name="info_status" type="text" style="max-width: 100%"/>
+																	<select class="form-control" id="info_status" name="info_status"  style="max-width: 100%">
+																		<option value="screening">현재상영중</option>
+																		<option value="comming">상영예정</option>
+																		<option value="end">상영종료</option>
+																		<option value="reScreening">재상영</option>
+																	</select>
 																	<label for="info_status">상영상태</label>
 																</div>
 															</div>

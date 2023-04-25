@@ -17,14 +17,20 @@ public class MovieRegisterService {
 	public List<HashMap<String, String>> selectMovies() {
 		return mapper.selectMovies();
 	}
+	//현재 상영목록
+	public List<HashMap<String, String>> selectScreeningMovieList() {
+		return mapper.selectScreeningMovieList();
+	}
+	
 	//상영예정 영화 목록 
-	public List<HashMap<String, String>> selectCommingMovies() {
-		return mapper.selectCommingMovies();
+	public List<HashMap<String, String>> selectCommingMovieList() {
+		return mapper.selectCommingMovieList();
 	}
-	//최신 영화 목록
-	public List<HashMap<String, String>> selectAscendingMovies() {
-		return mapper.selectAscendingMovies();
-	}
+//	//최신 영화 목록
+//	public List<HashMap<String, String>> selectAscendingMovies() {
+//		return mapper.selectAscendingMovies();
+//	}
+//	
 	
 	
 	

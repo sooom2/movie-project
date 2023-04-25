@@ -11,7 +11,7 @@
 </select>
 <!-- rating / rate 주의 -->
 <!-- 현재상영목록 -->
-<select id="selectScreeningMovies" resultType="hashmap">
+<select id="selectScreeningMovieList" resultType="hashmap">
 	SELECT *
 	, CASE info_rating													
 		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
@@ -27,7 +27,7 @@
 </select>
 
 <!-- 상영 예정영화 조회 -->
-<select id="selectCommingMovies" resultType="hashmap">
+<select id="selectCommingMovieList" resultType="hashmap">
 	SELECT *
 		, CASE info_rating													
 			WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'

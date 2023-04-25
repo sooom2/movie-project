@@ -12,12 +12,16 @@ public interface MovieRegisterMapper {
 	//영화등록
 	int registMovie(HashMap<String, String> movie);
 	
-	//영화목록
+	//모든영화목록
 	List<HashMap<String, String>> selectMovies();
-	//상영예정작목록 
-	List<HashMap<String, String>> selectCommingMovies();
+	//현재상영목록
+	List<HashMap<String, String>> selectScreeningMovieList();
 	//최신영화순 조회
-	List<HashMap<String, String>> selectAscendingMovies();
+	List<HashMap<String, String>> selectCommingMovieList();
+	
+	//상영예정작목록 
+//	List<HashMap<String, String>> selectCommingMovies();	
+	
 	//영화상세목록
 	HashMap<String, String> selectMovie(String info_movie_code);
 	//영화 상세정보 - 리뷰

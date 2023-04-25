@@ -348,10 +348,12 @@
 				<div class="wrap-slider wrap-bo">
 					<ul class="bxslider-bo">
 					
-						<c:forEach var="movie" items="${movie}" end = "9" >
+						<c:forEach var="movie" items="${screeningMovieList}" end = "9" >
 						    <li data-moviecode="${movie.info_movie_code }">
 						    	<span class="over over-a">
-						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
+						    		<a href="reservation" class="rsv">
+						    		<span class="over-btn-rsv">${movie.info_status }		</span></a>
+						    
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
 						    <img src="${movie.info_movie_poster }" class="posterlist">
@@ -374,7 +376,7 @@
 						<c:forEach var="movie" items="${commingMovieList}" end = "9" >
 						    <li data-moviecode="${movie.info_movie_code }">
 						    	<span class="over over-a">
-						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.status }</span></a>
+						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.info_status }</span></a>
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
 						    <img src="${movie.info_movie_poster }" class="posterlist">

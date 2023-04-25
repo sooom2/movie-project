@@ -47,7 +47,7 @@ public class MovieRegisterController {
 	//영화상영예정작관리
 	@RequestMapping(value = "admin_movie_comming_register", method = {RequestMethod.GET, RequestMethod.POST})
 	public String admin_movie_comming_register(Model model) {
-		List<HashMap<String, String>> movieList = movieRegisterService.selectCommingMovies();
+		List<HashMap<String, String>> movieList = movieRegisterService.selectCommingMovieList();
 		model.addAttribute("movieList", movieList);
 		
 		return "admin/admin_movie_comming_register";
