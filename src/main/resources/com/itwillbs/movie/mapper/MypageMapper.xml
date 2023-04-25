@@ -232,7 +232,7 @@
 		sch_movie_date,
 		movie,
 		r.res_pay
-		ORDER BY r.res_paydate DESC
+		ORDER BY r.res_code DESC
 
 
 
