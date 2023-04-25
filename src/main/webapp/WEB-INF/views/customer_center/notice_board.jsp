@@ -21,6 +21,19 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
+<script type="text/javascript">
+
+function search(idx) {
+	idx = parseInt(idx);
+	document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
+	document.querySelector("input[name=startNum]").value = Number(idx)*10;
+	document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
+	let form = document.querySelector('#iForm');
+	form.action = 'notice_board';
+	form.method = 'post';
+	form.submit();
+}
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
@@ -28,24 +41,23 @@
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 			<div id="contents">
+			<form id="iForm">
 				<h2 class="tit">공지사항</h2>
 
 				<div class="board-list-util">
 					<p class="result-count">
-						<strong>전체 <em class="font-gblue">${listCount }</em>건
+						<strong>전체 <em class="font-gblue">${paramMap.totalCnt == null ? 0 : paramMap.totalCnt}</em>건
 						</strong>
 					</p>
 
 					<div class="dropdown bootstrap-select" >
 						<div class="form-floating mb-3 mb-md-0 selectbox" >
 							<div class="cinema_name">
-								<label for="cinema_name"></label> <select
-									name="sch_cinema_code" onchange="selectCinema()" style="margin-top: 0px; !important"> 
-									<option value="none" selected="selected" disabled>극장 선택</option>
-									<option value="none" disabled>=======================</option>
-									<option value="전체공지">전체공지</option>
+								<label for="cinema_name"></label>
+								<select name="cinema_name" onchange="" style="margin-top: 0px; !important"> 
+									<option value="전체공지" selected="selected" >전체공지</option>
 									<c:forEach var="cinema" items="${cinemaList }">
-										<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
+										<option value="${cinema.cinema_name}" ${paramMap.cinema_name == cinema.cinema_name ? 'selected' : ''}>${cinema.cinema_name}</option>
 									</c:forEach>
 								</select>
 								<c:forEach var="cinema" items="${cinemaList }">
@@ -57,10 +69,10 @@
 					</div>
 
 					<div class="board-search">
-						<input type="text" id="searchTxt" title="검색어를 입력해 주세요."
-							placeholder="검색어를 입력해 주세요." class="input-text" value=""
+						<input type="text" id="searchTxt" name="searchKeyword"  title="검색어를 입력해 주세요."
+							placeholder="검색어를 입력해 주세요." class="input-text" value="${paramMap.searchKeyword}"
 							maxlength="15">
-						<button type="button" id="searchBtn" class="btn-search-input">검색</button>
+						<button type="button" id="searchBtn" class="btn-search-input" onclick="search('0');">검색</button>
 					</div>
 				</div>
 
@@ -68,9 +80,9 @@
 					<table class="board-list">
 						<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
 						<colgroup>
-							<col style="width: 57px;">
-							<col style="width: 129px;">
-							<col style="width: 523px;">
+							<col style="width: 70px;">
+							<col style="width: 180px;">
+							<col style="width: 300px;">
 							<col>
 							<col style="width: 1px;">
 						</colgroup>
@@ -83,12 +95,20 @@
 							</tr>
 						</thead>
 						<tbody>
+							<input type="hidden" name="memberName" value="${paramMap.memberName}">
+							<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
+							<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
+							<input type="hidden" name="startNum" value="${paramMap.startNum}">
+							<input type="hidden" name="endNum" value="${paramMap.endNum}">
+							<input type="hidden" name="pageNum" value="${paramMap.pageNum}">
+							<input type="hidden" name="notice_board" value="">
+							<input type="hidden" name="notice_code" value="">
 							<c:forEach var="noticeBoard" items="${noticeBoardList }">
 								<tr data-index="0">
-									<td>${noticeBoard.notice_code }</td>
+									<td>${noticeBoard.rownum }</td>
 									<td>${noticeBoard.cinema_name }</td>
 									<td id="notice_subject"><a
-										href="notice_detail?notice_code=${noticeBoard.notice_code }&pageNum=${pageNum }">${noticeBoard.notice_subject }</a>
+										href="notice_detail?notice_code=${noticeBoard.notice_code }">${noticeBoard.notice_subject }</a>
 									</td>
 									<td>${noticeBoard.notice_write_date }</td>
 								</tr>
@@ -99,21 +119,27 @@
 
 				<!-- pagination -->
 				<nav class="pagination">
-					<strong class="active">1</strong> <a title="2페이지보기"
-						href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
-						href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기"
-						href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기"
-						href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기"
-						href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기"
-						href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기"
-						href="javascript:void(0)" pagenum="8">8</a> <a title="9페이지보기"
-						href="javascript:void(0)" pagenum="9">9</a> <a title="10페이지보기"
-						href="javascript:void(0)" pagenum="10">10</a> <a
-						title="이후 10페이지 보기" href="javascript:void(0)" class="control next"
-						pagenum="11">next</a> <a title="마지막 페이지 보기"
-						href="javascript:void(0)" class="control last" pagenum="586">last</a>
-				</nav>
+						<c:if test="${1 < paramMap.pageNum }">
+							<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
+							<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+						</c:if>
+						<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
+							<c:choose>
+								<c:when test="${paramMap.pageNum eq status.index+1}">
+									<strong class="active">${status.index+1}</strong>
+								</c:when>
+								<c:otherwise>
+									<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
+							<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
+							<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
+						</c:if>
+					</nav>
 				<!--// pagination -->
+				</form>
 			</div>
 		</div>
 	</div>

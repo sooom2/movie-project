@@ -19,6 +19,18 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
+<script type="text/javascript">
+
+function search(idx) {
+	idx = parseInt(idx);
+	document.querySelector("input[name=startNum]").value = 0;
+	document.querySelector("input[name=endNum]").value = 5;
+	let form = document.querySelector('#iForm');
+	form.action = 'faq';
+	form.method = 'post';
+	form.submit();
+}
+</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 
@@ -76,13 +88,15 @@
 							</a>
 						</div>
 					</div>
-
+<!-- <form id="iForm"> -->
+<%-- 							<input type="hidden" name="startNum" value="${paramMap.startNum}"> --%>
+<%-- 							<input type="hidden" name="endNum" value="${paramMap.endNum}"> --%>
 					<div class="notice-wrap">
 						<div class="block left">
 							<div class="tit-area">
 								<h3 class="tit small">자주 묻는 질문 BEST5</h3>
 
-								<a href="" class="more" title="더보기">더보기 <i
+								<a href="faq" class="more" title="더보기">더보기 <i
 									class="iconset ico-arr-right-gray ml07"></i></a>
 							</div>
 							<div class="">
@@ -92,7 +106,16 @@
 											<span class="font-roboto">1</span>&nbsp; <span
 											class="font-gblue">[분류코드]</span> 제목 <span class="date">날짜</span>
 									</a></li>
-
+<%-- 							<c:forEach var="faqBoard" items="${faqBoardList }"> --%>
+<!-- 								<tr data-index="0"> -->
+<%-- 									<td>${faqBoard.faq_code }</td> --%>
+<%-- 									<td>${faqBoard.faq_group }</td> --%>
+<!-- 									<td id="faq_question"><a -->
+<%-- 										href="faq_detail?faq_code=${faqBoard.faq_code }">${faqBoard.faq_question }</a> --%>
+<!-- 									</td> -->
+<%-- 									<td>${faqBoard.faq_write_date }</td> --%>
+<!-- 								</tr> -->
+<%-- 							</c:forEach> --%>
 								</ol>
 							</div>
 						</div>
@@ -116,7 +139,7 @@
 							</div>
 						</div>
 					</div>
-
+<!-- </form> -->
 				</div>
 
 			</div>

@@ -41,15 +41,23 @@ public class CustomerController {
 	
 	// 공지사항 목록
 	@RequestMapping(value = "notice_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String noticeBoard(Model model) {
-		
-		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
-//		System.out.println(noticeBoardList);
-		model.addAttribute("noticeBoardList", noticeBoardList);
+	public String noticeBoard(@RequestParam HashMap<String, String> map, Model model) {
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
+		if(noticeBoardList.size() > 0) {
+			HashMap<String, String> countMap = noticeBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-		model.addAttribute("listCount", noticeBoardList.size()); //size 사용하니깐 limit 갯수 걸면 전체가 아니고 짤린 수가 표시됨
-//		System.out.println("공지 컨트롤 ========================" + model);
+		model.addAttribute("paramMap", map);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		System.out.println("noticeBoard 컨트롤러" + model);
+		
 		return "customer_center/notice_board";
 	}
 	
@@ -278,9 +286,9 @@ public class CustomerController {
 	
 	// 관리자 공지사항 목록
 	@RequestMapping(value = "admin_notice_board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminNoticeBoard(Model model) {
+	public String adminNoticeBoard(@RequestParam HashMap<String, String> map, Model model) {
 		
-		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList();
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
 //		System.out.println(noticeBoardList);
 		model.addAttribute("noticeBoardList", noticeBoardList);
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();

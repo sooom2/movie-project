@@ -81,6 +81,8 @@
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
 							<div class="card-header">
+								<button type="button" class="close-modal"
+									onclick="history.back()" style="border: none;">닫기</button>
 								<h3 class="text-center font-weight-light my-4">1:1 답변</h3>
 							</div>
 							<div class="card-body">

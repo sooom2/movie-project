@@ -75,9 +75,9 @@ public class BoardService {
 	}
 
 	// 공지사항 목록
-	public List<HashMap<String, String>> getNoticeBoardList() {
+	public List<HashMap<String, String>> getNoticeBoardList(HashMap<String, String> map) {
 		
-		return mapper.selectNoticeBoardList();
+		return mapper.selectNoticeBoardList(map);
 	}
 
 	// 공지사항 상세

@@ -35,7 +35,7 @@ public interface BoardMapper {
 	int insertNoticeBoard(HashMap<String, String> map);
 
 	// 공지사항 목록
-	List<HashMap<String, String>> selectNoticeBoardList();
+	List<HashMap<String, String>> selectNoticeBoardList(HashMap<String, String> map);
 
 	// 공지사항 상세
 	HashMap<String, String> selectNoticeDetail(HashMap<String, String> map);

@@ -27,54 +27,53 @@
 	// 	    }
 	// 	  }
 	// 	});
-	
+
 	function confirmUpdate() {
 		return confirm("수정하시겠습니까?");
 	}
-	
-	function faq_delete(){
+
+	function faq_delete() {
 		let delConfirm = confirm("삭제하시겠습니까?");
 		if (delConfirm) {
-			location.href='faq_delete_pro?faq_code=${faqBoard.faq_code }';
+			location.href = 'faq_delete_pro?faq_code=${faqBoard.faq_code }';
 		}
 	}
-	
+
 	function selectCinema() {
 
 		$
-			.ajax({
-				type : "POST",
-				url : "screenSelect",
-				data : {
-					cinema_code : $(".cinema_name option:selected").val(),
-					cinema_name : $(".cinema_name option:selected").text()
-				},
-				success : function(result) { // 요청 처리 성공시 자동으로 호출되는 콜백함수
-	
-					$(".selectScreen_name option").remove();
-					$(".selectScreen_name")
-							.append(
-									'<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
-					$(".selectScreen_name")
-							.append(
-									'<option value="none" disabled>=======================</option>');
-					for (var i = 0; i < result.length; i++) {
-						$(".selectScreen_name").append(
-								'<option value="' +result[i].screen_code + '">'
-										+ result[i].screen_name
-										+ '</option');
-					}
-	
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n" + "message:"
-							+ request.responseText + "\n" + "error:"
-							+ error);
-	
-				}
-			});//ajax
-	}
+				.ajax({
+					type : "POST",
+					url : "screenSelect",
+					data : {
+						cinema_code : $(".cinema_name option:selected").val(),
+						cinema_name : $(".cinema_name option:selected").text()
+					},
+					success : function(result) { // 요청 처리 성공시 자동으로 호출되는 콜백함수
 
+						$(".selectScreen_name option").remove();
+						$(".selectScreen_name")
+								.append(
+										'<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
+						$(".selectScreen_name")
+								.append(
+										'<option value="none" disabled>=======================</option>');
+						for (var i = 0; i < result.length; i++) {
+							$(".selectScreen_name").append(
+									'<option value="' +result[i].screen_code + '">'
+											+ result[i].screen_name
+											+ '</option');
+						}
+
+					},
+					error : function(request, status, error) {
+						alert("code:" + request.status + "\n" + "message:"
+								+ request.responseText + "\n" + "error:"
+								+ error);
+
+					}
+				});//ajax
+	}
 </script>
 </head>
 <body class="sb-nav-fixed">
@@ -116,67 +115,83 @@
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
 							<div class="card-header">
+								<button type="button" class="close-modal"
+									onclick="history.back()" style="border: none;">닫기</button>
 								<h3 class="text-center font-weight-light my-4">자주묻는 질문 수정</h3>
 							</div>
 							<div class="card-body">
 								<form action="faq_update_pro" onsubmit="return confirmUpdate()">
-								<input type="hidden" name="faq_code" value="${faqBoard.faq_code }">
+									<input type="hidden" name="faq_code"
+										value="${faqBoard.faq_code }">
 									<div class="row mb-3">
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 ">
 												<input class="form-control" id="faq_question"
-													name="faq_question" type="text" value="${faqBoard.faq_question }"/> <label
+													name="faq_question" type="text"
+													value="${faqBoard.faq_question }" /> <label
 													for="faq_question">제목</label>
 											</div>
 										</div>
 										<div class="col-md-6 ">
-											<div class="form-floating mb-3 mb-md-0 ">
-												<input class="form-control" id="faq_group"
-													name="faq_group" type="text" value="${faqBoard.faq_group }"/> <label
-													for="faq_group">문의유형</label>
+											<div class="dropdown bootstrap-select">
+												<div class="form-floating mb-3 mb-md-0 selectbox">
+													<div class="cinema_name">
+														<label for="cinema_name">문의지점 : </label> <select
+															name="faq_group" style="margin-top: 0px; !important">
+															<option value="전체">전체</option>
+															<option value="예매">예매</option>
+															<option value="관람권">관람권</option>
+															<option value="멤버십">멤버십</option>
+															<option value="할인혜택">할인혜택</option>
+															<option value="영화관이용">영화관이용</option>
+														</select>
+													</div>
+												</div>
 											</div>
 										</div>
-<!-- 										<div class="col-md-6 "> -->
-<!-- 											<div class="form-floating mb-3 mb-md-0 selectbox"> -->
-<!-- 												<div class="cinema_name"> -->
-<!-- 													<label for="cinema_name">영화관명 : </label> <select -->
-<!-- 														name="sch_cinema_code" onchange="selectCinema()"> -->
-<!-- 														<option value="none" selected="selected" disabled>영화관을 -->
-<!-- 															선택하세요</option> -->
-<!-- 														<option value="none" disabled>=======================</option> -->
-<%-- 														<c:forEach var="cinema" items="${cinemaList }"> --%>
-<%-- 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option> --%>
-<%-- 														</c:forEach> --%>
-<!-- 													</select> -->
-<%-- 													<c:forEach var="cinema" items="${cinemaList }"> --%>
-<!-- 														<input type="hidden" name="location_code" -->
-<%-- 															value="${cinema.get('location_code') }"> --%>
-<%-- 													</c:forEach> --%>
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
+										<!-- 										<div class="col-md-6 "> -->
+										<!-- 											<div class="form-floating mb-3 mb-md-0 selectbox"> -->
+										<!-- 												<div class="cinema_name"> -->
+										<!-- 													<label for="cinema_name">영화관명 : </label> <select -->
+										<!-- 														name="sch_cinema_code" onchange="selectCinema()"> -->
+										<!-- 														<option value="none" selected="selected" disabled>영화관을 -->
+										<!-- 															선택하세요</option> -->
+										<!-- 														<option value="none" disabled>=======================</option> -->
+										<%-- 														<c:forEach var="cinema" items="${cinemaList }"> --%>
+										<%-- 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option> --%>
+										<%-- 														</c:forEach> --%>
+										<!-- 													</select> -->
+										<%-- 													<c:forEach var="cinema" items="${cinemaList }"> --%>
+										<!-- 														<input type="hidden" name="location_code" -->
+										<%-- 															value="${cinema.get('location_code') }"> --%>
+										<%-- 													</c:forEach> --%>
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 										</div> -->
 									</div>
 									<div class="row mb-3">
 										<div class="form-floating mb-3 mb-md-0 text">
 											<div>
 												<textarea name="faq_answer" class="form-control"
-													id="faq_answer" placeholder="내용" rows="10" >${faqBoard.faq_answer }</textarea>
+													id="faq_answer" placeholder="내용" rows="10">${faqBoard.faq_answer }</textarea>
 											</div>
 										</div>
 									</div>
 									<div class="row">
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-													<input class="btn btn-primary btn-block btn-update" type="submit" value="수정" >
-												</div>
-											</div>
-											<div class="mt-4 mb-0 col-md-6">
-												<div class="d-grid">
-<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
-													<input class="btn btn-primary btn-block btn-del" type="button" onclick="faq_delete()" value="삭제">
-												</div>															
+										<div class="mt-4 mb-0 col-md-6">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block btn-update"
+													type="submit" value="수정">
 											</div>
 										</div>
+										<div class="mt-4 mb-0 col-md-6">
+											<div class="d-grid">
+												<!-- 													<a class="btn btn-primary btn-block btn-del" onclick="deleteMovie()">삭제</a> -->
+												<input class="btn btn-primary btn-block btn-del"
+													type="button" onclick="faq_delete()" value="삭제">
+											</div>
+										</div>
+									</div>
 								</form>
 							</div>
 						</div>

@@ -233,9 +233,19 @@
 	
 	<!-- 공지사항 목록 -->
 	<select id="selectNoticeBoardList" resultType="hashmap">
-		SELECT *
-			FROM notice_board
+		SELECT ROW_NUMBER() OVER(ORDER BY notice_code ) AS rownum, nb.*, count(*) over() AS totalCnt
+			FROM notice_board nb
+			WHERE 1=1
+			<if test="searchKeyword != null and !searchKeyword.equals('')">
+				AND (notice_subject LIKE '%${searchKeyword}%' OR notice_content LIKE '%${searchKeyword}%')
+			</if>
+			<if test="cinema_name != null and !cinema_name.equals('') and !cinema_name.equals('전체공지')">
+				AND cinema_name = #{cinema_name}
+			</if>
 			ORDER BY notice_code DESC
+			<if test="startNum != null and !startNum.equals('')">
+				LIMIT ${startNum}, ${endNum}
+			</if>
 	</select>
 	
 	<!-- 공지사항 상세 -->
@@ -288,9 +298,12 @@
 	<select id="selectFaqBoardList" resultType="hashmap">
 		SELECT ROW_NUMBER() OVER(ORDER BY faq_code ) AS rownum, fb.*, count(*) over() AS totalCnt 
 			FROM faq_board fb
+			WHERE 1=1
 			<if test="searchKeyword != null and !searchKeyword.equals('')">
-				WHERE
-				faq_question LIKE '%${searchKeyword}%'
+				AND (faq_question LIKE '%${searchKeyword}%' OR faq_answer LIKE '%${searchKeyword}%')
+			</if>
+			<if test="faq_group != null and !faq_group.equals('') and !faq_group.equals('전체')">
+				AND faq_group = #{faq_group}
 			</if>
 			ORDER BY faq_code DESC
 			<if test="startNum != null and !startNum.equals('')">

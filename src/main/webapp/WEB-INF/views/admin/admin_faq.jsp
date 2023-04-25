@@ -19,6 +19,18 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+	function search(idx) {
+		idx = parseInt(idx);
+		document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
+		document.querySelector("input[name=startNum]").value = Number(idx)*10;
+		document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
+		let form = document.querySelector('#iForm');
+		form.action = 'one_list';
+		form.method = 'post';
+		form.submit();
+	}
+
 	function modalClose() {
 		let dis = document.querySelector(".modal");
 		let dis2 = document.querySelector(".admin-modal-update");
@@ -51,7 +63,6 @@
 	}
 	
 	function selectCinema(){
-		alert("change");
 		$.ajax({
 			type: "POST",
 			url: "screenSelect",
@@ -141,11 +152,20 @@
 													</div>
 												</div>
 												<div class="row mb-3">
-													<div>
-														<div class="form-floating mb-3 mb-md-0 ">
-															<input class="form-control" id="faq_group"
-																name="faq_group" type="text" value="" /> <label
-																for="faq_group">문의유형</label>
+													<div class="dropdown bootstrap-select">
+														<div class="form-floating mb-3 mb-md-0 selectbox">
+															<div class="cinema_name">
+																<label for="faq_group">문의유형 : </label> <select
+																	name="faq_group" 
+																	style="margin-top: 0px; !important">
+																	<option value="전체">전체</option>
+																	<option value="예매">예매</option>
+																	<option value="관람권">관람권</option>
+																	<option value="멤버십">멤버십</option>
+																	<option value="할인혜택">할인혜택</option>
+																	<option value="영화관이용">영화관이용</option>
+																</select>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -180,6 +200,35 @@
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">자주묻는 질문</h3>
+					<form id="iForm">
+					<div class="">
+						<div class="selectbox searchbox"
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 460px; padding-left: 11px;">
+							
+								<div class="sch_movie_code">
+									<select class="faq-category" name="faq_group" onchange="search('0');"
+									style="width: 150px; height: 32px; border: 1px solid #aeaeae;">
+										<option value="전체" <c:if test="${paramMap.faq_group eq '전체'}">selected</c:if>>전체</option>
+										<option value="예매" <c:if test="${paramMap.faq_group eq '예매'}">selected</c:if>>예매</option>
+										<option value="관람권" <c:if test="${paramMap.faq_group eq '관람권'}">selected</c:if>>관람권</option>
+										<option value="멤버십" <c:if test="${paramMap.faq_group eq '멤버십'}">selected</c:if>>멤버십</option>
+										<option value="할인혜택" <c:if test="${paramMap.faq_group eq '할인혜택'}">selected</c:if>>할인혜택</option>
+										<option value="영화관이용" <c:if test="${paramMap.faq_group eq '영화관이용'}">selected</c:if>>영화관이용</option>
+									</select>
+									<input class="datatable-input" value="${param.searchKeyword }" name="searchKeyword" type="search" 
+									placeholder="검색어를 입력해 주세요." aria-controls="datatablesSimple" style="width: 210px;">
+									<input class="btn btn-block btn-more" type="button" value="검색" onclick="search('0');"
+										style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
+<!-- 									<input type="search" id="searchTxt" name="searchKeyword" title="검색어를 입력해 주세요." -->
+<!-- 										placeholder="검색어를 입력해 주세요." class="input-text" maxlength="15" -->
+<%-- 										value="${param.searchKeyword }"> --%>
+<!-- 									<button type="button" id="searchBtn" class="btn-search-input" onclick="search('0');" -->
+<!-- 									style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">검색</button> -->
+								</div>
+							
+						</div>
+					</div>
+					
 					<input class="btn btn-block btn-more" type="button" value="자주묻는 질문 등록" onclick="doFaqRegister()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
@@ -204,6 +253,14 @@
 						</thead>
 						<!-- 목록 -->
 						<tbody>
+							<input type="hidden" name="memberName" value="${paramMap.memberName}">
+							<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
+							<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
+							<input type="hidden" name="startNum" value="${paramMap.startNum}">
+							<input type="hidden" name="endNum" value="${paramMap.endNum}">
+							<input type="hidden" name="pageNum" value="${paramMap.pageNum}">
+							<input type="hidden" name="table_name" value="">
+							<input type="hidden" name="code" value="">
 							<c:forEach var="faqBoard" items="${faqBoardList }">
 								<tr data-index="0">
 									<td>${faqBoard.faq_code }</td>
@@ -227,6 +284,95 @@
 							<!-- 							</tr> -->
 						</tbody>
 					</table>
+						<!-- pagination -->
+						<div class="datatable-bottom">
+						<nav class="datatable-pagination">
+						<ul class="datatable-pagination-list">
+							<c:if test="${1 < paramMap.pageNum }">
+								<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
+								<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+							</c:if>
+							<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
+								<c:choose>
+									<c:when test="${paramMap.pageNum eq status.index+1}">
+										<strong class="active">${status.index+1}</strong>
+									</c:when>
+									<c:otherwise>
+										<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
+								<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
+								<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
+							</c:if>
+						</ul>
+						</nav>
+						</div>
+						
+						<div class="datatable-bottom">
+							<nav class="datatable-pagination">
+								<ul class="datatable-pagination-list">
+									<c:choose>
+										<c:when test="${empty param.pageNum }">
+											<c:set var="pageNum" value="1" />
+										</c:when>
+										<c:otherwise>
+											<c:set var="pageNum" value="${param.pageNum }"></c:set>
+										</c:otherwise>
+									</c:choose>
+		
+									<!-- 							 datatable-disabled -->
+									<c:choose>
+										<c:when test="${pageNum > 1 }">
+											<li class="datatable-pagination-list-item datatable-hidden"
+												onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+												<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="datatable-pagination-list-item datatable-hidden">
+												<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+									<c:forEach var="num" begin="${pageInfo.startPage }"
+										end="${pageInfo.endPage }">
+										<c:choose>
+											<c:when test="${pageNum eq num }">
+												<%-- 현재 페이지 번호일 경우 --%>
+												<li class="datatable-pagination-list-item "><a
+													class="datatable-pagination-list-item-link"
+													style="font-weight: 800; background-color: #ececec">${num }</a>
+											</c:when>
+		
+											<%--페이지번호 --%>
+											<c:otherwise>
+												<li class="datatable-pagination-list-item "><a
+													class="datatable-pagination-list-item-link"
+													href="admin_schedule_register?pageNum=${num }">${num }</a></li>
+		
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${pageNum < pageInfo.maxPage }">
+											<li class="datatable-pagination-list-item datatable-hidden"
+												onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+												<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="datatable-pagination-list-item datatable-hidden">
+												<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
+							</nav>
+						</div>
+						<!--// pagination -->
+					</form>
 				</div>
 			<!-- 테이블 -->
 			</main>

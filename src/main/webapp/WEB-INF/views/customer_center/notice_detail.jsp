@@ -73,7 +73,7 @@
 					<div class="line next">
 						<p class="tit">다음</p>
 						<a href="#" class="link moveBtn" data-no="10826"
-							title="[L.POINT] 서버 작업 안내(4/9)">[L.POINT] 서버 작업 안내(4/9)</a>
+							title=""></a>
 					</div>
 				</div>
 

@@ -71,13 +71,13 @@ function search(idx) {
 						보려면 아래 구분 메뉴에서 선택해주세요.</div>
 					<div class="faq-cat-selector">
 						<div class="wrap-select">
-							<select class="faq-category">
-								<option value="0">전체</option>
-								<option value="1">예매</option>
-								<option value="2">관람권</option>
-								<option value="3">멤버십</option>
-								<option value="4">할인혜택</option>
-								<option value="5">영화관이용</option>
+							<select class="faq-category" name="faq_group" onchange="search('0');">
+								<option value="전체" <c:if test="${paramMap.faq_group eq '전체'}">selected</c:if>>전체</option>
+								<option value="예매" <c:if test="${paramMap.faq_group eq '예매'}">selected</c:if>>예매</option>
+								<option value="관람권" <c:if test="${paramMap.faq_group eq '관람권'}">selected</c:if>>관람권</option>
+								<option value="멤버십" <c:if test="${paramMap.faq_group eq '멤버십'}">selected</c:if>>멤버십</option>
+								<option value="할인혜택" <c:if test="${paramMap.faq_group eq '할인혜택'}">selected</c:if>>할인혜택</option>
+								<option value="영화관이용" <c:if test="${paramMap.faq_group eq '영화관이용'}">selected</c:if>>영화관이용</option>
 							</select>
 						</div>
 					</div>
@@ -85,9 +85,9 @@ function search(idx) {
 					<table class="board-list">
 						<caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
 						<colgroup>
-							<col style="width: 57px;">
-							<col style="width: 129px;">
-							<col style="width: 523px;">
+							<col style="width: 70px;">
+							<col style="width: 180px;">
+							<col style="width: 300px;">
 							<col>
 							<col style="width: 1px;">
 						</colgroup>
@@ -113,7 +113,7 @@ function search(idx) {
 									<td>${faqBoard.faq_code }</td>
 									<td>${faqBoard.faq_group }</td>
 									<td id="faq_question"><a
-										href="faq_detail?faq_code=${faqBoard.faq_code }&pageNum=${pageNum }">${faqBoard.faq_question }</a>
+										href="faq_detail?faq_code=${faqBoard.faq_code }">${faqBoard.faq_question }</a>
 									</td>
 									<td>${faqBoard.faq_write_date }</td>
 								</tr>

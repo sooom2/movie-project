@@ -49,10 +49,96 @@ function goDetail(table_name, code) {
 	form.submit();
 }
 
+function doDisplay(){
+	let dis = document.querySelector(".modal-type2");
+	
+	if(dis.style.display="none"){
+		dis.style.display="block"
+	} else{
+		dis.style.display="none";
+	}
+}
+
+function modalClose(){
+	 $('.modal-type2').hide();	
+}
+
 </script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<div class="container has-lnb">
+	<main>
+	<div class="container modal admin-modal-register"
+		style="display: none">
+		<div class="row justify-content-center">
+			<div class="col-lg-7">
+				<div class="card border-1 mt-5">
+					<div class="card-header">
+						<button type="button" class="close-modal"
+							onclick="modalClose()" style="border: none;">닫기</button>
+						<h3 class="text-center font-weight-light my-4">공지사항 등록</h3>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-lg-7" style="width: 700px">
+							<div class="card-body">
+								<form action="notice_register_pro">
+									<div class="row mb-3">
+										<div>
+											<div class="form-floating mb-3 mb-md-0 ">
+												<input class="form-control" id="notice_subject"
+													name="notice_subject" type="text" value="" /> <label
+													for="notice_subject">제목</label>
+											</div>
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="dropdown bootstrap-select">
+											<div class="form-floating mb-3 mb-md-0 selectbox">
+												<div class="cinema_name">
+													<label for="cinema_name">문의지점 : </label> 
+													<select name="cinema_name" onchange="selectCinema()"
+														style="margin-top: 0px; !important">
+														<option value="none" selected="selected" disabled>극장
+															선택</option>
+														<option value="none" disabled>=======================</option>
+														<option value="전체공지">전체공지</option>
+														<c:forEach var="cinema" items="${cinemaList }">
+															<option value="${cinema.get('cinema_name') }">${cinema.get("cinema_name")}</option>
+														</c:forEach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<hr>
+									<div class="row mb-3">
+										<div class="form-floating mb-3 mb-md-0 text">
+											<div>
+												<textarea name="notice_content" class="form-control"
+													id="notice_content" placeholder="내용" rows="10"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="mt-4 mb-0 ">
+											<div class="d-grid">
+												<input class="btn btn-primary btn-block" type="submit"
+													value="등록">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 		<div class="inner-wrap">
 			<jsp:include page="lnb-area.jsp" />
 			<div id="contents">
@@ -138,8 +224,8 @@ function goDetail(table_name, code) {
 										<td>${lostBoard.rownum }</td>
 										<td>${lostBoard.cinema_name }</td>
 										<td id="lost_subject"><a
-											href="lost_detail?lost_code=${lostBoard.lost_code }">${lostBoard.lost_subject }</a>
-<%-- 											href="javascript:goDetail('${lostBoard.lost_code}')">${lostBoard.lost_subject }</a> --%>
+<%-- 											href="lost_detail?lost_code=${lostBoard.lost_code }">${lostBoard.lost_subject }</a> --%>
+											href="javascript:doDisplay('${lostBoard.lost_code}', '${lostBoard.lost_passwd }');" class="chkPasswd">${lostBoard.lost_subject }</a>
 										</td>
 										<td>${lostBoard.lost_board_rep }</td>
 										<td>${lostBoard.lost_write_date }</td>
@@ -148,31 +234,84 @@ function goDetail(table_name, code) {
 							</tbody>
 						</table>
 					</div>
-
-					<section id="layer-01" class="layer-popup"
-						style="top: 31px; left: 304.5px; width: 500px; height: 300px; opacity: 1; display: none;">
-						<div class="wrap">
-							<header class="layer-header">
-								<h3 class="tit">비밀번호 입력</h3>
-							</header>
-
-							<div class="layer-con">
-								<p>글 작성시 입력한 비밀번호를 입력해주세요.</p>
-								<div class="box-gray a-c">
-									<input type="password" id="password" title="비밀번호 입력"
-										class="input-text w250px">
-									<p class="font-red mt10 mb0">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p>
+					
+					<!-- 글 조회 비밀번호 입력 모달창 -->
+					<div class="modal modal-type2" id="chkPasswd" tabindex="-1" style="display: none;" align="left">
+						<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="tit">
+										비밀번호 입력
+									</h3>
+									<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
 								</div>
-								<div class="btn-group">
-									<a href="#" class="button small lyclose" id="cancelBtn"
-										title="취소">취소</a> <a href="#" class="button small purple"
-										id="chkBtn" title="확인">확인</a>
+								<div class="modal-body">
+<!-- 									<p>글 작성시 입력한 비밀번호를 입력해주세요.</p> -->
+<!-- 									<input type="password" id="passwd" title="비밀번호 입력" class="input-text w250px"> -->
+<!-- 									<p class="font-red mt10 mb0" style="display: none;">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p> -->
+									<h3 class="h3-member">글 작성시 입력한 비밀번호를 입력해주세요.</h3>
+									<div class="inp-box1 mb20">
+										<input type="tel" id="passwd" class="inp-member onlyNumber" placeholder="비밀번호를 입력해주세요">
+									</div>
+								</div>
+								<div class="modal-bottom flex">
+									<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
+									<button type="button" class="btn-modal2" id="chkPasswd">확인</button>
 								</div>
 							</div>
-
-							<button type="button" class="btn-layer-close">레이어 닫기</button>
 						</div>
-					</section>
+					</div>
+					<!-- 글 조회 비밀번호 입력 모달창 -->
+
+<!-- 					<section id="layer-01" class="layer-popup" -->
+<!-- 						style="top: 31px; left: 304.5px; width: 500px; height: 300px; opacity: 1; display: none;"> -->
+<!-- 						<div class="wrap"> -->
+<!-- 							<header class="layer-header"> -->
+<!-- 								<h3 class="tit">비밀번호 입력</h3> -->
+<!-- 							</header> -->
+<!-- 							<div class="layer-con"> -->
+<!-- 								<p>글 작성시 입력한 비밀번호를 입력해주세요.</p> -->
+<!-- 								<div class="box-gray a-c"> -->
+<!-- 									<input type="password" id="password" title="비밀번호 입력" -->
+<!-- 										class="input-text w250px"> -->
+<!-- 									<p class="font-red mt10 mb0">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p> -->
+<!-- 								</div> -->
+<!-- 								<div class="btn-group"> -->
+<!-- 									<a href="#" class="button small lyclose" id="cancelBtn" -->
+<!-- 										title="취소">취소</a> <a href="#" class="button small purple" -->
+<!-- 										id="chkBtn" title="확인">확인</a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<button type="button" class="btn-layer-close">레이어 닫기</button> -->
+<!-- 						</div> -->
+<!-- 					</section> -->
+					
+<!-- 					<section id="layer-01" class="layer-popup"  -->
+<!-- 					style="top: 334.5px; left: 394.5px; width: 350px; height: 300px; opacity: 1; display: block;"> -->
+<!-- 						<div class="wrap"> -->
+<!-- 							<header class="layer-header"> -->
+<!-- 								<h3 class="tit"> -->
+<!-- 									비밀번호 입력 -->
+<!-- 								</h3> -->
+<!-- 							</header> -->
+				
+<!-- 							<div class="layer-con" style="height: 300px;"> -->
+<!-- 								<p>글 작성시 입력한 비밀번호를 입력해주세요.</p> -->
+<!-- 								<div class="box-gray a-c"> -->
+<!-- 									<input type="password" id="password" title="비밀번호 입력" class="input-text w250px"> -->
+<!-- 									<p class="font-red mt10 mb0" style="display: none;">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p> -->
+<!-- 								</div> -->
+<!-- 								<div class="btn-group"> -->
+<!-- 									<a href="#" class="button small lyclose" id="cancelBtn" title="취소">취소</a> -->
+<!-- 									<a href="#" class="button small purple" id="chkBtn" title="확인">확인</a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+				
+<!-- 							<button type="button" class="btn-layer-close">레이어 닫기</button> -->
+<!-- 						</div> -->
+<!-- 					</section> -->
+					
+					
 
 					<!-- pagination -->
 					<nav class="pagination">
@@ -200,6 +339,7 @@ function goDetail(table_name, code) {
 				</form>
 			</div>
 		</div>
+		</main>
 	</div>
 
 	<jsp:include page="../footer.jsp" />

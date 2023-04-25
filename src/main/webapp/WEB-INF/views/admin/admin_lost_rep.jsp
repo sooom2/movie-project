@@ -29,7 +29,7 @@
 	// 	});
 	
 	function confirmUpdate() {
-		return confirm("수정하시겠습니까?");
+		return confirm("답변 등록 하시겠습니까?");
 	}
 	
 	function lost_delete(){
@@ -80,6 +80,8 @@
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
 							<div class="card-header">
+								<button type="button" class="close-modal"
+									onclick="history.back()" style="border: none;">닫기</button>
 								<h3 class="text-center font-weight-light my-4">분실물 답변</h3>
 							</div>
 							<div class="card-body">
@@ -135,7 +137,7 @@
 									<div class="row">
 											<div class="mt-4 mb-0 col-md-6">
 												<div class="d-grid">
-													<input class="btn btn-primary btn-block btn-update" type="submit" value="수정" >
+													<input class="btn btn-primary btn-block btn-update" type="submit" value="답변등록" >
 												</div>
 											</div>
 											<div class="mt-4 mb-0 col-md-6">
