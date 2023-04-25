@@ -42,14 +42,6 @@
 				<div class="synopsis">
 					${movieInfo.info_story }
 				</div>
-				<!-- 안되면 생략 -->
-				<h4 class = "trailer-title">스틸컷</h4>
-				<div class="still">
-					<c:forEach var = "stillCut" items='${movieInfo.info_still.split("[|]") }'>
-						<img src="${stillCut }" alt = "스틸컷" class = "stillCut">
-					</c:forEach>
-				</div>
-				<!--   -->
 			</div>
 		</div>
 		<div class="section group section-mypage">
@@ -110,29 +102,9 @@
   $(document).ready(function () {
 
         if($(".btn-rsv").html()==("예매하기")){
-        	$(".btn-rsv").attr('href', 'reservation')
+        	$(".btn-rsv").attr('href', 'reservation').css("background-color","#534cbf");
         	
         }
-        
-        if ($(".still").length) {
-			slider_bo = $('.still').bxSlider({
-				auto : false,
-				speed : 500,
-				minSlides : 5,
-				maxSlides : 5,
-				slideWidth : 170,
-				slideMargin : 10,
-				infiniteLoop : true,
-				adaptiveHeight : true,
-				adaptiveHeightSpeed : 1,
-				hideControlOnEnd : true,
-				preloadImages : 'visible',
-				controls : false
-			});
-			setTimeout(function() {
-				slider_bo.redrawSlider();
-			}, 1000);
-		}
         
  });
  </script>
