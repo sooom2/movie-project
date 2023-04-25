@@ -16,6 +16,8 @@ public class ReservationVO {
 	private String resPayDone;
 	private String seatLine;
 	private String seatNum;
+	private String seatNm;
+	
 	
 	private String ScreenTime;
 	private String HidMovieUrl;
@@ -30,7 +32,6 @@ public class ReservationVO {
 	private String NormalPrice;
 	private String OldPrice;
 	private String YoungPrice;
-	private String seatNm;
 	private String resPay;
 	
 	
@@ -44,9 +45,9 @@ public class ReservationVO {
 
 	public ReservationVO(String resCode, String schCd, String movieCd, String screenCd, String cinemaCd,
 			String movieDate, String movieNm, String cinemaNm, String totalCnt, String totalAmt, String resPayment,
-			String buyerTel, String resPayDone, String seatLine, String seatNum, String screenTime, String hidMovieUrl,
-			String hidRating, String showDate, String genre, String screenNm, String normalCnt, String oldCnt,
-			String youngCnt, String ticketAmt, String normalPrice, String oldPrice, String youngPrice, String seatNm,
+			String buyerTel, String resPayDone, String seatLine, String seatNum, String seatNm, String screenTime,
+			String hidMovieUrl, String hidRating, String showDate, String genre, String screenNm, String normalCnt,
+			String oldCnt, String youngCnt, String ticketAmt, String normalPrice, String oldPrice, String youngPrice,
 			String resPay) {
 		super();
 		this.resCode = resCode;
@@ -64,6 +65,7 @@ public class ReservationVO {
 		this.resPayDone = resPayDone;
 		this.seatLine = seatLine;
 		this.seatNum = seatNum;
+		this.seatNm = seatNm;
 		ScreenTime = screenTime;
 		HidMovieUrl = hidMovieUrl;
 		HidRating = hidRating;
@@ -77,7 +79,6 @@ public class ReservationVO {
 		NormalPrice = normalPrice;
 		OldPrice = oldPrice;
 		YoungPrice = youngPrice;
-		this.seatNm = seatNm;
 		this.resPay = resPay;
 	}
 
@@ -294,6 +295,20 @@ public class ReservationVO {
 
 
 
+	public String getSeatNm() {
+		return seatNm;
+	}
+
+
+
+
+	public void setSeatNm(String seatNm) {
+		this.seatNm = seatNm;
+	}
+
+
+
+
 	public String getScreenTime() {
 		return ScreenTime;
 	}
@@ -476,20 +491,6 @@ public class ReservationVO {
 
 
 
-	public String getSeatNm() {
-		return seatNm;
-	}
-
-
-
-
-	public void setSeatNm(String seatNm) {
-		this.seatNm = seatNm;
-	}
-
-
-
-
 	public String getResPay() {
 		return resPay;
 	}
@@ -510,12 +511,15 @@ public class ReservationVO {
 				+ ScreenCd + ", CinemaCd=" + CinemaCd + ", MovieDate=" + MovieDate + ", MovieNm=" + MovieNm
 				+ ", CinemaNm=" + CinemaNm + ", totalCnt=" + totalCnt + ", totalAmt=" + totalAmt + ", resPayment="
 				+ resPayment + ", buyerTel=" + buyerTel + ", resPayDone=" + resPayDone + ", seatLine=" + seatLine
-				+ ", seatNum=" + seatNum + ", ScreenTime=" + ScreenTime + ", HidMovieUrl=" + HidMovieUrl
-				+ ", HidRating=" + HidRating + ", showDate=" + showDate + ", genre=" + genre + ", ScreenNm=" + ScreenNm
-				+ ", NormalCnt=" + NormalCnt + ", OldCnt=" + OldCnt + ", YoungCnt=" + YoungCnt + ", TicketAmt="
-				+ TicketAmt + ", NormalPrice=" + NormalPrice + ", OldPrice=" + OldPrice + ", YoungPrice=" + YoungPrice
-				+ ", seatNm=" + seatNm + ", resPay=" + resPay + "]";
+				+ ", seatNum=" + seatNum + ", seatNm=" + seatNm + ", ScreenTime=" + ScreenTime + ", HidMovieUrl="
+				+ HidMovieUrl + ", HidRating=" + HidRating + ", showDate=" + showDate + ", genre=" + genre
+				+ ", ScreenNm=" + ScreenNm + ", NormalCnt=" + NormalCnt + ", OldCnt=" + OldCnt + ", YoungCnt="
+				+ YoungCnt + ", TicketAmt=" + TicketAmt + ", NormalPrice=" + NormalPrice + ", OldPrice=" + OldPrice
+				+ ", YoungPrice=" + YoungPrice + ", resPay=" + resPay + "]";
 	}
+
+	
+
 	
 
 		
