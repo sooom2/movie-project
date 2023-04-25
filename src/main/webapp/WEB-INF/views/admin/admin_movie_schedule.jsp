@@ -76,7 +76,7 @@ function selectSch(){
 			let disabledValues = [];
 
 			$(".sch_start_time option").remove();
-			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">상영시작시간을 선택하세요</option>');
+			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요 선택하세요</option>');
 			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
 			
 			for (var i = 0; i < result.length; i++) {
@@ -515,10 +515,10 @@ $(function() {
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0 selectbox">
 													<div class="sch_start_time">
-														<label for="sch_start_time">상영시작시간 : </label> <select
+														<label for="sch_start_time">시작시간 : </label> <select
 															name="sch_start_time" class="sch_start_time">
 															<option value="none" selected="selected"
-																disabled="disabled">시작시간을 선택하세요</option>
+																disabled="disabled">영화시작시간을 선택하세요</option>
 															<option value="none" disabled>=======================</option>
 														</select>
 													</div>
