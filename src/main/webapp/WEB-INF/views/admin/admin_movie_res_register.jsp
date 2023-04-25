@@ -125,13 +125,13 @@ function modalClose(){
 									class="datatable-sorter">좌석</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#"
 									class="datatable-sorter">결제금액</a></th>
-								<th data-sortable="true" style="width: 8%;">
+								<th data-sortable="true" style="width: 10%;">
 									<a href="#" class="datatable-sorter">결제일</a>
 								</th>
 								<th data-sortable="true" style="width: 8%;">
 									<a href="#" class="datatable-sorter">결제유무</a>
 								</th>
-								<th data-sortable="true" style="width: 8%;">
+								<th data-sortable="true" style="width: 5%;">
 									<a href="#" class="datatable-sorter">수정</a>
 								</th>
 							</tr>
