@@ -13,8 +13,15 @@
 <!-- 현재상영목록 -->
 <select id="selectScreeningMovies" resultType="hashmap">
 	SELECT *
-	FROM movieinfo
-	WHERE info_status = screening
+	, CASE info_rating													
+		WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+		WHEN '15세관람가' 					THEN 'rate-15'
+		WHEN '12세관람가' 					THEN 'rate-12'
+		WHEN '전체관람가' 					THEN 'rate-all' 
+		ELSE ''
+		END AS 'rate'			
+ FROM movieinfo
+	WHERE info_status = 'screening'
 	ORDER BY
 			info_showdate DESC
 </select>
@@ -22,8 +29,15 @@
 <!-- 상영 예정영화 조회 -->
 <select id="selectCommingMovies" resultType="hashmap">
 	SELECT *
-	FROM movieinfo
-	WHERE info_status = comming
+		, CASE info_rating													
+			WHEN '18세관람가(청소년관람불가)' 	THEN 'rate-x'
+			WHEN '15세관람가' 					THEN 'rate-15'
+			WHEN '12세관람가' 					THEN 'rate-12'
+			WHEN '전체관람가' 					THEN 'rate-all' 
+			ELSE ''
+			END AS 'rate'			
+	 FROM movieinfo
+	WHERE info_status = 'comming'
 	ORDER BY
 			info_showdate DESC
 </select>
