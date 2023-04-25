@@ -352,7 +352,12 @@
 						    <li data-moviecode="${movie.info_movie_code }">
 						    	<span class="over over-a">
 						    		<a href="reservation" class="rsv">
-						    		<span class="over-btn-rsv">${movie.info_status }		</span></a>
+						    		<span class="over-btn-rsv">
+						    		<c:choose>
+										<c:when test="${movie.info_status eq 'screening' }">예매하기</c:when>						    		
+						    			<c:when test="${movie.info_status eq 'comming' }">상영예정</c:when>
+						    			<c:when test="${movie.info_status eq 'end' }">상영종료</c:when>
+		    						</c:choose>		</span></a>
 						    
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
@@ -376,7 +381,13 @@
 						<c:forEach var="movie" items="${commingMovieList}" end = "9" >
 						    <li data-moviecode="${movie.info_movie_code }">
 						    	<span class="over over-a">
-						    		<a href="reservation" class="rsv"><span class="over-btn-rsv">${movie.info_status }</span></a>
+						    		<a href="#" class="rsv"><span class="over-btn-rsv">
+						    		<c:choose>
+										<c:when test="${movie.info_status eq 'screening' }">예매하기</c:when>						    		
+						    			<c:when test="${movie.info_status eq 'comming' }">상영예정</c:when>
+						    			<c:when test="${movie.info_status eq 'end' }">상영종료</c:when>
+						    		</c:choose>
+						    		</span></a>
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
 						    <img src="${movie.info_movie_poster }" class="posterlist">
