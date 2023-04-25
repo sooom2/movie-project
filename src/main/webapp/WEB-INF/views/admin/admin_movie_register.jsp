@@ -553,11 +553,11 @@ function previewImage(targetObj, View_area) {
 								<th data-sortable="true" style="width: 8%;"><a href="infoMovieCodeSort" class="datatable-sorter">영화코드</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="infoMovieNameSort" class="datatable-sorter">영화제목</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영상태</a></th>
+								<th data-sortable="true" style="width: 15%;"><a href="infoStorySort" class="datatable-sorter">줄거리</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoYearSort"	class="datatable-sorter">제작년도</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoTimeSort"	class="datatable-sorter">상영시간</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoShowDateSort"	class="datatable-sorter">상영일</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoEndDateSort"	class="datatable-sorter">종영일</a></th>
-								<th data-sortable="true" style="width: 15%;"><a href="infoStorySort" class="datatable-sorter">줄거리</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#" class="">수정/삭제</a></th>
 							</tr>
 						</thead>
@@ -568,11 +568,11 @@ function previewImage(targetObj, View_area) {
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
 								<td>${movie.get("info_status") }</td>
-								<td>${movie.get("info_enddate") }</td>
 								<td id="info_story">${movie.get("info_story") }</td>
 								<td>${movie.get("info_year") }</td>
 								<td>${movie.get("info_time") }</td>
 								<td>${movie.get("info_showdate") }</td>
+								<td>${movie.get("info_enddate") }</td>
 <%-- 								<td><img alt="" src="${movie.get('info_movie_poster') }"></td> --%>
 								<td class="modi">
 										 			 
