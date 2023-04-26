@@ -469,7 +469,7 @@
 										</span>
 										<span class="date_info">${review.rev_date }</span>
 									</div>
-									<div class="review_info">${review.rev_content }</div>
+									<div class="review_info">[${review.rev_movie_title}] ${review.rev_content }</div>
 									</li>
 							</c:forEach>
 									
