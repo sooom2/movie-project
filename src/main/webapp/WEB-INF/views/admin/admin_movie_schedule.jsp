@@ -30,6 +30,12 @@
 
 function selectCinema(){
 	
+	let register_date = $("#sch_register_date").val();
+	if(register_date == "") {
+		alert("날짜를 먼저 선택하세요");
+		return; // 다음 작업이 진행되지 않도록 함수 종료
+	}
+	
 	//지점 > 상영관
 	$.ajax({
 		type: "POST",
@@ -52,7 +58,7 @@ function selectCinema(){
 			
 		},
 		error:function(request,status,error){
-	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// 	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	     
 		}
 	});// 지점 > 상영관 ajax
