@@ -14,7 +14,7 @@ public class LikeService {
 	@Autowired
 	private LikeMapper mapper;
 	
-	public boolean findLike(HashMap<String, String> like) {
+	public HashMap<String, String> findLike(HashMap<String, String> like) {
 		return mapper.findLike(like);
 	}
 	
@@ -28,6 +28,8 @@ public class LikeService {
 	public int updateLike(HashMap<String, String> like) {
 		return mapper.updateLike(like);
 	}
-	
+	public HashMap<String, String> findLikeList(String id) {
+		return mapper.findLikeList(id);
+	}
 	
 }

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- 주의! mapper 태그 내의 namespace 속성에 현재 XML 파일과 연결될 자바 클래스를 명시해야한다! -->
 <mapper namespace="com.itwillbs.movie.mapper.LikeMapper">
-	<select id="findLike" resultType="boolean">
-		SELECT exists(
-					SELECT *
-			  		FROM like_movie
-					WHERE like_movie_code = #{info_movie_code}
-				 		AND like_id = #{member_id}
-				 	LIMIT 1
-				)
+	<select id="findLike" resultType="hashmap">
+		SELECT *
+  		FROM like_movie
+		WHERE 
+				like_movie_code = #{info_movie_code}
+	 			AND like_id = #{member_id}
+	</select>
+	<select id="findLikeList" resultType="hashmap">
+		SELECT *
+  		FROM like_movie
+		WHERE 
+	 			 like_id = #{member_id}
 	</select>
 	
 	<insert id="insertLike">
@@ -34,9 +37,11 @@
 	
 	<update id="updateLike">
 		UPDATE movieinfo
-		   	SET like_count = (SELECT COUNT(*)
+		   	SET like_count =  (
+		   						SELECT COUNT(*)
 								FROM like_movie					   		
-								WHERE like_movie_code = #{info_movie_code})			 			 
+								WHERE like_movie_code = #{info_movie_code}
+								)			 			 
 		 	WHERE info_movie_code = #{info_movie_code}
 	</update>
 </mapper>

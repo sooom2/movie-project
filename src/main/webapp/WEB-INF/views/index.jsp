@@ -18,6 +18,7 @@
 
 <script type="text/javascript">
 	$(function() {
+		
 		//메인 슬라이 더
 		if ($(".bxslider-main").length) {
 
@@ -235,37 +236,54 @@
 		// 좋아요 버튼 기능
 		var $likeBtn = $('.icon.heart');
 	   	$likeBtn.click(function() {
-	   	// ajax -> likeInsert(@controller)
-	   	// ajax : context : this를 써줘야 success에서 this 사용 가능
-	   	var info_movie_code = $(this).closest("li").data("moviecode")+"";
-	   	
-	   	$likeBtn.toggleClass('active');
-	   	
-	   	$.ajax({
-	   		url : 'likeClick',
-	   		type : 'POST',
-	   		context : this,
-	   		data : {
-	   			info_movie_code : info_movie_code
-	   		},
-	   		success : function(result){
-	   			alert(result.msg)
-	   			
-	   			if(result.resultType == "insert"){
-	   				$(this).find('img').attr({
-	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-	   					alt : '찜하기 완료'
-	   				})
-	   			}else if(result.resultType = "delete"){
-	   				$(this).find('img').attr({
-	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-	   					alt : "찜하기"
-	   				})
-	   			}
+		   	// ajax -> likeInsert(@controller)
+		   	// ajax : context : this를 써줘야 success에서 this 사용 가능
+		   	var info_movie_code = $(this).closest("li").data("moviecode")+"";
+		   	
+		   	$likeBtn.toggleClass('active');
+		   	
+		   	$.ajax({
+		   		url : 'likeClick',
+		   		type : 'POST',
+		   		context : this,
+		   		data : {
+		   			info_movie_code : info_movie_code
+		   		},
+		   		success : function(result){
+		   			alert(result.msg)
+		   			
+		   			if(result.resultType == "insert"){
+		   				$(this).find('img').attr({
+		   					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+		   					alt : '찜하기 완료'
+		   				})
+		   			}else if(result.resultType = "delete"){
+		   				$(this).find('img').attr({
+		   					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+		   					alt : "찜하기"
+		   				})
+		   			}
 	   			$(this).find('span').html(result.like_count)
-	   		}
-	   	})
-   	}) 
+	   			}
+	   		})
+  	 	});
+//    	if("${sessionScope.sId}" != null && "${sessionScope.sId}" != ""){
+//    		var info_movie_code = $('.icon.heart').closest("li").data("moviecode");
+//    		console.log("좋아요 호출을 위한 ajax - sessionScope.sId : " + "${sessionScope.sId}");
+//    		console.log(info_movie_code);
+// 	   	$.ajax({
+// 	   		url	: 'likeCheck',
+// 	   		type : 'POST',
+// 	   		data : 	{
+// 	   			info_movie_code : info_movie_code
+// 	   		},
+// 	   		success : function(result){
+// 	   			console.log(result);
+// 	   		}
+// 	   	})
+//    	}
+	 
+	
 });
 </script>
 

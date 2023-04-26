@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface LikeMapper {
 
-	boolean findLike(HashMap<String , String> like);
+	HashMap<String, String> findLike(HashMap<String , String> like);
 	
 	int insertLike(HashMap<String, String> like);
 	
@@ -13,6 +13,7 @@ public interface LikeMapper {
 	
 	int updateLike(HashMap<String, String> like);
 	
+	HashMap<String, String> findLikeList(String id);
 	
 }
 

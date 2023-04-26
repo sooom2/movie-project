@@ -77,7 +77,6 @@ public class MovieController {
 	@PostMapping(value = "likeClick")
 	@ResponseBody
 	public HashMap<String, String> likeCount(@RequestParam("info_movie_code") String info_movie_code, HttpSession session, Model model) {
-		// id와 movie_code를 xml에 넣기 위해서 map 객체에 넣어준 것
 		String id = (String)session.getAttribute("sId");
 		
 		// service에 보낼 map
@@ -89,13 +88,20 @@ public class MovieController {
 		
 		like.put("member_id", id);
 		like.put("info_movie_code", info_movie_code);
-		boolean isLike = likeService.findLike(like);
+		HashMap<String, String> isLike = likeService.findLike(like);
 		String resultType = "delete";
 		
 		// id 유효성 검사
 		if(id != null) {
 			// 좋아요 한 적 없을 때
-			if(!isLike) {	
+			if(isLike != null) {	
+				int deleteCount = likeService.deleteLike(like);
+				
+				if(deleteCount > 0) {
+					result.put("msg", "좋아요를 취소했습니다.");
+				}
+			}else {	//	좋아요 한 적 있을 때	
+				
 				//좋아요 추가
 				int insertCount = likeService.insertLike(like);
 				//좋아요 추가 성공했을 때 
@@ -103,24 +109,35 @@ public class MovieController {
 					result.put("msg", "좋아요 성공");
 					resultType= "insert";
 				}
-			}else {	//	좋아요 한 적 있을 때	
-				int deleteCount = likeService.deleteLike(like);
-				
-				if(deleteCount > 0) {
-					result.put("msg", "좋아요를 취소했습니다.");
-				}
 			}
+			
 			likeService.updateLike(like);
 			
 		}else {
+			
 			result.put("msg", "로그인 후 시도해주세요.");
 		}
 		
 		String like_count = service.selectMovie(info_movie_code).get("like_count");
 		result.put("resultType", resultType);
 		result.put("like_count", like_count); 
+		
+		System.out.println("likeClick.result : "+result);
 		return result; 
 		
+	}
+	@PostMapping(value = "likeCheck")
+	@ResponseBody
+	public boolean likeCheck(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		System.out.println("likeCheck - 확인용");
+		
+		HashMap<String, String> isLike = likeService.findLikeList(id);
+		if(isLike != null) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }
