@@ -249,11 +249,30 @@
 			order by res_code desc limit 1)
 	</select>
 	
-	<select id="likeList" resultType="hashmap">
-	 	SELECT distinct(m.info_movie_title) as movie_title
-	 	FROM movieinfo m JOIN like_movie l on m.info_movie_code = l.like_movie_code
-	 	where l.like_id = #{id} limit 5;
-	</select>
+<!-- 	<select id="likeList" resultType="hashmap"> -->
+<!-- 	 	SELECT distinct(m.info_movie_title) as movie_title, -->
+<!-- 	 			m.info_showdate as info_showdate -->
+<!-- 	 	FROM movieinfo m JOIN like_movie l on m.info_movie_code = l.like_movie_code -->
+<!-- 	 	where l.like_id = #{id} limit 5; -->
+<!-- 	</select> -->
+
+
+		<select id="likeList" resultType="hashmap">
+		  SELECT DISTINCT(m.info_movie_title) AS movie_title,
+		         CASE
+		             WHEN m.info_showdate = CURDATE() THEN CONCAT(' - ', '오늘 개봉')
+		             WHEN m.info_showdate > NOW() THEN CONCAT(' - ', DATEDIFF(m.info_showdate, NOW()), '일 후 개봉예정')
+		             ELSE ''
+		         END AS info_showdate,
+		         m.info_movie_code
+		  FROM movieinfo m
+		       JOIN like_movie l ON m.info_movie_code = l.like_movie_code
+		  WHERE l.like_id = #{id}
+		  ORDER BY m.info_showdate 
+		  LIMIT 5;
+		</select>
+
+
 	
 	<!-- 리뷰삭제  -->
 	<delete id="deleteReview"  >
