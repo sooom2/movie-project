@@ -115,14 +115,6 @@ function previewImage(targetObj, View_area) {
 </head>
 <body class="sb-nav-fixed">
 		
-	<c:if test="${not empty sessionScope.sId }">
-		<script type="text/javascript">
-			alert("잘못된 접근입니다!");
-			location.href = "./";
-		</script>
-	</c:if>	
-		
-		
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
