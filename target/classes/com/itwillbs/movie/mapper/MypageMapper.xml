@@ -268,7 +268,7 @@
 		  FROM movieinfo m
 		       JOIN like_movie l ON m.info_movie_code = l.like_movie_code
 		  WHERE l.like_id = #{id}
-		  ORDER BY m.info_showdate 
+		  ORDER BY ABS(DATEDIFF(m.info_showdate, NOW()))	
 		  LIMIT 5;
 		</select>
 
