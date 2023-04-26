@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>예매페이지_찐막</title>
+	<title>영화예매</title>
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/rsv/res_test.png" type="image/x-icon"/>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv2.css">
@@ -72,6 +72,7 @@
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
 				
 				<input type="hidden" id="MovieDate" name="MovieDate" value="">
+				<input type="hidden" id="seatCnt" name="seatCnt" value="0">
 				
 				
 
@@ -351,10 +352,52 @@ var screenCd = ""; 	// 상영관코드
 var screenName = ""; // 상영관명
 var mvTime = "";	// 상영시간
 var mvDay = "";		// 상영일
+var seatCnt = 0;	// 좌석 수 count
+
+	// 좌석 정보 조회-------------------------하는중
+	function reservationList() {
+	$.ajax({
+			type: "GET",
+			url: "reservationList",
+			data: { 
+				schCd : schCd
+			},
+			dataType: "json",
+			success: function(response) { 
+				console.log("reservationList : 요청처리성공");
+				
+				var obj = {};
+				response.forEach(function(el, index){
+					var lines = el.res_seat_line.split(',');
+					var seats = el.res_seat_num.split(',');
+					debugger;
+					lines.forEach((el, index) => {
+						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
+						if(!obj[el]) obj[el] = [];
+						seats[index].split(',').forEach((seat) => {
+							obj[el].push(seat);
+							seatCnt++;
+							$("#seatCnt").val(seatCnt);
+						});
+						obj[el].sort();
+							
+					});
+					
+				});
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				console.log("reservationList : 요청처리실패");
+			}
+		});
+}
+
+
 
 	// 상영시간
 	function getTimeList() {
+	$(".mvTimeLineDiv").hide();
 	console.log("getTimeList()");
+	
 	
 		$.ajax({
 			type: "GET",
@@ -402,7 +445,10 @@ var mvDay = "";		// 상영일
 		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
 		 			
 		 			// 좌석 정보 추후 수정
-		 			str += "<p class='num'>45/<span>45석</span></p>";
+		 			str += "<p class='num'>";
+		 			str += "수정중";
+// 		 			str += $("#seatCnt").val();
+		 			str += "/<span>45석</span></p>";
 		 			
 		 			str += "</div>";
 		 			str += "</button>";
@@ -559,7 +605,16 @@ var mvDay = "";		// 상영일
 		}
 		
 		
-		
+		if ($("#CinemaNm").val() == "") {
+			var str = "<div class='movieListDiv'>극장을 먼저 선택해주세요.</div>";
+			$("#movieList").append(str);
+		}
+		if ($("#MovieNm").val() == "" && $("#showDate").val() == "") {
+			var str = "<div class='mvTimeLineDiv'>예매할 영화와 날짜를 선택후 <br>";
+			str += "상영시간 조회가 가능합니다</div>";
+			$(".mvTimeLine").append(str);
+		}
+ 	
 		
 		
 	
@@ -588,15 +643,12 @@ var mvDay = "";		// 상영일
 		});
 		// 극장 클릭시 영화리스트 출력
 		$(".btnCnItem").on("click", function(e){
-// 			var cd = $(this).data("cd");
+			$(".movieListDiv").hide();
 			CnItemCd = $(this).data("cd");
 			var cinemaNm = $(this).attr("title");
 			$("#CinemaNm").val(cinemaNm);
-// 			console.log("CnItemCd type:" + typeof CnItemCd);
-// 			console.log("CnItemCd : " + CnItemCd);
-// 				console.log("cd:" + cd);
 			$(".btnMvItem").hide();
-			$.ajax({													// 함수로 따로 뺄까?
+			$.ajax({													
 	 			type: "GET",
 	 			url: "moviesList",
 	 			data: { 

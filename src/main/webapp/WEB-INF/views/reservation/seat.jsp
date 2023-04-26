@@ -337,7 +337,7 @@ function reservationList() {
 						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
 						if(!obj[el]) obj[el] = [];
 						seats[index].split(',').forEach((seat) => {
-							obj[el].push(seat)
+							obj[el].push(seat);
 						});
 						obj[el].sort();
 							
