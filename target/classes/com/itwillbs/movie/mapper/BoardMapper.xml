@@ -49,7 +49,7 @@
 	</select>
 	
 	<!-- 분실물 상세 프로  -->
-	<select id="selectPasswd" resultType="hashmap">
+	<select id="selectLostPasswd" resultType="hashmap">
 		SELECT *
 			FROM lost_board 
 			WHERE lost_code = #{lost_code}
@@ -166,6 +166,27 @@
 		<if test="startNum != null and !startNum.equals('')">
             LIMIT ${startNum}, ${endNum}
         </if>
+	</select>
+	
+	<!-- 분실물 상세 프로  -->
+	<select id="selectOnePasswd" resultType="hashmap">
+		SELECT * FROM (
+			SELECT 'one_board' AS table_name, one_code AS code, cinema_name, one_question_type AS question_type,
+					one_subject AS subject, one_content AS content, one_rep_board AS rep_board, one_write_date AS write_date,
+					one_rep_board_content AS rep_content, one_passwd AS passwd
+				FROM one_board
+				WHERE one_code = #{code}
+				AND #{table_name} = 'one_board'
+				AND one_passwd = #{passwd}
+			UNION ALL 
+			SELECT 'lost_board' AS table_name, lost_code AS code, cinema_name, lost_question_type AS  question_type,
+					lost_subject AS subject, lost_content AS content, lost_board_rep AS rep_board, lost_write_date AS write_date,
+					lost_board_rep_content AS rep_content, lost_passwd AS passwd
+				FROM lost_board
+				WHERE lost_code = #{code}
+				AND #{table_name} = 'lost_board'
+				AND lost_passwd = #{passwd}
+		)T1
 	</select>
 	
 	<!-- 문의 내역 상세 -->

@@ -88,7 +88,11 @@ public interface BoardMapper {
 	// 내가 문의한 내역 삭제
 	int deleteBoard(HashMap<String, String> map);
 
-	List<HashMap<String, String>> selectPasswd(HashMap<String, String> map);
+	// 분실물 문의 페이지 목록 -> 비밀번호 조회
+	List<HashMap<String, String>> selectLostPasswd(HashMap<String, String> map);
+
+	// 내가 문의한 페이지 목록 -> 비밀번호 조회
+	List<HashMap<String, String>> selectOnePasswd(HashMap<String, String> map);
 
 	
 

@@ -22,9 +22,8 @@ function numberMaxLength(el, maxlength) { // 비밀번호 4자리
 	}
 }
 $(function() {
-// 	if(${member.get('member_tel') } == null && ${member.get('member_tel') } == '') {
-		
-// 	}
+
+	
 	$("#textarea").keyup(function() {
 			$("#textareaCnt").html($("#textarea").val().length)
 		});
@@ -44,6 +43,10 @@ $(function() {
 			$("#name").focus();
 			return false;
 		}
+		
+//	 	if(${member} == null || ${member.get('member_tel') } == null || ${member.get('member_tel') } == '') {// 세션이 없는 상태
+		
+//	 	}
 		// 번호 검증
 		if(!regex2.exec($("#hpNum1").val())) {
 			alert("전화번호를 확인하세요");

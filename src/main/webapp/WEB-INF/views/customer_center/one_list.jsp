@@ -34,14 +34,73 @@ function search(idx) {
 	form.submit();
 }
 
-function goDetail(table_name, code) {
+// function goDetail(table_name, code) {
+// 	document.querySelector("input[name=table_name]").value = table_name;
+// 	document.querySelector("input[name=code]").value = code;
+// 	let form = document.querySelector('#iForm');
+// 	form.action = 'one_detail';
+// 	form.method = 'post';
+// 	form.submit();
+// }
+
+//비밀번호 입력 모달창
+function goDetail(table_name, code){
 	document.querySelector("input[name=table_name]").value = table_name;
 	document.querySelector("input[name=code]").value = code;
-	let form = document.querySelector('#iForm');
-	form.action = 'one_detail';
-	form.method = 'post';
-	form.submit();
+	let dis = document.querySelector(".modal-type2");
+	if(dis.style.display="none"){
+		dis.style.display="block"
+	} else{
+		dis.style.display="none";
+	}
 }
+// 비밀번호 입력 모달창 닫기
+function modalClose(){
+	 $('.modal-type2').hide();
+	 $("#resultArea").html("");
+}
+
+function chkPasswd() {
+// 	document.querySelector("input[name=table_name]").value = table_name;
+// 	document.querySelector("input[name=code]").value = code;
+	let code = document.querySelector("input[name=code]").value;
+	let table_name = document.querySelector("input[name=table_name]").value;
+// 	debugger;
+// 	var lost_code = $("#lost_subject > a").attr("data-code");
+// var result;
+// 	cosole.log($("#table_name") + $("#code"));
+
+	$.ajax({
+		url: 'one_detail_pro',
+		type: 'POST',
+// 		async : false,
+// 		dataType: "json",
+		dataType: "text",
+		data: {
+			code : code,
+			table_name : table_name,
+			passwd : $("#passwd").val()
+		},
+		success : function(result) {
+			console.log(result);
+// 			return "location.href='lost_detail'";
+			
+			if(result == "true")		{
+// 				alert(result);
+				let url = 'one_detail?code=' + code;
+				location.replace(url);
+			} else {
+				console.log($(this).find("#resultArea"));
+				$("#passwd").val("").focus();
+				$("#resultArea").html("비밀번호가 틀렸습니다").css('color', 'red');
+				
+			}
+		}
+		
+	})
+	
+}
+
 </script>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -123,6 +182,35 @@ function goDetail(table_name, code) {
 						</tbody>
 					</table>
 				</div>
+				
+				<!-- 글 조회 비밀번호 입력 모달창 -->
+					<div class="modal modal-type2" id="chkPasswd" tabindex="-1" style="display: none;" align="left">
+						<div class="modal-dialog" style="max-width: 400px; margin-top: 322.5px;">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="tit">
+										비밀번호 입력
+									</h3>
+									<button type="button" class="close-modal"  onclick="modalClose()">닫기</button>
+								</div>
+								<div class="modal-body">
+<!-- 									<p>글 작성시 입력한 비밀번호를 입력해주세요.</p> -->
+<!-- 									<input type="password" id="passwd" title="비밀번호 입력" class="input-text w250px"> -->
+<!-- 									<p class="font-red mt10 mb0" style="display: none;">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p> -->
+									<h3 class="h3-member">글 작성시 입력한 비밀번호를 입력해주세요.</h3>
+									<div class="inp-box1 mb20">
+										<input type="password" id="passwd" name="passwd" class="inp-member onlyNumber" placeholder="비밀번호를 입력해주세요">
+									</div>
+									<div id="resultArea"></div>
+								</div>
+								<div class="modal-bottom flex">
+									<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>
+									<button type="button" class="btn-modal2" onclick="chkPasswd()">확인</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 글 조회 비밀번호 입력 모달창 -->
 
 				<!-- pagination -->
 				<nav class="pagination">

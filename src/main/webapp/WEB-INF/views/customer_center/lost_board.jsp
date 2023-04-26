@@ -55,7 +55,8 @@ function doDisplay(){
 }
 // 비밀번호 입력 모달창 닫기
 function modalClose(){
-	 $('.modal-type2').hide();	
+	 $('.modal-type2').hide();
+	 $("#resultArea").html("");
 }
 
 function chkPasswd(){
@@ -85,7 +86,7 @@ function chkPasswd(){
 			} else {
 				console.log($(this).find("#resultArea"));
 				$("#passwd").val("").focus();
-				$("#resultArea").append("비밀번호가 틀렸습니다").css('color', 'red');
+				$("#resultArea").html("비밀번호가 틀렸습니다").css('color', 'red');
 				
 			}
 		}

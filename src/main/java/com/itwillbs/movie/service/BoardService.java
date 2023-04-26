@@ -174,8 +174,15 @@ public class BoardService {
 		return mapper.deleteBoard(map);
 	}
 
-	public List<HashMap<String, String>> checkPasswd(HashMap<String, String> map) {
-		return mapper.selectPasswd(map);
+	// 분실물 문의 페이지 목록 -> 비밀번호 조회
+	public List<HashMap<String, String>> checkLostPasswd(HashMap<String, String> map) {
+		return mapper.selectLostPasswd(map);
+	}
+
+	// 내가 문의한 페이지 목록 -> 비밀번호 조회
+	public List<HashMap<String, String>> checkOnePasswd(HashMap<String, String> map) {
+		
+		return mapper.selectOnePasswd(map);
 	}
 
 	

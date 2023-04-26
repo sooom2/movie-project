@@ -138,7 +138,7 @@ public class CustomerController {
 	@RequestMapping(value = "lostDetailPro", method = {RequestMethod.GET, RequestMethod.POST})
 		public boolean lostDetailPro(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
 			response.setCharacterEncoding("UTF-8");
-			List<HashMap<String, String>> isCorrect = boardService.checkPasswd(map);
+			List<HashMap<String, String>> isCorrect = boardService.checkLostPasswd(map);
 			List<HashMap<String, String>> lostBoardList = null;
 			System.out.println("=====" + isCorrect);
 			System.out.println(isCorrect.isEmpty());
@@ -277,6 +277,41 @@ public class CustomerController {
 		
 		return "customer_center/one_list";
 	}
+	
+	
+	// 내가 문의한 페이지 목록 -> 비밀번호 조회
+	@ResponseBody	
+	@RequestMapping(value = "one_detail_pro", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean oneDetailPro(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
+//		response.setCharacterEncoding("UTF-8");
+		List<HashMap<String, String>> isCorrect = boardService.checkOnePasswd(map);
+//		List<HashMap<String, String>> lostBoardList = null;
+		System.out.println("=====" + isCorrect);
+		System.out.println(isCorrect.isEmpty());
+		if(!isCorrect.isEmpty()) {
+//			if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+//				map.put("pageNum", "1");
+//				map.put("startNum", "0");
+//				map.put("endNum", "10");
+//			}
+			
+			// 글 번호
+//			lostBoardList = boardService.getLostBoardList(map);
+//			if(lostBoardList.size() > 0) {
+//				HashMap<String, String> countMap = lostBoardList.get(0);
+//				map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+//			}
+//			List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+//			model.addAttribute("cinemaList",cinemaList);
+			model.addAttribute("paramMap", map);
+			model.addAttribute("map", map);
+//					model.addAttribute("cinemaDetailJson", cinemaDetailJson);
+		}
+//				JSONArray arr = new JSONArray(lostBoardList);
+//				return arr.toString();
+		return !isCorrect.isEmpty();
+	}
+	
 	
 	// 내가 문의한 내역 상세
 	@RequestMapping(value = "one_detail", method = {RequestMethod.GET, RequestMethod.POST})
