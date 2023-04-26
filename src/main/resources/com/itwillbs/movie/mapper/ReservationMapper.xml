@@ -41,7 +41,11 @@
 	
 	<!-- 상영 시간 리스트 -->
 	<select id="selectMovieTimeList" resultType="hashmap">
-		select *
+		SELECT  sc.*
+			  , c.*
+			  , sch_code,sch_screen_code,sch_cinema_code,sch_movie_code,sch_movie_date
+			  , DATE_FORMAT(sd.sch_start_time, '%H:%i') as sch_start_time
+			  , DATE_FORMAT(sd.sch_last_time, '%H:%i') as sch_last_time
 			from 
 				schedule sd
 			join 
