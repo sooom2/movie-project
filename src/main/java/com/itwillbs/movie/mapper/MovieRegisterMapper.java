@@ -117,6 +117,8 @@ public interface MovieRegisterMapper {
 	//상영시간체크
 	List<HashMap<String, String>> schCheckTime(@Param("sch_date") String sch_date,@Param("cinema_name") String cinema_name,@Param("screen_name") String screen_name);
 
+	List<HashMap<String, String>> screeningMovies();
+
 
 //	List<HashMap<String, String>> selectEndSch();
 

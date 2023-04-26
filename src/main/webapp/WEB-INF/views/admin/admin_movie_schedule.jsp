@@ -274,7 +274,8 @@ $(function() {
 										<c:forEach var="movie" items="${movieList }">
 											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
 										</c:forEach>
-									</select> <select name="sch_cinema_code" id="sch_cinema_code"
+									</select> 
+									<select name="sch_cinema_code" id="sch_cinema_code"
 										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
 										<option value="none" selected="selected" disabled>지점선택</option>
 										<option value="none" disabled>=======================</option>

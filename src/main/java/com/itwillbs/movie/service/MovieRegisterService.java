@@ -222,6 +222,10 @@ public class MovieRegisterService {
 	public List<HashMap<String, String>> schCheckTime(String sch_date, String cinema_name, String screen_name) {
 		return mapper.schCheckTime(sch_date,cinema_name,screen_name);
 	}
+	public List<HashMap<String, String>> screeningMovies() {
+		
+		return mapper.screeningMovies();
+	}
 
 
 

@@ -599,7 +599,12 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 		
 		
 		
-	
+		<select id="screeningMovies" resultType="hashmap">
+			SELECT *
+			FROM movieinfo
+			WHERE
+			info_status = 'screening'
+		</select>		
 		
 		
 		

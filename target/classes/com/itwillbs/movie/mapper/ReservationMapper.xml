@@ -98,6 +98,7 @@
 				, now()
 				, #{vo.seatLine}
 				, #{vo.seatNum}
+				, #{vo.seatNm}
 			
 			)
 	</insert>
