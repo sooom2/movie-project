@@ -434,7 +434,8 @@
 				<li class="bestReview">
 					<dl class="giftcon_list">
 						<dt>
-							베스트리뷰<a href="" alt="베스트리뷰" class="btn_more">더보기</a>
+							베스트리뷰
+<!-- 							<a href="" alt="베스트리뷰" class="btn_more">더보기</a> -->
 						</dt>
 
 						<dd>
@@ -469,7 +470,7 @@
 										</span>
 										<span class="date_info">${review.rev_date }</span>
 									</div>
-									<div class="review_info">[${review.rev_movie_title}] ${review.rev_content }</div>
+									<div class="review_info"><a href='MovieInfo?info_movie_code=${review.rev_movie_code }' style="color:#000!important;">[${review.rev_movie_title}] ${review.rev_content }</a></div>
 									</li>
 							</c:forEach>
 									
