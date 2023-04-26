@@ -174,6 +174,10 @@ public class BoardService {
 		return mapper.deleteBoard(map);
 	}
 
+	public List<HashMap<String, String>> checkPasswd(HashMap<String, String> map) {
+		return mapper.selectPasswd(map);
+	}
+
 	
 
 	

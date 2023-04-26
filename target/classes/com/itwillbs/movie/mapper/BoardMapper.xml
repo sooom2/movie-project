@@ -48,6 +48,14 @@
 			</if>
 	</select>
 	
+	<!-- 분실물 상세 프로  -->
+	<select id="selectPasswd" resultType="hashmap">
+		SELECT *
+			FROM lost_board 
+			WHERE lost_code = #{lost_code}
+				AND lost_passwd = #{lost_passwd}
+	</select>
+	
 	<!-- 분실물 상세 -->
 	<select id="selectLostDetail" resultType="hashmap">
 		SELECT *

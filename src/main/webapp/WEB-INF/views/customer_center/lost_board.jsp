@@ -47,7 +47,6 @@ function goDetail(table_name, code) {
 // 비밀번호 입력 모달창
 function doDisplay(){
 	let dis = document.querySelector(".modal-type2");
-	
 	if(dis.style.display="none"){
 		dis.style.display="block"
 	} else{
@@ -61,17 +60,38 @@ function modalClose(){
 
 function chkPasswd(){
 // 	alert("클릭");
-	var passwd = $("#passwd").val();
-	alert(passwd);
-	$.ajax({
-		url: 'lost_board',
-		type: 'POST',
-		data: {lost_passwd, passwd},
-		success : function(result) {
-			alert(result);
-		}		
-	})
+	var lost_code = $("#lost_subject > a").attr("data-code");
+// var result;
+// cosole.log($("#lost_subject"));
 
+	$.ajax({
+		url: 'lostDetailPro',
+		type: 'POST',
+// 		async : false,
+// 		dataType: "json",
+		dataType: "text",
+		data: {
+			lost_code : lost_code,
+			lost_passwd : $("#passwd").val()
+		},
+		success : function(result) {
+			console.log(result);
+// 			return "location.href='lost_detail'";
+			
+			if(result == "true")		{
+// 				alert(result);
+				let url = 'lost_detail?lost_code=' + lost_code;
+				location.replace(url);
+			} else {
+				console.log($(this).find("#resultArea"));
+				$("#passwd").val("").focus();
+				$("#resultArea").append("비밀번호가 틀렸습니다").css('color', 'red');
+				
+			}
+		}
+		
+	})
+	
 }
 
 
@@ -238,7 +258,8 @@ function chkPasswd(){
 										<td>${lostBoard.cinema_name }</td>
 										<td id="lost_subject"><a
 <%-- 											href="lost_detail?lost_code=${lostBoard.lost_code }">${lostBoard.lost_subject }</a> --%>
-											href="javascript:doDisplay('${lostBoard.lost_code}', '${lostBoard.lost_passwd }');" class="chkPasswd">${lostBoard.lost_subject }</a>
+											href="javascript:doDisplay();" class="chkPasswd" data-code="${lostBoard.lost_code}">${lostBoard.lost_subject }</a>
+<%-- 											href="javascript:doDisplay();" class="lost_code"  data-code="${lostBoard.lost_code}">${lostBoard.lost_subject }</a> --%>
 										</td>
 										<td>${lostBoard.lost_board_rep }</td>
 										<td>${lostBoard.lost_write_date }</td>
@@ -266,6 +287,7 @@ function chkPasswd(){
 									<div class="inp-box1 mb20">
 										<input type="password" id="passwd" name="passwd" class="inp-member onlyNumber" placeholder="비밀번호를 입력해주세요">
 									</div>
+									<div id="resultArea"></div>
 								</div>
 								<div class="modal-bottom flex">
 									<button type="button" class="btn-modal1" onclick="modalClose()">취소</button>

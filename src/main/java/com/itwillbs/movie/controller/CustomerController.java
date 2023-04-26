@@ -1,12 +1,13 @@
 package com.itwillbs.movie.controller;
 
-import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.movie.service.BoardService;
-import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
-import com.itwillbs.movie.service.MypageService;
 import com.itwillbs.movie.service.StoreService;
-import com.itwillbs.movie.vo.BoardVO;
+import com.mysql.cj.xdevapi.JsonArray;
 
 @Controller
 public class CustomerController {
@@ -109,8 +111,8 @@ public class CustomerController {
 	// 분실물 문의 페이지 목록
 	@RequestMapping(value = "lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String lostBoard(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
-		
 		response.setCharacterEncoding("UTF-8");
+		
 		
 		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
 			map.put("pageNum", "1");
@@ -130,6 +132,45 @@ public class CustomerController {
 		
 		return "customer_center/lost_board";
 	}
+	
+	// 분실물 문의 페이지 목록 -> 비밀번호 조회
+	@ResponseBody	
+	@RequestMapping(value = "lostDetailPro", method = {RequestMethod.GET, RequestMethod.POST})
+		public boolean lostDetailPro(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
+			response.setCharacterEncoding("UTF-8");
+			List<HashMap<String, String>> isCorrect = boardService.checkPasswd(map);
+			List<HashMap<String, String>> lostBoardList = null;
+			System.out.println("=====" + isCorrect);
+			System.out.println(isCorrect.isEmpty());
+			if(!isCorrect.isEmpty()) {
+				if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+					map.put("pageNum", "1");
+					map.put("startNum", "0");
+					map.put("endNum", "10");
+				}
+				
+				// 글 번호
+				lostBoardList = boardService.getLostBoardList(map);
+				if(lostBoardList.size() > 0) {
+					HashMap<String, String> countMap = lostBoardList.get(0);
+					map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+				}
+				List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+				model.addAttribute("cinemaList",cinemaList);
+				model.addAttribute("paramMap", map);
+				model.addAttribute("lostBoardList", lostBoardList);
+				
+				
+//				model.addAttribute("cinemaDetailJson", cinemaDetailJson);
+				
+				
+			}
+//			JSONArray arr = new JSONArray(lostBoardList);
+//			return arr.toString();
+			
+			return !isCorrect.isEmpty();
+		}
+	
 	
 	// 분실물 문의 등록페이지
 	@RequestMapping(value = "lost_form", method = {RequestMethod.GET, RequestMethod.POST})

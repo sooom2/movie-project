@@ -26,8 +26,8 @@ $(function() {
 		
 // 	}
 	$("#textarea").keyup(function() {
-		$("#textareaCnt").html($("#textarea").val().length)
-	});
+			$("#textareaCnt").html($("#textarea").val().length)
+		});
 	
 	let regex = /^[가-힣]{2,5}$/; // 이름 제약조건
 	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
@@ -47,9 +47,10 @@ $(function() {
 		// 번호 검증
 		if(!regex2.exec($("#hpNum1").val())) {
 			alert("전화번호를 확인하세요");
-			$("#member_id").focus();
+			$("#hpNum1").focus();
 			return false;
 		}
+		
 		
 		return true;
 	});
@@ -183,8 +184,8 @@ $(function() {
 <!-- 										<input type="text" id="name" name="cinema_name" -->
 <!-- 										class="input-text w150px" value="" maxlength="30"> -->
 										<select name="cinema_name" onchange="selectCinema()"
-											style="margin-top: 0px; !important">
-											<option value="none" selected="selected" disabled>극장
+											style="margin-top: 0px; !important" required="required">
+											<option value="" selected="selected" disabled>극장
 												선택</option>
 											<option value="none" disabled>=======================</option>
 											<c:forEach var="cinema" items="${cinemaList }">
@@ -218,7 +219,7 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="qnaCustInqTitle">제목</label> <em
 										class="font-orange">*</em></th>
-									<td colspan="3"><input type="text" name="one_subject"
+									<td colspan="3"><input type="text" name="one_subject" required="required"
 										id="qnaCustInqTitle" class="input-text" maxlength="100"></td>
 								</tr>
 								<tr>
@@ -232,7 +233,7 @@ $(function() {
 												- 회원로그인 후 문의작성시 나의 문의내역을 통해 답변을 확인하실 수 있습니다.<br>
 											</div>
 											<textarea id="textarea" name="one_content" rows="5" cols="30"
-												title="내용입력" class="input-textarea"></textarea>
+												title="내용입력" class="input-textarea" required="required"></textarea>
 											<div class="util">
 												<p class="count">
 													<span id="textareaCnt">0</span> / 2000
@@ -270,7 +271,7 @@ $(function() {
 										class="font-orange">*</em></th>
 									<td colspan="3">
 										<input type="number" id="nonMbInqPw"
-										name="one_passwd" class="input-text w150px pwnew"
+										name="one_passwd" class="input-text w150px pwnew" required="required"
 										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리"> 
 										<em class="fc_r ml10">* 1:1 문의에 대한 고객정보 보호를 위해 게시글의 비밀번호를
 											설정해주세요.</em></td>
