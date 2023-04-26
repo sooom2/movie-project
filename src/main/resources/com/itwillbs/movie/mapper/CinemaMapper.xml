@@ -63,7 +63,8 @@
 					  , screen.seat_sum   -- 좌석 총수
 					  , screen.screen_name -- 상영관명
 					  , schedule.sch_screen_code -- 상영관코드
-					  
+					  , schedule.sch_code -- 상영번호
+					  , IFNULL(CAST(screen.seat_sum AS UNSIGNED)-cast(reservation.res_count AS unsigned),45) AS remain_seat -- 남은좌석
 				 FROM schedule 
 			LEFT JOIN cinema 
 				   ON cinema.cinema_code = schedule.sch_cinema_code
@@ -71,6 +72,8 @@
 				   ON movieInfo.info_movie_code = schedule.sch_movie_code
 			LEFT JOIN screen
 			       on screen.screen_code = schedule.sch_screen_code
+	        LEFT JOIN reservation 
+		           ON schedule.sch_code = reservation.res_sch_code 
 			       where 1=1
 			       AND sch_cinema_code = #{cinema_code}
 			       AND sch_movie_date=#{date}
@@ -80,8 +83,6 @@
 			       ORDER BY info_movie_title
 		) A 
  			GROUP BY info_movie_title, sch_screen_code;
- 			
- 			
 	</select>
 	
 	<!-- 선호영화관 찾기 -->
@@ -91,6 +92,18 @@
        JOIN cinema
          ON MEMBER.member_prefer_branch = cinema.cinema_name 
       WHERE member_id=#{id};
+	</select>
+	
+	<!-- 남은 좌석수 조회 -->
+	<select id="remmainSeat" resultType="int">
+		SELECT 
+	      CAST(screen.seat_sum AS UNSIGNED)-cast( reservation.res_count AS unsigned) AS remain_seat
+		 FROM reservation
+		 LEFT JOIN schedule
+		 ON schedule.sch_code = reservation.res_screen_code
+		 LEFT JOIN screen
+		 ON screen.screen_code = reservation.res_screen_code
+		 WHERE res_sch_code =#{sch_code};
 	</select>
 
 </mapper>

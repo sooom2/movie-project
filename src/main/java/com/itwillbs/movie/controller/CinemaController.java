@@ -89,6 +89,8 @@ public class CinemaController {
 		
 		List<HashMap<String, String>> cinemaDetail = cinemaService.cinemaDetail(cinema_code);
 		
+		System.out.println(cinemaDetail);
+		System.out.println("==================================");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String cinemaDetailJson = objectMapper.writeValueAsString(cinemaDetail);
 		model.addAttribute("cinemaDetailJson", cinemaDetailJson);
@@ -99,9 +101,6 @@ public class CinemaController {
 		model.addAttribute("cinemaDetail",cinemaDetail);
 		
 		
-		System.out.println("=====================");
-		System.out.println("=====================");
-		System.out.println(model);
 		
 		return "cinema/cinema_detail";
 	}
@@ -120,18 +119,20 @@ public class CinemaController {
 		    }
 		});
 		
-		
-		
 		objectMapper.registerModule(module);
 
 		// JSON으로 변환할 객체
 		List<HashMap<String, String>> schList = cinemaService.schList(cinema_code, date);
-
+		
+		model.addAttribute("schList",schList);
+//		
+		
+		
 		String schListJson = objectMapper.writeValueAsString(schList);
 		
-
 		
 		System.out.println(schListJson);
+		System.out.println("==================================");
 		
 //		schListJson.
 		

@@ -94,10 +94,11 @@
 						
 					    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
 					    const year = date.getFullYear(); //년
+					   
 					    
-					    
-					    // i = 일
-					   for (i = date.getDate(); i <= lastDay.getDate(); i++) { //이달의 마지막날까지 표시
+					   // i = 일
+					   for (i = date.getDate(); i < date.getDate() + 10 && i <= lastDay.getDate(); i++) { // 현재 날짜부터 10일간 표시
+// 					   for (i = date.getDate(); i <= lastDay.getDate(); i++) { //이달의 마지막날까지 표시
 						   
 						   $('.cal span.big-m').text(monthNames[monthName]);
 					       $('.cal span.small-yyyym').text(year + " " + monthNames[monthName]);
@@ -221,7 +222,7 @@
 				        	            html += '<div class="time-block">';
 				        	            for(var j=0; j < starttime.length;j++){
 				        	                html += '<div class="time">';
-				        	                html += '<a href="reservation">' + starttime[j] + '<span class="to"> ~ ' + lasttime[j] + '</span> <span class="seats-status">45 / ' + data[0].seat_sum + '</span></a></div>';
+				        	                html += '<a href="reservation">' + starttime[j] + '<span class="to"> ~ ' + lasttime[j] + '</span> <span class="seats-status">'+data[j].remain_seat+' / ' + data[0].seat_sum + '</span></a></div>';
 				        	            }
 				        	            html += '</div>';
 				        	            html += '</div>';
