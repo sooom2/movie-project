@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.movie.mapper.MovieRegisterMapper;
 
@@ -61,7 +62,7 @@ public class MovieRegisterService {
 	}
 	
 	//영화정보수정
-	public int updateMovie(HashMap<String, String> movie) {
+	public int updateMovie(@RequestParam("movie") HashMap<String, String> movie) {
 		return mapper.updateMovie(movie);
 	}
 	//영화관리스트

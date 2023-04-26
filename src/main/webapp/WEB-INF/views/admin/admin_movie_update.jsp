@@ -114,9 +114,6 @@ function previewImage(targetObj, View_area) {
 		<div id="layoutSidenav_content">
 			<main>
 				<!-- 수정/삭제 -->
-				
-				
-				
                         <div class="row justify-content-center">
                             <div class="col-lg-7" style="width: 1000px">
                                 <div class="card border-1 mt-5">
@@ -129,7 +126,7 @@ function previewImage(targetObj, View_area) {
                                       	<h6 style="text-align:left">포스터수정</h6>
                                    		<div class="col-md-3 moviePoster">
                                        		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'>
-                                       		<img src="https://file.cineq.co.kr/i.aspx?movieid=${selectMovie.get('info_movie_code') }&amp;size=210" class="posterlist">
+                                       		<img src="${selectMovie.info_movie_poster}" class="posterlist">
                                        		</div>
                                         </div>
                                         
@@ -143,13 +140,13 @@ function previewImage(targetObj, View_area) {
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_movie_code" class="form-control info_movie_code" id="info_movie_code" type="text" value="${selectMovie.get('info_movie_code') }" />
+													<input name="info_movie_code" class="form-control info_movie_code" id="info_movie_code" type="text" value="${selectMovie.info_movie_code }" />
 													<label for="info_movie_code">영화코드</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating">
-													<input name="info_movie_title"  class="form-control info_movie_title" id="info_movie_title" type="text" value="${selectMovie.get('info_movie_title') }"/> 
+													<input name="info_movie_title"  class="form-control info_movie_title" id="info_movie_title" type="text" value="${selectMovie.info_movie_title }"/> 
 													<label for="info_movie_title">영화제목</label>
 												</div>
 											</div>
@@ -157,36 +154,65 @@ function previewImage(targetObj, View_area) {
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating">
-													<input name="info_year" class="form-control info_year" id="info_year" type="text" value="${selectMovie.get('info_year') }"/>
+													<input name="info_year" class="form-control info_year" id="info_year" type="text" value="${selectMovie.info_year }"/>
 													<label for="info_year">제작년도</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_time" class="form-control info_time" id="info_time" type="text" value="${selectMovie.get('info_time') }"/>
+													<input name="info_time" class="form-control info_time" id="info_time" type="text" value="${selectMovie.info_time }"/>
 													<label for="info_time">상영시간</label>
 												</div>
 											</div>
  
 										</div>
+						<!-- 04.26 추가 -->
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating">
+													<input class="form-control" id="info_rating" name="info_rating" type="text" value="${selectMovie.info_rating }"/>
+													<label for="info_rating">관람등급</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input class="form-control" id="info_genre" name="info_genre" type="text" value="${selectMovie.info_genre  }"  />
+													<label for="info_genre">장르</label>
+												</div>
+											</div>
+										</div>
+										<!--  -->
 										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_showdate" class="form-control info_showdate" id="info_showdate" type="date" value="${selectMovie.get('info_showdate')}"/>
+													<input name="info_showdate" class="form-control info_showdate" id="info_showdate" type="date" value="${selectMovie.info_showdate}"/>
 													<label for="info_showdate">상영일</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
-													<input name="info_enddate" class="form-control info_enddate" id="info_enddate" type="date" value="${selectMovie.get('info_enddate')}"/>
-													 <label for="info_enddate">종영일<label>
+													<input name="info_enddate" class="form-control info_enddate" id="info_enddate" type="date" value="${selectMovie.info_enddate}"/>
+													 <label for="info_enddate">종영일</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md">
+												<div class="form-floating mb-3 mb-md-0">
+													<select class="form-control" id="info_status" name="info_status"  style="max-width: 100%">
+														<option value="screening" selected>현재상영중</option>
+														<option value="comming">상영예정</option>
+														<option value="end">상영종료</option>
+														<option value="reScreening">재상영</option>
+													</select>
+													<label for="info_status">상영상태</label>
 												</div>
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-md">
 												<div class="form-floating mb-3">
-													<input name="info_story" class="form-control info_story" id="info_story" type="text"value="${selectMovie.get('info_story') }" style="max-width: 100%"/>
+													<input name="info_story" class="form-control info_story" id="info_story" type="text"value="${selectMovie.info_story }" style="max-width: 100%"/>
 													<label for="info_story">줄거리</label>
 												</div>
 											</div>
@@ -210,10 +236,6 @@ function previewImage(targetObj, View_area) {
 									</div>
 									</div>
 									</main>
-
-
-
-
 			<!--들어갈내용 -->
 
 			<!-- 푸터 -->

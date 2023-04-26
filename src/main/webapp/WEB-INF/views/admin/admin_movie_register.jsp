@@ -118,14 +118,6 @@ function previewImage(targetObj, View_area) {
 </head>
 <body class="sb-nav-fixed">
 		
-	<c:if test="${not empty sessionScope.sId }">
-		<script type="text/javascript">
-			alert("잘못된 접근입니다!");
-			location.href = "./";
-		</script>
-	</c:if>	
-		
-		
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
@@ -157,11 +149,7 @@ function previewImage(targetObj, View_area) {
 		<jsp:include page="admin_nav.jsp" />
 		<!-- 고정 -->
 
-
-
 		<div id="layoutSidenav_content">
-
-			<!-- 		<a href="javascript:doDisplay();">dddd</a> -->
 			<!-- 들어갈내용 -->
 			<main>
 				<!-- 영화등록모달 -->
@@ -315,12 +303,8 @@ function previewImage(targetObj, View_area) {
 				let info_year = data.movieInfoResult.movieInfo.prdtYear;
 				let info_time = data.movieInfoResult.movieInfo.showTm;
 				
-				
 				*/
 				// 포스터나 스틸컷부분 추가 하려면 스플릿을 여기가 아닌 DB에서 빼올때 작업을 해야하나
-				// 시간관계상 나중에......
-				
-				
 				
 				// 수정 후 23.04.10
 				// 문제됐던점 : 정렬 추가 
@@ -356,8 +340,6 @@ function previewImage(targetObj, View_area) {
 				
 //				확인용으로 올려둔 alert 주석 처리 04.12. 16:50
 // 				alert(runningTime);
-				
-				
 				
 				/*상영일*/
 				let str = Data.Data[0].Result[0].repRlsDate;
@@ -545,19 +527,19 @@ function previewImage(targetObj, View_area) {
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">상영중인 영화 목록</h3>
-					<input class="btn btn-block btn-more" type="button" value="직접영화등록" onclick="doMovieRegister()"> 
-					<input class="btn btn-block btn-more" type="button" value="최신영화불러오기" onclick="doLatest()">
+					<input class="btn btn-block btn-more" type="button" value="상영예정작 등록하기" onclick="doMovieRegister()"> 
+					<input class="btn btn-block btn-more" type="button" value="박스오피스 영화 등록하기" onclick="doLatest()">
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
 								<th data-sortable="true" style="width: 8%;"><a href="infoMovieCodeSort" class="datatable-sorter">영화코드</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="infoMovieNameSort" class="datatable-sorter">영화제목</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영상태</a></th>
+								<th data-sortable="true" style="width: 15%;"><a href="infoStorySort" class="datatable-sorter">줄거리</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoYearSort"	class="datatable-sorter">제작년도</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoTimeSort"	class="datatable-sorter">상영시간</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoShowDateSort"	class="datatable-sorter">상영일</a></th>
 								<th data-sortable="true" style="width: 8%;"><a href="infoEndDateSort"	class="datatable-sorter">종영일</a></th>
-								<th data-sortable="true" style="width: 15%;"><a href="infoStorySort" class="datatable-sorter">줄거리</a></th>
 								<th data-sortable="true" style="width: 10%;"><a href="#" class="">수정/삭제</a></th>
 							</tr>
 						</thead>
@@ -568,11 +550,11 @@ function previewImage(targetObj, View_area) {
 								<td>${movie.get("info_movie_code") }</td>
 								<td>${movie.get("info_movie_title") }</td>
 								<td>${movie.get("info_status") }</td>
-								<td>${movie.get("info_enddate") }</td>
 								<td id="info_story">${movie.get("info_story") }</td>
 								<td>${movie.get("info_year") }</td>
 								<td>${movie.get("info_time") }</td>
 								<td>${movie.get("info_showdate") }</td>
+								<td>${movie.get("info_enddate") }</td>
 <%-- 								<td><img alt="" src="${movie.get('info_movie_poster') }"></td> --%>
 								<td class="modi">
 										 			 
@@ -582,17 +564,12 @@ function previewImage(targetObj, View_area) {
 							</tr>
 						</tbody>
 						</c:forEach>
-							
-
 	
 					</table>
 				</div>
 				<!-- 테이블 -->
 
 			</main>
-
-
-
 
 			<!--들어갈내용 -->
 
