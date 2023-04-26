@@ -19,6 +19,8 @@ public class ReservationController {
 	@Autowired
 	private ReservationService service;
 	
+	@Autowired
+	private CinemaService cinemaService;
 	// TEST CODE
 //	@GetMapping(value = "reservation_test")
 //	public String reservation_test(Model model) {
@@ -35,6 +37,11 @@ public class ReservationController {
 	
 	@GetMapping("reservation")
 	public String reservation(Model model, String cd) {
+
+		//지역
+		List<HashMap<String, String>> location = cinemaService.location();
+		model.addAttribute("location",location);
+		
 		// 극장
 		List<HashMap<String, String>> cinema = service.selectCinema();
 		model.addAttribute("cinema", cinema);

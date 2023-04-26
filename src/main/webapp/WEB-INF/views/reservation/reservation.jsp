@@ -104,10 +104,9 @@
 															<li>
 															<button type="button" class="btnTheater" title="즐겨찾는 극장" data-cd="favorite"> 즐겨찾는 극장</button></li>
 															<li class="active"><button type="button" class="btnTheater" title="전체" data-cd="all">전체</button></li>
-															<li><button type="button" class="btnTheater" title="부산" data-cd="051">부산</button></li>
-															<li><button type="button" class="btnTheater" title="서울" data-cd="02">서울</button></li>
-															<li><button type="button" class="btnTheater" title="울산" data-cd="052">울산</button></li>
-															<li><button type="button" class="btnTheater" title="경남" data-cd="055">경남</button></li>
+															<c:forEach var="location" items="${location }">
+															<li><button type="button" class="btnTheater" title="${location.location_name }" data-cd="${location.location_code }">${location.location_name }</button></li>
+															</c:forEach>
 														</ul>
 													</div>
 												</div>
