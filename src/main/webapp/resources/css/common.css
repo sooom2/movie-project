@@ -875,7 +875,7 @@ ul li {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url(resources/images/member/checkbox.png) no-repeat 50% 50%;
+	background: url(../images/member/checkbox.png) no-repeat 50% 50%;
 	transform: scale(0.2);
 	transition: all 0.3s ease;
 	opacity: 0;
