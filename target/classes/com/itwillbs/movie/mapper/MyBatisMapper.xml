@@ -332,7 +332,7 @@
 		   FROM review
 		   LEFT JOIN member
 		   ON review.rev_id = member.member_id
-		  ORDER BY rev_date desc
+		  ORDER BY rev_code desc
 		  LIMIT 3
 	</select>
 	
