@@ -35,7 +35,7 @@ public interface MovieRegisterMapper {
 	int deleteMovie(String info_movie_code);
 	
 	//영화정보수정
-	int updateMovie(HashMap<String, String> movie);
+	int updateMovie(@RequestParam("movie") HashMap<String, String> movie);
 
 	//영화관리스트
 	List<HashMap<String, String>> selectCinema();

@@ -108,10 +108,11 @@
 	UPDATE movieinfo 
 		SET info_movie_code = #{info_movie_code}
 		  , info_movie_title = #{info_movie_title}
-		  , info_movie_poster = #{info_movie_poster}
 		  , info_story = #{info_story}
 		  , info_year = #{info_year}
 		  , info_time = #{info_time}
+		  , info_rating = #{info_rating }
+		  , info_genre = #{info_genre }
 		  , info_showdate = #{info_showdate}
 		  , info_enddate = #{info_enddate}
 		  , info_status = #{info_status}
