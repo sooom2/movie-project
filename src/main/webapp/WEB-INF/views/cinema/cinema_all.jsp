@@ -210,7 +210,7 @@ function modalClose(){
 					</div>
 
 
-					<div class="table-wrap">
+					<div class="table-wrap" style="margin-bottom: 100px"> 
 						<table class="board-list">
 							<caption>극장, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
 							<colgroup>
@@ -232,7 +232,7 @@ function modalClose(){
 								<tr>
 									<td>${noticeList.get("cinema_name")}</td>
 									<th scope="row">
-									<a href="" title="[${noticeList.get('cinema_name')}] ${noticeList.get('notice_subject')} 상세보기">[${noticeList.get('cinema_name')}]<span>${noticeList.get('notice_subject')}</span></a></th>
+									<a href="" title="[${noticeList.get('cinema_name')}] ${noticeList.get('notice_subject')} 상세보기"><span>${noticeList.get('notice_subject')}</span></a></th>
 									<td>${noticeList.get('location_name')}</td>
 									<td>${noticeList.get('notice_write_date') }</td>
 								</tr>
