@@ -18,13 +18,22 @@
 	IMP.init("imp03276613"); 
 	
 	function requestPay() {
-		
+			// 결제 수단 선택
 		if($('input[name="radio_choice"]:checked').val() == null) {
 			alert("결제수단을 선택하세요.");
-			
+
+			// 이용약관 동의
 		} else if(!$("#chk01").prop("checked") || !$("#chk02").prop("checked")) {
 			alert("이용약관에 모두 동의하셔야 합니다.");
 			
+			// 결제 금액이 0원 일때
+		} else if($("#lstPayAmtView").text() == "0") {
+			alert("결제가 완료되었습니다.");
+		    location.href = "store_paySuccess?pay_code=code" + new Date().getTime() + "&pay_type=point" 
+		    				+ "&pay_price=0"
+		    				+ "&pay_status=paid" + "&item_code=" + ${item.get('item_code')} 
+		    				+ "&point=" + $("#totDcAmtView").text();
+			// 아임포트 API 결제 
 		} else {
 			IMP.request_pay({
 		        pg : $('input[name="radio_choice"]:checked').val(),
@@ -95,8 +104,6 @@ $(function() {
 		
 	});
 	
-    
-    
     function setCookie(cookieName, value, exdays){
         var exdate = new Date();
         exdate.setDate(exdate.getDate() + exdays);
