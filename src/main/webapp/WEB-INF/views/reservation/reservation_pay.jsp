@@ -44,7 +44,6 @@
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
 				<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
 				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
-				<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
 				<input type="hidden" id="genre" name="genre" value="${param.genre }">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
@@ -151,9 +150,6 @@
 											<div class="pay-mv">
 												<div class="img"><img src="${vo.getHidMovieUrl() }"></div>
 												<h4>${vo.getMovieNm() }</h4>
-												<div class="info">
-													<p>${vo.getShowDate() } 개봉</p>
-												</div>
 												<dl>
 													<dt>장르</dt>
 													<dd>${vo.getGenre() }</dd>

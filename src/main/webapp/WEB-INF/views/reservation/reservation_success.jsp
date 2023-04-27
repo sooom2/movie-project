@@ -33,7 +33,6 @@
 	<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
 	<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
 	<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
-	<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
 	<input type="hidden" id="genre" name="genre" value="${param.genre }">
 	<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 	<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">

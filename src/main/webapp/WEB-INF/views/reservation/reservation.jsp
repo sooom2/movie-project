@@ -59,7 +59,6 @@
 <!-- HidRating 12세관람가 -->
 <!-- schCd 9 -->
 <!-- CinemaNm 부산대연점 -->
-<!-- showDate 2023-03-01    //개봉일 -->
 <!-- genre 드라마 -->
 <!-- ScreenNm 2관 -->
 <!-- MovieDate  2023-04-22-->
@@ -83,7 +82,6 @@
 				<input type="hidden" id="HidRating" name="HidRating" value="">
 				
 				<input type="hidden" id="schCd" name="schCd" value="">
-				<input type="hidden" id="showDate" name="showDate" value="">
 				<input type="hidden" id="genre" name="genre" value="">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
 				
@@ -588,7 +586,7 @@ var mvDay = "";		// 상영일
 			var str = "<div class='movieListDiv'>극장을 먼저 선택해주세요.</div>";
 			$("#movieList").append(str);
 		}
-		if ($("#MovieNm").val() == "" && $("#showDate").val() == "") {
+		if ($("#MovieNm").val() == "" && $("#MovieDate").val() == "") {
 			var str = "<div class='mvTimeLineDiv'>예매할 영화와 날짜를 선택후 <br>";
 			str += "상영시간 조회가 가능합니다</div>";
 			$(".mvTimeLine").append(str);
@@ -641,12 +639,7 @@ var mvDay = "";		// 상영일
 	 					let movieCode = movie.info_movie_code;
 	 					let movieImg = movie.info_movie_poster;
 	 					let movieRating = movie.info_rating;
-	 					let showDate = movie.info_showdate;
 	 					let genre = movie.info_genre;
-	 					
-	 					
-	 					$("#showDate").val(showDate);
-	 					$("#genre").val(genre);
 	 					
 	 					
 	 					var str = "";
@@ -654,6 +647,7 @@ var mvDay = "";		// 상영일
 	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
 	 					str += "' data-rat='" + movieRating;
 	 					str += "' data-url='" + movieImg;
+	 					str += "' data-genre='" + genre;
 	 					str += "' title='" + movieTitle + "'>";
 	 					str += movieTitle + "</button>";
 	 					str += "</li>";
@@ -693,7 +687,8 @@ var mvDay = "";		// 상영일
 // 영화리스트 클릭
 		$(document).on("click", ".btnMvItem", function(e) {
 			MvItemCd = $(this).data("cd");
-			console.log("MvItem 클릭 MvItemCd : " + MvItemCd);
+			var genre = $(this).data("genre");
+			$("#genre").val(genre);
 			e.preventDefault();
 			$("#movieList li").removeClass("check");
 			if ($("#MovieCd").val() == $(this).data("cd")) {
@@ -748,13 +743,11 @@ var mvDay = "";		// 상영일
 			var CinemaCd = $("#CinemaCd").val();
 			var MovieCd = $("#MovieCd").val();
 			var ScreenTime = $("#ScreenTime").val();
-			
 			if ((CinemaCd != "all") && (MovieCd != "all") && (ScreenTime != "all")) {
 				$("#dataForm").submit();
 			} else {
 				alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
 			}
-			
 		});
 		
 		

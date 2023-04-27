@@ -58,7 +58,6 @@
 				<input type="hidden" id="YoungPrice" name="YoungPrice" value="0">
 				
 				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
-<!-- 				<input type="hidden" id="좌석정보?" name="좌석정보?" value="좌석nm,좌석line,좌석num"> ?????-->
 				
 				
 				<input type="hidden" id="TicketCd" name="TicketCd" value="001260">
@@ -89,6 +88,7 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
+									<h4 class="r-h4">${param.genre }</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -265,11 +265,19 @@
 										<div class="choice-list">
 											<strong>선택 좌석</strong>
 											<ul id="choiceList">
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
+<!-- 												<li>-</li> -->
 											</ul>
 										</div>
 										<div class="bottom">
 											<strong class="totalAmt">총 0원</strong>
-											<button type="submit" class="btn-pay btnNext">결제하기</button>
+											<button type="button" class="btn-pay btnNext">결제하기</button>
 										</div>
 
 										<div class="before" style="display: none;">
@@ -391,21 +399,21 @@ function reservationList() {
 			}
 		});
 }
-
+// 선택좌석 클릭시 좌석 선택 취소
 function choiceEvent (e) {
-	console.log("선택좌석임");
-	$(this).css({"background-color" : "#C8C8C8"});
-	var removeData = $(this).data("nm");
-	console.log(removeData);
-	$(this).remove();
+// 	console.log("선택좌석임");
+// 	$(this).css({"background-color" : "#C8C8C8"});
+// 	var removeData = $(this).data("nm");
+// 	console.log(removeData);
+// 	$(this).remove();
 	
 
 	// 선택취소한 좌석 원래대로 돌려놓기
-	$.each($('.sel'), function(index, el){
-		if($(el).attr('data-nm') == removeData) {
-			$(el).css({"background-color" : "#C8C8C8"});
-		}
-	});
+// 	$.each($('.sel'), function(index, el){
+// 		if($(el).attr('data-nm') == removeData) {
+// 			$(el).css({"background-color" : "#C8C8C8"});
+// 		}
+// 	});
 }
 	
 	
@@ -455,64 +463,118 @@ function choiceEvent (e) {
 		
 		// 좌석 선택 시 선택 좌석에 표시
 		$(".seat").on("click", function(e) {
-			btnCnt++;
-			var totalCnt = $("#totalCnt").val();
-			
-			if(btnCnt <= totalCnt) {
-				var str = "";
-				str += "<li class='choice'>";
-				str += "<button type='button' data-id='";
-				str += $(this).data("id");
-				str += "' data-line='";
-				str += $(this).data("line");
-				str += "' data-num='";
-				str += $(this).data("num");
-				str += "' class='choice'";
-				str += " background-color: #C8C8C8'";
-				str += " data-nm='";
-				str += $(this).data("nm");
-				str += "'>";
-				str += $(this).data("nm");
-				str += "</button>";
-				str += "</li>";
+			if($(this).val() != "") { // 기존 선택된 좌석 취소
 				
-				$("#choiceList").append(str);
+				$(this).val("");
+				btnCnt--;
+				console.log("btnCnt" + btnCnt);
+				$(this).css({"background-color" : "#C8C8C8"});
+				$(this).removeClass("sel");
+				
+				var removeData = $(this).data("nm");
+				var removeDataLine = $(this).data("line");
+				var removeDataNum = $(this).data("num");
+				
+				// 선택좌석 - 선택취소한 좌석 원래대로 돌려놓기
+				$.each($('.choice'), function(index, el){
+					if($(el).attr('data-nm') == removeData) {
+						$(el).remove();
+					}
+				});
+				
+				// 선택 취소한 좌석 hidden 값에 추가 한거 지우기
+				$('#seatNm' + $(this).data("nm")).remove();
+				$('#seatLine' + $(this).data("line")).remove();
+				$('#seatNum' + $(this).data("num")).remove();
 				
 				
-// 				seatNmList.push($(this).data("nm"));
-// 				seatLineList.push($(this).data("line"));
-// 				seatNumList.push($(this).data("num"));
+				
 
 				
-				// 선택한 값 저장하고 reservationPay.jsp로 넘어감
-				$("#dataForm").append('<input type="hidden" id="seatNm" name="seatNm" value="' + $(this).data("nm") + '">');
-				$("#dataForm").append('<input type="hidden" id="seatLine" name="seatLine" value="' + $(this).data("line") + '">');
-				$("#dataForm").append('<input type="hidden" id="seatNum" name="seatNum" value="' + $(this).data("num") + '">');
 				
-		
-				// 클릭이벤트 연결
-				$(".choice").on("click", choiceEvent);
 				
-				$(this).css({"background-color" : "#C40900"});
-				$(this).addClass("sel");
-			} else {
-				btnCnt--;
-				alert("인원수보다 선택 좌석 수가 더 많음");
+			} else { // 빈 좌석 선택하기
+				$(this).val($(this).data("nm"));
+				
+				btnCnt++;
+				var totalCnt = $("#totalCnt").val();
+				
+				if(btnCnt <= totalCnt) {
+					var str = "";
+					str += "<li class='choice' data-nm=";
+					str += $(this).data("nm");
+					str += ">";
+					str += "<button type='button' data-id='";
+					str += $(this).data("id");
+					str += "' data-line='";
+					str += $(this).data("line");
+					str += "' data-num='";
+					str += $(this).data("num");
+					str += "' class='choice'";
+					str += " background-color: #C8C8C8'";
+					str += " data-nm='";
+					str += $(this).data("nm");
+					str += "'>";
+					str += $(this).data("nm");
+					str += "</button>";
+					str += "</li>";
+					
+					$("#choiceList").append(str);
+					
+					
+//	 				seatNmList.push($(this).data("nm"));
+//	 				seatLineList.push($(this).data("line"));
+//	 				seatNumList.push($(this).data("num"));
+				
+					// 선택한 값 저장하고 reservationPay.jsp로 넘어감
+					$("#dataForm").append('<input type="hidden" id="seatNm' + $(this).data("nm") + '" name="seatNm" value="' + $(this).data("nm") + '">');
+					$("#dataForm").append('<input type="hidden" id="seatLine' + $(this).data("line") + '" name="seatLine" value="' + $(this).data("line") + '">');
+					$("#dataForm").append('<input type="hidden" id="seatNum' + $(this).data("num") + '" name="seatNum" value="' + $(this).data("num") + '">');
+				
+
+			
+					
+			
+					// 클릭이벤트 연결
+					$(".choice").on("click", choiceEvent);
+					
+					$(this).css({"background-color" : "#C40900"});
+					$(this).addClass("sel");
+				} else {
+					btnCnt--;
+					alert("인원 수보다 선택한 좌석 수가 더 많습니다.");
+				}
+				
+			
+				
+				console.log("btnCnt: " + btnCnt);
+				console.log("totalCnt " + totalCnt);
 			}
 			
-			// 선택한 좌석 재선택 할 수 없게 처리
-			//
-			//
-			//
 			
-			
-			
-			console.log("btnCnt: " + btnCnt);
-			console.log("totalCnt " + totalCnt);
 			
 		});
 		
-		
+		// 선택한 좌석 재클릭 시 취소
+// 		$('.sel').on("click", function(e) {
+// 			btnCnt--;
+// 			console.log("btnCnt" + btnCnt);
+// 			$(this).css({"background-color" : "#C8C8C8"});
+// 			$(this).removeClass("sel");
+			
+// 			var removeData = $(this).data("nm");
+// 			console.log(removeData);
+			
+
+// 			// 선택취소한 좌석 원래대로 돌려놓기
+// 			$.each($('.choice'), function(index, el){
+// 				if($(el).attr('data-nm') == removeData) {
+// 					$(el).remove();
+// 				}
+// 			});
+			
+			
+// 		});
 		
 		
 		
@@ -586,8 +648,18 @@ function choiceEvent (e) {
 		
 		$(".btn-pay").on("click", function(e) {
 			var totalCnt = $("#totalCnt").val;
-			console.log(btnCnt);
-			console.log(totalCnt);
+// 			console.log(btnCnt);
+// 			console.log(totalCnt);
+			// 선택한 인원 수와 총 좌석 수가 같아야 submit
+			if (btnCnt != totalCount) {
+				alert("선택한 좌석 수를 확인해주세요!")
+			} else {
+			$("#dataForm").submit();
+				
+			}	
+			
+			
+			
 			
 // 			var seat = "";
 // 			$.each($('.sel'), function(index, el){
