@@ -127,8 +127,16 @@ public class MovieRegisterController {
 	@ResponseBody
 	@RequestMapping(value = "screenSelect", produces = "application/json; charset=utf8", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public List<HashMap<String, String>> screenSelect(Model model, @RequestParam("cinema_name") String cinema_name,
-			@RequestParam("cinema_code") String cinema_code) {
+	public List<HashMap<String, String>> screenSelect(
+			Model model
+			, @RequestParam("cinema_name") String cinema_name
+			, @RequestParam("cinema_code") String cinema_code
+			, @RequestParam("movie_code") String movie_code
+			) {
+		System.out.println("무비코드 ===============================================");
+		System.out.println(cinema_name);
+		System.out.println(movie_code);
+		System.out.println("===============================================");
 		List<HashMap<String, String>> selectScreen = movieRegisterService.selectScreen(cinema_name);
 		System.out.println(selectScreen);
 
