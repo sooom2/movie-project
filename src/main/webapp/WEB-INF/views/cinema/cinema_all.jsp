@@ -45,7 +45,6 @@ function cinemaNameClick(){
             location_name: cityName
         },
         success: function(result){
-//         	alert(result);
             $('.theater-list ul li').empty();
             $('.theater-place .loc.on').removeClass('on'); // 모든 loc 태그에서 on 클래스 제거
             $clickedButton.parent().addClass('on'); // 선택한 버튼의 부모 태그에 on 클래스 추가

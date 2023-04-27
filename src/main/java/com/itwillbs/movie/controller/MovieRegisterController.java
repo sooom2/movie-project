@@ -25,12 +25,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.ReservationService;
 import com.itwillbs.movie.vo.PageInfo;
 
 @Controller
 public class MovieRegisterController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
+	
+	@Autowired
+	private ReservationService reservationService;
 
 	// 영화관리페이지
 	// 영화목록조회
@@ -127,8 +131,16 @@ public class MovieRegisterController {
 	@ResponseBody
 	@RequestMapping(value = "screenSelect", produces = "application/json; charset=utf8", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public List<HashMap<String, String>> screenSelect(Model model, @RequestParam("cinema_name") String cinema_name,
-			@RequestParam("cinema_code") String cinema_code) {
+	public List<HashMap<String, String>> screenSelect(
+			Model model
+			, @RequestParam("cinema_name") String cinema_name
+			, @RequestParam("cinema_code") String cinema_code
+			, @RequestParam("movie_code") String movie_code
+			) {
+		System.out.println("무비코드 ===============================================");
+		System.out.println(cinema_name);
+		System.out.println(movie_code);
+		System.out.println("===============================================");
 		List<HashMap<String, String>> selectScreen = movieRegisterService.selectScreen(cinema_name);
 		System.out.println(selectScreen);
 
@@ -481,9 +493,12 @@ public class MovieRegisterController {
 		System.out.println(endSchList);
 		return "admin/admin_movie_schedule_endList";
 	}
-
+	
+	//예매리스트
 	@GetMapping("resList")
 	public String resList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+		
+		int resCount = reservationService.resCount();
 
 		// -----------------------------------------------------------------------
 		int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
@@ -501,8 +516,8 @@ public class MovieRegisterController {
 			endPage = maxPage;
 		}
 		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+		model.addAttribute("resCount",resCount);
 		model.addAttribute("pageInfo", pageInfo);
-
 		model.addAttribute("resList", resList);
 
 		return "admin/admin_movie_res_register";

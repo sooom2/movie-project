@@ -13,7 +13,6 @@
 $(function(){
 	
 	$(".selector li").click(function () {
-		alert("dddd");
 	    $(".selector li").parent().find("a").removeClass("selected");
 	    $(this).addClass("selected");
 	    selectedListType = $(this).data("listtype");

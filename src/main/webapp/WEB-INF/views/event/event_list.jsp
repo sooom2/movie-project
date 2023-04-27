@@ -79,7 +79,7 @@
 					
 					<li>
 						<a href="">
-						<img src="https://file.cineq.co.kr/j.aspx?guid=96151fc03ae34d0097d8d951fecffd57">
+						<img src="${path }/resources/images/event/j.png" style="height: 319px">
 							<span class="desc-box">
 								<span class="desc">&lt;사랑의 고고학&gt;현장 이벤트</span>
 								<span class="date">2023.04.12~2023.04.18</span>

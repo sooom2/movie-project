@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.itwillbs.movie.service.AdminService;
 import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
+import com.itwillbs.movie.service.ReservationService;
 import com.itwillbs.movie.service.StoreService;
 import com.itwillbs.movie.vo.PageInfo;
 
@@ -29,6 +30,9 @@ public class AdminController {
 	@Autowired
 	private MovieRegisterService movieRegisterService;
 
+	@Autowired
+	private ReservationService reservationService;
+	
 	// 관리자 페이지
 	@RequestMapping(value = "admin", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminMain(Model model,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "") String searchKeyword) {
@@ -36,7 +40,10 @@ public class AdminController {
 				
 				int todayCount = movieRegisterService.selectTodayCount();
 				int memCount = memberService.selectMemCount();
-		// -----------------------------------------------------------------------
+				int resCount = reservationService.resCount();
+				int payCount = storeService.payCount();
+//				System.out.println(resCount);
+				// -----------------------------------------------------------------------
 				// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
 				int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
 				int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
@@ -57,6 +64,8 @@ public class AdminController {
 				PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 				System.out.println(pageInfo);
 				// ------------------------------------------------------------------------------------
+				model.addAttribute("payCount",payCount);
+				model.addAttribute("resCount",resCount);
 				model.addAttribute("todayCount",todayCount);
 				model.addAttribute("memCount",memCount);
 				model.addAttribute("memberList",memberList);

@@ -60,11 +60,11 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-black mb-4">
 								<div class="card-body font20">
-									TODAY 예매<br> <span class="fontB">50</span>건
+									TODAY 예매<br> <span class="fontB">${resCount }</span>건
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-black stretched-link" href="#">더보기</a>
+									<a class="small text-black stretched-link" href="resList">더보기</a>
 									<div class="small text-black">
 										<svg class="svg-inline--fa fa-angle-right" aria-hidden="true"
 											focusable="false" data-prefix="fas" data-icon="angle-right"
@@ -86,7 +86,7 @@
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-black stretched-link" href="#">더보기</a>
+									<a class="small text-black stretched-link" href="admin_schedule_register">더보기</a>
 									<div class="small text-black">
 										<svg class="svg-inline--fa fa-angle-right" aria-hidden="true"
 											focusable="false" data-prefix="fas" data-icon="angle-right"
@@ -102,11 +102,11 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-black mb-4">
 								<div class="card-body font20">
-									스토어 주문<br> <span class="fontB">80</span> 건
+									스토어 주문<br> <span class="fontB">${payCount }</span> 건
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-black stretched-link" href="#">더보기</a>
+									<a class="small text-black stretched-link" href="admin_item_pay">더보기</a>
 									<div class="small text-black">
 										<svg class="svg-inline--fa fa-angle-right" aria-hidden="true"
 											focusable="false" data-prefix="fas" data-icon="angle-right"
@@ -155,16 +155,6 @@
 							<div
 								class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
 								<div class="datatable-top">
-								
-<!-- 									<div class="datatable-dropdown"> -->
-<!-- 										<label> <select class="datatable-selector"><option -->
-<!-- 													value="5">5</option> -->
-<!-- 												<option value="10" selected="">10</option> -->
-<!-- 												<option value="15">15</option> -->
-<!-- 												<option value="20">20</option> -->
-<!-- 												<option value="25">25</option></select> 명 -->
-<!-- 										</label> -->
-<!-- 									</div> -->
 									<div class="datatable-search" style="width: 348px;float: left;display: inline-block;">
 										<form action="admin">
 											<input class="datatable-input" placeholder="회원정보를 입력하세요" value="${param.searchKeyword }" name="searchKeyword" type="search" title="Search within table" aria-controls="datatablesSimple" style="width: 210px;">
@@ -172,12 +162,6 @@
 											<input type="button" value="전체보기" onclick="location.href='admin'">
 										</form>
 									</div>
-
-
-
-
-
-
 								</div>
 								<!-- 회원정보 테이블 -->
 								<div class="datatable-container">

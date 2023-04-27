@@ -234,7 +234,6 @@
 					               $('.each-movie-time').append(html);
 					        	},
 					           error:function(request,status,error){
-					        	   alert("bbb")
 					               alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					           }
 					       });

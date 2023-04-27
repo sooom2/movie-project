@@ -26,5 +26,7 @@ public interface ReservationMapper {
 	HashMap<String, String> selectMemberId(String id);
 
 	int insertReservation(@Param("vo") ReservationVO vo, @Param("id") String id);
+
+	int resCount();
 	
 }

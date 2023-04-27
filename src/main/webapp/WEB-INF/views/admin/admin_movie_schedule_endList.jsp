@@ -207,9 +207,9 @@ $(function() {
                <table id="datatablesSimple" class="datatable-table">
                   <thead>
                      <tr>
-                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">지점명</a></th>
-                        <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영관명</a></th>
-                        <th data-sortable="true" style="width: 10%;"><a href="#" class="datatable-sorter">영화제목</a></th>
+                        <th data-sortable="true" style="width: 5%;"><a href="#" class="datatable-sorter">지점명</a></th>
+                        <th data-sortable="true" style="width: 5%;"><a href="#" class="datatable-sorter">상영관명</a></th>
+                        <th data-sortable="true" style="width: 20%;"><a href="#" class="datatable-sorter">영화제목</a></th>
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">상영날짜</a></th>
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">시작시간</a></th>
                         <th data-sortable="true" style="width: 8%;"><a href="#" class="datatable-sorter">종료시간</a></th>
