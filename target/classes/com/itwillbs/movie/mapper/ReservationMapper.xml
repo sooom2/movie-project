@@ -110,6 +110,7 @@
 			)
 	</insert>
 	
+	<!-- 영화 일정 별 좌석 수 갱신 -->
 	<update id="updateSchedule">
 		update schedule
 			set 
@@ -117,5 +118,35 @@
 			where 
 				sch_code = #{schCd}
 	</update>
+	
+	<!-- 예매 후 포인트 적립 -->
+	<insert id="insertReservationPoint">
+		<selectKey order="BEFORE" keyProperty="point_code" resultType="int">
+			select ifnull(max(point_code), 0)
+				from 
+					point
+		</selectKey>
+		insert 
+			into 
+				point
+			values (
+				#{point_code} + 1
+				, #{id}
+				, '예매 적립'
+				, #{totalAmt} * 0.1 -- 총 결제액의 10퍼
+				, now()
+			)
+	
+	</insert>
+	
+	<!-- 예매 후 회원 포인트 갱신 -->
+	<update id="updateMemberPoint">
+		update member
+			set
+				member_point = member_point + #{totalAmt} * 0.1
+			where
+				member_id = #{id}
+	</update>
+	
 	
 </mapper>

@@ -165,11 +165,24 @@ public class ReservationController {
 		
 		// 결제 후 예매 정보 추가
 		int insertReservation = service.insertReservation(vo, id);
+//		System.out.println("insertReservation: " + insertReservation);
 		
-		System.out.println("좌석" + vo.getSeatNm());
+		// 예매 성공 후 point 적립
+		// 예매 성공 후 member 포인트 갱신
+		String totalAmt = vo.getTotalAmt();
+		if(insertReservation > 0) {
+			int insertReservationPoint = service.insertReservationPoint(id, totalAmt);
+			int updateMemberPoint = service.updateMemberPoint(id, totalAmt);
+		}
+		
+		
+	
+		
+		
+		
+		// 좌석 count
 		String seatTotal = vo.getSeatNm();
 		int seatCnt = seatTotal.length() - seatTotal.replace(",", "").length() + 1;
-		System.out.println(seatCnt);
 		
 		// 좌석수 업데이트
 		int updateSchedule = service.updateSchedule(vo.getSchCd(), seatCnt);

@@ -28,5 +28,9 @@ public interface ReservationMapper {
 	int insertReservation(@Param("vo") ReservationVO vo, @Param("id") String id);
 
 	int updateSchedule(@Param("schCd") String schCd, @Param("seatCnt") int seatCnt);
+
+	int insertReservationPoint(@Param("id") String id, @Param("totalAmt") String totalAmt);
+
+	int updateMemberPoint(@Param("id") String id, @Param("totalAmt") String totalAmt);
 	
 }

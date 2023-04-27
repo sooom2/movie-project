@@ -50,8 +50,15 @@ public class ReservationService {
 	}
 
 	public int resCount() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public int insertReservationPoint(String id, String totalAmt) {
+		return mapper.insertReservationPoint(id, totalAmt);
+	}
+
+	public int updateMemberPoint(String id, String totalAmt) {
+		return mapper.updateMemberPoint(id, totalAmt);
 	}
 
 	
