@@ -163,7 +163,16 @@ public class ReservationController {
 		HashMap<String, String> member = service.selectMemberId(id);
 		model.addAttribute("member", member);
 		
+		// 결제 후 예매 정보 추가
 		int insertReservation = service.insertReservation(vo, id);
+		
+		System.out.println("좌석" + vo.getSeatNm());
+		String seatTotal = vo.getSeatNm();
+		int seatCnt = seatTotal.length() - seatTotal.replace(",", "").length() + 1;
+		System.out.println(seatCnt);
+		
+		// 좌석수 업데이트
+		int updateSchedule = service.updateSchedule(vo.getSchCd(), seatCnt);
 		
 		
 		

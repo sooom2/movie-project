@@ -45,8 +45,13 @@ public class ReservationService {
 		return mapper.insertReservation(vo, id);
 	}
 
+	public int updateSchedule(String schCd, int seatCnt) {
+		return mapper.updateSchedule(schCd, seatCnt);
+	}
+
 	public int resCount() {
-		return mapper.resCount();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

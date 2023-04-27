@@ -46,6 +46,7 @@
 			  , sch_code,sch_screen_code,sch_cinema_code,sch_movie_code,sch_movie_date
 			  , DATE_FORMAT(sd.sch_start_time, '%H:%i') as sch_start_time
 			  , DATE_FORMAT(sd.sch_last_time, '%H:%i') as sch_last_time
+			  , sd.seatCnt
 			from 
 				schedule sd
 			join 
@@ -73,6 +74,7 @@
 				res_sch_code = #{schCd}
 	</select>
 	
+	<!-- 회원 정보 조회 -->
 	<select id="selectMemberId" resultType="hashmap">
 		select * 
 			from 
@@ -81,6 +83,7 @@
 				member_id = #{id}
 	</select>
 	
+	<!-- 결제 후 예매 정보 추가 -->
 	<insert id="insertReservation">
 		insert 
 			into 
@@ -107,10 +110,12 @@
 			)
 	</insert>
 	
-	<select id="resCount" resultType="int">
-		SELECT count(*)
-		  FROM reservation
-		 WHERE res_date=CURRENT_DATE()
-	</select>
+	<update id="updateSchedule">
+		update schedule
+			set 
+				seatCnt = seatCnt - #{seatCnt}
+			where 
+				sch_code = #{schCd}
+	</update>
 	
 </mapper>

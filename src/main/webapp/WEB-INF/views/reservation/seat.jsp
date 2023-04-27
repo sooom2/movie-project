@@ -332,7 +332,6 @@ function reservationList() {
 				response.forEach(function(el, index){
 					var lines = el.res_seat_line.split(',');
 					var seats = el.res_seat_num.split(',');
-					debugger;
 					lines.forEach((el, index) => {
 						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
 						if(!obj[el]) obj[el] = [];
@@ -394,7 +393,6 @@ function reservationList() {
 }
 
 function choiceEvent (e) {
-// 	debugger;
 	console.log("선택좌석임");
 	$(this).css({"background-color" : "#C8C8C8"});
 	var removeData = $(this).data("nm");
@@ -423,7 +421,6 @@ function choiceEvent (e) {
 			
 			for(let j = 1; j < seatNum; j++) {
 				let alp = String.fromCharCode(asc);								// 좌석 행 출력  
-// 				debugger;
 				
 				var str = "";
 				str += "<button type='button' data-id='";

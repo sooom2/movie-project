@@ -20,6 +20,22 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/front.js?v=1680673895731"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
+	<style type="text/css">
+		.reservation-pc .body .cinema-list .list .step2 {overflow: auto;}
+		.movieListDiv {
+		height : 200px;
+		display : flex;
+		justify-content : center;
+		align-items : center;
+		}
+	
+		.mvTimeLineDiv {
+			height : 200px;
+			display : flex;
+			justify-content : center;
+			align-items : center;
+		}
+	</style>
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
@@ -224,7 +240,7 @@
 											<div class="info-box">
 													<div class="info">
 														<!-- 선택후 -->
-														<div class="img"><img src="${pageContext.request.contextPath }/resources/images/rsv/res_test.png"></div>
+														<div class="img"></div>
 														<div class="text">
 															<strong><span class="mvNm"></span></strong>
 															<dl>
@@ -250,7 +266,7 @@
 														</div>
 													</div>
 													<div class="next">
-														<button type="submit" id="btnNext">인원/좌석 선택</button>
+														<button type="button" id="btnNext">인원/좌석 선택</button>
 													</div>
 												</div>
 											</div>
@@ -352,46 +368,6 @@ var screenCd = ""; 	// 상영관코드
 var screenName = ""; // 상영관명
 var mvTime = "";	// 상영시간
 var mvDay = "";		// 상영일
-var seatCnt = 0;	// 좌석 수 count
-
-	// 좌석 정보 조회-------------------------하는중
-	function reservationList() {
-	$.ajax({
-			type: "GET",
-			url: "reservationList",
-			data: { 
-				schCd : schCd
-			},
-			dataType: "json",
-			success: function(response) { 
-				console.log("reservationList : 요청처리성공");
-				
-				var obj = {};
-				response.forEach(function(el, index){
-					var lines = el.res_seat_line.split(',');
-					var seats = el.res_seat_num.split(',');
-					debugger;
-					lines.forEach((el, index) => {
-						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
-						if(!obj[el]) obj[el] = [];
-						seats[index].split(',').forEach((seat) => {
-							obj[el].push(seat);
-							seatCnt++;
-							$("#seatCnt").val(seatCnt);
-						});
-						obj[el].sort();
-							
-					});
-					
-				});
-			},
-			error: function(xhr, textStatus, errorThrown) {
-				console.log("reservationList : 요청처리실패");
-			}
-		});
-}
-
-
 
 	// 상영시간
 	function getTimeList() {
@@ -418,10 +394,13 @@ var seatCnt = 0;	// 좌석 수 count
 		 			let lastTime = movie.sch_last_time;
 		 			let movieDate = movie.sch_movie_date;
 		 			mvDay = movie.sch_movie_date;
+		 			let seatCnt = movie.seatCnt;
 		 			
 		 			$("#ScreenCd").val(screenCode);
 		 			$("#ScreenNm").val(screenName);
 		 			$("#MovieDate").val(movieDate);
+// 		 			$("#schCd").val(schCode);
+		 			
 		 			
 		 			console.log("schCode : " + schCode);
 		 			console.log("screenCode : " + screenCode);
@@ -430,6 +409,8 @@ var seatCnt = 0;	// 좌석 수 count
 		 			console.log("lastTime : " + lastTime);
 		 			console.log("mvDay : " + mvDay);
 		 			
+		 			console.log("getTime: ");
+		 			console.log("seatCnt: " + seatCnt);
 		 			
 		 			var str = "";
 		 			str += "<li>";
@@ -444,10 +425,8 @@ var seatCnt = 0;	// 좌석 수 count
 		 			str += "<div class='info'>";
 		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
 		 			
-		 			// 좌석 정보 추후 수정
 		 			str += "<p class='num'>";
-		 			str += "수정중";
-// 		 			str += $("#seatCnt").val();
+		 			str += seatCnt;
 		 			str += "/<span>45석</span></p>";
 		 			
 		 			str += "</div>";
@@ -591,14 +570,14 @@ var seatCnt = 0;	// 좌석 수 count
 	
 	$(function() {
 		
-		if ($("#MovieCd").val() != "all")
-			setMovie();
+// 		if ($("#MovieCd").val() != "all")
+// 			setMovie();
 		
-		if ($("#CinemaCd").val() != "all")
-			setCinema();
+// 		if ($("#CinemaCd").val() != "all")
+// 			setCinema();
 		
-		if ($("#ScreenTime").val() != "all")
-			setTime();
+// 		if ($("#ScreenTime").val() != "all")
+// 			setTime();
 		
 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all") {
 			getTimeList();
@@ -760,6 +739,21 @@ var seatCnt = 0;	// 좌석 수 count
 			console.log("영화일정코드 #schCd:" + $("#schCd").val());
 			
 			setTime();
+			
+		});
+		
+		
+		
+		$(document).on("click", "#btnNext", function(){
+			var CinemaCd = $("#CinemaCd").val();
+			var MovieCd = $("#MovieCd").val();
+			var ScreenTime = $("#ScreenTime").val();
+			
+			if ((CinemaCd != "all") && (MovieCd != "all") && (ScreenTime != "all")) {
+				$("#dataForm").submit();
+			} else {
+				alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
+			}
 			
 		});
 		
