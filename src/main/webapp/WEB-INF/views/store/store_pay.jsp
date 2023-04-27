@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/common.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
-<link href="resources/css/sub.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
@@ -18,48 +18,56 @@
 	IMP.init("imp03276613"); 
 	
 	function requestPay() {
-			// 결제 수단 선택
-		if($('input[name="radio_choice"]:checked').val() == null) {
-			alert("결제수단을 선택하세요.");
-
-			// 이용약관 동의
-		} else if(!$("#chk01").prop("checked") || !$("#chk02").prop("checked")) {
-			alert("이용약관에 모두 동의하셔야 합니다.");
+		
+		// 포인트 전액 사용시
+		if($("#lstPayAmtView").text() == "0") {
+			if(confirm("포인트 전액 구매시, 환불이 불가합니다. 결제 하시겠습니까?")) {
+				location.href = "store_paySuccess?pay_code=code" + new Date().getTime() + "&pay_type=point" 
+				+ "&pay_price=0"
+				+ "&pay_status=paid" + "&item_code=" + ${item.get('item_code')} 
+				+ "&point=" + $("#totDcAmtView").text();
+			} else {
+				return;
+			}
 			
-			// 결제 금액이 0원 일때
-		} else if($("#lstPayAmtView").text() == "0") {
-			alert("결제가 완료되었습니다.");
-		    location.href = "store_paySuccess?pay_code=code" + new Date().getTime() + "&pay_type=point" 
-		    				+ "&pay_price=0"
-		    				+ "&pay_status=paid" + "&item_code=" + ${item.get('item_code')} 
-		    				+ "&point=" + $("#totDcAmtView").text();
-			// 아임포트 API 결제 
 		} else {
-			IMP.request_pay({
-		        pg : $('input[name="radio_choice"]:checked').val(),
-		        pay_method : 'card',
-		        merchant_uid: "code" + new Date().getTime(), 
-		        name : '${item.get('item_name') }',
-		        amount : $("#lstPayAmtView").text(),
-		        buyer_email : '${member.get('member_email')}',
-		        buyer_name : '${member.get('member_name')}',
-		        buyer_tel : '${member.get('member_tel')}',
-		        
-		    }, function (rsp) { // callback
-		        if (rsp.success) {
-				    alert("결제가 완료되었습니다.");
-				    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" 
-				    				+ rsp.pay_method + "&pay_price=" + rsp.paid_amount
-				    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')} 
-				    				+ "&point=" + $("#totDcAmtView").text();
-		        } else {
-		            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
-		            	  + rsp.error_msg + ")");
-		        }
-		    });
+			// 결제 수단 선택
+			if($('input[name="radio_choice"]:checked').val() == null) {
+				alert("결제수단을 선택하세요.");
+
+				// 이용약관 동의
+			} else if(!$("#chk01").prop("checked") || !$("#chk02").prop("checked")) {
+				alert("이용약관에 모두 동의하셔야 합니다.");
+				
+				// 아임포트 결제
+			} else {
+				IMP.request_pay({
+			        pg : $('input[name="radio_choice"]:checked').val(),
+			        pay_method : 'card',
+			        merchant_uid: "code" + new Date().getTime(), 
+			        name : '${item.get('item_name') }',
+			        amount : $("#lstPayAmtView").text(),
+			        buyer_email : '${member.get('member_email')}',
+			        buyer_name : '${member.get('member_name')}',
+			        buyer_tel : '${member.get('member_tel')}',
+			        
+			    }, function (rsp) { // callback
+			        if (rsp.success) {
+					    alert("결제가 완료되었습니다.");
+					    location.href = "store_paySuccess?pay_code=" + rsp.merchant_uid + "&pay_type=" 
+					    				+ rsp.pay_method + "&pay_price=" + rsp.paid_amount
+					    				+ "&pay_status=" + rsp.status + "&item_code=" + ${item.get('item_code')} 
+					    				+ "&point=" + $("#totDcAmtView").text();
+			        } else {
+			            alert("실패 : 코드" + rep.error_code + ") / 메세지()"
+			            	  + rsp.error_msg + ")");
+			        }
+			    });
+			}
 		}
+		
 	    
-	}
+	};
 
 // 항상 전액 사용하기
 $(function() {
