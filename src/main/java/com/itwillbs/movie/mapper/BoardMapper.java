@@ -29,7 +29,7 @@ public interface BoardMapper {
 	int insertOneBoard(HashMap<String, String> map);
 
 	// 1대1 문의 목록
-	List<HashMap<String, String>> selectOneBoardList();
+	List<HashMap<String, String>> selectOneBoardList(HashMap<String, String> map);
 
 	// 공지사항 등록
 	int insertNoticeBoard(HashMap<String, String> map);

@@ -254,28 +254,25 @@ $(function() {
 										</div>
 									</td>
 								</tr>
+								
 								<!-- 2019-02-14 사진첨부 마크업 수정 -->
-								<tr>
-									<th scope="row">사진첨부</th>
-									<td colspan="3">
-										<div class="upload-image-box">
-
-											<div class="info-txt">
-												<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다. (최대 5개)</p>
-
+<!-- 								<tr> -->
+<!-- 									<th scope="row">사진첨부</th> -->
+<!-- 									<td colspan="3"> -->
+<!-- 										<div class="upload-image-box"> -->
+<!-- 											<div class="info-txt"> -->
+<!-- 												<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다. (최대 5개)</p> -->
 												<!-- to 개발 : 이미지 추가가 5개가 되면 버튼 숨김 -->
-												<button type="button" id="uploadBtn" class="btn-image-add">
-													<span>파일선택</span>
-												</button>
+<!-- 												<button type="button" id="uploadBtn" class="btn-image-add"> -->
+<!-- 													<span>파일선택</span> -->
+<!-- 												</button> -->
 												<!--// to 개발 : 이미지 추가가 5개가 되면 버튼 숨김 -->
-												<p>* 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p>
-											</div>
-
-											<div id="imgList"></div>
-
-										</div>
-									</td>
-								</tr>
+<!-- 												<p>* 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p> -->
+<!-- 											</div> -->
+<!-- 											<div id="imgList"></div> -->
+<!-- 										</div> -->
+<!-- 									</td> -->
+<!-- 								</tr> -->
 								<!--// 2019-02-14 사진첨부 마크업 수정 -->
 
 								<tr>

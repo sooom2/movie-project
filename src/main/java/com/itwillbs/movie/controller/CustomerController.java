@@ -37,7 +37,16 @@ public class CustomerController {
 	
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
-	public String ccHome() {
+	public String ccHome(@RequestParam HashMap<String, String> map, Model model) {
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("startNum", "0");
+			map.put("endNum", "5");
+		}
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		model.addAttribute("faqBoardList", faqBoardList);
+		System.out.println("고객센터 홈 " + model);
 		return "customer_center/cc_home";
 	}
 	
@@ -526,9 +535,23 @@ public class CustomerController {
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLostBoard(@RequestParam HashMap<String, String> map, Model model) {
 		
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
 		List<HashMap<String, String>> lostBoardList = boardService.getLostBoardList(map);
+		System.out.println(lostBoardList);
+		if(lostBoardList.size() > 0) {
+			HashMap<String, String> countMap = lostBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		model.addAttribute("paramMap", map);
 		model.addAttribute("lostBoardList", lostBoardList);
-//		System.out.println("Controller: " + model);
+		System.out.println("lostBoardList 컨트롤러" + model);
+		
 		return "admin/admin_lost_board";
 	}
 	
@@ -583,7 +606,6 @@ public class CustomerController {
 	// 관리자 1:1 문의 목록
 	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminOneOnOne(@RequestParam HashMap<String, String> map, Model model) {
-		
 		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
 			map.put("pageNum", "1");
 			map.put("startNum", "0");

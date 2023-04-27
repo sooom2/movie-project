@@ -82,8 +82,6 @@
 		<jsp:include page="admin_nav.jsp" />
 		<!-- 고정 -->
 
-
-
 		<div id="layoutSidenav_content">
 
 			<!-- 들어갈내용 -->
