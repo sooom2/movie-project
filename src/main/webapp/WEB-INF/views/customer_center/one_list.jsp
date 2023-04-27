@@ -19,6 +19,7 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
+<script src="resources/js/jquery-3.6.4.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css"
 	rel="stylesheet">
 <script type="text/javascript">
@@ -69,7 +70,6 @@ function chkPasswd() {
 // 	var lost_code = $("#lost_subject > a").attr("data-code");
 // var result;
 // 	cosole.log($("#table_name") + $("#code"));
-
 	$.ajax({
 		url: 'one_detail_pro',
 		type: 'POST',
@@ -79,15 +79,18 @@ function chkPasswd() {
 		data: {
 			code : code,
 			table_name : table_name,
-			passwd : $("#passwd").val()
+			passwd : $("#passwd").val(),
+			memberName : "${paramMap.memberName}",
+			memberTel : ${paramMap.memberTel},
+			memberEmail :"${paramMap.memberEmail}"
 		},
 		success : function(result) {
 			console.log(result);
 // 			return "location.href='lost_detail'";
 			
-			if(result == "true")		{
+			if(result == "true") {
 // 				alert(result);
-				let url = 'one_detail?code=' + code;
+				let url = 'one_detail?code=' + code + "&table_name=" + table_name + "&memberName=" + "${paramMap.memberName}" + "&memberTel=" + "${paramMap.memberTel}" + "&memberEmail=" + "${paramMap.memberEmail}";
 				location.replace(url);
 			} else {
 				console.log($(this).find("#resultArea"));

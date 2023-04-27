@@ -31,15 +31,19 @@ function bntCheck(){
 		alert('이름을 입력해주세요');
 		nonMbNm.focus();
 		return ;
-	}else if(!regex2.exec(nonMbTelno.value)) {	// 번호 검증
-		alert("전화번호를 확인하세요");
-		nonMbTelno.focus();
-		return false;
 	}else if(nonMbEmail.value.length == 0){
 		alert('이메일을 입력해주세요');
 		nonMbEmail.focus();
 		return ;
 	}
+	if("${sessionScope.sId}" == null || "${sessionScope.sId}" == ""){	//   세션이 없는 상태
+		// 번호 검증
+		if(!regex2.exec($("#nonMbTelno").val())) {
+			alert("전화번호를 확인하세요");
+			$("#nonMbTelno").focus();
+			return false;
+		}
+ 	}
 	let form = document.querySelector('#iForm');
 	form.action = 'one_list';
 	form.method = 'post';

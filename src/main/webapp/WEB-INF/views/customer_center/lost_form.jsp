@@ -18,13 +18,54 @@
 <script type="text/javascript" src="../js/main.js"></script>
 <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 <script type="text/javascript">
+function numberMaxLength(el, maxlength) { // 비밀번호 4자리
+	if(el.value.length > maxlength) {
+		el.value = el.value.substr(0, maxlength);
+	}
+}
 $(function() {
-	$("form").submit(function() {
+// 	alert("function")
+// 	$("#nonMbInqPw").keyup(function(el, maxlength) {
+// 		if(el.value.length > maxlength) {
+// 			el.value = el.value.substr(0, maxlength);
+// 		}
+// 	});
+	
+	$("#textarea").keyup(function() {
+		$("#textareaCnt").html($("#textarea").val().length)
+	});
+	
+	let regex = /^[가-힣]{2,5}$/; // 이름 제약조건
+	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
+	
+		$("#iForm").submit(function() {
+		
+		// 		$("#nonMbInqPw").keyup(function(el, maxlength) {
+		// 			if(el.value.length > maxlength) {
+		// 				el.value = el.value.substr(0, maxlength);
+		// 			}
+		// 		});
+		
 		if(!$("#chk").prop("checked")) {
 			alert("개인정보 수집 동의 해주세요");
 			$("#chk").focus();
 			return false;
-		} 
+		}
+		// 이름 검증 한글 2 ~ 5글자
+		if(!regex.exec($("#name").val())) {
+			alert("이름을 확인하세요");
+			$("#name").focus();
+			return false;
+		}
+		if("${sessionScope.sId}" == null || "${sessionScope.sId}" == ""){	//   세션이 없는 상태
+			// 번호 검증
+			if(!regex2.exec($("#hpNum1").val())) {
+				alert("전화번호를 확인하세요");
+				$("#hpNum1").focus();
+				return false;
+			}
+	 	}
+		
 		return true;
 	});
 });
@@ -41,7 +82,7 @@ $(function() {
 					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
 				</ul>
 				
-				<form action="lostWritePro" name="regFrm" method="post">
+				<form action="lostWritePro" name="regFrm" method="post" id="iForm">
 				<div class="agree-box">
 					<dl>
 						<dt>
@@ -121,7 +162,7 @@ $(function() {
 								<tr>
 									<th scope="row"><label for="email">연락처</label> <em
 										class="font-orange">*</em></th>
-									<td><input type="text" name="lost_tel" id="hpNum"
+									<td><input type="text" name="lost_tel" id="hpNum1"
 										class="input-text" value="${member.get('member_tel') }" autocomplete="new-password"
 										maxlength="50" placeholder="숫자만 입력하세요" required="required" 
 										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}></td>
