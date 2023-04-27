@@ -108,9 +108,9 @@
 	</insert>
 	
 	<select id="resCount" resultType="int">
-	SELECT count(*)
-	  FROM reservation
-	 WHERE CURRENT_DATE()
+		SELECT count(*)
+		  FROM reservation
+		 WHERE res_date=CURRENT_DATE()
 	</select>
 	
 </mapper>
