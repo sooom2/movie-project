@@ -13,7 +13,7 @@
 		SELECT *
 			FROM 
 				movieinfo
-			ORDER by 
+			ORDER BY 
 				info_movie_title ASC
 	</select>
 
@@ -23,19 +23,47 @@
 	<!-- 각 영화관에 상영하는 영화리스트 출력 -->
 	<!-- 영화제목, 영화코드, 포스터, 관람등급, 개봉일, 장르 -->
 	<select id="selectmoviesList" resultType="hashmap">
-		select distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating, m.info_showdate, m.info_genre
-			from 
+		SELECT DISTINCT m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating, m.info_showdate, m.info_genre
+			FROM 
 				cinema c
-			join 
+			JOIN 
 				schedule s 
-			on 
+			ON 
 				c.cinema_code = s.sch_cinema_code 
-			join 
+			JOIN 
 				movieinfo m 
-			on 
+			ON 
 				m.info_movie_code = s.sch_movie_code 
-			where 
+			WHERE 
 				c.cinema_code = #{CnItemCd}
+	</select>
+	
+	<!-- 선호 장르 조회 -->
+	<select id="selectMemberPreferGenre" resultType="String">
+		SELECT member_prefer_genre
+			FROM 
+				MEMBER
+			WHERE 
+				member_id = #{id};
+	</select>
+	
+	<!-- 선호 장르 영화 리스트 -->
+	<select id="selectPreferMoviesList" resultType="hashmap">
+		SELECT distinct m.info_movie_title, m.info_movie_code, m.info_movie_poster, m.info_rating, m.info_showdate, m.info_genre
+			FROM 
+				cinema c
+			JOIN 
+				schedule s 
+			ON 
+				c.cinema_code = s.sch_cinema_code 
+			JOIN 
+				movieinfo m 
+			ON 
+				m.info_movie_code = s.sch_movie_code  
+			WHERE 
+				c.cinema_code = #{CnItemCd}
+			AND 
+				m.info_genre = #{preferGenre}
 	</select>
 	
 	
@@ -47,48 +75,48 @@
 			  , DATE_FORMAT(sd.sch_start_time, '%H:%i') as sch_start_time
 			  , DATE_FORMAT(sd.sch_last_time, '%H:%i') as sch_last_time
 			  , sd.seatCnt
-			from 
+			FROM 
 				schedule sd
-			join 
+			JOIN 
 				screen sc 
-		    on 
+		    ON 
 		    	sd.sch_screen_code = sc.screen_code
-		    join 
+		    JOIN 
 		    	cinema c 
-		    on 
+		    ON 
 		    	c.cinema_code = sd.sch_cinema_code
-		    where 
+		    WHERE 
 		    	c.cinema_code = #{CnItemCd} 
-		    and 
+		    AND 
 		    	sd.sch_movie_code = #{MvItemCd}
-		    and 
+		    AND 
 		    	sd.sch_movie_date like CONCAT('%',#{dateCd})
 	</select>
 	
 	<!-- 예매 좌석 조회 -->
 	<select id="selectReservationList" resultType="hashmap">
-		select res_sch_code, res_seat_line, res_seat_num
-			from 
+		SELECT res_sch_code, res_seat_line, res_seat_num
+			FROM 
 				reservation
-			where 
+			WHERE 
 				res_sch_code = #{schCd}
 	</select>
 	
 	<!-- 회원 정보 조회 -->
 	<select id="selectMemberId" resultType="hashmap">
-		select * 
-			from 
+		SELECT * 
+			FROM 
 				member
-			where 
+			WHERE 
 				member_id = #{id}
 	</select>
 	
 	<!-- 결제 후 예매 정보 추가 -->
 	<insert id="insertReservation">
-		insert 
-			into 
+		INSERT 
+			INTO 
 				reservation
-			values (
+			VALUES (
 				#{vo.resCode}
 				, #{id}
 				, #{vo.schCd}
@@ -112,28 +140,28 @@
 	
 	<!-- 영화 일정 별 좌석 수 갱신 -->
 	<update id="updateSchedule">
-		update schedule
-			set 
+		UPDATE schedule
+			SET 
 				seatCnt = seatCnt - #{seatCnt}
-			where 
+			WHERE 
 				sch_code = #{schCd}
 	</update>
 	
 	<!-- 예매 후 포인트 적립 -->
 	<insert id="insertReservationPoint">
 		<selectKey order="BEFORE" keyProperty="point_code" resultType="int">
-			select ifnull(max(point_code), 0)
-				from 
+			SELECT IFNULL(MAX(point_code), 0)
+				FROM 
 					point
 		</selectKey>
-		insert 
-			into 
+		INSERT 
+			INTO 
 				point
-			values (
+			VALUES (
 				#{point_code} + 1
 				, #{id}
 				, '예매 적립'
-				, #{totalAmt} * 0.1 -- 총 결제액의 10퍼
+				, #{totalAmt} * 0.1
 				, now()
 			)
 	
@@ -141,10 +169,10 @@
 	
 	<!-- 예매 후 회원 포인트 갱신 -->
 	<update id="updateMemberPoint">
-		update member
-			set
+		UPDATE member
+			SET
 				member_point = member_point + #{totalAmt} * 0.1
-			where
+			WHERE
 				member_id = #{id}
 	</update>
 	

@@ -61,6 +61,14 @@ public class ReservationService {
 		return mapper.updateMemberPoint(id, totalAmt);
 	}
 
+	public String selectMemberPreferGenre(String id) {
+		return mapper.selectMemberPreferGenre(id);
+	}
+
+	public List<HashMap<String, String>> selectPreferMoviesList(String cnItemCd, String preferGenre) {
+		return mapper.selectPreferMoviesList(cnItemCd, preferGenre);
+	}
+
 	
 
 }

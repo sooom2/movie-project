@@ -75,6 +75,25 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
+	// 선호 장르 영화리스트
+	@ResponseBody
+	@GetMapping("preferMoviesList")
+	public String preferMoviesList(@Param("CnItemCd") String CnItemCd, HttpSession session) {
+//		System.out.println("String CnItemCd: " + CnItemCd);
+		
+		String id = (String)session.getAttribute("sId");
+		String preferGenre = service.selectMemberPreferGenre(id);
+		System.out.println("preferGenre : " + preferGenre);
+		
+		List<HashMap<String, String>> preferMoviesList = service.selectPreferMoviesList(CnItemCd, preferGenre);
+		
+		JSONArray ja = new JSONArray(preferMoviesList);
+		System.out.println(ja);
+		return ja.toString();
+	}
+	
+	
+	
 	// 상영시간리스트
 	@ResponseBody
 	@GetMapping("movieTimeList")

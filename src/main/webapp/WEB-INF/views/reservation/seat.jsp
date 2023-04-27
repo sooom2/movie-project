@@ -88,7 +88,6 @@
 	
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">${param.genre }</h4>
 									<div class="right">
 										<a href="javascript:location.reload(true);" class="btn-refresh">예매다시하기</a>
 									</div>
