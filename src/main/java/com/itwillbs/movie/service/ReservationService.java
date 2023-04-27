@@ -45,6 +45,10 @@ public class ReservationService {
 		return mapper.insertReservation(vo, id);
 	}
 
+	public int resCount() {
+		return mapper.resCount();
+	}
+
 	
 
 }

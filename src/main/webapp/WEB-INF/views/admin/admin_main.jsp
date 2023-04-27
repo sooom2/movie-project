@@ -60,7 +60,7 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-black mb-4">
 								<div class="card-body font20">
-									TODAY 예매<br> <span class="fontB">50</span>건
+									TODAY 예매<br> <span class="fontB">${resCount }</span>건
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
