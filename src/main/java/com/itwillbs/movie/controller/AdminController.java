@@ -41,6 +41,7 @@ public class AdminController {
 				int todayCount = movieRegisterService.selectTodayCount();
 				int memCount = memberService.selectMemCount();
 				int resCount = reservationService.resCount();
+				int payCount = storeService.payCount();
 //				System.out.println(resCount);
 				// -----------------------------------------------------------------------
 				// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
@@ -63,6 +64,7 @@ public class AdminController {
 				PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
 				System.out.println(pageInfo);
 				// ------------------------------------------------------------------------------------
+				model.addAttribute("payCount",payCount);
 				model.addAttribute("resCount",resCount);
 				model.addAttribute("todayCount",todayCount);
 				model.addAttribute("memCount",memCount);

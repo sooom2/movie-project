@@ -106,6 +106,8 @@ public interface MyBatisMapper {
 	// 포인트 테이블 차감
 	int minusPointTable(@Param("id") String id,@Param("point") String point);
 
+	int payCount();
+
 
 	
 	// ------------------------------------------------------------------------------------------

@@ -348,7 +348,11 @@
 				   , now()
 			)
 	</insert>
-	
+	<select id="payCount" resultType="int">
+		SELECT count(*)
+		  FROM pay 
+		 WHERE pay_date=CURRENT_DATE()
+	</select>
 	
 	
 </mapper>

@@ -62,6 +62,9 @@ public class StoreService {
 	public int minusPointTable(String id, String point) {
 		return mapper.minusPointTable(id, point);
 	}
+	public int payCount() {
+		return mapper.payCount();
+	}
 	
 	
 

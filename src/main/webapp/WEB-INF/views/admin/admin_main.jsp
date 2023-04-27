@@ -102,7 +102,7 @@
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-black mb-4">
 								<div class="card-body font20">
-									스토어 주문<br> <span class="fontB">80</span> 건
+									스토어 주문<br> <span class="fontB">${payCount }</span> 건
 								</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
