@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <html>
 <head>
@@ -286,13 +287,16 @@
 	
 });
 </script>
-
+<c:if test = "${not empty sessionScope.sId }" >
+	<c:set var="likeList" value="${likeList}"/>
+</c:if>
 </head>
 
 <body id="top">
 
 	<jsp:include page="nav.jsp" />
-
+	
+	
 	<div id="content">
 		<!-- 메인슬라이더 -->
 		<div class="section group section-main-slider" id="main-slider">
@@ -376,7 +380,6 @@
 						    			<c:when test="${movie.info_status eq 'comming' }">상영예정</c:when>
 						    			<c:when test="${movie.info_status eq 'end' }">상영종료</c:when>
 		    						</c:choose>		</span></a>
-						    
 						    		<a href="MovieInfo?info_movie_code=${movie.info_movie_code }" class="info"><span class="over-btn-info">상세정보</span></a>
 						    	</span>
 						    <img src="${movie.info_movie_poster }" class="posterlist">
@@ -385,9 +388,18 @@
 						    		${movie.info_movie_title }
 						    	</div>
 						 	  	<div class="like-btn">
-									<a href="javascript:;" class="icon heart"> <img src="resources/images/ico/before-like.png" alt="찜하기">
-									<span class="likeNum">${movie.like_count }</span></a>
-							</div>
+									<a href="javascript:;" class="icon heart">
+									<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
+									<c:choose>
+										<c:when test ="${fn:contains(likeList,info_movie_code) }">
+											<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
+										</c:when>
+										<c:otherwise>
+											<img src="resources/images/ico/before-like.png" alt="찜하기">	
+										</c:otherwise>
+									</c:choose>
+								<span class="likeNum">${movie.like_count }</span></a>
+						</div>
 				   		 </li>
 						</c:forEach>	
 					</ul>
@@ -415,7 +427,15 @@
 						    	</div>
 						 	  	<div class="like-btn">
 									<a href="javascript:;" class="icon heart">
-									<img src="resources/images/ico/before-like.png" alt="찜하기">
+										<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
+										<c:choose>
+											<c:when test ="${fn:contains(likeList,info_movie_code) }">
+												<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
+											</c:when>
+											<c:otherwise>
+												<img src="resources/images/ico/before-like.png" alt="찜하기">	
+											</c:otherwise>
+										</c:choose>
 									<span class="likeNum">${movie.like_count }</span></a>
 							</div>
 				   		 </li>

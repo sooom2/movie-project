@@ -28,7 +28,7 @@ public class LikeService {
 	public int updateLike(HashMap<String, String> like) {
 		return mapper.updateLike(like);
 	}
-	public HashMap<String, String> findLikeList(String id) {
+	public List<HashMap<String, String>> findLikeList(String id) {
 		return mapper.findLikeList(id);
 	}
 	

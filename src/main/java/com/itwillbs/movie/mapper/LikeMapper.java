@@ -13,7 +13,7 @@ public interface LikeMapper {
 	
 	int updateLike(HashMap<String, String> like);
 	
-	HashMap<String, String> findLikeList(String id);
+	List<HashMap<String, String>> findLikeList(String id);
 	
 }
 

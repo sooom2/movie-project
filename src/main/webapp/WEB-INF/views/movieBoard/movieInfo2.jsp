@@ -40,6 +40,7 @@
 				 <a href="#" class="btn-rsv" data-status="${movieInfo.info_status}" title="영화 예매하기">
 				 	<c:choose>
 						<c:when test="${movieInfo.info_status eq 'screening' }">예매하기</c:when>						    		
+						<c:when test="${movieInfo.info_status eq 'reScreening' }">특별상영</c:when>
 		    			<c:when test="${movieInfo.info_status eq 'comming' }">상영예정</c:when>
 		    			<c:when test="${movieInfo.info_status eq 'end' }">상영종료</c:when>
 		    		</c:choose>
@@ -101,7 +102,7 @@
   $(document).ready(function () {
 // 	  ${movieInfo.info_status}
 	console.log($(".btn-rsv").data("status"))
-	if($(".btn-rsv").data("status")=="screening"){
+	if($(".btn-rsv").data("status")=="screening" || $(".btn-rsv").data("status")=="reScreening"){
 		$(".btn-rsv").attr('href', 'reservation').css("background-color","#534cbf");
 	}
  });

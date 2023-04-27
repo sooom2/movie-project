@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,9 @@
 <link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <jsp:include page="../nav.jsp" />   
-
+<c:if test = "${not empty sessionScope.sId }" >
+	<c:set var="likeList" value="${likeList}"/>
+</c:if>
 </head>
 
 <body id="top">
@@ -44,7 +47,15 @@
 					    <div class="btn-util">
 							 <div class="like-btn">
 								<a href="javascript:;" class="icon heart">
-									<img src="resources/images/ico/before-like.png" alt="찜하기">
+									<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
+									<c:choose>
+										<c:when test ="${fn:contains(likeList,info_movie_code) }">
+											<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
+										</c:when>
+										<c:otherwise>
+											<img src="resources/images/ico/before-like.png" alt="찜하기">	
+										</c:otherwise>
+									</c:choose>
 									<span class="likeNum">${movie.like_count }</span>
 								</a>
 							</div>

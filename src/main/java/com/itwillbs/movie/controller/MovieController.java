@@ -36,16 +36,27 @@ public class MovieController {
 		List<HashMap<String, String>> movieList = service.selectScreeningMovieList();
 		model.addAttribute("movieList",movieList);
 		
+		String id = (String)session.getAttribute("sId");
+		if(id !=null) {
+			List<HashMap<String, String>> likeList = likeService.findLikeList(id);
+			model.addAttribute("likeList", likeList);
+		}
+		
 		return "movieBoard/screening";
 	}
 	
 	// 상영예정작
 	@RequestMapping(value = "comming", method = {RequestMethod.GET, RequestMethod.POST})
-	public String comming(Model model) {
+	public String comming(Model model,HttpSession session) {
 		
 		List<HashMap<String, String>> movieList = service.selectCommingMovieList();
-		
 		model.addAttribute("movieList",movieList);
+		
+		String id = (String)session.getAttribute("sId");
+		if(id !=null) {
+			List<HashMap<String, String>> likeList = likeService.findLikeList(id);
+			model.addAttribute("likeList", likeList);
+		}
 		
 		return "movieBoard/comming";
 	}
@@ -125,19 +136,6 @@ public class MovieController {
 		System.out.println("likeClick.result : "+result);
 		return result; 
 		
-	}
-	@PostMapping(value = "likeCheck")
-	@ResponseBody
-	public boolean likeCheck(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("sId");
-		System.out.println("likeCheck - 확인용");
-		
-		HashMap<String, String> isLike = likeService.findLikeList(id);
-		if(isLike != null) {
-			return true;
-		}
-		
-		return false;
 	}
 	
 }

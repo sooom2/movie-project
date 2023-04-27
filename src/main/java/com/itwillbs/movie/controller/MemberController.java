@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.movie.service.LikeService;
 import com.itwillbs.movie.service.MailSendService;
 import com.itwillbs.movie.service.MemberService;
 import com.itwillbs.movie.service.MovieRegisterService;
@@ -32,10 +33,11 @@ public class MemberController {
 	private MovieRegisterService movieRegisterService;
 	@Autowired
 	private MailSendService mailService;
-
+	@Autowired
+	private LikeService likeService;
 	
 	@GetMapping(value = "main")
-	public String main(Model model) {
+	public String main(Model model, HttpSession session) {
 		
 		
 		//메인스토어 뿌리기
@@ -51,6 +53,16 @@ public class MemberController {
 //		List<HashMap<String, String>> movieList = movieRegisterService.selectMovies();
 		List<HashMap<String, String>> screeningMovieList = movieRegisterService.selectScreeningMovieList();
 		List<HashMap<String, String>> commingMovieList = movieRegisterService.selectCommingMovieList();
+		
+		// 좋아요 뿌리기 
+		String id = (String)session.getAttribute("sId");
+		if(id !=null) {
+			List<HashMap<String, String>> likeList = likeService.findLikeList(id);
+			model.addAttribute("likeList", likeList);
+		}
+		
+		
+		
 //		model.addAttribute("movie", movieList);
 		model.addAttribute("screeningMovieList", screeningMovieList);
 		model.addAttribute("commingMovieList", commingMovieList);

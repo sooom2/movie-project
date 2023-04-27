@@ -9,7 +9,7 @@
 	 			AND like_id = #{member_id}
 	</select>
 	<select id="findLikeList" resultType="hashmap">
-		SELECT *
+		SELECT like_movie_code
   		FROM like_movie
 		WHERE 
 	 			 like_id = #{member_id}
