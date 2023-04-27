@@ -5,14 +5,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itwillbs.movie.service.BoardService;
 import com.itwillbs.movie.service.MypageService;
 import com.itwillbs.movie.vo.MemberVO;
@@ -40,6 +45,7 @@ public class MypageController {
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
 		
+//		List<HashMap<String,String>> resList = service.resList(id);
 		List<HashMap<String,String>> resList = service.resList(id);
 		model.addAttribute("resList", resList);
 		
@@ -48,6 +54,34 @@ public class MypageController {
 		
 		return "mypage/mypage_rsv_form";
 	} 
+	
+	@ResponseBody	
+	@RequestMapping(value = "mypageRlist",produces = "application/json; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
+	public String mypageR(HttpSession session, MemberVO member, Model model,
+	                       @RequestParam(name = "year") int year,
+	                       @RequestParam(name = "month") int month) throws JsonProcessingException {
+	   
+		String id = (String) session.getAttribute("sId");
+
+//	    if (id == null) {
+//	        return "redirect:/memLogin";
+//	    }
+
+
+//	    List<HashMap<String, String>> resList = service.resListByDate(id, year, month);
+	    List<HashMap<String, String>> resList = service.resListByDate(id, year, month);
+	    
+	    JSONArray ja = new JSONArray(resList);
+	    System.out.println(ja.toString());
+	    
+//	    model.addAttribute("response", resList);
+		
+		
+	   return ja.toString();
+
+	}
+
+
 	
 	//포인트조회
 	@GetMapping(value = "mypageP")
@@ -303,7 +337,7 @@ public class MypageController {
 	}
 	
 	@GetMapping(value="deleteReview")
-	public String deleteReview(String rev_code, HttpSession session, Model model) {
+	public String deleteReview(@RequestParam("rev_code")String rev_code, HttpSession session, Model model) {
 	    String id = (String)session.getAttribute("sId");
 
 	    int deleteCount = service.deleteReview(rev_code);

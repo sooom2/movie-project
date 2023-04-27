@@ -15,25 +15,15 @@
 </head>
 <body>
 <script type="text/javascript">
-function editReview(revId) {
-  window.location.href = "/editReview.jsp?revId=" + revId;
-}
-
-function deleteReview(revId) {
-	  if (confirm("정말 삭제하시겠습니까?")) {
-	    $.ajax({
-	      url: "/deleteReview",
-	      type: "POST",
-	      data: { revId: revId },
-	      success: function(data) {
-	        window.location.href = "/movieDetail.jsp?movieId=" + data.movieId;
-	      },
-	      error: function() {
-	        alert("삭제 실패");
-	      }
-	    });
+function confirmDelete(rev_code) {
+	
+	  if(confirm("리뷰를 삭제하시겠습니까? 삭제시 포인트는 반환됩니다.")) {
+	    location.href="deleteReview?rev_code=" + rev_code;
+	    
 	  }
 	}
+
+
 </script>
 
 	<jsp:include page="../nav.jsp" />
@@ -190,7 +180,9 @@ function deleteReview(revId) {
 								            </c:if>
 								        </td>
 								        <td>${revList.rev_date}</td>
-								        <td><input type="button" value="삭제" onclick="location.href='deleteReview?rev_code=${revList.rev_code}'"></td>
+								       <td><input type="button" value="삭제" onclick="confirmDelete('${revList.rev_code}')"></td>
+
+
 								    </tr>
 								</c:forEach>
 

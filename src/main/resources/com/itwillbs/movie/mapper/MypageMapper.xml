@@ -206,17 +206,16 @@
 
 
 <!-- 		코드수정  -->
-
 		SELECT 
-			r.res_code ,
-			DATE(r.res_paydate) as res_paydate,
+			r.res_code,
+			DATE(r.res_paydate) AS res_paydate,
 			r.res_title,
 			r.res_cinema,
 			r.res_seat_num,
 			sn.screen_name,
 			COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date,
 			CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', 
-  			TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
+			TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
 			r.res_pay
 		FROM 
 			reservation r
@@ -224,22 +223,81 @@
 			LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code
 			LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code
 		WHERE 
-			r.res_id = #{id}
+			r.res_id = #{id} 
+<!-- 			YEAR(DATE(r.res_paydate)) = #{year} AND  -->
+<!-- 			MONTH(DATE(r.res_paydate)) = #{month} -->
 		GROUP BY 
-		r.res_paydate,
-		r.res_title,
-		r.res_cinema,
-		r.res_seat_num,
-		sn.screen_name,
-		sch_movie_date,
-		movie,
-		r.res_pay
+			r.res_code,
+			r.res_paydate,
+			r.res_title,
+			r.res_cinema,
+			r.res_seat_num,
+			sn.screen_name,
+			sch_movie_date,
+			movie,
+			r.res_pay
 		ORDER BY r.res_code DESC
 
 
-
-
   	</select>
+  	
+<select id="resListByDate" resultType="hashmap">
+    SELECT 
+        r.res_code,
+        r.res_paydate AS res_paydate,
+        r.res_title,
+        r.res_cinema,
+        r.res_seat_num,
+        sn.screen_name,
+        COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date,
+        CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', 
+               TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
+        r.res_pay
+    FROM 
+        reservation r
+        LEFT JOIN schedule sc ON r.res_sch_code = sc.sch_code
+        LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code
+        LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code
+    WHERE 
+        r.res_id = #{id} AND
+        YEAR(DATE(r.res_paydate)) = #{year} AND
+        MONTH(DATE(r.res_paydate)) = #{month}
+    GROUP BY 
+        r.res_code,
+        r.res_paydate,
+        r.res_title,
+        r.res_cinema,
+        r.res_seat_num,
+        sn.screen_name,
+        sch_movie_date,
+        movie,
+        r.res_pay
+    ORDER BY r.res_code DESC
+</select>
+
+  	
+  	
+<!--   	<select id="resListByMonth" resultType = "hashmap" > -->
+<!-- 	SELECT  -->
+<!-- 		r.res_code, -->
+<!-- 		DATE_FORMAT(r.res_paydate, '%Y-%m-%d') as res_paydate, -->
+<!-- 		r.res_title, -->
+<!-- 		r.res_cinema, -->
+<!-- 		r.res_seat_num, -->
+<!-- 		sn.screen_name, -->
+<!-- 		COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date, -->
+<!-- 		CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie, -->
+<!-- 		r.res_pay -->
+<!-- 	FROM  -->
+<!-- 		reservation r -->
+<!-- 		LEFT JOIN schedule sc ON r.res_sch_code = sc.sch_code -->
+<!-- 		LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code -->
+<!-- 		LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code -->
+<!-- 	WHERE  -->
+<!-- 		r.res_id = #{id} -->
+<!-- 		AND DATE_FORMAT(r.res_paydate, '%Y-%m') = #{selectedMonth} -->
+<!-- </select> -->
+  	
   	
 	<select id="checkReview" resultType="int" >
 	  SELECT COUNT(*) as A

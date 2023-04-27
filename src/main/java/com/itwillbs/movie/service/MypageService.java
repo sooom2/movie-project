@@ -2,6 +2,7 @@ package com.itwillbs.movie.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,6 +102,24 @@ public class MypageService {
 	public int getPoint(String id) {
 		return mapper.getPoint(id);
 	}
+
+//	public List<HashMap<String, String>> resList(String id, int year, int month) {
+//		return mapper.resList(id,year,month);
+//	}
+
+	public List<HashMap<String, String>> resListByDate(String id, int year, int month) {
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("id", id);
+	    map.put("year", year);
+	    map.put("month", month);
+	    return mapper.resListByDate(map);
+
+	}
+
+//	public List<HashMap<String, String>> resListByDate(String id, Integer year, Integer month) {
+//		return mapper.resListByDate(id,year,month);
+//	}
+
 
 
 

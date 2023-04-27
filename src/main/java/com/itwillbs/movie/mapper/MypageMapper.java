@@ -2,6 +2,7 @@ package com.itwillbs.movie.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.itwillbs.movie.vo.MemberVO;
 
@@ -38,6 +39,8 @@ public interface MypageMapper {
 
 	List<HashMap<String, String>> resList(String id);
 
+//	List<HashMap<String, String>> resList(String id, int year, int month);
+
 	int checkReview(String id);
 
 	List<HashMap<String, String>> likeList(String id);
@@ -49,6 +52,13 @@ public interface MypageMapper {
 	HashMap<String, String> resMovie(String id);
 
 	int getPoint(String id);
+
+	List<HashMap<String, String>> resListByDate(Map<String, Object> map);
+
+//	List<HashMap<String, String>> resListByDate(Map<String, Object> map);
+
+//	List<HashMap<String, String>> resListByDate(String id, Integer year, Integer month);
+
 
 
 

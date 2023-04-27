@@ -13,6 +13,75 @@
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
+<script>
+$(document).ready(function(){
+	setDateBox();
+
+	$("#year, #month").change(function(){
+		var year = parseInt($("#year option:selected").val());
+		var month = parseInt($("#month option:selected").val());
+		
+		$.ajax({
+		    type: "GET",
+		    url: "mypageRlist",
+		    datatype:"json",		
+		    data: {
+		        year: year,
+		        month: month
+		    },
+		    success: function(result) {
+		    	
+		    	var resListHtml = "";
+		    	
+		        for(let res of result){
+		        	
+		          resListHtml += "<tr>" +
+		            "<td>" + res.res_code + "</td>" +
+		            "<td>" + res.res_paydate + "</td>" +
+		            "<td>" + res.res_cinema + "</td>" +
+		            "<td>" + res.res_seat_num + "</td>" +
+		            "<td>" + res.screen_name + "</td>" +
+		            "<td>" + res.res_seat_num + "</td>" +
+		            "<td>" + res.sch_movie_date + "</td>" +
+		            "<td>" + res.movie + "</td>" +
+		            "<td>" + res.res_pay.toLocaleString('en') + "</td>" +
+		          "</tr>";
+		        }
+		        $("#resList2").html(resListHtml);
+				    	
+		    }
+		});
+	});
+});
+
+function setDateBox(){
+	var dt = new Date();
+	var year = dt.getFullYear();
+	var month = dt.getMonth()+1;
+
+	for(var y = (year); y >=(year-5); y--){
+		if(year == y) {
+			$("#year").append("<option selected value='"+ y +"'>"+ y + "년" +"</option>");
+		}else{
+			$("#year").append("<option value='"+ y +"'>"+ y + "년" +"</option>");
+		}
+	}
+	for(var i = 1; i <= 12; i++){
+		if(month == i) {
+			$("#month").append("<option selected value='"+ i +"'>"+ i + "월" +"</option>");
+		}else{
+			$("#month").append("<option value='"+ i +"'>"+ i + "월" +"</option>");
+		}
+	}
+}
+
+
+
+
+
+</script>
+
+
 </head>
 <body>
 
@@ -70,56 +139,19 @@
 					<li><a href="mypageRv" class=" ">영화리뷰</a></li>
 				</ul>
 			</div>
-			<script id="template-headerlatestcoupon-list"
-				type="text/x-jquery-tmpl">
-    <li><a class="btn-cp" onclick="return false;">${CouponName}</a></li>
-</script>
-			<script id="template-headerlatestlogin-list"
-				type="text/x-jquery-tmpl">    
-  				  <li>${Description} ${Date} - ${IP}</li>    
-			</script>
-			<script id="template-headerlatestreserve-info"
-				type="text/x-jquery-tmpl">
-    <h3>최근 예매 <span class="num">( 0 )</span></h3>
-    <img src="https://file.cineq.co.kr/i.aspx?movieid=${MovieCode}&size=210" class="poster" />
-    <table class="table-recent">
-        <tr>
-            <th>영화</th>
-            {{if MovieProperty != ""}}
-            <td class="title">${MovieName}<span class="aux">(${MovieProperty})</span></td>
-            {{else}}
-            <td class="title">${MovieName}</td>
-            {{/if}}
-        </tr>
-        <tr>
-            <th>예매번호</th>
-            <td class="serial-no">${SettleId}</td>
-        </tr>
-        <tr>
-            <th>예매일</th>
-            <td>${SettleCreateDate}</td>
-        </tr>
-        <tr>
-            <th>상영일시</th>
-            <td>${PlayDate}</td>
-        </tr>
-        <tr>
-            <th>영화관</th>
-            <td>${TheaterName}</td>
-        </tr>
-        <tr>
-            <th>좌석</th>
-            <td>${SeatInfo}</td>
-        </tr>
-    </table>
-</script>
 
 
 
 			<div class="section group section-mypage">
 				<div class="wrap-list">
-					<div style="margin-top: -40px; margin-bottom: 10px;"
+					<div style="margin-top: -30px; margin-bottom: 10px; font-weight: 400; font-size: 20px;"
 						>예매내역</div>
+						<div style = "text-align: right;">
+							<select class="form-control input-sm" id="year" name="year">
+							</select>
+							<select class="form-control input-sm" id="month" name="month">
+							</select>
+						</div><br>
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
 							<tr>			
@@ -134,7 +166,7 @@
 								<th>결제금액</th>	<!--res_pay -->
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="resList2">
 						<c:forEach var = "resList" items="${resList}">
 							<tr>
 								<td>${resList.get("res_code")}</td>
@@ -151,7 +183,6 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- wrap-->
 			</div>
 
 
