@@ -35,16 +35,20 @@ $(document).ready(function(){
 		    	
 		        for(let res of result){
 		        	
-		          resListHtml += "<tr>" +
+		    	 let paydate = new Date(res.res_paydate);
+		         let formattedPaydate = paydate.getFullYear() + "-" + (paydate.getMonth() + 1).toString().padStart(2, '0') + "-" + paydate.getDate().toString().padStart(2, '0');
+		         let formattedPay = new Intl.NumberFormat('en-US').format(res.res_pay);
+		         
+		         resListHtml += "<tr>" +
 		            "<td>" + res.res_code + "</td>" +
-		            "<td>" + res.res_paydate + "</td>" +
+		            "<td>" + formattedPaydate  + "</td>" +
 		            "<td>" + res.res_cinema + "</td>" +
 		            "<td>" + res.res_seat_num + "</td>" +
 		            "<td>" + res.screen_name + "</td>" +
 		            "<td>" + res.res_seat_num + "</td>" +
 		            "<td>" + res.sch_movie_date + "</td>" +
 		            "<td>" + res.movie + "</td>" +
-		            "<td>" + res.res_pay.toLocaleString('en') + "</td>" +
+		            "<td>" + formattedPay + "</td>" +
 		          "</tr>";
 		        }
 		        $("#resList2").html(resListHtml);

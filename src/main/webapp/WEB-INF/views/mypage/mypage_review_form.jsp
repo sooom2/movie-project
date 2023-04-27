@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -192,7 +193,18 @@ function confirmDelete(rev_code) {
 					
 					<form class="mystar" name="rev_rating" id="myform" action="mypageRvPro" method="post">
 						<fieldset>
-							<span class="text-bold" >별점을 선택하고 최근 예매하신 <span style="color: purple; text-shadow: 1px 1px 2px grey; " > ${resMovie.get("res_title")} </span>영화의 리뷰를 작성해주세요</span>
+<%-- 								<span style="color: purple; text-shadow: 1px 1px 2px grey; " > ${resMovie.get("res_title")} </span> --%>
+						<c:set var="revList1" value="${revList}"/>
+						<c:set var="movieTitle" value="${resMovie.get('res_title')}"/>
+							<c:choose>	
+                               <c:when test ="${fn:contains(revList1,movieTitle) }">
+                               		<span  style="color: #ff000a; font-size: 108%; vertical-align: super; font-weight: 400; "> 작성 가능한 영화의 리뷰가 없습니다 </span>
+                               </c:when>
+                               <c:otherwise>
+                               		<span class="text-bold" >별점을 선택하고 최근 예매하신 <span style="color: purple; text-shadow: 1px 1px 2px grey; " > ${resMovie.get("res_title")} </span> 영화의 리뷰를 작성해주세요</span>
+                               </c:otherwise>
+                           </c:choose>
+
 							<input type="radio" name="rev_rating" value="5" id="rate1">
 							<label for="rate1">★</label> 
 							<input type="radio" name="rev_rating" value="4" id="rate2">
@@ -205,7 +217,7 @@ function confirmDelete(rev_code) {
 							<label for="rate5">★</label>
 						</fieldset>
 						<div>
-							<textarea id="reviewContents" name="rev_content" placeholder="아이무비 리뷰이벤트 !!! 리뷰작성시 500포인트를 지급합니다."></textarea>
+							<textarea id="reviewContents" name="rev_content" style="font-size: 108%; vertical-align: middle;" placeholder=" &#13;&#10 << 아이무비 리뷰이벤트  >> &#13;&#10 최근 예매하신 영화의 리뷰작성하시면 &#13;&#10 500포인트를 지급합니다."></textarea>
 						</div>
 					<section id="reviewbtnArea">
 						<div ><input type="submit" value="리뷰등록">&nbsp;&nbsp;</div>
