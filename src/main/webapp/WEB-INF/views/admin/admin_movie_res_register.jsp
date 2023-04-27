@@ -106,6 +106,7 @@ function modalClose(){
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">영화예매관리</h3>
+						<h6>오늘의 예매건수 : <b style="color: #673bd4">${resCount }</b>건</h6>	
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
