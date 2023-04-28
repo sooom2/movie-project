@@ -12,7 +12,63 @@
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-<jsp:include page="../nav.jsp" />   
+<jsp:include page="../nav.jsp" />
+<script type="text/javascript">
+    $(document).ready(function () {
+   	 	 var $likeBtn = $('.icon.heart');
+    	
+        $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
+            $(this).parent().addClass("on");
+            if ($(this).hasClass("info")) {
+                $(this).parent().removeClass("down");
+                $(this).parent().addClass("up");
+            }
+            if ($(this).hasClass("rsv")) {
+                $(this).parent().removeClass("up");
+                $(this).parent().addClass("down");
+            }
+        });
+        
+        $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
+            $(this).closest("ul").find("span.over").removeClass("on");
+        });
+		
+
+     
+       $likeBtn.click(function() {
+       		var info_movie_code = $(this).closest("li").data("moviecode")+"";
+       	
+//        		$likeBtn.toggleClass('active');
+       	// ajax -> likeInsert(@controller)
+       	// ajax : context : this를 써줘야 success에서 this 사용 가능
+	       	$.ajax({
+	       		url : 'likeClick',
+	       		type : 'POST',
+	       		context : this,
+	       		data : {
+	       			info_movie_code : info_movie_code
+	       		},
+	       		success : function(result){
+	       			alert(result.msg)		// [좋아요 성공, 좋아요 취소]
+       	
+	       			
+	       			if(result.resultType == "insert"){
+	       				$(this).find('img').attr({
+	       					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
+	       					alt : '찜하기 완료'
+	       				})
+	       			}else if(result.resultType = "delete"){
+	       				$(this).find('img').attr({
+	       					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
+	       					alt : "찜하기"
+	       				})
+	       			}
+	       			$(this).find('span').html(result.like_count)
+	       		}
+	       	}) 
+	    });
+	});
+</script>   
 <c:if test = "${not empty sessionScope.sId }" >
 	<c:set var="likeList" value="${likeList}"/>
 </c:if>
@@ -53,7 +109,7 @@
 											<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
 										</c:when>
 										<c:otherwise>
-											<img src="resources/images/ico/before-like.png" alt="찜하기">	
+											<img src="${pageContext.request.contextPath}/resources/images/ico/before-like.png" alt="찜하기">	
 										</c:otherwise>
 									</c:choose>
 									<span class="likeNum">${movie.like_count }</span>
@@ -67,62 +123,7 @@
    			</div>
 		</div>
 	</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-    	${movie.info_status } 
-    	console.log($(".rsv").data("movieStatus"));
-    	
-        $(".section-movie-list").on("mouseenter", "ul > li > span.over > a", function () {
-            $(this).parent().addClass("on");
-            if ($(this).hasClass("info")) {
-                $(this).parent().removeClass("down");
-                $(this).parent().addClass("up");
-            }
-            if ($(this).hasClass("rsv")) {
-                $(this).parent().removeClass("up");
-                $(this).parent().addClass("down");
-            }
-        });
-        $(".section-movie-list").on("mouseleave", "ul>li> span.over", function () {
-            $(this).closest("ul").find("span.over").removeClass("on");
-        });
-		
 
-       var $likeBtn = $('.icon.heart');
-       $likeBtn.click(function() {
-       	// ajax -> likeInsert(@controller)
-       	// ajax : context : this를 써줘야 success에서 this 사용 가능
-       	var info_movie_code = $(this).closest("li").data("moviecode")+"";
-       	
-       	$likeBtn.toggleClass('active');
-       	
-       	$.ajax({
-       		url : 'likeClick',
-       		type : 'POST',
-       		context : this,
-       		data : {
-       			info_movie_code : info_movie_code
-       		},
-       		success : function(result){
-       			alert(result.msg)
-       			
-       			if(result.resultType == "insert"){
-       				$(this).find('img').attr({
-       					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-       					alt : '찜하기 완료'
-       				})
-       			}else if(result.resultType = "delete"){
-       				$(this).find('img').attr({
-       					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-       					alt : "찜하기"
-       				})
-       			}
-       			$(this).find('span').html(result.like_count)
-       		}
-       	}) 
-    });
-});
-   </script>
 	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

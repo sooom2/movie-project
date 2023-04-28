@@ -47,7 +47,7 @@ function modalClose() {
 	
 }
 $(function(){
-	$("form").submit(function(){
+	$(".registPro").submit(function(){
 		
 		if($("#info_movie_code").val() == null || $("#info_movie_code").val() == ""){
 			alert("영화 코드를 확인해주세요.")
@@ -164,7 +164,7 @@ function previewImage(targetObj, View_area) {
 									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
 								</div>
 								<div class="card-body">
-									<form action="registMoviePro">
+									<form action="registMoviePro" class= "registPro">
 									<div class="row mb-4">
                                       	<h5 style="text-align:left">포스터등록</h5>
                                    		<div class="col-md-3 moviePoster">
@@ -244,16 +244,17 @@ function previewImage(targetObj, View_area) {
 				<!-- 등록 -->
 <script>
 var data;	// ajax return을 호출 받기 위한 전역 변수 선언
-	$(function(){
-		// ajax에서 날짜를 보내기 위해 만든 부분
-	    var date = new Date();
-	    var year = date.getFullYear();
-	    var month = ("0" + (1 + date.getMonth())).slice(-2);
-	    var day = ("0" + date.getDate()).slice(-2);
+//ajax에서 날짜를 보내기 위해 만든 부분
+var date = new Date();
+var year = date.getFullYear();
+var month = ("0" + (1 + date.getMonth())).slice(-2);
+var day = ("0" + date.getDate()).slice(-2);
 
-	    var targetDay = year + month + day;
-	    console.log("검색 날짜 : " + targetDay);
-		//	    
+var targetDay = year + month + day;
+console.log("검색 날짜 : " + targetDay);
+//	    
+	$(function(){
+		
 	    
 		$.ajax({
 			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?&collection=kmdb_new2',
@@ -360,24 +361,27 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 	   	info_enddate = formattedDateString;
 	   	
 	   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
-	    
-	    
-	    // 지금 무비 포스터가 input hidden으로 넣어둔 상태 
 	    $('input[name=info_movie_poster]').attr('value',info_movie_poster);	//포스터		
-		$('input[name=info_movie_code]').prop('value',info_movie_code);		//영화코드
+		$('input[name=info_movie_code]').attr('value',info_movie_code);		//영화코드
 		$('input[name=info_movie_title]').attr('value',info_movie_title);		//영화제목
 		$('input[name=info_year]').attr('value',info_year);		//제작년도
 		$('input[name=info_time]').attr('value',runningTime);		//상영시간
-		$('input[name=info_showdate]').attr('value',info_showdate);		//상영일
+		$('input[name=info_showdate]').attr('value',info_showdate); //상영일
+		
+// 		let i = $("#api > option:selected").attr('num')
+// 		if(info_showdate < targetDay){
+// 			$('input[name=info_status]').attr('value','특별상영');
+// 			option:selected
+// 		}
+		
+			
 		$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
 		$('input[name=info_story]').attr('value',info_story);			//줄거리
 		$('input[name=info_director]').attr('value',info_director);			//감독
 		$('input[name=info_nation]').attr('value',info_nation);			//제작국가
 		$('input[name=info_rating]').attr('value',info_rating);			//관람등급
 		$('input[name=info_genre]').attr('value',info_genre);			//장르
-		$('input[name=info_still]').attr('value',info_still);			//스틸컷
 		<!-- status DB 작업 -->
-		console.log(info_still);
 	}
 
 </script>	
@@ -418,7 +422,7 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<div class="row mb-3">
 															<div class="col-md-6">
 																<div class="form-floating mb-3 mb-md-0">
-																	<input class="form-control" id="info_movie_code" name="info_movie_code" type="text"  />
+																	<input class="form-control" id="info_movie_code" name="info_movie_code" type="text"  value="" />
 																	<label for="info_movie_code">영화코드</label>
 																</div>
 															</div>
@@ -498,7 +502,6 @@ var data;	// ajax return을 호출 받기 위한 전역 변수 선언
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
 														<input type="hidden" name = "info_movie_poster">
-														<input type="hidden" name = "info_still">
 														<!-- hidden 영역 -->
 														<div class="row">
 															<div class="d-grid">

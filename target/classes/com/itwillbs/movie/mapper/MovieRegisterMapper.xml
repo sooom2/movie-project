@@ -62,7 +62,6 @@
 				   , #{info_nation}
 				   , #{info_rating}
 				   , #{info_genre}
-				   , #{info_still}
 				   , #{info_status}
 			)
 </insert>
