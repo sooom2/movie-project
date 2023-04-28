@@ -271,7 +271,17 @@ public class CustomerController {
 	
 	// 내가 문의한 내용 목록
 	@RequestMapping(value = "one_list", method = {RequestMethod.GET, RequestMethod.POST})
-	public String oneList(@RequestParam HashMap<String, String> map, Model model) {
+	public String oneList(@RequestParam HashMap<String, String> map, HttpSession session, Model model) {
+		String id = (String)session.getAttribute("sId");
+		System.out.println("one_list 시작 map : " + map);
+		if(id != null && !id.equals("")) {
+			HashMap<String, String> member = storeService.selectMemberId(id);
+			model.addAttribute("paramMap", member);
+			map.put("memberName", member.get("member_name")); 
+			map.put("memberTel", member.get("member_tel"));
+			map.put("memberEmail", member.get("member_email"));
+		}
+		
 		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
 			map.put("pageNum", "1");
 			map.put("startNum", "0");
@@ -282,6 +292,7 @@ public class CustomerController {
 			HashMap<String, String> countMap = oneBoardList.get(0);
 			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
 		}
+		System.out.println("paramMap " + model.getAttribute("paramMap"));	// ID있을떄 !null, id없을때 null
 		model.addAttribute("paramMap", map);
 		model.addAttribute("oneBoardList", oneBoardList);
 		System.out.println("oneList 컨트롤러" + model);
@@ -296,18 +307,16 @@ public class CustomerController {
 	@RequestMapping(value = "one_detail_pro", method = {RequestMethod.GET, RequestMethod.POST})
 	public boolean oneDetailPro(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
 //		response.setCharacterEncoding("UTF-8");
+		
 		model.addAttribute("map", map);
 		System.out.println("-==================================="+map);
 		List<HashMap<String, String>> isCorrect = boardService.checkOnePasswd(map);
 		List<HashMap<String, String>> oneBoardList = null;
 		System.out.println("=====문의 목록" + isCorrect);
 		System.out.println(!isCorrect.isEmpty());
+		
+		
 		if(!isCorrect.isEmpty()) {
-			if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
-				map.put("pageNum", "1");
-				map.put("startNum", "0");
-				map.put("endNum", "10");
-			}
 			
 			// 글 번호
 			oneBoardList = boardService.getBoardList(map);

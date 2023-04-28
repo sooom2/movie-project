@@ -99,7 +99,7 @@
 <!-- 					</div> -->
 <!-- 					</li> -->
 				</li>
-				<li id="cs"><a href="cc_home" class="" onmouseover=")">고객센터</a>
+				<li id="cs"><a href="cc_home" class="" onmouseover="">고객센터</a>
 					<div class="tertiary">
 						<ul>
 							<li><a href="faq" class="" onmouseover="">자주묻는 질문</a></li>

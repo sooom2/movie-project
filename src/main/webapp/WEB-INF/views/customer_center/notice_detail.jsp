@@ -69,10 +69,12 @@
 				<div class="prev-next">
 					<div class="line prev">
 						<p class="tit">이전</p>
-						<c:if test=""> 
-<%-- 						${(map.notice_code > ma } --%>
-							<p class="link">이전글이 없습니다.</p>
-						</c:if>
+						<p class="link">이전 글이 없습니다.</p>
+<%-- 						<p class="notice_detail?notice_code=${noticeBoard.notice_code }&prevNum=${noticeBoard.prevNum }&nextNum${noticeBoard.nextNum }">${noticeBoard.notice_subject }</p> --%>
+<%-- 							<c:if test="${noticeBoard.prevNum ne '0' } "> --%>
+<%-- 								<a href="notice_detail?notice_code=${noticeBoard.notice_code }&prevNum=${noticeBoard.prevNum }&nextNum${noticeBoard.nextNum }"></a> --%>
+<%-- 							</c:if></p> --%>
+						
 					</div>
 					<div class="line next">
 						<p class="tit">다음</p>
@@ -81,26 +83,26 @@
 					</div>
 				</div>
 				
-				<nav class="pagination">
-					<c:if test="${1 < paramMap.pageNum }">
-						<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
-						<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
-					</c:if>
-					<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
-						<c:choose>
-							<c:when test="${paramMap.pageNum eq status.index+1}">
-								<strong class="active">${status.index+1}</strong>
-							</c:when>
-							<c:otherwise>
-								<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
-						<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
-						<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
-					</c:if>
-				</nav>
+<!-- 				<nav class="pagination"> -->
+<%-- 					<c:if test="${1 < paramMap.pageNum }"> --%>
+<!-- 						<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a> -->
+<%-- 						<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a> --%>
+<%-- 					</c:if> --%>
+<%-- 					<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status"> --%>
+<%-- 						<c:choose> --%>
+<%-- 							<c:when test="${paramMap.pageNum eq status.index+1}"> --%>
+<%-- 								<strong class="active">${status.index+1}</strong> --%>
+<%-- 							</c:when> --%>
+<%-- 							<c:otherwise> --%>
+<%-- 								<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a> --%>
+<%-- 							</c:otherwise> --%>
+<%-- 						</c:choose> --%>
+<%-- 					</c:forEach> --%>
+<%-- 					<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }"> --%>
+<%-- 						<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a>  --%>
+<%-- 						<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a> --%>
+<%-- 					</c:if> --%>
+<!-- 				</nav> -->
 				
 
 				<div class="btn-group pt40">

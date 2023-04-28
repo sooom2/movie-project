@@ -76,13 +76,14 @@
 					</div>
 				</div>
 				<div class="btn-group pt40">
-				<form >
+				<form action ="one_list">
 					<input type="hidden" name="memberName" value="${paramMap.memberName}">
 					<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
 					<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
-				</form>
-					<a href="one_list?memberName=${paramMap.memberName}&memberTel=${paramMap.memberTel}&memberEmail=${paramMap.memberEmail}" class="button large listBtn" title="목록">목록</a>
+					<button type ="submit" class="button large listBtn" title="목록">목록</button>
 					<a class="button large deleteBtn inq-delete" title="삭제" onclick="deleteOne()">삭제</a>
+				</form>
+<%-- 					<a href="one_list?memberName=${paramMap.memberName}&memberTel=${paramMap.memberTel}&memberEmail=${paramMap.memberEmail}" class="button large listBtn" title="목록">목록</a> --%>
 				</div>
 			</div>
 		</div>

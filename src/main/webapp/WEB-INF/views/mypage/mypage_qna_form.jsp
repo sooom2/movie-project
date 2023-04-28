@@ -114,8 +114,13 @@ function goDetail(table_name, code) {
 			<div class="section group section-mypage">
 				<!-- 매점교환권 -->
 				<div class="wrap-list">
+					<form >
+						<input type="hidden" name="memberName" value="${paramMap.memberName}">
+						<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
+						<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
+					</form>
 					<div style="margin-top: -40px; margin-bottom: 10px;">나의문의내역</div> 
-					<div style="text-align: right;"><a href="one_list"><button style="color: purple;">더보기</button></a></div>
+					<div style="text-align: right;"><a href="one_list?memberName=${paramMap.memberName}&memberTel=${paramMap.memberTel}&memberEmail=${paramMap.memberEmail}"><button style="color: purple;">더보기</button></a></div>
 					<form id="iForm">
 					<input type="hidden" name="table_name" value="">
 					<input type="hidden" name="code" value="">

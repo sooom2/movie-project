@@ -277,7 +277,9 @@
 	
 	<!-- 공지사항 목록 -->
 	<select id="selectNoticeBoardList" resultType="hashmap">
-		SELECT ROW_NUMBER() OVER(ORDER BY notice_code ) AS rownum, nb.*, count(*) over() AS totalCnt
+		SELECT ROW_NUMBER() OVER(ORDER BY notice_code ) AS rownum, nb.*, count(*) over() AS totalCnt,
+			   LAG(notice_code, 1, 0) OVER(ORDER BY notice_code DESC) AS prevNum,
+			   LEAD(notice_code, 1, 0) OVER(ORDER BY notice_code DESC) AS nextNum
 			FROM notice_board nb
 			WHERE 1=1
 			<if test="searchKeyword != null and !searchKeyword.equals('')">
