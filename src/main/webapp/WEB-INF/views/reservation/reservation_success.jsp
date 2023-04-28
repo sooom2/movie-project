@@ -33,7 +33,6 @@
 	<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
 	<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
 	<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
-	<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
 	<input type="hidden" id="genre" name="genre" value="${param.genre }">
 	<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 	<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
@@ -76,8 +75,13 @@
 	                </div>
 	                <!-- right -->
 	                <div class="right">
-	                    <!-- goods-info -->
 	                    <div class="goods-info">
+	                            <div class="line">
+	                                <p class="tit"><span class="line32">예매번호</span></p>
+	                                <div class="cont">
+	                                <p class="txt">${param.resCode }</p>
+	                                </div>
+	                            </div>
 	                            <div class="line">
 	                                <p class="tit"><span class="line32">영화명</span></p>
 	                                <div class="cont">
@@ -136,8 +140,19 @@
 	        </div>
 		</div>
 	</div>
-
+<script type="text/javascript">
+// 중복 결제 방지
+function NotReload(){
+    if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+        event.keyCode = 0;
+        event.cancelBubble = true;
+        event.returnValue = false;
+    } 
+}
+document.onkeydown = NotReload;
+</script>
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
+
 </html>

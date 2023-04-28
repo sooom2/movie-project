@@ -21,12 +21,14 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/front.js?v=1680673895731"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/app.js?v=1680673895731"></script>
 	<style type="text/css">
-		.reservation-pc .body .cinema-list .list .step2 {overflow: auto;}
+		.reservation-pc .body .cinema-list .list .step2 {
+			overflow: auto;
+		}
 		.movieListDiv {
-		height : 200px;
-		display : flex;
-		justify-content : center;
-		align-items : center;
+			height : 200px;
+			display : flex;
+			justify-content : center;
+			align-items : center;
 		}
 	
 		.mvTimeLineDiv {
@@ -34,6 +36,9 @@
 			display : flex;
 			justify-content : center;
 			align-items : center;
+		}
+		.list {
+			overflow : auto;
 		}
 	</style>
 </head>
@@ -59,7 +64,6 @@
 <!-- HidRating 12세관람가 -->
 <!-- schCd 9 -->
 <!-- CinemaNm 부산대연점 -->
-<!-- showDate 2023-03-01    //개봉일 -->
 <!-- genre 드라마 -->
 <!-- ScreenNm 2관 -->
 <!-- MovieDate  2023-04-22-->
@@ -83,13 +87,13 @@
 				<input type="hidden" id="HidRating" name="HidRating" value="">
 				
 				<input type="hidden" id="schCd" name="schCd" value="">
-				<input type="hidden" id="showDate" name="showDate" value="">
 				<input type="hidden" id="genre" name="genre" value="">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
 				
 				<input type="hidden" id="MovieDate" name="MovieDate" value="">
 				<input type="hidden" id="seatCnt" name="seatCnt" value="0">
 				
+				<input type="hidden" id="CnItemCd" name="CnItemCd" value="">
 				
 
 				
@@ -180,8 +184,8 @@
 											<h5 class="r-h5">영화</h5>
 										</div>
 										<div class="tab2">
-											<a href="#" class="btnMovieTab" data-tab="boxoffice">선호장르</a> 
-											<a href="#" class="btnMovieTab active" data-tab="name">전체</a>
+											<a href="#" class="btnMovieTab" data-tab="prefer">선호장르</a> 
+											<a href="#" class="btnMovieTab active" data-tab="all">전체</a>
 										</div>
 										<div class="list">
 											<div class="scrollbar-inner">
@@ -368,6 +372,88 @@ var screenCd = ""; 	// 상영관코드
 var screenName = ""; // 상영관명
 var mvTime = "";	// 상영시간
 var mvDay = "";		// 상영일
+
+	// 영화 리스트
+	function moviesList() {
+		console.log("moviesList()");
+		$(".btnMvItem").hide();
+		$.ajax({													
+ 			type: "GET",
+ 			url: "moviesList",
+ 			data: { 
+ 				CnItemCd : CnItemCd
+ 			},
+ 			dataType: "json",
+ 			success: function(response) { 
+ 				console.log("btnCnItem : 요청처리성공");
+ 				for(let movie of response) {
+ 					let movieTitle = movie.info_movie_title;
+ 					let movieCode = movie.info_movie_code;
+ 					let movieImg = movie.info_movie_poster;
+ 					let movieRating = movie.info_rating;
+ 					let genre = movie.info_genre;
+ 					
+ 					
+ 					var str = "";
+ 					str += "<li>";
+ 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
+ 					str += "' data-rat='" + movieRating;
+ 					str += "' data-url='" + movieImg;
+ 					str += "' data-genre='" + genre;
+ 					str += "' title='" + movieTitle + "'>";
+ 					str += movieTitle + "</button>";
+ 					str += "</li>";
+ 					console.log(str);
+ 					$("#movieList").append(str);
+ 				}
+ 			},
+ 			error: function(xhr, textStatus, errorThrown) {
+ 				console.log("btnCnItem : 요청처리실패");
+ 			}
+ 		});
+}
+
+	// 선호 영화 리스트
+	function preferMoviesList() {
+		console.log("preferMoviesList()");
+		$(".btnMvItem").hide();
+		$.ajax({													
+ 			type: "GET",
+ 			url: "preferMoviesList",
+ 			data: { 
+ 				CnItemCd : CnItemCd
+ 			},
+ 			dataType: "json",
+ 			success: function(response) { 
+ 				console.log("btnCnItem : 요청처리성공");
+ 				for(let movie of response) {
+ 					let movieTitle = movie.info_movie_title;
+ 					let movieCode = movie.info_movie_code;
+ 					let movieImg = movie.info_movie_poster;
+ 					let movieRating = movie.info_rating;
+ 					let genre = movie.info_genre;
+ 					
+ 					
+ 					var str = "";
+ 					str += "<li>";
+ 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
+ 					str += "' data-rat='" + movieRating;
+ 					str += "' data-url='" + movieImg;
+ 					str += "' data-genre='" + genre;
+ 					str += "' title='" + movieTitle + "'>";
+ 					str += movieTitle + "</button>";
+ 					str += "</li>";
+ 					console.log(str);
+ 					$("#movieList").append(str);
+ 				}
+ 			},
+ 			error: function(xhr, textStatus, errorThrown) {
+ 				console.log("btnCnItem : 요청처리실패");
+ 			}
+ 		});
+}
+
+
 
 	// 상영시간
 	function getTimeList() {
@@ -588,7 +674,7 @@ var mvDay = "";		// 상영일
 			var str = "<div class='movieListDiv'>극장을 먼저 선택해주세요.</div>";
 			$("#movieList").append(str);
 		}
-		if ($("#MovieNm").val() == "" && $("#showDate").val() == "") {
+		if ($("#MovieNm").val() == "" && $("#MovieDate").val() == "") {
 			var str = "<div class='mvTimeLineDiv'>예매할 영화와 날짜를 선택후 <br>";
 			str += "상영시간 조회가 가능합니다</div>";
 			$(".mvTimeLine").append(str);
@@ -625,46 +711,45 @@ var mvDay = "";		// 상영일
 			$(".movieListDiv").hide();
 			CnItemCd = $(this).data("cd");
 			var cinemaNm = $(this).attr("title");
+			$("#CnItemCd").val(CnItemCd);
 			$("#CinemaNm").val(cinemaNm);
 			$(".btnMvItem").hide();
-			$.ajax({													
-	 			type: "GET",
-	 			url: "moviesList",
-	 			data: { 
-	 				CnItemCd : CnItemCd
-	 			},
-	 			dataType: "json",
-	 			success: function(response) { 
-	 				console.log("btnCnItem : 요청처리성공");
-	 				for(let movie of response) {
-	 					let movieTitle = movie.info_movie_title;
-	 					let movieCode = movie.info_movie_code;
-	 					let movieImg = movie.info_movie_poster;
-	 					let movieRating = movie.info_rating;
-	 					let showDate = movie.info_showdate;
-	 					let genre = movie.info_genre;
+			moviesList();
+			// ajax 함수로 따로 뺐음
+// 			$.ajax({													
+// 	 			type: "GET",
+// 	 			url: "moviesList",
+// 	 			data: { 
+// 	 				CnItemCd : CnItemCd
+// 	 			},
+// 	 			dataType: "json",
+// 	 			success: function(response) { 
+// 	 				console.log("btnCnItem : 요청처리성공");
+// 	 				for(let movie of response) {
+// 	 					let movieTitle = movie.info_movie_title;
+// 	 					let movieCode = movie.info_movie_code;
+// 	 					let movieImg = movie.info_movie_poster;
+// 	 					let movieRating = movie.info_rating;
+// 	 					let genre = movie.info_genre;
 	 					
 	 					
-	 					$("#showDate").val(showDate);
-	 					$("#genre").val(genre);
-	 					
-	 					
-	 					var str = "";
-	 					str += "<li>";
-	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
-	 					str += "' data-rat='" + movieRating;
-	 					str += "' data-url='" + movieImg;
-	 					str += "' title='" + movieTitle + "'>";
-	 					str += movieTitle + "</button>";
-	 					str += "</li>";
-	 					console.log(str);
-	 					$("#movieList").append(str);
-	 				}
-	 			},
-	 			error: function(xhr, textStatus, errorThrown) {
-	 				console.log("btnCnItem : 요청처리실패");
-	 			}
-	 		});
+// 	 					var str = "";
+// 	 					str += "<li>";
+// 	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
+// 	 					str += "' data-rat='" + movieRating;
+// 	 					str += "' data-url='" + movieImg;
+// 	 					str += "' data-genre='" + genre;
+// 	 					str += "' title='" + movieTitle + "'>";
+// 	 					str += movieTitle + "</button>";
+// 	 					str += "</li>";
+// 	 					console.log(str);
+// 	 					$("#movieList").append(str);
+// 	 				}
+// 	 			},
+// 	 			error: function(xhr, textStatus, errorThrown) {
+// 	 				console.log("btnCnItem : 요청처리실패");
+// 	 			}
+// 	 		});
 			
 			$(".btnCnItem").parent().removeClass("check");
 			if ($("#CinemaCd").val() == $(this).data("cd")) {
@@ -680,12 +765,25 @@ var mvDay = "";		// 상영일
 	
 // 선호장르 | 전체(default) 클릭
 		$(".btnMovieTab").on("click", function(e) { 
+// 			$("#movieList").hide();
 			e.preventDefault();
 			$(".btnMovieTab").removeClass("active");
 			$(this).addClass("active");
-			$("#Sort").val($(this).data("tab"));
+			var movieTab = $(this).data("tab");
+			var CnItemCd = $("#CnItemCd").val()
 			
-			makeMovieList();
+			
+			
+			if (movieTab == "all") {
+				moviesList();
+			}
+			if (movieTab == "prefer") {
+				alert(CnItemCd)
+				preferMoviesList();
+			}
+			
+			
+			
 		});
 		
 
@@ -693,7 +791,8 @@ var mvDay = "";		// 상영일
 // 영화리스트 클릭
 		$(document).on("click", ".btnMvItem", function(e) {
 			MvItemCd = $(this).data("cd");
-			console.log("MvItem 클릭 MvItemCd : " + MvItemCd);
+			var genre = $(this).data("genre");
+			$("#genre").val(genre);
 			e.preventDefault();
 			$("#movieList li").removeClass("check");
 			if ($("#MovieCd").val() == $(this).data("cd")) {
@@ -748,13 +847,11 @@ var mvDay = "";		// 상영일
 			var CinemaCd = $("#CinemaCd").val();
 			var MovieCd = $("#MovieCd").val();
 			var ScreenTime = $("#ScreenTime").val();
-			
 			if ((CinemaCd != "all") && (MovieCd != "all") && (ScreenTime != "all")) {
 				$("#dataForm").submit();
 			} else {
 				alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
 			}
-			
 		});
 		
 		

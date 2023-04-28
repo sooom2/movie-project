@@ -37,7 +37,16 @@ public class CustomerController {
 	
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
-	public String ccHome() {
+	public String ccHome(@RequestParam HashMap<String, String> map, Model model) {
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("startNum", "0");
+			map.put("endNum", "5");
+		}
+		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
+		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		model.addAttribute("faqBoardList", faqBoardList);
+		System.out.println("고객센터 홈 " + model);
 		return "customer_center/cc_home";
 	}
 	
@@ -66,13 +75,16 @@ public class CustomerController {
 	// 공지사항 상세
 	@RequestMapping(value = "notice_detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String noticeDetail(@RequestParam HashMap<String, String> map, Model model) {
-		
+		model.addAttribute("paramMap", map);
+		System.out.println(map);
 		map = boardService.getNoticeDetail(map);
 		model.addAttribute("map", map);
 		
 //			List<BoardVO> lostBoardList = boardService.getLostBoardList();
 //			model.addAttribute("lostBoardList", lostBoardList);
-				
+		
+		System.out.println("공지사항 상세 " + model);
+		
 		return "customer_center/notice_detail";
 	}
 
@@ -284,31 +296,37 @@ public class CustomerController {
 	@RequestMapping(value = "one_detail_pro", method = {RequestMethod.GET, RequestMethod.POST})
 	public boolean oneDetailPro(@RequestParam HashMap<String, String> map, HttpServletResponse response , Model model) {
 //		response.setCharacterEncoding("UTF-8");
+		model.addAttribute("map", map);
+		System.out.println("-==================================="+map);
 		List<HashMap<String, String>> isCorrect = boardService.checkOnePasswd(map);
-//		List<HashMap<String, String>> lostBoardList = null;
-		System.out.println("=====" + isCorrect);
-		System.out.println(isCorrect.isEmpty());
+		List<HashMap<String, String>> oneBoardList = null;
+		System.out.println("=====문의 목록" + isCorrect);
+		System.out.println(!isCorrect.isEmpty());
 		if(!isCorrect.isEmpty()) {
-//			if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
-//				map.put("pageNum", "1");
-//				map.put("startNum", "0");
-//				map.put("endNum", "10");
-//			}
+			if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+				map.put("pageNum", "1");
+				map.put("startNum", "0");
+				map.put("endNum", "10");
+			}
 			
 			// 글 번호
-//			lostBoardList = boardService.getLostBoardList(map);
-//			if(lostBoardList.size() > 0) {
-//				HashMap<String, String> countMap = lostBoardList.get(0);
-//				map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
-//			}
-//			List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
-//			model.addAttribute("cinemaList",cinemaList);
+			oneBoardList = boardService.getBoardList(map);
+			if(oneBoardList.size() > 0) {
+				HashMap<String, String> countMap = oneBoardList.get(0);
+				map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+			}
+			List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+			model.addAttribute("cinemaList",cinemaList);
 			model.addAttribute("paramMap", map);
-			model.addAttribute("map", map);
+			
+			model.addAttribute("oneBoardList", oneBoardList);
+			System.out.println("문의 프로 map" + map);
+			System.out.println("문의 프로 oneBoardLiost" + oneBoardList);
+			System.out.println(model);
 //					model.addAttribute("cinemaDetailJson", cinemaDetailJson);
 		}
-//				JSONArray arr = new JSONArray(lostBoardList);
-//				return arr.toString();
+//		JSONArray arr = new JSONArray(oneBoardList);
+//		return arr.toString();
 		return !isCorrect.isEmpty();
 	}
 	
@@ -327,6 +345,8 @@ public class CustomerController {
 	// 내가 문의한 내역 삭제
 	@RequestMapping(value = "one_deletePro", method = {RequestMethod.GET, RequestMethod.POST})
 	public String oneDeletePro(@RequestParam HashMap<String, String> map, Model model) {
+		System.out.println("문의 내역 삭제 전" + map);
+		model.addAttribute("map", map);
 		int deleteCount = boardService.getDelete(map);
 		System.out.println(deleteCount);
 		if(deleteCount > 0) {
@@ -364,12 +384,21 @@ public class CustomerController {
 	@RequestMapping(value = "admin_notice_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminNoticeBoard(@RequestParam HashMap<String, String> map, Model model) {
 		
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
 		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
-//		System.out.println(noticeBoardList);
-		model.addAttribute("noticeBoardList", noticeBoardList);
+		if(noticeBoardList.size() > 0) {
+			HashMap<String, String> countMap = noticeBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-		System.out.println(model);
+		model.addAttribute("paramMap", map);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		System.out.println("noticeBoard 컨트롤러" + model);
 		
 		return "admin/admin_notice_board";
 	}
@@ -435,10 +464,23 @@ public class CustomerController {
 	@RequestMapping(value = "admin_faq", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminFaq(@RequestParam HashMap<String, String> map, Model model) {
 		
+		System.out.println(map);
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		System.out.println(map);
 		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
-//		System.out.println(noticeBoardList);
+		if(faqBoardList.size()>0) {
+			HashMap<String, String> countMap = faqBoardList.get(0);
+			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
+		}
+		model.addAttribute("paramMap", map);
 		model.addAttribute("faqBoardList", faqBoardList);
-//		System.out.println(model);
+		
+		System.out.println("faq 컨트롤러" + model);
+		
 		return "admin/admin_faq";
 	}
 	
@@ -496,9 +538,23 @@ public class CustomerController {
 	@RequestMapping(value = "admin_lost_board", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLostBoard(@RequestParam HashMap<String, String> map, Model model) {
 		
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
 		List<HashMap<String, String>> lostBoardList = boardService.getLostBoardList(map);
+		System.out.println(lostBoardList);
+		if(lostBoardList.size() > 0) {
+			HashMap<String, String> countMap = lostBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
+		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
+		model.addAttribute("cinemaList",cinemaList);
+		model.addAttribute("paramMap", map);
 		model.addAttribute("lostBoardList", lostBoardList);
-//		System.out.println("Controller: " + model);
+		System.out.println("lostBoardList 컨트롤러" + model);
+		
 		return "admin/admin_lost_board";
 	}
 	
@@ -550,16 +606,26 @@ public class CustomerController {
 //	public String adminOneOnOne() {
 //		return "admin/admin_oneOnOne";
 //	}
-	// 관리자 1:1 문의 내역 페이지
+	// 관리자 1:1 문의 목록
 	@RequestMapping(value = "admin_oneOnOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminOneOnOne(Model model) {
-		
-		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList();
+	public String adminOneOnOne(@RequestParam HashMap<String, String> map, Model model) {
+		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
+			map.put("pageNum", "1");
+			map.put("startNum", "0");
+			map.put("endNum", "10");
+		}
+		List<HashMap<String, String>> oneBoardList = boardService.getOneBoardList(map);
 		System.out.println(oneBoardList);
-		model.addAttribute("oneBoardList", oneBoardList);
+		if(oneBoardList.size() > 0) {
+			HashMap<String, String> countMap = oneBoardList.get(0);
+			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
+		}
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-//			System.out.println("Controller: " + model);
+		model.addAttribute("paramMap", map);
+		model.addAttribute("oneBoardList", oneBoardList);
+		System.out.println("oneBoardList 컨트롤러" + model);
+		
 		return "admin/admin_oneOnOne";
 	}
 	

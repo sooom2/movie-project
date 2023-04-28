@@ -44,7 +44,6 @@
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="${param.HidMovieUrl }">
 				<input type="hidden" id="HidRating" name="HidRating" value="${param.HidRating }">
 				<input type="hidden" id="schCd" name="schCd" value="${param.schCd }">
-				<input type="hidden" id="showDate" name="showDate" value="${param.showDate }">
 				<input type="hidden" id="genre" name="genre" value="${param.genre }">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
@@ -134,7 +133,7 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									
+									<h4 class="r-h4">{param.id}</h4>
 									<div class="right">
 										<a href="reservation" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -151,9 +150,6 @@
 											<div class="pay-mv">
 												<div class="img"><img src="${vo.getHidMovieUrl() }"></div>
 												<h4>${vo.getMovieNm() }</h4>
-												<div class="info">
-													<p>${vo.getShowDate() } 개봉</p>
-												</div>
 												<dl>
 													<dt>장르</dt>
 													<dd>${vo.getGenre() }</dd>
@@ -369,8 +365,15 @@
 		
 // 		결제하기
 		$(".btnPayment").on("click", function() {
-		
+			
+			
+			
 			requestPay();
+			// 10분후 타임아웃
+			var timeOut = setTimeout(function() {
+				alert("결제 시간이 만료되어 영화 예매페이지로 돌아갑니다.");
+				location.href="reservation";
+			}, 600000);
 
 	});
 });

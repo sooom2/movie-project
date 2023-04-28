@@ -20,6 +20,18 @@
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
+
+	function search(idx) {
+		idx = parseInt(idx);
+		document.querySelector("input[name=pageNum]").value = (Number(idx)+1);
+		document.querySelector("input[name=startNum]").value = Number(idx)*10;
+		document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
+		let form = document.querySelector('#iForm');
+		form.action = 'admin_notice_board';
+		form.method = 'post';
+		form.submit();
+	}
+	
 	function modalClose() {
 		let dis = document.querySelector(".modal");
 		let dis2 = document.querySelector(".admin-modal-update");
@@ -165,8 +177,33 @@
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">공지사항</h3>
-					<input class="btn btn-block btn-more" type="button" value="공지등록"
-						onclick="doNoticeRegister()">
+					<form id="iForm">
+					<div class="">
+						<div class="selectbox searchbox"
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 460px; padding-left: 11px;">
+							<div class="cinema_name">
+								<label for="cinema_name"></label>
+								<select name="cinema_name" onchange="" style="margin-top: 0px; !important"> 
+									<option value="전체공지" selected="selected" >전체공지</option>
+									<c:forEach var="cinema" items="${cinemaList }">
+										<option value="${cinema.cinema_name}" ${paramMap.cinema_name == cinema.cinema_name ? 'selected' : ''}>${cinema.cinema_name}</option>
+									</c:forEach>
+								</select>
+								<c:forEach var="cinema" items="${cinemaList }">
+									<input type="hidden" name="location_code"
+										value="${cinema.get('location_code') }">
+								</c:forEach>
+								<input class="datatable-input" value="${param.searchKeyword }" name="searchKeyword" type="search" 
+								placeholder="검색어를 입력해 주세요." aria-controls="datatablesSimple" style="width: 210px;">
+								<input class="btn btn-block btn-more" type="button" value="검색" onclick="search('0');"
+									style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
+							</div>
+						</div>
+					</div>
+					<input class="btn btn-block btn-more" type="button" value="공지등록" onclick="doNoticeRegister()">
+					<div>
+						<strong>전체 <em class="font-gblue">${paramMap.totalCnt == null ? 0 : paramMap.totalCnt}</em>건</strong>
+					</div>
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -190,9 +227,17 @@
 						</thead>
 						<!-- 회원목록 -->
 						<tbody>
+							<input type="hidden" name="memberName" value="${paramMap.memberName}">
+							<input type="hidden" name="memberTel" value="${paramMap.memberTel}">
+							<input type="hidden" name="memberEmail" value="${paramMap.memberEmail}">
+							<input type="hidden" name="startNum" value="${paramMap.startNum}">
+							<input type="hidden" name="endNum" value="${paramMap.endNum}">
+							<input type="hidden" name="pageNum" value="${paramMap.pageNum}">
+							<input type="hidden" name="table_name" value="">
+							<input type="hidden" name="code" value="">
 							<c:forEach var="noticeBoard" items="${noticeBoardList }">
 								<tr data-index="0">
-									<td>${noticeBoard.notice_code }</td>
+									<td>${noticeBoard.rownum }</td>
 									<td>${noticeBoard.cinema_name }</td>
 									<td>${noticeBoard.notice_subject }</td>
 									<td>${noticeBoard.notice_write_date }</td>
@@ -203,6 +248,37 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<!-- pagination  -->
+						<div class="datatable-bottom">
+						<nav class="datatable-pagination">
+						<ul class="datatable-pagination-list">
+							<c:if test="${1 < paramMap.pageNum }">
+									<li class="datatable-pagination-list-item datatable-hidden"
+										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										<a href="javascript:search('${paramMap.pageNum-2}')" class="datatable-pagination-list-item-link" pagenum="1">‹</a>
+									</li>
+							</c:if>
+							<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
+								<c:choose>
+									<c:when test="${paramMap.pageNum eq status.index+1}">
+										<strong class="active">${status.index+1}</strong>
+									</c:when>
+									<c:otherwise>
+										<a title="${status.index+1}페이지보기" href="javascript:search('${status.index}')" pageNum="${status.index+1}">${status.index+1}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
+								<li class="datatable-pagination-list-item datatable-hidden"
+									onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+									<a href="javascript:search('${paramMap.pageNum}')" class="datatable-pagination-list-item-link">›</a>
+								</li>
+							</c:if>
+						</ul>
+						</nav>
+						</div>
+						<!-- pagination  -->
+					</form>
 				</div>
 				<!-- 테이블 -->
 

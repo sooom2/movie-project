@@ -26,7 +26,7 @@
 		document.querySelector("input[name=startNum]").value = Number(idx)*10;
 		document.querySelector("input[name=endNum]").value = (Number(idx)+1)*10 - Number(idx)*10;
 		let form = document.querySelector('#iForm');
-		form.action = 'one_list';
+		form.action = 'admin_faq';
 		form.method = 'post';
 		form.submit();
 	}
@@ -230,6 +230,9 @@
 					</div>
 					
 					<input class="btn btn-block btn-more" type="button" value="자주묻는 질문 등록" onclick="doFaqRegister()">
+					<div>
+						<strong>전체 <em class="font-gblue">${paramMap.totalCnt == null ? 0 : paramMap.totalCnt}</em>건</strong>
+					</div>
 					<table id="datatablesSimple" class="datatable-table">
 						<thead>
 							<tr>
@@ -263,7 +266,7 @@
 							<input type="hidden" name="code" value="">
 							<c:forEach var="faqBoard" items="${faqBoardList }">
 								<tr data-index="0">
-									<td>${faqBoard.faq_code }</td>
+									<td>${faqBoard.rownum }</td>
 									<td>${faqBoard.faq_group }</td>
 									<td>${faqBoard.faq_question }</td>
 									<td>${faqBoard.faq_write_date }</td>
@@ -271,26 +274,17 @@
 										type="button" value="M O R E" onclick="location.href='admin_faq_update?faq_code=${faqBoard.faq_code }'"></td>
 								</tr>
 							</c:forEach>
-							<!-- 							<tr data-index="0"> -->
-							<!-- 								<td>공지번호</td> -->
-							<!-- 								<td>영화관명</td> -->
-							<!-- 								<td>제목</td> -->
-							<!-- 								<td>120분</td> -->
-							<!-- 								<td>2023-04-05</td> -->
-							<!-- 								<td>2099-04-05</td> -->
-							<!-- 								<td>작성일</td> -->
-							<!-- 								<td class="modi"><input class="btn btn-block btn-more" -->
-							<!-- 									type="button" value="M O R E" onclick="doDisplay()"></td> -->
-							<!-- 							</tr> -->
 						</tbody>
 					</table>
-						<!-- pagination -->
+						<!-- pagination 1 -->
 						<div class="datatable-bottom">
 						<nav class="datatable-pagination">
 						<ul class="datatable-pagination-list">
 							<c:if test="${1 < paramMap.pageNum }">
-								<a title="처음 페이지 보기" href="javascript:search('0')" class="control first" pagenum="1">first</a>
-								<a title="이전 페이지 보기" href="javascript:search('${paramMap.pageNum-2}')" class="control prev" pagenum="1">prev</a>
+									<li class="datatable-pagination-list-item datatable-hidden"
+										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
+										<a href="javascript:search('${paramMap.pageNum-2}')" class="datatable-pagination-list-item-link" pagenum="1">‹</a>
+									</li>
 							</c:if>
 							<c:forEach begin="${paramMap.pageNum-paramMap.pageNum%10}" end="${(paramMap.totalCnt == null ? 1 : paramMap.totalCnt/10) + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}" varStatus="status">
 								<c:choose>
@@ -303,75 +297,16 @@
 								</c:choose>
 							</c:forEach>
 							<c:if test="${paramMap.totalCnt > 10*paramMap.pageNum }">
-								<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a> 
-								<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a>
+<%-- 								<a title="이후 페이지 보기" href="javascript:search('${paramMap.pageNum}')" class="control next" pagenum="11">next</a>  --%>
+<%-- 								<a title="마지막 페이지 보기" href="javascript:search('${paramMap.totalCnt/10 + (paramMap.totalCnt%10> 0 ? 1 : 0) -1}')" class="control last" pagenum="586">last</a> --%>
+								<li class="datatable-pagination-list-item datatable-hidden"
+									onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
+									<a href="javascript:search('${paramMap.pageNum}')" class="datatable-pagination-list-item-link">›</a>
+								</li>
 							</c:if>
 						</ul>
 						</nav>
 						</div>
-						
-						<div class="datatable-bottom">
-							<nav class="datatable-pagination">
-								<ul class="datatable-pagination-list">
-									<c:choose>
-										<c:when test="${empty param.pageNum }">
-											<c:set var="pageNum" value="1" />
-										</c:when>
-										<c:otherwise>
-											<c:set var="pageNum" value="${param.pageNum }"></c:set>
-										</c:otherwise>
-									</c:choose>
-		
-									<!-- 							 datatable-disabled -->
-									<c:choose>
-										<c:when test="${pageNum > 1 }">
-											<li class="datatable-pagination-list-item datatable-hidden"
-												onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
-												<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-											</li>
-										</c:when>
-										<c:otherwise>
-											<li class="datatable-pagination-list-item datatable-hidden">
-												<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-											</li>
-										</c:otherwise>
-									</c:choose>
-									<c:forEach var="num" begin="${pageInfo.startPage }"
-										end="${pageInfo.endPage }">
-										<c:choose>
-											<c:when test="${pageNum eq num }">
-												<%-- 현재 페이지 번호일 경우 --%>
-												<li class="datatable-pagination-list-item "><a
-													class="datatable-pagination-list-item-link"
-													style="font-weight: 800; background-color: #ececec">${num }</a>
-											</c:when>
-		
-											<%--페이지번호 --%>
-											<c:otherwise>
-												<li class="datatable-pagination-list-item "><a
-													class="datatable-pagination-list-item-link"
-													href="admin_schedule_register?pageNum=${num }">${num }</a></li>
-		
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									<c:choose>
-										<c:when test="${pageNum < pageInfo.maxPage }">
-											<li class="datatable-pagination-list-item datatable-hidden"
-												onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
-												<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-											</li>
-										</c:when>
-										<c:otherwise>
-											<li class="datatable-pagination-list-item datatable-hidden">
-												<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-											</li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</nav>
-						</div>
-						<!--// pagination -->
 					</form>
 				</div>
 			<!-- 테이블 -->

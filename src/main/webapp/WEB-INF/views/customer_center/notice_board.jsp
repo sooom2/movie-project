@@ -82,7 +82,7 @@ function search(idx) {
 						<colgroup>
 							<col style="width: 70px;">
 							<col style="width: 180px;">
-							<col style="width: 300px;">
+							<col style="width: 400px;">
 							<col>
 							<col style="width: 1px;">
 						</colgroup>

@@ -19,9 +19,9 @@
 				<li><a href="oneOnOne" title="1:1문의">1:1문의</a></li>
 <!-- 				<li><a href="" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li> -->
 				<li><a href="guest_confirm" title="문의내역">문의내역</a></li>
-				<li><a href="" title="이용약관">이용약관</a></li>
-				<li><a href="" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
-				<li><a href="" title="개인정보처리방침">개인정보처리방침</a></li>
+<!-- 				<li><a href="" title="이용약관">이용약관</a></li> -->
+<!-- 				<li><a href="" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li> -->
+<!-- 				<li><a href="" title="개인정보처리방침">개인정보처리방침</a></li> -->
 <!-- 				<li><a href="" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li> -->
 			</ul>
 

@@ -22,18 +22,30 @@ function numberMaxLength(el, maxlength) { // 비밀번호 4자리
 	}
 }
 $(function() {
-
+// 	alert("function")
+// 	$("#nonMbInqPw").keyup(function(el, maxlength) {
+// 		if(el.value.length > maxlength) {
+// 			el.value = el.value.substr(0, maxlength);
+// 		}
+// 	});
 	
 	$("#textarea").keyup(function() {
-			$("#textareaCnt").html($("#textarea").val().length)
-		});
+		$("#textareaCnt").html($("#textarea").val().length)
+	});
 	
 	let regex = /^[가-힣]{2,5}$/; // 이름 제약조건
 	let regex2 = /^[0-9]{10,11}$/; // 휴대폰 제약조건
 	
-	$("form").submit(function() {
+		$("#iForm").submit(function() {
+		
+		// 		$("#nonMbInqPw").keyup(function(el, maxlength) {
+		// 			if(el.value.length > maxlength) {
+		// 				el.value = el.value.substr(0, maxlength);
+		// 			}
+		// 		});
+		
 		if(!$("#chk").prop("checked")) {
-			alert("개인정보 수집 동의 해주세요");
+			alert("개인정보 수집에 동의 해주세요");
 			$("#chk").focus();
 			return false;
 		}
@@ -43,17 +55,14 @@ $(function() {
 			$("#name").focus();
 			return false;
 		}
-		
-//	 	if(${member} == null || ${member.get('member_tel') } == null || ${member.get('member_tel') } == '') {// 세션이 없는 상태
-		
-//	 	}
-		// 번호 검증
-		if(!regex2.exec($("#hpNum1").val())) {
-			alert("전화번호를 확인하세요");
-			$("#hpNum1").focus();
-			return false;
-		}
-		
+		if("${sessionScope.sId}" == null || "${sessionScope.sId}" == ""){	//   세션이 없는 상태
+			// 번호 검증
+			if(!regex2.exec($("#hpNum1").val())) {
+				alert("전화번호를 확인하세요");
+				$("#hpNum1").focus();
+				return false;
+			}
+	 	}
 		
 		return true;
 	});
@@ -78,7 +87,7 @@ $(function() {
 
 				</div>
 				
-				<form action="oneWritePro" name="regFrm" method="post">
+				<form action="oneWritePro" id="iForm" name="regFrm" method="post">
 				<div class="agree-box">
 					<dl>
 						<dt>
@@ -217,7 +226,7 @@ $(function() {
 										id="hpNum1" class="input-text w200px"
 										oninput="telMaxLength(this, 11);" value="${member.get('member_tel') }" maxlength="11"
 										${not empty member.get('member_tel') ? 'readonly="readonly"' : ''}>
-										<em>'-' 기호 제외한 10~11 자리 숫자 입력해주세요</em></td>
+										<em>'-' 기호 제외한 숫자만 입력해주세요</em></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="qnaCustInqTitle">제목</label> <em
@@ -245,36 +254,36 @@ $(function() {
 										</div>
 									</td>
 								</tr>
+								
 								<!-- 2019-02-14 사진첨부 마크업 수정 -->
-								<tr>
-									<th scope="row">사진첨부</th>
-									<td colspan="3">
-										<div class="upload-image-box">
-
-											<div class="info-txt">
-												<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다. (최대 5개)</p>
-
+<!-- 								<tr> -->
+<!-- 									<th scope="row">사진첨부</th> -->
+<!-- 									<td colspan="3"> -->
+<!-- 										<div class="upload-image-box"> -->
+<!-- 											<div class="info-txt"> -->
+<!-- 												<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다. (최대 5개)</p> -->
 												<!-- to 개발 : 이미지 추가가 5개가 되면 버튼 숨김 -->
-												<button type="button" id="uploadBtn" class="btn-image-add">
-													<span>파일선택</span>
-												</button>
+<!-- 												<button type="button" id="uploadBtn" class="btn-image-add"> -->
+<!-- 													<span>파일선택</span> -->
+<!-- 												</button> -->
 												<!--// to 개발 : 이미지 추가가 5개가 되면 버튼 숨김 -->
-												<p>* 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p>
-											</div>
-
-											<div id="imgList"></div>
-
-										</div>
-									</td>
-								</tr>
+<!-- 												<p>* 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p> -->
+<!-- 											</div> -->
+<!-- 											<div id="imgList"></div> -->
+<!-- 										</div> -->
+<!-- 									</td> -->
+<!-- 								</tr> -->
 								<!--// 2019-02-14 사진첨부 마크업 수정 -->
 
 								<tr>
 									<th scope="row"><label for="name">비밀번호</label> <em
 										class="font-orange">*</em></th>
 									<td colspan="3">
+<!-- 										<input type="number" id="nonMbInqPw" -->
+<!-- 										name="one_passwd" class="input-text w150px pwnew"  -->
+<!-- 										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리">  -->
 										<input type="number" id="nonMbInqPw"
-										name="one_passwd" class="input-text w150px pwnew" required="required"
+										name="one_passwd" class="input-text w150px pwnew" 
 										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리"> 
 										<em class="fc_r ml10">* 1:1 문의에 대한 고객정보 보호를 위해 게시글의 비밀번호를
 											설정해주세요.</em></td>

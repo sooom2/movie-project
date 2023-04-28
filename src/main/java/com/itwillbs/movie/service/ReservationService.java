@@ -22,8 +22,6 @@ public class ReservationService {
 		return mapper.selectMovieInfo();
 	}
 
-
-
 	public List<HashMap<String, String>> selectmoviesList(String CnItemCd) {
 		return mapper.selectmoviesList(CnItemCd);
 	}
@@ -50,8 +48,23 @@ public class ReservationService {
 	}
 
 	public int resCount() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public int insertReservationPoint(String id, String totalAmt) {
+		return mapper.insertReservationPoint(id, totalAmt);
+	}
+
+	public int updateMemberPoint(String id, String totalAmt) {
+		return mapper.updateMemberPoint(id, totalAmt);
+	}
+
+	public String selectMemberPreferGenre(String id) {
+		return mapper.selectMemberPreferGenre(id);
+	}
+
+	public List<HashMap<String, String>> selectPreferMoviesList(String preferGenre, String CnItemCd) {
+		return mapper.selectPreferMoviesList(preferGenre, CnItemCd);
 	}
 
 	

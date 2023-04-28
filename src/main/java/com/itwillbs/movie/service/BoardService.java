@@ -59,8 +59,8 @@ public class BoardService {
 	}
 
 	// 관리자 1대1 문의 목록
-	public List<HashMap<String, String>> getOneBoardList() {
-		return mapper.selectOneBoardList();
+	public List<HashMap<String, String>> getOneBoardList(HashMap<String, String> map) {
+		return mapper.selectOneBoardList(map);
 	}
 	
 	// 1대1 문의 목록

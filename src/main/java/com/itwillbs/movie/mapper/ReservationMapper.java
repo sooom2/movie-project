@@ -8,18 +8,13 @@ import org.apache.ibatis.annotations.*;
 import com.itwillbs.movie.vo.*;
 
 public interface ReservationMapper {
-	// 영화관 조회
 	List<HashMap<String, String>> selectCinema();
 
-	// 영화 정보 조회
 	List<HashMap<String, String>> selectMovieInfo();
 
-	// 영화 리스트 조회
 	List<HashMap<String, String>> selectmoviesList(String CnItemCd);
 
-	// 상영 시간 조회
 	List<HashMap<String, String>> selectMovieTimeList(@Param("CnItemCd") String CnItemCd, @Param("MvItemCd") String MvItemCd, @Param("dateCd") String dateCd);
-
 
 	List<HashMap<String, String>> selectReservationList(String schCd);
 
@@ -28,5 +23,13 @@ public interface ReservationMapper {
 	int insertReservation(@Param("vo") ReservationVO vo, @Param("id") String id);
 
 	int updateSchedule(@Param("schCd") String schCd, @Param("seatCnt") int seatCnt);
+
+	int insertReservationPoint(@Param("id") String id, @Param("totalAmt") String totalAmt);
+
+	int updateMemberPoint(@Param("id") String id, @Param("totalAmt") String totalAmt);
+
+	String selectMemberPreferGenre(String id);
+
+	List<HashMap<String, String>> selectPreferMoviesList(@Param("preferGenre") String preferGenre, @Param("CnItemCd") String CnItemCd);
 	
 }

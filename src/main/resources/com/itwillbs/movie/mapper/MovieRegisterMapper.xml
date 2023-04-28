@@ -146,6 +146,7 @@ INSERT INTO schedule
 			 , #{sch_register_date}	
 			 , #{sch_start_time} 
 			 , #{sch_last_time}
+			 , 45
 			 )
 </insert>
 <!-- 상영시간 체크 -->
@@ -155,14 +156,17 @@ INSERT INTO schedule
 		, TIME_FORMAT(sch_start_time,'%H:%i')AS start_time
 		, TIME_FORMAT(sch_last_time,'%H:%i')AS last_time
 	FROM schedule
-	LEFT JOIN cinema
-	ON schedule.sch_cinema_code= cinema.cinema_code
-	LEFT JOIN screen
-	ON schedule.sch_screen_code=screen.screen_code
+		LEFT JOIN cinema
+		ON schedule.sch_cinema_code= cinema.cinema_code
+		LEFT JOIN screen
+		ON schedule.sch_screen_code=screen.screen_code
+		LEFT JOIN movieinfo
+		ON schedule.sch_movie_code = movieinfo.info_movie_code
 	WHERE 1=1
-	AND sch_movie_date =#{sch_date}
-	AND cinema_name  =#{cinema_name}
-	AND screen_name = #{screen_name} 
+		AND sch_movie_date =#{sch_date}
+		AND cinema_name  =#{cinema_name}
+		AND screen_name = #{screen_name} 
+		
 </select>
 
 	<!-- 검색 결과 총 개수 구하기 -->
@@ -598,18 +602,12 @@ LEFT JOIN movieinfo ON movieinfo.info_movie_code = sch_movie_code
 		</update>
 		
 		
-		
-		
 		<select id="screeningMovies" resultType="hashmap">
 			SELECT *
 			FROM movieinfo
 			WHERE
 			info_status = 'screening'
 		</select>		
-		
-		
-		
-		
 		
 		
 		

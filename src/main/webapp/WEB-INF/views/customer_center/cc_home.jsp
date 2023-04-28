@@ -100,23 +100,15 @@ function search(idx) {
 									class="iconset ico-arr-right-gray ml07"></i></a>
 							</div>
 							<div class="">
+								<c:forEach var="faqBoard" items="${faqBoardList }">
 								<ol class="decimal-list">
-
-									<li><a href="" class="faqBtn" data-idx="1" title="질문 상세보기">
-											<span class="font-roboto">1</span>&nbsp; <span
-											class="font-gblue">[분류코드]</span> 제목 <span class="date">날짜</span>
+									<li><a href="faq_detail?faq_code=${faqBoard.faq_code }" class="faqBtn" data-idx="1" title="질문 상세보기">
+											<span class="font-roboto"></span> 
+											<span class="font-gblue">${faqBoard.faq_group }</span> ${faqBoard.faq_question } 
+											<span class="date">${faqBoard.faq_write_date }</span>
 									</a></li>
-<%-- 							<c:forEach var="faqBoard" items="${faqBoardList }"> --%>
-<!-- 								<tr data-index="0"> -->
-<%-- 									<td>${faqBoard.faq_code }</td> --%>
-<%-- 									<td>${faqBoard.faq_group }</td> --%>
-<!-- 									<td id="faq_question"><a -->
-<%-- 										href="faq_detail?faq_code=${faqBoard.faq_code }">${faqBoard.faq_question }</a> --%>
-<!-- 									</td> -->
-<%-- 									<td>${faqBoard.faq_write_date }</td> --%>
-<!-- 								</tr> -->
-<%-- 							</c:forEach> --%>
 								</ol>
+								</c:forEach>
 							</div>
 						</div>
 
@@ -129,13 +121,14 @@ function search(idx) {
 							</div>
 
 							<div class="decimal-list">
-								<ol>
-									<li><a href="" class="moveBtn" data-no="10813"
-										title="공지사항 상세보기"> <span class="font-purple"><i
-												class="iconset ico-marker"></i> [영화관이름]</span> 제목 <span
-											class="date">날짜</span>
-									</a></li>
-								</ol>
+								<c:forEach var="noticeBoard" items="${noticeBoardList }">
+									<ol>
+										<li><a href="notice_detail?notice_code=${noticeBoard.notice_code }" class="moveBtn" data-no="10813" title="공지사항 상세보기"> <span class="font-purple">
+											<i class="iconset ico-marker"></i> ${noticeBoard.cinema_name }</span> 
+											${noticeBoard.notice_subject } <span class="date">${noticeBoard.notice_write_date }</span>
+										</a></li>
+									</ol>
+								</c:forEach>
 							</div>
 						</div>
 					</div>

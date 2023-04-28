@@ -220,8 +220,8 @@ public class MovieRegisterService {
 	}
 	
 	//상영관 중복 시간 체크
-	public List<HashMap<String, String>> schCheckTime(String sch_date, String cinema_name, String screen_name) {
-		return mapper.schCheckTime(sch_date,cinema_name,screen_name);
+	public List<HashMap<String, String>> schCheckTime(String sch_date, String cinema_name, String screen_name,String movie_code) {
+		return mapper.schCheckTime(sch_date,cinema_name,screen_name,movie_code);
 	}
 	public List<HashMap<String, String>> screeningMovies() {
 		
