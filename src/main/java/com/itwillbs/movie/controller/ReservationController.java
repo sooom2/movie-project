@@ -22,9 +22,31 @@ public class ReservationController {
 	@Autowired
 	private CinemaService cinemaService;
 	
+	
+	// 비회원 예매 및 세션 저장
+	@PostMapping("guestJoinPro")
+	public String guestJoinPro(String guestName, String phone, String pass, HttpSession session) {
+		
+		// 현재 시스템(서버)에서 랜덤ID 값을 추출해서 id에 저장
+		String uuid = UUID.randomUUID().toString();
+		session.setAttribute("guestsId", uuid);
+		
+		int insertNonMember = service.insertNonMember(uuid, guestName, pass, phone);
+		
+		return "reservation/guest_join_success";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("reservation")
-	public String reservation(Model model, String cd) {
-
+	public String reservation(Model model, String cd, HttpSession session) {
+		String id = (String)session.getAttribute("sId");
+		String guestsId = (String)session.getAttribute("guestsId");
 		//지역
 		List<HashMap<String, String>> location = cinemaService.location();
 		model.addAttribute("location",location);
@@ -37,7 +59,18 @@ public class ReservationController {
 		List<HashMap<String, String>> movieInfo = service.selectMovieInfo();
 		model.addAttribute("movieInfo", movieInfo);
 		
-		return "reservation/reservation";
+		if(guestsId != null) {
+			return "reservation/reservation";
+		} else if (id == null) {
+			model.addAttribute("msg", "로그인 후 이용가능합니다.");
+			model.addAttribute("target", "memLogin");
+			return "success";
+		} else {
+			return "reservation/reservation";
+		}
+		
+		
+		
 	}
 	
 	// 영화리스트
@@ -103,12 +136,17 @@ public class ReservationController {
 	public String reservationPay(ReservationVO vo, Model model, HttpSession session) {
 		model.addAttribute("vo", vo);
 		
-		
+		String guestsId = (String)session.getAttribute("guestsId");
 		String id = (String)session.getAttribute("sId");
-		HashMap<String, String> member = service.selectMemberId(id);
-		model.addAttribute("member", member);
 		
-		
+		// -----------여기 수정!
+		if(guestsId != null) {
+//			HashMap<String, String> member = service.selectNonMemberId(guestsId);
+//			model.addAttribute("member", member);
+		} else {
+			HashMap<String, String> member = service.selectMemberId(id);
+			model.addAttribute("member", member);
+		}
 		return "reservation/reservation_pay";
 	}
 	

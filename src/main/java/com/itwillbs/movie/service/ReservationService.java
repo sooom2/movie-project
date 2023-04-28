@@ -67,6 +67,10 @@ public class ReservationService {
 		return mapper.selectPreferMoviesList(preferGenre, CnItemCd);
 	}
 
+	public int insertNonMember(String uuid, String guestName, String pass, String phone) {
+		return mapper.insertNonMember(uuid, guestName, pass, phone);
+	}
+
 	
 
 }

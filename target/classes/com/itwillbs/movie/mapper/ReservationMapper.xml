@@ -176,4 +176,18 @@
 	</update>
 	
 	
+	<!-- 비회원 테이블 저장 -->
+	<insert id="insertNonMember">
+		INSERT
+			INTO 
+				nonmember 
+			VALUES (
+				  #{uuid}
+				, #{guestName}
+				, #{pass}
+				, #{phone}
+				, null
+			)
+	</insert>
+	
 </mapper>
