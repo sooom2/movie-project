@@ -30,6 +30,6 @@ public interface ReservationMapper {
 
 	String selectMemberPreferGenre(String id);
 
-	List<HashMap<String, String>> selectPreferMoviesList(@Param("cnItemCd") String cnItemCd, @Param("preferGenre") String preferGenre);
+	List<HashMap<String, String>> selectPreferMoviesList(@Param("preferGenre") String preferGenre, @Param("CnItemCd") String CnItemCd);
 	
 }

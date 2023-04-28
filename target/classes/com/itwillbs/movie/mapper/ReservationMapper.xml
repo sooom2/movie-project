@@ -61,9 +61,9 @@
 			ON 
 				m.info_movie_code = s.sch_movie_code  
 			WHERE 
-				c.cinema_code = #{CnItemCd}
-			AND 
 				m.info_genre = #{preferGenre}
+			AND 
+				c.cinema_code = #{CnItemCd}
 	</select>
 	
 	

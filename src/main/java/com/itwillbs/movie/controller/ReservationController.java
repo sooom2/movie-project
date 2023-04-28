@@ -84,8 +84,8 @@ public class ReservationController {
 		String id = (String)session.getAttribute("sId");
 		String preferGenre = service.selectMemberPreferGenre(id);
 		System.out.println("preferGenre : " + preferGenre);
-		
-		List<HashMap<String, String>> preferMoviesList = service.selectPreferMoviesList(CnItemCd, preferGenre);
+		System.out.println("CnItemCd" + CnItemCd);
+		List<HashMap<String, String>> preferMoviesList = service.selectPreferMoviesList(preferGenre, CnItemCd);
 		
 		JSONArray ja = new JSONArray(preferMoviesList);
 		System.out.println(ja);
