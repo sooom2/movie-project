@@ -75,8 +75,13 @@
 	                </div>
 	                <!-- right -->
 	                <div class="right">
-	                    <!-- goods-info -->
 	                    <div class="goods-info">
+	                            <div class="line">
+	                                <p class="tit"><span class="line32">예매번호</span></p>
+	                                <div class="cont">
+	                                <p class="txt">${param.resCode }</p>
+	                                </div>
+	                            </div>
 	                            <div class="line">
 	                                <p class="tit"><span class="line32">영화명</span></p>
 	                                <div class="cont">
@@ -135,8 +140,19 @@
 	        </div>
 		</div>
 	</div>
-
+<script type="text/javascript">
+// 중복 결제 방지
+function NotReload(){
+    if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+        event.keyCode = 0;
+        event.cancelBubble = true;
+        event.returnValue = false;
+    } 
+}
+document.onkeydown = NotReload;
+</script>
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
+
 </html>

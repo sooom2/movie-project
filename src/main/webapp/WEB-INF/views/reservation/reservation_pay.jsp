@@ -133,7 +133,7 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									
+									<h4 class="r-h4">{param.id}</h4>
 									<div class="right">
 										<a href="reservation" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -365,6 +365,9 @@
 		
 // 		결제하기
 		$(".btnPayment").on("click", function() {
+			
+			
+			
 			requestPay();
 			// 10분후 타임아웃
 			var timeOut = setTimeout(function() {
