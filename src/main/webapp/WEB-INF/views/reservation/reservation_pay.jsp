@@ -365,8 +365,12 @@
 		
 // 		결제하기
 		$(".btnPayment").on("click", function() {
-		
 			requestPay();
+			// 10분후 타임아웃
+			var timeOut = setTimeout(function() {
+				alert("결제 시간이 만료되어 영화 예매페이지로 돌아갑니다.");
+				location.href="reservation";
+			}, 600000);
 
 	});
 });
