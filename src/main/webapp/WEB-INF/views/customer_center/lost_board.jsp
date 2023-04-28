@@ -181,7 +181,7 @@ function chkPasswd(){
 
 				<div class="clearfix">
 					<ul class="dot-list">
-						<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. 
+						<li>IMOVIE에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요. 
 							<button onclick="javascript:lost_form()" class="button" style="margin-left: 190px;">
 							분실물 문의
 							</button> 
@@ -223,6 +223,8 @@ function chkPasswd(){
 									</div>
 								</div>
 							</div>
+							
+							
 						</div>
 					</div>
 					<div class="table-wrap">

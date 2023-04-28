@@ -47,7 +47,7 @@ $(function() {
 		// 		});
 		
 		if(!$("#chk").prop("checked")) {
-			alert("개인정보 수집 동의 해주세요");
+			alert("개인정보 수집에 동의 해주세요");
 			$("#chk").focus();
 			return false;
 		}
@@ -78,7 +78,7 @@ $(function() {
 			<div id="contents" class="">
 				<h2 class="tit">분실물 문의</h2>
 				<ul class="dot-list">
-					<li>메가박스에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li>
+					<li>IMOVIE에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li>
 					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
 				</ul>
 				

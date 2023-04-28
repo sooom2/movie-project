@@ -38,7 +38,7 @@
 			<if test="rep_board != null and !rep_board.equals('') and !rep_board.equals('전체')">
 				AND lost_board_rep = #{rep_board}
 			</if>
-			<if test="cinema_name != null and !cinema_name.equals('') and !cinema_name.equals('전체공지')">
+			<if test="cinema_name != null and !cinema_name.equals('') and !cinema_name.equals('전체')">
 				AND cinema_name = #{cinema_name}
 			</if>
 			ORDER BY 

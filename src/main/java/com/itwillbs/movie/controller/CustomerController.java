@@ -75,13 +75,16 @@ public class CustomerController {
 	// 공지사항 상세
 	@RequestMapping(value = "notice_detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String noticeDetail(@RequestParam HashMap<String, String> map, Model model) {
-		
+		model.addAttribute("paramMap", map);
+		System.out.println(map);
 		map = boardService.getNoticeDetail(map);
 		model.addAttribute("map", map);
 		
 //			List<BoardVO> lostBoardList = boardService.getLostBoardList();
 //			model.addAttribute("lostBoardList", lostBoardList);
-				
+		
+		System.out.println("공지사항 상세 " + model);
+		
 		return "customer_center/notice_detail";
 	}
 
