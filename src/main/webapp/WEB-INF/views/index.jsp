@@ -241,8 +241,6 @@
 		   	// ajax : context : this를 써줘야 success에서 this 사용 가능
 		   	var info_movie_code = $(this).closest("li").data("moviecode")+"";
 		   	
-		   	$likeBtn.toggleClass('active');
-		   	
 		   	$.ajax({
 		   		url : 'likeClick',
 		   		type : 'POST',
@@ -268,22 +266,6 @@
 	   			}
 	   		})
   	 	});
-//    	if("${sessionScope.sId}" != null && "${sessionScope.sId}" != ""){
-//    		var info_movie_code = $('.icon.heart').closest("li").data("moviecode");
-//    		console.log("좋아요 호출을 위한 ajax - sessionScope.sId : " + "${sessionScope.sId}");
-//    		console.log(info_movie_code);
-// 	   	$.ajax({
-// 	   		url	: 'likeCheck',
-// 	   		type : 'POST',
-// 	   		data : 	{
-// 	   			info_movie_code : info_movie_code
-// 	   		},
-// 	   		success : function(result){
-// 	   			console.log(result);
-// 	   		}
-// 	   	})
-//    	}
-	 
 	
 });
 </script>
