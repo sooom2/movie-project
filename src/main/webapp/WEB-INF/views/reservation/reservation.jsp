@@ -44,32 +44,6 @@
 </head>
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<!-- 추후 수정 목록 -->
-<!-- 주석, 들여쓰기 정리 -->
-<!-- 1-ver1 선택 안한 상태에서도 전체 목록 출력 -->
-<!-- 1-ver2 초기화면 영화리스트 : 극장을 선택해주세요 -->
-<!-- 영화 상세페이지에서 예매하기 누르면 값 받아와서 영화 리스트에서 그 영화 클릭되어있게 -> 선작업: 극장명, 날짜 where cinema_code -->
-<!-- 극장명 검색, 영화명 검색 -->
-<!-- 선호장르 영화리스트 -->
-<!-- 선택후 좌석 넘어가기 전 관람등급 확인창 -->
-
-
-<!-- ----------------------------------------------------------------------------------------------- -->
-<!-- CinemaCd 2 -->
-<!-- MovieCd 20226489 -->
-<!-- ScreenTime 09:00:00~11:02:00 -->
-<!-- ScreenCd 5 -->
-<!-- MovieNm 리바운드 -->
-<!-- HidMovieUrl http://file.koreafilm.or.kr/thm/02/99/17/99/tn_DPK020329.jpg -->
-<!-- HidRating 12세관람가 -->
-<!-- schCd 9 -->
-<!-- CinemaNm 부산대연점 -->
-<!-- genre 드라마 -->
-<!-- ScreenNm 2관 -->
-<!-- MovieDate  2023-04-22-->
-<!-- ----------------------------------------------------------------------------------------------- -->
-
-
 
 	<div class="content">
 		<div class="inner2">
@@ -79,23 +53,16 @@
 				<input type="hidden" id="MovieCd" name="MovieCd" value="all">
 				<input type="hidden" id="ScreenTime" name="ScreenTime" value="all">
 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="">
-				
 				<input type="hidden" id="MovieNm" name="MovieNm" value="">
 				<input type="hidden" id="CinemaNm" name="CinemaNm" value="">
-
 				<input type="hidden" id="HidMovieUrl" name="HidMovieUrl" value="">
 				<input type="hidden" id="HidRating" name="HidRating" value="">
-				
 				<input type="hidden" id="schCd" name="schCd" value="">
 				<input type="hidden" id="genre" name="genre" value="">
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="">
-				
 				<input type="hidden" id="MovieDate" name="MovieDate" value="">
 				<input type="hidden" id="seatCnt" name="seatCnt" value="0">
-				
 				<input type="hidden" id="CnItemCd" name="CnItemCd" value="">
-				
-
 				
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
@@ -213,14 +180,11 @@
 											<h5 class="r-h5">상영시간</h5>
 										</div>
 										<div class="list-body">
-											<div class="scroll-wrapper scrollbar-inner"
-												style="position: relative;">
-												<div class="scrollbar-inner scroll-content"
-													style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
+											<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+												<div class="scrollbar-inner scroll-content" style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
 													<div id="timeList">
 														<div class="list-type">
 															<ul class="mvTimeLine">
-															
 															</ul>
 														</div>
 													</div>
@@ -241,80 +205,80 @@
 												</div>
 											</div>
 
-											<div class="info-box">
-													<div class="info">
-														<!-- 선택후 -->
-														<div class="img"></div>
-														<div class="text">
-															<strong><span class="mvNm"></span></strong>
-															<dl>
-																<dt>극장</dt>
-																<dd class="cnNm"></dd>
-															</dl>
-															<dl>
-																<dt>상영관</dt>
-																<dd class="scNm"></dd>
-															</dl>
-															<dl>
-																<dt>상영등급</dt>
-																<dd class="rtNm"></dd>
-															</dl>
-															<dl>
-																<dt>날짜</dt>
-																<dd class="plDt"></dd>
-															</dl>
-															<dl>
-																<dt>상영시간</dt>
-																<dd class="tiNm"></dd>
-															</dl>
-														</div>
-													</div>
-													<div class="next">
-														<button type="button" id="btnNext">인원/좌석 선택</button>
-													</div>
+									<div class="info-box">
+											<div class="info">
+												<!-- 선택후 -->
+												<div class="img"></div>
+												<div class="text">
+													<strong><span class="mvNm"></span></strong>
+													<dl>
+														<dt>극장</dt>
+														<dd class="cnNm"></dd>
+													</dl>
+													<dl>
+														<dt>상영관</dt>
+														<dd class="scNm"></dd>
+													</dl>
+													<dl>
+														<dt>상영등급</dt>
+														<dd class="rtNm"></dd>
+													</dl>
+													<dl>
+														<dt>날짜</dt>
+														<dd class="plDt"></dd>
+													</dl>
+													<dl>
+														<dt>상영시간</dt>
+														<dd class="tiNm"></dd>
+													</dl>
 												</div>
 											</div>
-
+											<div class="next">
+												<button type="button" id="btnNext">인원/좌석 선택</button>
+											</div>
 										</div>
 									</div>
+
+								</div>
+							</div>
 								<!-- // 상영시간 -->
-							</div>
+						</div>
 							<!-- // body -->
-						</div>
 					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="modal" id="viewGrade">
-		<div class="modal-dialog" style="max-width:470px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4>관람등급 안내</h4>
-					<button class="close-modal btnNext">닫기</button>
-				</div>
-				<div class="modal-body">
-					<div class="thReservWrap mb30">
-						<div class="thBox">
-							<h3><span class="cnNm"></span> <span class="scNm"></span></h3>
-							<p><span class="plDt"></span> <span class="tiNm"></span></p>
-							<div class="item">
-								<p class="tit"></p>
-								<div class="txt"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-bottom ">
-					<button class="btn-modal2 btnNext" style="width:100%">확인</button>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
+</div>
+<!-- 	<div class="modal" id="viewGrade"> -->
+<!-- 		<div class="modal-dialog" style="max-width:470px"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<h4>관람등급 안내</h4> -->
+<!-- 					<button class="close-modal btnNext">닫기</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<div class="thReservWrap mb30"> -->
+<!-- 						<div class="thBox"> -->
+<!-- 							<h3><span class="cnNm"></span> <span class="scNm"></span></h3> -->
+<!-- 							<p><span class="plDt"></span> <span class="tiNm"></span></p> -->
+<!-- 							<div class="item"> -->
+<!-- 								<p class="tit"></p> -->
+<!-- 								<div class="txt"></div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-bottom "> -->
+<!-- 					<button class="btn-modal2 btnNext" style="width:100%">확인</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 
 
-<!-- // 즐겨찾는 극장 비회원으로 했을 때 -->
+<!-- // 즐겨찾는 극장 비회원으로 클릭 했을 때 -->
 	<div class="modal" id="login">
 		<div class="modal-dialog" style="max-width:350px">
 			<div class="modal-content">
@@ -335,31 +299,31 @@
 	
 	
 <!-- // 관람등급안내창 -->
-<!-- 	<div class="modal" id="viewGrade" tabindex="-1" style="display: block;"> -->
-<!-- 		<div class="modal-dialog" style="max-width: 470px; margin-top: 276px;"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h4>관람등급 안내</h4> -->
-<!-- 					<button class="close-modal btnNext">닫기</button> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<div class="thReservWrap mb30"> -->
-<!-- 						<div class="thBox"> -->
-<!-- 							<h3><span class="cnNm">1939시네마</span> <span class="scNm">2관 2D(자막)</span></h3> -->
-<!-- 							<p><span class="plDt">2023-04-05(수)</span> <span class="tiNm">14:30~16:32</span></p> -->
-<!-- 							<div class="item"> -->
-<!-- 								<p class="tit"><i class="age12"></i> 12세 이상 관람가</p> -->
-<!-- 								<div class="txt"><p> 본 영화는 만 12세 이상 관람 가능한 영화입니다. </p><p> 만 12세 미만 고객은 부모님 또는 만 19세 이상 보호자 동반 시 관람이 가능합니다. </p><p> 연령 확인 불가 시 입장이 제한 될 수 있습니다. </p><p> ※ 보호자란? : 만 19세 이상의 성인 보호자 (고등학교 재학생 불가) </p></div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-bottom "> -->
-<!-- 					<button class="btn-modal2 btnNext" style="width:100%">확인</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<div class="modal" id="viewGrade" tabindex="-1" style="display: none;">
+		<div class="modal-dialog" style="max-width: 470px; margin-top: 276px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>관람등급 안내</h4>
+					<button class="close-modal btnNext">닫기</button>
+				</div>
+				<div class="modal-body">
+					<div class="thReservWrap mb30">
+						<div class="thBox">
+							<h3><span class="cnNm"></span> <span class="scNm"></span></h3>
+							<p><span class="plDt"></span> <span class="tiNm"></span></p>
+							<div class="item">
+								<p class="tit"></p>
+								<div class="txt"><p class="HidRatingMsg"></p></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-bottom ">
+					<button class="btn-modal2 btnNext" id="HidRatingBtn" style="width:100%">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
 <script type="text/javascript" >
@@ -682,7 +646,6 @@ var mvDay = "";		// 상영일
  	
 		
 		
-	
 
 
 		// 지역 클릭시 극장 출력
@@ -708,48 +671,16 @@ var mvDay = "";		// 상영일
 		});
 		// 극장 클릭시 영화리스트 출력
 		$(".btnCnItem").on("click", function(e){
+			$(".btnTime").hide();
+			$(".movie-date-wrapper-active").removeClass("movie-date-wrapper-active");
 			$(".movieListDiv").hide();
 			CnItemCd = $(this).data("cd");
 			var cinemaNm = $(this).attr("title");
 			$("#CnItemCd").val(CnItemCd);
 			$("#CinemaNm").val(cinemaNm);
 			$(".btnMvItem").hide();
+			
 			moviesList();
-			// ajax 함수로 따로 뺐음
-// 			$.ajax({													
-// 	 			type: "GET",
-// 	 			url: "moviesList",
-// 	 			data: { 
-// 	 				CnItemCd : CnItemCd
-// 	 			},
-// 	 			dataType: "json",
-// 	 			success: function(response) { 
-// 	 				console.log("btnCnItem : 요청처리성공");
-// 	 				for(let movie of response) {
-// 	 					let movieTitle = movie.info_movie_title;
-// 	 					let movieCode = movie.info_movie_code;
-// 	 					let movieImg = movie.info_movie_poster;
-// 	 					let movieRating = movie.info_rating;
-// 	 					let genre = movie.info_genre;
-	 					
-	 					
-// 	 					var str = "";
-// 	 					str += "<li>";
-// 	 					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
-// 	 					str += "' data-rat='" + movieRating;
-// 	 					str += "' data-url='" + movieImg;
-// 	 					str += "' data-genre='" + genre;
-// 	 					str += "' title='" + movieTitle + "'>";
-// 	 					str += movieTitle + "</button>";
-// 	 					str += "</li>";
-// 	 					console.log(str);
-// 	 					$("#movieList").append(str);
-// 	 				}
-// 	 			},
-// 	 			error: function(xhr, textStatus, errorThrown) {
-// 	 				console.log("btnCnItem : 요청처리실패");
-// 	 			}
-// 	 		});
 			
 			$(".btnCnItem").parent().removeClass("check");
 			if ($("#CinemaCd").val() == $(this).data("cd")) {
@@ -790,6 +721,8 @@ var mvDay = "";		// 상영일
 		
 // 영화리스트 클릭
 		$(document).on("click", ".btnMvItem", function(e) {
+			$(".btnTime").hide();
+			$(".movie-date-wrapper-active").removeClass("movie-date-wrapper-active");
 			MvItemCd = $(this).data("cd");
 			var genre = $(this).data("genre");
 			$("#genre").val(genre);
@@ -843,15 +776,39 @@ var mvDay = "";		// 상영일
 		
 		
 		
-		$(document).on("click", "#btnNext", function(){
+		$(document).on("click", "#btnNext", function() {
 			var CinemaCd = $("#CinemaCd").val();
 			var MovieCd = $("#MovieCd").val();
 			var ScreenTime = $("#ScreenTime").val();
+			var HidRating = $("#HidRating").val();
+			var age = "전체"; 
 			if ((CinemaCd != "all") && (MovieCd != "all") && (ScreenTime != "all")) {
-				$("#dataForm").submit();
+			
+			$(".tit").append(HidRating);
+			// 관람 등급 별 메시지
+			switch(HidRating) {
+				case "12세관람가": {
+					age = 12; break;
+				}
+				case "15세관람가": {
+					age = 15; break;
+				}
+				case "18세관람가(청소년관람불가)": {
+					age = 18; break;
+				}
+				default: 
+			}
+			if(age != "전체") {
+				$(".HidRatingMsg").append("본 영화는 만 " + age + "세 이상 관람 가능한 영화입니다. </p><p> 만 " + age + "세 미만 고객은 부모님 또는 만 19세 이상 보호자 동반 시 관람이 가능합니다. </p><p> 연령 확인 불가 시 입장이 제한 될 수 있습니다. </p><p> ※ 보호자란? : 만 19세 이상의 성인 보호자 (고등학교 재학생 불가) ");
+			}
+			$("#viewGrade").show();
 			} else {
 				alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
 			}
+		});
+		
+		$(document).on("click", "#HidRatingBtn", function() {
+			$("#dataForm").submit();
 		});
 		
 		
@@ -862,40 +819,5 @@ var mvDay = "";		// 상영일
 <!-- // footer -->
 <jsp:include page="../footer.jsp"></jsp:include>
 		
-<!-- 	<div class="modal" id="mAlert"> -->
-<!-- 		<div class="modal-dialog" style="max-width:340px"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h4>알림</h4> -->
-<!-- 					<button type="button" class="close-modal" onclick="$('#mAlert').modal({show:0});">닫기</button> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<div class="modal-txt"> -->
-<!-- 					</div> -->
-<!-- 					<div class="modal-bottom text-right"> -->
-<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="$('#mAlert').modal({show:0});">확인</button> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-	
-<!-- 	<div class="modal" id="oAlert"> -->
-<!-- 		<div class="modal-dialog" style="width:340px"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h4>알림</h4> -->
-<!-- 					<button type="button" class="close-modal" onclick="closeModal('oAlert');">닫기</button> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<div class="modal-txt"> -->
-<!-- 					</div> -->
-<!-- 					<div class="modal-bottom text-right"> -->
-<!-- 						<button type="button" class="btn-modal2 close-modal" onclick="closeModal('oAlert');">확인</button> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 </body>
 </html>

@@ -21,12 +21,6 @@
 <meta charset="UTF-8">
 <title>좌석 선택</title>
 <link rel="shortcut icon" href="resources/images/rsv/res_test.png" type="image/x-icon" />
-<script type="text/javascript">
-
-
-
-
-</script>
 </head>
 
 <body>
@@ -133,7 +127,6 @@
 
 								<div class="head">
 									<h4 class="r-h4">영화예매</h4>
-									<h4 class="r-h4">{param.id}</h4>
 									<div class="right">
 										<a href="reservation" class="btn-refresh">예매다시하기</a>
 									</div>
@@ -302,34 +295,34 @@
 	
 	function requestPay() {
 		console.log($('#PaymentCd').val());
-			IMP.request_pay({
-		        pg : $('#PaymentCd').val(),
-		        pay_method : 'card',
-		        merchant_uid: "res" + new Date().getTime(), 
-		        name : '영화 결제',
-		        amount : ${param.totalAmt },
-		        buyer_email : '${member.get('member_email')}',
-		        buyer_name : '${member.get('member_name')}',
-		        buyer_tel : '${member.get('member_tel')}',
-		        
-		    }, function (rsp) { // callback
-		        if (rsp.success) {
-				    alert("결제가 완료되었습니다.");
-				    
-					$("#dataForm").append('<input type="hidden" id="resCode" name="resCode" value="' + rsp.merchant_uid + '">');
-					$("#dataForm").append('<input type="hidden" id="resPayment" name="resPayment" value="' + rsp.pay_method + '">');
-					$("#dataForm").append('<input type="hidden" id="resPay" name="resPay" value="' + rsp.paid_amount + '">');
-					$("#dataForm").append('<input type="hidden" id="resPayDone" name="resPayDone" value="' + rsp.status + '">');
-					$("#dataForm").append('<input type="hidden" id="buyerEmail" name="buyerEmail" value="' + rsp.buyer_email + '">');
-					$("#dataForm").append('<input type="hidden" id="buyerName" name="buyerName" value="' + rsp.buyer_name + '">');
-					$("#dataForm").append('<input type="hidden" id="buyerTel" name="buyerTel" value="' + rsp.buyer_tel + '">');
-					$("#dataForm").submit();
-					
-		        } else {
-		            alert("실패 : 코드" + rsp.error_code + ") / 메세지()"
-		            	  + rsp.error_msg + ")");
-		        }
-		    });
+		IMP.request_pay({
+	        pg : $('#PaymentCd').val(),
+	        pay_method : 'card',
+	        merchant_uid: "res" + new Date().getTime(), 
+	        name : '영화 결제',
+	        amount : ${param.totalAmt },
+	        buyer_email : '${member.get('member_email')}',
+	        buyer_name : '${member.get('member_name')}',
+	        buyer_tel : '${member.get('member_tel')}',
+	        
+	    }, function (rsp) { // callback
+	        if (rsp.success) {
+			    alert("결제가 완료되었습니다.");
+			    
+				$("#dataForm").append('<input type="hidden" id="resCode" name="resCode" value="' + rsp.merchant_uid + '">');
+				$("#dataForm").append('<input type="hidden" id="resPayment" name="resPayment" value="' + rsp.pay_method + '">');
+				$("#dataForm").append('<input type="hidden" id="resPay" name="resPay" value="' + rsp.paid_amount + '">');
+				$("#dataForm").append('<input type="hidden" id="resPayDone" name="resPayDone" value="' + rsp.status + '">');
+				$("#dataForm").append('<input type="hidden" id="buyerEmail" name="buyerEmail" value="' + rsp.buyer_email + '">');
+				$("#dataForm").append('<input type="hidden" id="buyerName" name="buyerName" value="' + rsp.buyer_name + '">');
+				$("#dataForm").append('<input type="hidden" id="buyerTel" name="buyerTel" value="' + rsp.buyer_tel + '">');
+				$("#dataForm").submit();
+				
+	        } else {
+	            alert("실패 : 코드" + rsp.error_code + ") / 메세지()"
+	            	  + rsp.error_msg + ")");
+	        }
+	    });
 	    
 	}
 	
@@ -365,9 +358,8 @@
 		
 // 		결제하기
 		$(".btnPayment").on("click", function() {
-			
-			
-			
+			// 결제하기 전 좌석 정보 다시 확인 후 선택한 좌석이 예약좌석이면 알림
+			reservationList();			
 			requestPay();
 			// 10분후 타임아웃
 			var timeOut = setTimeout(function() {

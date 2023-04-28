@@ -123,9 +123,10 @@ public class ReservationController {
 		
 		// 결제 후 예매 정보 추가 - 회원
 		int insertReservation = service.insertReservation(vo, id);
-		
 		// 결제 후 예매 정보 추가 - 비회원
 //		int insertReservationNonMember = 
+			
+		
 		
 		
 		// 예매 성공 후 point 적립

@@ -913,7 +913,7 @@ button,select,input,textarea { outline: none; }
 .modal-body {  }
 .modal-bottom { margin:0 -3px; text-align: center;}
 .modal-bottom button { width:115px; height: 38px; border:0; text-align: center; border-radius:4px; font-size:14px; color: #000; font-weight: 600; background: #e4e9f2; margin:0 3px; }
-.modal-bottom button.btn-modal2 { background: #40dfd0; }
+.modal-bottom button.btn-modal2 {background: #503396;}
 .modal-bottom.flex { display: flex; }
 .modal-bottom.flex button { width:49%; }
 .modal-check { text-align: center; padding-top:15px; }

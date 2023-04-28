@@ -23,9 +23,6 @@
 
 <body>
 <jsp:include page="../nav.jsp"></jsp:include>
-<!-- 추후 수정 -->
-<!-- 선택좌석 취소했을 때 btnCnt값 처리 -->
-<!-- 총인원수랑 선택한 인원수가 같아야 결제하기로 넘어갈 수 있게 하기 -->
 
 	<div class="content">
 			<div class="inner2">
@@ -107,84 +104,40 @@
 													<div id="priceList">
 														<div class="t1">성인</div>
 														<div class="list">
-															<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span></label>
-															<label class=""> 
-															<input type="radio"class="c-radio rdoTicket" name="T001260" value="1" data-no="0"> <span>1</span>
-															</label>
-															<label class="">
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="2" data-no="0"> <span>2</span>
-															</label>
-															<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="3" data-no="0"> <span>3</span>
-															</label>
-															<label class="">
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="4" data-no="0"> <span>4</span>
-															</label>
-															<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="5" data-no="0"> <span>5</span></label>
-															<label class="">
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="6" data-no="0"> <span>6</span>
-														</label>
-														<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="7" data-no="0"> <span>7</span></label>
-															<label class="">
-															<input type="radio" class="c-radio rdoTicket" name="T001260" value="8" data-no="0"> <span>8</span>
-														</label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="0" data-no="0" checked=""> <span>0</span></label>
+															<label class=""> <input type="radio"class="c-radio rdoTicket" name="T001260" value="1" data-no="0"> <span>1</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="2" data-no="0"> <span>2</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="3" data-no="0"> <span>3</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="4" data-no="0"> <span>4</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="5" data-no="0"> <span>5</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="6" data-no="0"> <span>6</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="7" data-no="0"> <span>7</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001260" value="8" data-no="0"> <span>8</span></label>
 														</div>
 														<div class="t1">경로(만65세이상)</div>
 														<div class="list">
 															<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span>
-															</label>
-																<label class=""> 
-																<input type="radio" class="c-radio rdoTicket" name="T001261" value="1" data-no="1"> <span>1</span></label>
-																<label class="">
-																<input type="radio" class="c-radio rdoTicket" name="T001261" value="2" data-no="1"> <span>2</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001261" value="3"
-																data-no="1"> <span>3</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001261" value="4" data-no="1"> <span>4</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001261" value="5"
-																data-no="1"> <span>5</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001261" value="6" data-no="1"> <span>6</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001261" value="7"
-																data-no="1"> <span>7</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001261" value="8" data-no="1"> <span>8</span>
-															</label>
+															<input type="radio" class="c-radio rdoTicket" name="T001261" value="0" data-no="1" checked=""> <span>0</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="1" data-no="1"> <span>1</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="2" data-no="1"> <span>2</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="3" data-no="1"> <span>3</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="4" data-no="1"> <span>4</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="5" data-no="1"> <span>5</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="6" data-no="1"> <span>6</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="7" data-no="1"> <span>7</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001261" value="8" data-no="1"> <span>8</span></label>
 														</div>
 														<div class="t1">청소년</div>
 														<div class="list">
-															<label class=""> 
-															<input type="radio" class="c-radio rdoTicket" name="T001262" value="0" data-no="2" checked=""> <span>0</span>
-															</label>
-																<label
-																class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001262" value="1"
-																data-no="2"> <span>1</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001262" value="2" data-no="2"> <span>2</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001262" value="3"
-																data-no="2"> <span>3</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001262" value="4" data-no="2"> <span>4</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001262" value="5"
-																data-no="2"> <span>5</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001262" value="6" data-no="2"> <span>6</span>
-															</label><label class=""> <input type="radio"
-																class="c-radio rdoTicket" name="T001262" value="7"
-																data-no="2"> <span>7</span></label><label class="">
-																<input type="radio" class="c-radio rdoTicket"
-																name="T001262" value="8" data-no="2"> <span>8</span>
-															</label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="0" data-no="2" checked=""> <span>0</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="1" data-no="2"> <span>1</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="2" data-no="2"> <span>2</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="3" data-no="2"> <span>3</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="4" data-no="2"> <span>4</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="5" data-no="2"> <span>5</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="6" data-no="2"> <span>6</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="7" data-no="2"> <span>7</span></label>
+															<label class=""> <input type="radio" class="c-radio rdoTicket" name="T001262" value="8" data-no="2"> <span>8</span></label>
 														</div>
 													</div>
 												</div>
@@ -264,14 +217,6 @@
 										<div class="choice-list">
 											<strong>선택 좌석</strong>
 											<ul id="choiceList">
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
-<!-- 												<li>-</li> -->
 											</ul>
 										</div>
 										<div class="bottom">
@@ -315,11 +260,6 @@
 	var seatNmList = new Array();
 	var seatLineList = new Array();
 	var seatNumList = new Array();
-	
-
-	
-	// 
-	
 	
 	
 // reservationList에서 res_seat_line, res_seat_num 값 select 후
