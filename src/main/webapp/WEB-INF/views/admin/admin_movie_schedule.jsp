@@ -36,36 +36,32 @@ function selectCinema(){
 		return; // 다음 작업이 진행되지 않도록 함수 종료
 	}
 	
+	
 	//지점 > 상영관
 	$.ajax({
 		type: "POST",
 		url: "screenSelect",
 		data: {
 			cinema_code: $(".cinema_name option:selected").val(),
-		  	cinema_name: $(".cinema_name option:selected").text()
+		  	cinema_name: $(".cinema_name option:selected").text(),
+		  	movie_code: $(".sch_movie_name option:selected").val()
 		},
 		success: function(result){ // 요청 처리 성공시 자동으로 호출되는 콜백함수
-			
-			
 			$(".selectScreen_name option").remove();
 			$(".selectScreen_name").append( '<option value="none" selected="selected" disabled>상영관을 선택하세요</option>');
 			$(".selectScreen_name").append('<option value="none" disabled>=======================</option>');
 			for(var i=0; i<result.length; i++){
 				$(".selectScreen_name").append('<option value="' +result[i].screen_code + '">' + result[i].screen_name + '</option>');
 			}
-			
-			
-			
 		},
 		error:function(request,status,error){
-// 	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	     
 		}
 	});// 지점 > 상영관 ajax
 }// selectCinema()
 
-
 function selectSch(){
+	
 	$.ajax({
 		 type: "POST",
 		 url: "schCheckTime",
@@ -73,34 +69,101 @@ function selectSch(){
 			 sch_date: $("#sch_register_date").val(),
 	  	  cinema_name: $(".cinema_name option:selected").text(),
 	  	  screen_name: $(".screen_name option:selected").text(),
-	  	  movie_name: $(".sch_movie_code option:selected").text()
+	  	   movie_code: $(".sch_movie_name option:selected").val()
 		 },
 		 success: function(result){
-// 			 alert(result);
-// 			 let schCheck = JSON.parse('${schCheckTimeJson}');
-// 			 console.log(result);
 			let disabledValues = [];
-
+			let infoTimes=[];
 			$(".sch_start_time option").remove();
 			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요</option>');
 			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
+		
 			
 			for (var i = 0; i < result.length; i++) {
-			  let value = result[i].sch_start_time.slice(0, 5); // "시:분" 형식으로 변환
-			  disabledValues.push(value);
+				let value = result[i].sch_start_time.slice(0, 5); // "시:분" 형식으로 변환
+				disabledValues.push(value);
+				let time = result[i].info_time;
+				infoTimes.push(time);
 			}
-			console.log(disabledValues);
 			
+			alert(infoTimes);
+// 			console.log(result.info_time);
+			console.log(disabledValues);
+// 			if(result==null||result =="")
+			
+			// 처음에 없을땐 선택이 되게 되야하는데 그걸 처리해줘야할듯 23.04.27
+			// 처음부터 time 에맞춰서 disabled됨
+			
+// 			let time = "01:11"; //영화시간은 하나가아닌디..?
+			let arr = new Array();
+			
+			//가져온 시간이 있으면 disabled 표시
 			for (var i = 9; i <= 20; i++) {
 			  let value = i < 10 ? '0' + i + ':00' : i + ':00'; // '09:00', '10:00' 로가져오기
 			  let disabled = disabledValues.includes(value) ? 'disabled' : ''; // 있으면 disabled 없으면 '''
-			  $("select.sch_start_time").append('<option value="' + value + '"' + disabled + '>' + value + '</option>');
-			  
+// 			  $("select.sch_start_time").append('<option value="' + value + '"' + disabled + ' ' + value + '>' + value + '</option>');
+				
+			  // 이미 예약된 시각 정보는 "disabled", 아니면 널스트링("") 값으로 배열 초기화
+			  arr[i - 9] = disabled;
 			}
+			
+			console.log(arr);
+			// 예약이 되잇는시간의 뒤에시간만 가려져야하는데 
+			// 퐁당퐁당으로 가려짐
+			// infotime에서 받아온 갯수가 그 상영의 일정이 등록된 갯수인데 
+			// 그 횟수만큼 반복을 해야 하는게 아닌가요????? 9시부터 20시까지 
+					
+			// 배열 반복 
+			for(let k = 0; k<infoTimes.length;k++){
+				for(let i = 0; i < arr.length; i++) { // 9시~20시
+					console.log("i = " + i + ", arr.length = " + arr.length);
+					// 배열 내에 disabled 가 아닌 요소가 있을 경우
+					if(arr[i] == "") {
+						let targetStartHour = i + 9; // 16
+						let runningHour =  Number(infoTimes[k].split(":")[0]); // 1
+					
+						
+						let result = targetStartHour + runningHour; // 17
+						
+						
+						// 만약, 예약시작시각 + 1부터 예약시작시각 + 상영시간(시)까지에 해당하는 배열 인덱스 값이 "disabled"가 존재하면
+						// 예약시작시각(현재값)도 "disabled" 가 되어야함
+						
+						let isDisabled = false;
+						for(let j = targetStartHour; j <= result; j++) {
+							if(arr[j - 9] == "disabled") {
+								isDisabled = true;
+							}
+						}
+						
+						if(isDisabled) { // 사이의 시간이 하나라도 예약 불가능(disabled)이면
+							arr[i] = "disabled"; // 현재 시간도 disabled
+						} else { // 아니면
+							// 예약 시작 시각 다음 시간부터 예약 시작 시각 + 상영 시간(시) 값까지 반복하면서 "disabled" 표시
+							// ex) 예약 시작 시각 = 16, 상영 시간(시) = 2 일 경우
+							//     16:00 는 예약이 가능해야
+							for(let j = targetStartHour + 1; j <= result; j++) {
+								if(j - 9 < arr.length) {
+									arr[j - 9] = "disabled";
+								}
+								
+							}
+						}
+						
+					}
+					
+				}
+			
+			}
+			for(let i = 0; i < arr.length; i++) {
+				let value = (i + 9) + ':00';
+				$("select.sch_start_time").append('<option value="' + value + '"' + arr[i] + ' ' + value + '>' + value + '</option>');
+			}
+			
+			
 		 },
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		     
 		}
 	});//ajax
 		 
@@ -137,6 +200,7 @@ function dateDelete(){
 
 
 function doRegisterSch(){
+	
  handle: ".modal-header";
    let dis = document.querySelector(".admin-modal-register");
    if (dis.style.display = "none") {
@@ -248,7 +312,7 @@ $(function() {
 		<div id="layoutSidenav_content">
 			<!-- 들어갈내용 -->
 			<main>
-
+		
 
 
 				<!-- 테이블 -->
@@ -274,7 +338,7 @@ $(function() {
 							<form action="admin_schedule_register">
 								<div class="sch_movie_code">
 									<select name="sch_movie_code" id="sch_movie_code"
-										style="width: 150px; height: 32px; border: 1px solid #aeaeae;">
+										style="width: 150px; height: 32px; border: 1px solid #aeaeae;" onchange="selectdd()">
 										<option value="none" selected="selected" disabled>영화선택</option>
 										<option value="none" disabled>=======================</option>
 										<c:forEach var="movie" items="${movieList }">
@@ -476,10 +540,9 @@ $(function() {
 										<div class="col-md-6 ">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="cinema_name">
-													<label for="cinema_name">영화관명 : </label> <select
-														name="sch_cinema_code" onchange="selectCinema()">
-														<option value="none" selected="selected" disabled>영화관을
-															선택하세요</option>
+													<label for="cinema_name">영화관명 : </label> 
+													<select name="sch_cinema_code" onchange="selectCinema()">
+														<option value="none" selected="selected" disabled>영화관을 선택하세요</option>
 														<option value="none" disabled>=======================</option>
 														<c:forEach var="cinema" items="${cinemaList }">
 															<option value="${cinema.get('cinema_code') }">${cinema.get("cinema_name")}</option>
@@ -496,11 +559,9 @@ $(function() {
 										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0 selectbox">
 												<div class="screen_name">
-													<label for="screen_name">상영관 : </label> <select
-														name="sch_screen_code" class="selectScreen_name"
-														onchange="selectSch()" style="width: 300px">
-														<option value="none" selected="selected" disabled>상영관을
-															선택하세요</option>
+													<label for="screen_name">상영관 : </label> 
+													<select name="sch_screen_code" class="selectScreen_name"style="width: 300px">
+														<option value="none" selected="selected" disabled>상영관을 선택하세요</option>
 														<option value="none" disabled>=======================</option>
 														<c:forEach var="sch" items="${schList }">
 															<option value="${sch.get('sch_start_time') }">${ movie.get("sch_start_time") }</option>
@@ -514,15 +575,13 @@ $(function() {
 									<div class="row mb-3">
 											<div class="col-md-6 ">
 												<div class="form-floating mb-3 mb-md-0 selectbox">
-													<div class="sch_movie_code">
-														<label for="sch_movie_code">영화선택 : </label> <select
-															name="sch_movie_code" id="sch_movie_code"
-															style="width: 300px;">
-															<option value="none" selected="selected" disabled>영화를
-																선택하세요</option>
-															<option value="none" disabled>=======================</option>
+													<div class="sch_movie_name">
+														<label for="sch_movie_name">영화선택 : </label>
+														<select name="sch_movie_code" id="sch_movie_code"  onchange="selectSch()" style="width: 300px;">
+															<option selected="selected" disabled>영화를 선택하세요</option>
+															<option disabled>=======================</option>
 															<c:forEach var="movie" items="${movieList }">
-																<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+																<option value="${movie.get('info_movie_code') }" movieTime="${movie.get('info_time')}">${ movie.get("info_movie_title") }</option>
 															</c:forEach>
 														</select>
 													</div>
@@ -531,11 +590,23 @@ $(function() {
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0 selectbox">
 													<div class="sch_start_time">
-														<label for="sch_start_time">시작시간 : </label> <select
-															name="sch_start_time" class="sch_start_time">
-															<option value="none" selected="selected"
+														<label for="sch_start_time">시작시간 : </label>
+														 <select name="sch_start_time" class="sch_start_time">
+															<option value="" selected="selected"
 																disabled="disabled">영화시작시간을 선택하세요</option>
-															<option value="none" disabled>=======================</option>
+															<option value="" disabled>=======================</option>
+															<option value="" >09:00</option>
+															<option value="" >10:00</option>
+															<option value="" >11:00</option>
+															<option value="" >12:00</option>
+															<option value="" >13:00</option>
+															<option value="" >14:00</option>
+															<option value="" >15:00</option>
+															<option value="" >16:00</option>
+															<option value="" >17:00</option>
+															<option value="" >18:00</option>
+															<option value="" >19:00</option>
+															<option value="" >20:00</option>
 														</select>
 													</div>
 												</div>

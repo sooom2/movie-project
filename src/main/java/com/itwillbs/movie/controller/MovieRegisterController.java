@@ -148,31 +148,30 @@ public class MovieRegisterController {
 	}
 	//
 
-	/*
-	 * 
-	 * sch_date: $(".sch_register_date").text(), cinema_name:
-	 * $(".cinema_name option:selected").text(), screen_name:
-	 * $(".screen_name option:selected").text()
-	 */
+	
 
 	@ResponseBody
 	@PostMapping(value = "schCheckTime", produces = "application/json; charset=utf8")
 	public String schCheckTime(Model model, @RequestParam("sch_date") String sch_date,
 			@RequestParam("cinema_name") String cinema_name, @RequestParam("screen_name") String screen_name,
-			@RequestParam("movie_name") String movie_name) throws JsonProcessingException {
+			@RequestParam("movie_code") String movie_code) throws JsonProcessingException {
 		System.out.println("sch_date =======================================================");
-//		System.out.println(movie_name);
-		System.out.println("===============================================");
-		List<HashMap<String, String>> schCheckTime = movieRegisterService.schCheckTime(sch_date, cinema_name,
-				screen_name);
+		System.out.println(movie_code);
+		System.out.println("======ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ=========================================");
+		System.out.println(sch_date+", "+ cinema_name + " , " + screen_name+", " + movie_code);
+		System.out.println("==========ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ====================================");
+		//상영시간을 가지고온다
+		List<HashMap<String, String>> schCheckTime = movieRegisterService.schCheckTime(sch_date, cinema_name,screen_name,movie_code);
 
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		String schCheckTimeJson = objectMapper.writeValueAsString(schCheckTime);
-		model.addAttribute("schCheckTimeJson", schCheckTimeJson);
-
-		System.out.println("===============================================");
+		System.out.println("==================================");
 		System.out.println(schCheckTimeJson);
-		System.out.println("===============================================");
+		System.out.println("==================================");
+		
+		
+		model.addAttribute("schCheckTimeJson", schCheckTimeJson);
 
 		return schCheckTimeJson;
 	}
