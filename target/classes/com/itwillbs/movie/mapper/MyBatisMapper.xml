@@ -325,15 +325,17 @@
 	<select id="selectReview" resultType="hashmap">
 		 SELECT 
 		    rev_movie_code
-		  , rev_movie_title
+		  , m.info_movie_title
 		  , rev_id,rev_rating
 		  , rev_content,rev_date
 		  , concat(SUBSTRING(member_name, 1, 1),'*',SUBSTRING(member_name, 3, 1)) AS mem_name
 		   FROM review
+		   LEFT JOIN movieinfo m 
+		   ON rev_movie_code = m.info_movie_code
 		   LEFT JOIN member
 		   ON review.rev_id = member.member_id
-		  ORDER BY rev_code desc
-		  LIMIT 3
+		  ORDER BY rev_code DESC 
+		  LIMIT 3;
 	</select>
 	
 	<!-- 포인트 테이블 차감 -->

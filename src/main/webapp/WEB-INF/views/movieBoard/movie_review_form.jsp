@@ -27,7 +27,7 @@
 						<tbody>
 							<c:forEach var="Review" items="${movieInfoReview}">
 							    <tr>
-							        <td>영화제목 ${Review.rev_movie_title}</td>
+<%-- 							        <td>영화제목 ${Review.rev_movie_title}</td> --%>
 							        <!-- 영화 제목 -->
 							        <td>${Review.rev_movie_content}
 							        </td>

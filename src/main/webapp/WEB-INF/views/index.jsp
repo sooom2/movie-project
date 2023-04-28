@@ -508,7 +508,7 @@
 										</span>
 										<span class="date_info">${review.rev_date }</span>
 									</div>
-									<div class="review_info"><a href='MovieInfo?info_movie_code=${review.rev_movie_code }' style="color:#000!important;">[${review.rev_movie_title}] ${review.rev_content }</a></div>
+									<div class="review_info"><a href='MovieInfo?info_movie_code=${review.rev_movie_code }' style="color:#000!important;">[${review.info_movie_title}] ${review.rev_content }</a></div>
 									</li>
 							</c:forEach>
 									

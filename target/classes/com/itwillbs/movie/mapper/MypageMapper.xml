@@ -75,12 +75,13 @@
 
 		INSERT INTO review VALUES
 		(
+		
  		(SELECT *
   			  FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
-		,(select res_movie_code
-		from reservation where res_id = #{id}
+		,(SELECT res_movie_code
+		FROM reservation where res_id = #{id}
 		order by res_code desc limit 1)
-		,(select res_title
+		,(SELECT res_title
 		from reservation where res_id = #{id} 
 		order by res_code desc limit 1)
 	  	,#{id}
@@ -94,13 +95,15 @@
 
   	<select id = "revList" resultType = "hashmap" >
   		SELECT 
-  			rev_code
-  			,rev_movie_title
-  			,rev_content
-  			,rev_rating
-  			,rev_date
-  		FROM review
-  		WHERE rev_id = #{id}
+  			v.rev_code
+  			,m.info_movie_title
+  			,v.rev_content
+  			,v.rev_rating
+  			,v.rev_date
+  		FROM review v 
+  		LEFT JOIN movieinfo m 
+  		ON v.rev_movie_code = m.info_movie_code
+  		WHERE v.rev_id = #{id}
   	</select>
   	
   	<select id = "movieList" resultType= "hashmap">

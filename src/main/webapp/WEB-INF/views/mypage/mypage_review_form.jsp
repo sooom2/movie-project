@@ -164,7 +164,7 @@ function confirmDelete(rev_code) {
 <%-- 							</c:forEach> --%>
 								<c:forEach var="revList" items="${revList}">
 								    <tr>
-								        <td>${revList.rev_movie_title}</td>
+								        <td>${revList.info_movie_title}</td>
 								        <td>${revList.rev_content}</td>
 								        <td>
 								            <c:if test="${not empty revList.rev_rating}">
