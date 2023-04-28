@@ -62,31 +62,30 @@ function selectCinema(){
 
 function selectSch(){
 	
-	$.ajax({
-		 type: "POST",
-		 url: "schCheckTime",
-		 data: {
-			 sch_date: $("#sch_register_date").val(),
-	  	  cinema_name: $(".cinema_name option:selected").text(),
-	  	  screen_name: $(".screen_name option:selected").text(),
-	  	   movie_code: $(".sch_movie_name option:selected").val()
-		 },
-		 success: function(result){
-			let disabledValues = [];
-			let infoTimes=[];
-			$(".sch_start_time option").remove();
-			$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요</option>');
-			$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
-		
-			
-			for (var i = 0; i < result.length; i++) {
+		$.ajax({
+			type: "POST",
+			url: "schCheckTime",
+			data: {
+				sch_date: $("#sch_register_date").val(),
+				cinema_name: $(".cinema_name option:selected").text(),
+				screen_name: $(".screen_name option:selected").text(),
+				movie_code: $(".sch_movie_name option:selected").val()
+			},
+			success: function(result){
+				let disabledValues = [];
+				let infoTimes=[];
+				let cinemaNames=[];
+				$(".sch_start_time option").remove();
+				$("select.sch_start_time").append('<option value="none" selected="selected" disabled style="background-color: #fff">영화시작시간을 선택하세요</option>');
+				$("select.sch_start_time").append('<option value="none" disabled style="background-color: #fff">=======================</option>');
+				
+				
+				for (var i = 0; i < result.length; i++) {
 				let value = result[i].sch_start_time.slice(0, 5); // "시:분" 형식으로 변환
 				disabledValues.push(value);
-				let time = result[i].info_time;
-				infoTimes.push(time);
-			}
-			
-			alert(infoTimes);
+				infoTimes.push(result[i].info_time);
+				cinemaNames.push(result[i].cinema_name);
+			}	
 // 			console.log(result.info_time);
 			console.log(disabledValues);
 // 			if(result==null||result =="")
@@ -99,24 +98,39 @@ function selectSch(){
 			
 			//가져온 시간이 있으면 disabled 표시
 			for (var i = 9; i <= 20; i++) {
-			  let value = i < 10 ? '0' + i + ':00' : i + ':00'; // '09:00', '10:00' 로가져오기
-			  let disabled = disabledValues.includes(value) ? 'disabled' : ''; // 있으면 disabled 없으면 '''
+				let value = i < 10 ? '0' + i + ':00' : i + ':00'; // '09:00', '10:00' 로가져오기
+				let disabled = disabledValues.includes(value) ? 'disabled' : ''; // 있으면 disabled 없으면 '''
 // 			  $("select.sch_start_time").append('<option value="' + value + '"' + disabled + ' ' + value + '>' + value + '</option>');
-				
+			
 			  // 이미 예약된 시각 정보는 "disabled", 아니면 널스트링("") 값으로 배열 초기화
-			  arr[i - 9] = disabled;
+				console.log("disabled : " + disabled)
+				arr[i - 9] = disabled;
 			}
 			
-			console.log(arr);
+			for(let i = 0; i < arr.length; i++) {
+				
+				let value = (i + 9) + ':00';
+				$("select.sch_start_time").append('<option value="' + value + '"' + arr[i] + ' ' + value + '>' + value + '</option>');
+			}			
+			console.log(" arr 시각 : "+arr);
+			
 			// 예약이 되잇는시간의 뒤에시간만 가려져야하는데 
 			// 퐁당퐁당으로 가려짐
 			// infotime에서 받아온 갯수가 그 상영의 일정이 등록된 갯수인데 
 			// 그 횟수만큼 반복을 해야 하는게 아닌가요????? 9시부터 20시까지 
-					
+			console.log("infoTimes"+infoTimes);	
+			
+			
+			
+		
+			
 			// 배열 반복 
 			for(let k = 0; k<infoTimes.length;k++){
+				
 				for(let i = 0; i < arr.length; i++) { // 9시~20시
 					console.log("i = " + i + ", arr.length = " + arr.length);
+				
+				
 					// 배열 내에 disabled 가 아닌 요소가 있을 경우
 					if(arr[i] == "") {
 						let targetStartHour = i + 9; // 16
@@ -125,10 +139,12 @@ function selectSch(){
 						
 						let result = targetStartHour + runningHour; // 17
 						
-						
 						// 만약, 예약시작시각 + 1부터 예약시작시각 + 상영시간(시)까지에 해당하는 배열 인덱스 값이 "disabled"가 존재하면
 						// 예약시작시각(현재값)도 "disabled" 가 되어야함
 						
+						
+					
+						     						
 						let isDisabled = false;
 						for(let j = targetStartHour; j <= result; j++) {
 							if(arr[j - 9] == "disabled") {
@@ -151,15 +167,15 @@ function selectSch(){
 						}
 						
 					}
-					
 				}
 			
 			}
-			for(let i = 0; i < arr.length; i++) {
-				let value = (i + 9) + ':00';
-				$("select.sch_start_time").append('<option value="' + value + '"' + arr[i] + ' ' + value + '>' + value + '</option>');
-			}
-			
+// 			for(let i = 0; i < arr.length; i++) {
+				
+// 				let value = (i + 9) + ':00';
+// 				$("select.sch_start_time").append('<option value="' + value + '"' + arr[i] + ' ' + value + '>' + value + '</option>');
+// 			}
+		
 			
 		 },
 			error:function(request,status,error){
