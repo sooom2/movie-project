@@ -262,7 +262,7 @@ console.log("검색 날짜 : " + targetDay);
 				ServiceKey : 'N6BL7Q77SG0M41244297',	// 서비스 키 값을 여기 표시하면 안될 것 같은데.. 어떻게 처리해야할지 모름
 				releaseDts :targetDay,
 				deailt : 'N',
-				listCount : '100'
+				listCount : '200'
 			},
 			type : 'GET',
 			dataType: 'json',
@@ -271,12 +271,12 @@ console.log("검색 날짜 : " + targetDay);
 				$("#api").append( '<option value="none" selected="selected" disabled>상영 예정작 등록</option>');
 				
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
-// 					if(result.Data[0].Result[i].runtime == ""
+					if(result.Data[0].Result[i].runtime == ""
 // 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
-// 						)
-// 					{
-// 						continue;
-// 					}
+						)
+					{
+						continue;
+					}
 						
 					$("#api").append('<option num ="' + i + '"value="'+ result.Data[0].Result[i].title + '">' + result.Data[0].Result[i].title + '</option>'
 							

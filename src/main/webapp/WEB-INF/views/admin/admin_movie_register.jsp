@@ -14,6 +14,7 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="resources/js/jquery-3.6.4.js"></script>
+<script src="resources/js/KobisOpenAPIRestService.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="resources/js/admin.js"></script>
 <script type="text/javascript">
@@ -22,7 +23,7 @@ $(function () {
     $('.modal').draggable({
       handle: ".justify-content-center"
     });
-  });
+ });
 
 function doLatest() {
 	let dis = document.querySelector(".admin-modal-latest");
@@ -45,10 +46,10 @@ function doMovieRegister(){
 function modalClose() {
 	let dis = document.querySelector(".admin-modal-register");
 	let dis2 = document.querySelector(".admin-modal-latest");
-	let dis3 = document.querySelector(".admin-modal-modify");
+// 	let dis3 = document.querySelector(".admin-modal-modify");
 	dis.style.display = "none";
 	dis2.style.display = "none";
-	dis3.style.display = "none";
+// 	dis3.style.display = "none";
 }
 
 $(function(){
@@ -108,8 +109,6 @@ function previewImage(targetObj, View_area) {
 				reader.readAsDataURL(file);
 			}
 		}
-		
-		
 }
 
 </script>
@@ -257,9 +256,10 @@ function previewImage(targetObj, View_area) {
 				</div>
 				<!-- 등록 -->
 <script>
-
 		$(function(){
+			
 			var targetDay = new Date()
+			
 			$.ajax({
 				url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&targetDt=20190900',
 				type : 'GET',

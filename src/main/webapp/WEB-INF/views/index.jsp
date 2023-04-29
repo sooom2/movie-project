@@ -290,16 +290,16 @@
 					<li data-kind="개봉 예정작" data-title_ko="범죄도시3"
 						data-title_fo="THE ROUNDUP : NO WAY OUT"
 						data-desc="나쁜 놈들 잡는 데 이유 없고 제한 없다 커진 판도 시원하게 싹 쓸어버린다!">
-						<a href="" style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;"></a>
+						<a href="MovieInfo?info_movie_code=20226411" style="background: url('resources/images/main/movie/mv4.png') center center no-repeat;"></a>
 					</li>
 				
 					<li data-kind="현재 상영작" data-title_ko="드림"
 						data-title_fo="DREAM" data-desc="쏘울리스 감독, 열정리스 PD, 그리고 홈리스 국대 부족한 것 투성인 드림팀의 생애 단 한 번의 기회!">
-						<a href="" style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;"></a>
+						<a href="MovieInfo?info_movie_code=20198482" style="background: url('resources/images/main/movie/mv5.png') center center no-repeat;"></a>
 					</li>
 					<li data-kind="현재상영작" data-title_ko="리바운드" data-title_fo="Rebound"
 						data-desc="모두가 불가능이라 말할 때, ‘리바운드’라는 또 다른 기회를 잡는다.">
-						<a href="" style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;"></a>
+						<a href="MovieInfo?info_movie_code=20226489" style="background: url('resources/images/main/movie/mv1.png') center center no-repeat;"></a>
 					</li>
 				<!-- 고정,, -->
 					<li data-kind="개봉 예정작" data-title_ko="분노의 질주: 라이드 오어 다이 "
@@ -316,11 +316,11 @@
 					<li data-kind="현재 상영작" data-title_ko="슈퍼 마리오 브라더스"
 						data-title_fo="The Super Mario Bros"
 						data-desc="전 세계를 열광시킬 올 타임 슈퍼 어드벤처의 등장! ">
-						<a href="" style="background: url('resources/images/main/movie/mv6.png') center center no-repeat;"></a>
+						<a href="MovieInfo?info_movie_code=20227890" style="background: url('resources/images/main/movie/mv6.png') center center no-repeat;"></a>
 					</li>
 					<li data-kind="현재 상영작" data-title_ko="존 윅 4"
 						data-title_fo="John Wick: Chapter 4" data-desc="레전드 액션 블록버스터 존 윅의 새로운 챕터가 열린다!">
-						<a href="" style="background: url('resources/images/main/movie/mv7.png') center center no-repeat;"></a>
+						<a href="MovieInfo?info_movie_code=20231089" style="background: url('resources/images/main/movie/mv7.png') center center no-repeat;"></a>
 					</li>
 				</ul>
 			</div>
@@ -374,10 +374,10 @@
 									<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
 									<c:choose>
 										<c:when test ="${fn:contains(likeList,info_movie_code) }">
-											<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
+											<img src='${path }/resources/images/ico/after-like.png' alt="찜하기완료">
 										</c:when>
 										<c:otherwise>
-											<img src="resources/images/ico/before-like.png" alt="찜하기">	
+											<img src="${path }/resources/images/ico/before-like.png" alt="찜하기">	
 										</c:otherwise>
 									</c:choose>
 								<span class="likeNum">${movie.like_count }</span></a>
@@ -412,10 +412,10 @@
 										<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
 										<c:choose>
 											<c:when test ="${fn:contains(likeList,info_movie_code) }">
-												<img src='${pageContext.request.contextPath}/resources/images/ico/after-like.png' alt="찜하기완료">
+												<img src='${path }/resources/images/ico/after-like.png' alt="찜하기완료">
 											</c:when>
 											<c:otherwise>
-												<img src="resources/images/ico/before-like.png" alt="찜하기">	
+												<img src="${path }/resources/images/ico/before-like.png" alt="찜하기">	
 											</c:otherwise>
 										</c:choose>
 									<span class="likeNum">${movie.like_count }</span></a>
