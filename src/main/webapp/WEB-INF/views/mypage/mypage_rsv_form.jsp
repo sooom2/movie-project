@@ -44,6 +44,7 @@ $(document).ready(function(){
 		         resListHtml += "<tr>" +
 		            "<td>" + res.res_code + "</td>" +
 		            "<td>" + formattedPaydate  + "</td>" +
+		            "<td>" + res.res_title  + "</td>" +
 		            "<td>" + res.res_cinema + "</td>" +
 		            "<td>" + res.res_seat_num + "</td>" +
 		            "<td>" + res.screen_name + "</td>" +
@@ -104,7 +105,7 @@ function setDateBox(){
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 					
 					<div class="username">
-						${member.member_name } 님<span class="point">${member.member_point }P</span>
+							${member.member_name } 님<span class="point"><fmt:formatNumber type="number" value="${member.member_point}" pattern="#,###" />P</span>
 					</div>
 
 					<div class="username">

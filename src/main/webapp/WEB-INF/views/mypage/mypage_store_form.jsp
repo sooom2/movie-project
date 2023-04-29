@@ -28,7 +28,7 @@
 					<a href="mypageI" class="btn btn-top">회원정보 관리</a>
 
 					<div class="username">
-						${member.member_name } 님<span class="point">${member.member_point }P</span>
+						${member.member_name } 님<span class="point"><fmt:formatNumber type="number" value="${member.member_point}" pattern="#,###" />P</span>
 					</div>
 
 					<div class="username">
