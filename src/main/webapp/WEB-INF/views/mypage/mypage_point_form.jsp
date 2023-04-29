@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이무비 마이페이지(포인트)</title>
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/mypage.css" rel="stylesheet">
 <link href="resources//css/inc.css" rel="stylesheet">

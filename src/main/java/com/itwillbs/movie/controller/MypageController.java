@@ -45,7 +45,6 @@ public class MypageController {
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
 		
-//		List<HashMap<String,String>> resList = service.resList(id);
 		List<HashMap<String,String>> resList = service.resList(id);
 		model.addAttribute("resList", resList);
 		
@@ -55,6 +54,7 @@ public class MypageController {
 		return "mypage/mypage_rsv_form";
 	} 
 	
+	// 원하는 년, 월 선택시 해당 예매 내역 리스트 보기 
 	@ResponseBody	
 	@RequestMapping(value = "mypageRlist",produces = "application/json; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
 	public String mypageR(HttpSession session, MemberVO member, Model model,
@@ -63,18 +63,13 @@ public class MypageController {
 	   
 		String id = (String) session.getAttribute("sId");
 
-//	    if (id == null) {
-//	        return "redirect:/memLogin";
-//	    }
 
 
-//	    List<HashMap<String, String>> resList = service.resListByDate(id, year, month);
 	    List<HashMap<String, String>> resList = service.resListByDate(id, year, month);
 	    
 	    JSONArray ja = new JSONArray(resList);
 	    System.out.println(ja.toString());
 	    
-//	    model.addAttribute("response", resList);
 		
 		
 	   return ja.toString();
@@ -90,8 +85,10 @@ public class MypageController {
 		
 		List<HashMap<String, String>> movieList = service.movieList(id);
 		model.addAttribute("movieList",movieList);
+		
 		List<HashMap<String, String>> likeList = service.likeList(id);
 		model.addAttribute("likeList",likeList);
+		
 		List<HashMap<String, String>> pointList = service.pointList(id);
 		model.addAttribute("pointList", pointList);
 		
@@ -139,6 +136,7 @@ public class MypageController {
 		member= service.getMemberInfo(id);
 		model.addAttribute("member", member);
 		
+		// 내가쓴 글 조회시 이름,이메일, 전화번호값 필요
 
 		map.put("memberName", member.getMember_name());
 		
@@ -157,11 +155,14 @@ public class MypageController {
 		}
 		
 		model.addAttribute("paramMap", map);
+		
 		model.addAttribute("oneBoardList", oneBoardList);
+		
 		model.addAttribute("listCount", oneBoardList.size());
 		
 		return "mypage/mypage_qna_form";
 	}
+	
 	
 	//회원정보수정
 	@GetMapping(value = "mypageI")
@@ -173,8 +174,10 @@ public class MypageController {
 		
 		
 		if(id ==null) {
+			
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			return "fail_back";
+			
 		}
 		
 		MemberVO member = service.getMemberInfo(id);
@@ -201,7 +204,9 @@ public class MypageController {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String Epasswd = service.getPasswd(id);
 		
+		// 회원정보 수정시 비밀번호 일치 확인
 		if(Epasswd == null || !passwordEncoder.matches(update.get("member_pw"), Epasswd)) {
+		
 			model.addAttribute("msg", "비밀번호 확인필수!");
 			return "fail_back";
 		}
@@ -244,16 +249,21 @@ public class MypageController {
 			int deleteCount = service.quitMember(quit);
 			
 			if(deleteCount > 0) {
+				
 				session.invalidate();
 				model.addAttribute("msg", "탈퇴가 완료되었습니다!");
 				model.addAttribute("target", "main");
+				
 				return "success";
 			} else {
+				
 				model.addAttribute("msg", "탈퇴 실패!");
 				return "fail_back";
+				
 			}
 		
 		} else {
+			
 			model.addAttribute("msg", "권한이 없습니다!");
 			return "fail_back";
 		
@@ -266,6 +276,7 @@ public class MypageController {
 	//리뷰페이지
 	@GetMapping(value = "mypageRv")
 	public String mypageRv(HttpSession session, MemberVO member, Model model) {
+		
 		String id = (String)session.getAttribute("sId");
 		member= service.getMemberInfo(id);
 		
@@ -290,6 +301,7 @@ public class MypageController {
 	
 	@PostMapping(value="mypageRvPro")
 	public String mypageRvPro(@RequestParam HashMap<String, String> review, HttpSession session,  Model model) {
+		
 		String id = (String)session.getAttribute("sId");
 		review.put("id", id);
 		
@@ -305,6 +317,7 @@ public class MypageController {
 	    int count = service.checkReview(id);
 	    
 	    // 이미 작성한 리뷰가 있다면 중복 등록 방지
+	    
 	    if (count > 0) { 
 	    	
 	        model.addAttribute("msg", "이미 작성한 리뷰가 있습니다.");
@@ -338,7 +351,8 @@ public class MypageController {
 	
 	@GetMapping(value="deleteReview")
 	public String deleteReview(@RequestParam("rev_code")String rev_code, HttpSession session, Model model) {
-	    String id = (String)session.getAttribute("sId");
+	  
+		String id = (String)session.getAttribute("sId");
 
 	    int deleteCount = service.deleteReview(rev_code);
  
@@ -361,29 +375,7 @@ public class MypageController {
 	        
 	    }
 	    
-//	    if (deleteCount > 0) {
-//	    	
-//	        int sum_point = service.getPoint(id); 
-//	        if (sum_point >= 500) {
-//	            model.addAttribute("msg", "리뷰가 삭제되었습니다.");
-//	            model.addAttribute("target", "mypageRv");
-//
-//	            //리뷰 삭제시 포인트 차감 및 회원정보 포인트 업데이트
-//	            service.removePoint(id); 
-//	            service.updatePoint(id);
-//
-//	            return "success";
-//	            
-//	        } else {
-//	            model.addAttribute("msg", "포인트가 500 이하이므로 리뷰 삭제 실패!");
-//	            
-//	            return "fail_back";
-//	        }
-//	        
-//	    } else {
-//	        model.addAttribute("msg", "리뷰 삭제 실패!");
-//	        return "fail_back";
-//	    }
+
 
 	    
 	}

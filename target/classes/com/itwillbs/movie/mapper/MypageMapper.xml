@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-  <mapper namespace="com.itwillbs.movie.mapper.MypageMapper">
+<mapper namespace="com.itwillbs.movie.mapper.MypageMapper">
   
   
   <!-- 회원 정보 조회 -->
@@ -36,20 +36,20 @@
 	
 	<!-- 회원정보수정 -->
 	<update id="updateMemberInfo" >
-	 UPDATE member
-	 	SET 
-	 	member_email = #{member_email}
-	 	<if test = "member_pw2 neq ''">
-	 	,member_pw = #{member_pw2}
-	 	</if>
-	 	,member_address = #{member_address}
-	 	,member_name = #{member_name}
-	 	,member_bday = #{member_bday}
-	 	,member_tel = #{member_tel}
-	 	,member_prefer_branch = #{member_prefer_branch}
-	 	,member_prefer_genre = #{member_prefer_genre}
+		UPDATE member
+		SET
+		member_email = #{member_email}
+		<if test="member_pw2 neq ''">
+			,member_pw = #{member_pw2}
+		</if>
+		,member_address = #{member_address}
+		,member_name = #{member_name}
+		,member_bday = #{member_bday}
+		,member_tel = #{member_tel}
+		,member_prefer_branch = #{member_prefer_branch}
+		,member_prefer_genre = #{member_prefer_genre}
 		WHERE member_id = #{member_id}
-	
+		
 	</update>
   
   	<delete id = "deleteMember" >
@@ -75,16 +75,15 @@
 
 		INSERT INTO review VALUES
 		(
-		
- 		(SELECT *
-  			  FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
+		(SELECT *
+			FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
 		,(SELECT res_movie_code
-		FROM reservation where res_id = #{id}
-		order by res_code desc limit 1)
+			FROM reservation WHERE res_id = #{id}
+			ORDER BY res_code DESC LIMIT 1)
 		,(SELECT res_title
-		from reservation where res_id = #{id} 
-		order by res_code desc limit 1)
-	  	,#{id}
+			FROM reservation WHERE res_id = #{id}
+			ORDER BY res_code DESC LIMIT 1)
+		,#{id}
 		,#{rev_rating}
 		,#{rev_content}
 		,now()
@@ -114,7 +113,7 @@
 					(SELECT member_prefer_genre 
                         FROM member 
                         WHERE member_id = #{id}),"%"))
-       limit 5                 
+      					 LIMIT 5                 
   	</select>
   	
   	<insert id= "insertPoint" >
@@ -130,7 +129,7 @@
   			);
   	</insert>
   	
-  	  	<insert id= "removePoint" >
+  	<insert id= "removePoint" >
 		INSERT 
   			INTO point
   			VALUES (
@@ -167,11 +166,14 @@
   	</select>
   	
   	<select id = "cinemaList" resultType="hashmap">
-  		SELECT cinema_name
-   	  	  , CASE WHEN A.member_prefer_branch IS NOT NULL THEN 'selected' END AS selected
-   		 FROM cinema c
-   		LEFT JOIN (SELECT member_prefer_branch
-			FROM member
+  		SELECT 
+  		cinema_name,
+	  		CASE WHEN A.member_prefer_branch IS NOT NULL 
+	  		THEN 'selected' 
+	  		END AS selected
+   		FROM cinema c
+   			LEFT JOIN (SELECT member_prefer_branch
+		FROM member
 			WHERE member_id  =  #{id}) A
 	 		ON c.cinema_name = A.member_prefer_branch
   	</select>
@@ -182,11 +184,14 @@
 <!-- set X.[컬럼A] = 변경할값 -->
 <!-- ( WHERE 절 ) -->
   	
-  	<update id="updatePoint" >
-	  UPDATE member
-	  SET member_point = (SELECT sum(point_amount) FROM point 
-	 	 WHERE point_id = #{id})
-	 	WHERE member_id = #{id}
+	<update id="updatePoint" >
+	
+		UPDATE member
+		SET member_point = 
+			(SELECT sum(point_amount) FROM point 
+		 	 	WHERE point_id = #{id})
+		WHERE member_id = #{id}
+		
   	</update>
   	
   	<select id = "resList" resultType = "hashmap">
@@ -209,6 +214,7 @@
 
 
 <!-- 		코드수정  -->
+
 		SELECT 
 			r.res_code,
 			DATE(r.res_paydate) AS res_paydate,
@@ -227,111 +233,87 @@
 			LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code
 		WHERE 
 			r.res_id = #{id} 
-<!-- 			YEAR(DATE(r.res_paydate)) = #{year} AND  -->
-<!-- 			MONTH(DATE(r.res_paydate)) = #{month} -->
 		GROUP BY 
 			r.res_code,
-			r.res_paydate,
-			r.res_title,
-			r.res_cinema,
-			r.res_seat_num,
-			sn.screen_name,
-			sch_movie_date,
-			movie,
-			r.res_pay
+			r.res_paydate
 		ORDER BY r.res_code DESC
 
 
   	</select>
+<!-- 			r.res_title, -->
+<!-- 			r.res_cinema, -->
+<!-- 			r.res_seat_num, -->
+<!-- 			sn.screen_name, -->
+<!-- 			sch_movie_date, -->
+<!-- 			movie, -->
+<!-- 			r.res_pay -->
   	
-<select id="resListByDate" resultType="hashmap">
-    SELECT 
-        r.res_code,
-        r.res_paydate AS res_paydate,
-        r.res_title,
-        r.res_cinema,
-        r.res_seat_num,
-        sn.screen_name,
-        COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date,
-        CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', 
-               TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
-        r.res_pay
-    FROM 
-        reservation r
-        LEFT JOIN schedule sc ON r.res_sch_code = sc.sch_code
-        LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code
-        LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code
-    WHERE 
-        r.res_id = #{id} AND
-        YEAR(DATE(r.res_paydate)) = #{year} AND
-        MONTH(DATE(r.res_paydate)) = #{month}
-    GROUP BY 
-        r.res_code,
-        r.res_paydate,
-        r.res_title,
-        r.res_cinema,
-        r.res_seat_num,
-        sn.screen_name,
-        sch_movie_date,
-        movie,
-        r.res_pay
-    ORDER BY r.res_code DESC
-</select>
+	<select id="resListByDate" resultType="hashmap">
+	    SELECT 
+	        r.res_code,
+	        r.res_paydate AS res_paydate,
+	        r.res_title,
+	        r.res_cinema,
+	        r.res_seat_num,
+	        sn.screen_name,
+	        COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date,
+	        CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', 
+	               TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie,
+	        r.res_pay
+	    FROM 
+	        reservation r
+	        LEFT JOIN schedule sc ON r.res_sch_code = sc.sch_code
+	        LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code
+	        LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code
+	    WHERE 
+	        r.res_id = #{id} AND
+	        YEAR(DATE(r.res_paydate)) = #{year} AND
+	        MONTH(DATE(r.res_paydate)) = #{month}
+	    GROUP BY 
+	        r.res_code,
+	        r.res_paydate
+	    ORDER BY r.res_code DESC
+	</select>
+	
+<!--         r.res_title, -->
+<!--         r.res_cinema, -->
+<!--         r.res_seat_num, -->
+<!--         sn.screen_name, -->
+<!--         sch_movie_date, -->
+<!--         movie, -->
+<!--         r.res_pay -->
 
   	
   	
-<!--   	<select id="resListByMonth" resultType = "hashmap" > -->
-<!-- 	SELECT  -->
-<!-- 		r.res_code, -->
-<!-- 		DATE_FORMAT(r.res_paydate, '%Y-%m-%d') as res_paydate, -->
-<!-- 		r.res_title, -->
-<!-- 		r.res_cinema, -->
-<!-- 		r.res_seat_num, -->
-<!-- 		sn.screen_name, -->
-<!-- 		COALESCE(sc.sch_movie_date, se.sch_movie_date) AS sch_movie_date, -->
-<!-- 		CONCAT(TIME_FORMAT(COALESCE(sc.sch_start_time, se.sch_start_time), '%H:%i'), ' ~ ', TIME_FORMAT(COALESCE(sc.sch_last_time, se.sch_last_time), '%H:%i')) AS movie, -->
-<!-- 		r.res_pay -->
-<!-- 	FROM  -->
-<!-- 		reservation r -->
-<!-- 		LEFT JOIN schedule sc ON r.res_sch_code = sc.sch_code -->
-<!-- 		LEFT JOIN screen sn ON r.res_screen_code = sn.screen_code -->
-<!-- 		LEFT JOIN schedule_end se ON r.res_sch_code = se.end_sch_code -->
-<!-- 	WHERE  -->
-<!-- 		r.res_id = #{id} -->
-<!-- 		AND DATE_FORMAT(r.res_paydate, '%Y-%m') = #{selectedMonth} -->
-<!-- </select> -->
+
   	
   	
 	<select id="checkReview" resultType="int" >
 	  SELECT COUNT(*) as A
 	  FROM review 
 	  WHERE rev_id = #{id} AND rev_movie_code = (select res_movie_code
-			from reservation where res_id = #{id}
-			order by res_code desc limit 1)
+			FROM reservation WHERE res_id = #{id}
+			ORDER BY res_code DESC LIMIT 1)
 	</select>
 	
-<!-- 	<select id="likeList" resultType="hashmap"> -->
-<!-- 	 	SELECT distinct(m.info_movie_title) as movie_title, -->
-<!-- 	 			m.info_showdate as info_showdate -->
-<!-- 	 	FROM movieinfo m JOIN like_movie l on m.info_movie_code = l.like_movie_code -->
-<!-- 	 	where l.like_id = #{id} limit 5; -->
-<!-- 	</select> -->
 
 
-		<select id="likeList" resultType="hashmap">
-		  SELECT DISTINCT(m.info_movie_title) AS movie_title,
-		         CASE
-		             WHEN m.info_showdate = CURDATE() THEN CONCAT(' - ', '오늘 개봉')
-		             WHEN m.info_showdate > NOW() THEN CONCAT(' - ', DATEDIFF(m.info_showdate, NOW()), '일 후 개봉예정')
-		             ELSE ''
-		         END AS info_showdate,
-		         m.info_movie_code
-		  FROM movieinfo m
-		       JOIN like_movie l ON m.info_movie_code = l.like_movie_code
-		  WHERE l.like_id = #{id}
-		  ORDER BY ABS(DATEDIFF(m.info_showdate, NOW()))	
-		  LIMIT 5;
-		</select>
+
+	<select id="likeList" resultType="hashmap">
+	  SELECT DISTINCT(m.info_movie_title) AS movie_title,
+	         CASE
+	             WHEN m.info_showdate = CURDATE() THEN CONCAT(' - ', '오늘 개봉')
+	             WHEN m.info_showdate > NOW() THEN CONCAT(' - ', DATEDIFF(m.info_showdate, NOW()), '일 후 개봉예정')
+	             ELSE ''
+	         END AS info_showdate,
+	         m.info_movie_code
+	         
+	  FROM movieinfo m
+	       JOIN like_movie l ON m.info_movie_code = l.like_movie_code
+	  WHERE l.like_id = #{id}
+	  ORDER BY ABS(DATEDIFF(m.info_showdate, NOW()))	
+	  LIMIT 5;
+	</select>
 
 
 	

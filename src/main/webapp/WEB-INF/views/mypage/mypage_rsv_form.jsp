@@ -7,13 +7,15 @@
 <html>
 <head>
 <meta charset="UTF-8">  
-<title>Insert title here</title>
+<title>아이무비 마이페이지(예매내역)</title>
 <link href="resources/css/common.css" rel="stylesheet">
 <link href="resources/css/mypage.css" rel="stylesheet">
 <link href="resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources//js/main.js"></script>
 <script>
+
+// 셀렉트 박스에서 선택된 예약리스트 불러오기
 $(document).ready(function(){
 	setDateBox();
 
@@ -58,12 +60,13 @@ $(document).ready(function(){
 	});
 });
 
+//5개년 예매 정보조회 셀렉트박스
 function setDateBox(){
 	var dt = new Date();
 	var year = dt.getFullYear();
 	var month = dt.getMonth()+1;
 
-	for(var y = (year); y >=(year-5); y--){
+	for(var y = (year); y >=(year-4); y--){
 		if(year == y) {
 			$("#year").append("<option selected value='"+ y +"'>"+ y + "년" +"</option>");
 		}else{
@@ -159,15 +162,15 @@ function setDateBox(){
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
 							<tr>			
-								<th>예매번호</th>		<!--  res_sch_code == sch_code-->
-								<th>예매일자</th>	<!-- res_paydate -->
-								<th>영화제목</th>	<!-- res_title -->
-								<th>영화관</th>		<!-- res_cinema -->
-								<th>상영관</th>		<!-- res_screen_code == screen_code  ==> screen_name -->
-								<th>좌석번호</th>	<!-- res_seat_num -->
-								<th>상영일자</th> 	<!-- sch_movie_date -->
-								<th>상영시간</th>	<!--sch_start_time ~ sch_last_time -->
-								<th>결제금액</th>	<!--res_pay -->
+								<th>예매번호</th>		
+								<th>예매일자</th>	
+								<th>영화제목</th>	
+								<th>영화관</th>		
+								<th>상영관</th>		
+								<th>좌석번호</th>	
+								<th>상영일자</th> 
+								<th>상영시간</th>	
+								<th>결제금액</th>	
 							</tr>
 						</thead>
 						<tbody id="resList2">
