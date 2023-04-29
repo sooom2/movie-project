@@ -28,8 +28,6 @@
 <body>
 	<jsp:include page="../nav.jsp"></jsp:include>
 	
-		
-	
 	<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 	<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
 	<input type="hidden" id="ScreenTime" name="ScreenTime" value="${param.ScreenTime }">
@@ -43,7 +41,6 @@
 	<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 	<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
 	
-	
 	<input type="hidden" id="totalAmt" name="totalAmt" value="${vo.getTotalAmt() }">
 	<input type="hidden" id="totalCnt" name="totalCnt" value="${param.totalCnt }">
 	<input type="hidden" id="NormalCnt" name="NormalCnt" value="${param.NormalCnt }">
@@ -54,7 +51,6 @@
 	<input type="hidden" id="NormalPrice" name="NormalPrice" value="${param.NormalPrice }">
 	<input type="hidden" id="OldPrice" name="OldPrice" value="${param.OldPrice }">
 	<input type="hidden" id="YoungPrice" name="YoungPrice" value="${param.YoungPrice }">
-	
 	
 	<input type="hidden" id="SeatNm" name="SeatNm" value="${vo.getSeatNm() }">
 	<input type="hidden" id="SeatLine" name="SeatLine" value="${vo.getSeatLine() }">

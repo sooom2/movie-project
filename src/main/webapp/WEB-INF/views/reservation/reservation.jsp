@@ -250,32 +250,6 @@
 		</form>
 	</div>
 </div>
-<!-- 	<div class="modal" id="viewGrade"> -->
-<!-- 		<div class="modal-dialog" style="max-width:470px"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h4>관람등급 안내</h4> -->
-<!-- 					<button class="close-modal btnNext">닫기</button> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<div class="thReservWrap mb30"> -->
-<!-- 						<div class="thBox"> -->
-<!-- 							<h3><span class="cnNm"></span> <span class="scNm"></span></h3> -->
-<!-- 							<p><span class="plDt"></span> <span class="tiNm"></span></p> -->
-<!-- 							<div class="item"> -->
-<!-- 								<p class="tit"></p> -->
-<!-- 								<div class="txt"></div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-bottom "> -->
-<!-- 					<button class="btn-modal2 btnNext" style="width:100%">확인</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
 
 
 <!-- // 즐겨찾는 극장 비회원으로 클릭 했을 때 -->
@@ -290,7 +264,6 @@
 					<div class="modal-txt mb35">로그인 후 이용해 주세요.</div>
 					<div class="modal-bottom flex">
 						<button type="button" class="btn-modal1" data-dismiss="modal">닫기</button>
-<!-- 						<button type="button" class="btn-modal2" onclick="goLink('/member/login.do');">로그인</button> -->
 					</div>
 				</div>
 			</div>
@@ -587,16 +560,6 @@ var mvDay = "";		// 상영일
 	
 	
 	$(function() {
-		
-// 		if ($("#MovieCd").val() != "all")
-// 			setMovie();
-		
-// 		if ($("#CinemaCd").val() != "all")
-// 			setCinema();
-		
-// 		if ($("#ScreenTime").val() != "all")
-// 			setTime();
-		
 		if ($("#MovieCd").val() != "all" && $("#CinemaCd").val() != "all" && $("#ScreenTime").val() != "all") {
 			getTimeList();
 		}
@@ -612,9 +575,6 @@ var mvDay = "";		// 상영일
 			$(".mvTimeLine").append(str);
 		}
  	
-		
-		
-
 
 		// 지역 클릭시 극장 출력
 		$(".btnTheater").on("click", function(e){
@@ -666,15 +626,11 @@ var mvDay = "";		// 상영일
 	
 		// 선호장르 | 전체(default) 클릭
 		$(".btnMovieTab").on("click", function(e) { 
-// 			$("#movieList").hide();
 			e.preventDefault();
 			$(".btnMovieTab").removeClass("active");
 			$(this).addClass("active");
 			var movieTab = $(this).data("tab");
 			var CnItemCd = $("#CnItemCd").val()
-			console.log(movieTab);
-			
-			
 			
 			if (movieTab == "all") {
 				moviesList();
@@ -682,12 +638,7 @@ var mvDay = "";		// 상영일
 			if (movieTab == "prefer") {
 				preferMoviesList();
 			}
-			
-			
-			
 		});
-		
-
 		
 // 영화리스트 클릭
 		$(document).on("click", ".btnMvItem", function(e) {
@@ -708,18 +659,11 @@ var mvDay = "";		// 상영일
 			setTime();
 		});
 	
-
-
-		
 		// 날짜 클릭
 		$(".movie-day").on("click", function(e){
 			dateCd = $(this).data("cd");
-			console.log("날짜클릭함 dateCd : " + dateCd);		// 선택한 날짜의 일 출력
-			console.log("날짜클릭함 : -------");
-			
 			$(".btnTime").hide();
 			getTimeList();
-
 		});
 		
 		
@@ -736,12 +680,7 @@ var mvDay = "";		// 상영일
 			$("#ScreenTime").val(mvTime);
 			$("#schCd").val($(this).data("cd"));
 			$('.btnTime[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 클릭시 테두리
-			
-			console.log("#ScreenTime:" + $("#ScreenTime").val());
-			console.log("영화일정코드 #schCd:" + $("#schCd").val());
-			
 			setTime();
-			
 		});
 		
 		
@@ -780,7 +719,6 @@ var mvDay = "";		// 상영일
 		$(document).on("click", "#HidRatingBtn", function() {
 			$("#dataForm").submit();
 		});
-		
 		
 }); //function end	
 

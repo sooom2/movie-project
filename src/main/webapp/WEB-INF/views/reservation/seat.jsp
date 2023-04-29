@@ -207,10 +207,8 @@
 											</div>
 
 											<div id="seatLegendList" class="labels">
-<!-- 												<span><em class="available" style="background: #C4A46A; outline-color: #"></em>장애인석</span> -->
 												<span><em class="available" style="background: #C8C8C8; outline-color: #"></em>일반석</span>
 												<span><em class="nowselecting" style="background: #C40900; outline-color: #"></em>현재선택</span>
-<!-- 												<span><em class="selected" style="background: #605DA0; outline-color: #"></em>판매중</span> -->
 												<span><em class="soldout" style="background: #3D3F51; outline-color: #"></em>판매완료</span>
 											</div>
 										</div>
@@ -303,39 +301,12 @@ function reservationList() {
  	 					}
  					}
  				});
-				
-				
-				/* 
-				for(movie of response) {
-					let resSeatLine = movie.res_seat_line;
-					let resSeatNum = movie.res_seat_num;
-				
-					// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
-					var seatList = $('.seat');
-	 				$.each(seatList, function(index, el){
-	 					
-	 					// el == element , attr('data-line') : 속성 선택, attr('data-line', '2') : 속성 값을 2로 변경
-	 					
-	 					if($(el).attr('data-line') == resSeatLine && $(el).attr('data-num') == resSeatNum){
-	 						$(el).attr("class", "seat soldout");
-	 						$(el).attr("disabled", "true");
-	 						$(el).css({"background-color" : "#3D3F51"});
-	 					}
-	 				});
-					
-					console.log("resSeatLine: " + resSeatLine);
-					console.log("resSeatNum: " + resSeatNum);
-					
-				} 
-				*/
-				
 			},
 			error: function(xhr, textStatus, errorThrown) {
 				console.log("reservationList : 요청처리실패");
 			}
 		});
 }
-	
 	
 	$(function() {
 		
@@ -376,8 +347,6 @@ function reservationList() {
 		
 		// 판매완료 좌석
 		reservationList();
-		
-		
 		
 		// 좌석 선택 시 선택 좌석에 표시
 		$(".seat").on("click", function(e) {
@@ -449,30 +418,6 @@ function reservationList() {
 			
 		});
 		
-		// 선택한 좌석 재클릭 시 취소
-// 		$('.sel').on("click", function(e) {
-// 			btnCnt--;
-// 			console.log("btnCnt" + btnCnt);
-// 			$(this).css({"background-color" : "#C8C8C8"});
-// 			$(this).removeClass("sel");
-			
-// 			var removeData = $(this).data("nm");
-// 			console.log(removeData);
-			
-
-// 			// 선택취소한 좌석 원래대로 돌려놓기
-// 			$.each($('.choice'), function(index, el){
-// 				if($(el).attr('data-nm') == removeData) {
-// 					$(el).remove();
-// 				}
-// 			});
-			
-			
-// 		});
-		
-		
-		
-		
 		// 성인 요금
 		$("input:radio[name=T001260]").on("change", function(e){
 			var price = $("#TicketAmt").val();
@@ -542,68 +487,17 @@ function reservationList() {
 		
 		$(".btn-pay").on("click", function(e) {
 			var totalCnt = $("#totalCnt").val;
-// 			console.log(btnCnt);
-// 			console.log(totalCnt);
+			
 			// 선택한 인원 수와 총 좌석 수가 같아야 submit
 			if (btnCnt != totalCount) {
 				alert("선택한 좌석 수를 확인해주세요!")
 			} else {
 			$("#dataForm").submit();
-				
 			}	
-			
-			
-			
-			
-// 			var seat = "";
-// 			$.each($('.sel'), function(index, el){
-// 				seat += $(el).attr("data-nm") + " ";
-// 				seat += $(el).attr("data-line") + " ";
-// 				seat += $(el).attr("data-num") + " ";
-				
-// // 				alert(seatNmList);
-// // 				alert(seatLineList);
-// // 				alert(seatNumList);
-				
-// 			});
-			
-// 			console.log(seat);
-// 			$("#SeatInfo").val(seat);
-// 			alert(JSON.stringify(seatNmList) + "\n" + seatLineList + "\n" + seatNumList);
-			
-// 			$.ajax({
-// 				type: "post",
-// 				url: "CheckReservation",
-// 				data: {
-// 					"seatNmList" : JSON.stringify(seatNmList),
-// 					"seatLineList" : JSON.stringify(seatLineList),
-// 					"seatNumList" : JSON.stringify(seatNumList)
-// 				},
-// 				dataType: "text",
-// 				success: function(result) {
-// 					alert(result);
-// 				}
-// 			});
-// 			$.ajax({
-// 				type: "post",
-// 				url: "reservationPay",
-// 				data: $("#dataForm").serialize(),
-// 				dataType: "text",
-// 				success: function(result) {
-// 					alert(result);
-// 				}
-// 			});
-
 			
 		});
 		
-		
-		
 	});
-
-
-	
-
 
 
 </script>

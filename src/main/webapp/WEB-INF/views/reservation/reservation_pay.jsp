@@ -60,66 +60,7 @@
 				<input type="hidden" id="SeatNum" name="SeatNum" value="${vo.getSeatNum() }">
 				
 				<input type="hidden" id="PaymentCd" name="PaymentCd" value="html5_inicis.INIBillTst">
-<!-- ------------------------------------------------------------------------------------------------------------------------- -->
 	
-<!-- 				<input type="hidden" id="cgid" name="cgid" value="FE8EF4D2-F22D-4802-A39A-D58F23A29C1E"> -->
-<!-- 				<input type="hidden" id="ssid" name="ssid" value="91A730C3-E453-4B5C-9CC4-A08E11451665"> -->
-<!-- 				<input type="hidden" id="tokn" name="tokn" value="41524707"> -->
-<!-- 				<input type="hidden" id="hold" name="hold" value="scinema+000005+4468fe4b-3a89-43a8-a5ef-e76039398f67"> -->
-
-<!-- 				<input type="hidden" id="BrandCd" name="BrandCd" value="scinema"> -->
-<!-- 				<input type="hidden" id="CinemaCd" name="CinemaCd" value="000005"> -->
-<!-- 				<input type="hidden" id="MovieCd" name="MovieCd" value="021864"> -->
-<!-- 				<input type="hidden" id="PlaySDT" name="PlaySDT" value="2023-04-23"> -->
-<!-- 				<input type="hidden" id="Sort" name="Sort" value="boxoffice"> -->
-<!-- 				<input type="hidden" id="ScreenCd" name="ScreenCd" value="01"> -->
-<!-- 				<input type="hidden" id="ShowSeq" name="ShowSeq" value="3"> -->
-				
-<!-- 				<input type="hidden" id="TabBrandCd" name="TabBrandCd" value="dtryx"> -->
-<!-- 				<input type="hidden" id="TabRegionCd" name="TabRegionCd" value="all"> -->
-<!-- 				<input type="hidden" id="TabMovieType" name="TabMovieType" value="all"> -->
-				
-<!-- 				<input type="hidden" id="MovieKindCd" name="MovieKindCd" value="001"> -->
-<!-- 				<input type="hidden" id="PlayTimeType" name="PlayTimeType" value="normal"> -->
-<!-- 				<input type="hidden" id="PlayTimeTypeNm" name="PlayTimeTypeNm" value="일반"> -->
-<!-- 				<input type="hidden" id="StartTime" name="StartTime" value="13:50"> -->
-<!-- 				<input type="hidden" id="EndTime" name="EndTime" value="15:52"> -->
-<!-- 				<input type="hidden" id="ScreenType" name="ScreenType" value="normal"> -->
-<!-- 				<input type="hidden" id="ScreenTypeNm" name="ScreenTypeNm" value="일반"> -->
-<!-- 				<input type="hidden" id="ScreeningInfo" name="ScreeningInfo" value="2D(자막)"> -->
-					
-<!-- 				<input type="hidden" id="HidTicketRate" name="HidTicketRate" value="13.32"> -->
-<!-- 				<input type="hidden" id="HidReleaseDT" name="HidReleaseDT" value="2023-03-08"> -->
-				
-<!-- 				<input type="hidden" id="TicketCd" name="TicketCd" value="000060|000060" data-org="000060|000060"> -->
-<!-- 				<input type="hidden" id="TicketNm" name="TicketNm" value="성인|성인"> -->
-<!-- 				<input type="hidden" id="TicketAmt" name="TicketAmt" value="6000.0000|6000.0000" data-org="6000.0000|6000.0000"> -->
-<!-- 				<input type="hidden" id="TicketTotalCnt" name="TicketTotalCnt" value="2"> -->
-<!-- 				<input type="hidden" id="TicketTotalAmt" name="TicketTotalAmt" value="12000"> -->
-<!-- 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 2명"> -->
-						
-				
-<!-- 				<input type="hidden" id="TicketList" name="TicketList" value="normal,normal,,000060,6000,C,3;normal,normal,,000060,6000,C,4;"> -->
-<!-- 				<input type="hidden" id="SeatType" name="SeatType" value="normal"> -->
-<!-- 				<input type="hidden" id="SeatZone" name="SeatZone" value=""> -->
-<!-- 				<input type="hidden" id="SeatString" name="SeatString" value="C;3;1;/C;4;1;/"> -->
-<!-- 				<input type="hidden" id="SelectedSeatList" name="SelectedSeatList" value="26,C,3;27,C,3;"> -->
-				
-<!-- 				<input type="hidden" id="TicketCategory" name="TicketCategory" value="adult|adult"> -->
-<!-- 				<input type="hidden" id="AddTicketAmt" name="AddTicketAmt" value="0|0"> -->
-<!-- 				<input type="hidden" id="TotalTicketAmt" name="TotalTicketAmt" value="6000|6000"> -->
-<!-- 				<input type="hidden" id="TicketPropertyNo" name="TicketPropertyNo" value="72|72"> -->
-						
-<!-- 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원" data-org="티켓금액(2매)|*|12,000원|**|성인 (6,000원 x 2명)|*|12,000원"> -->
-<!-- 				<input type="hidden" id="HoldGuID" name="HoldGuID" value="4468fe4b-3a89-43a8-a5ef-e76039398f67"> -->
-
-				
-				
-				
-		
-				
-			
-				<!-- PC 전용 -->
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
 						<div class="in-box">
@@ -269,7 +210,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- // PC 전용 -->
 			</form>
 			
 			<div class="bg-layer" style="display: none;"></div>
@@ -282,7 +222,7 @@
 	<form id="payForm" name="payForm" method="post" target="popup_pay"></form>
 	
 	<div class="fav-wrap" style="display: none">
-		</div>
+	</div>
 
 	<script type="text/javascript">
 	
@@ -323,11 +263,7 @@
 	}
 	
 	
-	
-	
-	
 	$(function () {
-		
 		
 		$(".btn-prev").on("click", function(e) {
 			e.preventDefault();
@@ -338,8 +274,6 @@
 			$("#dataForm").attr("action", "seat");
 			$("#dataForm").submit();
 		});
-
-		
 		
 		// 결제수단
 		$(".btn-payks").on("click", function(e) {
@@ -352,7 +286,7 @@
 			$("#PaymentCd").val($(this).val());
 		});
 		
-// 		결제하기
+		// 결제하기
 		$(".btnPayment").on("click", function() {
 			// 결제하기 전 좌석 정보 다시 확인 후 선택한 좌석이 예약좌석이면 알림
 			requestPay();
@@ -366,9 +300,6 @@
 });
 	
 </script>
-
-
-
 
 <jsp:include page="../footer.jsp"></jsp:include>	
 </body>
