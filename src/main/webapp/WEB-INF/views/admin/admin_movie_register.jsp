@@ -14,7 +14,6 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="resources/js/jquery-3.6.4.js"></script>
-<script src="resources/js/KobisOpenAPIRestService.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="resources/js/admin.js"></script>
 <script type="text/javascript">
@@ -267,8 +266,6 @@ function previewImage(targetObj, View_area) {
 					var html = '';
 					html += '<option selected>영화를 고르시오</option>';
 					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
-						// 밑 api에서 movieCd가 아니라 movieNm을 요구해서 #api 값을 cd->nm으로
-// 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd +'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm
 									 +'"movieCd="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd
 									 		+'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
@@ -280,8 +277,8 @@ function previewImage(targetObj, View_area) {
 			});
 		});
 			
-		function apibutton(){
 			// 선택버튼 눌렀을 때 
+		function apibutton(){
 			var info_movie_title = $('#api').val();
 			var info_movie_code = $("#api > option:selected").attr('movieCd')
 			
@@ -393,7 +390,7 @@ function previewImage(targetObj, View_area) {
 												<div class="motto">
 													<form action="registMoviePro" >
 														<div class="row mb-4">
-					                                      	<h6 style="text-align:left">포스터</h6>
+					                                      	<h6 style="text-align:left"></h6>
 					                                   		<div class="col-md-3 moviePoster">
 					                                       		<div id='View_area' class="poster" style='position:relative; height: 210px; dispaly: inline;'>
 					                                       		</div>

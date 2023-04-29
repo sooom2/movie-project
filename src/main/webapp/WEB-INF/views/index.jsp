@@ -419,8 +419,8 @@
 											</c:otherwise>
 										</c:choose>
 									<span class="likeNum">${movie.like_count }</span></a>
-							</div>
-				   		 </li>
+								</div>
+			   			 </li>
 						</c:forEach>	
 					</ul>
 				</div>
