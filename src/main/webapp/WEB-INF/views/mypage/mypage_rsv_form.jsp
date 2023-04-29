@@ -46,7 +46,6 @@ $(document).ready(function(){
 		            "<td>" + formattedPaydate  + "</td>" +
 		            "<td>" + res.res_title  + "</td>" +
 		            "<td>" + res.res_cinema + "</td>" +
-		            "<td>" + res.res_seat_num + "</td>" +
 		            "<td>" + res.screen_name + "</td>" +
 		            "<td>" + res.res_seat_num + "</td>" +
 		            "<td>" + res.sch_movie_date + "</td>" +

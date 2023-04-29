@@ -25,6 +25,16 @@ window.onload = function(){
         }).open();
     });
 }
+
+function confirmQuit() {
+	    // 탈퇴를 처리하는 코드 작성
+		  if (confirm("정말로 탈퇴하시겠습니까?")) {
+			  document.getElementById("quitPro").submit();
+			
+	  }
+	}
+
+
 </script>
 </head>
 <body>
@@ -142,7 +152,7 @@ window.onload = function(){
 					<div class="wrap-inside no-border">
 						<span class="quit-desc">탈퇴 신청시 환불금액등의 확인 후 탈퇴처리가 진행되며 포인트,
 							등록한 관람권 등이 삭제되고 30일 이내 재가입이 불가하오니 신중히 결정해주시기 바랍니다.</span> <a href=""
-							class="btn-quit withdrawmember"><button type="submit" formaction="quitPro">회원 탈퇴하기</button></a>
+							class="btn-quit withdrawmember"><button type="submit" formaction="quitPro" onclick="confirmQuit()">회원 탈퇴하기</button></a>
 					</div>
 					</form>
 				</div>

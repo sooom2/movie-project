@@ -207,7 +207,7 @@ public class MypageController {
 		// 회원정보 수정시 비밀번호 일치 확인
 		if(Epasswd == null || !passwordEncoder.matches(update.get("member_pw"), Epasswd)) {
 		
-			model.addAttribute("msg", "비밀번호 확인필수!");
+			model.addAttribute("msg", "비밀번호 확인이 필요합니다.");
 			return "fail_back";
 		}
 		

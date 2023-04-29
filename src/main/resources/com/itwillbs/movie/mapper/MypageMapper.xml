@@ -73,14 +73,12 @@
   	
   	<insert id= "insertReview" >
 
+
 		INSERT INTO review VALUES
 		(
 		(SELECT *
 			FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
 		,(SELECT res_movie_code
-			FROM reservation WHERE res_id = #{id}
-			ORDER BY res_code DESC LIMIT 1)
-		,(SELECT res_title
 			FROM reservation WHERE res_id = #{id}
 			ORDER BY res_code DESC LIMIT 1)
 		,#{id}
@@ -89,7 +87,7 @@
 		,now()
 		)
 
-	
+			
   	</insert>
 
   	<select id = "revList" resultType = "hashmap" >
