@@ -290,28 +290,16 @@ function previewImage(targetObj, View_area) {
 			}
 			
 			$.ajax({
-// 			url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f2a15704bc55c5e4e93c1f9bd3949e89&movieCd='+movieCd,
 			url : 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=N6BL7Q77SG0M41244297&sort=prodYear,1&title='+info_movie_title,
 			type : 'GET',
 			dataType: 'json',
 			success : function(Data) {// 미리 작업해둔게 Data 였어서 data에서 Data로 바꿨어요
-				/* 수정전 23.04.10 이전 
-				html = '';
-				let info_movie_code = data.movieInfoResult.movieInfo.movieCd;
-				let info_movie_title = data.movieInfoResult.movieInfo.movieNm;
-				let info_movie_poster = data.movieInfoResult.movieInfo.movieCd;
-				let info_year = data.movieInfoResult.movieInfo.prdtYear;
-				let info_time = data.movieInfoResult.movieInfo.showTm;
-				
-				*/
-				// 포스터나 스틸컷부분 추가 하려면 스플릿을 여기가 아닌 DB에서 빼올때 작업을 해야하나
 				
 				// 수정 후 23.04.10
 				// 문제됐던점 : 정렬 추가 
 				/*줄거리*/
 				let info_story = Data.Data[0].Result[0].plots.plot[0].plotText;
 				/*스틸컷*/
-				let info_still = Data.Data[0].Result[0].stlls;
 				/*국가*/
 				let info_nation = Data.Data[0].Result[0].nation;
 				/*포스터*/
@@ -329,6 +317,8 @@ function previewImage(targetObj, View_area) {
 						  + ", " + Data.Data[0].Result[0].actors.actor[2].actorNm;
 				/*상영시간 */
 				let info_time = Data.Data[0].Result[0].runtime;
+				/*장르*/
+				let info_genre = Data.Data[0].Result[0].genre;
 				
 				/* 23.04.12*/
 				/*상영시간 00:00타입으로 변환  */
@@ -338,33 +328,24 @@ function previewImage(targetObj, View_area) {
 				let options = { hour12: false, hour: "2-digit", minute: "2-digit" };
 				let runningTime = date.toLocaleTimeString("en-US", options);
 				
-//				확인용으로 올려둔 alert 주석 처리 04.12. 16:50
-// 				alert(runningTime);
-				
 				/*상영일*/
 				let str = Data.Data[0].Result[0].repRlsDate;
-				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8); 
-				
-				/*
-				let str = data.movieInfoResult.movieInfo.openDt;
-				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-" + str.substring(6,8);
-				*/
-				
-				/*장르*/
-				let info_genre = Data.Data[0].Result[0].genre;
-				
+				console.log(str)
+				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-"; 
+				if(str.substring(6,8) == "00"){
+					info_showdate +=  "01"; 
+				}else{
+					info_showdate +=  str.substring(6,8); 
+				}
+				console.log(info_showdate)
 				//상영일 > 종영일 계산하기
-					var info_enddate = new Date(info_showdate);
-					info_enddate.setDate(info_enddate.getDate() + 100);
-				    var dateObject = new Date(info_enddate);
-				    var isoDateString = dateObject.toISOString();				/// 리바운드 영화 넣었을때 오류 나는 부분 
-				    var formattedDateString = isoDateString.slice(0, 10);
-				   	info_enddate = formattedDateString;
-				/*				수정 이전
-			   	$(".poster").append(
-						"<img src='https://file.cineq.co.kr/i.aspx?movieid="+movieCd+"&amp;size=210' alt='포스터' class='poster posterlist'>"
-				);
-			    */
+				var info_enddate = new Date(info_showdate);
+				info_enddate.setDate(info_enddate.getDate() + 100);
+			    var dateObject = new Date(info_enddate);
+			    var isoDateString = dateObject.toISOString();				/// 리바운드 영화 넣었을때 오류 나는 부분 
+			    var formattedDateString = isoDateString.slice(0, 10);
+			   	info_enddate = formattedDateString;
+				   	
 			   	$(".poster").append("<img src='"+info_movie_poster+"' name='info_movie_poster' alt='포스터' class='poster posterlist'>");
 			    
 			    
@@ -381,8 +362,11 @@ function previewImage(targetObj, View_area) {
 				$('input[name=info_nation]').attr('value',info_nation);			//제작국가
 				$('input[name=info_rating]').attr('value',info_rating);			//관람등급
 				$('input[name=info_genre]').attr('value',info_genre);			//장르
-				$('input[name=info_still]').attr('value',info_still);			//스틸컷
+			},
+			error:function(){
+				alert("상영 정보가 확실하지 않습니다.")	
 			}
+			
 
 		});
 			
@@ -505,7 +489,6 @@ function previewImage(targetObj, View_area) {
 														<input type="hidden" name = "info_director">
 														<input type="hidden" name = "info_nation">
 														<input type="hidden" name = "info_movie_poster">
-														<input type="hidden" name = "info_still">
 														<!-- hidden 영역 -->
 														<div class="row">
 															<div class="d-grid">

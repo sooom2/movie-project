@@ -367,14 +367,6 @@ console.log("검색 날짜 : " + targetDay);
 		$('input[name=info_year]').attr('value',info_year);		//제작년도
 		$('input[name=info_time]').attr('value',runningTime);		//상영시간
 		$('input[name=info_showdate]').attr('value',info_showdate); //상영일
-		
-// 		let i = $("#api > option:selected").attr('num')
-// 		if(info_showdate < targetDay){
-// 			$('input[name=info_status]').attr('value','특별상영');
-// 			option:selected
-// 		}
-		
-			
 		$('input[name=info_enddate]').attr('value',info_enddate);		//종영일
 		$('input[name=info_story]').attr('value',info_story);			//줄거리
 		$('input[name=info_director]').attr('value',info_director);			//감독
