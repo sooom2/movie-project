@@ -155,7 +155,7 @@ function NotReload(){
         event.returnValue = false;
     } 
 }
-// document.onkeydown = NotReload;
+document.onkeydown = NotReload;
 
 </script>
 
