@@ -54,7 +54,7 @@ function search(idx) {
 						<div class="form-floating mb-3 mb-md-0 selectbox" >
 							<div class="cinema_name">
 								<label for="cinema_name"></label>
-								<select name="cinema_name" onchange="" style="margin-top: 0px; !important"> 
+								<select name="cinema_name" onchange="search('0');" style="margin-top: 0px; !important"> 
 									<option value="전체공지" selected="selected" >전체공지</option>
 									<c:forEach var="cinema" items="${cinemaList }">
 										<option value="${cinema.cinema_name}" ${paramMap.cinema_name == cinema.cinema_name ? 'selected' : ''}>${cinema.cinema_name}</option>

@@ -203,7 +203,7 @@
 					<form id="iForm">
 					<div class="">
 						<div class="selectbox searchbox"
-							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 460px; padding-left: 11px;">
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 475px; padding-left: 11px;">
 							
 								<div class="sch_movie_code">
 									<select class="faq-category" name="faq_group" onchange="search('0');"

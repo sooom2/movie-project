@@ -95,7 +95,7 @@
 					<form id="iForm">
 					<div class="">
 						<div class="selectbox searchbox"
-							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 511px; padding-left: 11px;">
+							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 520px; padding-left: 11px;">
 							<div class="cinema_name">
 								<label for="cinema_name"></label>
 								<select name="cinema_name" onchange="" style="margin-top: 0px; !important"> 

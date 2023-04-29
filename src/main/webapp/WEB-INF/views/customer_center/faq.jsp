@@ -110,7 +110,7 @@ function search(idx) {
 							<input type="hidden" name="code" value="">
 							<c:forEach var="faqBoard" items="${faqBoardList }">
 								<tr data-index="0">
-									<td>${faqBoard.faq_code }</td>
+									<td>${faqBoard.rownum }</td>
 									<td>${faqBoard.faq_group }</td>
 									<td id="faq_question"><a
 										href="faq_detail?faq_code=${faqBoard.faq_code }">${faqBoard.faq_question }</a>

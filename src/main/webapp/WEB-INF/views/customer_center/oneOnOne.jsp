@@ -283,7 +283,7 @@ $(function() {
 <!-- 										name="one_passwd" class="input-text w150px pwnew"  -->
 <!-- 										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리">  -->
 										<input type="number" id="nonMbInqPw"
-										name="one_passwd" class="input-text w150px pwnew" 
+										name="one_passwd" class="input-text w150px pwnew" required="required"
 										maxlength="4" oninput="numberMaxLength(this, 4);" placeholder="숫자 4자리"> 
 										<em class="fc_r ml10">* 1:1 문의에 대한 고객정보 보호를 위해 게시글의 비밀번호를
 											설정해주세요.</em></td>

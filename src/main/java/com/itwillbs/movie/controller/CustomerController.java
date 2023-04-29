@@ -274,6 +274,10 @@ public class CustomerController {
 	public String oneList(@RequestParam HashMap<String, String> map, HttpSession session, Model model) {
 		String id = (String)session.getAttribute("sId");
 		System.out.println("one_list 시작 map : " + map);
+//		if(id == null || "".equals(id) || map.isEmpty()) {
+//			model.addAttribute("msg", "잘못된 접근입니다.");
+//			return "fail_back";
+//		}
 		if(id != null && !id.equals("")) {
 			HashMap<String, String> member = storeService.selectMemberId(id);
 			model.addAttribute("paramMap", member);

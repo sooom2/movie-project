@@ -66,22 +66,22 @@
 					</div>
 				</div>
 				
-				<div class="prev-next">
-					<div class="line prev">
-						<p class="tit">이전</p>
-						<p class="link">이전 글이 없습니다.</p>
+<!-- 				<div class="prev-next"> -->
+<!-- 					<div class="line prev"> -->
+<!-- 						<p class="tit">이전</p> -->
+<!-- 						<p class="link">이전 글이 없습니다.</p> -->
 <%-- 						<p class="notice_detail?notice_code=${noticeBoard.notice_code }&prevNum=${noticeBoard.prevNum }&nextNum${noticeBoard.nextNum }">${noticeBoard.notice_subject }</p> --%>
 <%-- 							<c:if test="${noticeBoard.prevNum ne '0' } "> --%>
 <%-- 								<a href="notice_detail?notice_code=${noticeBoard.notice_code }&prevNum=${noticeBoard.prevNum }&nextNum${noticeBoard.nextNum }"></a> --%>
 <%-- 							</c:if></p> --%>
 						
-					</div>
-					<div class="line next">
-						<p class="tit">다음</p>
-						<a href="#" class="link moveBtn" data-no="10826"
-							title=""></a>
-					</div>
-				</div>
+<!-- 					</div> -->
+<!-- 					<div class="line next"> -->
+<!-- 						<p class="tit">다음</p> -->
+<!-- 						<a href="#" class="link moveBtn" data-no="10826" -->
+<!-- 							title=""></a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
 <!-- 				<nav class="pagination"> -->
 <%-- 					<c:if test="${1 < paramMap.pageNum }"> --%>

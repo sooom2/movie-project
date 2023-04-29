@@ -58,7 +58,7 @@
 <!-- 				</div> -->
 
 				<div class="btn-group pt40">
-					<a href="faq" class="button large listBtn" title="목록">목록</a>
+					<a href="javascript:history.back();" class="button large listBtn" title="목록">목록</a>
 				</div>
 			</div>
 		</div>
