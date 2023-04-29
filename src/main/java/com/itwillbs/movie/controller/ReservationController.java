@@ -161,8 +161,6 @@ public class ReservationController {
 		
 		// 결제 후 예매 정보 추가 - 회원
 		int insertReservation = service.insertReservation(vo, id);
-		// 결제 후 예매 정보 추가 - 비회원
-//		int insertReservationNonMember = 
 			
 		
 		
@@ -173,6 +171,8 @@ public class ReservationController {
 		if(insertReservation > 0) {
 			int insertReservationPoint = service.insertReservationPoint(id, totalAmt);
 			int updateMemberPoint = service.updateMemberPoint(id, totalAmt);
+			String selectPoint = service.selectPoint(id);
+			model.addAttribute("selectPoint", selectPoint);
 		}
 		
 		// 좌석 count

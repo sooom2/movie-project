@@ -273,22 +273,19 @@ function reservationList() {
 			},
 			dataType: "json",
 			success: function(response) { 
-				console.log("reservationList : 요청처리성공");
-				
 				var obj = {};
+				
 				response.forEach(function(el, index){
 					var lines = el.res_seat_line.split(',');
 					var seats = el.res_seat_num.split(',');
 					lines.forEach((el, index) => {
-						// 라인에 좌석 정보 없으면 빈 값 저장 <= push할 때 라인에 값 없으면 오류나서.
+						// 라인에 좌석 정보 없으면 빈 값 저장 
 						if(!obj[el]) obj[el] = [];
 						seats[index].split(',').forEach((seat) => {
 							obj[el].push(seat);
 						});
 						obj[el].sort();
-							
 					});
-					
 				});
 
 				// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
@@ -338,24 +335,6 @@ function reservationList() {
 			}
 		});
 }
-// 선택좌석 클릭시 좌석 선택 취소
-function choiceEvent (e) {
-// 	console.log("선택좌석임");
-// 	$(this).css({"background-color" : "#C8C8C8"});
-// 	var removeData = $(this).data("nm");
-// 	console.log(removeData);
-// 	$(this).remove();
-	
-
-	// 선택취소한 좌석 원래대로 돌려놓기
-// 	$.each($('.sel'), function(index, el){
-// 		if($(el).attr('data-nm') == removeData) {
-// 			$(el).css({"background-color" : "#C8C8C8"});
-// 		}
-// 	});
-}
-	
-	
 	
 	
 	$(function() {
@@ -403,10 +382,8 @@ function choiceEvent (e) {
 		// 좌석 선택 시 선택 좌석에 표시
 		$(".seat").on("click", function(e) {
 			if($(this).val() != "") { // 기존 선택된 좌석 취소
-				
 				$(this).val("");
 				btnCnt--;
-				console.log("btnCnt" + btnCnt);
 				$(this).css({"background-color" : "#C8C8C8"});
 				$(this).removeClass("sel");
 				
@@ -425,12 +402,6 @@ function choiceEvent (e) {
 				$('#seatNm' + $(this).data("nm")).remove();
 				$('#seatLine' + $(this).data("line")).remove();
 				$('#seatNum' + $(this).data("num")).remove();
-				
-				
-				
-
-				
-				
 				
 			} else { // 빈 좌석 선택하기
 				$(this).val($(this).data("nm"));
@@ -457,35 +428,19 @@ function choiceEvent (e) {
 					str += $(this).data("nm");
 					str += "</button>";
 					str += "</li>";
-					
 					$("#choiceList").append(str);
-					
-					
-//	 				seatNmList.push($(this).data("nm"));
-//	 				seatLineList.push($(this).data("line"));
-//	 				seatNumList.push($(this).data("num"));
 				
 					// 선택한 값 저장하고 reservationPay.jsp로 넘어감
 					$("#dataForm").append('<input type="hidden" id="seatNm' + $(this).data("nm") + '" name="seatNm" value="' + $(this).data("nm") + '">');
 					$("#dataForm").append('<input type="hidden" id="seatLine' + $(this).data("line") + '" name="seatLine" value="' + $(this).data("line") + '">');
 					$("#dataForm").append('<input type="hidden" id="seatNum' + $(this).data("num") + '" name="seatNum" value="' + $(this).data("num") + '">');
-				
-
 			
-					
-			
-					// 클릭이벤트 연결
-					$(".choice").on("click", choiceEvent);
-					
 					$(this).css({"background-color" : "#C40900"});
 					$(this).addClass("sel");
 				} else {
 					btnCnt--;
 					alert("인원 수보다 선택한 좌석 수가 더 많습니다.");
 				}
-				
-			
-				
 				console.log("btnCnt: " + btnCnt);
 				console.log("totalCnt " + totalCnt);
 			}

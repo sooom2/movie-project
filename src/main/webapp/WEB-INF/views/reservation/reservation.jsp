@@ -151,8 +151,8 @@
 											<h5 class="r-h5">영화</h5>
 										</div>
 										<div class="tab2">
-											<a href="#" class="btnMovieTab" data-tab="prefer">선호장르</a> 
-											<a href="#" class="btnMovieTab active" data-tab="all">전체</a>
+											<a href="#" class="btnMovieTab" data-tab="prefer" id="btnMovieTabPrefer">선호장르</a> 
+											<a href="#" class="btnMovieTab active" data-tab="all" id="btnMovieTabAll">전체</a>
 										</div>
 										<div class="list">
 											<div class="scrollbar-inner">
@@ -357,7 +357,6 @@ var mvDay = "";		// 상영일
  					let movieRating = movie.info_rating;
  					let genre = movie.info_genre;
  					
- 					
  					var str = "";
  					str += "<li>";
  					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
@@ -367,7 +366,6 @@ var mvDay = "";		// 상영일
  					str += "' title='" + movieTitle + "'>";
  					str += movieTitle + "</button>";
  					str += "</li>";
- 					console.log(str);
  					$("#movieList").append(str);
  				}
  			},
@@ -375,11 +373,10 @@ var mvDay = "";		// 상영일
  				console.log("btnCnItem : 요청처리실패");
  			}
  		});
-}
+	}
 
 	// 선호 영화 리스트
 	function preferMoviesList() {
-		console.log("preferMoviesList()");
 		$(".btnMvItem").hide();
 		$.ajax({													
  			type: "GET",
@@ -397,7 +394,6 @@ var mvDay = "";		// 상영일
  					let movieRating = movie.info_rating;
  					let genre = movie.info_genre;
  					
- 					
  					var str = "";
  					str += "<li>";
  					str += "<button type=" + "'button'" + " class=" + "'btnMvItem'" + " data-cd='" + movieCode;
@@ -407,7 +403,6 @@ var mvDay = "";		// 상영일
  					str += "' title='" + movieTitle + "'>";
  					str += movieTitle + "</button>";
  					str += "</li>";
- 					console.log(str);
  					$("#movieList").append(str);
  				}
  			},
@@ -415,16 +410,13 @@ var mvDay = "";		// 상영일
  				console.log("btnCnItem : 요청처리실패");
  			}
  		});
-}
+	}
 
 
 
 	// 상영시간
 	function getTimeList() {
-	$(".mvTimeLineDiv").hide();
-	console.log("getTimeList()");
-	
-	
+		$(".mvTimeLineDiv").hide();
 		$.ajax({
 			type: "GET",
 			url: "movieTimeList",
@@ -445,23 +437,9 @@ var mvDay = "";		// 상영일
 		 			let movieDate = movie.sch_movie_date;
 		 			mvDay = movie.sch_movie_date;
 		 			let seatCnt = movie.seatCnt;
-		 			
 		 			$("#ScreenCd").val(screenCode);
 		 			$("#ScreenNm").val(screenName);
 		 			$("#MovieDate").val(movieDate);
-// 		 			$("#schCd").val(schCode);
-		 			
-		 			
-		 			console.log("schCode : " + schCode);
-		 			console.log("screenCode : " + screenCode);
-		 			console.log("screenName : " + screenName);
-		 			console.log("startTime : " + startTime);
-		 			console.log("lastTime : " + lastTime);
-		 			console.log("mvDay : " + mvDay);
-		 			
-		 			console.log("getTime: ");
-		 			console.log("seatCnt: " + seatCnt);
-		 			
 		 			var str = "";
 		 			str += "<li>";
 		 			str += "<button type=" + "'button'" + " class=" + "'btnTime'" + " data-cd='" + schCode;
@@ -470,33 +448,23 @@ var mvDay = "";		// 상영일
 		 			str += "' data-st='" + startTime;
 		 			str += "' data-lt='" + lastTime;
 		 			str += "'>";
-		 			
 		 			str += "<div class='loc'>" + screenName + "</div>";
 		 			str += "<div class='info'>";
 		 			str += "<p class='time'>" + startTime + "<span>~" + lastTime + "</span></p>";
-		 			
 		 			str += "<p class='num'>";
 		 			str += seatCnt;
 		 			str += "/<span>45석</span></p>";
-		 			
 		 			str += "</div>";
 		 			str += "</button>";
 		 			str += "</li>";
-		 			
-		 			console.log(str);
 					$(".mvTimeLine").append(str);
 					setDay();
-		 			
-		 			
-	 		}
-				
-			},
+	 				}
+				},
 			error: function(xhr, textStatus, errorThrown) {
 				console.log("getTimeList : 요청처리실패");
-				
 			}
 		});
-
 	}
 	
 	
@@ -671,6 +639,8 @@ var mvDay = "";		// 상영일
 		});
 		// 극장 클릭시 영화리스트 출력
 		$(".btnCnItem").on("click", function(e){
+			$(".btnMovieTab").removeClass("active");
+			$("#btnMovieTabAll").addClass("active");
 			$(".btnTime").hide();
 			$(".movie-date-wrapper-active").removeClass("movie-date-wrapper-active");
 			$(".movieListDiv").hide();
@@ -694,7 +664,7 @@ var mvDay = "";		// 상영일
 			
 		});
 	
-// 선호장르 | 전체(default) 클릭
+		// 선호장르 | 전체(default) 클릭
 		$(".btnMovieTab").on("click", function(e) { 
 // 			$("#movieList").hide();
 			e.preventDefault();
@@ -702,6 +672,7 @@ var mvDay = "";		// 상영일
 			$(this).addClass("active");
 			var movieTab = $(this).data("tab");
 			var CnItemCd = $("#CnItemCd").val()
+			console.log(movieTab);
 			
 			
 			
@@ -709,7 +680,6 @@ var mvDay = "";		// 상영일
 				moviesList();
 			}
 			if (movieTab == "prefer") {
-				alert(CnItemCd)
 				preferMoviesList();
 			}
 			

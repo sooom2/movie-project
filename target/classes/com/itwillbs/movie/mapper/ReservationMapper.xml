@@ -61,7 +61,7 @@
 			ON 
 				m.info_movie_code = s.sch_movie_code  
 			WHERE 
-				m.info_genre = #{preferGenre}
+				m.info_genre like CONCAT('%',#{preferGenre},'%')
 			AND 
 				c.cinema_code = #{CnItemCd}
 	</select>
@@ -175,6 +175,13 @@
 				member_id = #{id}
 	</update>
 	
+	<!-- 회원 포인트 조회 -->
+	<select id="selectPoint" resultType="String">
+		SELECT member_point 
+			FROM 
+				member
+			WHERE member_id = #{id}
+	</select>
 	
 	<!-- 비회원 테이블 저장 -->
 	<insert id="insertNonMember">

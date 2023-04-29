@@ -16,13 +16,19 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv2.css">
 	<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
-	
+	<style>
+		.point {
+			color : red;
+		}
+	</style>	
 	
 <meta charset="UTF-8">
 <title>결제 완료</title>
 </head>
 <body>
-	<jsp:include page="../nav.jsp"></jsp:include>	
+	<jsp:include page="../nav.jsp"></jsp:include>
+	
+		
 	
 	<input type="hidden" id="CinemaCd" name="CinemaCd" value="${param.CinemaCd }">
 	<input type="hidden" id="MovieCd" name="MovieCd" value="${param.MovieCd }">
@@ -62,7 +68,7 @@
 	            <h2 class="tit">결제&예매 확인
 	            </h2>
 	            <div class="sub-info">
-	                <p class="bundle">예매가 완료 되었습니다!</p>
+	                <p class="bundle">예매가 완료 되었습니다! 결제 금액의 10%가 적립됩니다.  회원님의 잔여 포인트: <a class="point">${selectPoint}</a></p>
 	            </div>
 	            <!-- box-store-view -->
 	            <div class="box-store-view">
@@ -149,7 +155,8 @@ function NotReload(){
         event.returnValue = false;
     } 
 }
-document.onkeydown = NotReload;
+// document.onkeydown = NotReload;
+
 </script>
 
 	<jsp:include page="../footer.jsp"></jsp:include>

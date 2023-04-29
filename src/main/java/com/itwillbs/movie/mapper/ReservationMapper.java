@@ -33,5 +33,7 @@ public interface ReservationMapper {
 	List<HashMap<String, String>> selectPreferMoviesList(@Param("preferGenre") String preferGenre, @Param("CnItemCd") String CnItemCd);
 
 	int insertNonMember(@Param("uuid") String uuid, @Param("guestName") String guestName, @Param("pass") String pass, @Param("phone") String phone);
+
+	String selectPoint(String id);
 	
 }

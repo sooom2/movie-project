@@ -71,6 +71,10 @@ public class ReservationService {
 		return mapper.insertNonMember(uuid, guestName, pass, phone);
 	}
 
+	public String selectPoint(String id) {
+		return mapper.selectPoint(id);
+	}
+
 	
 
 }
