@@ -268,11 +268,11 @@ console.log("검색 날짜 : " + targetDay);
 			dataType: 'json',
 			async : false,
 			success : function(result) {
-				$("#api").append( '<option value="none" selected="selected" disabled>상영 예정작 등록</option>');
-				
+				alert(result.Data[0].Result.length);
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
 					if(result.Data[0].Result[i].runtime == ""
-// 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
+						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
+// 						 	|| data.Data[0].Result[i].posters == ""
 						)
 					{
 						continue;
@@ -388,7 +388,9 @@ console.log("검색 날짜 : " + targetDay);
 									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
 									<h3 class="text-center font-weight-light my-4">상영 예정작 등록</h3>
 									<span>영화목록</span><br><br>
-									<select id="api" name="api"></select>
+									<select id="api" name="api" >
+										<option value="none" selected="selected" disabled>상영 예정작 등록</option>
+									</select>
 								 <input onclick="apibutton()"type="button" value="검색">	
 								</div>
 								<div class="card-body">
@@ -398,7 +400,7 @@ console.log("검색 날짜 : " + targetDay);
 												<div class="motto">
 													<form action="registMoviePro" >
 														<div class="row mb-4">
-					                                      	<h6 style="text-align:left">포스터</h6>
+					                                      	<h6 style="text-align:left"></h6>
 					                                   		<div class="col-md-3 moviePoster">
 					                                       		<div id='View_area' class="poster" style='position:relative; height: 210px; dispaly: inline;'>
 					                                       		</div>

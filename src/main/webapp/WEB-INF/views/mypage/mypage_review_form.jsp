@@ -169,15 +169,10 @@ function confirmDelete(rev_code) {
 								        <td>${revList.rev_content}</td>
 								        <td>
 								            <c:if test="${not empty revList.rev_rating}">
-								                <c:forEach begin="1" end="5" step="1">
-								                    <c:choose>
-								                        <c:when test="${revList.rev_rating >= loop.index}">
-								                          <span class="yellow-star">★</span>
-								                        </c:when>
-								                        <c:otherwise>
-								                            <span class="yellow-star">★</span>
-								                        </c:otherwise>
-								                    </c:choose>
+								                <c:forEach begin="1" end="5" step="1"  varStatus="loop">
+							                        <c:if test="${revList.rev_rating >= loop.index}">
+							                          <span class="yellow-star">★</span>
+							                        </c:if>
 								                </c:forEach>
 								            </c:if>
 								        </td>
