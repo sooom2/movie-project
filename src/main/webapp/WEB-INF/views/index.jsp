@@ -494,29 +494,6 @@
 									</li>
 							</c:forEach>
 									
-									
-<!-- 								<li><span class="img_info"><img -->
-<!-- 										src="resources/images/main//ic_survey_02.png" alt=""></span> -->
-<!-- 									<div class="top_info"> -->
-<!-- 										<span class="name">조*영</span><span class="txt_ic_score"><span -->
-<!-- 											class="stargradebg"><span class="blindbg grade7"><span -->
-<!-- 													class="stargradecolor "></span></span></span><span class="gradenum">7</span></span><span -->
-<!-- 											class="date_info">2023.04.04</span> -->
-<!-- 									</div> -->
-<!-- 									<div class="review_info">개연성이 좀 부족하고 스토리는 호불호 갈릴 것 같은데, -->
-<!-- 										일본인들의 지진에 대한 정서를 드러내는 표현방법이 신선했습니다. OST가 좋아요.</div> -->
-<!-- 									</li> -->
-<!-- 								<li><span class="img_info"><img -->
-<!-- 										src="resources/images/main/ic_survey_05.png" alt=""></span> -->
-<!-- 									<div class="top_info"> -->
-<!-- 										<span class="name">이*이</span><span class="txt_ic_score"><span -->
-<!-- 											class="stargradebg"><span class="blindbg grade5"><span -->
-<!-- 													class="stargradecolor "></span></span></span><span class="gradenum">5</span></span><span -->
-<!-- 											class="date_info">2023.04.04</span> -->
-<!-- 									</div> -->
-<!-- 									<div class="review_info">그냥 노잼 보는 내내 시간이 아까웠음 호불호 많이 갈리는데 -->
-<!-- 										스토리는 불호가 더 많은듯</div> -->
-<!-- 									</li> -->
 							</ul>
 						</dd>
 
@@ -533,7 +510,7 @@
 						<div class="noticeClient_content">
 							<div id="ctl00_PlaceHolderContent_notice_wrap"
 								class="notice_wrap">
-								<strong>공지사항</strong> <a href="notice_detail?notice_code=${notice.notice_code }" class="btn_link">[${notice.cinema_name}]
+								<strong>공지사항</strong> <a href="notice_detail?notice_code=${notice.notice_code }" class="btn_link">
 									${notice.notice_subject }</a>
 								<a href="cc_home" id="notice_more" class="btn_more">더보기</a>
 							</div>
