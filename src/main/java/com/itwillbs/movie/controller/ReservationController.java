@@ -131,6 +131,18 @@ public class ReservationController {
 		return ja.toString();
 	}
 	
+	
+	// 상영 시간까지 남은 시간이 30분 이내인 영화인지 확인
+	@ResponseBody
+	@GetMapping("discount")
+	public String discount(Model model, String schCd) {
+		String discount = service.selectDiscount(schCd);
+		System.out.println("discount!!!!!!!!!!!!!!!!!!!!!!!!!!: " + discount);
+		model.addAttribute("discount", discount);
+//		System.out.println(discount.getClass().getName());
+		return discount;
+	}
+	
 	// 결제
 	@PostMapping("reservationPay")
 	public String reservationPay(ReservationVO vo, Model model, HttpSession session) {
@@ -147,6 +159,7 @@ public class ReservationController {
 			HashMap<String, String> member = service.selectMemberId(id);
 			model.addAttribute("member", member);
 		}
+		
 		return "reservation/reservation_pay";
 	}
 	

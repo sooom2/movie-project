@@ -197,5 +197,22 @@
 			)
 	</insert>
 	
-
+	<!-- 상영 시간까지 남은 시간이 1시간 이내인 영화인지 확인 >> 테스트용으로 10시간 해둠-->
+	<select id="selectDiscount" resultType="String">
+		<![CDATA[
+		SELECT timediff(sch_start_time, current_time()) "timeDiff"
+			FROM 
+				schedule 
+			WHERE 
+				sch_movie_date = current_date() 
+			AND 
+				timediff(sch_start_time, current_time()) <= '10:00:00' 
+			AND 
+				timediff(sch_start_time, current_time()) > '00:00:00'
+			AND 
+				sch_code = #{schCD}
+		]]>
+	</select>
+	
+	
 </mapper>

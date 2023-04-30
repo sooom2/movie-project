@@ -60,6 +60,8 @@
 				<input type="hidden" id="SeatNum" name="SeatNum" value="${vo.getSeatNum() }">
 				
 				<input type="hidden" id="PaymentCd" name="PaymentCd" value="html5_inicis.INIBillTst">
+				
+				<input type="hidden" id="Discount" name="Discount" value="${param.Discount }">
 	
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
@@ -178,14 +180,12 @@
 															<dt>청소년 (7,000원 x ${param.YoungCnt }명)</dt>
 															<dd>${param.YoungPrice }원</dd>
 														</dl>
-													<div class="discounts" style="display: none;">
+													<div class="discounts" style="display:none;">
 													<hr class="hr3">
-		
 													<dl class="price1">
-														<dt>할인금액</dt>
+														<dt>할인금액 (땡처리 특가)</dt>
 														<dd class="red discountAmt">-0원</dd>
 													</dl>
-													
 													<dl class="price2 moviediscountcoupon" style="display: none;">
 															<dt>할인쿠폰</dt>
 															<dd class="red">-0원</dd>
@@ -264,6 +264,26 @@
 	
 	
 	$(function () {
+		var discount = $("#Discount").val();
+		
+		// 상영 시간까지 남은 시간이 1시간 이내인 영화면 할인
+		if(discount != "") {
+			var oriAmt = ${vo.getTotalAmt() };
+			var discountTotalAmt = oriAmt * discount;
+			var totalAmt = oriAmt - discountTotalAmt;
+			
+			$(".discounts").css("display", "block");
+			$(".discountAmt").empty();
+			$(".discountAmt").append("-" + discountTotalAmt + "원");
+			
+			$(".totalAmt").empty();
+			$(".totalAmt").append(totalAmt + "원");
+			
+		}
+		
+		
+		
+		
 		
 		$(".btn-prev").on("click", function(e) {
 			e.preventDefault();

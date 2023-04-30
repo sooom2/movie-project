@@ -42,7 +42,6 @@
 				<input type="hidden" id="ScreenNm" name="ScreenNm" value="${param.ScreenNm }">
 				<input type="hidden" id="MovieDate" name="MovieDate" value="${param.MovieDate }">
 	
-	
 				<input type="hidden" id="totalAmt" name="totalAmt" value="0">
 				<input type="hidden" id="totalCnt" name="totalCnt" value="0">
 				<input type="hidden" id="NormalCnt" name="NormalCnt" value="0">
@@ -54,28 +53,27 @@
 				<input type="hidden" id="OldPrice" name="OldPrice" value="0">
 				<input type="hidden" id="YoungPrice" name="YoungPrice" value="0">
 				
-				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
-				
-				
 				<input type="hidden" id="TicketCd" name="TicketCd" value="001260">
 				<input type="hidden" id="TicketNm" name="TicketNm" value="성인">
+				
+				<input type="hidden" id="Discount" name="Discount" value="${param.Discount }">
 
-				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 1명">
+<!-- 				<input type="hidden" id="TicketInfo" name="TicketInfo" value="성인 1명"> -->
 				
-				<input type="hidden" id="SeatInfo" name="SeatInfo" value="">
-				<input type="hidden" id="TicketList" name="TicketList" value="">
-				<input type="hidden" id="SeatType" name="SeatType" value="">
-				<input type="hidden" id="SeatZone" name="SeatZone" value="">
-				<input type="hidden" id="SeatString" name="SeatString" value="">
-				<input type="hidden" id="SelectedSeatList" name="SelectedSeatList" value="">
+<!-- 				<input type="hidden" id="SeatInfo" name="SeatInfo" value=""> -->
+<!-- 				<input type="hidden" id="TicketList" name="TicketList" value=""> -->
+<!-- 				<input type="hidden" id="SeatType" name="SeatType" value=""> -->
+<!-- 				<input type="hidden" id="SeatZone" name="SeatZone" value=""> -->
+<!-- 				<input type="hidden" id="SeatString" name="SeatString" value=""> -->
+<!-- 				<input type="hidden" id="SelectedSeatList" name="SelectedSeatList" value=""> -->
 				
-				<input type="hidden" id="TicketCategory" name="TicketCategory" value="">
-				<input type="hidden" id="AddTicketAmt" name="AddTicketAmt" value="">
-				<input type="hidden" id="TotalTicketAmt" name="TotalTicketAmt" value="">
-				<input type="hidden" id="TicketPropertyNo" name="TicketPropertyNo" value="">
+<!-- 				<input type="hidden" id="TicketCategory" name="TicketCategory" value=""> -->
+<!-- 				<input type="hidden" id="AddTicketAmt" name="AddTicketAmt" value=""> -->
+<!-- 				<input type="hidden" id="TotalTicketAmt" name="TotalTicketAmt" value=""> -->
+<!-- 				<input type="hidden" id="TicketPropertyNo" name="TicketPropertyNo" value=""> -->
 				
-				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value="">
-				<input type="hidden" id="HoldGuID" name="HoldGuID" value="">
+<!-- 				<input type="hidden" id="PayInfoNat" name="PayInfoNat" value=""> -->
+<!-- 				<input type="hidden" id="HoldGuID" name="HoldGuID" value=""> -->
 								
 				
 				<div class="reservation-pc single page-type">
@@ -259,54 +257,53 @@
 	var seatLineList = new Array();
 	var seatNumList = new Array();
 	
-	
 // reservationList에서 res_seat_line, res_seat_num 값 select 후
 // 데이터 존재시 버튼 컬러 변경 , 클릭 비활성화
-function reservationList() {
-	$.ajax({
-			type: "GET",
-			url: "reservationList",
-			data: { 
-				schCd : schCd
-			},
-			dataType: "json",
-			success: function(response) { 
-				var obj = {};
-				
-				response.forEach(function(el, index){
-					var lines = el.res_seat_line.split(',');
-					var seats = el.res_seat_num.split(',');
-					lines.forEach((el, index) => {
-						// 라인에 좌석 정보 없으면 빈 값 저장 
-						if(!obj[el]) obj[el] = [];
-						seats[index].split(',').forEach((seat) => {
-							obj[el].push(seat);
+	function reservationList() {
+		$.ajax({
+				type: "GET",
+				url: "reservationList",
+				data: { 
+					schCd : schCd
+				},
+				dataType: "json",
+				success: function(response) { 
+					var obj = {};
+					
+					response.forEach(function(el, index){
+						var lines = el.res_seat_line.split(',');
+						var seats = el.res_seat_num.split(',');
+						lines.forEach((el, index) => {
+							// 라인에 좌석 정보 없으면 빈 값 저장 
+							if(!obj[el]) obj[el] = [];
+							seats[index].split(',').forEach((seat) => {
+								obj[el].push(seat);
+							});
+							obj[el].sort();
 						});
-						obj[el].sort();
 					});
-				});
-
-				// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
-				var seatList = $('.seat');
- 				$.each(seatList, function(index, el){
- 					var line = $(el).attr('data-line');
- 					var seatNum = $(el).attr('data-num');
- 					
- 					// 예약된 자리면
- 					if(obj[line]){
- 						if(obj[line].includes(seatNum)){ 
- 	 						$(el).attr("class", "seat soldout");
- 	 						$(el).attr("disabled", "true");
- 	 						$(el).css({"background-color" : "#3D3F51"});		
- 	 					}
- 					}
- 				});
-			},
-			error: function(xhr, textStatus, errorThrown) {
-				console.log("reservationList : 요청처리실패");
+	
+					// 클래스가 seat인 모든 배열 순회하면서 DB값과 일치하는 값 조회
+					var seatList = $('.seat');
+	 				$.each(seatList, function(index, el){
+	 					var line = $(el).attr('data-line');
+	 					var seatNum = $(el).attr('data-num');
+	 					
+	 					// 예약된 자리면
+	 					if(obj[line]){
+	 						if(obj[line].includes(seatNum)){ 
+	 	 						$(el).attr("class", "seat soldout");
+	 	 						$(el).attr("disabled", "true");
+	 	 						$(el).css({"background-color" : "#3D3F51"});		
+	 	 					}
+	 					}
+	 				});
+				},
+				error: function(xhr, textStatus, errorThrown) {
+					console.log("reservationList : 요청처리실패");
 			}
 		});
-}
+	}
 	
 	$(function() {
 		
@@ -350,9 +347,9 @@ function reservationList() {
 		
 		// 좌석 선택 시 선택 좌석에 표시
 		$(".seat").on("click", function(e) {
-			if($(this).val() != "") { // 기존 선택된 좌석 취소
+			if($(this).val() != "") { 					// 기존 선택된 좌석 취소
 				$(this).val("");
-				btnCnt--;
+				btnCnt--;								// 선택하면 선택좌석 minus
 				$(this).css({"background-color" : "#C8C8C8"});
 				$(this).removeClass("sel");
 				
@@ -372,10 +369,10 @@ function reservationList() {
 				$('#seatLine' + $(this).data("line")).remove();
 				$('#seatNum' + $(this).data("num")).remove();
 				
-			} else { // 빈 좌석 선택하기
+			} else { 									// 빈 좌석 선택하기
 				$(this).val($(this).data("nm"));
 				
-				btnCnt++;
+				btnCnt++; 								// 선택했을 때 선택좌석 plus
 				var totalCnt = $("#totalCnt").val();
 				
 				if(btnCnt <= totalCnt) {
@@ -406,16 +403,13 @@ function reservationList() {
 			
 					$(this).css({"background-color" : "#C40900"});
 					$(this).addClass("sel");
-				} else {
+				} else {									// 총 인원수보다 선택한 좌석이 더 많을 때
 					btnCnt--;
 					alert("인원 수보다 선택한 좌석 수가 더 많습니다.");
 				}
 				console.log("btnCnt: " + btnCnt);
 				console.log("totalCnt " + totalCnt);
 			}
-			
-			
-			
 		});
 		
 		// 성인 요금
@@ -435,11 +429,11 @@ function reservationList() {
 				$("#totalCnt").val(totalCount);
 				$("#NormalCnt").val(nCount);
 				$("#NormalPrice").val(nAmt);
-				console.log("아이디:" + $("#NormalPrice").val());
 				$(".totalAmt").hide();
 				$(".bottom").append("<strong class='totalAmt'> 총 " + $("#totalAmt").val() + "원 </strong>");
 			}
 		});
+		
 		// 경로 요금
 		$("input:radio[name=T001261]").on("change", function(e){
 			var price = $("#TicketAmt").val() * 0.5;
@@ -487,12 +481,20 @@ function reservationList() {
 		
 		$(".btn-pay").on("click", function(e) {
 			var totalCnt = $("#totalCnt").val;
+			var seatCnt = 0;
+			
+			// 선택된 좌석 수 확인
+			var seatList = $('.sel');
+				$.each(seatList, function(index, el){
+					 console.log("seatList");
+					 seatCnt++;
+				});
 			
 			// 선택한 인원 수와 총 좌석 수가 같아야 submit
-			if (btnCnt != totalCount) {
+			if (seatCnt != totalCount) {
 				alert("선택한 좌석 수를 확인해주세요!")
 			} else {
-			$("#dataForm").submit();
+				$("#dataForm").submit();
 			}	
 			
 		});

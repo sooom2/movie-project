@@ -36,7 +36,6 @@ public interface ReservationMapper {
 
 	String selectPoint(String id);
 
-	
-
+	String selectDiscount(String schCd);
 	
 }

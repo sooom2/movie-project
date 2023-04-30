@@ -63,6 +63,7 @@
 				<input type="hidden" id="MovieDate" name="MovieDate" value="">
 				<input type="hidden" id="seatCnt" name="seatCnt" value="0">
 				<input type="hidden" id="CnItemCd" name="CnItemCd" value="">
+				<input type="hidden" id="Discount" name="Discount" value="">
 				
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
@@ -89,8 +90,8 @@
 												<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
 													<div class="scrollbar-inner scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 533px;">
 														<ul id="regionList">
-															<li>
-															<button type="button" class="btnTheater" title="즐겨찾는 극장" data-cd="favorite"> 즐겨찾는 극장</button></li>
+<!-- 															<li> -->
+<!-- 															<button type="button" class="btnTheater" title="즐겨찾는 극장" data-cd="favorite"> 즐겨찾는 극장</button></li> -->
 															<li class="active"><button type="button" class="btnTheater" title="전체" data-cd="all">전체</button></li>
 															<c:forEach var="location" items="${location }">
 															<li><button type="button" class="btnTheater" title="${location.location_name }" data-cd="${location.location_code }">${location.location_name }</button></li>
@@ -177,7 +178,9 @@
 									<!-- 상영시간 -->
 									<div class="time">
 										<div class="list-head">
-											<h5 class="r-h5">상영시간</h5>
+											<h5 class="r-h5" style="display: inline;">상영시간</h5>
+											&nbsp;
+											<small style="color: red; font-size: revert;">상영임박 영화 50% 할인</small>
 										</div>
 										<div class="list-body">
 											<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
@@ -277,7 +280,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4>관람등급 안내</h4>
-					<button class="close-modal btnNext">닫기</button>
+					<button class="close-modal btnNext"><img src="${pageContext.request.contextPath }/resources/images/rsv/x_icon.png"></button>
 				</div>
 				<div class="modal-body">
 					<div class="thReservWrap mb30">
@@ -312,7 +315,6 @@ var mvDay = "";		// 상영일
 
 	// 영화 리스트
 	function moviesList() {
-		console.log("moviesList()");
 		$(".btnMvItem").hide();
 		$.ajax({													
  			type: "GET",
@@ -322,7 +324,7 @@ var mvDay = "";		// 상영일
  			},
  			dataType: "json",
  			success: function(response) { 
- 				console.log("btnCnItem : 요청처리성공");
+ 				console.log("moviesList : 요청처리성공");
  				for(let movie of response) {
  					let movieTitle = movie.info_movie_title;
  					let movieCode = movie.info_movie_code;
@@ -359,7 +361,7 @@ var mvDay = "";		// 상영일
  			},
  			dataType: "json",
  			success: function(response) { 
- 				console.log("btnCnItem : 요청처리성공");
+ 				console.log("preferMoviesList : 요청처리성공");
  				for(let movie of response) {
  					let movieTitle = movie.info_movie_title;
  					let movieCode = movie.info_movie_code;
@@ -380,7 +382,7 @@ var mvDay = "";		// 상영일
  				}
  			},
  			error: function(xhr, textStatus, errorThrown) {
- 				console.log("btnCnItem : 요청처리실패");
+ 				console.log("preferMoviesList : 요청처리실패");
  			}
  		});
 	}
@@ -441,13 +443,38 @@ var mvDay = "";		// 상영일
 	}
 	
 	
+	// 할인 가능한 영화인지 확인
+	function discount() {
+		console.log("discount");
+		console.log($("#schCd").val());
+		
+		$.ajax({
+			type: "GET",
+			url: "discount",
+			data: { 
+				schCd : $("#schCd").val()
+			},
+			dataType: "text",
+			success: function(response) {
+				console.log("discount : 요청처리성공");
+				if(response != null) {
+					$("#Discount").val("0.5");
+				} else {
+					console.log("null");
+				}
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				console.log("discount : 요청처리실패");
+// 			    alert("code:"+xhr.status+"\n"+"message:"+textStatus.responseText+"\n"+"error:"+errorThrown);
+			}
+		});
+	}
 	
-	// --------------------------------------------- 최종 선택 미리보기 (우측 상영시간 하단)
+	
+	// 최종 선택 미리보기 (우측 상영시간 하단)
 	// 영화
 	function setMovie() {
-		console.log("setmovie()");
 		var cd = $("#MovieCd").val();
-		console.log("cd=>" + cd);
 		if (cd == "all") {
 			$(".info .img img").remove();
 			$(".info .mvNm").html("&nbsp;");
@@ -490,11 +517,10 @@ var mvDay = "";		// 상영일
 	
 	// 날짜
 	function setDay() {
-		console.log("setDay()-----------")
 		$(".plDt").text(mvDay); 
 	}
 	
-	// --------------------------------------------- 최종 선택 미리보기 end
+	// 최종 선택 미리보기 end
 	
 	
 	// 날짜 선택
@@ -582,10 +608,10 @@ var mvDay = "";		// 상영일
 			
 			// 비회원인 경우 로그인 후 이용해주세요 
 			// 즐겨찾는 극장
-			if (cd == "favorite") {
-				$("#login").modal();
-				return;
-			} 
+// 			if (cd == "favorite") {
+// 				$("#login").modal();
+// 				return;
+// 			} 
 			
 			// 클릭한 지역 배경색 전환
 			$(".btnTheater").parent().removeClass("active");
@@ -621,7 +647,6 @@ var mvDay = "";		// 상영일
 			}
 			setCinema();
 			
-			
 		});
 	
 		// 선호장르 | 전체(default) 클릭
@@ -640,7 +665,7 @@ var mvDay = "";		// 상영일
 			}
 		});
 		
-// 영화리스트 클릭
+		// 영화리스트 클릭
 		$(document).on("click", ".btnMvItem", function(e) {
 			$(".btnTime").hide();
 			$(".movie-date-wrapper-active").removeClass("movie-date-wrapper-active");
@@ -669,55 +694,64 @@ var mvDay = "";		// 상영일
 		
 		// 상영시간 클릭
 		$(document).on("click", ".btnTime", function(){
-			console.log("btnTime----------------------------------");
 			var startTime = $(this).data("st");
 			var lastTime = $(this).data("lt");
 			mvTime = startTime + "~" + lastTime;
 			screenName = $(this).data("sn");
 
-			$(".btnTime").removeClass("check");
+			$(".btnTime").parent().removeClass("check");
 			
 			$("#ScreenTime").val(mvTime);
 			$("#schCd").val($(this).data("cd"));
 			$('.btnTime[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 클릭시 테두리
 			setTime();
+			
+			discount();
+			
 		});
 		
 		
 		
 		$(document).on("click", "#btnNext", function() {
+			console.log($("#Discount").val());
+			$(".tit").empty();
 			var CinemaCd = $("#CinemaCd").val();
 			var MovieCd = $("#MovieCd").val();
 			var ScreenTime = $("#ScreenTime").val();
 			var HidRating = $("#HidRating").val();
 			var age = "전체"; 
 			if ((CinemaCd != "all") && (MovieCd != "all") && (ScreenTime != "all")) {
-			
-			$(".tit").append(HidRating);
-			// 관람 등급 별 메시지
-			switch(HidRating) {
-				case "12세관람가": {
-					age = 12; break;
+				$(".tit").append(HidRating);
+				// 관람 등급 별 메시지
+				switch(HidRating) {
+					case "12세관람가": {
+						age = 12; break;
+					}
+					case "15세관람가": {
+						age = 15; break;
+					}
+					case "18세관람가(청소년관람불가)": {
+						age = 18; break;
+					}
+					default: 
 				}
-				case "15세관람가": {
-					age = 15; break;
+				if(age != "전체") {
+					$(".HidRatingMsg").append("본 영화는 만 " + age + "세 이상 관람 가능한 영화입니다. </p><p> 만 " + age + "세 미만 고객은 부모님 또는 만 19세 이상 보호자 동반 시 관람이 가능합니다. </p><p> 연령 확인 불가 시 입장이 제한 될 수 있습니다. </p><p> ※ 보호자란? : 만 19세 이상의 성인 보호자 (고등학교 재학생 불가) ");
 				}
-				case "18세관람가(청소년관람불가)": {
-					age = 18; break;
+				$("#viewGrade").show();
+				} else {
+					alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
 				}
-				default: 
-			}
-			if(age != "전체") {
-				$(".HidRatingMsg").append("본 영화는 만 " + age + "세 이상 관람 가능한 영화입니다. </p><p> 만 " + age + "세 미만 고객은 부모님 또는 만 19세 이상 보호자 동반 시 관람이 가능합니다. </p><p> 연령 확인 불가 시 입장이 제한 될 수 있습니다. </p><p> ※ 보호자란? : 만 19세 이상의 성인 보호자 (고등학교 재학생 불가) ");
-			}
-			$("#viewGrade").show();
-			} else {
-				alert("영화와 상영시간을 모두 선택시 좌석 선택이 가능합니다.")
-			}
 		});
 		
+		// 관람등급창
 		$(document).on("click", "#HidRatingBtn", function() {
 			$("#dataForm").submit();
+		});
+		
+		// 모달창 닫기
+		$(document).on("click", ".close-modal", function() {
+			$(".modal").hide();
 		});
 		
 }); //function end	
