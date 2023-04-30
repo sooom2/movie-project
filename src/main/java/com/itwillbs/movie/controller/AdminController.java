@@ -40,7 +40,7 @@ public class AdminController {
 				
 				int todayCount = movieRegisterService.selectTodayCount();
 				int memCount = memberService.selectMemCount();
-				int resCount = reservationService.resCount();
+				int resCount = movieRegisterService.resTodayCount();
 				int payCount = storeService.payCount();
 //				System.out.println(resCount);
 				// -----------------------------------------------------------------------

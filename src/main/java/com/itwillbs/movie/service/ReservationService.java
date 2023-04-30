@@ -47,9 +47,6 @@ public class ReservationService {
 		return mapper.updateSchedule(schCd, seatCnt);
 	}
 
-	public int resCount() {
-		return 0;
-	}
 
 	public int insertReservationPoint(String id, String totalAmt) {
 		return mapper.insertReservationPoint(id, totalAmt);
@@ -74,6 +71,7 @@ public class ReservationService {
 	public String selectPoint(String id) {
 		return mapper.selectPoint(id);
 	}
+
 
 	
 

@@ -35,5 +35,8 @@ public interface ReservationMapper {
 	int insertNonMember(@Param("uuid") String uuid, @Param("guestName") String guestName, @Param("pass") String pass, @Param("phone") String phone);
 
 	String selectPoint(String id);
+
+	
+
 	
 }

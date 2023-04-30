@@ -119,9 +119,8 @@ public interface MovieRegisterMapper {
 
 	List<HashMap<String, String>> screeningMovies();
 
-
-//	List<HashMap<String, String>> selectEndSch();
-
+	
+	int resTodayCount();
 
 
 }

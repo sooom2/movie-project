@@ -227,7 +227,9 @@ public class MovieRegisterService {
 		
 		return mapper.screeningMovies();
 	}
-
+	public int resTodayCount() {
+		return mapper.resTodayCount();
+	}
 
 
 }

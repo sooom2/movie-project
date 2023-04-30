@@ -497,8 +497,8 @@ public class MovieRegisterController {
 	@GetMapping("resList")
 	public String resList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
 		
-		int resCount = reservationService.resCount();
-
+		int resCount = movieRegisterService.resTodayCount();
+		
 		// -----------------------------------------------------------------------
 		int listLimit = 10; // 한 페이지에서 표시할 게시물 목록 갯수(10개로 제한)
 		int startRow = (pageNum - 1) * listLimit; // 조회 시작 행번호(startRow) 계산 => 0, 10, 20...
