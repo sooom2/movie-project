@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이무비</title>
 <script type="text/javascript">
 	function deleteLost() {
 		let result = confirm("삭제 하시겠습니까?");
@@ -38,10 +38,10 @@
 			<div id="contents" class="">
 				<h2 class="tit">분실물 문의</h2>
 
-				<ul class="dot-list mb30">
-					<li>IMOVIE에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li>
-					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li>
-				</ul>
+<!-- 				<ul class="dot-list mb30"> -->
+<!-- 					<li>IMOVIE에서 잃어버린 물건이 있다면 ‘분실물 문의/접수’를 통해 접수해주세요.</li> -->
+<!-- 					<li>접수하신 글은 비밀글로 등록되어 작성자와 관리자만 확인 가능합니다.</li> -->
+<!-- 				</ul> -->
 
 				<div class="table-wrap">
 					<div class="board-view">

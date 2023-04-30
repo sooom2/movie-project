@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이무비</title>
 <script type="text/javascript">
 	function deleteOne() {
 		let result = confirm("삭제 하시겠습니까?");

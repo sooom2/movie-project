@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이무비</title>
 
 </head>
 <link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
