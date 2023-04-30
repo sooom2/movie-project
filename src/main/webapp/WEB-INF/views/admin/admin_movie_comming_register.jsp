@@ -37,12 +37,13 @@ function doMovieRegister(){
 }
 
 function modalClose() {
+	$("form")[0].reset();
 	let dis = document.querySelector(".admin-modal-register");
 	let dis2 = document.querySelector(".admin-modal-latest");
-	let dis3 = document.querySelector(".admin-modal-modify");
+// 	let dis3 = document.querySelector(".admin-modal-modify");
 	dis.style.display = "none";
 	dis2.style.display = "none";
-	dis3.style.display = "none";
+// 	dis3.style.display = "none";
 	
 	
 }
@@ -268,11 +269,11 @@ console.log("검색 날짜 : " + targetDay);
 			dataType: 'json',
 			async : false,
 			success : function(result) {
-				alert(result.Data[0].Result.length);
+				console.log(result);
 				for(var i = 0; i<result.Data[0].Result.length ; i++ ){
 					if(result.Data[0].Result[i].runtime == ""
 						 || result.Data[0].Result[i].CommCodes.CommCode[0].CodeNo == ""
-// 						 	|| data.Data[0].Result[i].posters == ""
+				 		 || result.Data[0].Result[i].posters == ""
 						)
 					{
 						continue;
@@ -389,7 +390,7 @@ console.log("검색 날짜 : " + targetDay);
 									<h3 class="text-center font-weight-light my-4">상영 예정작 등록</h3>
 									<span>영화목록</span><br><br>
 									<select id="api" name="api" >
-										<option value="none" selected="selected" disabled>상영 예정작 등록</option>
+										<option value="none" selected="selected" disabled >상영 예정작 등록</option>
 									</select>
 								 <input onclick="apibutton()"type="button" value="검색">	
 								</div>

@@ -334,7 +334,7 @@
 		   ON rev_movie_code = m.info_movie_code
 		   LEFT JOIN member
 		   ON review.rev_id = member.member_id
-		  ORDER BY rev_code DESC 
+		  ORDER BY rev_code*1 DESC 
 		  LIMIT 3;
 	</select>
 	

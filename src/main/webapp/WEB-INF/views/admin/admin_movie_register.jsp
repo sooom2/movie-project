@@ -43,12 +43,15 @@ function doMovieRegister(){
 }
 
 function modalClose() {
+	$("form")[0].reset();
 	let dis = document.querySelector(".admin-modal-register");
 	let dis2 = document.querySelector(".admin-modal-latest");
 // 	let dis3 = document.querySelector(".admin-modal-modify");
 	dis.style.display = "none";
 	dis2.style.display = "none";
 // 	dis3.style.display = "none";
+	
+	
 }
 
 $(function(){
@@ -156,14 +159,14 @@ function previewImage(targetObj, View_area) {
 						<div class="col-lg-7">
 							<div class="card border-1 mt-5">
 								<div class="card-header">
-									<button type="button" class="close-modal"
-										onclick="modalClose()" style="border: none;">닫기</button>
-									<h3 class="text-center font-weight-light my-4">직접영화등록</h3>
+									<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
+									<h3 class="text-center font-weight-light my-4">영화코드로 조회</h3>
+									<input type="text" name="movieCdSearch" id="movieCdSearch">
+								 <input onclick="movieCdSearch()"type="button" value="검색">
 								</div>
 								<div class="card-body">
 									<form action="registMoviePro">
 									<div class="row mb-4">
-                                      	<h5 style="text-align:left">포스터등록</h5>
                                    		<div class="col-md-3 moviePoster">
                                        		<div id='View_area' style='position:relative; height: 210px; dispaly: inline;'></div>
                                         </div>
@@ -172,7 +175,10 @@ function previewImage(targetObj, View_area) {
 											<div class="filebox">
 										    <input type="file" name="profile_pt" id="profile_pt" class="upload-name" onchange="previewImage(this,'View_area')">
 											</div>
+											
                                         </div>
+                                        
+                                        	
                                      </div>
 									
 										
@@ -268,6 +274,7 @@ function previewImage(targetObj, View_area) {
 					for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
 						html += '<option value="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm
 									 +'"movieCd="'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieCd
+									 +'"openDt= "'+data.boxOfficeResult.dailyBoxOfficeList[i].openDt
 									 		+'">'+ data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + '</option>';
 						
 						$('#api').html(html);
@@ -281,7 +288,7 @@ function previewImage(targetObj, View_area) {
 		function apibutton(){
 			var info_movie_title = $('#api').val();
 			var info_movie_code = $("#api > option:selected").attr('movieCd')
-			
+			var info_showdate = $("#api > option:selected").attr('openDt')
 			if($(".posterList")){
 				$(".posterlist").remove();
 			}
@@ -326,14 +333,14 @@ function previewImage(targetObj, View_area) {
 				let runningTime = date.toLocaleTimeString("en-US", options);
 				
 				/*상영일*/
-				let str = Data.Data[0].Result[0].repRlsDate;
-				console.log(str)
-				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-"; 
-				if(str.substring(6,8) == "00"){
-					info_showdate +=  "01"; 
-				}else{
-					info_showdate +=  str.substring(6,8); 
-				}
+// 				let str = Data.Data[0].Result[0].repRlsDate;
+// 				console.log(str)
+// 				var info_showdate = str.substring(0,4) + "-" + str.substring(4,6) + "-"; 
+// 				if(str.substring(6,8) == "00"){
+// 					info_showdate +=  "01"; 
+// 				}else{
+// 					info_showdate +=  str.substring(6,8); 
+// 				}
 				console.log(info_showdate)
 				//상영일 > 종영일 계산하기
 				var info_enddate = new Date(info_showdate);
