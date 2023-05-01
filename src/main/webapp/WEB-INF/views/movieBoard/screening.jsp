@@ -79,6 +79,7 @@
  		<div id="content">
 			<div class="selector"></div>
 			<div class="section group section-movie-list screening">
+			<h2 class="tit">Ι BOX OFFICE Ι</h2>	
    				<ul>
 					<c:forEach var="movie" items="${movieList }">
 					    <li data-moviecode="${movie.info_movie_code }">

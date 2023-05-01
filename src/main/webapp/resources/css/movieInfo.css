@@ -19,7 +19,7 @@
 }
 
 .section-movie-list.screening, .section-movie-list.latest, .section-movie-list.comming {
-	padding-top: 117px;
+	padding-top: 85px;
 }
 .section-movie-list ul li .over-a .over-btn-rsv
 	{
@@ -617,4 +617,15 @@ a:link {
 	.section-movie-info .bx-next.disabled
 	{
 	opacity: 0.2;
+}
+
+h2.tit {
+	font-size: 1.8666em;
+	font-weight: 400;
+	letter-spacing: -1px;
+	line-height: 1.1;
+	color: #222;
+	margin-bottom: 30px;
+	text-align: center;
+	margin-left: -928px;
 }

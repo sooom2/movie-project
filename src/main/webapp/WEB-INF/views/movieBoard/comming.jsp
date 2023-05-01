@@ -23,6 +23,7 @@
  		<div id="content">
 			<div class="selector"></div>
 			<div class="section group section-movie-list comming">
+			<h2 class="tit">Ι 상영예정작 Ι</h2>	
    				<ul>
 					<c:forEach var="movie" items="${movieList }">
 					    <li data-moviecode="${movie.info_movie_code }">
