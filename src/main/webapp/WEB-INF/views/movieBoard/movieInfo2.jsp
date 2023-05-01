@@ -71,16 +71,12 @@
 							        <td>${Review.rev_id}</td>
 							        <td>${Review.rev_content}</td>
 							        <td>
+							        
 							         <c:if test="${not empty Review.rev_rating}">
-						                <c:forEach begin="1" end="5" step="1">
-						                    <c:choose>
-						                        <c:when test="${Review.rev_rating >= loop.index}">
-						                          <span class="yellow-star">★</span>
-						                        </c:when>
-						                        <c:otherwise>
-						                            <span class="yellow-star">★</span>
-						                        </c:otherwise>
-						                    </c:choose>
+						                <c:forEach begin="1" end="5" step="1" varStatus="loop">
+					                        <c:if test="${Review.rev_rating >= loop.index}">
+					                          <span class="yellow-star">★</span>
+					                        </c:if>
 						                </c:forEach>
 						            </c:if>
 						            </td>
