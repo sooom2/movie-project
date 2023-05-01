@@ -11,21 +11,12 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
-<link
-	href="${pageContext.request.contextPath }/resources/css/styles.css"
-	rel="stylesheet" />
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
-<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-	rel="stylesheet" />
-
-
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
+<link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"	rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script type="text/javascript">
 
 function selectCinema(){
@@ -245,6 +236,9 @@ function modalClose() {
    dis2.style.display = "none";
 }
 
+function modalReload() {
+    location.reload();
+}
 $(function () {
     $('.modal').draggable({
       handle: ".justify-content-center"
@@ -329,8 +323,6 @@ $(function() {
 			<!-- 들어갈내용 -->
 			<main>
 		
-
-
 				<!-- 테이블 -->
 				<div class="datatable-container">
 					<h3 class="text-center font-weight-light my-4">영화상영 일정관리</h3>
@@ -339,8 +331,7 @@ $(function() {
 							style="color: #673bd4">${pageInfo.listCount }</b>건
 					</h6>
 					<div class="">
-						<input class="btn btn-block btn-more" type="button" value="일정등록"
-							onclick="doRegisterSch()">
+						<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="doRegisterSch()">
 						<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
 						<input class="btn btn-block btn-more" type="button" value="지정날짜삭제"
 							onclick="doLatest()"> <input
@@ -530,14 +521,13 @@ $(function() {
 			<!-- 삭제모달 -->
 
 			<!--  등록모달 -->
-			<div class="container modal admin-modal-register"
-				style="display: none;">
+			<div class="container modal admin-modal-register" style="display: none;">
 				<div class="row justify-content-center">
 					<div class="col-lg-7" style="width: 1000px">
 						<div class="card border-1 mt-5">
 							<div class="card-header">
-								<button type="button" class="close-modal" onclick="modalClose()"
-									style="border: none;">닫기</button>
+								<button type="button" class="close-modal" onclick="modalClose()" style="border: none;">닫기</button>
+								<a href="#" onclick="modalReload()">새로고침</a>
 								<h3 class="text-center font-weight-light my-4">상영일정등록</h3>
 							</div>
 
