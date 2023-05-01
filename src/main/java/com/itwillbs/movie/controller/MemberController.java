@@ -72,7 +72,7 @@ public class MemberController {
 		System.out.println("==========================================");
 		System.out.println(review);
 		System.out.println("==========================================");
-		return "index";
+		return "main";
 	}
 	
 
