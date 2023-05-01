@@ -31,6 +31,9 @@ window.onload = function(){
 // 입력 검증.
 $(function() {
 	let idStatus = false;
+	let nameStatus = false;
+	let passwdStatus = false;
+	let passwd2Status = false;
 	
 	
 	// 아이디 검증.
