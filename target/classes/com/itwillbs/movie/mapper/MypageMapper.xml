@@ -77,7 +77,8 @@
 		INSERT INTO review VALUES
 		(
 		(SELECT *
-			FROM (SELECT IFNULL(MAX(rev_code),0) FROM review) A)+1
+			FROM (SELECT IFNULL(MAX(CAST(rev_code  AS UNSIGNED)),0) +1
+			 FROM review) A)
 		,(SELECT res_movie_code
 			FROM reservation WHERE res_id = #{id}
 			ORDER BY res_code DESC LIMIT 1)
