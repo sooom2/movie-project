@@ -119,7 +119,7 @@ $(function() {
 	<div class="member mem-login">
 		<div class="list-tabs">
 			<a href="memLogin" class="active">회원 로그인</a>
-			<a href="guestRsv">비회원 예매 및 확인</a>
+<!-- 			<a href="guestRsv">비회원 예매 및 확인</a> -->
 		</div>
 
 		<div class="tabs-cont">

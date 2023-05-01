@@ -42,7 +42,7 @@
 				</c:when>
 				<c:otherwise>
 					<li><a href="javascript:logout()" data-reload="reload" class="">로그아웃</a></li>
-					<li><a href="guestRsv" class="">비회원예매내역</a></li>
+<!-- 					<li><a href="guestRsv" class="">비회원예매내역</a></li> -->
 					<c:if test="${sessionScope.sId eq 'admin' }">
 						<li><a href="admin" class="">관리자</a></li>
 					</c:if>
@@ -59,8 +59,8 @@
 					<div class="tertiary">
 						<ul>
 							<li><a href="reservation" class="" onmouseover="">빠른예매</a></li>
-							<li><a href="" class="" onmouseover="">상영시간표</a></li>
-							<li><a href="" class=""	onmouseover="">비회원예매내역</a></li>
+<!-- 							<li><a href="" class="" onmouseover="">상영시간표</a></li> -->
+<!-- 							<li><a href="" class=""	onmouseover="">비회원예매내역</a></li> -->
 						</ul>
 					</div>
 				</li>
