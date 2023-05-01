@@ -11350,7 +11350,8 @@ table select {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-	vertical-align: middle
+	vertical-align: middle;
+	color: black;
 }
 
 .board-list>tbody>tr>td>a.ellipsis {
