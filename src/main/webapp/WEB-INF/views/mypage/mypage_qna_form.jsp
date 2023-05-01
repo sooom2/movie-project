@@ -128,7 +128,7 @@ function goDetail(table_name, code) {
 					<table class="bbs-list bbs-list-mypage-coupon">
 						<thead>
 							<tr>
-								<th scope="col">번호</th>
+<!-- 								<th scope="col">번호</th> -->
 								<th scope="col">극장</th>
 								<th scope="col">문의유형</th>
 								<th scope="col">제목</th>
@@ -142,7 +142,7 @@ function goDetail(table_name, code) {
 
 								<c:forEach var="oneBoard" items="${oneBoardList}" begin="0" end="9">
 								    <tr data-index="0">
-								        <td>${oneBoard.rownum}</td>
+<%-- 								        <td>${oneBoard.rownum}</td> --%>
 								        <td>${oneBoard.cinema_name}</td>
 								        <td>${oneBoard.question_type}</td>
 								        <td id="one_subject">
