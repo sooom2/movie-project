@@ -1,24 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-
 <html>
 <head>
-<title>아이무비</title>
-
+<title>Insert title here</title>
 <link href="${path }/resources/css/main.css" rel="stylesheet">
+<link href="${path }/resources/css/main2.css" rel="stylesheet">
 <link href="${path }/resources/css/inc.css" rel="stylesheet">
 <link href="${path }/resources/css/common.css" rel="stylesheet">
 <%-- <link href="${path }/resources/css/jquery.bxslider.css" rel="stylesheet"> --%>
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.bxslider.min.js"></script> --%>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="resources/js/main.js"></script>
+<script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -269,42 +266,8 @@
 	   			}
 	   		})
   	 	});
-	   	
-	   	
 	
-	});
-	
-	function like(){
-		// ajax -> likeInsert(@controller)
-	   	// ajax : context : this를 써줘야 success에서 this 사용 가능
-// 	   	var info_movie_code = $(this).closest("li").data("moviecode")+"";
-	   	
-// 	   	$.ajax({
-// 	   		url : 'likeClick',
-// 	   		type : 'POST',
-// 	   		context : this,
-// 	   		data : {
-// 	   			info_movie_code : info_movie_code
-// 	   		},
-// 	   		success : function(result){
-// 	   			alert(result.msg)
-	   			
-// 	   			if(result.resultType == "insert"){
-// 	   				$(this).find('img').attr({
-// 	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/after-like.png',
-// 	   					alt : '찜하기 완료'
-// 	   				})
-// 	   			}else if(result.resultType = "delete"){
-// 	   				$(this).find('img').attr({
-// 	   					'src' : '${pageContext.request.contextPath}/resources/images/ico/before-like.png',
-// 	   					alt : "찜하기"
-// 	   				})
-// 	   			}
-//    			$(this).find('span').html(result.like_count)
-//    			}
-//    		});
-		alert("111111111111");
-	}
+});
 </script>
 <c:if test = "${not empty sessionScope.sId }" >
 	<c:set var="likeList" value="${likeList}"/>
@@ -407,7 +370,7 @@
 						    		${movie.info_movie_title }
 						    	</div>
 						 	  	<div class="like-btn">
-									<a href="javascript:like()" class="icon heart">
+									<a href="javascript:;" class="icon heart">
 									<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
 									<c:choose>
 										<c:when test ="${fn:contains(likeList,info_movie_code) }">
@@ -445,7 +408,7 @@
 						    		${movie.info_movie_title }
 						    	</div>
 						 	  	<div class="like-btn">
-									<a href="javascript:like()" class="icon heart">
+									<a href="javascript:;" class="icon heart">
 										<c:set var="info_movie_code" value="${movie.info_movie_code }"/>
 										<c:choose>
 											<c:when test ="${fn:contains(likeList,info_movie_code) }">
@@ -456,8 +419,8 @@
 											</c:otherwise>
 										</c:choose>
 									<span class="likeNum">${movie.like_count }</span></a>
-								</div>
-			   			 </li>
+							</div>
+				   		 </li>
 						</c:forEach>	
 					</ul>
 				</div>
@@ -547,7 +510,7 @@
 						<div class="noticeClient_content">
 							<div id="ctl00_PlaceHolderContent_notice_wrap"
 								class="notice_wrap">
-								<strong>공지사항</strong> <a href="notice_detail?notice_code=${notice.notice_code }" class="btn_link">
+								<strong>공지사항</strong> <a href="notice_detail?notice_code=${notice.notice_code }" class="btn_link">[${notice.cinema_name}]
 									${notice.notice_subject }</a>
 								<a href="cc_home" id="notice_more" class="btn_more">더보기</a>
 							</div>
@@ -570,7 +533,7 @@
 							</div>
 						</div>
 						<div class="qr_wrap">
-							<strong>앱 다운로드</strong> <span>아이무비에서 더 편리하게 이용하세요</span>
+							<strong>앱 다운로드</strong> <span>아이무비앱에서 더 편리하게 이용하세요</span>
 							<div class="img_wrap" data-scale="false">
 								<img src="resources/images/main/img_qrcode.png" alt="QR CODE">
 							</div>
