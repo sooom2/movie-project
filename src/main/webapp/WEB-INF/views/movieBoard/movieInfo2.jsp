@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/resources/css/inc.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
+<link href="${path }/resources/css/inc.css" rel="stylesheet" type="text/css">
+<link href="${path }/resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="${path }/resources/css/mypage.css" rel="stylesheet">
+<link href="${path }/resources/css/movieInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="${path }/resources/js/jquery.bxslider.min.js"></script>
 </head>
 <body id="top">
 <jsp:include page="../nav.jsp" />   

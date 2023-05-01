@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -11,11 +12,10 @@
 <meta name="author" content="" />
 <title>아이무비관리자페이지</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="resources/css/styles.css" rel="stylesheet" />
+<link href="${path }/resources/css/styles.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="resources/js/jquery-3.6.4.js"></script>
-
-<script type="text/javascript" src="resources/js/admin.js"></script>
+<script src="${path }/resources/js/jquery-3.6.4.js"></script>
+<script type="text/javascript" src="${path }/resources/js/admin.js"></script>
 <script type="text/javascript">
 
 function doLatest() {
