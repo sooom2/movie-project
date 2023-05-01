@@ -38,6 +38,7 @@ public class CustomerController {
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
 	public String ccHome(@RequestParam HashMap<String, String> map, Model model) {
+		System.out.println("cc_home : " + map);
 		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
 			map.put("startNum", "0");
 			map.put("endNum", "5");
@@ -152,7 +153,7 @@ public class CustomerController {
 			response.setCharacterEncoding("UTF-8");
 			List<HashMap<String, String>> isCorrect = boardService.checkLostPasswd(map);
 			List<HashMap<String, String>> lostBoardList = null;
-			System.out.println("=====" + isCorrect);
+			System.out.println("=====lostDetail" + isCorrect);
 			System.out.println(isCorrect.isEmpty());
 			if(!isCorrect.isEmpty()) {
 				if(map.get("startNum") == null || "".equals(map.get("startNum"))) {

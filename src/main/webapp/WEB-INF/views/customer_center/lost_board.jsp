@@ -45,7 +45,8 @@ function goDetail(table_name, code) {
 }
 
 // 비밀번호 입력 모달창
-function doDisplay(){
+function doDisplay(lost_code){
+	document.querySelector("input[name=lost_code]").value = lost_code;
 	let dis = document.querySelector(".modal-type2");
 	if(dis.style.display="none"){
 		dis.style.display="block"
@@ -61,8 +62,10 @@ function modalClose(){
 
 function chkPasswd(){
 // 	alert("클릭");
-	var lost_code = $("#lost_subject > a").attr("data-code");
+// 	var lost_code = $("#lost_subject > a").attr("data-code");
+	let lost_code = document.querySelector("input[name=lost_code]").value;
 // var result;
+// 	alert(lost_code);
 // cosole.log($("#lost_subject"));
 
 	$.ajax({
@@ -261,7 +264,8 @@ function chkPasswd(){
 										<td>${lostBoard.cinema_name }</td>
 										<td id="lost_subject"><a
 <%-- 											href="lost_detail?lost_code=${lostBoard.lost_code }">${lostBoard.lost_subject }</a> --%>
-											href="javascript:doDisplay();" class="chkPasswd" data-code="${lostBoard.lost_code}">${lostBoard.lost_subject }</a>
+											href="javascript:doDisplay('${lostBoard.lost_code}');" >${lostBoard.lost_subject }</a>
+<%-- 											href="javascript:doDisplay();" class="chkPasswd" data-code="${lostBoard.lost_code}">${lostBoard.lost_subject }</a> --%>
 <%-- 											href="javascript:doDisplay();" class="lost_code"  data-code="${lostBoard.lost_code}">${lostBoard.lost_subject }</a> --%>
 										</td>
 										<td>${lostBoard.lost_board_rep }</td>
