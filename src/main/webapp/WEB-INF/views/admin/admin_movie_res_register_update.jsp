@@ -55,10 +55,13 @@ function delRes(){
 	
 }
 
-
 </script>
 </head>
 <body class="sb-nav-fixed">
+<c:if test="${sessionScope.sId neq 'admin }">
+	
+
+</c:if>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
