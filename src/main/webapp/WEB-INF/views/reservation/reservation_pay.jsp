@@ -236,7 +236,7 @@
 	        pay_method : 'card',
 	        merchant_uid: "res" + new Date().getTime(), 
 	        name : '영화 결제',
-	        amount : ${param.totalAmt },
+	        amount : $("#totalAmt").val(),
 	        buyer_email : '${member.get('member_email')}',
 	        buyer_name : '${member.get('member_name')}',
 	        buyer_tel : '${member.get('member_tel')}',
@@ -271,7 +271,7 @@
 			var oriAmt = ${vo.getTotalAmt() };
 			var discountTotalAmt = oriAmt * discount;
 			var totalAmt = oriAmt - discountTotalAmt;
-			
+			$("#totalAmt").val(totalAmt);
 			$(".discounts").css("display", "block");
 			$(".discountAmt").empty();
 			$(".discountAmt").append("-" + discountTotalAmt + "원");
