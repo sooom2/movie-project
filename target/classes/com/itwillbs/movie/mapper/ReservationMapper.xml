@@ -69,7 +69,8 @@
 	
 	<!-- 상영 시간 리스트 -->
 	<select id="selectMovieTimeList" resultType="hashmap">
-		SELECT  sc.*
+		SELECT  
+				sc.*
 			  , c.*
 			  , sch_code,sch_screen_code,sch_cinema_code,sch_movie_code,sch_movie_date
 			  , DATE_FORMAT(sd.sch_start_time, '%H:%i') as sch_start_time
@@ -91,6 +92,12 @@
 		    	sd.sch_movie_code = #{MvItemCd}
 		    AND 
 		    	sd.sch_movie_date like CONCAT('%',#{dateCd})
+		 	AND 
+		 		sd.sch_movie_date >= CURRENT_DATE() -- 현재 날짜 이후
+		    AND 
+		    	((sd.sch_movie_date = CURRENT_DATE() AND sd.sch_start_time >= CURRENT_TIME())
+		    OR 
+		    	sd.sch_movie_date > CURRENT_DATE()) -- 현재 시간 이후
 	</select>
 	
 	<!-- 예매 좌석 조회 -->
