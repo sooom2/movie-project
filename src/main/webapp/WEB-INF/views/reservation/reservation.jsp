@@ -183,7 +183,7 @@
 											<small style="color: red; font-size: revert;">상영임박 영화 50% 할인</small>
 										</div>
 										<div class="list-body">
-											<div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+											<div class="scroll-wrapper scrollbar-inner" style="position: relative; overflow: auto;">
 												<div class="scrollbar-inner scroll-content" style="height: 305px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
 													<div id="timeList">
 														<div class="list-type">
