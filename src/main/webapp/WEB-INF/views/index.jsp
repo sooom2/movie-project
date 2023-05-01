@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>아이무비</title>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 <link href="${path }/resources/css/main.css" rel="stylesheet">
 <link href="${path }/resources/css/inc.css" rel="stylesheet">
 <link href="${path }/resources/css/common.css" rel="stylesheet">

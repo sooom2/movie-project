@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 <title>아이무비 마이페이지(스토어)</title>
 <link href="${path }/resources/css/common.css" rel="stylesheet">
 <link href="${path }/resources/css/mypage.css" rel="stylesheet">

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 <title>Insert title here</title>
 <link href="${path }/resources/css/inc.css" rel="stylesheet" type="text/css">
 <link href="${path }/resources/css/common.css" rel="stylesheet" type="text/css">
