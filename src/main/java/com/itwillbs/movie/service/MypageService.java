@@ -78,7 +78,7 @@ public class MypageService {
 		return mapper.resList(id);
 	}
 
-	public int checkReview(String id) {
+	public HashMap<String,String> checkReview(String id) {
 		    return mapper.checkReview(id);
 	}
 

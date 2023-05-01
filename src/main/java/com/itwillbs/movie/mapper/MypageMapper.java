@@ -41,7 +41,7 @@ public interface MypageMapper {
 
 //	List<HashMap<String, String>> resList(String id, int year, int month);
 
-	int checkReview(String id);
+	HashMap<String,String>  checkReview(String id);
 
 	List<HashMap<String, String>> likeList(String id);
 

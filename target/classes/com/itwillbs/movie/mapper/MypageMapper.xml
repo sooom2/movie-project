@@ -287,12 +287,13 @@
 
   	
   	
-	<select id="checkReview" resultType="int" >
-	  SELECT COUNT(*) as A
+	<select id="checkReview" resultType="hashmap" >
+	  SELECT rev_code
 	  FROM review 
-	  WHERE rev_id = #{id} AND rev_movie_code = (select res_movie_code
-			FROM reservation WHERE res_id = #{id}
-			ORDER BY res_code DESC LIMIT 1)
+	  WHERE rev_id = #{id}
+	   AND rev_movie_code = (select res_movie_code
+							FROM reservation WHERE res_id = #{id}
+							ORDER BY res_code DESC LIMIT 1)
 	</select>
 	
 

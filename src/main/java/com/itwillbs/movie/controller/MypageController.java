@@ -314,11 +314,11 @@ public class MypageController {
 		    
 		}
 
-	    int count = service.checkReview(id);
-	    
+		HashMap<String,String> count = service.checkReview(id);
+	    System.out.println(count);
 	    // 이미 작성한 리뷰가 있다면 중복 등록 방지
 	    
-	    if (count > 0) { 
+	    if (count != null) { 
 	    	
 	        model.addAttribute("msg", "이미 작성한 리뷰가 있습니다.");
 	        
