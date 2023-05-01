@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
 <title>아이무비</title>
 </head>
 <link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
