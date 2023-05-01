@@ -533,7 +533,7 @@
 							</div>
 						</div>
 						<div class="qr_wrap">
-							<strong>앱 다운로드</strong> <span>CGV앱에서 더 편리하게 이용하세요</span>
+							<strong>앱 다운로드</strong> <span>아이무비에서 더 편리하게 이용하세요</span>
 							<div class="img_wrap" data-scale="false">
 								<img src="resources/images/main/img_qrcode.png" alt="QR CODE">
 							</div>
