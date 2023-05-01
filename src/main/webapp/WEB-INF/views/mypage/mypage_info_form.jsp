@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 <title>아이무비 회원정보관리</title>
 <link href="${path }/resources/css/common.css" rel="stylesheet">
 <link href="${path }/resources/css/mypage.css" rel="stylesheet">
@@ -13,6 +14,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="${path }/resources/js/main.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
 window.onload = function(){
     document.getElementById("postSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
