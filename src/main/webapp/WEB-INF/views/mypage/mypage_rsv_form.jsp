@@ -48,7 +48,7 @@ $(document).ready(function(){
 		            "<td>" + res.res_title  + "</td>" +
 		            "<td>" + res.res_cinema + "</td>" +
 		            "<td>" + res.screen_name + "</td>" +
-		            "<td>" + res.res_seat_num + "</td>" +
+		            "<td>" + res.res_seat_name + "</td>" +
 		            "<td>" + res.sch_movie_date + "</td>" +
 		            "<td>" + res.movie + "</td>" +
 		            "<td>" + formattedPay + "</td>" +
@@ -182,7 +182,7 @@ function setDateBox(){
 								<td>${resList.get("res_title")}</td>
 								<td>${resList.get("res_cinema")}</td>
 								<td>${resList.get("screen_name")}</td>
-								<td>${resList.get("res_seat_num")}</td>
+								<td>${resList.get("res_seat_name")}</td>
 								<td>${resList.get("sch_movie_date")}</td>
 								<td>${resList.get("movie")}</td>
 								<td><fmt:formatNumber value="${resList.get('res_pay') }" pattern="#,###"/></td>
