@@ -10,17 +10,19 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <title>아이무비관리자페이지</title>
 <link href="${pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<!-- <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
 <link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"	rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
 
+
+<script type="text/javascript">
 function selectCinema(){
-	
 	let register_date = $("#sch_register_date").val();
 	if(register_date == "") {
 		alert("날짜를 먼저 선택하세요");
