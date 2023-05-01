@@ -206,7 +206,7 @@
 			WHERE 
 				sch_movie_date = current_date() 
 			AND 
-				timediff(sch_start_time, current_time()) <= '10:00:00' 
+				timediff(sch_start_time, current_time()) <= '01:00:00' 
 			AND 
 				timediff(sch_start_time, current_time()) > '00:00:00'
 			AND 

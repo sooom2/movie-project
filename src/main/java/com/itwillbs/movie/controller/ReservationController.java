@@ -138,7 +138,6 @@ public class ReservationController {
 	public String discount(Model model, String schCd) {
 		String discount = service.selectDiscount(schCd);
 		System.out.println("discount!!!!!!!!!!!!!!!!!!!!!!!!!!: " + discount);
-		model.addAttribute("discount", discount);
 //		System.out.println(discount.getClass().getName());
 		return discount;
 	}

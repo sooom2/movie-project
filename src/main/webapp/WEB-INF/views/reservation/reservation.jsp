@@ -445,7 +445,6 @@ var mvDay = "";		// 상영일
 	
 	// 할인 가능한 영화인지 확인
 	function discount() {
-		console.log("discount");
 		console.log($("#schCd").val());
 		
 		$.ajax({
@@ -457,8 +456,11 @@ var mvDay = "";		// 상영일
 			dataType: "text",
 			success: function(response) {
 				console.log("discount : 요청처리성공");
-				if(response != null) {
+				console.log(response);
+				if(response != "") {
+					console.log("null이 아님");
 					$("#Discount").val("0.5");
+					console.log($("#Discount").val());
 				} else {
 					console.log("null");
 				}
@@ -705,7 +707,7 @@ var mvDay = "";		// 상영일
 			$("#schCd").val($(this).data("cd"));
 			$('.btnTime[data-cd="' + $(this).data("cd") + '"]').parent().addClass("check"); // 클릭시 테두리
 			setTime();
-			
+			$("#Discount").val("");
 			discount();
 			
 		});
