@@ -8,11 +8,11 @@
 <head>
 <meta charset="UTF-8">  
 <title>아이무비 마이페이지(예매내역)</title>
-<link href="resources/css/common.css" rel="stylesheet">
-<link href="resources/css/mypage.css" rel="stylesheet">
-<link href="resources/css/inc.css" rel="stylesheet">
+<link href="${path }/resources/css/common.css" rel="stylesheet">
+<link href="${path }/resources/css/mypage.css" rel="stylesheet">
+<link href="${path }/resources/css/inc.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources//js/main.js"></script>
+<script type="text/javascript" src="${path }/resources/js/main.js"></script>
 <script>
 
 // 셀렉트 박스에서 선택된 예약리스트 불러오기
