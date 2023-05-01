@@ -18,6 +18,13 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+
+	<c:if test="${sessionScope.sId  ne 'admin' }">
+		<script type="text/javascript">
+			alert("잘못된 접근입니다!");
+			location.href = "./";
+		</script>
+	</c:if>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="admin">IMOVIE</a>
@@ -208,7 +215,6 @@
 										</c:forEach>
 									</table>
 								</div>
-
 								<!-- 페이징처리 -->
 								<div class="datatable-bottom">
 									<nav class="datatable-pagination">
@@ -251,9 +257,6 @@
 													</c:when>
 												</c:choose>
 											</c:forEach>
-											
-											
-											
 											<c:choose>
 												<c:when test="${pageNum < pageInfo.maxPage }">
 													<li class="datatable-pagination-list-item datatable-hidden"
@@ -267,11 +270,6 @@
 													</li>
 												</c:otherwise>
 											</c:choose>
-											
-											
-											
-											
-											
 										</ul>
 									</nav>
 								</div>
@@ -280,7 +278,6 @@
 					</div>
 				</div>
 			</main>
-
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
 					<div
