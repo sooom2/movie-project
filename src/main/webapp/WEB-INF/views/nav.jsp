@@ -37,7 +37,7 @@
 				<c:when test="${empty sessionScope.sId }">
 					<li><a href="memLogin" data-reload="reload" class="">로그인</a></li>
 					<li><a href="memAuth">회원가입</a></li>
-					<li><a href="guestRsv" class="">비회원예매내역</a></li>
+<!-- 					<li><a href="guestRsv" class="">비회원예매내역</a></li> -->
 <!-- 					<li><a href="admin" class="">관리자</a></li> -->
 				</c:when>
 				<c:otherwise>
