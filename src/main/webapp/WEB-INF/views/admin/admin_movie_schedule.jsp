@@ -237,7 +237,8 @@ function modalClose() {
 }
 
 function modalReload() {
-    location.reload();
+	  const form = document.querySelector('form[action="movieScheduleRegisterPro"]');
+	  form.reset();
 }
 $(function () {
     $('.modal').draggable({
