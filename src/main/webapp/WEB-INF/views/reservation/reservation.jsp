@@ -608,13 +608,6 @@ var mvDay = "";		// 상영일
 		$(".btnTheater").on("click", function(e){
 			var cd = $(this).data("cd");
 			
-			// 비회원인 경우 로그인 후 이용해주세요 
-			// 즐겨찾는 극장
-// 			if (cd == "favorite") {
-// 				$("#login").modal();
-// 				return;
-// 			} 
-			
 			// 클릭한 지역 배경색 전환
 			$(".btnTheater").parent().removeClass("active");
 			$(this).parent().addClass("active");

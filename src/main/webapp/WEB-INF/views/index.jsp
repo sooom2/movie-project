@@ -14,8 +14,10 @@
 <%-- <link href="${path }/resources/css/jquery.bxslider.css" rel="stylesheet"> --%>
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/main.js"></script>
-<script type="text/javascript" src="resources/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.bxslider.min.js"></script> --%>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 <script type="text/javascript">
 	$(function() {
