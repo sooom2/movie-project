@@ -186,6 +186,14 @@
 				member_id = #{id}
 	</update>
 	
+	<update id="updateresultPoint">
+		UPDATE member
+			SET
+				member_point = #{resultPoint}
+			WHERE
+				member_id = #{id}
+	</update>
+	
 	<!-- 회원 포인트 조회 -->
 	<select id="selectPoint" resultType="String">
 		SELECT member_point 

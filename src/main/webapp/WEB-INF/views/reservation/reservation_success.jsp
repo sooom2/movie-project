@@ -64,7 +64,7 @@
 	            <h2 class="tit">결제&예매 확인
 	            </h2>
 	            <div class="sub-info">
-	                <p class="bundle">예매가 완료 되었습니다! 결제 금액의 10%가 적립됩니다.  회원님의 잔여 포인트: <a class="point">${selectPoint}</a></p>
+	                <p class="bundle">예매가 완료 되었습니다! 결제 금액의 10%가 적립됩니다.</p>
 	            </div>
 	            <!-- box-store-view -->
 	            <div class="box-store-view">

@@ -179,7 +179,7 @@ public class ReservationController {
 		// 결제 후 예매 정보 추가 - 회원
 		int insertReservation = service.insertReservation(vo, id);
 			
-		
+		System.out.println("vo!!!!!!!!!!!!!!!!" + vo);
 		
 		
 		// 예매 성공 후 point 적립
@@ -190,6 +190,12 @@ public class ReservationController {
 			int updateMemberPoint = service.updateMemberPoint(id, totalAmt);
 			String selectPoint = service.selectPoint(id);
 			model.addAttribute("selectPoint", selectPoint);
+			
+			int resultPoint = Integer.parseInt(selectPoint)-Integer.parseInt(vo.getPoint());
+			
+			int updateresultPoint = service.updateresultPoint(id, resultPoint+"");
+			
+			
 		}
 		
 		// 좌석 count

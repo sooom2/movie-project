@@ -79,6 +79,10 @@ public class ReservationService {
 		return mapper.selectDiscount(schCd);
 	}
 
+	public int updateresultPoint(String id, String resultPoint) {
+		return mapper.updateresultPoint(id, resultPoint);
+	}
+
 	
 
 }

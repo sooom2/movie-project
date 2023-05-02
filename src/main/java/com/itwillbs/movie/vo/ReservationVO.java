@@ -33,6 +33,8 @@ public class ReservationVO {
 	private String OldPrice;
 	private String YoungPrice;
 	private String resPay;
+	private String Point;
+	
 	
 	
 	
@@ -43,12 +45,13 @@ public class ReservationVO {
 
 
 
+
 	public ReservationVO(String resCode, String schCd, String movieCd, String screenCd, String cinemaCd,
 			String movieDate, String movieNm, String cinemaNm, String totalCnt, String totalAmt, String resPayment,
 			String buyerTel, String resPayDone, String seatLine, String seatNum, String seatNm, String screenTime,
 			String hidMovieUrl, String hidRating, String showDate, String genre, String screenNm, String normalCnt,
 			String oldCnt, String youngCnt, String ticketAmt, String normalPrice, String oldPrice, String youngPrice,
-			String resPay) {
+			String resPay, String point) {
 		super();
 		this.resCode = resCode;
 		this.schCd = schCd;
@@ -80,7 +83,9 @@ public class ReservationVO {
 		OldPrice = oldPrice;
 		YoungPrice = youngPrice;
 		this.resPay = resPay;
+		Point = point;
 	}
+
 
 
 
@@ -92,9 +97,11 @@ public class ReservationVO {
 
 
 
+
 	public void setResCode(String resCode) {
 		this.resCode = resCode;
 	}
+
 
 
 
@@ -106,9 +113,11 @@ public class ReservationVO {
 
 
 
+
 	public void setSchCd(String schCd) {
 		this.schCd = schCd;
 	}
+
 
 
 
@@ -120,9 +129,11 @@ public class ReservationVO {
 
 
 
+
 	public void setMovieCd(String movieCd) {
 		MovieCd = movieCd;
 	}
+
 
 
 
@@ -134,9 +145,11 @@ public class ReservationVO {
 
 
 
+
 	public void setScreenCd(String screenCd) {
 		ScreenCd = screenCd;
 	}
+
 
 
 
@@ -148,9 +161,11 @@ public class ReservationVO {
 
 
 
+
 	public void setCinemaCd(String cinemaCd) {
 		CinemaCd = cinemaCd;
 	}
+
 
 
 
@@ -162,9 +177,11 @@ public class ReservationVO {
 
 
 
+
 	public void setMovieDate(String movieDate) {
 		MovieDate = movieDate;
 	}
+
 
 
 
@@ -176,9 +193,11 @@ public class ReservationVO {
 
 
 
+
 	public void setMovieNm(String movieNm) {
 		MovieNm = movieNm;
 	}
+
 
 
 
@@ -190,9 +209,11 @@ public class ReservationVO {
 
 
 
+
 	public void setCinemaNm(String cinemaNm) {
 		CinemaNm = cinemaNm;
 	}
+
 
 
 
@@ -204,9 +225,11 @@ public class ReservationVO {
 
 
 
+
 	public void setTotalCnt(String totalCnt) {
 		this.totalCnt = totalCnt;
 	}
+
 
 
 
@@ -218,9 +241,11 @@ public class ReservationVO {
 
 
 
+
 	public void setTotalAmt(String totalAmt) {
 		this.totalAmt = totalAmt;
 	}
+
 
 
 
@@ -232,9 +257,11 @@ public class ReservationVO {
 
 
 
+
 	public void setResPayment(String resPayment) {
 		this.resPayment = resPayment;
 	}
+
 
 
 
@@ -246,9 +273,11 @@ public class ReservationVO {
 
 
 
+
 	public void setBuyerTel(String buyerTel) {
 		this.buyerTel = buyerTel;
 	}
+
 
 
 
@@ -260,9 +289,11 @@ public class ReservationVO {
 
 
 
+
 	public void setResPayDone(String resPayDone) {
 		this.resPayDone = resPayDone;
 	}
+
 
 
 
@@ -274,9 +305,11 @@ public class ReservationVO {
 
 
 
+
 	public void setSeatLine(String seatLine) {
 		this.seatLine = seatLine;
 	}
+
 
 
 
@@ -288,9 +321,11 @@ public class ReservationVO {
 
 
 
+
 	public void setSeatNum(String seatNum) {
 		this.seatNum = seatNum;
 	}
+
 
 
 
@@ -302,9 +337,11 @@ public class ReservationVO {
 
 
 
+
 	public void setSeatNm(String seatNm) {
 		this.seatNm = seatNm;
 	}
+
 
 
 
@@ -316,9 +353,11 @@ public class ReservationVO {
 
 
 
+
 	public void setScreenTime(String screenTime) {
 		ScreenTime = screenTime;
 	}
+
 
 
 
@@ -330,9 +369,11 @@ public class ReservationVO {
 
 
 
+
 	public void setHidMovieUrl(String hidMovieUrl) {
 		HidMovieUrl = hidMovieUrl;
 	}
+
 
 
 
@@ -344,9 +385,11 @@ public class ReservationVO {
 
 
 
+
 	public void setHidRating(String hidRating) {
 		HidRating = hidRating;
 	}
+
 
 
 
@@ -358,9 +401,11 @@ public class ReservationVO {
 
 
 
+
 	public void setShowDate(String showDate) {
 		this.showDate = showDate;
 	}
+
 
 
 
@@ -372,9 +417,11 @@ public class ReservationVO {
 
 
 
+
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+
 
 
 
@@ -386,9 +433,11 @@ public class ReservationVO {
 
 
 
+
 	public void setScreenNm(String screenNm) {
 		ScreenNm = screenNm;
 	}
+
 
 
 
@@ -400,9 +449,11 @@ public class ReservationVO {
 
 
 
+
 	public void setNormalCnt(String normalCnt) {
 		NormalCnt = normalCnt;
 	}
+
 
 
 
@@ -414,9 +465,11 @@ public class ReservationVO {
 
 
 
+
 	public void setOldCnt(String oldCnt) {
 		OldCnt = oldCnt;
 	}
+
 
 
 
@@ -428,9 +481,11 @@ public class ReservationVO {
 
 
 
+
 	public void setYoungCnt(String youngCnt) {
 		YoungCnt = youngCnt;
 	}
+
 
 
 
@@ -442,9 +497,11 @@ public class ReservationVO {
 
 
 
+
 	public void setTicketAmt(String ticketAmt) {
 		TicketAmt = ticketAmt;
 	}
+
 
 
 
@@ -456,9 +513,11 @@ public class ReservationVO {
 
 
 
+
 	public void setNormalPrice(String normalPrice) {
 		NormalPrice = normalPrice;
 	}
+
 
 
 
@@ -470,9 +529,11 @@ public class ReservationVO {
 
 
 
+
 	public void setOldPrice(String oldPrice) {
 		OldPrice = oldPrice;
 	}
+
 
 
 
@@ -484,9 +545,11 @@ public class ReservationVO {
 
 
 
+
 	public void setYoungPrice(String youngPrice) {
 		YoungPrice = youngPrice;
 	}
+
 
 
 
@@ -498,9 +561,27 @@ public class ReservationVO {
 
 
 
+
 	public void setResPay(String resPay) {
 		this.resPay = resPay;
 	}
+
+
+
+
+
+	public String getPoint() {
+		return Point;
+	}
+
+
+
+
+
+	public void setPoint(String point) {
+		Point = point;
+	}
+
 
 
 
@@ -515,10 +596,11 @@ public class ReservationVO {
 				+ HidMovieUrl + ", HidRating=" + HidRating + ", showDate=" + showDate + ", genre=" + genre
 				+ ", ScreenNm=" + ScreenNm + ", NormalCnt=" + NormalCnt + ", OldCnt=" + OldCnt + ", YoungCnt="
 				+ YoungCnt + ", TicketAmt=" + TicketAmt + ", NormalPrice=" + NormalPrice + ", OldPrice=" + OldPrice
-				+ ", YoungPrice=" + YoungPrice + ", resPay=" + resPay + "]";
+				+ ", YoungPrice=" + YoungPrice + ", resPay=" + resPay + ", Point=" + Point + "]";
 	}
 
-	
+
+
 
 	
 
