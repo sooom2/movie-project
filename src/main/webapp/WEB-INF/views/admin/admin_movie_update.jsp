@@ -19,7 +19,6 @@
 <!-- 모달 -->
 <script type="text/javascript">
 function deleteMovie(){
-	alert("Dddd");
 	let delConfirm = confirm("삭제하시겠습니까?");
 	if (delConfirm) {
 		location.href='deleteMovie?info_movie_code=${selectMovie.get('info_movie_code')}'

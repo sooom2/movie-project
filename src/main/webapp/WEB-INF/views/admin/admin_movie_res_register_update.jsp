@@ -58,7 +58,7 @@ function delRes(){
 </script>
 </head>
 <body class="sb-nav-fixed">
-<c:if test="${sessionScope.sId neq 'admin }">
+<c:if test="${sessionScope.sId neq 'admin' }">
 	
 
 </c:if>
