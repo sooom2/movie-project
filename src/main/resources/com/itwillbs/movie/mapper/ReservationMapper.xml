@@ -98,6 +98,10 @@
 		    	((sd.sch_movie_date = CURRENT_DATE() AND sd.sch_start_time >= CURRENT_TIME())
 		    OR 
 		    	sd.sch_movie_date > CURRENT_DATE()) -- 현재 시간 이후
+		    ORDER BY 
+		    	sd.sch_start_time ASC
+		    	
+		    
 	</select>
 	
 	<!-- 예매 좌석 조회 -->
