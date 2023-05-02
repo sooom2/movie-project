@@ -146,15 +146,17 @@ function confirmQuit() {
 							</div>
 						</div>
 
-						<a href=""  id="btn-mypage-ok"
-							class="btn-confirm">
-						<button type="submit">수정</button>	</a>
+						<a href=""  id="btn-mypage-ok" class="btn-confirm">
+							<button type="submit" style="display: inline-block; width: 300px;text-align: center;">수정</button>
+						</a>
 				 
 					<div class="title-membership title-quit">회원 탈퇴</div>
 					<div class="wrap-inside no-border">
 						<span class="quit-desc">탈퇴 신청시 환불금액등의 확인 후 탈퇴처리가 진행되며 포인트,
-							등록한 관람권 등이 삭제되고 30일 이내 재가입이 불가하오니 신중히 결정해주시기 바랍니다.</span> <a href=""
-							class="btn-quit withdrawmember"><button type="submit" formaction="quitPro" onclick="confirmQuit()">회원 탈퇴하기</button></a>
+							등록한 관람권 등이 삭제되고 30일 이내 재가입이 불가하오니 신중히 결정해주시기 바랍니다.</span> 
+						<a href="" class="btn-quit withdrawmember">
+							<button type="submit" formaction="quitPro" onclick="confirmQuit()" style="display: inline-block; width: 300px;text-align: center;">회원 탈퇴하기</button>
+						</a>
 					</div>
 					</form>
 				</div>
