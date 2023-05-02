@@ -334,37 +334,31 @@ $(function() {
 					<div class="">
 						<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="doRegisterSch()">
 						<!-- 	               		<input class="btn btn-block btn-more" type="button" value="일정등록" onclick="location.href='movieScheduleUpdate'"> -->
-						<input class="btn btn-block btn-more" type="button" value="지정날짜삭제"
-							onclick="doLatest()"> <input
-							class="btn btn-block btn-more" type="button" value="현재상영목록"
-							onclick="location.href='admin_schedule_register'"> <input
-							class="btn btn-block btn-more" type="button" value="상영종료목록"
-							onclick="location.href='movieEndSchedule'">
+						<input class="btn btn-block btn-more" type="button" value="지정날짜삭제" onclick="doLatest()">
+						<input class="btn btn-block btn-more" type="button" value="현재상영목록" onclick="location.href='admin_schedule_register'">
+						<input class="btn btn-block btn-more" type="button" value="상영종료목록" onclick="location.href='movieEndSchedule'">
 
 						<div class="selectbox searchbox"
 							style="display: inline-block; float: right; margin-bottom: 25px; margin-top: -19px; width: 520px; padding-left: 53px;">
 							<form action="admin_schedule_register">
 								<div class="sch_movie_code">
-									<select name="sch_movie_code" id="sch_movie_code"
-										style="width: 150px; height: 32px; border: 1px solid #aeaeae;" onchange="selectdd()">
+									<select name="sch_movie_code" id="sch_movie_code" style="width: 150px; height: 32px; border: 1px solid #aeaeae;" onchange="selectdd()">
 										<option value="none" selected="selected" disabled>영화선택</option>
 										<option value="none" disabled>=======================</option>
+										<option value="" onchange="admin_schedule_register">전체선택</option>
 										<c:forEach var="movie" items="${movieList }">
-											<option value="${movie.get('info_movie_code') }">${ movie.get("info_movie_title") }</option>
+											<option value="${movie.get('info_movie_code') }" ${param.sch_movie_code eq movie.info_movie_code ? 'selected' : ''}>${ movie.get("info_movie_title") }</option>
 										</c:forEach>
 									</select> 
-									<select name="sch_cinema_code" id="sch_cinema_code"
-										style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
+									<select name="sch_cinema_code" id="sch_cinema_code" style="width: 110px; height: 32px; border: 1px solid #aeaeae;">
 										<option value="none" selected="selected" disabled>지점선택</option>
 										<option value="none" disabled>=======================</option>
 										<c:forEach var="cinema" items="${cinemaList }">
-											<option value="${cinema.get('cinema_code') }">${ cinema.get('cinema_name') }</option>
+											<option value="${cinema.get('cinema_code') }" ${param.sch_cinema_code eq cinema.cinema_code ? 'selected' : ''}>${ cinema.get('cinema_name') }</option>
 										</c:forEach>
-									</select> <input name="sch_research_date" class="sch_research_date"
-										id="sch_research_date" type="text" placeholder="날짜검색" autocomplete='off'
-										style="width: 100px; height: 32px; border: 1px solid #aeaeae;" />
-									<input class="btn btn-block btn-more" type="submit" value="검색"
-										style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
+									</select>
+									<input value="${param.sch_research_date }" name="sch_research_date" class="sch_research_date" id="sch_research_date" type="text" placeholder="날짜검색" autocomplete='off' style="width: 100px; height: 32px; border: 1px solid #aeaeae;" />
+									<input class="btn btn-block btn-more" type="submit" value="검색" style="height: 32px; line-height: 16px; margin-bottom: 5px; background-color: #ffffff;">
 								</div>
 							</form>
 						</div>
@@ -429,62 +423,46 @@ $(function() {
 								</c:otherwise>
 							</c:choose>
 
-							<!-- 							 datatable-disabled -->
 							<c:choose>
-								<c:when test="${pageNum > 1 and empty param.sch_research_date and empty param.sch_cinema_code and empty param.sch_movie_code}">
-									<li class="datatable-pagination-list-item datatable-hidden"
-										onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}'">
-										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-									</li>
-								</c:when>
-								<c:when test="${pageNum > 1 and not empty param.sch_research_date and not empty param.sch_cinema_code and not empty param.sch_movie_code}">
-									<li class="datatable-pagination-list-item datatable-hidden" onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }'">
-										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="datatable-pagination-list-item datatable-hidden">
-										<a data-page="${pageNum } class="datatable-pagination-list-item-link">‹</a>
-									</li>
-								</c:otherwise>
+							  <c:when test="${pageNum > 1}">
+							    <li class="datatable-pagination-list-item datatable-hidden" onclick="location.href='admin_schedule_register?pageNum=${pageNum - 1}&sch_research_date=${param.sch_research_date}&sch_cinema_code=${param.sch_cinema_code}&sch_movie_code=${param.sch_movie_code}'">
+							      <a data-page="${pageNum}" class="datatable-pagination-list-item-link">‹</a>
+							    </li>
+							  </c:when>
+							  <c:otherwise>
+							    <li class="datatable-pagination-list-item datatable-hidden">
+							      <a data-page="${pageNum}" class="datatable-pagination-list-item-link">‹</a>
+							    </li>
+							  </c:otherwise>
 							</c:choose>
-							<c:forEach var="num" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-								<c:choose>
-									<c:when test="${pageNum eq num }">
-										<%-- 현재 페이지 번호일 경우 --%>
-										<li class="datatable-pagination-list-item "><a
-											class="datatable-pagination-list-item-link"
-											style="font-weight: 800; background-color: #ececec">${num }</a>
-									</c:when>
-									<c:when test="${pageNum ne num and empty param.sch_research_date}">
-										<a href="admin_schedule_register?pageNum=${num }">${num }</a>
-									</c:when>
-									<c:when test="${pageNum ne num and not empty param.sch_research_date}">
-										<a href="admin_schedule_register?pageNum=${num }&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }">${num }</a>
-									</c:when>
-									
-								</c:choose>
+							
+							<c:forEach var="num" begin="${pageInfo.startPage}" end="${pageInfo.endPage}">
+							  <c:choose>
+							    <c:when test="${pageNum eq num}">
+							      <%-- 현재 페이지 번호일 경우 --%>
+							      <li class="datatable-pagination-list-item ">
+							        <a class="datatable-pagination-list-item-link" style="font-weight: 800; background-color: #ececec">${num}</a>
+							      </li>
+							    </c:when>
+							    <c:when test="${pageNum ne num}">
+							      <li class="datatable-pagination-list-item">
+							        <a href="admin_schedule_register?pageNum=${num}&sch_research_date=${param.sch_research_date}&sch_cinema_code=${param.sch_cinema_code}&sch_movie_code=${param.sch_movie_code}">${num}</a>
+							      </li>
+							    </c:when>
+							  </c:choose>
 							</c:forEach>
 							
-							
 							<c:choose>
-								<c:when test="${pageNum < pageInfo.maxPage and empty param.sch_research_date and empty param.sch_cinema_code and empty param.sch_movie_code}">
-									<li class="datatable-pagination-list-item datatable-hidden"
-										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}'">
-										<a data-page="${pageNum} class="datatable-pagination-list-item-link">›</a>
-									</li>
-								</c:when>
-								<c:when test="${pageNum < pageInfo.maxPage and not empty param.sch_research_date and not empty param.sch_cinema_code and not empty param.sch_movie_code }">
-									<li class="datatable-pagination-list-item datatable-hidden"
-										onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}&sch_research_date=${param.sch_research_date }&sch_cinema_code=${param.sch_cinema_code }&sch_movie_code=${param.sch_movie_code }">
-										<a data-page="${pageNum} class="datatable-pagination-list-item-link">›</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="datatable-pagination-list-item datatable-hidden">
-										<a data-page="${pageNum } class="datatable-pagination-list-item-link">›</a>
-									</li>
-								</c:otherwise>
+							  <c:when test="${pageNum < pageInfo.maxPage}">
+							    <li class="datatable-pagination-list-item datatable-hidden" onclick="location.href='admin_schedule_register?pageNum=${pageNum + 1}&sch_research_date=${param.sch_research_date}&sch_cinema_code=${param.sch_cinema_code}&sch_movie_code=${param.sch_movie_code}'">
+							      <a data-page="${pageNum}" class="datatable-pagination-list-item-link">›</a>
+							    </li>
+							  </c:when>
+							  <c:otherwise>
+							    <li class="datatable-pagination-list-item datatable-hidden">
+							      <a data-page="${pageNum}" class="datatable-pagination-list-item-link">›</a>
+							    </li>
+							  </c:otherwise>
 							</c:choose>
 						</ul>
 					</nav>
