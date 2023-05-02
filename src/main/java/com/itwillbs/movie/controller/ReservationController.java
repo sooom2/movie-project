@@ -159,6 +159,11 @@ public class ReservationController {
 			model.addAttribute("member", member);
 		}
 		
+		String selectPoint = service.selectPoint(id);
+		model.addAttribute("selectPoint", selectPoint);
+		System.out.println("selectPoint" + selectPoint);
+		
+		
 		return "reservation/reservation_pay";
 	}
 	

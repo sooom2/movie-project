@@ -18,9 +18,34 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rsv/rsv2.css">
 	<link href="${pageContext.request.contextPath }/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/resources/css/inc.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/resources/css/sub.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>좌석 선택</title>
 <link rel="shortcut icon" href="resources/images/rsv/res_test.png" type="image/x-icon" />
+
+
+<style type="text/css">
+		#pointNumber {
+		  position: relative;
+		}
+		
+		#pointNumber {
+		  height: 20px;
+		  width: 280px;
+		  border: 1px solid #c0c0c0;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  padding: 16px;
+		}
+		
+		.order_point_type {
+		    font-family: 'Noto Sans KR', sans-serif;
+		    font-weight: bold;
+		}
+		
+		
+</style>
+
 </head>
 
 <body>
@@ -62,6 +87,7 @@
 				<input type="hidden" id="PaymentCd" name="PaymentCd" value="html5_inicis.INIBillTst">
 				
 				<input type="hidden" id="Discount" name="Discount" value="${param.Discount }">
+				<input type="hidden" id="Point" name="Point" value="">
 	
 				<div class="reservation-pc page-type">
 					<div class="in-wrap">
@@ -134,6 +160,42 @@
 														<li><button type="button" name="payChoice" class="btn-payks" data-cd="toss" data-msg="" value="tosspay.tosstest"><img src="resources/images/rsv/toss.jpg">토스페이</button></li>
 													</ul>
 												</div>
+												
+												<div><br></div>
+												<div><br></div>
+												<!-- 포인트 -->
+												<div class="order_point_type" align="right">
+													<dl class="box_point_switch">
+															<div class="point_type input_type" >
+																<dt>
+																	<span class="imoviePoint" style="color: purple;">IMOVIE POINT</span>
+																</dt>
+																<dd>
+																	<div class="input_wrap">
+																		<p class="input_payment">
+																			<input type="text" class="number" id="pointNumber" name="pointNumber" style="text-align:right">
+																			<span class="unit">포인트</span>
+																		</p>
+<!-- 																		<p class="input_payment"> -->
+<!-- 																			<button type="button" class="btn_payment" id="pointAll">전액사용</button> -->
+<!-- 																		</p> -->
+																		<p class="info">사용가능 <span id="" class="number" style="color: purple;">${selectPoint }</span><span>P</span></p>
+<!-- 																		<p class="input_payment"> -->
+<!-- 																			<label class="c_order_checkbox"> -->
+<!-- 																				<input type="checkbox" id="savePoint" name="all_pay" style="display: none"><span>항상 전액사용</span> -->
+<!-- 																			</label> -->
+<!-- 																		</p> -->
+																	</div>
+																</dd>
+															</div>
+														</dl>
+												</div>
+												
+												<div><br></div>
+												<div><br></div>
+												<div><br></div>
+												
+												
 												<div class="desc1">
 													<ul>
 <!-- 														<li>디트릭스 영화예매의 신용카드 결제서비스는 ㈜케이에스넷에서 제공합니다.</li> -->
@@ -180,15 +242,20 @@
 															<dt>청소년 (7,000원 x ${param.YoungCnt }명)</dt>
 															<dd>${param.YoungPrice }원</dd>
 														</dl>
-													<div class="discounts" style="display:none;">
+													<div class="discounts" style="display:block;">
 													<hr class="hr3">
-													<dl class="price1">
+													<dl class="price1" style="display:none;">
 														<dt>할인금액 (땡처리 특가)</dt>
 														<dd class="red discountAmt">-0원</dd>
 													</dl>
-													<dl class="price2 moviediscountcoupon" style="display: none;">
-															<dt>할인쿠폰</dt>
-															<dd class="red">-0원</dd>
+<!-- 													<dl class="price2 moviediscountcoupon" style="display: none;"> -->
+<!-- 															<dt>할인쿠폰</dt> -->
+<!-- 															<dd class="red">-0원</dd> -->
+<!-- 														</dl> -->
+<!-- 													</div> -->
+													<dl class="price2" style="display: block;">
+															<dt>포인트사용</dt>
+															<dd class="red point">-0원</dd>
 														</dl>
 													</div>
 											<hr class="hr3">
@@ -267,12 +334,12 @@
 		var discount = $("#Discount").val();
 		
 		// 상영 시간까지 남은 시간이 1시간 이내인 영화면 할인
-		if(discount != "") {
+		if (discount != "") {
 			var oriAmt = ${vo.getTotalAmt() };
 			var discountTotalAmt = oriAmt * discount;
 			var totalAmt = oriAmt - discountTotalAmt;
 			$("#totalAmt").val(totalAmt);
-			$(".discounts").css("display", "block");
+			$(".price1").css("display", "block");
 			$(".discountAmt").empty();
 			$(".discountAmt").append("-" + discountTotalAmt + "원");
 			
@@ -282,6 +349,28 @@
 		}
 		
 		
+		// 포인트
+		$("#pointNumber").on("change", function(e) {
+			var point = $(this).val();
+			$("#Point").val($(this).val());
+			var oriAmt = $("#totalAmt").val();
+			var totalAmt = oriAmt - point;
+			
+			if (point > ${selectPoint}) {
+				alert("사용가능 포인트를 확인하세요!");
+				$(this).val("");
+				return;
+			}
+			
+			
+			$("#totalAmt").val(totalAmt);
+			$(".point").empty();
+			$(".point").append("-" + point + "원");
+			
+			$(".totalAmt").empty();
+			$(".totalAmt").append(totalAmt + "원");
+			
+		});
 		
 		
 		
