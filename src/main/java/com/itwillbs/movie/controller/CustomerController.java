@@ -38,16 +38,19 @@ public class CustomerController {
 	// 고객센터 홈
 	@RequestMapping(value = "cc_home", method = {RequestMethod.GET, RequestMethod.POST})
 	public String ccHome(@RequestParam HashMap<String, String> map, Model model) {
-		System.out.println("cc_home : " + map);
+		System.out.println("cc_home : " + map); // 지금 비어있는 상태
+		// startNum 이 null 이거나 "" 인경우 map에 처음과 끝 번호 저장 그렇지 않으면 지정된 값 사용
 		if(map.get("startNum") == null || "".equals(map.get("startNum"))) {
 			map.put("startNum", "0");
 			map.put("endNum", "5");
 		}
+		// 목록이라 List에 저장 select notice 해온거 저장
 		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
+		// select faq 해온거 저장
 		List<HashMap<String, String>> faqBoardList = boardService.getFaqBoardList(map);
 		model.addAttribute("noticeBoardList", noticeBoardList);
 		model.addAttribute("faqBoardList", faqBoardList);
-		System.out.println("고객센터 홈 " + model);
+		System.out.println("고객센터 홈 " + model);	// model 에 저장
 		return "customer_center/cc_home";
 	}
 	
@@ -58,15 +61,16 @@ public class CustomerController {
 			map.put("pageNum", "1");
 			map.put("startNum", "0");
 			map.put("endNum", "10");
-		}
+		} // map 에 번호만 들어 있음
+		// 공지 목록 List에 저장
 		List<HashMap<String, String>> noticeBoardList = boardService.getNoticeBoardList(map);
-		if(noticeBoardList.size() > 0) {
+		if(noticeBoardList.size() > 0) {	// List 존재시 목록 카운트 한 값 저장
 			HashMap<String, String> countMap = noticeBoardList.get(0);
 			map.put("totalCnt", String.valueOf(countMap.get("totalCnt")));
 		}
 		List<HashMap<String, String>> cinemaList = movieRegisterService.selectCinema();
 		model.addAttribute("cinemaList",cinemaList);
-		model.addAttribute("paramMap", map);
+		model.addAttribute("paramMap", map);//paramMap={pageNum=1, startNum=0, endNum=10, totalCnt=17}
 		model.addAttribute("noticeBoardList", noticeBoardList);
 		System.out.println("noticeBoard 컨트롤러" + model);
 		
@@ -77,7 +81,7 @@ public class CustomerController {
 	@RequestMapping(value = "notice_detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String noticeDetail(@RequestParam HashMap<String, String> map, Model model) {
 		model.addAttribute("paramMap", map);
-		System.out.println(map);
+		System.out.println("noticeDetail:"+map);//noticeDetail:{notice_code=17, prevNum=0, nextNum16=}
 		map = boardService.getNoticeDetail(map);
 		model.addAttribute("map", map);
 		
@@ -104,7 +108,7 @@ public class CustomerController {
 			HashMap<String, String> countMap = faqBoardList.get(0);
 			map.put("totalCnt",String.valueOf(countMap.get("totalCnt")));
 		}
-		model.addAttribute("paramMap", map);
+		model.addAttribute("paramMap", map);	// paramMap 이름으로 model에 저장
 		model.addAttribute("faqBoardList", faqBoardList);
 		
 		System.out.println("faq 컨트롤러" + model);
@@ -115,7 +119,7 @@ public class CustomerController {
 	// 자주묻는 질문 상세
 	@RequestMapping(value = "faq_detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String faqDetail(@RequestParam HashMap<String, String> map, Model model) {
-		
+		// map faq_code 들어있음
 		map = boardService.getFaqDetail(map);
 		model.addAttribute("map", map);
 		return "customer_center/faq_detail";
